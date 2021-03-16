@@ -1,0 +1,4 @@
+/functions/app/build
+/public/build
+# Local Netlify folder
+.netlify
