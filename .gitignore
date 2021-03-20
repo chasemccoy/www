@@ -1,3 +1,4 @@
+node_modules
 /functions/app/build
 /public/build
 # Local Netlify folder

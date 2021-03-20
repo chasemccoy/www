@@ -13,7 +13,7 @@ export let loader: LoaderFunction = () => {
 };
 
 export default function App() {
-  let data = useRouteData();
+  // let data = useRouteData();
 
   return (
     <html lang="en">
@@ -24,10 +24,6 @@ export default function App() {
       </head>
       <body>
         <Outlet />
-
-        <footer>
-          <p>This page was rendered at {data.date.toLocaleString()}</p>
-        </footer>
         <Scripts />
       </body>
     </html>
@@ -47,7 +43,7 @@ export function ErrorBoundary({ error }: { error: Error }) {
           <pre>{error.message}</pre>
           <p>
             Replace this UI with what you want users to see when your app throws
-            uncaught errors. The file is at <code>app/App.tsx</code>.
+            uncaught errors. The file is at <code>app/root.tsx</code>.
           </p>
         </div>
 
