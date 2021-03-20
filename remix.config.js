@@ -57,7 +57,7 @@ module.exports = {
   devServerPort: 8002,
   content: {
     owner: 'chasemccoy',
-    repo: 'catalog',
+    repo: 'www',
     path: 'posts',
   }
 }
