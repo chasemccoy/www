@@ -7,7 +7,7 @@ module.exports = {
    * We prevent vercel from building when it deploys because it chokes on the
    * typescript files that Remix already built.
    */
-  appDirectory: "app",
+  appDirectory: 'app',
 
   /**
    * A hook for defining custom routes based on your own file conventions. This
@@ -35,13 +35,13 @@ module.exports = {
    * `public/build`. The browser build contains all public JavaScript and CSS
    * files that are created when building your routes.
    */
-  browserBuildDirectory: "public/build",
+  browserBuildDirectory: 'public/build',
 
   /**
    * The URL prefix of the browser build with a trailing slash. Defaults to
    * `/build/`.
    */
-  publicPath: "/build/",
+  publicPath: '/build/',
 
   /**
    * The path to the server build directory, relative to remix.config.js.
@@ -49,10 +49,15 @@ module.exports = {
    * that are created from building your routes. They are used on the server to
    * generate HTML.
    */
-  serverBuildDirectory: "functions/app/build",
+  serverBuildDirectory: 'functions/app/build',
 
   /**
    * The port to use when running `remix run`. Defaults to 8002.
    */
   devServerPort: 8002,
-};
+  content: {
+    owner: 'chasemccoy',
+    repo: 'catalog',
+    path: 'posts',
+  }
+}

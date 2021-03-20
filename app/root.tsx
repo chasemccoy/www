@@ -1,5 +1,5 @@
 import type { LinksFunction, LoaderFunction } from "@remix-run/react";
-import { Meta, Links, Scripts, useRouteData } from "@remix-run/react";
+import { Meta, Links, Scripts, usePendingLocation } from "@remix-run/react";
 import { Outlet } from "react-router-dom";
 
 import styles from "url:./styles/global.css";
@@ -8,12 +8,13 @@ export let links: LinksFunction = () => {
   return [{ rel: "stylesheet", href: styles }];
 };
 
-export let loader: LoaderFunction = () => {
-  return { date: new Date() };
-};
+// export let loader: LoaderFunction = () => {
+//   return { date: new Date() };
+// };
 
 export default function App() {
   // let data = useRouteData();
+  const pendingLocation = usePendingLocation()
 
   return (
     <html lang="en">
@@ -22,9 +23,9 @@ export default function App() {
         <Meta />
         <Links />
       </head>
-      <body>
+      <body className={pendingLocation ? 'opacity-50' : ''}>
         <Outlet />
-        <Scripts />
+        {/* <Scripts /> */}
       </body>
     </html>
   );
