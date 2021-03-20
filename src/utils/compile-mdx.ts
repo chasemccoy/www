@@ -1,8 +1,9 @@
 import {bundleMDX} from 'mdx-bundler'
+import visit from 'unist-util-visit'
 import remarkPrism from 'remark-prism'
 import gfm from 'remark-gfm'
 
-async function compileMdx(slug: string, githubFiles: Array<GitHubFile>) {
+async function compileMdx(slug, githubFiles) {
   const indexRegex = new RegExp(`${slug}\\/index.mdx?$`)
   const indexFile = githubFiles.find(({path}) => indexRegex.test(path))
   if (!indexFile) throw new Error(`${slug} has no index.mdx file.`)
@@ -20,8 +21,18 @@ async function compileMdx(slug: string, githubFiles: Array<GitHubFile>) {
     valueName: 'content',
   })
 
+  const imageTransformer = (tree) => {
+    visit(tree, 'image', (node) => {
+      const filename = String(node.url)
+      node.url = `/img/${slug}/${filename}`
+    })
+  }
+
   const remarkPlugins = [
     gfm,
+    function remapImageUrls() {
+      return imageTransformer
+    },
     remarkPrism,
   ]
 

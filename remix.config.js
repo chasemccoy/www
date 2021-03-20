@@ -7,7 +7,7 @@ module.exports = {
    * We prevent vercel from building when it deploys because it chokes on the
    * typescript files that Remix already built.
    */
-  appDirectory: 'app',
+  appDirectory: 'src',
 
   /**
    * A hook for defining custom routes based on your own file conventions. This
@@ -50,6 +50,7 @@ module.exports = {
    * generate HTML.
    */
   serverBuildDirectory: 'functions/app/build',
+  cacheDirectory: './node_modules/.cache/remix',
 
   /**
    * The port to use when running `remix run`. Defaults to 8002.
