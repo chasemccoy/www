@@ -41,7 +41,7 @@ export function headers({loaderHeaders}) {
 
 export function meta({data: post}) {
   return {
-    title: post.frontmatter.title,
+    title: `${post.frontmatter.title} | Chase McCoy`,
   }
 }
 
@@ -55,7 +55,7 @@ const BlogPost = () => {
         <h1>{frontmatter.title}</h1>
         <p>{frontmatter.excerpt}</p>
       </header>
-      <main>
+      <main className='prose'>
         <Component components={mdxComponents} />
       </main>
     </>

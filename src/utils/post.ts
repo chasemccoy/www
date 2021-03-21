@@ -47,7 +47,7 @@ async function getPosts() {
       const postFile = await downloadFile(file.path, file.sha)
       return {
         ...postFile,
-        slug: fileDir.replace(`${config.content.path}/`, ''),
+        slug: fileDir.replace(`${config.content.path}/`, '').replace('.mdx', '')
       }
     })
   )

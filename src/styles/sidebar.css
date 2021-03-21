@@ -1,0 +1,16 @@
+.logo-canvas-wrapper {
+  position: relative;
+
+  canvas {
+    width: 32px;
+    height: 32px;
+    border-radius: 4px;
+  }
+
+  canvas + canvas {
+    position: absolute;
+    top: 0;
+    mix-blend-mode: multiply;
+    opacity: 0.5;
+  }
+}

@@ -1,16 +1,23 @@
-import type { LinksFunction, LoaderFunction } from "@remix-run/react";
 import { Meta, Links, Scripts, usePendingLocation } from "@remix-run/react";
 import { Outlet } from "react-router-dom";
+import Logo from './components/Logo';
 
-import styles from "css:./styles/global.css";
+import styles from "css:./styles/shared.css";
 
-export let links: LinksFunction = () => {
+export let meta = () => {
+  return {
+    title: "Chase McCoy",
+    description: "Chase McCoy is a product designer, front-end engineer, and internet explorer working on design systems at Stripe."
+  };
+};
+
+export let links = () => {
   return [
     { rel: "stylesheet", href: styles }
   ];
 };
 
-// export let loader: LoaderFunction = () => {
+// export let loader = () => {
 //   return { date: new Date() };
 // };
 
@@ -26,8 +33,21 @@ export default function App() {
         <Links />
       </head>
       <body className={pendingLocation ? 'opacity-50' : ''}>
-        <Outlet />
-        {/* <Scripts /> */}
+        <div id='wrapper'>
+          <div>
+            <header>
+              <Logo className='mb-16 mt-8' />
+              {/* <Nav /> */}
+            </header>
+
+            <main>
+              <Outlet />
+              {/* <Footer /> */}
+            </main>
+          </div>
+        </div>
+
+        <Scripts />
       </body>
     </html>
   );

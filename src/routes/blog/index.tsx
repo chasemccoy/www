@@ -19,15 +19,12 @@ export function headers() {
 
 export function meta() {
   return {
-    title: 'Blog Template',
-    description: 'This is a blog template, enjoy!',
+    title: 'Blog | Chase McCoy',
   }
 }
 
 const Blog = () => {
   const posts = useRouteData()
-
-  console.log(process.env.NODE_ENV)
 
   return (
     <div>
