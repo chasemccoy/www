@@ -2,6 +2,10 @@ import {bundleMDX} from 'mdx-bundler'
 import visit from 'unist-util-visit'
 import remarkPrism from 'remark-prism'
 import gfm from 'remark-gfm'
+import remarkSlug from 'remark-slug'
+import toc from 'mdast-util-toc'
+import toHast from 'mdast-util-to-hast'
+import toHtml from 'hast-util-to-html'
 
 async function compileMdx(slug, githubFiles) {
   const indexRegex = new RegExp(`${slug}\\/index.mdx?$`)
@@ -21,6 +25,8 @@ async function compileMdx(slug, githubFiles) {
     valueName: 'content',
   })
 
+  let tocData = null
+
   const imageTransformer = (tree) => {
     visit(tree, 'image', (node) => {
       const filename = String(node.url)
@@ -28,12 +34,23 @@ async function compileMdx(slug, githubFiles) {
     })
   }
 
+  const getToC = (tree) => {
+    const mdast = toc(tree)
+    if (mdast.map) {
+      tocData = toHtml(toHast(mdast.map))
+    }
+  }
+
   const remarkPlugins = [
     gfm,
     function remapImageUrls() {
       return imageTransformer
     },
+    function generateToC() {
+      return getToC
+    },
     remarkPrism,
+    remarkSlug
   ]
 
   const {frontmatter, code} = await bundleMDX(indexFile.content, {
@@ -50,6 +67,7 @@ async function compileMdx(slug, githubFiles) {
   return {
     code,
     frontmatter,
+    toc: tocData
   }
 }
 

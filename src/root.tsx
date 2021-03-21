@@ -7,7 +7,8 @@ import styles from "css:./styles/shared.css";
 export let meta = () => {
   return {
     title: "Chase McCoy",
-    description: "Chase McCoy is a product designer, front-end engineer, and internet explorer working on design systems at Stripe."
+    description: "Chase McCoy is a product designer, front-end engineer, and internet explorer working on design systems at Stripe.",
+    viewport: "width=device-width, initial-scale=1, shrink-to-fit=no"
   };
 };
 

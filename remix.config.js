@@ -60,5 +60,10 @@ module.exports = {
     owner: 'chasemccoy',
     repo: 'www',
     path: 'posts',
-  }
+  },
+  noteCategories: [
+    'code',
+    'misc',
+    'design-systems'
+  ]
 }

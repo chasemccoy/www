@@ -6,5 +6,6 @@ export default {
   Link, 
   Wide: React.Fragment,
   Tweet: React.Fragment,
-  Video: React.Fragment
+  Video: React.Fragment,
+  Bookmark: React.Fragment
 }

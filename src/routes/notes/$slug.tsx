@@ -4,31 +4,13 @@ import {useRouteData} from '@remix-run/react'
 import {getMDXComponent} from 'mdx-bundler/client'
 import {getNote} from '../../utils/note'
 import mdxComponents from '../../utils/mdx-components'
+import TableOfContents from '../../components/TableOfContents'
 
 export const loader = async ({params, context}) => {
   const post = await getNote(params.slug)
-
-  const oneDay = 86400
-  const secondsSincePublished =
-    (new Date().getTime() - post.frontmatter.date) / 1000
-  const barelyPublished = secondsSincePublished < oneDay
-
-  // If this was barely published then only cache it for one minute, giving you
-  // a chance to make edits and have them show up within a minute for visitors.
-  // But after the first day, then cache for a week, then if you make edits
-  // they'll show up eventually, but you don't have to rebuild and redeploy to
-  // get them there.
-  const maxAge = barelyPublished ? 60 : oneDay * 7
-
-  // If the max-age has expired, we'll still send the current cached version of
-  // the post to visitors until the CDN has cached the new one. If it's been
-  // expired for more than one month though (meaning nobody has visited this
-  // page for a month) we'll make them wait to see the newest version.
-  const swr = oneDay * 30
-
   return json(post, {
     headers: {
-      'cache-control': `public, max-age=${maxAge}, stale-while-revalidate=${swr}`,
+      'cache-control': 'public, max-age=300, stale-while-revalidate=86400',
     },
   })
 }
@@ -41,21 +23,22 @@ export function headers({loaderHeaders}) {
 
 export function meta({data: post}) {
   return {
-    title: `${post.frontmatter.title} | Chase McCoy`,
+    title: `${post.title} | Chase McCoy`,
   }
 }
 
 const Note = () => {
-  const {code, frontmatter} = useRouteData()
+  const {code, title, excerpt, toc} = useRouteData()
   const Component = React.useMemo(() => getMDXComponent(code), [code])
 
   return (
     <>
       <header>
-        <h1>{frontmatter.title}</h1>
-        <p>{frontmatter.excerpt}</p>
+        <h1>{title}</h1>
+        <p>{excerpt}</p>
       </header>
       <main className='prose'>
+        <TableOfContents content={toc} />
         <Component components={mdxComponents} />
       </main>
     </>

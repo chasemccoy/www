@@ -2,26 +2,22 @@ import nodePath from 'path'
 import {octokit} from './octokit'
 import config from '../../remix.config'
 
-async function downloadMdxFileOrDirectory(
-  mdxFileOrDirectory: string,
-) {
+async function downloadMdxFileOrDirectory(mdxFileOrDirectory) {
   const parentDir = nodePath.dirname(mdxFileOrDirectory)
   const dirList = await downloadDirList(parentDir)
 
   const basename = nodePath.basename(mdxFileOrDirectory)
   const potentials = dirList.filter(({ name }) => name.startsWith(basename))
 
-  for (const extension of ['.mdx', '.md']) {
-    const file = potentials.find(({ name }) => name.endsWith(extension))
-    if (file) {
-      // eslint-disable-next-line no-await-in-loop
-      const { content } = await downloadFile(file.path, file.sha)
-      // /content/about.mdx => entry is about.mdx, but compileMdx needs
-      // the entry to be called "/content/index.mdx" so we'll set it to that
-      // because this is the entry for this path
-      return [{ path: nodePath.join(mdxFileOrDirectory, 'index.mdx'), content }]
-    }
+  const file = potentials.find(({ name }) => name.endsWith('mdx'))
+  if (file) {
+    const { content } = await downloadFile(file.path, file.sha)
+    // /content/about.mdx => entry is about.mdx, but compileMdx needs
+    // the entry to be called "/content/index.mdx" so we'll set it to that
+    // because this is the entry for this path
+    return [{ path: nodePath.join(mdxFileOrDirectory, 'index.mdx'), content }]
   }
+  
   const directory = potentials.find(({ type }) => type === 'dir')
   if (!directory) return []
 
@@ -68,7 +64,7 @@ async function downloadFile(
   return { path, content: Buffer.from(data.content, encoding).toString() }
 }
 
-async function downloadDirList(dir: string) {
+async function downloadDirList(dir) {
   const { data } = await octokit.repos.getContent({
     owner: config.content.owner,
     repo: config.content.repo,
