@@ -9,7 +9,7 @@
   },
   "scripts": {
     "start": "pm2-dev pm2.config.js",
-    "build": "remix build",
+    "build": "NODE_ENV=production remix build",
     "clean": "rimraf ./node_modules/.cache ./functions/app/build ./public/build",
     "prestart": "yarn clean && yarn copy-images",
     "prebuild": "yarn clean && yarn copy-images",

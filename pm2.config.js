@@ -3,6 +3,7 @@ module.exports = {
     {
       name: 'Netlify',
       script: 'netlify dev',
+      ignore_watch: ['.'],
       env: {
         NODE_ENV: 'development',
       },
