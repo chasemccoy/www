@@ -27,6 +27,8 @@ export function meta() {
 const Blog = () => {
   const posts = useRouteData()
 
+  console.log(process.env.NODE_ENV)
+
   return (
     <div>
       <header>

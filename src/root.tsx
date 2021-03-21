@@ -2,10 +2,12 @@ import type { LinksFunction, LoaderFunction } from "@remix-run/react";
 import { Meta, Links, Scripts, usePendingLocation } from "@remix-run/react";
 import { Outlet } from "react-router-dom";
 
-import styles from "url:./styles/global.css";
+import styles from "css:./styles/global.css";
 
 export let links: LinksFunction = () => {
-  return [{ rel: "stylesheet", href: styles }];
+  return [
+    { rel: "stylesheet", href: styles }
+  ];
 };
 
 // export let loader: LoaderFunction = () => {
