@@ -53,8 +53,8 @@ async function downloadDirectory(
 }
 
 async function downloadFile(
-  path: string,
-  sha: string,
+  path,
+  sha,
 ) {
   const { data } = await octokit.request(
     'GET /repos/{owner}/{repo}/git/blobs/{file_sha}',

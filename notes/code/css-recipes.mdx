@@ -1,0 +1,96 @@
+---
+title: CSS recipes
+excerpt: Helpful techniques and snippets for working with my favorite language.
+modified: 2020-03-21
+tags:
+  - css
+  - web dev
+  - how to
+---
+
+## Accordions
+
+Use the `<details>` element
+
+<Bookmark url='https://css-tricks.com/quick-reminder-that-details-summary-is-the-easiest-way-ever-to-make-an-accordion/' />
+
+## Checkboxes
+
+Instead of trying to get the styling right for IE 11, just add custom styles for browsers that support it well. You can do that by checking for support for the `-webkit-appearance` property:
+
+```css
+@supports (-webkit-appearance: none) {
+  input[type='checkbox'] {
+    /* style up your checkbox for browsers that can handle it */
+  }
+}
+```
+
+Of course, [this idea comes from the great Jen Simmons](https://twitter.com/jensimmons/status/1162106783642595328).
+
+## Dropdown menus
+
+Here's how to make them simply and accessibly, with no JavaScript, using the `:focus-within` pseudo selector:
+
+<Bookmark url='https://css-tricks.com/solved-with-css-dropdown-menus' />
+
+You can also use the `<details>` element:
+
+<Bookmark url='https://css-tricks.com/using-details-for-menus-and-dialogs-is-an-interesting-idea/' />
+
+Read more about this on [the `<details>` page](/notes/details-element).
+
+## Grid
+
+<Tweet url='https://twitter.com/tjholowaychuk/status/1150741110886735872' />
+
+<Bookmark url='https://css-tricks.com/responsive-grid-magazine-layout-in-just-20-lines-of-css/' />
+
+<Bookmark url='https://css-tricks.com/a-responsive-grid-layout-with-no-media-queries/' />
+
+---
+
+<Bookmark url='https://bricampgomez.com/blog/how-to-overlap-images-in-css' />
+
+## Horizontal scrolling sections
+
+Thanks to [this tweet from Cassie Evans](https://twitter.com/cassiecodes/status/1094984738480316416).
+
+```css
+.container {
+  width: 100vw;
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+}
+
+.item {
+  flex: 0 0 auto;
+}
+```
+
+<Bookmark url='https://www.chenhuijing.com/blog/flexbox-and-padding' />
+
+## Responsive tiled layout with CSS Grid and no media queries
+
+This is great for making grid layouts of even-sized tiles where each tile never gets narrower than the specified min-width. But this _does not_ work if you want to have items of varying widths. Stolen from [this tweet by @thekitze](https://twitter.com/thekitze/status/1131821007629692929).
+
+```js
+const autoGrid = (minColumnWidth = 250, gap = 0) => css`
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(${minColumnWidth}px, 1fr));
+  grid-gap: ${gap};
+`
+```
+
+Also [detailed here by Andy Bell](https://hankchizljaw.com/wrote/create-a-responsive-grid-layout-with-no-media-queries-using-css-grid).
+
+This does have a bug though if the user resizes their browser to be less than `minColumnWidth`. You can fix it using a breakpoint, or using the `min` CSS function [as detailed in this post by Evan Minto](https://evanminto.com/blog/intrinsically-responsive-css-grid-minmax-min), which is beginning to see good browser support.
+
+I wrote a bit about this technique here:
+
+<Bookmark url='https://chasem.co/2020/04/gap-problem' />
+
+## Text dividers
+
+<Tweet url='https://twitter.com/CodyWebHouse/status/1233058458297143296' />

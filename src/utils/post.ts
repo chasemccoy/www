@@ -14,16 +14,10 @@ async function getPost(slug: string) {
   return { slug, code, frontmatter }
 }
 
-function typedBoolean<T>(
-  value: T
-): value is Exclude<T, '' | 0 | false | null | undefined> {
-  return Boolean(value)
-}
-
 async function getPosts() {
   const { data } = await octokit.repos.getContent(config.content)
 
-  if (!Array.isArray(data)) throw new Error('Wut github?')
+  if (!Array.isArray(data)) throw new Error()
 
   const result = await Promise.all(
     data.map(async ({ path: fileDir }) => {
@@ -52,7 +46,7 @@ async function getPosts() {
     })
   )
 
-  const files = result.filter(typedBoolean)
+  const files = result.filter(v => Boolean(v))
 
   const posts = await Promise.all(
     files.map(async ({ slug, content }) => {
