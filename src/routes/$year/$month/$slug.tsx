@@ -58,15 +58,14 @@ const BlogPost = () => {
   const Component = React.useMemo(() => getMDXComponent(code), [code])
 
   return (
-    <>
+    <article className='prose'>
       <header>
         <h1>{title}</h1>
         <p>{excerpt}</p>
       </header>
-      <main className='prose'>
-        <Component components={mdxComponents} />
-      </main>
-    </>
+
+      <Component components={mdxComponents} />
+    </article>
   )
 }
 

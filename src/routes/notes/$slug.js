@@ -30,6 +30,7 @@ export function meta({data: post}) {
 const Note = () => {
   const {code, title, excerpt, toc} = useRouteData()
   const Component = React.useMemo(() => getMDXComponent(code), [code])
+  console.log(useRouteData())
 
   return (
     <>

@@ -7,7 +7,7 @@
 
   > div {
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     margin: calc(var(--sidebar-gap) / 2 * -1);
   }
 
@@ -27,11 +27,11 @@
     margin-bottom: 0;
   }
 
-  /* ${media.tiny`
+  @media (--viewport-tiny) {
     padding: 40px;
-  `} */
+  }
 
-  /* ${media.small`
+  @media (--viewport-small) {
     > div {
       flex-wrap: nowrap;
     }
@@ -39,5 +39,5 @@
     > div > header {
       margin: calc(var(--sidebar-gap) / 2);
     }
-  `} */
+  }
 }

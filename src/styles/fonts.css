@@ -3,9 +3,9 @@
   font-style: normal;
   font-weight: normal;
   font-display: swap;
-  src: url('./gt-america/GTAmerica-Regular.woff2')
+  src: url('/fonts/gt-america/GTAmerica-Regular.woff2')
       format('woff2'),
-    url('./gt-america/GTAmerica-Regular.woff')
+    url('/fonts/gt-america/GTAmerica-Regular.woff')
       format('woff');
 }
 
@@ -14,9 +14,9 @@
   font-style: italic;
   font-weight: normal;
   font-display: swap;
-  src: url('./gt-america/GTAmerica-RegularItalic.woff2')
+  src: url('/fonts/gt-america/GTAmerica-RegularItalic.woff2')
       format('woff2'),
-    url('./gt-america/GTAmerica-RegularItalic.woff')
+    url('/fonts/gt-america/GTAmerica-RegularItalic.woff')
       format('woff');
 }
 
@@ -25,9 +25,9 @@
   font-style: normal;
   font-weight: bold;
   font-display: swap;
-  src: url('./gt-america/GTAmerica-Bold.woff2')
+  src: url('/fonts/gt-america/GTAmerica-Bold.woff2')
       format('woff2'),
-    url('./gt-america/GTAmerica-Bold.woff')
+    url('/fonts/gt-america/GTAmerica-Bold.woff')
       format('woff');
 }
 
@@ -36,16 +36,16 @@
   font-style: italic;
   font-weight: bold;
   font-display: swap;
-  src: url('./gt-america/GTAmerica-BoldItalic.woff2')
+  src: url('/fonts/gt-america/GTAmerica-BoldItalic.woff2')
       format('woff2'),
-    url('./gt-america/GTAmerica-BoldItalic.woff')
+    url('/fonts/gt-america/GTAmerica-BoldItalic.woff')
       format('woff');
 }
 
 @font-face {
   font-family: 'Source Code Pro';
-  src: url('./source-code-pro/SourceCodePro-It.woff2') format('woff2'),
-      url('./source-code-pro/SourceCodePro-It.woff') format('woff');
+  src: url('/fonts/source-code-pro/SourceCodePro-It.woff2') format('woff2'),
+      url('/fonts/source-code-pro/SourceCodePro-It.woff') format('woff');
   font-weight: normal;
   font-style: italic;
   font-display: swap;
@@ -53,8 +53,8 @@
 
 @font-face {
   font-family: 'Source Code Pro';
-  src: url('./source-code-pro/SourceCodePro-BoldIt.woff2') format('woff2'),
-      url('./source-code-pro/SourceCodePro-BoldIt.woff') format('woff');
+  src: url('/fonts/source-code-pro/SourceCodePro-BoldIt.woff2') format('woff2'),
+      url('/fonts/source-code-pro/SourceCodePro-BoldIt.woff') format('woff');
   font-weight: bold;
   font-style: italic;
   font-display: swap;
@@ -62,8 +62,8 @@
 
 @font-face {
   font-family: 'Source Code Pro';
-  src: url('./source-code-pro/SourceCodePro-Bold.woff2') format('woff2'),
-      url('./source-code-pro/SourceCodePro-Bold.woff') format('woff');
+  src: url('/fonts/source-code-pro/SourceCodePro-Bold.woff2') format('woff2'),
+      url('/fonts/source-code-pro/SourceCodePro-Bold.woff') format('woff');
   font-weight: bold;
   font-style: normal;
   font-display: swap;
@@ -71,8 +71,8 @@
 
 @font-face {
   font-family: 'Source Code Pro';
-  src: url('./source-code-pro/SourceCodePro-Regular.woff2') format('woff2'),
-      url('./source-code-pro/SourceCodePro-Regular.woff') format('woff');
+  src: url('/fonts/source-code-pro/SourceCodePro-Regular.woff2') format('woff2'),
+      url('/fonts/source-code-pro/SourceCodePro-Regular.woff') format('woff');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
