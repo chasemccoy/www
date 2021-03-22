@@ -2,11 +2,19 @@ import React from 'react'
 import {json} from '@remix-run/data'
 import {useRouteData} from '@remix-run/react'
 import {getMDXComponent} from 'mdx-bundler/client'
-import {getPost} from '../../utils/post'
-import mdxComponents from '../../utils/mdx-components'
+import {getPost} from '../../../utils/post'
+import mdxComponents from '../../../utils/mdx-components'
 
 export const loader = async ({params, context}) => {
   const post = await getPost(params.slug)
+
+  const date = new Date(post.date)
+  const year = date.getFullYear().toString()
+  const month = ("0" + (date.getMonth() + 1)).slice(-2)
+
+  if (params.year !== year || params.month !== month) {
+    return new Response("Not found", {status: 404})
+  }
 
   const oneDay = 86400
   const secondsSincePublished =
@@ -46,7 +54,7 @@ export function meta({data: post}) {
 }
 
 const BlogPost = () => {
-  const {code, frontmatter, title, excerpt} = useRouteData()
+  const {code, title, excerpt} = useRouteData()
   const Component = React.useMemo(() => getMDXComponent(code), [code])
 
   return (

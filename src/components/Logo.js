@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react'
-import {Link} from '@remix-run/react'
+import Link from './Link'
 
 const clamp = function (min, n, max) {
   return Math.min(Math.max(n, min), max)

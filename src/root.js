@@ -1,6 +1,7 @@
 import { Meta, Links, Scripts, usePendingLocation } from "@remix-run/react";
 import { Outlet } from "react-router-dom";
 import Logo from './components/Logo';
+import Nav from './components/Nav';
 
 import styles from "css:./styles/shared.css";
 
@@ -36,9 +37,9 @@ export default function App() {
       <body className={pendingLocation ? 'opacity-50' : ''}>
         <div id='wrapper'>
           <div>
-            <header>
+            <header id='site-header'>
               <Logo className='mb-16 mt-8' />
-              {/* <Nav /> */}
+              <Nav />
             </header>
 
             <main>
@@ -54,7 +55,7 @@ export default function App() {
   );
 }
 
-export function ErrorBoundary({ error }: { error: Error }) {
+export function ErrorBoundary({ error }) {
   return (
     <html lang="en">
       <head>

@@ -2,6 +2,8 @@ import nodePath from 'path'
 import {octokit} from './octokit'
 import config from '../../remix.config'
 
+const imageRegex = /\.(gif|jpe?g|png|webp|svg)$/i
+
 async function downloadMdxFileOrDirectory(mdxFileOrDirectory) {
   const parentDir = nodePath.dirname(mdxFileOrDirectory)
   const dirList = await downloadDirList(parentDir)
@@ -27,7 +29,9 @@ async function downloadMdxFileOrDirectory(mdxFileOrDirectory) {
 async function downloadDirectory(
   dir: string,
 ) {
-  const dirList = await downloadDirList(dir)
+  let dirList = await downloadDirList(dir)
+  // Never download images, they're handled locally
+  dirList = dirList.filter(({path}) => !imageRegex.test(path))
 
   const result = await Promise.all(
     dirList.map(async ({ path: fileDir, type, sha }) => {

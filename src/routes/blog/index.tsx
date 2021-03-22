@@ -1,7 +1,8 @@
 import React from 'react'
-import {useRouteData, Link} from '@remix-run/react'
+import {useRouteData} from '@remix-run/react'
 import {json} from '@remix-run/data'
 import {getPosts} from '../../utils/post'
+import {getURLForPost} from '../../utils'
 
 export const loader = async () => {
   return json(await getPosts(), {
@@ -35,9 +36,9 @@ const Blog = () => {
       <main>
         {posts.map(post => (
           <p key={post.slug}>
-            <Link to={`/blog/${post.slug}`}>{post.frontmatter.title}</Link>
+            <a href={getURLForPost(post)}>{post.title}</a>
             <br />
-            <small>{post.frontmatter.excerpt}</small>
+            <small>{post.excerpt}</small>
           </p>
         ))}
       </main>

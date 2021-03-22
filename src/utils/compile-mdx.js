@@ -14,12 +14,13 @@ async function compileMdx(slug, githubFiles) {
 
   const rootDir = indexFile.path.replace(/index.mdx?$/, '')
   
-  const relativeFiles: Array<GitHubFile> = githubFiles.map(
+  const relativeFiles = githubFiles.map(
     ({path, content}) => ({
       path: path.replace(rootDir, './'),
       content,
     }),
   )
+  
   const files = arrayToObj(relativeFiles, {
     keyName: 'path',
     valueName: 'content',
@@ -49,7 +50,7 @@ async function compileMdx(slug, githubFiles) {
     function generateToC() {
       return getToC
     },
-    remarkPrism,
+    // remarkPrism,
     remarkSlug
   ]
 
@@ -71,11 +72,11 @@ async function compileMdx(slug, githubFiles) {
   }
 }
 
-function arrayToObj<ItemType extends Record<string, unknown>>(
-  array: Array<ItemType>,
-  {keyName, valueName}: {keyName: keyof ItemType; valueName: keyof ItemType},
+function arrayToObj(
+  array,
+  {keyName, valueName},
 ) {
-  const obj: Record<string, ItemType[keyof ItemType]> = {}
+  const obj = {}
   for (const item of array) {
     const key = item[keyName]
     if (typeof key !== 'string') {

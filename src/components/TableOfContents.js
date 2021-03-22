@@ -1,5 +1,5 @@
 import React from 'react'
-import {Link} from '@remix-run/react'
+import Link from './Link'
 
 // const Container = styled.div`
 //   && h2 {
