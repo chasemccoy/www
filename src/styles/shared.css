@@ -5,6 +5,7 @@
 @import "./utilities.css";
 @import "./layout.css";
 @import "./sidebar.css";
+@import "./prism.css";
 
 :focus:not(:focus-visible) {
   outline: none;

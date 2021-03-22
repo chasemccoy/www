@@ -2,7 +2,7 @@ import React from 'react'
 import {json} from '@remix-run/data'
 import {useRouteData} from '@remix-run/react'
 import {getMDXComponent} from 'mdx-bundler/client'
-import {getNote} from '../../utils/note'
+import {getNote} from '../../utils/note.server'
 import mdxComponents from '../../utils/mdx-components'
 import TableOfContents from '../../components/TableOfContents'
 

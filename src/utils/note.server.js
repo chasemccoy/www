@@ -2,9 +2,9 @@ import nodePath from 'path'
 import sortBy from 'sort-by'
 import matter from 'gray-matter'
 import config from '../../remix.config'
-import {octokit} from './octokit'
-import { downloadDirectory, downloadMdxFileOrDirectory, downloadFile } from './github'
-import { compileMdx } from './compile-mdx'
+import {octokit} from './octokit.server'
+import { downloadDirectory, downloadMdxFileOrDirectory, downloadFile } from './github.server'
+import { compileMdx } from './compile-mdx.server'
 
 async function getNote(slug) {
   const notes = await getNotes()

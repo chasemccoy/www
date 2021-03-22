@@ -1,9 +1,9 @@
 import sortBy from 'sort-by'
 import matter from 'gray-matter'
-import {octokit} from './octokit'
+import {octokit} from './octokit.server'
 import config from '../../remix.config'
-import { downloadDirectory, downloadMdxFileOrDirectory, downloadFile } from './github'
-import { compileMdx } from './compile-mdx'
+import { downloadDirectory, downloadMdxFileOrDirectory, downloadFile } from './github.server'
+import { compileMdx } from './compile-mdx.server'
 
 async function getPost(slug) {
   const postFiles = await downloadMdxFileOrDirectory(

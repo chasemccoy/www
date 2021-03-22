@@ -1,7 +1,7 @@
 import React from 'react'
 import {useRouteData, Link} from '@remix-run/react'
 import {json} from '@remix-run/data'
-import {getNotes} from '../../utils/note'
+import {getNotes} from '../../utils/note.server'
 
 export const loader = async () => {
   return json(await getNotes(), {

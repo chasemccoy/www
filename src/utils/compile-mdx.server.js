@@ -50,7 +50,7 @@ async function compileMdx(slug, githubFiles) {
     function generateToC() {
       return getToC
     },
-    // remarkPrism,
+    remarkPrism,
     remarkSlug
   ]
 

@@ -1,7 +1,7 @@
 import React from 'react'
 import {useRouteData} from '@remix-run/react'
 import {json} from '@remix-run/data'
-import {getPosts} from '../../utils/post'
+import {getPosts} from '../../utils/post.server'
 import {getURLForPost} from '../../utils'
 
 export const loader = async () => {

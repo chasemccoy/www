@@ -2,7 +2,7 @@ import React from 'react'
 import {json} from '@remix-run/data'
 import {useRouteData} from '@remix-run/react'
 import {getMDXComponent} from 'mdx-bundler/client'
-import {getPost} from '../../../utils/post'
+import {getPost} from '../../../utils/post.server'
 import mdxComponents from '../../../utils/mdx-components'
 
 export const loader = async ({params, context}) => {

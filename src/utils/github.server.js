@@ -1,5 +1,5 @@
 import nodePath from 'path'
-import {octokit} from './octokit'
+import {octokit} from './octokit.server'
 import config from '../../remix.config'
 
 const imageRegex = /\.(gif|jpe?g|png|webp|svg)$/i
