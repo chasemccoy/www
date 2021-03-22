@@ -1,7 +1,7 @@
 module.exports = {
   plugins: [
     require('postcss-import')({
-      from: "src/styles/global.css"
+      from: "src/styles/shared.css"
     }), 
     require('postcss-nested'),
     require('postcss-preset-env')({
