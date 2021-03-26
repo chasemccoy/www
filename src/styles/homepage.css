@@ -1,5 +1,5 @@
 :root {
-  --color-body-background: #222; // #181B25;
+  --color-body-background: #222;
   --color-text: var(--color-gray--300);
   --color-header: var(--color-gray--200);
   --link-color: var(--color-text);
@@ -16,6 +16,8 @@ h3.subheader {
 }
 
 .homepage--design-systems .focus-areas {
+  padding-left: 12px;
+
   h3 {
     font-size: 1.1em;
     color: var(--color-gray--300);
@@ -24,8 +26,6 @@ h3.subheader {
   p {
     color: var(--color-gray--400);
   }
-
-  padding-left: 12px;
 
   @media (--viewport-small) {
     padding-left: 0;

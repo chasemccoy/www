@@ -1,21 +1,51 @@
 import React from 'react'
-// import { useRouteData } from "@remix-run/react";
 import Link from "../components/Link";
 import DesignSystems from '../components/homepage/DesignSystems'
 import Museo from '../components/homepage/Museo'
-import styles from "url:../styles/homepage.css";
+import styles from "css:../styles/homepage.css";
+import avatar from 'img:../images/avatar-yellow.png'
+
+const Avatar = () => (
+  <div
+    // css={`
+    //   width: 9em;
+    //   height: 9em;
+    //   border: 1px dashed var(--color-gray--600);
+    //   padding: 8px;
+    //   border-radius: 50%;
+    //   overflow: hidden;
+    //   float: right;
+    //   margin: 8px 0 8px 24px;
+    //   shape-outside: circle();
+
+    //   ${media.medium`
+    //     margin-top: -8px;
+    //   `}
+    // `}
+  >
+    <div
+      css={`
+        border-radius: 50%;
+        overflow: hidden;
+        background: repeating-linear-gradient(
+          -55deg,
+          var(--color-gray--600),
+          var(--color-gray--600) 0.5px,
+          var(--color-body-background) 0.5px,
+          var(--color-body-background) 3px
+        );
+      `}
+    >
+      <img src={avatar.src} alt='Chase McCoy' />
+    </div>
+  </div>
+)
 
 export let links = () => {
   return [{ rel: "stylesheet", href: styles }];
 };
 
-// export let loader: LoaderFunction = () => {
-//   return { message: "this is awesome 😎" };
-// };
-
 const Index = () => {
-  // let data = useRouteData();
-
   return (
     <React.Fragment>
       <h2

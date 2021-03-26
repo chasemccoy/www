@@ -1,7 +1,6 @@
 import React from 'react'
-// import media from 'utils/media-new'
-// import museo from 'assets/museo.png'
-// import museoLandscape from 'assets/museo.jpg'
+import museo from 'img:../../images/museo.png'
+import museoLandscape from 'img:../../images/museo.jpg'
 import Link from '../Link'
 // import { UnorderedList } from 'components/Lists'
 
@@ -70,17 +69,17 @@ const Museo = (props) => {
         </div>
       </div>
 
-      {/* <div className='image-container'>
+      <div className='image-container'>
         <img
-          src={museo}
+          src={museo.src}
           alt='View of the Golden Bend in the Herengracht, Gerrit Adriaensz.'
         />
         <img
-          src={museoLandscape}
+          src={museoLandscape.src}
           className='mobile-only mobile-breakout'
           alt='View of the Golden Bend in the Herengracht, Gerrit Adriaensz.'
         />
-      </div> */}
+      </div>
     </div>
   )
 }
