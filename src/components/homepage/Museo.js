@@ -11,7 +11,6 @@ const Museo = (props) => {
         <div>
           <h1>
             <Link to='https://museo.app' className='unstyled'>
-              {/* <span className='mr-12 smaller'>🏛</span> */}
               <span className='color-blue'>Museo</span>
               <span
                 css={`

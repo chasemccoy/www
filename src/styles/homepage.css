@@ -15,6 +15,34 @@ h3.subheader {
   color: var(--color-gray--500);
 }
 
+.avatar {
+  width: 9em;
+  height: 9em;
+  border: 1px dashed var(--color-gray--600);
+  padding: 8px;
+  border-radius: 50%;
+  overflow: hidden;
+  float: right;
+  margin: 8px 0 8px 24px;
+  shape-outside: circle();
+
+  @media (--viewport-medium) {
+    margin-top: -8px;
+  }
+
+  > div {
+    border-radius: 50%;
+    overflow: hidden;
+    background: repeating-linear-gradient(
+      -55deg,
+      var(--color-gray--600),
+      var(--color-gray--600) 0.5px,
+      var(--color-body-background) 0.5px,
+      var(--color-body-background) 3px
+    );
+  }
+}
+
 .homepage--design-systems .focus-areas {
   padding-left: 12px;
 
@@ -31,6 +59,16 @@ h3.subheader {
     padding-left: 0;
   }
 }
+
+.homepage--design-systems .hover-link {
+    align-items: flex-start;
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+
+    &:hover {
+      background: var(--color-gray--800);
+    }
+  }
 
 .museo {
   display: flex;
