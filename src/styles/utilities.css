@@ -1,3 +1,77 @@
+@each $space in 0, 1, 2, 4, 8, 12, 16, 20, 24, 32, 40, 48 {
+  .m-$(space) {
+    margin: $(space)px !important;
+  }
+
+  .mx-$(space) {
+    margin-right: $(space)px !important;
+    margin-left: $(space)px !important;
+  }
+
+  .my-$(space) {
+    margin-top: $(space)px !important;
+    margin-bottom: $(space)px !important;
+  }
+
+  .mt-$(space) {
+    margin-top: $(space)px !important;
+  }
+
+  .mr-$(space) {
+    margin-right: $(space)px !important;
+  }
+
+  .mb-$(space) {
+    margin-bottom: $(space)px !important;
+  }
+
+  .ml-$(space) {
+    margin-left: $(space)px !important;
+  }
+
+  .p-$(space) {
+    padding: $(space)px !important;
+  }
+
+  .px-$(space) {
+    padding-right: $(space)px !important;
+    padding-left: $(space)px !important;
+  }
+
+  .py-$(space) {
+    padding-top: $(space)px !important;
+    padding-bottom: $(space)px !important;
+  }
+
+  .pt-$(space) {
+    padding-top: $(space)px !important;
+  }
+
+  .pr-$(space) {
+    padding-right: $(space)px !important;
+  }
+
+  .pb-$(space) {
+    padding-bottom: $(space)px !important;
+  }
+
+  .pl-$(space) {
+    padding-left: $(space)px !important;
+  }
+}
+
+@each $color in 0, 100, 200, 300, 400, 500, 600, 700, 800, 900 {
+  .color-gray--$(color) {
+    color: var(--color-gray--$(color));
+  }
+}
+
+@each $color in red, yellow, blue, green, purple, caption {
+  .color-$(color) {
+    color: var(--color-$(color));
+  }
+}
+
 .smaller {
   font-size: smaller;
 }
@@ -81,5 +155,18 @@
 
   .opacity-50 {
     opacity: 0.5;
+  }
+}
+
+.two-column {
+  --min-width: 200px;
+  display: grid;
+  grid-gap: 2rem;
+
+  @supports (width: min(var(--min-width), 100%)) {
+    grid-template-columns: repeat(
+      auto-fit,
+      minmax(min(var(--min-width), 100%), 1fr)
+    );
   }
 }

@@ -1,7 +1,9 @@
 import React from 'react'
 // import { useRouteData } from "@remix-run/react";
 import Link from "../components/Link";
-import styles from "url:../styles/index.css";
+import DesignSystems from '../components/homepage/DesignSystems'
+import Museo from '../components/homepage/Museo'
+import styles from "url:../styles/homepage.css";
 
 export let links = () => {
   return [{ rel: "stylesheet", href: styles }];
@@ -18,27 +20,27 @@ const Index = () => {
     <React.Fragment>
       <h2
         className='mb-12 serif hyphens'
-        css={`
-          font-size: 1.7rem;
-          line-height: 1.3;
-          margin-top: -6px;
-        `}
+        style={{
+          fontSize: '1.7rem',
+          lineHeight: 1.3,
+          marginTop: '-6px'
+        }}
       >
         Chase McCoy is a{' '}
-        <span css='color: var(--color-green);'>product designer&nbsp;✐</span>,{' '}
-        <span css='color: var(--color-blue);'>
+        <span style={{color: 'var(--color-green)'}}>product designer&nbsp;✐</span>,{' '}
+        <span style={{color: 'var(--color-blue)'}}>
           front-end engineer&nbsp;
-          <span css='font-size: 2em; line-height: 1rem; vertical-align: middle;'>
+          <span style={{fontSize: '2em', lineHeight: '1rem', verticalAlign: 'middle'}}>
             ⌨&#xFE0E;
           </span>
         </span>
         , and{' '}
-        <span css='color: var(--color-red);'>
+        <span style={{color: 'var(--color-red)'}}>
           internet explorer&nbsp;
           {/* <Globe css='display: inline; margin-top: -4px;' /> */}
         </span>{' '}
         working on{' '}
-        <span css='color: var(--color-yellow);'>design systems&nbsp;❏</span> at{' '}
+        <span style={{color: 'var(--color-yellow)'}}>design systems&nbsp;❏</span> at{' '}
         {/* <Link unstyled to='https://stripe.com'>
           <Stripe
             height='1em'
@@ -71,13 +73,13 @@ const Index = () => {
         <ContactMe /> */}
       </div>
 
-      {/* <Marker className='mt-40'>Now</Marker>
+      {/* <Marker className='mt-40'>Now</Marker> */}
 
-      <DesignSystems /> */}
+      <DesignSystems />
 
       <hr className='mt-40 mb-24' />
 
-      {/* <Museo /> */}
+      <Museo />
 
       {/* <div
         css={`

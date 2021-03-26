@@ -47,9 +47,11 @@
     "fs-extra": "^9.1.0",
     "netlify-cli": "^3.10.11",
     "pm2": "^4.5.5",
+    "postcss-each": "0.10.0",
     "postcss-import": "^14.0.0",
     "postcss-nested": "^5.0.5",
     "postcss-preset-env": "^6.7.0",
+    "postcss-simple-vars": "^6.0.3",
     "rimraf": "^3.0.2",
     "typescript": "^4.2.3"
   },

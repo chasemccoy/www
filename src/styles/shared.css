@@ -45,6 +45,14 @@ a {
   &:hover {
     color: var(--section-color, var(--link-hover));
   }
+
+  .unstyled {
+    text-decoration: none;
+  }
+
+  .underlined {
+    text-decoration: underline;
+  }
 }
 
 a.unstyled {
