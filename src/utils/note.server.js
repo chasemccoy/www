@@ -13,12 +13,13 @@ import {compileMdx} from './compile-mdx.server';
 async function getNote(slug) {
 	const notes = await getNotes();
 	const note = notes.find((note) => note.slug === slug);
+	if (!note) { return null}
 	const postFiles = await downloadMdxFileOrDirectory(
 		`notes/${note.category}/${slug}`
 	);
 
 	const {code, frontmatter, toc} = await compileMdx(slug, postFiles);
-	return {slug, code, ...frontmatter, toc};
+	return {slug, code, ...frontmatter, toc, category: note.category};
 }
 
 async function getCategory(category) {

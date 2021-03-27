@@ -4,6 +4,7 @@ import {useRouteData} from '@remix-run/react';
 import {getMDXComponent} from 'mdx-bundler/client';
 import {getPost} from '../../../utils/post.server';
 import mdxComponents from '../../../utils/mdx-components';
+import { formatDate } from '../../../utils';
 
 export const loader = async ({params, context}) => {
 	const post = await getPost(params.slug);
@@ -55,14 +56,17 @@ export function meta({data: post}) {
 export let handle = { section: 'blog' };
 
 const BlogPost = () => {
-	const {code, title, excerpt} = useRouteData();
+	const {code, title, excerpt, date} = useRouteData();
 	const Component = React.useMemo(() => getMDXComponent(code), [code]);
+	const formattedDate = formatDate(new Date(date))
 
 	return (
 		<article className="prose">
-			<header>
+			<header className='flow'>
 				<h1>{title}</h1>
-				<p>{excerpt}</p>
+				<p className='lead mt-8 color-caption'>{excerpt}</p>
+				<p className='smaller mt-16 color-caption bold'>{formattedDate}</p>
+				<hr className='dashed' />
 			</header>
 
 			<Component components={mdxComponents} />

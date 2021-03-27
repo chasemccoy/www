@@ -6,7 +6,8 @@ import {getNote, getCategory} from '../../utils/note.server';
 import mdxComponents from '../../utils/mdx-components';
 import TableOfContents from '../../components/TableOfContents';
 import Link from '../../components/Link';
-import {capitalize} from '../../utils';
+import {Folder} from '../../components/Icon';
+import {capitalize, slugify} from '../../utils';
 import config from '../../../remix.config'
 
 export const loader = async ({params}) => {
@@ -65,20 +66,41 @@ const Note = () => {
 		)
 	}
 
-	const {code, title, excerpt, toc} = data;
+	const {code, title, excerpt, toc, category} = data;
 	const Component = React.useMemo(() => getMDXComponent(code), [code]);
 
 	return (
-		<div className="prose">
-			<header>
+		<article className="prose">
+			<header className='flow'>
 				<h1>{title}</h1>
-				<p>{excerpt}</p>
-			</header>
-			<main className="prose">
+				<p className='lead mt-8 color-caption'>{excerpt}</p>
+				<p className='smaller mt-16'>
+					<Link
+						className='unstyled bold'
+						to={`/notes/${slugify(category)}`}
+						style={{color: 'var(--section-color)'}}
+						css={`
+							color: var(--section-color);
+							&:hover {
+								text-decoration: underline;
+							}
+						`}
+					>
+						<Folder
+							className='inline'
+							style={{position: 'relative', top: '-0.2em'}}
+						/>{' '}
+						{capitalize(category)}
+					</Link>
+				</p>
 				<TableOfContents content={toc} />
+				<hr className='dashed' />
+			</header>
+
+			<main className="prose">
 				<Component components={mdxComponents} />
 			</main>
-		</div>
+		</article>
 	);
 };
 

@@ -42,7 +42,8 @@ export default function App() {
 						</header>
 
 						<main style={{
-							'--section-color': getColorForSection(section)
+							'--section-color': getColorForSection(section),
+							paddingTop: '6px'
 						}}>
 							<Outlet />
 							<Footer />

@@ -92,6 +92,14 @@ h3.subheader {
       display: inline-flex;
       align-items: center;
     }
+
+    .subtitle {
+      display: inline-block;
+      font-size: 0.6em;
+      transform: translateY(-.45ex);
+      align-self: flex-end;
+      color: white;
+    }
   }
 
   a {

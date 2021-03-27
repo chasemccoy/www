@@ -4,14 +4,7 @@ import asciiHouse from 'img:../images/ascii-house.png'
 const Footer = () => {
   return (
     <footer className='prose mt-48'>
-      <hr
-        className='mobile-breakout'
-        style={{
-          borderTop: '1px dashed var(--color-border)',
-          background: 'none',
-          height: '1px'
-        }}
-      />
+      <hr className='mobile-breakout dashed' />
 
       <div className='flex align--flex-end'>
         <div style={{maxWidth: '8em'}}>

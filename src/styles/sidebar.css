@@ -17,12 +17,29 @@
 
 #site-header nav {
   a {
-    display: block;
+    display: inline-block;
     position: relative;
+  }
+
+  a:after {
+    display: block;
+    width: 100%;
+    height: 1px;
+    margin-top: -0.15rem;
+    content: "";
+    transition: transform 0.2s ease;
+    transform: scaleX(0);
+    transform-origin: 0 0;
+    pointer-events: none;
+    background-color: var(--highlight-color);
   }
 
   a:hover {
     color: var(--highlight-color);
+
+    &:after {
+      transform: scaleX(1);
+    }
   }
 
   a.selected {

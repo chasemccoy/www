@@ -72,6 +72,12 @@
   }
 }
 
+.flow {
+  & > * + * {
+    margin-top: var(--flow-spacing);
+  }
+}
+
 .smaller {
   font-size: smaller;
 }

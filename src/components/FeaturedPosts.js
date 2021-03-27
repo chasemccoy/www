@@ -9,9 +9,7 @@ const FeaturedPosts = ({posts}) => {
 
 			<p
 				className="mt-4 serif larger"
-				css={`
-					--section-color: ${getColorForSection('blog')};
-				`}
+				style={{'--section-color': getColorForSection('blog')}}
 			>
 				{posts.slice(0, 4).map((post, i) => (
 					<React.Fragment key={i}>

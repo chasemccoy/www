@@ -2,11 +2,6 @@
   functions = "functions"
   publish = "public"
 
-# [[redirects]]
-#   from = "/_static/*"
-#   to = "/public/:splat"
-#   status = 200
-
 [[redirects]]
   from = "/*"
   to = "/.netlify/functions/app"

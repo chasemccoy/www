@@ -11,17 +11,7 @@ const Museo = (props) => {
 					<h1>
 						<Link to="https://museo.app" className="unstyled">
 							<span className="color-blue">Museo</span>
-							<span
-								css={`
-									display: inline-block;
-									font-family: var(--font-body);
-									color: var(--color-gray--400);
-									font-size: 1rem;
-									font-weight: normal;
-									transform: translateY(-1.2ex);
-									align-self: flex-end;
-								`}
-							>
+							<span className='subtitle'>
 								.app
 							</span>
 						</Link>
