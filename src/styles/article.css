@@ -59,12 +59,13 @@ hr {
 }
 
 pre {
-  border-radius: 0;
+  border-radius: 8px;
   width: calc(100% + 32px);
   margin-left: -16px;
   overflow: auto;
-  border-top: 1px dashed var(--color-border);
-  border-bottom: 1px dashed var(--color-border);
+  background: var(--color-gray--0) !important;
+  /* border-top: 1px dashed var(--color-border);
+  border-bottom: 1px dashed var(--color-border); */
   
   @media (--viewport-tiny) {
     width: auto;

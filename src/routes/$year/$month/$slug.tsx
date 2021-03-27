@@ -63,6 +63,7 @@ const BlogPost = () => {
 	return (
 		<article className="prose">
 			<header className='flow'>
+				<div className='badge mb-16'>Blog post</div>
 				<h1>{title}</h1>
 				<p className='lead mt-8 color-caption'>{excerpt}</p>
 				<p className='smaller mt-16 color-caption bold'>{formattedDate}</p>
