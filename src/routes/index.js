@@ -1,11 +1,16 @@
 import React from 'react'
+import {useRouteData} from '@remix-run/react'
+import {json} from '@remix-run/data'
 import Link from "../components/Link";
+import {Globe, Stripe} from "../components/Icon";
 import DesignSystems from '../components/homepage/DesignSystems'
 import Marker from '../components/Marker'
+import FeaturedPosts from '../components/FeaturedPosts'
 import Museo from '../components/homepage/Museo'
 import Seeds from '../components/homepage/Seeds'
 import styles from "css:../styles/homepage.css";
 import avatar from 'img:../images/avatar-yellow.png'
+import {getPosts} from '../utils/post.server'
 
 const Avatar = () => (
   <div className='avatar'>
@@ -15,11 +20,24 @@ const Avatar = () => (
   </div>
 )
 
+export const loader = async () => {
+  const posts = await getPosts()
+  const featuredPosts = posts.filter(post => !!post.featured)
+
+  return json(featuredPosts, {
+    headers: {
+      'cache-control': 'public, max-age=300, stale-while-revalidate=86400',
+    },
+  })
+}
+
 export let links = () => {
   return [{ rel: "stylesheet", href: styles }];
 };
 
 const Index = () => {
+  const posts = useRouteData()
+
   return (
     <React.Fragment>
       <h2
@@ -41,16 +59,20 @@ const Index = () => {
         , and{' '}
         <span style={{color: 'var(--color-red)'}}>
           internet explorer&nbsp;
-          {/* <Globe css='display: inline; margin-top: -4px;' /> */}
+          <Globe style={{display: 'inline', marginTop: '-4px'}} />
         </span>{' '}
         working on{' '}
         <span style={{color: 'var(--color-yellow)'}}>design systems&nbsp;❏</span> at{' '}
-        {/* <Link unstyled to='https://stripe.com'>
+        <Link unstyled to='https://stripe.com'>
           <Stripe
             height='1em'
-            css='display: inline; vertical-align: text-bottom; transform: translateY(-1px);'
+            style={{
+              display: 'inline',
+              verticalAlign: 'text-bottom',
+              transform: 'translateY(-1px)'
+            }}
           />
-        </Link> */}
+        </Link>
       </h2>
 
       <div className='prose'>
@@ -73,8 +95,8 @@ const Index = () => {
           the things I discover online.
         </p>
 
-        {/* <FeaturedPosts />
-        <ContactMe /> */}
+        <FeaturedPosts posts={posts} />
+        {/* <ContactMe /> */}
       </div>
 
       <Marker className='mt-40'>Now</Marker>

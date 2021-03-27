@@ -5,6 +5,13 @@ import config from '../../remix.config'
 import { downloadDirectory, downloadMdxFileOrDirectory, downloadFile } from './github.server'
 import { compileMdx } from './compile-mdx.server'
 
+export const getSlugForPost = (slug, postDate) => {
+  const date = new Date(postDate)
+  const year = date.getFullYear().toString()
+  const month = ("0" + (date.getMonth() + 1)).slice(-2)
+  return `/${year}/${month}/${slug}`
+}
+
 async function getPost(slug) {
   const postFiles = await downloadMdxFileOrDirectory(
     `${config.content.path}/${slug}`
@@ -52,7 +59,7 @@ async function getPosts() {
     files.map(async ({ slug, content }) => {
       const matterResult = matter(content)
       const frontmatter = matterResult.data
-      return { slug, ...frontmatter }
+      return { slug: getSlugForPost(slug, frontmatter.date), ...frontmatter }
     })
   )
 
