@@ -148,6 +148,10 @@
   align-items: flex-end;
 }
 
+.flex--no-shrink {
+  flex-shrink: 0;
+}
+
 .dotted {
   position: relative;
 
