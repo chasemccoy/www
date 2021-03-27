@@ -13,9 +13,9 @@ const FeaturedPosts = ({posts}) => {
             {!!i && <span className='color-gray--500 mx-8'>×</span>}
             <Link
               to={post.slug}
-              css={`
-                text-decoration-color: var(--color-gray--600);
-              `}
+              style={{
+                textDecorationColor: 'var(--color-gray--600)'
+              }}
             >
               {post.title}
             </Link>

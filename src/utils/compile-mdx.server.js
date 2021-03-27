@@ -1,11 +1,12 @@
 import {bundleMDX} from 'mdx-bundler'
 import visit from 'unist-util-visit'
-import remarkPrism from 'remark-prism'
+import rehypeShiki from "@leafac/rehype-shiki";
 import gfm from 'remark-gfm'
 import remarkSlug from 'remark-slug'
 import toc from 'mdast-util-toc'
 import toHast from 'mdast-util-to-hast'
 import toHtml from 'hast-util-to-html'
+import * as shiki from "shiki";
 
 async function compileMdx(slug, githubFiles) {
   const indexRegex = new RegExp(`${slug}\\/index.mdx?$`)
@@ -50,8 +51,13 @@ async function compileMdx(slug, githubFiles) {
     function generateToC() {
       return getToC
     },
-    remarkPrism,
     remarkSlug
+  ]
+
+  const rehypePlugins = [
+    [rehypeShiki, {
+      highlighter: await shiki.getHighlighter({ theme: "github-light" }),
+    }]
   ]
 
   const {frontmatter, code} = await bundleMDX(indexFile.content, {
@@ -61,6 +67,12 @@ async function compileMdx(slug, githubFiles) {
         ...(options.remarkPlugins ?? []),
         ...remarkPlugins,
       ]
+
+      options.rehypePlugins = [
+        ...(options.rehypePlugins ?? []),
+        ...rehypePlugins,
+      ]
+
       return options
     },
   })

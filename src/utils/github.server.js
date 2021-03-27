@@ -3,6 +3,8 @@ import fs from 'fs'
 import {octokit} from './octokit.server'
 import config from '../../remix.config'
 
+const USE_FILESYSTEM_IN_DEV_MODE = true
+
 const { readdir, readFile, lstat } = fs.promises
 const imageRegex = /\.(gif|jpe?g|png|webp|svg)$/i
 
@@ -71,7 +73,7 @@ async function downloadFile(
   path,
   sha,
 ) {
-  if (process.env.NODE_ENV === 'development') {
+  if (process.env.NODE_ENV === 'development' && USE_FILESYSTEM_IN_DEV_MODE) {
     return getFileObject(path)
   }
 
@@ -88,7 +90,7 @@ async function downloadFile(
 }
 
 async function downloadDirList(dir) {
-  if (process.env.NODE_ENV === 'development') {
+  if (process.env.NODE_ENV === 'development' && USE_FILESYSTEM_IN_DEV_MODE) {
     const directory = await isDirectory(dir)
 
     if (directory) {
@@ -111,13 +113,13 @@ async function downloadDirList(dir) {
     path: dir,
   })
 
-  if (!Array.isArray(data)) {
-    throw new Error(
-      `Tried to download content from ${JSON.stringify(
-        config.content,
-      )} at ${dir}. GitHub did not return an array of files. This should never happen...`,
-    )
-  }
+  // if (!Array.isArray(data)) {
+  //   throw new Error(
+  //     `Tried to download content from ${JSON.stringify(
+  //       config.content,
+  //     )} at ${dir}. GitHub did not return an array of files. This should never happen...`,
+  //   )
+  // }
 
   return data
 }
