@@ -138,6 +138,10 @@
   display: flex;
 }
 
+.align--flex-end {
+  align-items: flex-end;
+}
+
 .dotted {
   position: relative;
 

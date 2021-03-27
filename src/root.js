@@ -1,7 +1,9 @@
-import {Meta, Links, Scripts, usePendingLocation} from '@remix-run/react';
+import {Meta, Links, Scripts, usePendingLocation, useMatches} from '@remix-run/react';
 import {Outlet} from 'react-router-dom';
 import Logo from './components/Logo';
 import Nav from './components/Nav';
+import Footer from './components/Footer';
+import { getColorForSection } from './utils'
 
 import styles from 'css:./styles/shared.css';
 
@@ -18,13 +20,11 @@ export const links = () => {
 	return [{rel: 'stylesheet', href: styles}];
 };
 
-// Export let loader = () => {
-//   return { date: new Date() };
-// };
-
 export default function App() {
-	// Let data = useRouteData();
 	const pendingLocation = usePendingLocation();
+	const matches = useMatches()
+	const [lastMatch] = matches.slice(-1)
+	const section = lastMatch.handle ? lastMatch.handle.section : null
 
 	return (
 		<html lang="en">
@@ -41,9 +41,11 @@ export default function App() {
 							<Nav />
 						</header>
 
-						<main>
+						<main style={{
+							'--section-color': getColorForSection(section)
+						}}>
 							<Outlet />
-							{/* <Footer /> */}
+							<Footer />
 						</main>
 					</div>
 				</div>

@@ -27,6 +27,8 @@ export function meta({data: post}) {
 	};
 }
 
+export let handle = { section: 'notes' };
+
 const Note = () => {
 	const {code, title, excerpt, toc} = useRouteData();
 	const Component = React.useMemo(() => getMDXComponent(code), [code]);

@@ -23,6 +23,8 @@ export function meta() {
 	};
 }
 
+export let handle = { section: 'blog' };
+
 const Blog = () => {
 	const posts = useRouteData();
 

@@ -52,6 +52,8 @@ export function meta({data: post}) {
 	};
 }
 
+export let handle = { section: 'blog' };
+
 const BlogPost = () => {
 	const {code, title, excerpt} = useRouteData();
 	const Component = React.useMemo(() => getMDXComponent(code), [code]);

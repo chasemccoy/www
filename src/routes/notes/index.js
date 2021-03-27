@@ -23,6 +23,8 @@ export function meta() {
 	};
 }
 
+export let handle = { section: 'notes' };
+
 const Notes = () => {
 	const notes = useRouteData();
 
