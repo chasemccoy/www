@@ -16,3 +16,15 @@
   for = "/build/*"
   [headers.values]
     "Cache-Control" = "public, max-age=31536000, s-maxage=31536000"
+
+[[headers]]
+  for = "/fonts/*"
+  [headers.values]
+    # cache for 1 year 
+    "Cache-Control" = "public, max-age=31536000, s-maxage=31536000"
+
+[[headers]]
+  for = "/images/*"
+  [headers.values]
+    # cache for 7 days
+    "Cache-Control" = "public, max-age=604800, s-maxage=604800"

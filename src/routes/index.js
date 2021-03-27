@@ -75,7 +75,7 @@ const Index = () => {
 					design systems&nbsp;❏
 				</span>{' '}
 				at{' '}
-				<Link unstyled to="https://stripe.com">
+				<Link className='unstyled' to="https://stripe.com">
 					<Stripe
 						height="1em"
 						style={{

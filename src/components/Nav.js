@@ -21,29 +21,29 @@ const Nav = () => (
 				<b>Chase M.</b>
 			</Item>
 			<Item
-				partiallyActive
+				// partiallyActive
 				to="/blog"
-				isActive={blogLinkMatcher}
+				// isActive={blogLinkMatcher}
 				style={{'--highlight-color': getColorForSection('blog')}}
 			>
 				Blog
 			</Item>
 			<Item
-				partiallyActive
+				// partiallyActive
 				to="/notes"
 				style={{'--highlight-color': getColorForSection('notes')}}
 			>
 				Notes
 			</Item>
 			<Item
-				partiallyActive
+				// partiallyActive
 				to="/books"
 				style={{'--highlight-color': getColorForSection('books')}}
 			>
 				Books
 			</Item>
 			<Item
-				partiallyActive
+				// partiallyActive
 				to="/quotes"
 				style={{'--highlight-color': getColorForSection('quotes')}}
 			>
