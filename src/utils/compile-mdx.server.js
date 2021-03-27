@@ -7,6 +7,23 @@ import toc from 'mdast-util-toc';
 import toHast from 'mdast-util-to-hast';
 import toHtml from 'hast-util-to-html';
 import * as shiki from 'shiki';
+import remarkEmbedder from '@remark-embedder/core'
+import oembedTransformer from '@remark-embedder/transformer-oembed'
+import Cache from '@remark-embedder/cache'
+
+const cache = new Cache()
+
+const getOEmbedConfig = ({provider}) => {
+  if (provider.provider_name === 'Twitter') {
+    return {
+      params: {
+        dnt: true,
+        omit_script: true,
+      },
+    }
+  }
+  return null
+}
 
 async function compileMdx(slug, githubFiles) {
 	const indexRegex = new RegExp(`${slug}\\/index.mdx?$`);
@@ -43,7 +60,15 @@ async function compileMdx(slug, githubFiles) {
 		}
 	};
 
-	const remarkPlugins = [gfm, () => imageTransformer, () => getToC, remarkSlug];
+	const remarkPlugins = [
+		gfm, 
+		() => imageTransformer, 
+		() => getToC, remarkSlug,
+		[
+      remarkEmbedder,
+      {cache, transformers: [[oembedTransformer, getOEmbedConfig]]},
+    ],
+	];
 
 	const rehypePlugins = [
 		[

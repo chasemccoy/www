@@ -9,7 +9,7 @@ tags:
 
 You can use `useReducer` to simulate the old `this.setState({})` API of class components.
 
-```jsx
+```js
 const reducer = (state, newState) => ({
   ...state,
   ...newState
@@ -44,7 +44,7 @@ I really like [this idea of wrapping up common queries in a Gatsby site into cus
 
 In JavaScript, you can use the `textContent` property of a node to get the text representation of the node and all of its descendent nodes. This isn't possible with a tree of React components, but you can fake it using a ref:
 
-```jsx
+```js
 const node = useRef(null)
 const [textContent, setTextContent] = useState(null)
 
@@ -61,7 +61,7 @@ return (
 
 In the code above, `textContent` is equal to the string `This is text with a link inside it.` This pattern could be very easily wrapped up into a custom hook:
 
-```jsx
+```js
 const useTextContent = (initial) => {
   const [textContent, setTextContent] = useState(initial)
 

@@ -16,9 +16,9 @@ const Bookmark = ({url}) => {
     fetchData()
   }, [])
 
-  console.log(data)
-
-  if (!data) { return null }
+  if (!data) { 
+    return <div className='bookmark-loader' />
+  }
 
   return (
     <a href={url} target="_blank" className='unstyled bookmark flex'>

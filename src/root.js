@@ -12,7 +12,7 @@ export const meta = () => {
 		title: 'Chase McCoy',
 		description:
 			'Chase McCoy is a product designer, front-end engineer, and internet explorer working on design systems at Stripe.',
-		viewport: 'width=device-width, initial-scale=1, shrink-to-fit=no'
+		viewport: 'width=device-width, initial-scale=1, shrink-to-fit=no',
 	};
 };
 
@@ -52,6 +52,13 @@ export default function App() {
 				</div>
 
 				<Scripts />
+				{['notes', 'blog'].includes(section) && (
+					<script
+						async
+						src="https://platform.twitter.com/widgets.js"
+						charSet="utf-8"
+					/>
+				)}
 			</body>
 		</html>
 	);
