@@ -12,3 +12,7 @@ export const getColorForSection = (section) => {
 			return 'var(--color-green)';
 	}
 };
+
+export const capitalize = string => {
+  return string.charAt(0).toUpperCase() + string.slice(1)
+}

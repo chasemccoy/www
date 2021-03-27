@@ -191,3 +191,45 @@ h2.marker {
     margin-right: 0;
   }
 }
+
+.toc {
+  h2 {
+    font-size: 0.9rem;
+  }
+
+  > div {
+    margin-top: 8px; 
+  }
+
+  ul {
+    list-style-type: none;
+    margin: 8px 0 8px 4px;
+    padding: 0 0 0 12px;
+    border-left: 1px solid var(--color-border);
+    font-size: 0.75em;
+  }
+
+  ul ul {
+    display: none;
+  }
+
+  li {
+    margin: 0;
+  }
+
+  li:before {
+    display: none;
+  }
+
+  li + li {
+    margin-top: 4px;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  a.selected {
+    color: var(--section-color);
+  }
+}

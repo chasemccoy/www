@@ -29,7 +29,7 @@ const Notes = () => {
 	const notes = useRouteData();
 
 	return (
-		<div>
+		<div className='prose'>
 			<header>
 				<h1>Notes</h1>
 			</header>
