@@ -3,6 +3,7 @@ import matter from 'gray-matter'
 import {octokit} from './octokit.server'
 import config from '../../remix.config'
 import { downloadDirectory, downloadMdxFileOrDirectory, downloadFile } from './github.server'
+import { getFiles } from './filesystem.server'
 import { compileMdx } from './compile-mdx.server'
 
 export const getSlugForPost = (slug, postDate) => {
@@ -13,10 +14,17 @@ export const getSlugForPost = (slug, postDate) => {
 }
 
 async function getPost(slug) {
-  const postFiles = await downloadMdxFileOrDirectory(
-    `${config.content.path}/${slug}`
-  )
-  
+  let postFiles = []
+
+  if (process.env.NODE_ENV === 'development') {
+    postFiles = await getFiles(slug)
+  }
+  else {
+    postFiles = await downloadMdxFileOrDirectory(
+      `${config.content.path}/${slug}`
+    )
+  }
+
   const { code, frontmatter } = await compileMdx(slug, postFiles)
   return { slug, code, ...frontmatter }
 }

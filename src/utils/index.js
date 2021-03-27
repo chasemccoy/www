@@ -12,10 +12,3 @@ export const getColorForSection = (section) => {
       return 'var(--color-green)'
   }
 }
-
-export const getURLForPost = post => {
-  const date = new Date(post.date)
-  const year = date.getFullYear().toString()
-  const month = ("0" + (date.getMonth() + 1)).slice(-2)
-  return `/${year}/${month}/${post.slug}`
-}
