@@ -1,7 +1,6 @@
-import React from 'react'
-import Link from './Link'
+import React from 'react';
 
-// const Container = styled.div`
+// Const Container = styled.div`
 //   && h2 {
 //     font-size: 0.9rem;
 //     ${'' /* font-family: var(--font-body); */}
@@ -33,15 +32,17 @@ import Link from './Link'
 //   }
 // `
 
-const TableOfContents = ({ content }) => {
-  if (!content) return null
+const TableOfContents = ({content}) => {
+	if (!content) {
+		return null;
+	}
 
-  return (
-    <>
-      <h2>Table of contents</h2>
-      <div dangerouslySetInnerHTML={{__html: content}} />
-    </>
-  )
-}
+	return (
+		<>
+			<h2>Table of contents</h2>
+			<div dangerouslySetInnerHTML={{__html: content}} />
+		</>
+	);
+};
 
-export default TableOfContents
+export default TableOfContents;

@@ -1,103 +1,101 @@
-import {bundleMDX} from 'mdx-bundler'
-import visit from 'unist-util-visit'
-import rehypeShiki from "@leafac/rehype-shiki";
-import gfm from 'remark-gfm'
-import remarkSlug from 'remark-slug'
-import toc from 'mdast-util-toc'
-import toHast from 'mdast-util-to-hast'
-import toHtml from 'hast-util-to-html'
-import * as shiki from "shiki";
+import {bundleMDX} from 'mdx-bundler';
+import visit from 'unist-util-visit';
+import rehypeShiki from '@leafac/rehype-shiki';
+import gfm from 'remark-gfm';
+import remarkSlug from 'remark-slug';
+import toc from 'mdast-util-toc';
+import toHast from 'mdast-util-to-hast';
+import toHtml from 'hast-util-to-html';
+import * as shiki from 'shiki';
 
 async function compileMdx(slug, githubFiles) {
-  const indexRegex = new RegExp(`${slug}\\/index.mdx?$`)
-  const indexFile = githubFiles.find(({path}) => indexRegex.test(path))
-  if (!indexFile) throw new Error(`${slug} has no index.mdx file.`)
+	const indexRegex = new RegExp(`${slug}\\/index.mdx?$`);
+	const indexFile = githubFiles.find(({path}) => indexRegex.test(path));
+	if (!indexFile) {
+		throw new Error(`${slug} has no index.mdx file.`);
+	}
 
-  const rootDir = indexFile.path.replace(/index.mdx?$/, '')
-  
-  const relativeFiles = githubFiles.map(
-    ({path, content}) => ({
-      path: path.replace(rootDir, './'),
-      content,
-    }),
-  )
-  
-  const files = arrayToObj(relativeFiles, {
-    keyName: 'path',
-    valueName: 'content',
-  })
+	const rootDir = indexFile.path.replace(/index.mdx?$/, '');
 
-  let tocData = null
+	const relativeFiles = githubFiles.map(({path, content}) => ({
+		path: path.replace(rootDir, './'),
+		content
+	}));
 
-  const imageTransformer = (tree) => {
-    visit(tree, 'image', (node) => {
-      const filename = String(node.url)
-      node.url = `/img/${slug}/${filename}`
-    })
-  }
+	const files = arrayToObject(relativeFiles, {
+		keyName: 'path',
+		valueName: 'content'
+	});
 
-  const getToC = (tree) => {
-    const mdast = toc(tree)
-    if (mdast.map) {
-      tocData = toHtml(toHast(mdast.map))
-    }
-  }
+	let tocData = null;
 
-  const remarkPlugins = [
-    gfm,
-    function remapImageUrls() {
-      return imageTransformer
-    },
-    function generateToC() {
-      return getToC
-    },
-    remarkSlug
-  ]
+	const imageTransformer = (tree) => {
+		visit(tree, 'image', (node) => {
+			const filename = String(node.url);
+			node.url = `/img/${slug}/${filename}`;
+		});
+	};
 
-  const rehypePlugins = [
-    [rehypeShiki, {
-      highlighter: await shiki.getHighlighter({ theme: "github-light" }),
-    }]
-  ]
+	const getToC = (tree) => {
+		const mdast = toc(tree);
+		if (mdast.map) {
+			tocData = toHtml(toHast(mdast.map));
+		}
+	};
 
-  const {frontmatter, code} = await bundleMDX(indexFile.content, {
-    files,
-    xdmOptions(input, options) {
-      options.remarkPlugins = [
-        ...(options.remarkPlugins ?? []),
-        ...remarkPlugins,
-      ]
+	const remarkPlugins = [
+		gfm,
+		() => imageTransformer,
+		() => getToC,
+		remarkSlug
+	];
 
-      options.rehypePlugins = [
-        ...(options.rehypePlugins ?? []),
-        ...rehypePlugins,
-      ]
+	const rehypePlugins = [
+		[
+			rehypeShiki,
+			{
+				highlighter: await shiki.getHighlighter({theme: 'github-light'})
+			}
+		]
+	];
 
-      return options
-    },
-  })
+	const {frontmatter, code} = await bundleMDX(indexFile.content, {
+		files,
+		xdmOptions(input, options) {
+			options.remarkPlugins = [
+				...(options.remarkPlugins ?? []),
+				...remarkPlugins
+			];
 
-  return {
-    code,
-    frontmatter,
-    toc: tocData
-  }
+			options.rehypePlugins = [
+				...(options.rehypePlugins ?? []),
+				...rehypePlugins
+			];
+
+			return options;
+		}
+	});
+
+	return {
+		code,
+		frontmatter,
+		toc: tocData
+	};
 }
 
-function arrayToObj(
-  array,
-  {keyName, valueName},
-) {
-  const obj = {}
-  for (const item of array) {
-    const key = item[keyName]
-    if (typeof key !== 'string') {
-      throw new Error(`${keyName} of item must be a string`)
-    }
-    const value = item[valueName]
-    obj[key] = value
-  }
-  return obj
+function arrayToObject(array, {keyName, valueName}) {
+	const object = {};
+	for (const item of array) {
+		const key = item[keyName];
+		if (typeof key !== 'string') {
+			throw new TypeError(`${keyName} of item must be a string`);
+		}
+
+		const value = item[valueName];
+		object[key] = value;
+	}
+
+	return object;
 }
 
-export {compileMdx}
+export {compileMdx};

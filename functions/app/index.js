@@ -1,2 +1,2 @@
-const { createRequestHandler } = require("./adapter");
-exports.handler = createRequestHandler({ build: require("./build") });
+const {createRequestHandler} = require('./adapter');
+exports.handler = createRequestHandler({build: require('./build')});

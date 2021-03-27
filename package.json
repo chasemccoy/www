@@ -14,7 +14,7 @@
     "prestart": "yarn clean && yarn copy-images",
     "prebuild": "yarn clean && yarn copy-images",
     "copy-images": "node ./bin/copy-images",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "xo --fix"
   },
   "author": "Chase McCoy",
   "license": "GPL-3.0-only",
@@ -46,6 +46,9 @@
     "@types/react": "^17.0.3",
     "@types/react-dom": "^17.0.2",
     "autoprefixer": "^10.2.5",
+    "eslint-config-xo-react": "^0.24.0",
+    "eslint-plugin-react": "^7.23.1",
+    "eslint-plugin-react-hooks": "^4.2.0",
     "fs-extra": "^9.1.0",
     "netlify-cli": "^3.10.11",
     "pm2": "^4.5.5",
@@ -55,9 +58,21 @@
     "postcss-preset-env": "^6.7.0",
     "postcss-simple-vars": "^6.0.3",
     "rimraf": "^3.0.2",
-    "typescript": "^4.2.3"
+    "typescript": "^4.2.3",
+    "xo": "^0.38.2"
   },
   "engines": {
     "node": "14.x"
+  },
+  "xo": {
+    "extends": "xo-react",
+    "prettier": true,
+    "rules": {
+      "unicorn/filename-case": "off",
+      "camelcase": "off",
+      "react/prop-types": "off",
+      "react/no-array-index-key": "off",
+      "import/extensions": "off"
+    }
   }
 }

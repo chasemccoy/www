@@ -1,26 +1,26 @@
-const fs = require('fs-extra')
-const path = require('path')
+const fs = require('fs-extra');
+const path = require('path');
 
-const source = path.join(__dirname, '../posts')
-const destination = path.join(__dirname, '../public/img')
-const regex = /\.(gif|jpe?g|png|webp|svg)$/i
+const source = path.join(__dirname, '../posts');
+const destination = path.join(__dirname, '../public/img');
+const regex = /\.(gif|jpe?g|png|webp|svg)$/i;
 
 const filter = async (src) => {
-  const stats = await fs.lstat(src)
-  if (stats.isDirectory()) {
-    return true
-  }
+	const stats = await fs.lstat(src);
+	if (stats.isDirectory()) {
+		return true;
+	}
 
-  return regex.test(src)
+	return regex.test(src);
+};
+
+async function copyImages() {
+	try {
+		await fs.emptyDir(destination);
+		await fs.copy(source, destination, {filter});
+	} catch (error) {
+		console.error(error);
+	}
 }
 
-async function copyImages () {
-  try {
-    await fs.emptyDir(destination)
-    await fs.copy(source, destination, { filter })
-  } catch (err) {
-    console.error(err)
-  }
-}
-
-copyImages()
+copyImages();

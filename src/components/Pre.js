@@ -1,6 +1,5 @@
-import React from 'react'
-import shiki from 'shiki'
-// import HighlightedCode from 'components/HighlightedCode'
+import React from 'react';
+// Import HighlightedCode from 'components/HighlightedCode'
 
 // const preToCodeBlock = preProps => {
 //   if (
@@ -30,15 +29,15 @@ import shiki from 'shiki'
 //   return undefined
 // };
 
-const Pre = preProps => {
-  // const props = preToCodeBlock(preProps)
-  // console.log(props)
-  
-  // if (props) {
-  //   return <HighlightedCode {...props} />
-  // }
+const Pre = (preProps) => {
+	// Const props = preToCodeBlock(preProps)
+	// console.log(props)
 
-  return <pre {...preProps} />
-}
+	// if (props) {
+	//   return <HighlightedCode {...props} />
+	// }
 
-export default Pre
+	return <pre {...preProps} />;
+};
+
+export default Pre;
