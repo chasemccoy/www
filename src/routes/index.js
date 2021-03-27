@@ -1,7 +1,9 @@
 import React from 'react'
 import Link from "../components/Link";
 import DesignSystems from '../components/homepage/DesignSystems'
+import Marker from '../components/Marker'
 import Museo from '../components/homepage/Museo'
+import Seeds from '../components/homepage/Seeds'
 import styles from "css:../styles/homepage.css";
 import avatar from 'img:../images/avatar-yellow.png'
 
@@ -75,7 +77,7 @@ const Index = () => {
         <ContactMe /> */}
       </div>
 
-      {/* <Marker className='mt-40'>Now</Marker> */}
+      <Marker className='mt-40'>Now</Marker>
 
       <DesignSystems />
 
@@ -83,39 +85,29 @@ const Index = () => {
 
       <Museo />
 
-      {/* <div
-        css={`
-          > * + * {
-            margin-top: 0;
-            border-top: 1px dashed var(--color-border);
-          }
+      <div
+        // css={`
+        //   > * + * {
+        //     margin-top: 0;
+        //     border-top: 1px dashed var(--color-border);
+        //   }
 
-          ${media.tiny`
-            > * + * { 
-              margin-top: 24px;
-              border: none;
-            }
-          `}
-        `}
+        //   ${media.tiny`
+        //     > * + * { 
+        //       margin-top: 24px;
+        //       border: none;
+        //     }
+        //   `}
+        // `}
       >
-        <Marker
-          className='mt-40'
-          css={`
-            --color-accent: var(--color-purple);
-            margin-bottom: -12px;
-
-            ${media.tiny`
-              margin-bottom: 16px;
-            `}
-          `}
-        >
+        <Marker className='mt-40 previously'>
           Previously
         </Marker>
 
         <Seeds />
 
-        <Pico />
-      </div> */}
+        {/* <Pico /> */}
+      </div>
     </React.Fragment>
   );
 }

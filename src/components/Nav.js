@@ -16,7 +16,7 @@ const blogLinkMatcher = (location) => regex.test(location.pathname)
 
 const Nav = () => (
   <nav>
-    <ul>
+    <ul className='unstyled'>
       <Item to='/' style={{ '--highlight-color': getColorForSection() }}>
         <b>Chase M.</b>
       </Item>

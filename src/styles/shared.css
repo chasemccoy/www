@@ -4,6 +4,7 @@
 @import "./typography.css";
 @import "./utilities.css";
 @import "./layout.css";
+@import "./article.css";
 @import "./sidebar.css";
 @import "./prism.css";
 
@@ -93,5 +94,100 @@ blockquote {
     background: var(--section-color);
     border-radius: 3px;
     height: 100%;
+  }
+}
+
+ul {
+  padding: 0;
+  list-style-type: none;
+
+  > li {
+    margin-left: 1em;
+  }
+
+  > li:before {
+    content: "–";
+    margin-left: -1em;
+    margin-top: -1px;
+    float: left;
+  }
+}
+
+ul.inline {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+
+  li {
+    display: inline-block;
+    margin-bottom: 0;
+  }
+
+  li:first-child {
+    margin-left: 0;
+  }
+
+  li:before {
+    display: none;
+  }
+}
+
+ul.unstyled {
+  margin: 0;
+  padding: 0;
+
+  li {
+    margin: 0;
+  }
+
+  li:before {
+    display: none;
+  }
+}
+
+ol {
+  padding: 0;
+  list-style: none;
+  --offset: 1.5em;
+
+  > li {
+    margin-left: var(--offset);
+    counter-increment: ol-counter;
+    position: relative;
+  }
+
+  > li:before {
+    content: counter(ol-counter) ". ";
+    font-feature-settings: "tnum";
+    padding-right: 0.5em;
+    position: absolute;
+    left: calc(-1 * var(--offset));
+  }
+}
+
+h2.marker {
+  display: grid;
+  grid-template-columns: auto minmax(20px, 1fr);
+  align-items: center;
+  width: calc(100% + 16px);
+  margin-right: -16px;
+  font-size: 0.8rem;
+
+  span {
+    color: var(--color-body-background);
+    background: var(--color-accent, var(--color-red));
+    border-radius: 999px;
+    padding: 2px 16px;
+  }
+
+  &:after {
+    content: '';
+    border-top: 2px solid var(--color-accent, var(--color-red));
+  }
+
+  @media (--viewport-tiny) {
+    width: 100%;
+    margin-right: 0;
   }
 }

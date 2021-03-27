@@ -2,7 +2,6 @@ import React from 'react'
 import museo from 'img:../../images/museo.png'
 import museoLandscape from 'img:../../images/museo.jpg'
 import Link from '../Link'
-// import { UnorderedList } from 'components/Lists'
 
 const Museo = (props) => {
   return (

@@ -1,0 +1,90 @@
+article {
+  h2:first-child {
+    margin-top: 0;
+  }
+
+  img {
+    max-width: none;
+    width: calc(100% + 32px);
+    margin-left: -16px;
+  }
+
+  @media (--viewport-tiny) {
+    img {
+      max-width: 100%;
+      width: 100%;
+      margin-left: 0;
+    }
+  }
+
+  twitter-widget {
+    margin-bottom: 1.5em !important;
+  }
+}
+
+hr {
+  background: var(--color-border);
+  height: 4px;
+  border: none;
+}
+
+pre {
+  border-radius: 0;
+  width: calc(100% + 32px);
+  margin-left: -16px;
+  overflow: auto;
+  border-top: 1px dashed var(--color-border);
+  border-bottom: 1px dashed var(--color-border);
+  
+  @media (--viewport-tiny) {
+    width: auto;
+    margin: 0;
+  }
+
+  code {
+    padding: 12px 8px;
+    border: none;
+    display: block;
+    background-color: transparent;
+  }
+}
+
+code {
+  font-feature-settings: normal;
+  font-family: var(--font-code);
+  background-color: var(--color-gray--0);
+  border: 0.5px solid var(--color-border);
+  padding: 0.2em 0.3em;
+  vertical-align: middle;
+  word-wrap: normal;
+  overflow: auto;
+  border-radius: 4px;
+  box-decoration-break: clone;
+}
+
+.image-caption {
+  color: var(--color-caption);
+  max-width: 550px;
+}
+
+twitter-widget {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+twitter-widget::shadow .EmbeddedTweet {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+.prose > * + .twitter-tweet {
+  margin-top: var(--flow-spacing) !important;
+}
+
+.twitter-tweet {
+  margin-bottom: 0 !important;
+}
+
+.twitter-tweet + * {
+  margin-top: 1.5em;
+}
