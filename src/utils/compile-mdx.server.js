@@ -43,12 +43,7 @@ async function compileMdx(slug, githubFiles) {
 		}
 	};
 
-	const remarkPlugins = [
-		gfm,
-		() => imageTransformer,
-		() => getToC,
-		remarkSlug
-	];
+	const remarkPlugins = [gfm, () => imageTransformer, () => getToC, remarkSlug];
 
 	const rehypePlugins = [
 		[

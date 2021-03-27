@@ -72,7 +72,9 @@
       "camelcase": "off",
       "react/prop-types": "off",
       "react/no-array-index-key": "off",
-      "import/extensions": "off"
+      "import/extensions": "off",
+      "node/file-extension-in-import": "off",
+      "react/no-danger": "off"
     }
   }
 }
