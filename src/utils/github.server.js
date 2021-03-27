@@ -3,18 +3,21 @@ import fs from 'fs'
 import {octokit} from './octokit.server'
 import config from '../../remix.config'
 
-const { readdir, readFile } = fs.promises
+const { readdir, readFile, lstat } = fs.promises
 const imageRegex = /\.(gif|jpe?g|png|webp|svg)$/i
 
 async function getFileObject(path) {
   const fileData = await readFile(path, 'utf-8')
   return {
-    path: (path.endsWith('.mdx') && !path.endsWith('index.mdx'))
-      ? nodePath.join(path.replace('.mdx', ''), 'index.mdx') 
-      : path,
+    path,
     content: Buffer.from(fileData, 'utf-8')
   }
 }  
+
+async function isDirectory(path) {
+  const stats = await lstat(path);
+  return stats.isDirectory()
+}
 
 async function downloadMdxFileOrDirectory(mdxFileOrDirectory) {
   const parentDir = nodePath.dirname(mdxFileOrDirectory)
@@ -86,12 +89,20 @@ async function downloadFile(
 
 async function downloadDirList(dir) {
   if (process.env.NODE_ENV === 'development') {
-    const dirents = await readdir(dir, { withFileTypes: true });
-    return dirents.map(dirent => ({
-      name: dirent.name,
-      path: nodePath.join(dir, dirent.name),
-      type: dirent.isDirectory() ? 'dir' : 'file'
-    }))
+    const directory = await isDirectory(dir)
+
+    if (directory) {
+      const dirents = await readdir(dir, { withFileTypes: true });
+      return dirents.map(dirent => ({
+        name: dirent.name,
+        path: nodePath.join(dir, dirent.name),
+        type: dirent.isDirectory() ? 'dir' : 'file'
+      }))
+    }
+
+    return {
+      path: dir
+    }
   }
 
   const { data } = await octokit.repos.getContent({
@@ -111,4 +122,4 @@ async function downloadDirList(dir) {
   return data
 }
 
-export { downloadMdxFileOrDirectory, downloadDirectory, downloadFile }
+export { downloadMdxFileOrDirectory, downloadDirectory, downloadFile, downloadDirList }

@@ -3,7 +3,7 @@ import sortBy from 'sort-by'
 import matter from 'gray-matter'
 import config from '../../remix.config'
 import {octokit} from './octokit.server'
-import { downloadDirectory, downloadMdxFileOrDirectory, downloadFile } from './github.server'
+import { downloadMdxFileOrDirectory, downloadFile, downloadDirList } from './github.server'
 import { compileMdx } from './compile-mdx.server'
 
 async function getNote(slug) {
@@ -18,21 +18,14 @@ async function getNote(slug) {
 }
 
 async function getCategory(category) {
-  const { data } = await octokit.repos.getContent({
-    ...config.content, 
-    path: nodePath.join('notes', category)
-  })
+  const data = await downloadDirList(nodePath.join('notes', category))
 
   if (!Array.isArray(data)) throw new Error('Something went wrong with the request to GitHub')
 
   const result = await Promise.all(
     data.map(async ({ path: fileDir }) => {
-      const { data: fileData } = await octokit.repos.getContent({
-        owner: config.content.owner,
-        repo: config.content.repo,
-        path: fileDir,
-      })
-
+      const fileData = await downloadDirList(fileDir)
+      
       const file = Array.isArray(fileData) 
         ? fileData.find(({ type, path }) =>
             (type === 'file' && path.endsWith('mdx')) || path.endsWith('md')

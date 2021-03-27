@@ -2,7 +2,7 @@ import sortBy from 'sort-by'
 import matter from 'gray-matter'
 import {octokit} from './octokit.server'
 import config from '../../remix.config'
-import { downloadDirectory, downloadMdxFileOrDirectory, downloadFile } from './github.server'
+import { downloadMdxFileOrDirectory, downloadFile, downloadDirList } from './github.server'
 import { compileMdx } from './compile-mdx.server'
 
 export const getSlugForPost = (slug, postDate) => {
@@ -22,21 +22,17 @@ async function getPost(slug) {
 }
 
 async function getPosts() {
-  const { data } = await octokit.repos.getContent(config.content)
+  const data = await downloadDirList(config.content.path)
 
   if (!Array.isArray(data)) throw new Error()
 
   const result = await Promise.all(
     data.map(async ({ path: fileDir }) => {
-      const { data: fileData } = await octokit.repos.getContent({
-        owner: config.content.owner,
-        repo: config.content.repo,
-        path: fileDir,
-      })
+      const fileData = await downloadDirList(fileDir)
 
       const file = Array.isArray(fileData) 
         ? fileData.find(({ type, path }) =>
-            (type === 'file' && path.endsWith('mdx')) || path.endsWith('md')
+            (type === 'file' && path.endsWith('mdx'))
           ) 
         : fileData
 
