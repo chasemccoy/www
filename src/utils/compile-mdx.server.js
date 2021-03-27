@@ -9,9 +9,6 @@ import toHtml from 'hast-util-to-html';
 import * as shiki from 'shiki';
 import remarkEmbedder from '@remark-embedder/core'
 import oembedTransformer from '@remark-embedder/transformer-oembed'
-import Cache from '@remark-embedder/cache'
-
-const cache = new Cache()
 
 const getOEmbedConfig = ({provider}) => {
   if (provider.provider_name === 'Twitter') {
@@ -66,7 +63,7 @@ async function compileMdx(slug, githubFiles) {
 		() => getToC, remarkSlug,
 		[
       remarkEmbedder,
-      {cache, transformers: [[oembedTransformer, getOEmbedConfig]]},
+      {transformers: [[oembedTransformer, getOEmbedConfig]]},
     ],
 	];
 
