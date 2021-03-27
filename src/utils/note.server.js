@@ -4,22 +4,14 @@ import matter from 'gray-matter'
 import config from '../../remix.config'
 import {octokit} from './octokit.server'
 import { downloadDirectory, downloadMdxFileOrDirectory, downloadFile } from './github.server'
-import { getFiles } from './filesystem.server'
 import { compileMdx } from './compile-mdx.server'
 
 async function getNote(slug) {
   const notes = await getNotes()
   const note = notes.find(note => note.slug === slug)
-  let postFiles = []
-
-  if (process.env.NODE_ENV === 'development') {
-    postFiles = await getFiles(`${note.category}/${slug}`, true)
-  }
-  else {
-    postFiles = await downloadMdxFileOrDirectory(
-      `notes/${note.category}/${slug}`
-    )
-  }
+  const postFiles = await downloadMdxFileOrDirectory(
+    `notes/${note.category}/${slug}`
+  )
 
   const { code, frontmatter, toc } = await compileMdx(slug, postFiles)
   return { slug, code, ...frontmatter, toc }

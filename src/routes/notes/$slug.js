@@ -33,7 +33,7 @@ const Note = () => {
   console.log(useRouteData())
 
   return (
-    <>
+    <div className='prose'>
       <header>
         <h1>{title}</h1>
         <p>{excerpt}</p>
@@ -42,7 +42,7 @@ const Note = () => {
         <TableOfContents content={toc} />
         <Component components={mdxComponents} />
       </main>
-    </>
+    </div>
   )
 }
 

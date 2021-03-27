@@ -1,8 +1,20 @@
 import nodePath from 'path'
+import fs from 'fs'
 import {octokit} from './octokit.server'
 import config from '../../remix.config'
 
+const { readdir, readFile } = fs.promises
 const imageRegex = /\.(gif|jpe?g|png|webp|svg)$/i
+
+async function getFileObject(path) {
+  const fileData = await readFile(path, 'utf-8')
+  return {
+    path: (path.endsWith('.mdx') && !path.endsWith('index.mdx'))
+      ? nodePath.join(path.replace('.mdx', ''), 'index.mdx') 
+      : path,
+    content: Buffer.from(fileData, 'utf-8')
+  }
+}  
 
 async function downloadMdxFileOrDirectory(mdxFileOrDirectory) {
   const parentDir = nodePath.dirname(mdxFileOrDirectory)
@@ -56,6 +68,10 @@ async function downloadFile(
   path,
   sha,
 ) {
+  if (process.env.NODE_ENV === 'development') {
+    return getFileObject(path)
+  }
+
   const { data } = await octokit.request(
     'GET /repos/{owner}/{repo}/git/blobs/{file_sha}',
     {
@@ -69,6 +85,15 @@ async function downloadFile(
 }
 
 async function downloadDirList(dir) {
+  if (process.env.NODE_ENV === 'development') {
+    const dirents = await readdir(dir, { withFileTypes: true });
+    return dirents.map(dirent => ({
+      name: dirent.name,
+      path: nodePath.join(dir, dirent.name),
+      type: dirent.isDirectory() ? 'dir' : 'file'
+    }))
+  }
+
   const { data } = await octokit.repos.getContent({
     owner: config.content.owner,
     repo: config.content.repo,
