@@ -28,8 +28,8 @@ const Bookmark = ({url}) => {
         </div>
       )}
 
-      <div className='px-12 py-8 flow'>
-        <div>
+      <div className='px-12 py-8'>
+        <div className='mb-8'>
           <p className='bold mb-4'>{data.title}</p>
           <p className='smaller description'>{data.description}</p>
         </div>

@@ -13,7 +13,7 @@ export const loader = async () => {
 
 export function headers() {
 	return {
-		'cache-control': 'public, max-age=10'
+		'cache-control': 'public, max-age=300'
 	};
 }
 

@@ -18,11 +18,12 @@ export const capitalize = string => {
 }
 
 export const formatDate = (date) => {
+	const correctedDate = new Date(date.getTime() + date.getTimezoneOffset() * 60000)
 	const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October',	'November', 'December'];
 
-	const month = months[date.getMonth()]
-	const day = date.getDate()
-	const year = date.getFullYear()
+	const month = months[correctedDate.getMonth()]
+	const day = correctedDate.getDate()
+	const year = correctedDate.getFullYear()
 
 	return `${month} ${day}, ${year}`
 }

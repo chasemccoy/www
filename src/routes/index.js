@@ -31,6 +31,12 @@ export const loader = async () => {
 	});
 };
 
+export function headers() {
+	return {
+		'cache-control': 'public, max-age=300'
+	};
+}
+
 export const links = () => {
 	return [{rel: 'stylesheet', href: styles}];
 };

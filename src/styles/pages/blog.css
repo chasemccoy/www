@@ -1,4 +1,4 @@
 :root {
-  --color-gray--100: hsl(20, 70%, 95%);
-  --color-border: hsl(20, 90%, 96%);
+  --color-gray--100: hsl(0, 70%, 96%);
+  --color-border: hsl(0, 80%, 94%);
 }

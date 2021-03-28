@@ -235,12 +235,10 @@ h2.marker {
 }
 
 .bookmark {
-  --flow-spacing: 0.75em;
   max-width: none;
   overflow: hidden;
   border: 1px solid var(--color-border); 
   color: inherit;
-  margin-bottom: 1.5em;
   border-radius: 8px;
   --section-color: var(--color-text);
 
@@ -273,4 +271,18 @@ h2.marker {
   height: 120px;
   background: var(--color-gray--100);
   border-radius: 8px;
+}
+
+.callout aside {
+  p:last-child {
+    margin: 0;
+  }
+
+  background: repeating-linear-gradient(
+    -55deg,
+    var(--section-color),
+    var(--section-color) 0.5px,
+    var(--color-gray--100) 0.5px,
+    var(--color-gray--100) 3px
+  );
 }

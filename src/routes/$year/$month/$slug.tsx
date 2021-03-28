@@ -29,7 +29,7 @@ export const loader = async ({params, context}) => {
 	// get them there.
 	// const maxAge = barelyPublished ? 60 : oneDay * 7;
 
-	const maxAge = 300;
+	const maxAge = 300; // 5 minutes
 
 	// If the max-age has expired, we'll still send the current cached version of
 	// the post to visitors until the CDN has cached the new one. If it's been
