@@ -26,7 +26,9 @@ export const loader = async ({params, context}) => {
 	// But after the first day, then cache for a week, then if you make edits
 	// they'll show up eventually, but you don't have to rebuild and redeploy to
 	// get them there.
-	const maxAge = barelyPublished ? 60 : oneDay * 7;
+	// const maxAge = barelyPublished ? 60 : oneDay * 7;
+
+	const maxAge = 300;
 
 	// If the max-age has expired, we'll still send the current cached version of
 	// the post to visitors until the CDN has cached the new one. If it's been
