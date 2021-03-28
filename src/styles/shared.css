@@ -242,7 +242,7 @@ h2.marker {
   color: inherit;
   margin-bottom: 1.5em;
   border-radius: 8px;
-  --section-color: var(--body-color);
+  --section-color: var(--color-text);
 
   &:hover {
     background: var(--color-gray--100);

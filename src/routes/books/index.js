@@ -42,12 +42,16 @@ const Books = () => {
   const sortedFavorites = favorites.sort(sortBy("title"))
 
 	return (
-		<div>
+		<>
 			<header className='prose'>
 				<h1>Books</h1>
 			</header>
 
-			<div className='books-recents horizontal-scroll mt-40 pb-12'>
+      <div className='prose'>
+        <h2>Recently read</h2>
+      </div>
+
+			<div className='books-recents horizontal-scroll mt-24 pb-12'>
         {recents.map(book => (
           <Book small book={book} key={book.title} style={{width: '160px'}} />
         ))}
@@ -62,7 +66,7 @@ const Books = () => {
           <Book book={book} key={book.title} />
         ))}
       </div>
-		</div>
+		</>
 	);
 };
 

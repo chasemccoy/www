@@ -4,6 +4,7 @@ import Logo from './components/Logo';
 import Nav from './components/Nav';
 import Footer from './components/Footer';
 import { getColorForSection } from './utils'
+import clsx from 'clsx'
 
 import styles from 'css:./styles/shared.css';
 
@@ -25,6 +26,17 @@ export default function App() {
 	const matches = useMatches()
 	const [lastMatch] = matches.slice(-1)
 	const section = lastMatch.handle ? lastMatch.handle.section : null
+	const sectionColor = getColorForSection(section)
+	const sectionBackgroundColor = sectionColor.replace(')', '-background)')
+	// const sectionHue = sectionColor.replace('color', 'hue')
+
+	const bodyStyles = {
+		'--section-color': sectionColor,
+		...(section ? {
+				'--color-body-background': sectionBackgroundColor,
+				// '--hue': sectionHue
+			} : {})
+	}
 
 	return (
 		<html lang="en">
@@ -33,7 +45,7 @@ export default function App() {
 				<Meta />
 				<Links />
 			</head>
-			<body className={pendingLocation ? 'opacity-50' : ''}>
+			<body className={clsx(pendingLocation && 'opacity-50')} style={bodyStyles}>
 				<div id="wrapper">
 					<div>
 						<header id="site-header">
@@ -41,10 +53,7 @@ export default function App() {
 							<Nav />
 						</header>
 
-						<main style={{
-							'--section-color': getColorForSection(section),
-							paddingTop: '6px'
-						}}>
+						<main style={{paddingTop: '6px'}}>
 							<Outlet />
 							<Footer />
 						</main>

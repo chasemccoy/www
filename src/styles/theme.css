@@ -6,9 +6,6 @@
 :root {
   --root-font-size: 17px;
   --root-line-height: 1.5;
-  --system-fonts: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-    'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-    'Segoe UI Symbol';
 
   --color-gray--0: #fafafa;
   --color-gray--100: #f5f5f5;
@@ -21,18 +18,49 @@
   --color-gray--800: #262626;
   --color-gray--900: #171717;
 
+  /* --hue-green: 130;
+  --hue-red: 0;
+  --hue-purple: 240;
+
+  --hue: var(--hue-purple);
+  --saturation--0: 20%;
+  --saturation--100: 64%;
+  --saturation--200: 13%;
+  --saturation--300: 12%;
+  --saturation--400: 11%;
+  --saturation--500: 9%;
+  --saturation--600: 14%;
+  --saturation--700: 19%;
+  --saturation--800: 28%;
+  --saturation--900: 39%;
+
+  --color-gray--0: hsl(var(--hue), var(--saturation--0), 98%);
+  --color-gray--100: hsl(var(--hue), var(--saturation--100), 96%);
+  --color-gray--200: hsl(var(--hue), var(--saturation--200), 91%);
+  --color-gray--300: hsl(var(--hue), var(--saturation--300), 84%);
+  --color-gray--400: hsl(var(--hue), var(--saturation--400), 65%);
+  --color-gray--500: hsl(var(--hue), var(--saturation--500), 46%);
+  --color-gray--600: hsl(var(--hue), var(--saturation--600), 34%);
+  --color-gray--700: hsl(var(--hue), var(--saturation--700), 27%);
+  --color-gray--800: hsl(var(--hue), var(--saturation--800), 17%);
+  --color-gray--900: hsl(var(--hue), var(--saturation--900), 11%); */
+
   --color-green: #51cf66;
   --color-red: #ff6b6b;
   --color-yellow: #fcc419;
   --color-blue: #74c0fc;
   --color-purple: #8888fc;
 
-  --body-background: white; /* #F5F4F0; */
-  --body-color: var(--color-gray--700);
-  --link-color: var(--body-color);
+  --color-green-background: #fefff8;
+  --color-red-background: hsl(20, 100%, 99%);
+  --color-yellow-background: hsl(42, 100%, 99%);
+  --color-blue-background: hsl(206, 100%, 99%);
+  --color-purple-background: hsl(240, 100%, 99%);
+
+  --link-color: var(--color-text);
   --link-hover: var(--color-purple);
-  --color-body-background: var(--body-background);
-  --color-text: var(--body-color);
+  --color-body-background: white;
+  --color-text: var(--color-gray--700);
   --color-header: var(--color-gray--700);
   --color-border: var(--color-gray--200);
   --color-caption: var(--color-gray--500);
