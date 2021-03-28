@@ -17,7 +17,7 @@ const Bookmark = ({url}) => {
   }, [])
 
   if (!data) { 
-    return <div className='bookmark-loader' />
+    return <a href={url} target="_blank" className='bookmark-loader' />
   }
 
   return (

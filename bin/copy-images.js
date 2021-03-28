@@ -16,7 +16,6 @@ const filter = async (src) => {
 
 async function copyImages() {
 	try {
-		await fs.emptyDir(destination);
 		await fs.copy(source, destination, {filter});
 	} catch (error) {
 		console.error(error);

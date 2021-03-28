@@ -197,3 +197,27 @@
     );
   }
 }
+
+.grid {
+  --gap: 1rem;
+  --item-min-size: 200px;
+  display: grid;
+  grid-gap: var(--gap);
+  grid-template-columns: repeat(auto-fit, minmax(min(var(--item-min-size), 100%), 1fr));
+}
+
+.horizontal-scroll {
+   --gap: 1rem;
+  width: 100%;
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+
+  > * {
+    flex: 0 0 auto;
+  }
+
+  > * + * {
+    margin-left: var(--gap);
+  }
+}

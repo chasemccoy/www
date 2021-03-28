@@ -1,5 +1,4 @@
 import nodePath from 'path';
-import sortBy from 'sort-by';
 import matter from 'gray-matter';
 import config from '../../remix.config.js';
 import {octokit} from './octokit.server.js';

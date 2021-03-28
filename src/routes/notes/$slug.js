@@ -50,7 +50,7 @@ const Note = () => {
 		return (
 			<div className='prose'>
 				<header>
-					<h1>{capitalize(data[1].category)}</h1>
+					<h1>{capitalize(data[1].category.replace('-', ' '))}</h1>
 				</header>
 
 				<main>
@@ -78,7 +78,7 @@ const Note = () => {
 				<p className='smaller mt-16'>
 					<Link
 						className='unstyled bold'
-						to={`/notes/${slugify(category)}`}
+						to={`/notes/${category}`}
 						style={{color: 'var(--section-color)'}}
 						css={`
 							color: var(--section-color);
@@ -91,7 +91,7 @@ const Note = () => {
 							className='inline'
 							style={{position: 'relative', top: '-0.2em'}}
 						/>{' '}
-						{capitalize(category)}
+						{capitalize(category.replace('-', ' '))}
 					</Link>
 				</p>
 				<TableOfContents content={toc} />
