@@ -5,6 +5,7 @@ import {getMDXComponent} from 'mdx-bundler/client';
 import {getPost} from '../../../utils/post.server';
 import mdxComponents from '../../../utils/mdx-components';
 import { formatDate } from '../../../utils';
+import styles from 'css:../../../styles/pages/blog.css'
 
 export const loader = async ({params, context}) => {
 	const post = await getPost(params.slug);
@@ -54,6 +55,10 @@ export function meta({data: post}) {
 		title: `${post.title} | Chase McCoy`
 	};
 }
+
+export const links = () => {
+	return [{rel: 'stylesheet', href: styles}];
+};
 
 export let handle = { section: 'blog' };
 

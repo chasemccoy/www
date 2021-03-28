@@ -28,14 +28,10 @@ export default function App() {
 	const section = lastMatch.handle ? lastMatch.handle.section : null
 	const sectionColor = getColorForSection(section)
 	const sectionBackgroundColor = sectionColor.replace(')', '-background)')
-	// const sectionHue = sectionColor.replace('color', 'hue')
 
 	const bodyStyles = {
 		'--section-color': sectionColor,
-		...(section ? {
-				'--color-body-background': sectionBackgroundColor,
-				// '--hue': sectionHue
-			} : {})
+		...(section ? {'--color-body-background': sectionBackgroundColor} : {})
 	}
 
 	return (

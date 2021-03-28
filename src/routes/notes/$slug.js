@@ -9,6 +9,7 @@ import Link from '../../components/Link';
 import {Folder} from '../../components/Icon';
 import {capitalize, slugify} from '../../utils';
 import config from '../../../remix.config'
+import styles from 'css:../../styles/pages/notes.css'
 
 export const loader = async ({params}) => {
 	if (config.noteCategories.includes(params.slug)) {
@@ -40,6 +41,10 @@ export function meta({data: note}) {
 		title: `${note.title} | Chase McCoy`
 	};
 }
+
+export const links = () => {
+	return [{rel: 'stylesheet', href: styles}];
+};
 
 export let handle = { section: 'notes' };
 

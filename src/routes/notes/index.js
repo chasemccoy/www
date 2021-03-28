@@ -11,9 +11,9 @@ export const loader = async () => {
 	});
 };
 
-export function headers() {
+export function headers({loaderHeaders}) {
 	return {
-		'cache-control': 'public, max-age=10'
+		'cache-control': loaderHeaders.get('cache-control')
 	};
 }
 

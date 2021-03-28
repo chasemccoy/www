@@ -8,7 +8,7 @@ import Marker from '../components/Marker';
 import FeaturedPosts from '../components/FeaturedPosts';
 import Museo from '../components/homepage/Museo';
 import Seeds from '../components/homepage/Seeds';
-import styles from 'css:../styles/homepage.css';
+import styles from 'css:../styles/pages/homepage.css';
 import avatar from 'img:../images/avatar-yellow.png';
 import {getPosts} from '../utils/post.server';
 

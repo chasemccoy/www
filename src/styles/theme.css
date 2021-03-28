@@ -52,10 +52,10 @@
   --color-purple: #8888fc;
 
   --color-green-background: #fefff8;
-  --color-red-background: hsl(20, 100%, 99%);
+  --color-red-background: hsl(20, 100%, 98%);
   --color-yellow-background: hsl(42, 100%, 99%);
   --color-blue-background: hsl(206, 100%, 99%);
-  --color-purple-background: hsl(240, 100%, 99%);
+  --color-purple-background: hsl(240, 80%, 99%);
 
   --link-color: var(--color-text);
   --link-hover: var(--color-purple);
