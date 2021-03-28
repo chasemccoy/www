@@ -246,10 +246,6 @@ h2.marker {
     background: var(--color-gray--100);
   }
 
-  & + & {
-    margin-top: -1em;
-  }
-
   img {
     width: 120px;
     height: 100%;

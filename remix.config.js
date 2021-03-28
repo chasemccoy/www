@@ -61,5 +61,5 @@ module.exports = {
 		repo: 'www',
 		path: 'posts'
 	},
-	noteCategories: ['code', 'misc', 'design-systems']
+	noteCategories: ['code', 'design-systems', 'misc']
 };

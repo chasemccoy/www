@@ -69,12 +69,24 @@ async function getCategory(category) {
 	return posts;
 }
 
-async function getNotes() {
+async function getNotes(flat = true) {
 	const result = await Promise.all(
 		config.noteCategories.map((category) => {
 			return getCategory(category);
 		})
 	);
+
+	if (!flat) {
+		const groups = result.reduce((acc, posts) => {
+			const category = posts[0].category
+			return {
+				...acc,
+				[category]: posts
+			}
+		}, {})
+	
+		return groups
+	}
 
 	return result.flat();
 }

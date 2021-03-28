@@ -7,7 +7,7 @@ import mdxComponents from '../../utils/mdx-components';
 import TableOfContents from '../../components/TableOfContents';
 import Link from '../../components/Link';
 import {Folder} from '../../components/Icon';
-import {capitalize, slugify} from '../../utils';
+import {capitalize} from '../../utils';
 import config from '../../../remix.config'
 import styles from 'css:../../styles/pages/notes.css'
 
@@ -93,9 +93,9 @@ const Note = () => {
 						`}
 					>
 						<Folder
-							className='inline'
+							className='inline mr-4'
 							style={{position: 'relative', top: '-0.2em'}}
-						/>{' '}
+						/>
 						{capitalize(category.replace('-', ' '))}
 					</Link>
 				</p>
