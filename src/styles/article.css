@@ -59,7 +59,7 @@ hr {
 }
 
 pre {
-  border-radius: 8px;
+  border-radius: 0;
   width: calc(100% + 32px);
   margin-left: -16px;
   overflow: auto;
@@ -68,6 +68,8 @@ pre {
   @media (--viewport-tiny) {
     width: auto;
     margin: 0;
+    
+    border-radius: 8px;
   }
 
   code {

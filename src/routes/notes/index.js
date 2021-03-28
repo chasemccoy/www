@@ -51,7 +51,7 @@ const Notes = () => {
 			</header>
 
 			<main>
-				<div className='grid' style={{margin: '24px -8px'}}>
+				<div className='mb-24 grid'>
 					<FeaturedCard title='Code' description='Useful code snippets and techniqes for making great websites.' image={terminal.src} url='/notes/code' />
 					<FeaturedCard title='Design systems' description='Useful code snippets and techniqes for making great websites.' image={designSystems.src} url='/notes/code' />
 				</div>
