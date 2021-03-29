@@ -43,7 +43,7 @@ const Books = () => {
 
 	return (
 		<>
-			<header className='prose mb-40'>
+			<header className='prose mb-32'>
 				<h1>Books</h1>
 			</header>
 

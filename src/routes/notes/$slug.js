@@ -16,25 +16,25 @@ export const loader = async ({params}) => {
 		const notes = await getCategory(params.slug)
 
 		return json(notes, {
-			headers: {
-				'cache-control': 'public, max-age=300, stale-while-revalidate=86400'
-			}
-	});
+			// headers: {
+			// 	'cache-control': 'public, max-age=300, stale-while-revalidate=86400'
+			// }
+		});
 	}
 
 	const note = await getNote(params.slug);
 	return json(note, {
-		headers: {
-			'cache-control': 'public, max-age=300, stale-while-revalidate=86400'
-		}
+		// headers: {
+		// 	'cache-control': 'public, max-age=300, stale-while-revalidate=86400'
+		// }
 	});
 };
 
-export function headers({loaderHeaders}) {
-	return {
-		'cache-control': loaderHeaders.get('cache-control')
-	};
-}
+// export function headers({loaderHeaders}) {
+// 	return {
+// 		'cache-control': loaderHeaders.get('cache-control')
+// 	};
+// }
 
 export function meta({data: note}) {
 	return {

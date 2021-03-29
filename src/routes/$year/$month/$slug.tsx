@@ -38,17 +38,17 @@ export const loader = async ({params, context}) => {
 	const swr = oneDay * 30;
 
 	return json(post, {
-		headers: {
-			'cache-control': `public, max-age=${maxAge}, stale-while-revalidate=${swr}`
-		}
+		// headers: {
+		// 	'cache-control': `public, max-age=${maxAge}, stale-while-revalidate=${swr}`
+		// }
 	});
 };
 
-export function headers({loaderHeaders}) {
-	return {
-		'cache-control': loaderHeaders.get('cache-control')
-	};
-}
+// export function headers({loaderHeaders}) {
+// 	return {
+// 		'cache-control': loaderHeaders.get('cache-control')
+// 	};
+// }
 
 export function meta({data: post}) {
 	return {
@@ -71,13 +71,13 @@ const BlogPost = () => {
 		<article>
 			<header>
 				<div className='badge mb-16'>Blog post</div>
-				<h1 className='serif' style={{fontSize: '1.8em'}}>{title}</h1>
-				<p className='lead mt-0 color-caption'>{excerpt}</p>
-				<p className='smaller mt-16 color-caption bold'>{formattedDate}</p>
+				<h1 className='serif tighter' style={{fontSize: '1.8em'}}>{title}</h1>
+				<p className='lead mt-4 color-caption'>{excerpt}</p>
+				<p className='smaller mt-12 color-caption bold'>{formattedDate}</p>
 				<hr className='dashed my-16' />
 			</header>
 
-			<div className="blog-content">
+			<div className="prose blog-content">
 				<Component components={mdxComponents} />
 			</div>
 		</article>

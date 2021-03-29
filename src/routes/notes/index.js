@@ -29,17 +29,17 @@ const FeaturedCard = ({title, description, image, url, className}) => (
 
 export const loader = async () => {
 	return json(await getNotes(false), {
-		headers: {
-			'cache-control': 'public, max-age=300, stale-while-revalidate=86400'
-		}
+		// headers: {
+		// 	'cache-control': 'public, max-age=300, stale-while-revalidate=86400'
+		// }
 	});
 };
 
-export function headers({loaderHeaders}) {
-	return {
-		'cache-control': loaderHeaders.get('cache-control')
-	};
-}
+// export function headers({loaderHeaders}) {
+// 	return {
+// 		'cache-control': loaderHeaders.get('cache-control')
+// 	};
+// }
 
 export function meta() {
 	return {
@@ -63,7 +63,7 @@ const Notes = () => {
 			</header>
 
 			<main>
-				<Marker>Categories</Marker>
+				<h2 className='eyebrow'>Categories</h2>
 				<div className='mt-24 mb-24 grid' style={{'--item-min-size': '225px'}}>
 					<FeaturedCard title='Code' description='Useful code snippets and techniqes for making great websites.' image={terminal.src} url='/notes/code' />
 					<FeaturedCard title='Design systems' description='Useful code snippets and techniqes for making great websites.' image={designSystems.src} url='/notes/design-systems' className='green' />
@@ -71,7 +71,7 @@ const Notes = () => {
 
 				{/* <hr /> */}
 
-				<Marker className='mt-48'>All notes</Marker>
+				<h2 className='eyebrow mt-48'>All notes</h2>
 
 				{Object.keys(notes).map((category, i) => (
 					<div className={clsx(i > 0 ? 'mt-48': 'mt-24')} key={category}>
@@ -84,12 +84,15 @@ const Notes = () => {
 								{capitalize(category).replace('-', ' ')}
 							</Link>
 						</h2>
-						<div className='flow'>
-							{notes[category].map((note) => (
-								<Link to={`/notes/${note.slug}`} className='block unstyled no-hover' key={note.slug}>
-									<p className='bold'>{note.title}</p>
-									<p>{note.excerpt}</p>
-								</Link>
+						<div className='flow' style={{'--flow-spacing': '0.75em'}}>
+							{notes[category].map((note, j) => (
+								<React.Fragment key={note.slug}>
+									{j !== 0 && <hr className='dashed' />}
+									<Link to={`/notes/${note.slug}`} className='block unstyled no-hover'>
+										<p className='bold'>{note.title}</p>
+										<p>{note.excerpt}</p>
+									</Link>
+								</React.Fragment>
 							))}
 						</div>
 					</div>

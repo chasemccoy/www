@@ -7,16 +7,16 @@ import styles from 'css:../styles/pages/blog.css'
 
 export const loader = async () => {
 	return json(await getPosts(), {
-		headers: {
-			'cache-control': 'public, max-age=300, stale-while-revalidate=86400'
-		}
+		// headers: {
+		// 	'cache-control': 'public, max-age=300, stale-while-revalidate=86400'
+		// }
 	});
 };
 
 export function headers() {
-	return {
-		'cache-control': 'public, max-age=300'
-	};
+	// return {
+	// 	'cache-control': 'public, max-age=300'
+	// };
 }
 
 export function meta() {
@@ -40,14 +40,17 @@ const Blog = () => {
 				<h1>Blog</h1>
 			</header> */}
 
-			<main className='flow' style={{'--flow-spacing': '1.5em', marginTop: '-8px'}}>
-				{posts.map((post) => (
-					<Link href={post.slug} className='block unstyled no-hover' key={post.slug}>
-						<article>
-							<h2 className='serif' style={{fontSize: '1.5em'}}>{post.title}</h2>
-							<p className='color-caption'>{post.excerpt}</p>
-						</article>
-					</Link>
+			<main className='flow' style={{marginTop: '-4px'}}>
+				{posts.map((post, i) => (
+					<React.Fragment key={post.slug}>
+						{i !== 0 && <hr className='dashed' />}
+						<Link href={post.slug} className='block unstyled no-hover'>
+							<article>
+								<h2 className='serif tighter' style={{fontSize: '1.4em'}}>{post.title}</h2>
+								<p className='color-caption'>{post.excerpt}</p>
+							</article>
+						</Link>
+					</React.Fragment>
 				))}
 			</main>
 		</div>
