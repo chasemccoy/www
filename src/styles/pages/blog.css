@@ -5,7 +5,7 @@
   --color-caption: hsl(0, 12%, 55%);
 }
 
-article.prose {
+.blog-content {
   font-family: var(--font-header);
   font-size: 1.05em;
   line-height: 1.45;

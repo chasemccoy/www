@@ -77,7 +77,7 @@ const BlogPost = () => {
 				<hr className='dashed my-16' />
 			</header>
 
-			<div className="prose">
+			<div className="blog-content">
 				<Component components={mdxComponents} />
 			</div>
 		</article>
