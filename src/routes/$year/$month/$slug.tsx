@@ -68,16 +68,18 @@ const BlogPost = () => {
 	const formattedDate = formatDate(new Date(date))
 
 	return (
-		<article className="prose">
-			<header className='flow'>
+		<article>
+			<header>
 				<div className='badge mb-16'>Blog post</div>
-				<h1>{title}</h1>
-				<p className='lead mt-8 color-caption'>{excerpt}</p>
+				<h1 className='serif' style={{fontSize: '1.8em'}}>{title}</h1>
+				<p className='lead mt-0 color-caption'>{excerpt}</p>
 				<p className='smaller mt-16 color-caption bold'>{formattedDate}</p>
-				<hr className='dashed' />
+				<hr className='dashed my-16' />
 			</header>
 
-			<Component components={mdxComponents} />
+			<div className="prose">
+				<Component components={mdxComponents} />
+			</div>
 		</article>
 	);
 };

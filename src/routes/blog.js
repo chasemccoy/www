@@ -2,6 +2,8 @@ import React from 'react';
 import {useRouteData} from '@remix-run/react';
 import {json} from '@remix-run/data';
 import {getPosts} from '../utils/post.server';
+import Link from '../components/Link';
+import styles from 'css:../styles/pages/blog.css'
 
 export const loader = async () => {
 	return json(await getPosts(), {
@@ -23,24 +25,29 @@ export function meta() {
 	};
 }
 
+export const links = () => {
+	return [{rel: 'stylesheet', href: styles}];
+};
+
 export let handle = { section: 'blog' };
 
 const Blog = () => {
 	const posts = useRouteData();
 
 	return (
-		<div className='prose'>
-			<header>
+		<div className='flow'>
+			{/* <header>
 				<h1>Blog</h1>
-			</header>
+			</header> */}
 
-			<main>
+			<main className='flow' style={{'--flow-spacing': '1.5em', marginTop: '-8px'}}>
 				{posts.map((post) => (
-					<p key={post.slug}>
-						<a href={post.slug}>{post.title}</a>
-						<br />
-						<small>{post.excerpt}</small>
-					</p>
+					<Link href={post.slug} className='block unstyled no-hover' key={post.slug}>
+						<article>
+							<h2 className='serif' style={{fontSize: '1.5em'}}>{post.title}</h2>
+							<p className='color-caption'>{post.excerpt}</p>
+						</article>
+					</Link>
 				))}
 			</main>
 		</div>

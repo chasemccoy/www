@@ -3,6 +3,7 @@ import fs from 'fs';
 import {octokit} from './octokit.server';
 import config from '../../remix.config';
 
+process.env.NODE_ENV = 'development'
 const USE_FILESYSTEM_IN_DEV_MODE = true;
 
 const {readdir, readFile, lstat} = fs.promises;

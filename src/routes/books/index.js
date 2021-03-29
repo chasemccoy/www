@@ -43,13 +43,11 @@ const Books = () => {
 
 	return (
 		<>
-			<header className='prose'>
+			<header className='prose mb-40'>
 				<h1>Books</h1>
 			</header>
 
-      <div className='prose'>
-        <h2>Recently read</h2>
-      </div>
+      <h2 className='eyebrow'>Recently read</h2>
 
 			<div className='books-recents horizontal-scroll mt-24 pb-12'>
         {recents.map(book => (
@@ -57,9 +55,7 @@ const Books = () => {
         ))}
       </div>
 
-      <div className='prose'>
-        <h2>Favorites</h2>
-      </div>
+      <h2 className='eyebrow mt-40'>Favorites</h2>
 
       <div className='books-favorites grid mt-32' style={{'--gap': '24px','--item-min-size': '150px'}}>
         {sortedFavorites.map(book => (

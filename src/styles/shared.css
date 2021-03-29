@@ -64,6 +64,10 @@ a.underlined {
   text-decoration: underline;
 }
 
+a.no-hover:hover {
+  color: initial;
+}
+
 
 iframe {
   border-radius: 8px;
@@ -176,14 +180,14 @@ h2.marker {
 
   span {
     color: var(--color-body-background);
-    background: var(--color-accent, var(--color-red));
+    background: var(--color-accent, var(--section-color));
     border-radius: 999px;
     padding: 2px 16px;
   }
 
   &:after {
     content: '';
-    border-top: 2px solid var(--color-accent, var(--color-red));
+    border-top: 2px solid var(--color-accent, var(--section-color));
   }
 
   @media (--viewport-tiny) {

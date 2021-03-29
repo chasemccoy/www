@@ -52,7 +52,7 @@
   --color-purple: #8888fc;
 
   --color-green-background: #fefff8;
-  --color-red-background: hsl(20, 100%, 98%);
+  --color-red-background: hsl(0, 100%, 99%);
   --color-yellow-background: hsl(42, 100%, 99%);
   --color-blue-background: hsl(206, 100%, 99%);
   --color-purple-background: hsl(240, 80%, 99%);
@@ -70,7 +70,8 @@
   --font-body: 'GT America', 'Inter', system-ui, -apple-system,
     BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell',
     'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-  --font-header: 'Ivar Text', Charter, Georgia, Times New Roman, serif;
+  /* --font-header: 'Ivar Text', Charter, Georgia, Times New Roman, serif; */
+  --font-header: Charter, Georgia, Times New Roman, serif;
 
   --section-color: var(--color-purple);
 

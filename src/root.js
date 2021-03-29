@@ -31,7 +31,7 @@ export default function App() {
 
 	const bodyStyles = {
 		'--section-color': sectionColor,
-		// ...(section ? {'--color-body-background': sectionBackgroundColor} : {})
+		...(section ? {'--color-body-background': (section === 'notes' ? 'white' : sectionBackgroundColor)} : {})
 	}
 
 	return (

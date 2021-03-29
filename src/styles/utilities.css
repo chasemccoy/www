@@ -221,3 +221,11 @@
     margin-left: var(--gap);
   }
 }
+
+.eyebrow {
+  color: var(--color-caption);
+  font-size: .9rem !important;
+  font-weight: normal;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}

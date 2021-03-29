@@ -63,7 +63,7 @@ pre {
   width: calc(100% + 32px);
   margin-left: -16px;
   overflow: auto;
-  background: var(--color-gray--100) !important;
+  background: var(--color-gray--0) !important;
   
   @media (--viewport-tiny) {
     width: auto;
@@ -83,7 +83,7 @@ pre {
 code {
   font-feature-settings: normal;
   font-family: var(--font-code);
-  background-color: var(--color-gray--100);
+  background-color: var(--color-gray--0);
   border: 0.5px solid var(--color-border);
   padding: 0.2em 0.3em;
   vertical-align: middle;

@@ -42,7 +42,7 @@
       format('woff');
 }
 
-@font-face {
+/* @font-face {
   font-family: 'Ivar Text';
   src: url('/fonts/ivar-text/IvarText-Regular.woff2') format('woff2'),
     url('/fonts/ivar-text/IvarText-Regular.woff') format('woff');
@@ -76,7 +76,7 @@
   font-weight: bold;
   font-style: italic;
   font-display: swap;
-}
+} */
 
 @font-face {
   font-family: 'Source Code Pro';

@@ -1,4 +1,31 @@
 :root {
+  --color-gray--50: hsl(0, 70%, 97%);
   --color-gray--100: hsl(0, 70%, 96%);
-  --color-border: hsl(0, 80%, 94%);
+  --color-border: hsl(0, 70%, 94%);
+  --color-caption: hsl(0, 12%, 55%);
+}
+
+article.prose {
+  font-family: var(--font-header);
+  font-size: 1.05em;
+  line-height: 1.45;
+  hyphens: auto;
+
+  p + p {
+    margin-top: 2px;
+    text-indent: 1.75em;
+  }
+
+  p > img {
+    margin-top: var(--flow-spacing);
+    margin-bottom: var(--flow-spacing);
+  }
+
+  p > img + p.caption {
+    margin-top: calc(-1 * var(--flow-spacing));
+  }
+
+  p.caption {
+    margin-bottom: var(--flow-spacing);
+  }
 }

@@ -6,6 +6,7 @@ import terminal from 'img:../../images/terminal.png';
 import designSystems from 'img:../../images/design-systems.png';
 import styles from 'css:../../styles/pages/notes.css'
 import Link from '../../components/Link';
+import Marker from '../../components/Marker';
 import {capitalize} from '../../utils';
 import {Folder} from '../../components/Icon';
 import clsx from 'clsx'
@@ -62,16 +63,19 @@ const Notes = () => {
 			</header>
 
 			<main>
-				<div className='mb-24 grid' style={{'--item-min-size': '225px'}}>
+				<Marker>Categories</Marker>
+				<div className='mt-24 mb-24 grid' style={{'--item-min-size': '225px'}}>
 					<FeaturedCard title='Code' description='Useful code snippets and techniqes for making great websites.' image={terminal.src} url='/notes/code' />
 					<FeaturedCard title='Design systems' description='Useful code snippets and techniqes for making great websites.' image={designSystems.src} url='/notes/design-systems' className='green' />
 				</div>
 
-				<hr />
+				{/* <hr /> */}
 
-				{Object.keys(notes).map(category => (
-					<React.Fragment key={category}>
-						<h2>
+				<Marker className='mt-48'>All notes</Marker>
+
+				{Object.keys(notes).map((category, i) => (
+					<div className={clsx(i > 0 ? 'mt-48': 'mt-24')} key={category}>
+						<h2 className='mt-0'>
 							<Link to={`/notes/${category}`} className='unstyled'>
 								<Folder 
 									className='inline mr-8 color-caption' 
@@ -82,13 +86,13 @@ const Notes = () => {
 						</h2>
 						<div className='flow'>
 							{notes[category].map((note) => (
-								<Link to={`/notes/${note.slug}`} className='block unstyled' key={note.slug}>
+								<Link to={`/notes/${note.slug}`} className='block unstyled no-hover' key={note.slug}>
 									<p className='bold'>{note.title}</p>
 									<p>{note.excerpt}</p>
 								</Link>
 							))}
 						</div>
-					</React.Fragment>
+					</div>
 				))}
 
 				{/* {notes.map((note) => (
