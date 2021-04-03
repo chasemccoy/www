@@ -8,17 +8,22 @@ import Link from '../../components/Link';
 import {Folder} from '../../components/Icon';
 import {capitalize} from '../../utils';
 import config from '../../../next.config'
+import Metadata from '../../components/Metadata';
 
 const Note = ({notes, note}) => {
 	if (Array.isArray(notes)) {
+		const categoryName = capitalize(notes[1].category.replace('-', ' ')) 
+
 		return (
 			<div className='prose'>
 				<Head>
 					<link rel="stylesheet" href="/styles/notes.css" />
 				</Head>
 
+				<Metadata title={categoryName} />
+
 				<header>
-					<h1>{capitalize(notes[1].category.replace('-', ' '))}</h1>
+					<h1>{categoryName}</h1>
 				</header>
 
 				<main>
@@ -42,6 +47,8 @@ const Note = ({notes, note}) => {
 			<Head>
         <link rel="stylesheet" href="/styles/notes.css" />
       </Head>
+
+			<Metadata title={title} description={excerpt} />
 
 			<header className='flow'>
 				<div className='badge mb-16'>Note</div>

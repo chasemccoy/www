@@ -1,6 +1,5 @@
 import nodePath from 'path';
 import fs from 'fs';
-import config from '../../next.config';
 
 const {readdir, readFile, lstat} = fs.promises;
 const imageRegex = /\.(gif|jpe?g|png|webp|svg)$/i;

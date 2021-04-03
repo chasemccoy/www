@@ -2,6 +2,7 @@ import React from 'react';
 import Head from 'next/head'
 import {getPosts} from '../utils/post';
 import Link from '../components/Link';
+import Metadata from '../components/Metadata';
 
 const Blog = ({ posts }) => {
 	return (
@@ -9,6 +10,8 @@ const Blog = ({ posts }) => {
 			<Head>
         <link rel="stylesheet" href="/styles/blog.css" />
       </Head>
+
+			<Metadata title='Blog' />
 			
 			{/* <header>
 				<h1>Blog</h1>

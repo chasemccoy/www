@@ -1,7 +1,8 @@
 import React from 'react';
-import Link from "../../components/Link";
+import Link from "../components/Link";
 import sortBy from 'sort-by'
 import clsx from 'clsx'
+import Metadata from '../components/Metadata';
 
 export const recents = [
   {
@@ -117,6 +118,8 @@ const Books = () => {
 
 	return (
 		<>
+			<Metadata title='Books' />
+
 			<header className='prose mb-32'>
 				<h1>Books</h1>
 			</header>

@@ -6,6 +6,7 @@ import Marker from '../../components/Marker';
 import {capitalize} from '../../utils';
 import {Folder} from '../../components/Icon';
 import clsx from 'clsx'
+import Metadata from '../../components/Metadata';
 
 const FeaturedCard = ({title, description, image, url, className}) => (
 	<Link to={url} className={clsx('featured-card', 'unstyled', 'block', className)}>
@@ -29,6 +30,8 @@ const Notes = ({ notes }) => {
 			<Head>
         <link rel="stylesheet" href="/styles/notes.css" />
       </Head>
+
+			<Metadata title="Notes" />
 
 			<header>
 				<h1>Notes</h1>

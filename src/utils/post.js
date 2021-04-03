@@ -1,12 +1,13 @@
 import sortBy from 'sort-by';
 import matter from 'gray-matter';
-import config from '../../next.config';
 import {
 	downloadMdxFileOrDirectory,
 	downloadFile,
 	downloadDirList
 } from './github.js';
 import {compileMdx} from './compile-mdx.server.js';
+
+const CONTENT_PATH = 'posts'
 
 export const getSlugForPost = (slug, postDate) => {
 	const date = new Date(postDate);
@@ -24,7 +25,7 @@ const getParamsForPost = (slug, postDate) => {
 
 async function getPost(slug) {
 	const postFiles = await downloadMdxFileOrDirectory(
-		`${config.content.path}/${slug}`
+		`${CONTENT_PATH}/${slug}`
 	);
 
 	const {code, frontmatter} = await compileMdx(slug, postFiles);
@@ -33,7 +34,7 @@ async function getPost(slug) {
 }
 
 async function getPosts() {
-	const data = await downloadDirList(config.content.path);
+	const data = await downloadDirList(CONTENT_PATH);
 
 	if (!Array.isArray(data)) {
 		throw new TypeError();
@@ -57,7 +58,7 @@ async function getPosts() {
 			const postFile = await downloadFile(file.path, file.sha);
 			return {
 				...postFile,
-				slug: fileDir.replace(`${config.content.path}/`, '').replace('.mdx', '')
+				slug: fileDir.replace(`${CONTENT_PATH}/`, '').replace('.mdx', '')
 			};
 		})
 	);

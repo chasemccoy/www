@@ -9,13 +9,14 @@
   },
   "scripts": {
     "start": "concurrently \"yarn start:css\" \"next dev\"",
-    "build": "yarn build:css && next build && next export -o .site/",
+    "build": "yarn build:css && next build && yarn generate-feed && next export -o .site/",
     "clean": "rimraf ./node_modules/.cache ./.next/cache",
     "prestart": "yarn copy-images",
     "prebuild": "yarn copy-images",
-    "copy-images": "node ./bin/copy-images",
     "start:css": "postcss src/styles/{shared,/pages/*}.css -d public/styles -w",
-    "build:css": "postcss src/styles/{shared,/pages/*}.css -d public/styles"
+    "build:css": "postcss src/styles/{shared,/pages/*}.css -d public/styles",
+    "copy-images": "node ./bin/copy-images",
+    "generate-feed": "node .next/server/bin/generate-feed.js"
   },
   "author": "Chase McCoy",
   "license": "GPL-3.0-only",
@@ -42,6 +43,7 @@
   "devDependencies": {
     "autoprefixer": "^10.2.5",
     "concurrently": "^6.0.0",
+    "feed": "^4.2.2",
     "fs-extra": "^9.1.0",
     "netlify-cli": "^3.13.7",
     "postcss": "^8.2.9",

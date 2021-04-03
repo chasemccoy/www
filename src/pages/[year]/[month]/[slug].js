@@ -4,6 +4,7 @@ import {getMDXComponent} from 'mdx-bundler/client';
 import {getPosts, getPost} from '../../../utils/post';
 import mdxComponents from '../../../utils/mdx-components';
 import { formatDate } from '../../../utils';
+import Metadata from '../../../components/Metadata';
 
 const BlogPost = ({ code, title, excerpt, date}) => {
 	const Component = React.useMemo(() => getMDXComponent(code), [code]);
@@ -14,6 +15,8 @@ const BlogPost = ({ code, title, excerpt, date}) => {
 			<Head>
         <link rel="stylesheet" href="/styles/blog.css" />
       </Head>
+
+			<Metadata article title={title} description={excerpt} />
 
 			<header>
 				<div className='badge mb-16'>Blog post</div>

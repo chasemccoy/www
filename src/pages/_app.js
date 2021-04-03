@@ -2,6 +2,7 @@ import Head from 'next/head'
 import Logo from '../components/Logo';
 import Nav from '../components/Nav';
 import Footer from '../components/Footer';
+import Metadata from '../components/Metadata';
 
 const App = ({ Component, pageProps }) => {
   return (
@@ -10,7 +11,16 @@ const App = ({ Component, pageProps }) => {
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <link rel="stylesheet" href="/styles/shared.css" />
+        <link
+          rel="alternate"
+          type="application/rss+xml"
+          title="Chase McCoy"
+          href="/feed.xml"
+        />
+        <link rel="alternate" title="Chase McCoy" type="application/json" href="/feed.json" />
       </Head>
+
+      <Metadata />
       
       <div>
         <header id="site-header">
@@ -26,9 +36,5 @@ const App = ({ Component, pageProps }) => {
     </div>
   )
 }
-
-export const config = {
-  unstable_runtimeJS: false
-};
 
 export default App

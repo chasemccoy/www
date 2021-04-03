@@ -60,11 +60,12 @@ async function compileMdx(slug, githubFiles) {
 	const remarkPlugins = [
 		gfm, 
 		() => imageTransformer, 
-		() => getToC, remarkSlug,
-		[
-      remarkEmbedder,
-      {transformers: [[oembedTransformer, getOEmbedConfig]]},
-    ],
+		() => getToC, 
+		remarkSlug,
+		// [
+    //   remarkEmbedder,
+    //   {transformers: [[oembedTransformer, getOEmbedConfig]]},
+    // ],
 	];
 
 	const rehypePlugins = [
@@ -84,10 +85,10 @@ async function compileMdx(slug, githubFiles) {
 				...remarkPlugins
 			];
 
-			options.rehypePlugins = [
-				...(options.rehypePlugins ?? []),
-				...rehypePlugins
-			];
+			// options.rehypePlugins = [
+			// 	...(options.rehypePlugins ?? []),
+			// 	...rehypePlugins
+			// ];
 
 			return options;
 		}
