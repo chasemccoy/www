@@ -9,7 +9,7 @@
   },
   "scripts": {
     "start": "concurrently \"yarn start:css\" \"next dev\"",
-    "build": "build:css && next build && next export -o .site/",
+    "build": "yarn build:css && next build && next export -o .site/",
     "clean": "rimraf ./node_modules/.cache ./.next/cache",
     "prestart": "yarn copy-images",
     "prebuild": "yarn copy-images",

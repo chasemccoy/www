@@ -4,7 +4,6 @@ import {getPosts} from '../utils/post';
 import Link from '../components/Link';
 
 const Blog = ({ posts }) => {
-	console.log(posts)
 	return (
 		<div className='flow'>
 			<Head>

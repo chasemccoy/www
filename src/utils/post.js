@@ -28,6 +28,7 @@ async function getPost(slug) {
 	);
 
 	const {code, frontmatter} = await compileMdx(slug, postFiles);
+	frontmatter.date = new Date(frontmatter.date).toISOString()
 	return {slug, code, ...frontmatter};
 }
 

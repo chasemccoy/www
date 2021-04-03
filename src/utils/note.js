@@ -17,6 +17,9 @@ async function getNote(slug) {
 	);
 
 	const {code, frontmatter, toc} = await compileMdx(slug, postFiles);
+	if (frontmatter.modified) {
+		frontmatter.modified = new Date(frontmatter.modified).toISOString()
+	}
 	return {slug, code, ...frontmatter, toc, category: note.category};
 }
 
