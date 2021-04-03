@@ -48,8 +48,7 @@ const generateFeeds = async () => {
       title: post.title,
       id: post.slug,
       link: postURL(post.slug),
-      description: post.excerpt,
-      content: html,
+      description: html,
       author: [author],
       date: new Date(post.date)
     })

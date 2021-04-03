@@ -6,3 +6,5 @@ yarn-error.log
 .next
 # Local Netlify folder
 .netlify
+public/feed.xml
+public/feed.json
