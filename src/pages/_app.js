@@ -7,6 +7,8 @@ const App = ({ Component, pageProps }) => {
   return (
     <div id="wrapper">
       <Head>
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <link rel="stylesheet" href="/styles/shared.css" />
       </Head>
       
@@ -24,5 +26,9 @@ const App = ({ Component, pageProps }) => {
     </div>
   )
 }
+
+export const config = {
+  unstable_runtimeJS: false
+};
 
 export default App
