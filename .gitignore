@@ -1,6 +1,6 @@
 .DS_Store
 node_modules
-.yarn-error.log
+yarn-error.log
 /functions/app/build
 .site
 .next
