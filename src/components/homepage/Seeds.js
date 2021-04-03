@@ -1,9 +1,6 @@
 import React from 'react';
 import Link from '../Link';
 import {Seeds} from '../Icon';
-import seedsScreenshot from 'img:../../images/seeds-screenshot.png';
-import seeds from 'img:../../images/seeds.png';
-import dsPlanning from 'img:../../images/ds-planning.jpg';
 
 const SeedsPage = () => {
 	return (
@@ -48,7 +45,7 @@ const SeedsPage = () => {
 			</section>
 
 			<img
-				src={seedsScreenshot.src}
+				src='/images/seeds-screenshot.png'
 				alt=""
 				className="mt-32"
 				style={{
@@ -59,7 +56,7 @@ const SeedsPage = () => {
 
 			<section className="hyphens prose color-gray--400">
 				<img
-					src={seeds.src}
+					src='/images/seeds.png'
 					className="photo-site"
 					alt="A photograph of the Seeds website on a laptop."
 				/>
@@ -78,18 +75,18 @@ const SeedsPage = () => {
 				</p>
 
 				<img
-					src={dsPlanning.src}
+					src='/images/ds-planning.jpg'
 					alt="A screenshot of the Sprout Social web application."
 					className="photo-planning"
 				/>
 
 				<div className="mobile-photos prose">
 					<img
-						src={seeds.src}
+						src='/images/seeds.png'
 						alt="A photograph of the Seeds website on a laptop."
 					/>
 					<img
-						src={dsPlanning.src}
+						src='/images/ds-planning.jpg'
 						alt="A screenshot of the Sprout Social web application."
 					/>
 				</div>

@@ -9,29 +9,31 @@
   font-family: var(--font-header);
   font-size: 1.05em;
   line-height: 1.45;
-  hyphens: auto;
+  -webkit-hyphens: auto;
+      -ms-hyphens: auto;
+          hyphens: auto;
+}
 
-  p + p {
+.blog-content p + p {
     margin-top: 2px;
     text-indent: 1.75em;
   }
 
-  p > img {
+.blog-content p > img {
     margin-top: var(--flow-spacing);
     margin-bottom: var(--flow-spacing);
   }
 
-  p + p.caption {
+.blog-content p + p.caption {
     margin-top: calc(-1 * var(--flow-spacing) / 2) !important;
     text-indent: 0;
   }
 
-  p.caption {
+.blog-content p.caption {
     font-family: var(--font-body);
     margin-bottom: var(--flow-spacing);
   }
 
-  pre, code {
+.blog-content pre, .blog-content code {
     line-height: 1.5;
   }
-}

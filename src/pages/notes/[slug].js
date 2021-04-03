@@ -1,69 +1,32 @@
 import React from 'react';
-import {json} from '@remix-run/data';
-import {useRouteData} from '@remix-run/react';
+import Head from 'next/head'
 import {getMDXComponent} from 'mdx-bundler/client';
-import {getNote, getCategory} from '../../utils/note.server';
+import {getNote, getCategory, getNotes} from '../../utils/note';
 import mdxComponents from '../../utils/mdx-components';
 import TableOfContents from '../../components/TableOfContents';
 import Link from '../../components/Link';
 import {Folder} from '../../components/Icon';
 import {capitalize} from '../../utils';
-import config from '../../../remix.config'
-import styles from 'css:../../styles/pages/notes.css'
+import config from '../../../next.config'
 
-export const loader = async ({params}) => {
-	if (config.noteCategories.includes(params.slug)) {
-		const notes = await getCategory(params.slug)
-
-		return json(notes, {
-			// headers: {
-			// 	'cache-control': 'public, max-age=300, stale-while-revalidate=86400'
-			// }
-		});
-	}
-
-	const note = await getNote(params.slug);
-	return json(note, {
-		// headers: {
-		// 	'cache-control': 'public, max-age=300, stale-while-revalidate=86400'
-		// }
-	});
-};
-
-// export function headers({loaderHeaders}) {
-// 	return {
-// 		'cache-control': loaderHeaders.get('cache-control')
-// 	};
-// }
-
-export function meta({data: note}) {
-	return {
-		title: `${note.title} | Chase McCoy`
-	};
-}
-
-export const links = () => {
-	return [{rel: 'stylesheet', href: styles}];
-};
-
-export let handle = { section: 'notes' };
-
-const Note = () => {
-	const data = useRouteData()
-
-	if (Array.isArray(data)) {
+const Note = ({notes, note}) => {
+	if (Array.isArray(notes)) {
 		return (
 			<div className='prose'>
+				<Head>
+					<link rel="stylesheet" href="/styles/notes.css" />
+				</Head>
+
 				<header>
-					<h1>{capitalize(data[1].category.replace('-', ' '))}</h1>
+					<h1>{capitalize(notes[1].category.replace('-', ' '))}</h1>
 				</header>
 
 				<main>
-					{data.map((note) => (
-						<p key={note.slug}>
-							<Link to={`/notes/${note.slug}`}>{note.title}</Link>
+					{notes.map((item) => (
+						<p key={item.slug}>
+							<Link to={`/notes/${item.slug}`}>{item.title}</Link>
 							<br />
-							<small>{note.excerpt}</small>
+							<small>{item.excerpt}</small>
 						</p>
 					))}
 				</main>
@@ -71,11 +34,15 @@ const Note = () => {
 		)
 	}
 
-	const {code, title, excerpt, toc, category} = data;
+	const {code, title, excerpt, toc, category} = note;
 	const Component = React.useMemo(() => getMDXComponent(code), [code]);
 
 	return (
 		<article className="prose">
+			<Head>
+        <link rel="stylesheet" href="/styles/notes.css" />
+      </Head>
+
 			<header className='flow'>
 				<div className='badge mb-16'>Note</div>
 				<h1>{title}</h1>
@@ -109,5 +76,38 @@ const Note = () => {
 		</article>
 	);
 };
+
+export const getStaticProps = async ({ params }) => {
+	if (config.noteCategories.includes(params.slug)) {
+		const notes = await getCategory(params.slug)
+
+		return {
+			props: {notes}
+		}
+	}
+
+	const note = await getNote(params.slug);
+	
+	return {
+		props: {note}
+	}
+}
+
+export const getStaticPaths = async () => {
+	const notes = await getNotes()
+
+	const notePaths = notes.map(note => ({
+		params: {slug: note.slug}
+	}))
+
+	const categoryPaths = config.noteCategories.map(category => ({
+		params: {slug: category}
+	}))
+
+	return {
+		paths: [...notePaths, ...categoryPaths],
+		fallback: false
+	}
+}
 
 export default Note;

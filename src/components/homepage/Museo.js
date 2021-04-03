@@ -1,6 +1,4 @@
 import React from 'react';
-import museo from 'img:../../images/museo.png';
-import museoLandscape from 'img:../../images/museo.jpg';
 import Link from '../Link';
 
 const Museo = (props) => {
@@ -60,11 +58,11 @@ const Museo = (props) => {
 
 			<div className="image-container">
 				<img
-					src={museo.src}
+					src='/images/museo.png'
 					alt="View of the Golden Bend in the Herengracht, Gerrit Adriaensz."
 				/>
 				<img
-					src={museoLandscape.src}
+					src='/images/museo.jpg'
 					className="mobile-only mobile-breakout"
 					alt="View of the Golden Bend in the Herengracht, Gerrit Adriaensz."
 				/>

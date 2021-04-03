@@ -1,12 +1,11 @@
 import sortBy from 'sort-by';
 import matter from 'gray-matter';
-import {octokit} from './octokit.server';
-import config from '../../remix.config';
+import config from '../../next.config';
 import {
 	downloadMdxFileOrDirectory,
 	downloadFile,
 	downloadDirList
-} from './github.server.js';
+} from './github.js';
 import {compileMdx} from './compile-mdx.server.js';
 
 export const getSlugForPost = (slug, postDate) => {
@@ -14,6 +13,13 @@ export const getSlugForPost = (slug, postDate) => {
 	const year = date.getFullYear().toString();
 	const month = ('0' + (date.getMonth() + 1)).slice(-2);
 	return `/${year}/${month}/${slug}`;
+};
+
+const getParamsForPost = (slug, postDate) => {
+	const date = new Date(postDate);
+	const year = date.getFullYear().toString();
+	const month = ('0' + (date.getMonth() + 1)).slice(-2);
+	return {year, month, slug}
 };
 
 async function getPost(slug) {
@@ -61,7 +67,15 @@ async function getPosts() {
 		files.map(async ({slug, content}) => {
 			const matterResult = matter(content);
 			const frontmatter = matterResult.data;
-			return {slug: getSlugForPost(slug, frontmatter.date), ...frontmatter};
+			frontmatter.date = new Date(frontmatter.date).toISOString()
+			const params = getParamsForPost(slug, frontmatter.date)
+			const fullSlug = `/${params.year}/${params.month}/${slug}`;
+
+			return {
+				slug: fullSlug,
+				params: {...params},
+				...frontmatter
+			};
 		})
 	);
 

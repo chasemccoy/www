@@ -1,7 +1,3 @@
-export function meta() {
-	return {title: "Ain't nothing here"};
-}
-
 export default function FourOhFour() {
 	return (
 		<div>

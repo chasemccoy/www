@@ -1,12 +1,11 @@
 import nodePath from 'path';
 import matter from 'gray-matter';
-import config from '../../remix.config.js';
-import {octokit} from './octokit.server.js';
+import config from '../../next.config';
 import {
 	downloadMdxFileOrDirectory,
 	downloadFile,
 	downloadDirList
-} from './github.server';
+} from './github';
 import {compileMdx} from './compile-mdx.server';
 
 async function getNote(slug) {
@@ -62,6 +61,9 @@ async function getCategory(category) {
 		files.map(async ({slug, content}) => {
 			const matterResult = matter(content);
 			const frontmatter = matterResult.data;
+			if (frontmatter.modified) {
+				frontmatter.modified = new Date(frontmatter.modified).toISOString()
+			}
 			return {slug, ...frontmatter, category};
 		})
 	);

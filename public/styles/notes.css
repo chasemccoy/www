@@ -1,0 +1,35 @@
+:root {
+  /* --color-gray--100: hsl(240, 80%, 97%);
+  --color-gray--200: hsl(240, 80%, 96%);
+  --color-gray--300: hsl(240, 80%, 94%);
+  --color-border: hsl(240, 80%, 95%);
+  --color-caption: hsl(240, 15%, 60%); */
+}
+
+.featured-card {
+  background: var(--color-gray--100);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.featured-card:hover, .featured-card:focus {
+    color: var(--color-text);
+    background: var(--color-gray--200);
+  }
+
+.featured-card.green {
+    background: #C4F0CB;
+  }
+
+.featured-card.green img {
+      -webkit-mask-image: linear-gradient(to top, rgba(197, 241, 204, 0.1), rgba(197, 241, 204, 1) 80%);
+              mask-image: linear-gradient(to top, rgba(197, 241, 204, 0.1), rgba(197, 241, 204, 1) 80%);
+    }
+
+.featured-card.green p {
+      color: #5D8966;
+    }
+
+.featured-card.green:hover, .featured-card.green:focus {
+      background: #A6E8B1;
+    }

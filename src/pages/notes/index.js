@@ -1,10 +1,6 @@
 import React from 'react';
-import {useRouteData} from '@remix-run/react';
-import {json} from '@remix-run/data';
-import {getNotes} from '../../utils/note.server';
-import terminal from 'img:../../images/terminal.png';
-import designSystems from 'img:../../images/design-systems.png';
-import styles from 'css:../../styles/pages/notes.css'
+import Head from 'next/head'
+import {getNotes} from '../../utils/note';
 import Link from '../../components/Link';
 import Marker from '../../components/Marker';
 import {capitalize} from '../../utils';
@@ -27,37 +23,13 @@ const FeaturedCard = ({title, description, image, url, className}) => (
 	</Link>
 )
 
-export const loader = async () => {
-	return json(await getNotes(false), {
-		// headers: {
-		// 	'cache-control': 'public, max-age=300, stale-while-revalidate=86400'
-		// }
-	});
-};
-
-// export function headers({loaderHeaders}) {
-// 	return {
-// 		'cache-control': loaderHeaders.get('cache-control')
-// 	};
-// }
-
-export function meta() {
-	return {
-		title: 'Notes | Chase McCoy'
-	};
-}
-
-export const links = () => {
-	return [{rel: 'stylesheet', href: styles}];
-};
-
-export let handle = { section: 'notes' };
-
-const Notes = () => {
-	const notes = useRouteData();
-
+const Notes = ({ notes }) => {
 	return (
 		<div className='prose'>
+			<Head>
+        <link rel="stylesheet" href="/styles/notes.css" />
+      </Head>
+
 			<header>
 				<h1>Notes</h1>
 			</header>
@@ -65,8 +37,8 @@ const Notes = () => {
 			<main>
 				<h2 className='eyebrow'>Categories</h2>
 				<div className='mt-24 mb-24 grid' style={{'--item-min-size': '225px'}}>
-					<FeaturedCard title='Code' description='Useful code snippets and techniqes for making great websites.' image={terminal.src} url='/notes/code' />
-					<FeaturedCard title='Design systems' description='Useful code snippets and techniqes for making great websites.' image={designSystems.src} url='/notes/design-systems' className='green' />
+					<FeaturedCard title='Code' description='Useful code snippets and techniqes for making great websites.' image='/images/terminal.png' url='/notes/code' />
+					<FeaturedCard title='Design systems' description='Useful code snippets and techniqes for making great websites.' image='/images/design-systems.png' url='/notes/design-systems' className='green' />
 				</div>
 
 				{/* <hr /> */}
@@ -109,5 +81,13 @@ const Notes = () => {
 		</div>
 	);
 };
+
+export const getStaticProps = async (context) => {
+	const notes = await getNotes(false)
+	
+  return {
+    props: {notes}
+  }
+}
 
 export default Notes;

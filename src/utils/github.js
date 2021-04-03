@@ -1,9 +1,6 @@
 import nodePath from 'path';
 import fs from 'fs';
-import {octokit} from './octokit.server';
-import config from '../../remix.config';
-
-const USE_FILESYSTEM_IN_DEV_MODE = true;
+import config from '../../next.config';
 
 const {readdir, readFile, lstat} = fs.promises;
 const imageRegex = /\.(gif|jpe?g|png|webp|svg)$/i;
@@ -72,55 +69,24 @@ async function downloadDirectory(dir) {
 }
 
 async function downloadFile(path, sha) {
-	if (process.env.NODE_ENV === 'development' && USE_FILESYSTEM_IN_DEV_MODE) {
-		return getFileObject(path);
-	}
-
-	const {data} = await octokit.request(
-		'GET /repos/{owner}/{repo}/git/blobs/{file_sha}',
-		{
-			owner: config.content.owner,
-			repo: config.content.repo,
-			file_sha: sha
-		}
-	);
-	const {encoding} = data;
-	return {path, content: Buffer.from(data.content, encoding).toString()};
+	return getFileObject(path);
 }
 
 async function downloadDirList(dir) {
-	if (process.env.NODE_ENV === 'development' && USE_FILESYSTEM_IN_DEV_MODE) {
-		const directory = await isDirectory(dir);
+	const directory = await isDirectory(dir);
 
-		if (directory) {
-			const dirents = await readdir(dir, {withFileTypes: true});
-			return dirents.map((dirent) => ({
-				name: dirent.name,
-				path: nodePath.join(dir, dirent.name),
-				type: dirent.isDirectory() ? 'dir' : 'file'
-			}));
-		}
-
-		return {
-			path: dir
-		};
+	if (directory) {
+		const dirents = await readdir(dir, {withFileTypes: true});
+		return dirents.map((dirent) => ({
+			name: dirent.name,
+			path: nodePath.join(dir, dirent.name),
+			type: dirent.isDirectory() ? 'dir' : 'file'
+		}));
 	}
 
-	const {data} = await octokit.repos.getContent({
-		owner: config.content.owner,
-		repo: config.content.repo,
+	return {
 		path: dir
-	});
-
-	// If (!Array.isArray(data)) {
-	//   throw new Error(
-	//     `Tried to download content from ${JSON.stringify(
-	//       config.content,
-	//     )} at ${dir}. GitHub did not return an array of files. This should never happen...`,
-	//   )
-	// }
-
-	return data;
+	};
 }
 
 export {

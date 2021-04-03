@@ -1,5 +1,5 @@
 {
-  "name": "~",
+  "name": "www",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -8,34 +8,30 @@
     "url": "git+https://github.com/chasemccoy/www.com.git"
   },
   "scripts": {
-    "start": "pm2-dev pm2.config.js",
-    "build": "remix build",
-    "clean": "rimraf ./node_modules/.cache ./functions/app/build ./public/build",
-    "prestart": "yarn clean && yarn copy-images",
-    "prebuild": "yarn clean && yarn copy-images",
+    "start": "concurrently \"yarn start:css\" \"next dev\"",
+    "build": "build:css && next build && next export -o .site/",
+    "clean": "rimraf ./node_modules/.cache ./.next/cache",
+    "prestart": "yarn copy-images",
+    "prebuild": "yarn copy-images",
     "copy-images": "node ./bin/copy-images",
-    "test": "xo --fix"
+    "start:css": "postcss src/styles/{shared,/pages/*}.css -d public/styles -w",
+    "build:css": "postcss src/styles/{shared,/pages/*}.css -d public/styles"
   },
   "author": "Chase McCoy",
   "license": "GPL-3.0-only",
   "dependencies": {
     "@leafac/rehype-shiki": "^1.3.1",
-    "@octokit/rest": "^18.3.5",
     "@remark-embedder/core": "^1.2.4",
     "@remark-embedder/transformer-oembed": "^1.0.1",
-    "@remix-run/core": "^0.14.1",
-    "@remix-run/data": "^0.14.0",
-    "@remix-run/react": "^0.14.0",
     "clsx": "^1.1.1",
     "gray-matter": "^4.0.2",
     "hast-util-to-html": "^7.1.2",
     "mdast-util-to-hast": "^10.2.0",
     "mdast-util-toc": "^5.1.0",
     "mdx-bundler": "^3.1.2",
+    "next": "^10.1.3",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "react-router": "^6.0.0-beta.0",
-    "react-router-dom": "^6.0.0-beta.0",
     "remark-gfm": "^1.0.0",
     "remark-slug": "^6.0.0",
     "resetti": "^1.1.3",
@@ -44,39 +40,20 @@
     "unist-util-visit": "^2.0.3"
   },
   "devDependencies": {
-    "@remix-run/dev": "^0.14.0",
-    "@types/react": "^17.0.3",
-    "@types/react-dom": "^17.0.2",
     "autoprefixer": "^10.2.5",
-    "eslint-config-xo-react": "^0.24.0",
-    "eslint-plugin-react": "^7.23.1",
-    "eslint-plugin-react-hooks": "^4.2.0",
+    "concurrently": "^6.0.0",
     "fs-extra": "^9.1.0",
     "netlify-cli": "^3.13.7",
-    "pm2": "^4.5.5",
+    "postcss": "^8.2.9",
+    "postcss-cli": "^8.3.1",
     "postcss-each": "0.10.0",
     "postcss-import": "^14.0.0",
     "postcss-nested": "^5.0.5",
     "postcss-preset-env": "^6.7.0",
     "postcss-simple-vars": "^6.0.3",
-    "rimraf": "^3.0.2",
-    "typescript": "^4.2.3",
-    "xo": "^0.38.2"
+    "rimraf": "^3.0.2"
   },
   "engines": {
     "node": "14.x"
-  },
-  "xo": {
-    "extends": "xo-react",
-    "prettier": true,
-    "rules": {
-      "unicorn/filename-case": "off",
-      "camelcase": "off",
-      "react/prop-types": "off",
-      "react/no-array-index-key": "off",
-      "import/extensions": "off",
-      "node/file-extension-in-import": "off",
-      "react/no-danger": "off"
-    }
   }
 }

@@ -1,6 +1,5 @@
 import React from 'react';
-import {useRouteData} from '@remix-run/react';
-import {json} from '@remix-run/data';
+import Head from 'next/head'
 import Link from '../components/Link';
 import {Globe, Stripe} from '../components/Icon';
 import DesignSystems from '../components/homepage/DesignSystems';
@@ -8,44 +7,23 @@ import Marker from '../components/Marker';
 import FeaturedPosts from '../components/FeaturedPosts';
 import Museo from '../components/homepage/Museo';
 import Seeds from '../components/homepage/Seeds';
-import styles from 'css:../styles/pages/homepage.css';
-import avatar from 'img:../images/avatar-yellow.png';
-import {getPosts} from '../utils/post.server';
+import {getPosts} from '../utils/post';
 
 const Avatar = () => (
 	<div className="avatar">
 		<div>
-			<img src={avatar.src} alt="Chase McCoy" />
+			<img src='/images/avatar-yellow.png' alt="Chase McCoy" />
 		</div>
 	</div>
 );
 
-export const loader = async () => {
-	const posts = await getPosts();
-	const featuredPosts = posts.filter((post) => Boolean(post.featured));
-
-	return json(featuredPosts, {
-		headers: {
-			'cache-control': 'public, max-age=300, stale-while-revalidate=86400'
-		}
-	});
-};
-
-export function headers() {
-	return {
-		'cache-control': 'public, max-age=300'
-	};
-}
-
-export const links = () => {
-	return [{rel: 'stylesheet', href: styles}];
-};
-
-const Index = () => {
-	const posts = useRouteData();
-
+const Index = ({ posts }) => {
 	return (
 		<>
+			<Head>
+        <link rel="stylesheet" href="/styles/homepage.css" />
+      </Head>
+
 			<h2
 				className="mb-12 serif hyphens"
 				style={{
@@ -94,8 +72,9 @@ const Index = () => {
 			</h2>
 
 			<div className="prose">
+				<Avatar />
+				
 				<p className="hyphens">
-					<Avatar />
 					Growing up online is where I developed a love for visual and interface
 					design, and I earned a degree in Computer Science so I could make
 					those designs real. I got my start doing iOS design and development,
@@ -135,5 +114,15 @@ const Index = () => {
 		</>
 	);
 };
+
+export const getStaticProps = async (context) => {
+	const posts = await getPosts()
+	const featuredPosts = posts.filter((post) => Boolean(post.featured));
+	
+  return {
+    props: {posts: featuredPosts}
+  }
+}
+
 
 export default Index;

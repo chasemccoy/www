@@ -1,5 +1,5 @@
 import React from 'react';
-// Import {Link} from '@remix-run/react'
+import NextLink from 'next/link'
 
 const Link = ({to, href, ...rest}) => {
 	let newTab = false 
@@ -8,11 +8,12 @@ const Link = ({to, href, ...rest}) => {
 	if (href) { newTab = href.startsWith('http') }
 
 	return (
-		<a 
-			href={href || to}  
-			target={newTab ? `_blank` : undefined} 
-			{...rest} 
-		/>
+		<NextLink href={href || to}>
+			<a 
+				target={newTab ? `_blank` : undefined} 
+				{...rest} 
+			/>
+		</NextLink>
 	);
 };
 

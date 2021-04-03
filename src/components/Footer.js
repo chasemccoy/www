@@ -1,5 +1,4 @@
 import React from 'react'
-import asciiHouse from 'img:../images/ascii-house.png'
 
 const Footer = () => {
   return (
@@ -9,7 +8,7 @@ const Footer = () => {
       <div className='flex align--flex-end'>
         <div style={{maxWidth: '8em'}}>
           <img
-            src={asciiHouse.src}
+            src='/images/ascii-house.png'
             alt=''
             style={{
               filter: 'var(--ascii-filter)',

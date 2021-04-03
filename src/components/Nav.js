@@ -1,12 +1,13 @@
 import React from 'react';
 // import Link from './Link';
-import { NavLink as Link, useLocation } from 'react-router-dom';
+import Link from '../components/Link'
+import { useRouter } from 'next/router'
 import {getColorForSection} from '../utils';
 import clsx from 'clsx';
 
-const Item = ({to, children, className, ...rest}) => (
+const Item = ({href, children, className, ...rest}) => (
 	<li>
-		<Link to={to} className={clsx(className, 'unstyled')} activeClassName='selected' {...rest}>
+		<Link href={href} className={clsx(className, 'unstyled')} {...rest}>
 			{children}
 		</Link>
 	</li>
@@ -17,35 +18,35 @@ const regex = /([12]\d{3}\/(0[1-9]|1[0-2]))\//;
 const blogLinkMatcher = (pathname) => regex.test(pathname);
 
 const Nav = () => {
-	const { pathname } = useLocation()
+	const { pathname } = useRouter()
 
 	return (
 		<nav>
 			<ul className="unstyled">
-				<Item to="/" end style={{'--highlight-color': getColorForSection()}}>
-					<b>Chase M.</b>
+				<Item href="/" style={{'--highlight-color': getColorForSection()}} className='bold'>
+					Chase M.
 				</Item>
 				<Item
-					to="/blog"
+					href="/blog"
 					className={blogLinkMatcher(pathname) ? 'selected' : ''}
 					style={{'--highlight-color': getColorForSection('blog')}}
 				>
 					Blog
 				</Item>
 				<Item
-					to="/notes"
+					href="/notes"
 					style={{'--highlight-color': getColorForSection('notes')}}
 				>
 					Notes
 				</Item>
 				<Item
-					to="/books"
+					href="/books"
 					style={{'--highlight-color': getColorForSection('books')}}
 				>
 					Books
 				</Item>
 				<Item
-					to="/quotes"
+					href="/quotes"
 					style={{'--highlight-color': getColorForSection('quotes')}}
 				>
 					Quotes
