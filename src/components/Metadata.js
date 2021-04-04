@@ -24,7 +24,7 @@ const Metadata = ({
 
   return (
     <Head>
-      <title key="title">{defaults.titleTemplate(title)}></title>
+      <title key="title">{defaults.titleTemplate(title)}</title>
       <meta name='description' content={description} />
 
       {article && <meta property='og:type' content='article' key="og:type" />}

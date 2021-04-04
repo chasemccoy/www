@@ -50,10 +50,10 @@ const Notes = ({ notes }) => {
 					style={{
 						textDecoration: 'underline',
 						textDecorationColor: 'var(--section-color)',
-						textDecorationThickness: '2px'
+						textDecorationThickness : '2px'
 					}}>
 					digital&nbsp;garden
-				</Link>—a personal database of neat stuff that I've collected in my travels on the web.
+				</Link>—a personal wiki of neat stuff I’ve collected during my travels on the web.
 				</p>
 			</header>
 
@@ -65,7 +65,6 @@ const Notes = ({ notes }) => {
 				</div>
 
 				{/* <hr /> */}
-
 				<h2 className='eyebrow mt-48'>All notes</h2>
 
 				{Object.keys(notes).map((category, i) => (

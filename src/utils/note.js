@@ -6,7 +6,7 @@ import {
 	downloadFile,
 	downloadDirList
 } from './github';
-import {compileMdx} from './compile-mdx.server';
+import {compileMdx} from './compile-mdx';
 
 async function getNote(slug) {
 	const notes = await getNotes();

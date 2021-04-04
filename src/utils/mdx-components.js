@@ -11,7 +11,8 @@ const components = {
 	Wide: React.Fragment,
 	Video: Video,
 	Bookmark: Bookmark,
-	pre: Pre
+	pre: Pre,
+	a: Link
 };
 
 export default components;

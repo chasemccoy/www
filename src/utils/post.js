@@ -5,7 +5,7 @@ import {
 	downloadFile,
 	downloadDirList
 } from './github.js';
-import {compileMdx} from './compile-mdx.server.js';
+import {compileMdx} from './compile-mdx.js';
 
 const CONTENT_PATH = 'posts'
 
