@@ -1439,7 +1439,7 @@ hr {
 
 hr.dashed {
     background: none;
-    border-top: 1px dashed var(--section-color);
+    border-top: 1px dashed var(--color-gray--200);
     height: 1px;
   }
 

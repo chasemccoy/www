@@ -6,7 +6,10 @@ import clsx from 'clsx';
 
 const NavLink = ({href, className, children, ...rest}) => {
 	const { asPath } = useRouter()
-	const classNames = clsx(className, asPath === href && 'selected')
+	const classNames = clsx(
+		className, 
+		{selected: href === '/' ? asPath === href : asPath.includes(href)}
+	)
 
   return <Link href={href}><a className={classNames} {...rest}>{children}</a></Link>
 }

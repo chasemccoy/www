@@ -10,41 +10,49 @@ import {capitalize} from '../../utils';
 import config from '../../../next.config'
 import Metadata from '../../components/Metadata';
 
-const Note = ({notes, note}) => {
+const Category = ({ notes }) => {
+	const categoryName = capitalize(notes[1].category.replace('-', ' ')) 
+
 	React.useEffect(() => {
     document.querySelector('body').dataset.section = 'notes'
   })
 
+	return (
+		<div className='prose'>
+			<Head>
+				<link rel="stylesheet" href="/styles/notes.css" />
+			</Head>
+
+			<Metadata title={categoryName} />
+
+			<header>
+				<h1>{categoryName}</h1>
+			</header>
+
+			<main>
+				{notes.map((item) => (
+					<p key={item.slug}>
+						<Link to={`/notes/${item.slug}`}>{item.title}</Link>
+						<br />
+						<small>{item.excerpt}</small>
+					</p>
+				))}
+			</main>
+		</div>
+	)
+}
+
+const Note = ({notes, note}) => {
 	if (Array.isArray(notes)) {
-		const categoryName = capitalize(notes[1].category.replace('-', ' ')) 
-
-		return (
-			<div className='prose'>
-				<Head>
-					<link rel="stylesheet" href="/styles/notes.css" />
-				</Head>
-
-				<Metadata title={categoryName} />
-
-				<header>
-					<h1>{categoryName}</h1>
-				</header>
-
-				<main>
-					{notes.map((item) => (
-						<p key={item.slug}>
-							<Link to={`/notes/${item.slug}`}>{item.title}</Link>
-							<br />
-							<small>{item.excerpt}</small>
-						</p>
-					))}
-				</main>
-			</div>
-		)
+		return <Category notes={notes} />
 	}
 
 	const {code, title, excerpt, toc, category} = note;
 	const Component = React.useMemo(() => getMDXComponent(code), [code]);
+
+	React.useEffect(() => {
+    document.querySelector('body').dataset.section = 'notes'
+  })
 
 	return (
 		<article className="prose">
