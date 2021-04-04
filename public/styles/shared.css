@@ -1526,8 +1526,9 @@ twitter-widget::shadow .EmbeddedTweet {
 #site-header nav a {
     display: inline-block;
     position: relative;
-    border-bottom: 2px transparent;
-    padding-bottom: 4px;
+    border-bottom: 3px solid transparent;
+    padding-bottom: 6px;
+    margin-bottom: -1px;
   }
 
 @media (min-width: 700px) {
@@ -1564,7 +1565,7 @@ twitter-widget::shadow .EmbeddedTweet {
 #site-header nav a.selected {
     color: var(--highlight-color);
     font-weight: bold;
-    border-bottom: 2px solid var(--highlight-color);
+    border-bottom: 3px solid var(--highlight-color);
   }
 
 @media (min-width: 700px) {
