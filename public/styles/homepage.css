@@ -396,3 +396,39 @@ h3.subheader {
 .homepage--seeds .cta:hover {
       background: var(--color-green);
     }
+
+.contact ul li {
+      display: block;
+      margin-left: 0;
+    }
+
+.contact ul li:before {
+        content: "";
+      }
+
+@media (min-width: 700px) {
+
+.contact ul li {
+        display: inline
+    }
+      }
+
+.contact ul li + li {
+      margin-left: 0;
+    }
+
+@media (min-width: 700px) {
+
+.contact ul li + li {
+        margin-left: 1.5em
+    }
+      }
+
+.contact ul svg {
+      margin-top: -4px;
+      margin-right: 2px;
+    }
+
+.contact ul a:hover > span {
+      text-decoration: underline;
+    }

@@ -7,6 +7,7 @@ import Marker from '../components/Marker';
 import FeaturedPosts from '../components/FeaturedPosts';
 import Museo from '../components/homepage/Museo';
 import Seeds from '../components/homepage/Seeds';
+import ContactMe from '../components/homepage/Contact';
 import {getPosts} from '../utils/post';
 
 const Avatar = () => (
@@ -97,7 +98,7 @@ const Index = ({ posts }) => {
 				</p>
 
 				<FeaturedPosts posts={posts} />
-				{/* <ContactMe /> */}
+				<ContactMe />
 			</div>
 
 			<Marker className="mt-40">Now</Marker>

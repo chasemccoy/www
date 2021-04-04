@@ -24,7 +24,6 @@ const feed = new Feed({
   language: "en",
   image: "http://chasem.co/site-image.png",
   favicon: "http://chasem.co/favicon.ico",
-  updated: new Date(),
   generator: "chasem.co",
   feedLinks: {
     json: "https://chasem.co/feed.json",
