@@ -1288,8 +1288,8 @@ h1, h2, h3, h4, h5, h6 {
 
 .mobile-breakout {
   max-width: none;
-  width: calc(100% + 32px);
-  margin-left: -16px;
+  width: calc(100% + (var(--layout-padding) * 2));
+  margin-left: calc(var(--layout-padding) * -1);
   border-radius: 0;
 }
 
@@ -1351,10 +1351,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #wrapper {
+  --layout-padding: 16px;
   max-width: 820px;
   margin-left: auto;
   margin-right: auto;
-  padding: 16px 16px 40px;
+  padding: 16px var(--layout-padding) 40px;
   --sidebar-gap: 48px;
 }
 
@@ -1383,7 +1384,8 @@ h1, h2, h3, h4, h5, h6 {
 @media (min-width: 550px) {
 
 #wrapper {
-    padding: 40px
+    --layout-padding: 40px;
+    padding: var(--layout-padding)
 }
   }
 
@@ -1403,11 +1405,11 @@ article h2:first-child {
 
 article img {
     max-width: none;
-    width: calc(100% + 32px);
-    margin-left: -16px;
+    width: calc(100% + var(--layout-padding) * 2);
+    margin-left: calc(var(--layout-padding) * -1);
   }
 
-@media (min-width: 550px) {
+@media (min-width: 700px) {
     article img {
       max-width: 100%;
       width: 100%;
@@ -1524,20 +1526,32 @@ twitter-widget::shadow .EmbeddedTweet {
 #site-header nav a {
     display: inline-block;
     position: relative;
+    border-bottom: 2px transparent;
+    padding-bottom: 4px;
   }
 
-#site-header nav a:after {
-    display: block;
-    width: 100%;
-    height: 1px;
-    margin-top: -0.15rem;
-    content: "";
-    transition: transform 0.2s ease;
-    transform: scaleX(0);
-    transform-origin: 0 0;
-    pointer-events: none;
-    background-color: var(--highlight-color);
+@media (min-width: 700px) {
+
+#site-header nav a {
+      padding: 0
   }
+    }
+
+@media (min-width: 700px) {
+
+#site-header nav a:after {
+      display: block;
+      width: 100%;
+      height: 1px;
+      margin-top: -0.15rem;
+      content: "";
+      transition: transform 0.2s ease;
+      transform: scaleX(0);
+      transform-origin: 0 0;
+      pointer-events: none;
+      background-color: var(--highlight-color)
+  }
+    }
 
 #site-header nav a:hover {
     color: var(--highlight-color);
@@ -1550,35 +1564,71 @@ twitter-widget::shadow .EmbeddedTweet {
 #site-header nav a.selected {
     color: var(--highlight-color);
     font-weight: bold;
+    border-bottom: 2px solid var(--highlight-color);
   }
 
-#site-header nav a.selected:before {
-      content: '';
-      display: inline-block;
-      height: 6px;
-      width: 6px;
-      border-radius: 50%;
-      background: var(--highlight-color);
-      margin-right: 6px;
-      margin-left: -12px;
-      transform: translateY(-1px);
+@media (min-width: 700px) {
+
+#site-header nav a.selected {
+      border: none
+  }
+
+      #site-header nav a.selected:before {
+        content: '';
+        display: inline-block;
+        height: 6px;
+        width: 6px;
+        border-radius: 50%;
+        background: var(--highlight-color);
+        margin-right: 6px;
+        margin-left: -12px;
+        transform: translateY(-1px);
+      }
     }
 
 #site-header nav ul {
-    display: flex;
-    flex-direction: column;
-    padding: 0;
+    width: calc(100% + (var(--layout-padding) * 2));
+    margin-left: calc(var(--layout-padding) * -1);
+    padding: 0 var(--layout-padding) 0;
+    border-bottom: 1px solid var(--color-border);
   }
 
+@media (min-width: 700px) {
+
+#site-header nav ul {
+      width: auto;
+      display: flex;
+      flex-direction: column;
+      margin: 0;
+      padding: 0;
+      border: none
+  }
+    }
+
 #site-header nav li {
-    display: block;
+    display: inline-block;
     font-size: 0.75em;
   }
 
-#site-header nav li + li {
-    margin-left: 0;
-    margin-top: 6px;
+@media (min-width: 700px) {
+
+#site-header nav li {
+      display: block
   }
+    }
+
+#site-header nav li + li {
+    margin-left: 20px;
+    margin-top: 0;
+  }
+
+@media (min-width: 700px) {
+
+#site-header nav li + li {
+      margin-left: 0;
+      margin-top: 6px
+  }
+    }
 
 /**
  * VS theme by Andrew Lock (https://andrewlock.net)

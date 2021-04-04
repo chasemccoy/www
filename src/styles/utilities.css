@@ -190,8 +190,8 @@
 
 .mobile-breakout {
   max-width: none;
-  width: calc(100% + 32px);
-  margin-left: -16px;
+  width: calc(100% + (var(--layout-padding) * 2));
+  margin-left: calc(var(--layout-padding) * -1);
   border-radius: 0;
 
   @media (--viewport-tiny) {
