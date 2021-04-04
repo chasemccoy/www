@@ -25,6 +25,10 @@ const FeaturedCard = ({title, description, image, url, className}) => (
 )
 
 const Notes = ({ notes }) => {
+	React.useEffect(() => {
+    document.querySelector('body').dataset.section = 'notes'
+  })
+
 	return (
 		<div className='prose'>
 			<Head>

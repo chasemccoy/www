@@ -11,6 +11,10 @@ import config from '../../../next.config'
 import Metadata from '../../components/Metadata';
 
 const Note = ({notes, note}) => {
+	React.useEffect(() => {
+    document.querySelector('body').dataset.section = 'notes'
+  })
+
 	if (Array.isArray(notes)) {
 		const categoryName = capitalize(notes[1].category.replace('-', ' ')) 
 

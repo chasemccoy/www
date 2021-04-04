@@ -18,6 +18,10 @@ const Avatar = () => (
 );
 
 const Index = ({ posts }) => {
+	React.useEffect(() => {
+    document.querySelector('body').dataset.section = ''
+  })
+
 	return (
 		<>
 			<Head>

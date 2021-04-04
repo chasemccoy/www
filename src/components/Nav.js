@@ -1,15 +1,21 @@
 import React from 'react';
-// import Link from './Link';
-import Link from '../components/Link'
+import Link from 'next/link'
 import { useRouter } from 'next/router'
 import {getColorForSection} from '../utils';
 import clsx from 'clsx';
 
+const NavLink = ({href, className, children, ...rest}) => {
+	const { asPath } = useRouter()
+	const classNames = clsx(className, asPath === href && 'selected')
+
+  return <Link href={href}><a className={classNames} {...rest}>{children}</a></Link>
+}
+
 const Item = ({href, children, className, ...rest}) => (
 	<li>
-		<Link href={href} className={clsx(className, 'unstyled')} {...rest}>
+		<NavLink href={href} className={clsx(className, 'unstyled')} {...rest}>
 			{children}
-		</Link>
+		</NavLink>
 	</li>
 );
 
@@ -18,7 +24,7 @@ const regex = /([12]\d{3}\/(0[1-9]|1[0-2]))\//;
 const blogLinkMatcher = (pathname) => regex.test(pathname);
 
 const Nav = () => {
-	const { pathname } = useRouter()
+	const { asPath } = useRouter()
 
 	return (
 		<nav>
@@ -28,7 +34,7 @@ const Nav = () => {
 				</Item>
 				<Item
 					href="/blog"
-					className={blogLinkMatcher(pathname) ? 'selected' : ''}
+					className={clsx(blogLinkMatcher(asPath) && 'selected')}
 					style={{'--highlight-color': getColorForSection('blog')}}
 				>
 					Blog

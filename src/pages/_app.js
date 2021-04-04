@@ -1,8 +1,10 @@
+import React from 'react' 
 import Head from 'next/head'
-import Logo from '../components/Logo';
 import Nav from '../components/Nav';
 import Footer from '../components/Footer';
 import Metadata from '../components/Metadata';
+import Link from '../components/Link';
+import '../components/Logo'
 
 const App = ({ Component, pageProps }) => {
   return (
@@ -24,7 +26,9 @@ const App = ({ Component, pageProps }) => {
       
       <div>
         <header id="site-header">
-          <Logo className="mb-16 mt-8" />
+          <Link to="/" className='mt-8 mb-16 inline-block'>
+            <chsmc-logo></chsmc-logo>
+          </Link>
           <Nav />
         </header>
 

@@ -5,6 +5,10 @@ import Link from '../components/Link';
 import Metadata from '../components/Metadata';
 
 const Blog = ({ posts }) => {
+	React.useEffect(() => {
+    document.querySelector('body').dataset.section = 'blog'
+  })
+
 	return (
 		<div className='flow'>
 			<Head>

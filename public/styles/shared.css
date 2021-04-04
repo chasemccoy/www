@@ -229,7 +229,7 @@ a,area,button,input,label,select,summary,textarea,details,[tabindex]{touch-actio
     'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   --font-header: 'Ivar Text', Charter, Georgia, Times New Roman, serif;
 
-  --section-color: var(--color-purple);
+  --section-color: var(--color-green);
 
   --shadow-small: 0 0 transparent, 0 0 transparent,
     0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
@@ -239,6 +239,22 @@ a,area,button,input,label,select,summary,textarea,details,[tabindex]{touch-actio
     0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 
   --heading-scale: 1;
+}
+
+[data-section='blog'] {
+  --section-color: var(--color-red);
+}
+
+[data-section='notes'] {
+  --section-color: var(--color-purple);
+}
+
+[data-section='books'] {
+  --section-color: var(--color-blue);
+}
+
+[data-section='quotes'] {
+  --section-color: var(--color-yellow);
 }
 
 :root {
@@ -1222,6 +1238,10 @@ h1, h2, h3, h4, h5, h6 {
   display: block;
 }
 
+.inline-block {
+  display: inline-block;
+}
+
 .flex {
   display: flex;
 }
@@ -1488,23 +1508,6 @@ twitter-widget::shadow .EmbeddedTweet {
 .twitter-tweet + * {
   margin-top: 1.5em;
 }
-
-.logo-canvas-wrapper {
-  position: relative;
-}
-
-.logo-canvas-wrapper canvas {
-    width: 32px;
-    height: 32px;
-    border-radius: 4px;
-  }
-
-.logo-canvas-wrapper canvas + canvas {
-    position: absolute;
-    top: 0;
-    mix-blend-mode: multiply;
-    opacity: 0.5;
-  }
 
 #site-header nav a {
     display: inline-block;

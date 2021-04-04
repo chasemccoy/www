@@ -98,23 +98,12 @@ const Book = ({book, small = false, ...rest}) => (
     </Link>
   </div>
 )
-
-// export function headers() {
-// 	return {
-// 		'cache-control': 'public, max-age=604800'
-// 	};
-// }
-
-// export function meta() {
-// 	return {
-// 		title: 'Books | Chase McCoy'
-// 	};
-// }
-
-// export let handle = { section: 'books' };
-
 const Books = () => {
   const sortedFavorites = favorites.sort(sortBy("title"))
+
+	React.useEffect(() => {
+    document.querySelector('body').dataset.section = 'books'
+  })
 
 	return (
 		<>
