@@ -59,7 +59,7 @@
 
   --link-color: var(--color-text);
   --link-hover: var(--color-purple);
-  --color-body-background: white;
+  --color-body-background: #FDFDFA; /* white */
   --color-text: var(--color-gray--700);
   --color-header: var(--color-gray--700);
   --color-border: var(--color-gray--200);

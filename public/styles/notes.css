@@ -33,3 +33,24 @@
 .featured-card.green:hover, .featured-card.green:focus {
       background: #A6E8B1;
     }
+
+.featured-card.code {
+    background: #212529;
+  }
+
+.featured-card.code img {
+      -webkit-mask-image: linear-gradient(to top, rgba(33, 37, 41, 0.2), rgba(33, 37, 41, 1) 30%);
+              mask-image: linear-gradient(to top, rgba(33, 37, 41, 0.2), rgba(33, 37, 41, 1) 30%);
+    }
+
+.featured-card.code h2 {
+      color: var(--color-gray--200);
+    }
+
+.featured-card.code p {
+      color: var(--color-gray--400);
+    }
+
+.featured-card.code:hover, .featured-card.code:focus {
+      background: black;
+    }

@@ -94,6 +94,10 @@
   font-weight: bold;
 }
 
+.italic {
+  font-style: italic;
+}
+
 .sans {
   font-family: var(--font-body);
 }
@@ -152,8 +156,16 @@
   align-items: flex-end;
 }
 
+.align--center {
+  align-items: center;
+}
+
 .flex--no-shrink {
   flex-shrink: 0;
+}
+
+.space-between {
+  justify-content: space-between;
 }
 
 .dotted {

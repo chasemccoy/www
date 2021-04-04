@@ -11,10 +11,10 @@
   line-height: 1.45;
   hyphens: auto;
 
-  p + p {
+  /* p + p {
     margin-top: 2px;
     text-indent: 1.75em;
-  }
+  } */
 
   p > img {
     margin-top: var(--flow-spacing);

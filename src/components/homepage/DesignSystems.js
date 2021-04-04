@@ -8,10 +8,10 @@ const DesignSystems = () => {
 			<h2 className="mt-20 serif" style={{fontSize: '2.5em', lineHeight: 1.1}}>
 				I’m currently focused on{' '}
 				<span
+					className='italic'
 					style={{
 						textDecoration: 'underline',
 						textDecorationColor: 'var(--color-green)',
-						fontStyle: 'italic'
 					}}
 				>
 					design&nbsp;systems

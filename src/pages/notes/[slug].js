@@ -10,6 +10,8 @@ import {capitalize} from '../../utils';
 import config from '../../../next.config'
 import Metadata from '../../components/Metadata';
 
+const githubLink = (slug, category) => `https://github.com/chasemccoy/www/blob/main/notes/${category}/${slug}.mdx`
+
 const Category = ({ notes }) => {
 	const categoryName = capitalize(notes[1].category.replace('-', ' ')) 
 
@@ -47,7 +49,7 @@ const Note = ({notes, note}) => {
 		return <Category notes={notes} />
 	}
 
-	const {code, title, excerpt, toc, category} = note;
+	const {code, title, excerpt, toc, category, slug} = note;
 	const Component = React.useMemo(() => getMDXComponent(code), [code]);
 
 	React.useEffect(() => {
@@ -84,6 +86,8 @@ const Note = ({notes, note}) => {
 						/>
 						{capitalize(category.replace('-', ' '))}
 					</Link>
+
+					<Link className='ml-16' to={githubLink(slug, category)}>Edit on GitHub</Link>
 				</p>
 				<TableOfContents content={toc} />
 				<hr className='dashed' />

@@ -216,7 +216,7 @@ a,area,button,input,label,select,summary,textarea,details,[tabindex]{touch-actio
 
   --link-color: var(--color-text);
   --link-hover: var(--color-purple);
-  --color-body-background: white;
+  --color-body-background: #FDFDFA; /* white */
   --color-text: var(--color-gray--700);
   --color-header: var(--color-gray--700);
   --color-border: var(--color-gray--200);
@@ -1190,6 +1190,10 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: bold;
 }
 
+.italic {
+  font-style: italic;
+}
+
 .sans {
   font-family: var(--font-body);
 }
@@ -1250,8 +1254,16 @@ h1, h2, h3, h4, h5, h6 {
   align-items: flex-end;
 }
 
+.align--center {
+  align-items: center;
+}
+
 .flex--no-shrink {
   flex-shrink: 0;
+}
+
+.space-between {
+  justify-content: space-between;
 }
 
 .dotted {
@@ -1741,7 +1753,7 @@ a.underlined {
 }
 
 a.no-hover:hover {
-  color: initial;
+  color: unset;
 }
 
 iframe {

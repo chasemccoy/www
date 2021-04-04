@@ -31,4 +31,24 @@
       background: #A6E8B1;
     }
   }
+
+  &.code {
+    background: #212529;
+
+    img {
+      mask-image: linear-gradient(to top, rgba(33, 37, 41, 0.2), rgba(33, 37, 41, 1) 30%);
+    }
+
+    h2 {
+      color: var(--color-gray--200);
+    }
+    
+    p {
+      color: var(--color-gray--400);
+    }
+
+    &:hover, &:focus {
+      background: black;
+    }
+  }
 }

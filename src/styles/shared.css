@@ -65,7 +65,7 @@ a.underlined {
 }
 
 a.no-hover:hover {
-  color: initial;
+  color: unset;
 }
 
 

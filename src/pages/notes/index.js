@@ -38,13 +38,29 @@ const Notes = ({ notes }) => {
 			<Metadata title="Notes" />
 
 			<header>
-				<h1>Notes</h1>
+				<h1><span className='smaller' style={{position: 'relative', top: '-3px'}}>🌱</span> Notes</h1>
+				<p
+					className="mt-12 serif hyphens"
+					style={{
+						fontSize: '1.4rem',
+						lineHeight: 1.3,
+					}}
+				>
+					Welcome to my <Link to='/notes/digital-gardens' className='italic'
+					style={{
+						textDecoration: 'underline',
+						textDecorationColor: 'var(--section-color)',
+						textDecorationThickness: '2px'
+					}}>
+					digital&nbsp;garden
+				</Link>—a personal database of neat stuff that I've collected in my travels on the web.
+				</p>
 			</header>
 
 			<main>
-				<h2 className='eyebrow'>Categories</h2>
-				<div className='mt-24 mb-24 grid' style={{'--item-min-size': '225px'}}>
-					<FeaturedCard title='Code' description='Useful code snippets and techniqes for making great websites.' image='/images/terminal.png' url='/notes/code' />
+				{/* <h2 className='eyebrow'>Categories</h2> */}
+				<div className='mt-32 mb-24 grid' style={{'--item-min-size': '225px'}}>
+					<FeaturedCard title='Code' description='Useful code snippets and techniqes for making great websites.' image='/images/terminal.png' url='/notes/code' className='code' />
 					<FeaturedCard title='Design systems' description='Useful code snippets and techniqes for making great websites.' image='/images/design-systems.png' url='/notes/design-systems' className='green' />
 				</div>
 

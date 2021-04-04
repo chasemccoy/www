@@ -14,10 +14,10 @@
           hyphens: auto;
 }
 
-.blog-content p + p {
+/* p + p {
     margin-top: 2px;
     text-indent: 1.75em;
-  }
+  } */
 
 .blog-content p > img {
     margin-top: var(--flow-spacing);
