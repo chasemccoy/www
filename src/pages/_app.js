@@ -19,7 +19,8 @@ const App = ({ Component, pageProps }) => {
           title="Chase McCoy"
           href="/feed.xml"
         />
-        <link rel="alternate" title="Chase McCoy" type="application/json" href="/feed.json" />
+        <link rel="icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
       </Head>
 
       <Metadata />
