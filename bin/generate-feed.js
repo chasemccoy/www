@@ -48,14 +48,14 @@ const generateFeeds = async () => {
       id: post.slug,
       link: postURL(post.slug),
       description: html,
-      content: html,
+      // content: html,
       author: [author],
       date: new Date(post.date)
     })
   }
 
 	fs.writeFileSync(path.join(destination, 'feed.xml'), feed.rss2());
-  fs.writeFileSync(path.join(destination, 'feed.json'), feed.json1());
+  // fs.writeFileSync(path.join(destination, 'feed.json'), feed.json1());
 }
 
 generateFeeds()

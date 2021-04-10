@@ -16,7 +16,7 @@
     "start:css": "postcss src/styles/{shared,/pages/*}.css -d public/styles -w",
     "build:css": "postcss src/styles/{shared,/pages/*}.css -d public/styles",
     "copy-images": "node ./bin/copy-images",
-    "generate-feed": "node .next/server/bin/generate-feed.js"
+    "generate-feed": "node .next/server/generate-feed"
   },
   "author": "Chase McCoy",
   "license": "GPL-3.0-only",
