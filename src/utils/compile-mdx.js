@@ -44,10 +44,17 @@ async function compileMdx(slug, githubFiles) {
 	let tocData = null;
 
 	const imageTransformer = (tree) => {
-		visit(tree, 'image', (node) => {
+		visit(tree, 'image', (node, index, parent) => {
 			const filename = String(node.url);
 			node.url = `/img/${slug}/${filename}`;
+
+			if (node.title) {
+				// Make sure images that get transformed to figures aren't nested within paragraph tags (which is invalid HTML)
+				parent.type = 'div'
+			}
 		});
+
+		return tree
 	};
 
 	const getToC = (tree) => {

@@ -15,7 +15,7 @@ const BlogPost = ({ code, title, excerpt, date}) => {
   })
 
 	return (
-		<article>
+		<article className='prose'>
 			<Head>
         <link rel="stylesheet" href="/styles/blog.css" />
       </Head>

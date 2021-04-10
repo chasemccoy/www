@@ -54,12 +54,12 @@ const Nav = () => {
 				>
 					Books
 				</Item>
-				<Item
+				{/* <Item
 					href="/quotes"
 					style={{'--highlight-color': getColorForSection('quotes')}}
 				>
 					Quotes
-				</Item>
+				</Item> */}
 			</ul>
 		</nav>
 	)

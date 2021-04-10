@@ -19,7 +19,7 @@ const Callout = ({ children, ...rest }) => (
           borderRadius: '8px'
         }}
       >
-        <p className='smaller'>{children}</p>
+        <div className='smaller'>{children}</div>
       </div>
     </aside>
   </div>

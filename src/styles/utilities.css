@@ -245,3 +245,16 @@
   text-transform: uppercase;
   letter-spacing: 1px;
 }
+
+.multi-column {
+  --columns: 1;
+  --min-column-width: ;
+  --gap: 0;
+
+  columns: var(--columns) var(--min-column-width);
+  column-gap: var(--gap);
+
+  > * {
+    break-inside: avoid;
+  }
+}

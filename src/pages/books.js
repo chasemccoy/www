@@ -1,8 +1,9 @@
 import React from 'react';
-import Link from "../components/Link";
+import Link from "../components/Link"
 import sortBy from 'sort-by'
 import clsx from 'clsx'
-import Metadata from '../components/Metadata';
+import Metadata from '../components/Metadata'
+import Marker from '../components/Marker'
 
 export const recents = [
   {
@@ -110,10 +111,10 @@ const Books = () => {
 			<Metadata title='Books' />
 
 			<header className='prose mb-32'>
-				<h1>Books</h1>
+				<h1><span className='smaller' style={{position: 'relative', top: '-1px'}}>📚</span> Books</h1>
 			</header>
 
-      <h2 className='eyebrow'>Recently read</h2>
+			<Marker>Recently read</Marker>
 
 			<div className='books-recents horizontal-scroll mt-24 pb-12'>
         {recents.map(book => (
@@ -121,7 +122,7 @@ const Books = () => {
         ))}
       </div>
 
-      <h2 className='eyebrow mt-40'>Favorites</h2>
+			<Marker className='mt-40'>Favorites</Marker>
 
       <div className='books-favorites grid mt-32' style={{'--gap': '24px','--item-min-size': '150px'}}>
         {sortedFavorites.map(book => (

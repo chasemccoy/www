@@ -6,10 +6,10 @@
 } */
 
 .blog-content {
-  font-family: var(--font-header);
+  font-family: Georgia, 'Times New Roman', Times, serif;
   font-size: 1.05em;
   line-height: 1.45;
-  hyphens: auto;
+  /* hyphens: auto; */
 
   /* p + p {
     margin-top: 2px;
