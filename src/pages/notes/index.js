@@ -61,10 +61,10 @@ const Notes = ({ notes }) => {
 			</header>
 
 			<main>
-				{/* <h2 className='eyebrow'>Categories</h2> */}
 				<div className='mt-32 mb-16 grid' style={{'--item-min-size': '225px'}}>
 					<FeaturedCard title='Code' description='Useful code snippets and techniqes for making great websites.' image='/images/terminal.png' url='/notes/code' className='code' />
-					<FeaturedCard title='Design systems' description='Useful code snippets and techniqes for making great websites.' image='/images/design-systems.png' url='/notes/design-systems' className='green' />
+
+					<FeaturedCard title='Design systems' description='Notes on what they are, how they work, and more.' image='/images/design-systems.png' url='/notes/design-systems' className='green' />
 
 					<div className='quote-card p-12' style={{background: 'var(--color-gray--100)', borderRadius: '12px'}}>
 						<p>{randomQuote.content}</p>
@@ -72,14 +72,11 @@ const Notes = ({ notes }) => {
 							<p className='italic bold'>— {randomQuote.metadata}</p>
 						</div>
 
-						<Link to="/notes/quotes" className='button mt-16 px-8 py-4 block unstyled bold smaller' style={{background: 'var(--color-purple)', borderRadius: '8px', textAlign: 'center', color: 'white'}}>More quotes →</Link>
+						<Link to="/notes/quotes" className='button mt-16 px-8 py-4 block unstyled bold smaller no-hover' style={{background: 'var(--color-yellow)', borderRadius: '8px', textAlign: 'center'}}>More quotes →</Link>
 					</div>
 				</div>
 
-				
-
-				{/* <hr /> */}
-				<h2 className='eyebrow mt-48'>All notes</h2>
+				<Marker className='mt-48'>All notes</Marker>
 
 				{Object.keys(notes).map((category, i) => (
 					<div className={clsx(i > 0 ? 'mt-48': 'mt-24')} key={category}>
@@ -105,14 +102,6 @@ const Notes = ({ notes }) => {
 						</div>
 					</div>
 				))}
-
-				{/* {notes.map((note) => (
-					<p key={note.slug}>
-						<Link to={`/notes/${note.slug}`}>{note.title}</Link>
-						<br />
-						<small>{note.excerpt}</small>
-					</p>
-				))} */}
 			</main>
 		</div>
 	);

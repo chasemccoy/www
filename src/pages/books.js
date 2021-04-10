@@ -99,6 +99,7 @@ const Book = ({book, small = false, ...rest}) => (
     </Link>
   </div>
 )
+
 const Books = () => {
   const sortedFavorites = favorites.sort(sortBy("title"))
 
