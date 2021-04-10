@@ -2,7 +2,6 @@
 node_modules
 yarn-error.log
 /functions/app/build
-/public/styles
 .site
 .next
 # Local Netlify folder
