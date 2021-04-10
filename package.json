@@ -13,8 +13,8 @@
     "clean": "rimraf ./node_modules/.cache ./.next/cache",
     "prestart": "yarn copy-images",
     "prebuild": "yarn copy-images",
-    "start:css": "postcss src/styles/{shared,/pages/*}.css -d public/styles -w",
-    "build:css": "postcss src/styles/{shared,/pages/*}.css -d public/styles  --verbose",
+    "start:css": "postcss src/styles/{shared,pages/*}.css -d public/styles -w",
+    "build:css": "postcss src/styles/{shared,pages/*}.css -d public/styles  --verbose",
     "copy-images": "node ./bin/copy-images",
     "generate-feed": "node .next/server/generate-feed"
   },
