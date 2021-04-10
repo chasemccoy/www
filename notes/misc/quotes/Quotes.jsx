@@ -1,7 +1,7 @@
 import React from 'react'
 import sortBy from 'sort-by'
 
-const quotes = [
+export const quotes = [
   {
     content:
       "Be regular and orderly in your life, so that you may be violent and original in your work.",

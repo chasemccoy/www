@@ -90,6 +90,10 @@
   font-size: larger;
 }
 
+.normal {
+  font-weight: normal;
+}
+
 .bold {
   font-weight: bold;
 }
@@ -103,7 +107,7 @@
 }
 
 .serif {
-  font-family: var(--font-header);
+  font-family: var(--font-header) !important;
 }
 
 .mono {
@@ -256,5 +260,11 @@
 
   > * {
     break-inside: avoid;
+  }
+}
+
+a.button {
+  &:hover {
+    filter: brightness(0.9);
   }
 }

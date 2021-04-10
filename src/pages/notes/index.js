@@ -7,7 +7,8 @@ import {capitalize} from '../../utils';
 import {Folder} from '../../components/Icon';
 import clsx from 'clsx'
 import Metadata from '../../components/Metadata';
-
+import { quotes } from '../../../notes/misc/quotes/Quotes'
+ 
 const FeaturedCard = ({title, description, image, url, className}) => (
 	<Link to={url} className={clsx('featured-card', 'unstyled', 'block', className)}>
 		<img src={image} alt="" />
@@ -25,6 +26,8 @@ const FeaturedCard = ({title, description, image, url, className}) => (
 )
 
 const Notes = ({ notes }) => {
+	const randomQuote = quotes[Math.floor(Math.random() * quotes.length)]
+
 	React.useEffect(() => {
     document.querySelector('body').dataset.section = 'notes'
   })
@@ -59,10 +62,21 @@ const Notes = ({ notes }) => {
 
 			<main>
 				{/* <h2 className='eyebrow'>Categories</h2> */}
-				<div className='mt-32 mb-24 grid' style={{'--item-min-size': '225px'}}>
+				<div className='mt-32 mb-16 grid' style={{'--item-min-size': '225px'}}>
 					<FeaturedCard title='Code' description='Useful code snippets and techniqes for making great websites.' image='/images/terminal.png' url='/notes/code' className='code' />
 					<FeaturedCard title='Design systems' description='Useful code snippets and techniqes for making great websites.' image='/images/design-systems.png' url='/notes/design-systems' className='green' />
+
+					<div className='quote-card p-12' style={{background: 'var(--color-gray--100)', borderRadius: '12px'}}>
+						<p>{randomQuote.content}</p>
+						<div className='mt-8 flex align--center space-between'>
+							<p className='italic bold'>— {randomQuote.metadata}</p>
+						</div>
+
+						<Link to="/notes/quotes" className='button mt-16 px-8 py-4 block unstyled bold smaller' style={{background: 'var(--color-purple)', borderRadius: '8px', textAlign: 'center', color: 'white'}}>More quotes →</Link>
+					</div>
 				</div>
+
+				
 
 				{/* <hr /> */}
 				<h2 className='eyebrow mt-48'>All notes</h2>
