@@ -132,4 +132,8 @@ const Books = () => {
 	);
 };
 
+export const config = {
+  unstable_runtimeJS: false
+};
+
 export default Books;
