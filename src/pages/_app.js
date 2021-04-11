@@ -27,7 +27,7 @@ const App = ({ Component, pageProps }) => {
       
       <div>
         <header id="site-header">
-          <Link to="/" className='mt-8 mb-16 inline-block'>
+          <Link to="/" className='inline-block logo'>
             <chsmc-logo></chsmc-logo>
           </Link>
           <Nav />
