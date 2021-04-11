@@ -23,7 +23,6 @@ const BlogPost = ({ code, title, excerpt, date}) => {
 			<Metadata article title={title} description={excerpt} />
 
 			<header>
-				<div className='badge mb-16'>Blog post</div>
 				<h1 className='tighter' style={{fontSize: '1.8em'}}>{title}</h1>
 				<p className='lead mt-4 color-caption'>{excerpt}</p>
 				<p className='smaller mt-12 color-caption bold'>{formattedDate}</p>

@@ -8,6 +8,7 @@ import {Folder} from '../../components/Icon';
 import clsx from 'clsx'
 import Metadata from '../../components/Metadata';
 import NoteList from '../../components/NoteList';
+import Now from '../../components/Now';
 import { quotes } from '../../../notes/misc/quotes/Quotes'
 import { recents as recentBooks } from '../../../notes/misc/books/Books'
  
@@ -63,7 +64,11 @@ const Notes = ({ notes }) => {
 				</p>
 			</header>
 
-			<main>
+			<main className='mt-12'>
+				<p>This section is a grab bag of links, clippings, and notes on any and all subjects (but mostly web stuff). Notes here are evergreen and are often updated or changed as I learn mroe about a subject.</p>
+
+				<Now />
+
 				<Marker className='mt-32'>Featured</Marker>
 
 				<div className='mt-24 mb-16 grid' style={{'--item-min-size': '225px'}}>

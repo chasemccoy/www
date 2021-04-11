@@ -69,7 +69,6 @@ const Note = ({notes, note}) => {
 			<Metadata title={title} description={excerpt} />
 
 			<header className='flow'>
-				<div className='badge mb-16'>Note</div>
 				<h1>{title}</h1>
 				<p className='lead mt-8 color-caption'>{excerpt}</p>
 				<p className='smaller mt-16'>

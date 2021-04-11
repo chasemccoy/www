@@ -51,6 +51,18 @@
   --color-blue: #74c0fc;
   --color-purple: #8888fc;
 
+  --color-green-offset: rgba(81, 207, 102, 0.05);
+  --color-red-offset: rgba(255, 107, 107, 0.05);
+  --color-yellow-offset: rgba(252, 196, 25, 0.05);
+  --color-blue-offset: rgba(116, 192, 252, 0.05);
+  --color-purple-offset: rgba(136, 136, 252, 0.05);
+
+  --color-green-offset--100: rgba(81, 207, 102, 0.1);
+  --color-red-offset--100: rgba(255, 107, 107, 0.1);
+  --color-yellow-offset--100: rgba(252, 196, 25, 0.1);
+  --color-blue-offset--100: rgba(116, 192, 252, 0.1);
+  --color-purple-offset--100: rgba(136, 136, 252, 0.1);
+
   --color-green-background: #fefff8;
   --color-red-background: hsl(0, 100%, 99%);
   --color-yellow-background: hsl(42, 100%, 99%);
