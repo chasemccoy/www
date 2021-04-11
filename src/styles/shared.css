@@ -250,12 +250,4 @@ ol {
   p:last-child {
     margin: 0;
   }
-
-  background: repeating-linear-gradient(
-    -55deg,
-    var(--section-color),
-    var(--section-color) 0.5px,
-    var(--color-gray--100) 0.5px,
-    var(--color-gray--100) 3px
-  );
 }

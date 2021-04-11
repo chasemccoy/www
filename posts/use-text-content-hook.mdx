@@ -17,7 +17,7 @@ Then `node.textContent` would give you the string representation of all the text
 
 This property can be useful in a lot of scenarios, but it only works on DOM nodes, so you can't use it to get a the text content of a tree of React components. However, you _can_ create a custom hook that does just that:
 
-```jsx
+```js
 const useTextContent = initial => {
   const [textContent, setTextContent] = useState(initial)
   
@@ -38,7 +38,7 @@ If the node exists, we grab the `textContent` and set the `current` property of 
 
 In the consuming code, the user calls the hook (with an optional initial value) and then attaches the resulting ref to whatever node they would like to read the text content of. The text content itself can be accessed through the `current` property of the ref:
 
-```jsx
+```js
 const textContainer = useTextContent(null)
 
 return (
@@ -55,7 +55,7 @@ return (
 
 One of my favorite uses for this hook is to ensure that React components have accessible title attributes without requiring the consumer of the component to pass an explicit value for the title. For instance, imagine a Card component:
 
-```jsx
+```js
 <Card
   title={someReactNode} 
   href="/details"
@@ -64,7 +64,7 @@ One of my favorite uses for this hook is to ensure that React components have ac
 
 that renders this structure: 
 
-```jsx
+```js
 <div>
   <h3>{props.title}</h3>
   <a href={props.href}>View more</a>
@@ -73,7 +73,7 @@ that renders this structure:
 
 The contents of the anchor tag here isn't enough to be fully accessible (view more of what?), but we could fix that by using the `textContent` of the card title:
 
-```jsx
+```js
 const textContainer = useTextContent(null)
 
 return (

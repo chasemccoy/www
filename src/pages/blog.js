@@ -15,7 +15,7 @@ const Blog = ({ posts }) => {
         <link rel="stylesheet" href="/styles/blog.css" />
       </Head>
 
-			<Metadata title='Blog' />
+			<Metadata title='Blog' description="What's on my mind, and links to some interesting stuff on the web." />
 			
 			{/* <header>
 				<h1>Blog</h1>

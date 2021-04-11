@@ -41,7 +41,7 @@ const Notes = ({ notes }) => {
         <link rel="stylesheet" href="/styles/notes.css" />
       </Head>
 
-			<Metadata title="Notes" />
+			<Metadata title="Notes" description="My digital garden containing a collection of links, thoughts, ideas, images, quotes, and other miscellanea I've collected on my travels across the web." />
 
 			<header>
 				<h1><span className='smaller' style={{position: 'relative', top: '-3px'}}>🌱</span> Notes</h1>
@@ -77,7 +77,7 @@ const Notes = ({ notes }) => {
 							</div>
 						</div>
 
-						<Link to="/notes/quotes" className='button mt-16 px-8 py-4 block unstyled bold smaller no-hover' style={{background: 'var(--color-yellow)', borderRadius: '8px', textAlign: 'center'}}>More quotes →</Link>
+						<Link to="/notes/quotes" className='button mt-16 px-8 py-8 block unstyled bold smaller no-hover' style={{background: 'var(--color-yellow)', borderRadius: '8px', textAlign: 'center'}}>More quotes →</Link>
 					</div>
 
 					<div className='quote-card p-16 flex flex-column' style={{background: 'var(--color-gray--100)', borderRadius: '12px', justifyContent: 'flex-end'}}>
@@ -92,7 +92,7 @@ const Notes = ({ notes }) => {
 							</div>
 						</div>
 
-						<Link to="/notes/books" className='button mt-16 px-8 py-4 block unstyled bold smaller no-hover' style={{background: 'var(--color-blue)', borderRadius: '8px', textAlign: 'center'}}>What I’m reading →</Link>
+						<Link to="/notes/books" className='button mt-16 px-8 py-8 block unstyled bold smaller no-hover' style={{background: 'var(--color-blue)', borderRadius: '8px', textAlign: 'center'}}>What I’m reading →</Link>
 					</div>
 
 					<FeaturedCard title='Design systems' description='Notes on what they are, how they work, and more.' image='/images/design-systems.png' url='/notes/design-systems' className='green' />

@@ -1,5 +1,23 @@
 import React from 'react'
 
+const Sparkles = () => {
+  const [message, setMessage] = React.useState("・゜✧.・.・゜✧・.")
+  let pos = 0;
+
+  const scroll = () => {
+    setMessage(message.substring(pos, message.length) + "" + message.substring(0, pos))
+    pos++;
+    if (pos > message.length) pos = 0;
+    window.setTimeout(scroll, 1000);
+  }
+
+  React.useEffect(() => {
+    scroll()
+  }, [])
+
+  return message
+}
+
 const Footer = () => {
   return (
     <footer className='prose mt-48'>
@@ -20,6 +38,7 @@ const Footer = () => {
           className='ml-16 mb-2'
           style={{flex: '1 0 auto'}}
         >
+          <Sparkles />
           <p className='color-gray--500 smaller mt-12'>
             Made with <span className='color-red'>&#9829;</span> in Chicago{' '}
             <span
