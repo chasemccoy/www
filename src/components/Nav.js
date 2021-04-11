@@ -48,12 +48,12 @@ const Nav = () => {
 				>
 					Notes
 				</Item>
-				<Item
+				{/* <Item
 					href="/books"
 					style={{'--highlight-color': getColorForSection('books')}}
 				>
 					Books
-				</Item>
+				</Item> */}
 				{/* <Item
 					href="/quotes"
 					style={{'--highlight-color': getColorForSection('quotes')}}

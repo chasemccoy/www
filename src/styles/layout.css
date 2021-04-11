@@ -30,7 +30,7 @@
 
   @media (--viewport-tiny) {
     --layout-padding: 40px;
-    padding: 52px var(--layout-padding) 52px;
+    padding: 48px var(--layout-padding) 48px;
   }
 
   @media (--viewport-small) {

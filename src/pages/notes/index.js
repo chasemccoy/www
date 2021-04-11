@@ -9,7 +9,7 @@ import clsx from 'clsx'
 import Metadata from '../../components/Metadata';
 import NoteList from '../../components/NoteList';
 import { quotes } from '../../../notes/misc/quotes/Quotes'
-import { recents as recentBooks } from '../books'
+import { recents as recentBooks } from '../../../notes/misc/books/Books'
  
 const FeaturedCard = ({title, description, image, url, className}) => (
 	<Link to={url} className={clsx('featured-card', 'unstyled', 'flex', 'flex-column', 'space-between', className)}>
@@ -64,7 +64,9 @@ const Notes = ({ notes }) => {
 			</header>
 
 			<main>
-				<div className='mt-32 mb-16 grid' style={{'--item-min-size': '225px'}}>
+				<Marker className='mt-32'>Featured</Marker>
+
+				<div className='mt-24 mb-16 grid' style={{'--item-min-size': '225px'}}>
 					<FeaturedCard title='Code' description='Useful code snippets and techniqes for making great websites.' image='/images/terminal.png' url='/notes/code' className='code' />
 
 					<div className='quote-card p-16 flex flex-column space-between' style={{background: 'var(--color-gray--100)', borderRadius: '12px'}}>
@@ -90,7 +92,7 @@ const Notes = ({ notes }) => {
 							</div>
 						</div>
 
-						<Link to="/notes/quotes" className='button mt-16 px-8 py-4 block unstyled bold smaller no-hover' style={{background: 'var(--color-blue)', borderRadius: '8px', textAlign: 'center'}}>What I’m reading →</Link>
+						<Link to="/notes/books" className='button mt-16 px-8 py-4 block unstyled bold smaller no-hover' style={{background: 'var(--color-blue)', borderRadius: '8px', textAlign: 'center'}}>What I’m reading →</Link>
 					</div>
 
 					<FeaturedCard title='Design systems' description='Notes on what they are, how they work, and more.' image='/images/design-systems.png' url='/notes/design-systems' className='green' />

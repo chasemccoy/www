@@ -31,7 +31,7 @@ const Index = ({ posts }) => {
       </Head>
 
       <h2
-        className='mb-12 serif hyphens'
+        className='serif hyphens'
         style={{
           fontSize: '1.7rem',
           lineHeight: 1.3,
