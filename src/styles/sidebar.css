@@ -3,7 +3,7 @@
     display: inline-block;
     position: relative;
     border-bottom: 3px solid transparent;
-    padding: 12px 0 9px;
+    padding: 16px 0 6px;
     margin-bottom: -1px;
 
     /* @media (--viewport-small) {

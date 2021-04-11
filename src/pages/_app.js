@@ -27,10 +27,12 @@ const App = ({ Component, pageProps }) => {
       
       <div>
         <header id="site-header">
-          <Link to="/" className='inline-block logo'>
-            <chsmc-logo></chsmc-logo>
-          </Link>
-          <Nav />
+          <div className='wrapper mt-24'>
+            <Link to="/" className='inline-block logo'>
+              <chsmc-logo></chsmc-logo>
+            </Link>
+            <Nav />
+          </div>
         </header>
 
         <main style={{paddingTop: '6px'}}>

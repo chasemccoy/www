@@ -34,13 +34,13 @@ if (typeof window !== "undefined") {
     <style>
       div {
         position: relative;
-        width: 26px;
-        height: 26px;
+        width: 30px;
+        height: 30px;
       }
 
       canvas {
-        width: 26px;
-        height: 26px;
+        width: 30px;
+        height: 30px;
         border-radius: 4px;
       }
 
