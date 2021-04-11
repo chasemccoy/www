@@ -9,6 +9,7 @@ import {Folder} from '../../components/Icon';
 import {capitalize} from '../../utils';
 import config from '../../../next.config'
 import Metadata from '../../components/Metadata';
+import NoteList from '../../components/NoteList';
 
 const githubLink = (slug, category) => `https://github.com/chasemccoy/www/blob/main/notes/${category}/${slug}.mdx`
 
@@ -28,17 +29,20 @@ const Category = ({ notes }) => {
 			<Metadata title={categoryName} />
 
 			<header>
-				<h1>{categoryName}</h1>
+				<h1 style={{fontSize: '1.5rem'}}>
+					<Link to='/' className='unstyled color-gray--400'>~</Link>
+					<span className='color-gray--400 normal mx-4'>/</span>
+					<Link to='/notes' className='unstyled color-gray--400'>Notes</Link>
+					<span className='color-gray--400 normal ml-4 mr-8'>/</span> 
+					<Folder 
+						className='inline color-purple mr-4' 
+						style={{width: '1em', position: 'relative', top: '-0.16em'}}
+					/>{categoryName}
+				</h1>
 			</header>
 
 			<main>
-				{notes.map((item) => (
-					<p key={item.slug}>
-						<Link to={`/notes/${item.slug}`}>{item.title}</Link>
-						<br />
-						<small>{item.excerpt}</small>
-					</p>
-				))}
+				<NoteList notes={notes} />
 			</main>
 		</div>
 	)

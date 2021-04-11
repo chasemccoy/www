@@ -7,12 +7,14 @@ import {capitalize} from '../../utils';
 import {Folder} from '../../components/Icon';
 import clsx from 'clsx'
 import Metadata from '../../components/Metadata';
+import NoteList from '../../components/NoteList';
 import { quotes } from '../../../notes/misc/quotes/Quotes'
+import { recents as recentBooks } from '../books'
  
 const FeaturedCard = ({title, description, image, url, className}) => (
-	<Link to={url} className={clsx('featured-card', 'unstyled', 'block', className)}>
+	<Link to={url} className={clsx('featured-card', 'unstyled', 'flex', 'flex-column', 'space-between', className)}>
 		<img src={image} alt="" />
-		<div className='p-16'>
+		<div className='px-16 pb-16'>
 			<h2 className='mt-0 smaller' style={{fontSize: '1.5em'}}>
 				<Folder 
 					className='inline mr-8' 
@@ -27,6 +29,7 @@ const FeaturedCard = ({title, description, image, url, className}) => (
 
 const Notes = ({ notes }) => {
 	const randomQuote = quotes[Math.floor(Math.random() * quotes.length)]
+	const recentBook = recentBooks[0]
 
 	React.useEffect(() => {
     document.querySelector('body').dataset.section = 'notes'
@@ -64,16 +67,33 @@ const Notes = ({ notes }) => {
 				<div className='mt-32 mb-16 grid' style={{'--item-min-size': '225px'}}>
 					<FeaturedCard title='Code' description='Useful code snippets and techniqes for making great websites.' image='/images/terminal.png' url='/notes/code' className='code' />
 
-					<FeaturedCard title='Design systems' description='Notes on what they are, how they work, and more.' image='/images/design-systems.png' url='/notes/design-systems' className='green' />
-
-					<div className='quote-card p-12' style={{background: 'var(--color-gray--100)', borderRadius: '12px'}}>
-						<p>{randomQuote.content}</p>
-						<div className='mt-8 flex align--center space-between'>
-							<p className='italic bold'>— {randomQuote.metadata}</p>
+					<div className='quote-card p-16 flex flex-column space-between' style={{background: 'var(--color-gray--100)', borderRadius: '12px'}}>
+						<div>
+							<p>{randomQuote.content}</p>
+							<div className='mt-8 flex align--center space-between'>
+								<p className='italic bold'>— {randomQuote.metadata}</p>
+							</div>
 						</div>
 
 						<Link to="/notes/quotes" className='button mt-16 px-8 py-4 block unstyled bold smaller no-hover' style={{background: 'var(--color-yellow)', borderRadius: '8px', textAlign: 'center'}}>More quotes →</Link>
 					</div>
+
+					<div className='quote-card p-16 flex flex-column' style={{background: 'var(--color-gray--100)', borderRadius: '12px', justifyContent: 'flex-end'}}>
+						<div className='flex align--flex-start'>
+							<img src={`/img/books/${recentBook.image}`} alt={recentBook.title} style={{width: '40%', borderRadius: '4px', alignSelf: 'flex-start'}} />
+
+							<div className='ml-12' style={{alignSelf: 'flex-end'}}>
+								<p className='smaller color-caption'>Recently read</p>
+								<p className='mt-8'>
+									<span className='bold tighter' style={{fontSize: '1.5rem'}}>{recentBook.title}</span><br /> by {recentBook.author}
+								</p>
+							</div>
+						</div>
+
+						<Link to="/notes/quotes" className='button mt-16 px-8 py-4 block unstyled bold smaller no-hover' style={{background: 'var(--color-blue)', borderRadius: '8px', textAlign: 'center'}}>What I’m reading →</Link>
+					</div>
+
+					<FeaturedCard title='Design systems' description='Notes on what they are, how they work, and more.' image='/images/design-systems.png' url='/notes/design-systems' className='green' />
 				</div>
 
 				<Marker className='mt-48'>All notes</Marker>
@@ -89,17 +109,8 @@ const Notes = ({ notes }) => {
 								{capitalize(category).replace('-', ' ')}
 							</Link>
 						</h2>
-						<div className='flow' style={{'--flow-spacing': '0.75em'}}>
-							{notes[category].map((note, j) => (
-								<React.Fragment key={note.slug}>
-									{j !== 0 && <hr className='dashed' />}
-									<Link to={`/notes/${note.slug}`} className='block unstyled no-hover'>
-										<p className='bold'>{note.title}</p>
-										<p>{note.excerpt}</p>
-									</Link>
-								</React.Fragment>
-							))}
-						</div>
+
+						<NoteList notes={notes[category]} />
 					</div>
 				))}
 			</main>

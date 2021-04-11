@@ -1,9 +1,9 @@
 import React from 'react';
-import classname from 'clsx';
+import clsx from 'clsx';
 
 const Marker = ({children, className, ...rest}) => {
 	return (
-		<h2 className={classname('marker', className)} {...rest}>
+		<h2 className={clsx('marker', className)} {...rest}>
 			<span>{children}</span>
 		</h2>
 	);

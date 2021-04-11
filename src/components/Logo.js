@@ -57,7 +57,7 @@ if (typeof window !== "undefined") {
     </div>
   `;
 
-  class HighlightElement extends HTMLElement {
+  class Logo extends HTMLElement {
     constructor() {
       super();
       const shadowRoot = this.attachShadow({mode: 'open'});
@@ -100,5 +100,5 @@ if (typeof window !== "undefined") {
     }
   }
 
-  window.customElements.define("chsmc-logo", HighlightElement);
+  window.customElements.define("chsmc-logo", Logo);
 }
