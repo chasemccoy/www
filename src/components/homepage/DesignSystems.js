@@ -19,7 +19,7 @@ const DesignSystems = () => {
 				.
 			</h2>
 
-			<div className="prose mt-20">
+			{/* <div className="prose mt-20">
 				<p>
 					I believe that design systems can be powerful catalysts for change
 					within a product organization, and provide a shared vocabulary that
@@ -28,7 +28,7 @@ const DesignSystems = () => {
 					spending more and more of our time online are built in ways that are
 					accessible, intentional, and respectful of the web as a material.
 				</p>
-			</div>
+			</div> */}
 
 			<div className="two-column mt-32 smaller focus-areas">
 				<div>

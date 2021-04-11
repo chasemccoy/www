@@ -99,7 +99,7 @@ const Book = ({book, small = false, ...rest}) => (
     >
       <img
         src={`/img/books/${book.image}`}
-        style={{boxShadow: 'var(--shadow-medium)'}}
+        style={{boxShadow: 'var(--shadow-medium)', width: '100%', margin: 0}}
       />
 
       <div className='mt-8' style={{height: small ? '4em' : '5em'}}>
