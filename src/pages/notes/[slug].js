@@ -11,7 +11,7 @@ import config from '../../../next.config'
 import Metadata from '../../components/Metadata';
 import NoteList from '../../components/NoteList';
 
-const githubLink = (slug, category) => `https://github.com/chasemccoy/www/blob/main/notes/${category}/${slug}.mdx`
+const githubLink = (slug, category) => `https://github.com/chasemccoy/www/edit/main/notes/${category}/${slug}.mdx`
 
 const Category = ({ notes }) => {
 	const categoryName = capitalize(notes[1].category.replace('-', ' ')) 

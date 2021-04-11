@@ -8,7 +8,7 @@ const Sparkles = () => {
     setMessage(message.substring(pos, message.length) + "" + message.substring(0, pos))
     pos++;
     if (pos > message.length) pos = 0;
-    window.setTimeout(scroll, 1000);
+    window.setTimeout(scroll, 800);
   }
 
   React.useEffect(() => {
