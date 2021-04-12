@@ -71,7 +71,7 @@ async function getCategory(category) {
 		})
 	);
 
-	return posts;
+	return posts.filter(p => !p.hidden);
 }
 
 async function getNotes(flat = true) {

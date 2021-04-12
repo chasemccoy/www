@@ -1,4 +1,5 @@
 import React from 'react'
+import Link from './Link'
 
 const now = [
   <>Web communities and carving out spaces online that are respectful of our time and attention.</>,
@@ -38,6 +39,8 @@ const Now = () => {
           </div>
         ))}
       </div>
+
+      <p className='color-caption mt-12'>If any of these things sounds interesting to you and you’d like to chat about them, please <Link href="mailto:hi@chasem.co">send me a note!</Link></p>
     </React.Fragment>
   )
 }
