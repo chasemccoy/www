@@ -40,11 +40,12 @@ article.post-preview {
   img {
     height: 150px;
     object-fit: cover;
-    margin-top: 12px;
+    margin: 12px 0 0;
+    width: 100%;
+    border-radius: 6px;
 
     @media (--viewport-tiny) {
       width: 40%;
-      border-radius: 6px;
       margin-left: 12px;
       margin-top: 0;
       height: 110px;
