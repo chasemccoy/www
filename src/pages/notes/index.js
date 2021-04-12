@@ -64,7 +64,7 @@ const Notes = ({ notes }) => {
 				</p>
 			</header>
 
-			<main className='mt-12'>
+			<main className='mt-8'>
 				<p>This section is a grab bag of links, clippings, and notes on any and all subjects (but mostly web stuff). Notes here are evergreen and are often updated or changed as I learn more about a subject.</p>
 
 				<Now />

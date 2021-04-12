@@ -26,9 +26,13 @@ const Blog = ({ posts }) => {
 					<React.Fragment key={post.slug}>
 						{i !== 0 && <hr className='dashed' />}
 						<Link href={post.slug} className='block unstyled no-hover'>
-							<article>
-								<h2 className='serif tighter' style={{fontSize: '1.4em'}}>{post.title}</h2>
-								<p className='color-caption'>{post.excerpt}</p>
+							<article className='post-preview align--flex-start'>
+								<div>
+									<h2 className='serif tighter' style={{fontSize: '1.4em'}}>{post.title}</h2>
+									<p className='color-caption mt-2'>{post.excerpt}</p>
+								</div>
+								
+								{post.image && <img src={`/img/${post.params.slug}/${post.image}`} alt="" />}
 							</article>
 						</Link>
 					</React.Fragment>

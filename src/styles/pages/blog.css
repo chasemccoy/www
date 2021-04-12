@@ -35,3 +35,23 @@
     line-height: 1.5;
   }
 }
+
+article.post-preview {
+  img {
+    height: 150px;
+    object-fit: cover;
+    margin-top: 12px;
+
+    @media (--viewport-tiny) {
+      width: 40%;
+      border-radius: 6px;
+      margin-left: 12px;
+      margin-top: 0;
+      height: 110px;
+    }
+  }
+
+  @media (--viewport-tiny) {
+    display: flex;
+  }
+}

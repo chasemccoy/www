@@ -24,7 +24,7 @@ const Now = () => {
       <h2 className='serif normal mt-24' style={{fontSize: '2rem'}}>
         Now
         <span className='sans ml-8 inline-block color-caption' style={{fontSize: '0.9rem', transform: 'translateY(-1px)'}}>
-          Three things that I’m currently focused on.
+          Three things I’m currently focused on.
         </span>
       </h2>
 
@@ -32,8 +32,8 @@ const Now = () => {
 
       <div className='grid mt-16' style={{'--gap': '12px','--item-min-size': '190px'}}>
         {now.map((item, i) => (
-          <div className='flex flex-column align--flex-start p-12' key={i} style={{background: bgColors[i], borderRadius: '12px'}}>
-            <div className='bold flex align--center justify-center smaller pb-2' style={{background: primaryColors[i], borderRadius: '50%', width: '1.8rem', height: '1.8rem'}}>{i + 1}</div>
+          <div className='p-12' key={i} style={{background: bgColors[i], borderRadius: '12px'}}>
+            <div className='bold flex align--center justify-center pb-2' style={{background: primaryColors[i], borderRadius: '50%', width: '1.8rem', height: '1.8rem'}}>{i + 1}</div>
             <p className='mt-12 hyphens smaller tighter'>{item}</p>
           </div>
         ))}
