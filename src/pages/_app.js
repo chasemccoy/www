@@ -13,6 +13,9 @@ const App = ({ Component, pageProps }) => {
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <link rel="stylesheet" href="/styles/shared.css" />
+        <link rel="prefetch" href="/style/blog.css" as="style" />
+        <link rel="prefetch" href="/style/homepage.css" as="style" />
+        <link rel="prefetch" href="/style/notes.css" as="style" />
         <link
           rel="alternate"
           type="application/rss+xml"
