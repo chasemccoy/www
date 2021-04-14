@@ -132,6 +132,9 @@ const App = ({ Component, pageProps }) => {
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <style dangerouslySetInnerHTML={{__html: fontStyles }} />
         <link rel="stylesheet" href="/styles/shared.css" />
+        <link rel="prefetch" href="/styles/blog.css" as="style" />
+        <link rel="prefetch" href="/styles/homepage.css" as="style" />
+        <link rel="prefetch" href="/styles/notes.css" as="style" />
         <link
           rel="alternate"
           type="application/rss+xml"
