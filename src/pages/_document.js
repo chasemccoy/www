@@ -138,6 +138,7 @@ class MyDocument extends Document {
           <link rel="prefetch" href="/styles/blog.css" as="style" />
           <link rel="prefetch" href="/styles/homepage.css" as="style" />
           <link rel="prefetch" href="/styles/notes.css" as="style" />
+          <meta name="twitter:dnt" content="on" />
         </Head>
         <body>
           <Main />
