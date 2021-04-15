@@ -141,6 +141,7 @@ class MyDocument extends Document {
           <meta name="twitter:dnt" content="on" />
         </Head>
         <body>
+          <script>0</script>
           <Main />
           <NextScript />
           
