@@ -149,6 +149,8 @@ class MyDocument extends Document {
 						src="https://platform.twitter.com/widgets.js"
 						charSet="utf-8"
 					/>
+
+          <script type="text/javascript">{' '}</script>
         </body>
       </Html>
     )
