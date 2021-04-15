@@ -6,9 +6,9 @@
 } */
 
 .blog-content {
-  font-family: Georgia, 'Times New Roman', Times, serif;
+  /* font-family: Georgia, 'Times New Roman', Times, serif;
   font-size: 1.05em;
-  line-height: 1.45;
+  line-height: 1.45; */
   /* hyphens: auto; */
 
   /* p + p {
@@ -16,24 +16,24 @@
     text-indent: 1.75em;
   } */
 
-  p > img {
+  /* p > img {
     margin-top: var(--flow-spacing);
     margin-bottom: var(--flow-spacing);
-  }
+  } */
 
-  p + p.caption {
+  /* p + p.caption {
     margin-top: calc(-1 * var(--flow-spacing) / 2) !important;
     text-indent: 0;
-  }
+  } */
 
-  p.caption {
+  /* p.caption {
     font-family: var(--font-body);
     margin-bottom: var(--flow-spacing);
-  }
+  } */
 
-  pre, code {
+  /* pre, code {
     line-height: 1.5;
-  }
+  } */
 }
 
 article.post-preview {
