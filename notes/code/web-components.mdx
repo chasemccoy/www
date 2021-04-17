@@ -8,9 +8,36 @@ tags:
   - web dev
 ---
 
+## Shadow DOM 
+
+For the longest time, if you wanted to use the shadow DOM (and thus scoped CSS styles) you needed JavaScript:
+
+```js
+const host = document.getElementById('host');
+const opts = {mode: 'open'};
+const shadowRoot = host.attachShadow(opts);
+const html = '<h1>Hello Shadow DOM</h1>';
+shadowRoot.innerHTML = html;
+```
+
+But with [declarative shadow DOM](https://developer.chrome.com/en/blog/new-in-chrome-90/#declarative), you can do all of this without JS:
+
+```html
+<host-element>
+  <template shadowroot="open">
+    <slot></slot>
+  </template>
+  <h2>Light content</h2>
+</host-element>
+```
+
+<Bookmark url='https://web.dev/declarative-shadow-dom/' />
+
+## Resources
+
 <Bookmark url='https://css-tricks.com/web-components-are-easier-than-you-think/' />
 
-https://twitter.com/matthewcp/status/1085595926100692994'
+https://twitter.com/matthewcp/status/1085595926100692994
 
 <Bookmark url='https://gist.github.com/matthewp/7aad10707e460ddf9d3cfe3f7f71241d' />
 

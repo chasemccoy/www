@@ -28,8 +28,8 @@ const Blog = ({ posts }) => {
 						<Link href={post.slug} className='block unstyled no-hover'>
 							<article className='post-preview align--flex-start'>
 								<div>
-									<h2 className='serif tighter' style={{fontSize: '1.4em'}}>{post.title}</h2>
-									<p className='color-caption mt-2'>{post.excerpt}</p>
+									<h2 className='tighter' style={{fontSize: '1.4em'}}>{post.title}</h2>
+									<p className='color-caption mt-4'>{post.excerpt}</p>
 								</div>
 								
 								{post.image && <img src={`/img/${post.params.slug}/${post.image}`} alt="" />}
