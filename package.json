@@ -1,7 +1,7 @@
 {
   "name": "www",
   "version": "1.0.0",
-  "description": "",
+  "description": "Chase McCoy's personal website and blog",
   "main": "index.js",
   "repository": {
     "type": "git",

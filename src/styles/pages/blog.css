@@ -5,16 +5,15 @@
   --color-caption: hsl(0, 13%, 60%);
 } */
 
-.blog-content {
+/* .blog-content {
   font-family: Georgia, 'Times New Roman', Times, serif;
   font-size: 1.05em;
   line-height: 1.45;
-  /* hyphens: auto; */
 
-  /* p + p {
+  p + p {
     margin-top: 2px;
     text-indent: 1.75em;
-  } */
+  }
 
   p > img {
     margin-top: var(--flow-spacing);
@@ -34,7 +33,7 @@
   pre, code {
     line-height: 1.5;
   }
-}
+} */
 
 article.post-preview {
   img {
