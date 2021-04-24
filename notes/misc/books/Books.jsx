@@ -131,7 +131,7 @@ const Books = () => {
 
 			<h2 className='marker mt-40'><span>Favorites</span></h2>
 
-      <div className='books-favorites grid mt-32' style={{'--gap': '24px','--item-min-size': '150px'}}>
+      <div className='books-favorites grid mt-32' style={{'--gap': '24px','--item-min-size': '180px'}}>
         {sortedFavorites.map(book => (
           <Book book={book} key={book.title} />
         ))}

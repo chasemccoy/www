@@ -217,25 +217,18 @@
   }
 }
 
-.two-column {
-  --min-width: 200px;
-  display: grid;
-  grid-gap: 2rem;
-
-  @supports (width: min(var(--min-width), 100%)) {
-    grid-template-columns: repeat(
-      auto-fit,
-      minmax(min(var(--min-width), 100%), 1fr)
-    );
-  }
-}
-
 .grid {
   --gap: 1rem;
   --item-min-size: 200px;
   display: grid;
   grid-gap: var(--gap);
-  grid-template-columns: repeat(auto-fit, minmax(min(var(--item-min-size), 100%), 1fr));
+
+  @supports (width: min(var(--min-width), 100%)) {
+    grid-template-columns: repeat(
+      auto-fit, 
+      minmax(min(var(--item-min-size), 100%), 1fr)
+    );
+  }
 }
 
 .horizontal-scroll {

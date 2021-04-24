@@ -4,7 +4,7 @@
 @custom-media --viewport-large (min-width: 1200px);
 
 :root {
-  --root-font-size: 17px;
+  --root-font-size: 18px;
   --root-line-height: 1.5;
 
   --color-gray--0: #fafafa;

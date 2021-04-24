@@ -30,7 +30,7 @@ const DesignSystems = () => {
 				</p>
 			</div> */}
 
-			<div className="two-column mt-32 smaller focus-areas">
+			<div className="grid mt-32 smaller focus-areas" style={{'--item-min-size': '250px', '--gap': '2rem'}}>
 				<div>
 					<Collab height="32px" />
 					<h3
