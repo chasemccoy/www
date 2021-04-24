@@ -98,20 +98,20 @@
 
 [data-section='blog'] {
   --section-color: var(--color-red);
-  --section-color-offset: rgba(255, 107, 107, 0.05);
+  --section-color-offset: var(--color-red-offset);
 }
 
 [data-section='notes'] {
   --section-color: var(--color-purple);
-  --section-color-offset: rgba(136, 136, 252, 0.05);
+  --section-color-offset: var(--color-purple-offset);
 }
 
 [data-section='books'] {
   --section-color: var(--color-blue);
-  --section-color-offset: rgba(116, 192, 252, 0.05);
+  --section-color-offset: var(--color-blue-offset);
 }
 
 [data-section='quotes'] {
   --section-color: var(--color-yellow);
-  --section-color-offset: rgba(252, 196, 25, 0.05);
+  --section-color-offset: var(--color-yellow-offset);
 }

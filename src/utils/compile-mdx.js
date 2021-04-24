@@ -3,6 +3,7 @@ import visit from 'unist-util-visit';
 import rehypeShiki from '@leafac/rehype-shiki';
 import gfm from 'remark-gfm';
 import remarkSlug from 'remark-slug';
+import smartypants from '@silvenon/remark-smartypants';
 import toc from 'mdast-util-toc';
 import toHast from 'mdast-util-to-hast';
 import toHtml from 'hast-util-to-html';
@@ -66,6 +67,7 @@ async function compileMdx(slug, githubFiles) {
 
 	const remarkPlugins = [
 		gfm, 
+		smartypants,
 		() => imageTransformer, 
 		() => getToC, 
 		remarkSlug,
