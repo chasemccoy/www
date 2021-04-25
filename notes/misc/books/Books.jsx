@@ -115,12 +115,6 @@ const Books = () => {
 
 	return (
 		<>
-			{/* <Metadata title='Books' />
-
-			<header className='prose mb-32'>
-				<h1><span className='smaller' style={{position: 'relative', top: '-1px'}}>📚</span> Books</h1>
-			</header> */}
-
 			<h2 className='marker mt-32'><span>Recently read</span></h2>
 
 			<div className='books-recents horizontal-scroll mt-24 pb-24'>
