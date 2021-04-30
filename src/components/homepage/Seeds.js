@@ -92,7 +92,7 @@ const SeedsPage = () => {
 				</div>
 
 				<p className="clear-right">
-					While product help to make our user’s work more correct and efficient,{' '}
+					While products help to make our user’s work more correct and efficient,{' '}
 					<span className="program">programs</span> make work more collaborative
 					and inclusive. These are the services and activities that the system
 					team provides to their users. I like to focus on three in particular:
