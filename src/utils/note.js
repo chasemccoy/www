@@ -2,17 +2,17 @@ import nodePath from 'path';
 import matter from 'gray-matter';
 import config from '../../next.config';
 import {
-	downloadMdxFileOrDirectory,
-	downloadFile,
-	downloadDirList
-} from './github';
+	getMdxFileOrDirectory,
+	getFile,
+	getDirList
+} from './fs';
 import {compileMdx} from './compile-mdx';
 
 async function getNote(slug) {
 	const notes = await getNotes();
 	const note = notes.find((note) => note.slug === slug);
 	if (!note) { return null}
-	const postFiles = await downloadMdxFileOrDirectory(
+	const postFiles = await getMdxFileOrDirectory(
 		`notes/${note.category}/${slug}`
 	);
 
@@ -24,7 +24,7 @@ async function getNote(slug) {
 }
 
 async function getCategory(category) {
-	const data = await downloadDirList(nodePath.join('notes', category));
+	const data = await getDirList(nodePath.join('notes', category));
 
 	if (!Array.isArray(data)) {
 		throw new TypeError('Something went wrong with the request to GitHub');
@@ -32,7 +32,7 @@ async function getCategory(category) {
 
 	const result = await Promise.all(
 		data.map(async ({path: fileDir}) => {
-			const fileData = await downloadDirList(fileDir);
+			const fileData = await getDirList(fileDir);
 
 			const file = Array.isArray(fileData)
 				? fileData.find(
@@ -46,7 +46,7 @@ async function getCategory(category) {
 				return null;
 			}
 
-			const postFile = await downloadFile(file.path, file.sha);
+			const postFile = await getFile(file.path, file.sha);
 
 			return {
 				...postFile,

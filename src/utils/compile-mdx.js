@@ -100,7 +100,14 @@ async function compileMdx(slug, githubFiles) {
 			];
 
 			return options;
-		}
+		},
+		esbuildOptions(options) {
+			options.loader = {
+				...options.loader,
+				'.js': 'jsx',
+			};
+			return options;
+		},
 	});
 
 	return {

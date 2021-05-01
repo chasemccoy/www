@@ -1,10 +1,10 @@
 import sortBy from 'sort-by';
 import matter from 'gray-matter';
 import {
-	downloadMdxFileOrDirectory,
-	downloadFile,
-	downloadDirList
-} from './github.js';
+	getMdxFileOrDirectory,
+	getFile,
+	getDirList
+} from './fs.js';
 import {compileMdx} from './compile-mdx.js';
 
 const CONTENT_PATH = 'posts'
@@ -24,7 +24,7 @@ const getParamsForPost = (slug, postDate) => {
 };
 
 async function getPost(slug) {
-	const postFiles = await downloadMdxFileOrDirectory(
+	const postFiles = await getMdxFileOrDirectory(
 		`${CONTENT_PATH}/${slug}`
 	);
 
@@ -34,7 +34,7 @@ async function getPost(slug) {
 }
 
 async function getPosts() {
-	const data = await downloadDirList(CONTENT_PATH);
+	const data = await getDirList(CONTENT_PATH);
 
 	if (!Array.isArray(data)) {
 		throw new TypeError();
@@ -42,7 +42,7 @@ async function getPosts() {
 
 	const result = await Promise.all(
 		data.map(async ({path: fileDir}) => {
-			const fileData = await downloadDirList(fileDir);
+			const fileData = await getDirList(fileDir);
 
 			const file = Array.isArray(fileData)
 				? fileData.find(
@@ -55,7 +55,7 @@ async function getPosts() {
 				return null;
 			}
 
-			const postFile = await downloadFile(file.path, file.sha);
+			const postFile = await getFile(file.path, file.sha);
 			return {
 				...postFile,
 				slug: fileDir.replace(`${CONTENT_PATH}/`, '').replace('.mdx', '')

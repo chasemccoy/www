@@ -17,16 +17,16 @@ async function isDirectory(path) {
 	return stats.isDirectory();
 }
 
-async function downloadMdxFileOrDirectory(mdxFileOrDirectory) {
+async function getMdxFileOrDirectory(mdxFileOrDirectory) {
 	const parentDir = nodePath.dirname(mdxFileOrDirectory);
-	const dirList = await downloadDirList(parentDir);
+	const dirList = await getDirList(parentDir);
 
 	const basename = nodePath.basename(mdxFileOrDirectory);
 	const potentials = dirList.filter(({name}) => name.startsWith(basename));
 
 	const file = potentials.find(({name}) => name.endsWith('mdx'));
 	if (file) {
-		const {content} = await downloadFile(file.path, file.sha);
+		const {content} = await getFile(file.path, file.sha);
 		// /content/about.mdx => entry is about.mdx, but compileMdx needs
 		// the entry to be called "/content/index.mdx" so we'll set it to that
 		// because this is the entry for this path
@@ -38,11 +38,11 @@ async function downloadMdxFileOrDirectory(mdxFileOrDirectory) {
 		return [];
 	}
 
-	return downloadDirectory(mdxFileOrDirectory);
+	return getDirectory(mdxFileOrDirectory);
 }
 
-async function downloadDirectory(dir) {
-	let dirList = await downloadDirList(dir);
+async function getDirectory(dir) {
+	let dirList = await getDirList(dir);
 	// Never download images, they're handled locally
 	dirList = dirList.filter(({path}) => !imageRegex.test(path));
 
@@ -50,11 +50,11 @@ async function downloadDirectory(dir) {
 		dirList.map(async ({path: fileDir, type, sha}) => {
 			switch (type) {
 				case 'file': {
-					return downloadFile(fileDir, sha);
+					return getFile(fileDir, sha);
 				}
 
 				case 'dir': {
-					return downloadDirectory(fileDir);
+					return getDirectory(fileDir);
 				}
 
 				default: {
@@ -67,11 +67,11 @@ async function downloadDirectory(dir) {
 	return result.flat();
 }
 
-async function downloadFile(path, sha) {
+async function getFile(path, sha) {
 	return getFileObject(path);
 }
 
-async function downloadDirList(dir) {
+async function getDirList(dir) {
 	const directory = await isDirectory(dir);
 
 	if (directory) {
@@ -89,8 +89,8 @@ async function downloadDirList(dir) {
 }
 
 export {
-	downloadMdxFileOrDirectory,
-	downloadDirectory,
-	downloadFile,
-	downloadDirList
+	getMdxFileOrDirectory,
+	getDirectory,
+	getFile,
+	getDirList
 };
