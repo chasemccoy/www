@@ -40,7 +40,7 @@ const Now = () => {
         ))}
       </div>
 
-      <p className='color-caption mt-12'>If any of these things sounds interesting to you and you’d like to chat about them, please <Link href="mailto:hi@chasem.co" style={{color: 'inherit'}}>send me a note!</Link></p>
+      <p className='color-caption mt-12 smaller tighter'>If any of these things sounds interesting to you and you’d like to chat about them, please <Link href="mailto:hi@chasem.co" style={{color: 'inherit'}}>send me a note!</Link></p>
     </React.Fragment>
   )
 }
