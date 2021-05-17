@@ -62,6 +62,7 @@
   --font-header: 'Ivar Text', Charter, Georgia, Times New Roman, serif;
 
   --section-color: var(--color-green);
+  --section-color-offset: var(--color-border);
 
   --shadow-small: 0 0 transparent, 0 0 transparent,
     0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
@@ -76,19 +77,11 @@
 [data-section='blog'] {
   --section-color: var(--color-red);
   --section-color-offset: var(--color-red-offset);
+  --section-color-rgb: 255, 107, 107;
 }
 
 [data-section='notes'] {
   --section-color: var(--color-purple);
   --section-color-offset: var(--color-purple-offset);
-}
-
-[data-section='books'] {
-  --section-color: var(--color-blue);
-  --section-color-offset: var(--color-blue-offset);
-}
-
-[data-section='quotes'] {
-  --section-color: var(--color-yellow);
-  --section-color-offset: var(--color-yellow-offset);
+  --section-color-rgb: 136, 136, 252;
 }

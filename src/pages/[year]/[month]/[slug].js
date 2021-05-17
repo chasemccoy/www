@@ -24,7 +24,7 @@ const BlogPost = ({ code, title, excerpt, date}) => {
 
 			<header>
 				<h1 className='tighter' style={{fontSize: '1.8em'}}>{title}</h1>
-				<p className='lead mt-4 color-caption'>{excerpt}</p>
+				<p className='lead mt-8 color-caption'>{excerpt}</p>
 				<p className='smaller mt-12 color-caption bold'>{formattedDate}</p>
 				<hr className='dashed my-16' />
 			</header>

@@ -76,11 +76,14 @@ async function getDirList(dir) {
 
 	if (directory) {
 		const dirents = await readdir(dir, {withFileTypes: true});
-		return dirents.map((dirent) => ({
-			name: dirent.name,
-			path: nodePath.join(dir, dirent.name),
-			type: dirent.isDirectory() ? 'dir' : 'file'
-		}));
+		return dirents
+			// filter out hidden files
+			.filter(dirent => !(/(^|\/)\.[^\/\.]/g).test(dirent.name))
+			.map((dirent) => ({
+				name: dirent.name,
+				path: nodePath.join(dir, dirent.name),
+				type: dirent.isDirectory() ? 'dir' : 'file'
+			}));
 	}
 
 	return {

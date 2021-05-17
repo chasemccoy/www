@@ -5,6 +5,7 @@
   --link-color: var(--color-text);
   --link-hover: var(--color-green);
   --color-border: #404040;
+  --link-underline-color: var(--color-border);
 
   --ascii-filter: invert();
 }
