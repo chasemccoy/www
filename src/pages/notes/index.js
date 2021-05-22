@@ -75,15 +75,7 @@ const Notes = ({ notes }) => {
           }}
         >
           Welcome to my{' '}
-          <Link
-            to='/notes/digital-gardens'
-            className='italic'
-            style={{
-              textDecoration: 'underline',
-              textDecorationColor: 'var(--section-color)',
-              textDecorationThickness: '2px',
-            }}
-          >
+          <Link to='/notes/digital-gardens' className='italic'>
             digital&nbsp;garden
           </Link>
           —a personal wiki of neat stuff I’ve collected during my travels on the
