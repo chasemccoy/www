@@ -299,3 +299,12 @@ h2.marker {
     margin-right: 0;
   }
 }
+
+.line-clamp {
+  --lines: 2;
+  overflow : hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: var(--lines);
+  -webkit-box-orient: vertical;
+}

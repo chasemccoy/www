@@ -11,24 +11,30 @@
   border-radius: 12px;
   overflow: hidden;
 
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     color: var(--color-text);
     background: var(--color-gray--200);
   }
 
   &.green {
-    background: #C4F0CB;
+    background: #c4f0cb;
 
     img {
-      mask-image: linear-gradient(to top, rgba(197, 241, 204, 0.1), rgba(197, 241, 204, 1) 80%);
-    }
-    
-    p {
-      color: #5D8966;
+      mask-image: linear-gradient(
+        to top,
+        rgba(197, 241, 204, 0.1),
+        rgba(197, 241, 204, 1) 80%
+      );
     }
 
-    &:hover, &:focus {
-      background: #A6E8B1;
+    p {
+      color: #5d8966;
+    }
+
+    &:hover,
+    &:focus {
+      background: #a6e8b1;
     }
   }
 
@@ -36,18 +42,23 @@
     background: #212529;
 
     img {
-      mask-image: linear-gradient(to top, rgba(33, 37, 41, 0.2), rgba(33, 37, 41, 1) 30%);
+      mask-image: linear-gradient(
+        to top,
+        rgba(33, 37, 41, 0.2),
+        rgba(33, 37, 41, 1) 30%
+      );
     }
 
     h2 {
       color: var(--color-gray--200);
     }
-    
+
     p {
       color: var(--color-gray--400);
     }
 
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
       background: black;
     }
   }
@@ -61,12 +72,4 @@
   &:last-child {
     margin-bottom: 0;
   }
-}
-
-.quote-card p:first-child {
-  overflow : hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 6;
-  -webkit-box-orient: vertical;
 }

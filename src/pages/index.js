@@ -90,7 +90,7 @@ const Index = ({ posts }) => {
 
         <p>
           This website is my home on the web, and in{' '}
-          <Link to='https://thecreativeindependent.com/people/laurel-schwulst-my-website-is-a-shifting-house-next-to-a-river-of-knowledge-what-could-yours-be/'>
+          <Link to='https://thecreativeindependent.com/essays/laurel-schwulst-my-website-is-a-shifting-house-next-to-a-river-of-knowledge-what-could-yours-be'>
             the words of Laurel Schwulst
           </Link>{' '}
           it is truly “a shifting house next to a river of knowledge.” I use
