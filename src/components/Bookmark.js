@@ -28,7 +28,7 @@ const Bookmark = ({ url }) => {
         </div>
       )}
 
-      <div className='px-12 py-8'>
+      <div className='px-12 py-8' style={{minWidth: 0}}>
         <div className='mb-8'>
           <p className='bold mb-4 line-clamp' style={{ '--lines': 1 }}>
             {data.title}
