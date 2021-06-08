@@ -17,10 +17,6 @@ const Blog = ({ posts }) => {
 
 			<Metadata title='Blog' description="What's on my mind, and links to some interesting stuff on the web." />
 			
-			{/* <header>
-				<h1>Blog</h1>
-			</header> */}
-
 			<main className='flow' style={{marginTop: '-4px'}}>
 				{posts.map((post, i) => (
 					<React.Fragment key={post.slug}>

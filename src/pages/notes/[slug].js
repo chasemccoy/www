@@ -36,7 +36,7 @@ const Category = ({ notes }) => {
 					<span className='color-gray--400 normal ml-4 mr-8'>/</span> 
 					<Folder 
 						className='inline color-purple mr-4' 
-						style={{width: '1em', position: 'relative', top: '-0.16em'}}
+						style={{width: '1em', position: 'relative', top: '-0.14em'}}
 					/>{categoryName}
 				</h1>
 			</header>
