@@ -16,7 +16,8 @@
     "start:css": "postcss src/styles/{shared,pages/*}.css -d public/styles -w",
     "build:css": "postcss src/styles/{shared,pages/*}.css -d public/styles  --verbose",
     "copy-images": "node ./bin/copy-images",
-    "generate-feed": "node .next/server/generate-feed"
+    "generate-feed": "node .next/server/generate-feed",
+    "lint": "yarn next lint"
   },
   "author": "Chase McCoy",
   "license": "GPL-3.0-only",
@@ -44,6 +45,8 @@
   "devDependencies": {
     "autoprefixer": "^10.2.5",
     "concurrently": "^6.0.2",
+    "eslint": "^7.28.0",
+    "eslint-config-next": "^11.0.0",
     "feed": "^4.2.2",
     "fs-extra": "^9.1.0",
     "postcss": "^8.2.13",
