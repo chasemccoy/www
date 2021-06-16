@@ -229,7 +229,7 @@ ol {
     background: var(--color-gray--100);
   }
 
-  img, .image {
+  img {
     width: 120px;
     height: 100%;
     object-fit: cover;
