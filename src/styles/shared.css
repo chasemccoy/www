@@ -41,9 +41,9 @@ a {
   color: var(--link-color);
   text-decoration: underline;
   transition: all 0.25s;
-  text-decoration-thickness: 2px;
+  text-decoration-thickness: var(--text-decoration-thickness, 2px);
   text-decoration-color: var(--link-underline-color);
-  text-underline-offset: 0.125rem;
+  text-underline-offset: var(--text-decoration-offset, 0.125rem);
 
   &:hover {
     color: var(--section-color, var(--link-hover));
@@ -229,7 +229,7 @@ ol {
     background: var(--color-gray--100);
   }
 
-  img {
+  img, .image {
     width: 120px;
     height: 100%;
     object-fit: cover;
