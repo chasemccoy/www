@@ -1,10 +1,9 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document'
-import Script from 'next/script'
 
 class MyDocument extends Document {
-  render() {    
+  render() {
     return (
-      <Html lang="en">
+      <Html lang='en'>
         <Head />
 
         <body>
@@ -12,12 +11,6 @@ class MyDocument extends Document {
           <script>0</script>
           <Main />
           <NextScript />
-          
-          <Script
-						src="https://platform.twitter.com/widgets.js"
-            strategy="lazyOnload"
-						charSet="utf-8"
-					/>
         </body>
       </Html>
     )

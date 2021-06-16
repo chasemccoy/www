@@ -1,10 +1,11 @@
-import React from 'react' 
+import React from 'react'
 import Head from 'next/head'
-import Nav from '../components/Nav';
-import Footer from '../components/Footer';
-import Metadata from '../components/Metadata';
-import Link from '../components/Link';
+import Nav from '../components/Nav'
+import Footer from '../components/Footer'
+import Metadata from '../components/Metadata'
+import Link from '../components/Link'
 import '../components/Logo'
+import Script from 'next/script'
 
 const fontStyles = `
 @font-face {
@@ -126,38 +127,46 @@ const fontStyles = `
 
 const App = ({ Component, pageProps }) => {
   return (
-    <div id="wrapper">
+    <div id='wrapper'>
       <Head>
-        <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <link
-          rel="alternate"
-          type="application/rss+xml"
-          title="Chase McCoy"
-          href="/feed.xml"
+        <meta charSet='utf-8' />
+        <meta
+          name='viewport'
+          content='width=device-width, initial-scale=1, shrink-to-fit=no'
         />
-        <link rel="icon" href="/favicon.ico" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-        <style dangerouslySetInnerHTML={{__html: fontStyles }} />
-        <link rel="stylesheet" href="/styles/shared.css" />
-        <link rel="prefetch" href="/styles/blog.css" as="style" />
-        <link rel="prefetch" href="/styles/homepage.css" as="style" />
-        <link rel="prefetch" href="/styles/notes.css" as="style" />
+        <link
+          rel='alternate'
+          type='application/rss+xml'
+          title='Chase McCoy'
+          href='/feed.xml'
+        />
+        <link rel='icon' href='/favicon.ico' />
+        <link rel='apple-touch-icon' href='/apple-touch-icon.png' />
+        <style dangerouslySetInnerHTML={{ __html: fontStyles }} />
+        <link rel='stylesheet' href='/styles/shared.css' />
+        <link rel='prefetch' href='/styles/blog.css' as='style' />
+        <link rel='prefetch' href='/styles/homepage.css' as='style' />
+        <link rel='prefetch' href='/styles/notes.css' as='style' />
       </Head>
 
+      <Script
+        src='https://platform.twitter.com/widgets.js'
+        strategy='lazyOnload'
+      />
+
       <Metadata />
-      
+
       <div>
-        <header id="site-header">
+        <header id='site-header'>
           <div className='wrapper mt-24'>
-            <Link to="/" className='inline-block logo'>
+            <Link to='/' className='inline-block logo'>
               <chsmc-logo></chsmc-logo>
             </Link>
             <Nav />
           </div>
         </header>
 
-        <main style={{paddingTop: '6px'}}>
+        <main style={{ paddingTop: '6px' }}>
           <Component {...pageProps} />
           <Footer />
         </main>
