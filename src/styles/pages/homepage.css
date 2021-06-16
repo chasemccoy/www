@@ -128,7 +128,7 @@ h3.subheader {
     align-self: center;
   }
 
-  img:not(.mobile-only) {
+  .image:not(.mobile-only) {
     display: none;
     padding-left: 32px;
 
@@ -137,7 +137,7 @@ h3.subheader {
     }
   }
 
-  img.mobile-only {
+  .image.mobile-only {
     margin-top: 16px;
     display: block;
     height: 200px;
