@@ -3,6 +3,18 @@ import sortBy from 'sort-by'
 import clsx from 'clsx'
 
 export const recents = [
+	{
+		title: 'Yearbook',
+		author: 'Seth Rogen',
+		url: 'https://bookshop.org/books/yearbook-9781984825407/9781984825407',
+		image: 'yearbook.jpg'
+	},
+	{
+		title: "Fallen Glory",
+		author: 'James Crawford',
+		url: 'https://bookshop.org/books/fallen-glory-the-lives-and-deaths-of-history-s-greatest-buildings/9781250118318',
+		image: 'fallen-glory.jpg'
+	},
   {
 		title: 'Circe',
 		author: 'Madeline Miller',
