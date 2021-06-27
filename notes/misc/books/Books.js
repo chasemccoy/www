@@ -4,6 +4,12 @@ import clsx from 'clsx'
 
 export const recents = [
 	{
+		title: 'Uncanny Valley',
+		author: 'Anna Wiener',
+		url: 'https://bookshop.org/books/uncanny-valley-a-memoir/9780374278014',
+		image: 'uncanny.jpg'
+	},
+	{
 		title: 'Yearbook',
 		author: 'Seth Rogen',
 		url: 'https://bookshop.org/books/yearbook-9781984825407/9781984825407',

@@ -48,7 +48,13 @@ const Now = () => {
           <div
             className='p-12'
             key={i}
-            style={{ background: bgColors[i], borderRadius: '12px' }}
+            style={{
+              background: bgColors[i],
+              borderRadius: '12px',
+              '--link-underline-color': 'var(--color-border)',
+              '--text-decoration-thickness': '1px',
+              '--text-decoration-offset': '0.08em'
+            }}
           >
             <div
               className='bold flex align--center justify-center pb-2'
