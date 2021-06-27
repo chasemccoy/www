@@ -7,8 +7,7 @@
   --color-border: #404040;
   --link-underline-color: var(--color-border);
   --text-decoration-thickness: 1px;
-  --text-decoration-offset: 0;
-
+  --text-decoration-offset: 0.08em;
   --ascii-filter: invert();
 }
 
