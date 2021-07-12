@@ -4,6 +4,12 @@ import clsx from 'clsx'
 
 export const recents = [
 	{
+		title: 'The Ministry for the Future',
+		author: 'Kim Stanley Robinson',
+		url: 'https://bookshop.org/books/the-ministry-for-the-future/9780316300131',
+		image: 'ministry.jpeg'
+	},
+	{
 		title: 'Uncanny Valley',
 		author: 'Anna Wiener',
 		url: 'https://bookshop.org/books/uncanny-valley-a-memoir/9780374278014',
