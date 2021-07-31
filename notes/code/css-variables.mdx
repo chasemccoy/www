@@ -1,7 +1,7 @@
 ---
 title: CSS variables
-excerpt: Also known as CSS custom properties
-modified: 2021-01-05
+excerpt: Custom properties and system variables baked into browsers.
+modified: 2021-06-03
 tags:
   - css
   - web dev
@@ -14,3 +14,45 @@ tags:
 ```
 
 Using the example above, `--bg-color` is the custom property and `var(--color-gray--100)` is the variable. [More info on this distinction here](https://webplatform.news/issues/2020-12-04).
+
+## System variables
+
+<Bookmark url='https://css-tricks.com/system-things' />
+
+### Colors
+
+<Bookmark url='https://blog.jim-nielsen.com/2021/css-system-colors' />
+
+- `Canvas`
+- `CanvasText`
+- `LinkText`
+- `VisitedText`
+- `ActiveText`
+- `ButtonFace`
+- `ButtonText`
+- `ButtonBorder`
+- `Field`
+- `FieldText`
+- `Highlight`
+- `HighlightText`
+- `Mark`
+- `MarkText`
+- `GrayText`
+
+### Fonts
+
+Lots of these are [specced](https://blog.jim-nielsen.com/2020/system-fonts-on-the-web/) but not implemented yet.
+
+- `serif`
+- `sans-serif`
+- `monospace`
+- `system-ui`
+- `cursive`
+- `fantasy`
+- `emoji`
+- `math`
+- `fangsong`
+- `ui-serif`
+- `ui-sans-serif`
+- `ui-monospace`
+- `ui-rounded`

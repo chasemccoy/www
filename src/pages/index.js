@@ -102,7 +102,12 @@ const Index = ({ posts }) => {
         <ContactMe />
       </div>
 
-      <Marker className='mt-40' style={{'--color-accent': 'var(--color-red)'}}>Now</Marker>
+      <Marker
+        className='mt-40'
+        style={{ '--color-accent': 'var(--color-red)' }}
+      >
+        Now
+      </Marker>
 
       <DesignSystems />
 
