@@ -157,7 +157,7 @@ const Notes = ({ notes }) => {
               <div className='ml-12' style={{ alignSelf: 'flex-end' }}>
                 <p className='smaller color-caption'>Recently read</p>
                 <p className='mt-8'>
-                  <span className='bold tighter' style={{ fontSize: '1.5rem' }}>
+                  <span className='bold tighter hyphens' style={{ fontSize: '1.5rem' }}>
                     {recentBook.title}
                   </span>
                   <br /> by {recentBook.author}
