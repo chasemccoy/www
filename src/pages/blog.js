@@ -46,23 +46,25 @@ const Blog = ({ posts }) => {
       <main className='flow' style={{ '--flow-spacing': '4em' }}>
         {years.map((year) => (
           <React.Fragment key={year}>
-            <h2 className='marker'>
+            <h2 className='marker mb-24'>
               <span>{year}</span>
             </h2>
 
-            {posts[year].map((post, i) => (
-              <div
-                className='flow'
-                style={{ '--flow-spacing': '1.5em' }}
-                key={post.slug}
-              >
-                {/* {i !== 0 && <hr className='dashed' />} */}
-                <Link href={post.slug} className='block unstyled no-hover'>
+            <div className='flex flex-column gap-40 mt-0'>
+              {posts[year].map((post, i) => (
+                <Link
+                  href={post.slug}
+                  className='block unstyled no-hover'
+                  key={i}
+                >
                   <article className='post-preview flex flex-column align--flex-start gap-16'>
                     <div className='flex align--flex-start gap-16'>
                       <DateLabel date={new Date(post.date)} />
                       <div>
-                        <h2 className='tighter' style={{ fontSize: '1.4em' }}>
+                        <h2
+                          className='tighter'
+                          style={{ fontSize: '1.4em', marginTop: '-4px' }}
+                        >
                           {post.title}
                         </h2>
                         <p className='color-caption mt-4'>{post.excerpt}</p>
@@ -77,8 +79,8 @@ const Blog = ({ posts }) => {
                     )}
                   </article>
                 </Link>
-              </div>
-            ))}
+              ))}
+            </div>
           </React.Fragment>
         ))}
       </main>
