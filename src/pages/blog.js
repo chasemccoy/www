@@ -11,7 +11,7 @@ const DateLabel = ({ date }) => {
 
   return (
     <div
-      className='bg-gray--100 px-12 py-4 flex flex-column align--center'
+      className='date-label bg-gray--100 px-12 py-4 flex flex-column align--center'
       style={{ borderRadius: '8px' }}
     >
       <span
@@ -54,7 +54,7 @@ const Blog = ({ posts }) => {
               {posts[year].map((post, i) => (
                 <Link
                   href={post.slug}
-                  className='block unstyled no-hover'
+                  className='block unstyled no-hover post-preview'
                   key={i}
                 >
                   <article className='post-preview flex flex-column align--flex-start gap-16'>
