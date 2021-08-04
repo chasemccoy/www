@@ -297,7 +297,7 @@ h2.marker {
 
   span {
     text-transform: uppercase;
-    color: var(--color-caption);
+    color: var(--color-accent, var(--color-caption));
   }
 
   &:after {
