@@ -15,7 +15,7 @@ const DateLabel = ({ date }) => {
       style={{ borderRadius: '8px' }}
     >
       <span
-        className='smaller uppercase color-caption'
+        className='smaller tighter uppercase color-caption'
         style={{ fontSize: '0.65em' }}
       >
         {month}
