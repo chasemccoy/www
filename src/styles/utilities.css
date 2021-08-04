@@ -1,4 +1,8 @@
 @each $space in 0, 1, 2, 4, 8, 12, 16, 20, 24, 32, 40, 48 {
+  .gap-$(space) {
+    gap: $(space)px;
+  }
+
   .m-$(space) {
     margin: $(space)px !important;
   }
@@ -64,11 +68,19 @@
   .color-gray--$(color) {
     color: var(--color-gray--$(color));
   }
+
+  .bg-gray--$(color) {
+    background: var(--color-gray--$(color));
+  }
 }
 
 @each $color in red, yellow, blue, green, purple, caption {
   .color-$(color) {
     color: var(--color-$(color));
+  }
+
+  .bg-$(color) {
+    background: var(--color-$(color));
   }
 }
 
@@ -277,21 +289,20 @@ a.button {
 h2.marker {
   display: grid;
   grid-template-columns: auto minmax(20px, 1fr);
+  gap: 12px;
   align-items: center;
   width: calc(100% + 16px);
   margin-right: -16px;
   font-size: 0.8rem;
 
   span {
-    color: var(--color-body-background);
-    background: var(--color-accent, var(--section-color));
-    border-radius: 999px;
-    padding: 2px 12px;
+    text-transform: uppercase;
+    color: var(--color-caption);
   }
 
   &:after {
     content: '';
-    border-top: 2px solid var(--color-accent, var(--section-color));
+    border-top: 2px dashed var(--color-gray--200);
   }
 
   @media (--viewport-tiny) {

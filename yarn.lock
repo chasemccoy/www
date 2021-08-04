@@ -2932,6 +2932,11 @@ jsprim@^1.2.2:
     array-includes "^3.1.2"
     object.assign "^4.1.2"
 
+just-group-by@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/just-group-by/-/just-group-by-1.1.1.tgz#aa069e68e424a6fbb1ad8969f28fd44b183f9061"
+  integrity sha512-6ibuFrVhs73uPgN3hgfsS9wWAs18KFd85OOnnopNGcPr1fyI7Xl22XAxWUz6/lKd0NvArpqPkIjOIi3jS7SwPA==
+
 kind-of@^6.0.0, kind-of@^6.0.2:
   version "6.0.3"
   resolved "https://registry.yarnpkg.com/kind-of/-/kind-of-6.0.3.tgz#07c05034a6c349fa06e24fa35aa76db4580ce4dd"

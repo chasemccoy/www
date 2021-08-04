@@ -2,19 +2,20 @@ article.post-preview {
   img {
     height: 150px;
     object-fit: cover;
-    margin: 12px 0 0;
+    margin: 0;
     width: 100%;
     border-radius: 6px;
 
     @media (--viewport-tiny) {
+      aspect-ratio: 1 / 1;
+      width: auto;
       max-width: 40%;
-      margin-left: 12px;
       margin-top: 0;
       height: 120px;
     }
   }
 
   @media (--viewport-tiny) {
-    display: flex;
+    flex-direction: row;
   }
 }

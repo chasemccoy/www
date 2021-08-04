@@ -29,6 +29,7 @@
     "clsx": "^1.1.1",
     "gray-matter": "^4.0.3",
     "hast-util-to-html": "^7.1.2",
+    "just-group-by": "^1.1.1",
     "mdast-util-to-hast": "^10.2.0",
     "mdast-util-toc": "^5.1.0",
     "mdx-bundler": "^3.4.1",
