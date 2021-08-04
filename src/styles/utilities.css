@@ -302,7 +302,7 @@ h2.marker {
 
   &:after {
     content: '';
-    border-top: 2px dashed var(--color-gray--200);
+    border-top: 2px dashed var(--color-border);
   }
 
   @media (--viewport-tiny) {
