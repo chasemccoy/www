@@ -3,6 +3,12 @@ import sortBy from 'sort-by'
 import clsx from 'clsx'
 
 export const recents = [
+	{
+    title: 'Kitchen Confidential',
+    author: 'Anthony Bourdain',
+    url: 'https://bookshop.org/books/kitchen-confidential-adventures-in-the-culinary-underbelly-9780060899226/9780060899226',
+    image: 'kitchen.jpg',
+  },
   {
     title: 'The Anthropocene Reviewed',
     author: 'John Green',
