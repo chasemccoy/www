@@ -4,6 +4,12 @@ import clsx from 'clsx'
 
 export const recents = [
 	{
+    title: 'Bird by Bird',
+    author: 'Anne Lamott',
+    url: 'https://bookshop.org/books/bird-by-bird-some-instructions-on-writing-and-life/9780385480017',
+    image: 'birdbybird.jpg',
+  },
+	{
     title: 'Kitchen Confidential',
     author: 'Anthony Bourdain',
     url: 'https://bookshop.org/books/kitchen-confidential-adventures-in-the-culinary-underbelly-9780060899226/9780060899226',
