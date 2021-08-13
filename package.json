@@ -32,7 +32,7 @@
     "just-group-by": "^1.1.1",
     "mdast-util-to-hast": "^10.2.0",
     "mdast-util-toc": "^5.1.0",
-    "mdx-bundler": "^3.4.1",
+    "mdx-bundler": "^5.0.0",
     "next": "^11.1.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -46,6 +46,7 @@
   "devDependencies": {
     "autoprefixer": "^10.2.5",
     "concurrently": "^6.0.2",
+    "esbuild": "^0.12.20",
     "eslint": "^7.28.0",
     "eslint-config-next": "^11.0.0",
     "feed": "^4.2.2",
