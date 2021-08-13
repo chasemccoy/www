@@ -102,6 +102,15 @@ blockquote {
   }
 }
 
+mark {
+  background-color: #fff2ac;
+  background-image: linear-gradient(to right, #ffe359 0%, #fff2ac 100%);
+  border-radius: .5em .3em;
+  box-decoration-break: clone;
+  margin: 0 -0.4em;
+  padding: .15em .4em;
+}
+
 ul {
   padding: 0;
   list-style-type: none;
