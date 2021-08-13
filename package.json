@@ -33,7 +33,7 @@
     "mdast-util-to-hast": "^10.2.0",
     "mdast-util-toc": "^5.1.0",
     "mdx-bundler": "^3.4.1",
-    "next": "^11.0.0",
+    "next": "^11.1.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "remark-gfm": "^1.0.0",
