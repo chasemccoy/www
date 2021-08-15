@@ -4,6 +4,7 @@ import { getMdxFileOrDirectory } from '../../utils/fs'
 import { compileMdx } from '../../utils/compile-mdx'
 import { getMDXComponent } from 'mdx-bundler/client'
 import TableOfContents from '../../components/TableOfContents'
+import Metadata from '../../components/Metadata'
 
 const StyleGuidePage = ({ code, toc }) => {
   React.useEffect(() => {
@@ -16,6 +17,8 @@ const StyleGuidePage = ({ code, toc }) => {
       <Head>
         <link rel="stylesheet" href="/styles/style-guide.css" />
       </Head>
+
+      <Metadata title='Style guide' />
 
       <h1 className='serif normal'>
         <span>Style Guide</span>
