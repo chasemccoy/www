@@ -86,3 +86,9 @@
   --section-color-offset: var(--color-purple-offset);
   --section-color-rgb: 136, 136, 252;
 }
+
+[data-section='style-guide'] {
+  --section-color: var(--color-yellow);
+  --section-color-offset: var(--color-yellow-offset);
+  --section-color-rgb: 252, 196, 25;
+}

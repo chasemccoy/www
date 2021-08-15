@@ -1,16 +1,17 @@
-import React from 'react';
+import React from 'react'
+import clsx from 'clsx'
 
-const TableOfContents = ({content}) => {
-	if (!content) {
-		return null;
-	}
+const TableOfContents = ({ content, className }) => {
+  if (!content) {
+    return null
+  }
 
-	return (
-		<div className='toc'>
-			<h2>Table of contents</h2>
-			<div dangerouslySetInnerHTML={{__html: content}} />
-		</div>
-	);
-};
+  return (
+    <div className={clsx('toc', className)}>
+      <h2 className='mt-0'>Table of contents</h2>
+      <div dangerouslySetInnerHTML={{ __html: content }} />
+    </div>
+  )
+}
 
-export default TableOfContents;
+export default TableOfContents
