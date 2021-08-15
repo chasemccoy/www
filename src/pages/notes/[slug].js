@@ -48,17 +48,17 @@ const Category = ({ notes }) => {
 	)
 }
 
-const Note = ({notes, note}) => {
-	if (Array.isArray(notes)) {
-		return <Category notes={notes} />
-	}
-
+const Note = ({notes, note = {}}) => {
 	const {code, title, excerpt, toc, category, slug} = note;
 	const Component = React.useMemo(() => getMDXComponent(code), [code]);
 
 	React.useEffect(() => {
     document.querySelector('body').dataset.section = 'notes'
   })
+
+	if (Array.isArray(notes)) {
+		return <Category notes={notes} />
+	}
 
 	return (
 		<article className="prose">

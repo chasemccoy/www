@@ -1,3 +1,8 @@
 {
-  "extends": "next"
+  "extends": "next/core-web-vitals",
+  "rules": {
+    "@next/next/no-css-tags": "off",
+    "@next/next/no-img-element": "off",
+    "react/jsx-no-target-blank": "off"
+  }
 }
