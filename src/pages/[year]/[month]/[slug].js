@@ -1,58 +1,65 @@
-import React from 'react';
+import React from 'react'
 import Head from 'next/head'
-import {getMDXComponent} from 'mdx-bundler/client';
-import {getPosts, getPost} from '../../../utils/post';
-import mdxComponents from '../../../utils/mdx-components';
-import { formatDate } from '../../../utils';
-import Metadata from '../../../components/Metadata';
+import { getMDXComponent } from 'mdx-bundler/client'
+import { getPosts, getPost } from '../../../utils/post'
+import mdxComponents from '../../../utils/mdx-components'
+import { formatDate } from '../../../utils'
+import Metadata from '../../../components/Metadata'
 
-const BlogPost = ({ code, title, excerpt, date}) => {
-	const Component = React.useMemo(() => getMDXComponent(code), [code]);
-	const formattedDate = formatDate(new Date(date))
+const BlogPost = ({ code, title, excerpt, date, image, slug }) => {
+  const Component = React.useMemo(() => getMDXComponent(code), [code])
+  const formattedDate = formatDate(new Date(date))
 
-	React.useEffect(() => {
+  React.useEffect(() => {
     document.querySelector('body').dataset.section = 'blog'
   })
 
-	return (
-		<article className='prose'>
-			<Head>
-        <link rel="stylesheet" href="/styles/blog.css" />
+  return (
+    <article className='prose'>
+      <Head>
+        <link rel='stylesheet' href='/styles/blog.css' />
       </Head>
 
-			<Metadata article title={title} description={excerpt} />
+      <Metadata
+        article
+        title={title}
+        description={excerpt}
+        image={image ? `/img/${slug}/${image}` : undefined}
+      />
 
-			<header>
-				<h1 className='tighter' style={{fontSize: '1.8em'}}>{title}</h1>
-				<p className='lead mt-8 color-caption'>{excerpt}</p>
-				<p className='smaller mt-12 color-caption bold'>{formattedDate}</p>
-				<hr className='dashed my-16' />
-			</header>
+      <header>
+        <h1 className='tighter' style={{ fontSize: '1.8em' }}>
+          {title}
+        </h1>
+        <p className='lead mt-8 color-caption'>{excerpt}</p>
+        <p className='smaller mt-12 color-caption bold'>{formattedDate}</p>
+        <hr className='dashed my-16' />
+      </header>
 
-			<div className="prose blog-content">
-				<Component components={mdxComponents} />
-			</div>
-		</article>
-	);
-};
+      <div className='prose blog-content'>
+        <Component components={mdxComponents} />
+      </div>
+    </article>
+  )
+}
 
 export const getStaticProps = async ({ params }) => {
-	const post = await getPost(params.slug)
-	
+  const post = await getPost(params.slug)
+
   return {
-    props: {...post}
+    props: { ...post },
   }
 }
 
 export const getStaticPaths = async () => {
-	const posts = await getPosts()
+  const posts = await getPosts()
 
-	return {
-		paths: posts.map(post => ({
-			params: {...post.params}
-		})),
-		fallback: false
-	}
+  return {
+    paths: posts.map((post) => ({
+      params: { ...post.params },
+    })),
+    fallback: false,
+  }
 }
 
-export default BlogPost;
+export default BlogPost
