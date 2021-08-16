@@ -47,11 +47,7 @@ h3.subheader {
 
 .marker.previously {
   --color-accent: var(--color-purple);
-  margin-bottom: -12px;
-
-  @media (--viewport-tiny) {
-    margin-bottom: 16px;
-  }
+  margin-bottom: 16px;
 }
 
 .homepage--design-systems .focus-areas {
@@ -381,13 +377,11 @@ h3.subheader {
 .previously {
   > * + * {
     margin-top: 0;
-    border-top: 1px dashed var(--color-border);
   }
 
   @media (--viewport-tiny) {
     > * + * { 
       margin-top: 24px;
-      border: none;
     }
   }
 }
