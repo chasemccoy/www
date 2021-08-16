@@ -37,7 +37,7 @@ h6 {
 }
 
 a {
-  --link-underline-color: rgba(var(--section-color-rgb), 0.3);
+  --link-underline-color: rgba(var(--section-color-rgb), 0.4);
   color: var(--link-color);
   text-decoration: underline;
   transition: all 0.25s;
