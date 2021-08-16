@@ -10,3 +10,8 @@
 [[redirects]]
   from = "/books"
   to = "/notes/books"
+
+[[plugins]]
+  package = "@netlify/plugin-lighthouse"
+  [plugins.inputs]
+    output_path = "lighthouse.html"
