@@ -1,20 +1,26 @@
-import React from 'react';
+import React from 'react'
 import NextLink from 'next/link'
 
-const Link = ({to, href, ...rest}) => {
-	let newTab = false 
+const Link = ({ to, href, ...rest }) => {
+  let newTab = false
+
+  if (to) {
+    newTab = to.startsWith('http')
+  }
 	
-	if (to) { newTab = to.startsWith('http') }
-	if (href) { newTab = href.startsWith('http') }
+  if (href) {
+    newTab = href.startsWith('http')
+  }
 
-	return (
-		<NextLink href={href || to}>
-			<a 
-				target={newTab ? `_blank` : undefined} 
-				{...rest} 
-			/>
-		</NextLink>
-	);
-};
+  return (
+    <NextLink href={href || to}>
+      <a
+        target={newTab ? `_blank` : undefined}
+        rel={newTab ? `noreferrer` : undefined}
+        {...rest}
+      />
+    </NextLink>
+  )
+}
 
-export default Link;
+export default Link
