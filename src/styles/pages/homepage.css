@@ -119,6 +119,7 @@ h3.subheader {
   }
 
   .image-container {
+    width: 100%;
     min-width: 42%;
     align-self: center;
   }
