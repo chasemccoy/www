@@ -10,6 +10,7 @@ import { toHtml } from 'hast-util-to-html'
 import * as shiki from 'shiki'
 import remarkEmbedder from '@remark-embedder/core'
 import oembedTransformer from '@remark-embedder/transformer-oembed'
+import nodePath from 'path'
 
 const getOEmbedConfig = ({ provider }) => {
   if (provider.provider_name === 'Twitter') {
@@ -24,6 +25,7 @@ const getOEmbedConfig = ({ provider }) => {
 }
 
 async function compileMdx(path, slug) {
+	path = nodePath.resolve(path)
   let tocData = null
 
   const imageTransformer = () => {

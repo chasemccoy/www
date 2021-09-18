@@ -2,7 +2,6 @@ import sortBy from 'sort-by'
 import matter from 'gray-matter'
 import { getFile, getDirList, isDirectory } from './fs.js'
 import { compileMdx } from './compile-mdx.js'
-import nodePath from 'path'
 
 const CONTENT_PATH = 'posts'
 
@@ -25,9 +24,8 @@ async function getPost(slug) {
   const path = isDir
     ? `${CONTENT_PATH}/${slug}/index.mdx`
     : `${CONTENT_PATH}/${slug}.mdx`
-  const resolvedPath = nodePath.resolve(path)
 
-  const { code, frontmatter } = await compileMdx(resolvedPath, slug)
+  const { code, frontmatter } = await compileMdx(path, slug)
   frontmatter.date = new Date(frontmatter.date).toISOString()
   return { slug, code, ...frontmatter }
 }

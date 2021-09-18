@@ -17,9 +17,8 @@ async function getNote(slug) {
   const path = isDir
     ? `${CONTENT_PATH}/${note.category}/${slug}/index.mdx`
     : `${CONTENT_PATH}/${note.category}/${slug}.mdx`
-  const resolvedPath = nodePath.resolve(path)
 
-  const { code, frontmatter, toc } = await compileMdx(resolvedPath, slug)
+  const { code, frontmatter, toc } = await compileMdx(path, slug)
   if (frontmatter.modified) {
     frontmatter.modified = new Date(frontmatter.modified).toISOString()
   }

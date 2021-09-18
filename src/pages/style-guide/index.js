@@ -1,6 +1,5 @@
 import React from 'react'
 import Head from 'next/head'
-import { getMdxFileOrDirectory } from '../../utils/fs'
 import { compileMdx } from '../../utils/compile-mdx'
 import { getMDXComponent } from 'mdx-bundler/client'
 import TableOfContents from '../../components/TableOfContents'
@@ -12,6 +11,7 @@ const StyleGuidePage = ({ code, toc }) => {
   })
 
   const Component = React.useMemo(() => getMDXComponent(code), [code])
+  
   return (
     <div className='prose'>
       <Head>
@@ -36,8 +36,7 @@ const StyleGuidePage = ({ code, toc }) => {
 }
 
 export const getStaticProps = async (context) => {
-  const files = await getMdxFileOrDirectory(`src/pages/style-guide`)
-  const { code, toc } = await compileMdx('style-guide', files)
+  const { code, toc } = await compileMdx('src/pages/style-guide/index.mdx')
 
   return {
     props: { code, toc },
