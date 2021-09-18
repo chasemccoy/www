@@ -179,7 +179,7 @@ const Books = () => {
 
       <div
         className='grid mt-32'
-        style={{ '--gap': '24px', '--item-min-size': '180px' }}
+        style={{ '--gap': '24px', '--item-min-size': '150px' }}
       >
         {sortedFavorites.map((book) => (
           <Book book={book} key={book.title} />
