@@ -1,25 +1,25 @@
 import React from 'react'
 import Markdown from 'react-markdown'
 
-const Image = (props) => {
-  if (props.title) {
+const Image = ({title, alt, ...rest}) => {
+  if (title) {
     return (
       <figure>
-        <img {...props} />
+        <img alt={alt || title} {...rest} />
         <figcaption className='image-caption sans'>
           <Markdown
             disallowedElements={['p']}
             unwrapDisallowed
             linkTarget='_blank'
           >
-            {props.title}
+            {title}
           </Markdown>
         </figcaption>
       </figure>
     )
   }
 
-  return <img {...props} />
+  return <img alt={alt || title} {...rest} />
 }
 
 export default Image

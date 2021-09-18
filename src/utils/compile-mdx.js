@@ -1,4 +1,4 @@
-import { bundleMDX } from 'mdx-bundler'
+import { bundleMDXFile } from 'mdx-bundler'
 import { visit } from 'unist-util-visit'
 import rehypeShiki from '@leafac/rehype-shiki'
 import gfm from 'remark-gfm'
@@ -23,25 +23,7 @@ const getOEmbedConfig = ({ provider }) => {
   return null
 }
 
-async function compileMdx(slug, githubFiles) {
-  const indexRegex = new RegExp(`${slug}\\/index.mdx?$`)
-  const indexFile = githubFiles.find(({ path }) => indexRegex.test(path))
-  if (!indexFile) {
-    throw new Error(`${slug} has no index.mdx file.`)
-  }
-
-  const rootDir = indexFile.path.replace(/index.mdx?$/, '')
-
-  const relativeFiles = githubFiles.map(({ path, content }) => ({
-    path: path.replace(rootDir, './'),
-    content,
-  }))
-
-  const files = arrayToObject(relativeFiles, {
-    keyName: 'path',
-    valueName: 'content',
-  })
-
+async function compileMdx(path, slug) {
   let tocData = null
 
   const imageTransformer = () => {
@@ -85,8 +67,7 @@ async function compileMdx(slug, githubFiles) {
     ],
   ]
 
-  const { frontmatter, code } = await bundleMDX(indexFile.content, {
-    files,
+  const { frontmatter, code } = await bundleMDXFile(path, {
     xdmOptions(options) {
       options.remarkPlugins = [
         ...(options.remarkPlugins ?? []),
@@ -114,21 +95,6 @@ async function compileMdx(slug, githubFiles) {
     frontmatter,
     toc: tocData,
   }
-}
-
-function arrayToObject(array, { keyName, valueName }) {
-  const object = {}
-  for (const item of array) {
-    const key = item[keyName]
-    if (typeof key !== 'string') {
-      throw new TypeError(`${keyName} of item must be a string`)
-    }
-
-    const value = item[valueName]
-    object[key] = value
-  }
-
-  return object
 }
 
 export { compileMdx }
