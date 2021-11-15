@@ -2,13 +2,10 @@ import React from 'react'
 import Link from './Link'
 
 const now = [
+  <><Link to='/2021/08/systems-as-knowledge-graphs'>The future of design system documentation</Link> and knowledge graphs in general.</>,
   <>
     <Link to='/notes/web-communities'>Web communities</Link> and carving out
     spaces online that are respectful of our time and attention.
-  </>,
-  <>
-    Building multi-tiered design systems that scale from building blocks to full
-    experiences.
   </>,
   <>Learning how to play guitar 🎸🙂 Send me your favorite tutorials!</>,
 ]
