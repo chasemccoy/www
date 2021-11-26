@@ -94,7 +94,7 @@ if (typeof window !== "undefined") {
           }
         }
 
-        time += 0.02;
+        time += 0.01;
         window.requestAnimationFrame(startAnimation);
       };
 

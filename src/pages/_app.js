@@ -5,7 +5,9 @@ import Footer from '../components/Footer'
 import Metadata from '../components/Metadata'
 import Link from '../components/Link'
 import '../components/Logo'
+import '../components/Iridescence'
 import Script from 'next/script'
+import { useRouter } from 'next/router'
 
 const fontStyles = `
 @font-face {
@@ -126,6 +128,8 @@ const fontStyles = `
 `
 
 const App = ({ Component, pageProps }) => {
+  const { pathname } = useRouter()
+
   return (
     <div id='wrapper'>
       <Head>
@@ -155,6 +159,10 @@ const App = ({ Component, pageProps }) => {
       />
 
       <Metadata />
+
+      <chsmc-iridescence
+        class={pathname === '/' ? 'dark' : undefined}
+      ></chsmc-iridescence>
 
       <div>
         <header id='site-header'>
