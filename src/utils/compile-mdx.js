@@ -1,4 +1,4 @@
-import { bundleMDXFile } from 'mdx-bundler'
+import { bundleMDX } from 'mdx-bundler'
 import { visit } from 'unist-util-visit'
 import rehypeShiki from '@leafac/rehype-shiki'
 import gfm from 'remark-gfm'
@@ -69,7 +69,8 @@ async function compileMdx(path, slug) {
     ],
   ]
 
-  const { frontmatter, code } = await bundleMDXFile(path, {
+  const { frontmatter, code } = await bundleMDX({
+    file: path,
     xdmOptions(options) {
       options.remarkPlugins = [
         ...(options.remarkPlugins ?? []),
