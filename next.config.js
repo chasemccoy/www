@@ -16,5 +16,6 @@ module.exports = {
 
     return config;
   },
+  repo: 'chasemccoy/www',
 	noteCategories: ['code', 'design-systems', 'misc'],
 }
