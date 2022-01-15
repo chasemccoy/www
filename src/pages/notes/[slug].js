@@ -75,9 +75,8 @@ const Note = ({ data }) => {
         <p className='lead mt-8 color-caption'>{excerpt}</p>
         <p className='smaller mt-16'>
           <Link
-            className='unstyled bold'
+            className='unstyled bold color-section'
             to={`/notes/${category}`}
-            style={{ color: 'var(--section-color)' }}
             css={`
               color: var(--section-color);
               &:hover {

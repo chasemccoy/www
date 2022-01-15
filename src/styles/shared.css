@@ -12,6 +12,7 @@
 
 html {
   overflow-y: scroll;
+  line-height: var(--root-line-height);
 }
 
 body {
