@@ -291,8 +291,6 @@ h2.marker {
   grid-template-columns: auto minmax(20px, 1fr);
   gap: 12px;
   align-items: center;
-  width: calc(100% + 16px);
-  margin-right: -16px;
   font-size: 0.8rem;
 
   span {

@@ -15,3 +15,6 @@
   package = "@netlify/plugin-lighthouse"
   [plugins.inputs]
     output_path = "lighthouse.html"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
