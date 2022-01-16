@@ -16,9 +16,10 @@ main {
     --layout-padding: 40px;
   }
 
-  & article {
+  & .content {
     max-width: var(--article-width);
     min-width: 0;
+    flex-grow: 1;
   }
 }
 

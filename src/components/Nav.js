@@ -28,14 +28,7 @@ const Item = ({ href, children, className, ...rest }) => (
 
 const Separator = () => (
   <li style={{ display: 'flex', alignItems: 'center' }}>
-    <span
-      style={{
-        width: '1px',
-        background: 'var(--color-gray--300)',
-        height: '60%',
-        margin: '0 8px',
-      }}
-    />
+    <span className='separator' />
   </li>
 )
 
@@ -64,13 +57,13 @@ const Nav = () => {
 
         <Separator />
 
-        <Item href='/notes/code'>#css</Item>
+        <Item href='/notes/code'>#code</Item>
 
         <Item href='/notes/design-systems'>#design systems</Item>
 
-				<Item href='/notes/books'>#books</Item>
+        <Item href='/notes/books'>#books</Item>
 
-				<Item href='/notes/quotes'>#quotes</Item>
+        <Item href='/notes/quotes'>#quotes</Item>
       </ul>
     </nav>
   )

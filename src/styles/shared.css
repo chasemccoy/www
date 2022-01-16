@@ -4,7 +4,7 @@
 @import "./utilities.css";
 @import "./layout.css";
 @import "./article.css";
-@import "./sidebar.css";
+@import "./header.css";
 
 :focus:not(:focus-visible) {
   outline: none;
@@ -32,8 +32,9 @@ h5,
 h6 {
   color: var(--color-header);
 
-  a {
-    --link-color: var(--color-header);
+  &.unstyled {
+    font-size: 1rem;
+    line-height: var(--root-line-height);
   }
 }
 
@@ -42,19 +43,19 @@ a {
   color: var(--link-color);
   text-decoration: underline;
   transition: all 0.25s;
-  text-decoration-thickness: var(--text-decoration-thickness, 2px);
+  text-decoration-thickness: var(--text-decoration-thickness, 1px);
   text-decoration-color: var(--link-underline-color);
-  text-underline-offset: var(--text-decoration-offset, 0.125rem);
+  text-underline-offset: var(--text-decoration-offset, 0.05rem);
 
   &:hover {
     color: var(--link-hover);
   }
 
-  .unstyled {
+  &.unstyled {
     text-decoration: none;
   }
 
-  .underlined {
+  &.underlined {
     text-decoration: underline;
   }
 }
@@ -97,7 +98,7 @@ blockquote {
     left: 0;
     top: 0;
     width: 6px;
-    background: var(--section-color);
+    background: var(--color-accent);
     border-radius: 3px;
     height: 100%;
   }

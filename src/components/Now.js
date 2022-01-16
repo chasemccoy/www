@@ -10,12 +10,6 @@ const now = [
   <>Learning how to play guitar 🎸🙂 Send me your favorite tutorials!</>,
 ]
 
-const bgColors = [
-  'var(--color-blue-offset--100)',
-  'var(--color-green-offset--100)',
-  'var(--color-yellow-offset--100)',
-]
-
 const primaryColors = [
   'var(--color-blue)',
   'var(--color-green)',
@@ -38,16 +32,13 @@ const Now = () => {
       <hr className='mt-4 dashed' />
 
       <div
-        className='grid mt-16'
-        style={{ '--gap': '12px', '--item-min-size': '190px' }}
+        className='grid mt-16 gap-24'
+        style={{ '--gap': '24px', '--item-min-size': '190px' }}
       >
         {now.map((item, i) => (
           <div
-            className='p-12'
             key={i}
             style={{
-              background: bgColors[i],
-              borderRadius: '12px',
               '--link-underline-color': 'var(--color-border)',
               '--text-decoration-thickness': '1px',
               '--text-decoration-offset': '0.08em'

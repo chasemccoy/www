@@ -1,10 +1,11 @@
 import React from 'react'
 
-const Page = ({ children, tableOfContents, header, ...rest }) => {
+const Page = ({ article = false, children, tableOfContents, header, ...rest }) => {
+  const Container = article ? 'article' : 'div'
   return (
     <React.Fragment>
       <div className='wrapper'>
-        <article>
+        <Container className='content'>
           {header && (
             <div
               className='mb-12'
@@ -13,6 +14,7 @@ const Page = ({ children, tableOfContents, header, ...rest }) => {
                 fontSize: '0.8rem',
                 fontFamily: 'var(--font-code)',
                 color: 'var(--color-gray--400)',
+                '--link-color': 'var(--color-gray--400)',
               }}
             >
               {header}
@@ -29,7 +31,7 @@ const Page = ({ children, tableOfContents, header, ...rest }) => {
           >
             {children}
           </div>
-        </article>
+        </Container>
 
         {tableOfContents && <div id='sidebar'>{tableOfContents}</div>}
       </div>

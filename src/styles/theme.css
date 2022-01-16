@@ -22,6 +22,8 @@
     --root-font-size: 18px;
   }
 
+  --color-accent: #D4915E;
+
   --color-green: #51cf66;
   --color-red: #ff6b6b;
   --color-yellow: #fcc419;
@@ -29,7 +31,7 @@
   --color-purple: #8888fc;
 
   --link-color: var(--color-text);
-  --link-hover: #D4915E;
+  --link-hover: var(--accent-color);
   --color-body-background: #F8F8F7;
   --color-text: var(--color-gray--700);
   --color-header: var(--color-gray--700);

@@ -26,29 +26,21 @@ const Category = ({ notes }) => {
     <Page
       className='prose'
       header={
-        <header>
-          <h1
-            style={{
-              fontSize: '.75rem',
-              fontFamily: 'var(--font-code)',
-            }}
-            className='normal'
-          >
-            <Link to='/' className='unstyled normal color-gray--400'>
-              ~
-            </Link>
-            <span className='color-gray--400 normal mx-4'>/</span>
-            <Link to='/notes' className='unstyled color-gray--400'>
-              Notes
-            </Link>
-            <span className='color-gray--400 normal ml-4 mr-8'>/</span>
-            <Folder
-              className='inline color-purple mr-4'
-              style={{ width: '1em', position: 'relative', top: '-0.14em' }}
-            />
-            {categoryName}
-          </h1>
-        </header>
+        <h1 className='normal' style={{color: 'inherit'}}>
+          <Link to='/' className='unstyled normal'>
+            ~
+          </Link>
+          <span className='normal mx-4'>/</span>
+          <Link to='/notes' className='unstyled'>
+            Notes
+          </Link>
+          <span className='normal ml-4 mr-8'>/</span>
+          <Folder
+            className='inline mr-4'
+            style={{ width: '1em', position: 'relative', top: '-0.14em' }}
+          />
+          {categoryName}
+        </h1>
       }
     >
       <Head>
@@ -56,6 +48,7 @@ const Category = ({ notes }) => {
       </Head>
 
       <Metadata title={categoryName} />
+
       <div>
         <NoteList notes={notes} />
       </div>
@@ -73,6 +66,7 @@ const Note = ({ data, portal: Portal }) => {
 
   return (
     <Page
+      article
       className='prose'
       tableOfContents={<TableOfContents content={toc} />}
       header={

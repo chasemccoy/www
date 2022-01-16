@@ -3,13 +3,12 @@ import Link from './Link'
 
 const NoteList = ({ notes }) => {
   return (
-    <div className='flow' style={{'--flow-spacing': '0.75em'}}>
+    <div className='flow' style={{'--flow-spacing': '0.5em'}}>
       {notes.map(({ slug, title, excerpt }, i) => (
         <React.Fragment key={slug}>
           {i !== 0 && <hr className='dashed' />}
-          <Link to={`/notes/${slug}`} className='block unstyled no-hover'>
-            <p className='bold'>{title}</p>
-            <p>{excerpt}</p>
+          <Link to={`/notes/${slug}`} className='block unstyled smaller tighter'>
+            {title}
           </Link>
         </React.Fragment>
       ))}

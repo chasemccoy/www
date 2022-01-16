@@ -97,7 +97,7 @@ const Notes = ({ notes }) => {
 
         <div
           className='mt-24 mb-16 grid'
-          style={{ '--item-min-size': '225px' }}
+          style={{ '--item-min-size': '250px' }}
         >
           <FeaturedCard
             title='Code'
@@ -158,7 +158,10 @@ const Notes = ({ notes }) => {
               <div className='ml-12' style={{ alignSelf: 'flex-end' }}>
                 <p className='smaller color-caption'>Recently read</p>
                 <p className='mt-8'>
-                  <span className='bold tighter hyphens' style={{ fontSize: '1.5rem' }}>
+                  <span
+                    className='bold tighter hyphens'
+                    style={{ fontSize: '1.5rem' }}
+                  >
                     {recentBook.title}
                   </span>
                   <br /> by {recentBook.author}
@@ -190,21 +193,32 @@ const Notes = ({ notes }) => {
 
         <Marker className='mt-48'>All notes</Marker>
 
-        {Object.keys(notes).map((category, i) => (
-          <div className={clsx(i > 0 ? 'mt-48' : 'mt-24')} key={category}>
-            <h2 className='mt-0'>
-              <Link to={`/notes/${category}`} className='unstyled'>
-                <Folder
-                  className='inline mr-8 color-caption'
-                  style={{ width: '1em', position: 'relative', top: '-0.18em' }}
-                />
-                {capitalize(category).replace('-', ' ')}
-              </Link>
-            </h2>
+        <div
+          className='multi-column mt-24'
+          style={{
+            '--columns': 2,
+            '--min-column-width': '12em',
+            '--gap': '32px',
+          }}
+        >
+          {Object.keys(notes).map((category, i) => (
+            <div className='mb-48' key={category}>
+              <h2 className='mt-0 unstyled'>
+                <Link to={`/notes/${category}`} className='unstyled flex align-center'>
+                  <Folder
+                    className='inline mr-8 color-caption'
+                    style={{
+                      width: '1.25em',
+                    }}
+                  />
+                  {capitalize(category).replace('-', ' ')}
+                </Link>
+              </h2>
 
-            <NoteList notes={notes[category]} />
-          </div>
-        ))}
+              <NoteList notes={notes[category]} />
+            </div>
+          ))}
+        </div>
       </div>
     </Page>
   )
