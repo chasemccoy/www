@@ -9,6 +9,10 @@
     color: var(--color-gray--500);
   }
 
+  a[href="/"] {
+    color: var(--color-text);
+  }
+
   a:hover {
     background: rgba(0, 0, 0, 0.05);
     color: currentColor;
@@ -40,7 +44,7 @@
     margin-top: 2px;
 
     @media (--viewport-small) {
-      margin-left: 0;
+      margin-left: 8px;
       margin-top: 0;
     }
   }

@@ -3,13 +3,13 @@ import sortBy from 'sort-by'
 import clsx from 'clsx'
 
 export const recents = [
-	{
+  {
     title: 'Bird by Bird',
     author: 'Anne Lamott',
     url: 'https://bookshop.org/books/bird-by-bird-some-instructions-on-writing-and-life/9780385480017',
     image: 'birdbybird.jpg',
   },
-	{
+  {
     title: 'Kitchen Confidential',
     author: 'Anthony Bourdain',
     url: 'https://bookshop.org/books/kitchen-confidential-adventures-in-the-culinary-underbelly-9780060899226/9780060899226',
@@ -148,7 +148,7 @@ const Book = ({ book, small = false, ...rest }) => (
         style={{ boxShadow: 'var(--shadow-medium)', width: '100%', margin: 0 }}
       />
 
-      <div className='mt-8' style={{ height: '5em' }}>
+      <div className='mt-8' style={{ height: '6em' }}>
         <h3 className={clsx('serif', !small && 'larger', 'mb-2', 'mt-4')}>
           {book.title}
         </h3>

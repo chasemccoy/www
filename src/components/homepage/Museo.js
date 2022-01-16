@@ -15,19 +15,19 @@ const Museo = (props) => {
 						</Link>
 					</h1>
 
-					<p className="lead mt-0 color-gray--400">
+					<p className="lead mt-0">
 						A visual search engine for free-to-use images from some of the best
 						museums in the world.
 					</p>
 				</div>
 
 				<div className="mt-0">
-					<p className="smaller color-gray--400 mt-8">
+					<p className="smaller mt-8">
 						<Link to="https://museo.app">Museo</Link> is an open source web
 						interface that connects you with the the following institutions:
 					</p>
 
-					<ul className="smaller color-gray--400 mt-12">
+					<ul className="smaller mt-12">
 						<li>
 							<Link to="https://www.artic.edu/archival-collections/explore-the-collection">
 								The Art Institute of Chicago
@@ -48,7 +48,7 @@ const Museo = (props) => {
 						</li>
 					</ul>
 
-					<p className="smaller color-gray--400 mt-12">
+					<p className="smaller mt-12">
 						This tool is possible because these institutions provide open and
 						free API access to their collections. All of the images you find
 						with Museo are completely free-to-use, so download away.

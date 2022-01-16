@@ -26,7 +26,7 @@ const Category = ({ notes }) => {
     <Page
       className='prose'
       header={
-        <h1 className='normal' style={{color: 'inherit'}}>
+        <h1 className='normal' style={{ color: 'inherit' }}>
           <Link to='/' className='unstyled normal'>
             ~
           </Link>
@@ -67,31 +67,20 @@ const Note = ({ data, portal: Portal }) => {
   return (
     <Page
       article
+      showCanvas
       className='prose'
       tableOfContents={<TableOfContents content={toc} />}
       header={
-        <p className='smaller mt-16'>
-          <Link
-            className='unstyled bold color-section'
-            to={`/notes/${category}`}
-            css={`
-              color: var(--section-color);
-              &:hover {
-                text-decoration: underline;
-              }
-            `}
-          >
-            <Folder
-              className='inline mr-4'
-              style={{ position: 'relative', top: '-0.2em' }}
-            />
+        <div className='flex space-between'>
+          <Link className='unstyled color-section flex align-center' to={`/notes/${category}`}>
+            <Folder className='inline mr-6' />
             {capitalize(category.replace('-', ' '))}
           </Link>
 
-          <Link className='ml-16' to={githubLink(slug, category)}>
+          <Link className='ml-16 unstyled' to={githubLink(slug, category)}>
             Edit on GitHub
           </Link>
-        </p>
+        </div>
       }
     >
       <Head>

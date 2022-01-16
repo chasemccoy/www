@@ -1,4 +1,4 @@
-@each $space in 0, 1, 2, 4, 8, 12, 16, 20, 24, 32, 40, 48 {
+@each $space in 0, 1, 2, 4, 6, 8, 12, 16, 20, 24, 32, 40, 48 {
   .gap-$(space) {
     gap: $(space)px;
   }
@@ -295,12 +295,13 @@ h2.marker {
 
   span {
     text-transform: uppercase;
-    color: var(--color-accent, var(--color-caption));
+    color: var(--color-caption);
+    font-family: 'Founders Mono';
   }
 
   &:after {
     content: '';
-    border-top: 2px dashed var(--color-border);
+    border-top: 1px dashed var(--color-border);
   }
 
   @media (--viewport-tiny) {

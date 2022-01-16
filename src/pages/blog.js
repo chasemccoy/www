@@ -12,12 +12,12 @@ const DateLabel = ({ date }) => {
 
   return (
     <div
-      className='date-label bg-gray--100 px-12 py-4 flex flex-column align--center'
+      className='date-label bg-gray--200 px-12 pt-6 pb-4 flex flex-column align--center'
       style={{ borderRadius: '8px' }}
     >
       <span
         className='smaller tighter uppercase color-caption'
-        style={{ fontSize: '0.65em' }}
+        style={{ fontSize: '0.6em' }}
       >
         {month}
       </span>

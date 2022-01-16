@@ -23,7 +23,7 @@ const BlogPost = ({
   })
 
   return (
-    <Page article className='prose' header={formattedDate}>
+    <Page article showCanvas className='prose' header={formattedDate}>
       <Head>
         <link rel='stylesheet' href='/styles/blog.css' />
       </Head>

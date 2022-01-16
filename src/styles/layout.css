@@ -1,9 +1,9 @@
 :root {
-  --article-width: 800px;
+  --article-width: 780px;
   --sidebar-width: 140px;
   --article-padding: 16px;
   --layout-gap: 24px;
-  --layout-padding: 16px;
+  --layout-padding: 8px;
 }
 
 main {

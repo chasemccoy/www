@@ -81,6 +81,24 @@ const fontStyles = `
   font-style: normal;
   font-display: swap;
 }
+
+@font-face {
+  font-family: 'Pitch Sans';
+  src: url('/fonts/pitch/PitchSans-Regular.woff2') format('woff2'),
+      url('/fonts/pitch/PitchSans-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Founders Mono';
+  src: url('/fonts/founders/founders-grotesk-mono-regular.woff2') format('woff2'),
+      url('/fonts/founders/founders-grotesk-mono-regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
 `
 
 const App = ({ Component, pageProps }) => {

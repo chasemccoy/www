@@ -26,7 +26,7 @@ const Index = ({ posts }) => {
   })
 
   return (
-    <Page>
+    <Page showCanvas>
       <Head>
         <link rel='stylesheet' href='/styles/homepage.css' />
       </Head>

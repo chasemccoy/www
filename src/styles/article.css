@@ -53,7 +53,7 @@ hr {
 
   &.dashed {
     background: none;
-    border-top: 1px dashed var(--color-gray--200);
+    border-top: 1px dashed var(--color-border);
     height: 1px;
   }
 

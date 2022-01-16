@@ -1,6 +1,13 @@
 import React from 'react'
 
-const Page = ({ article = false, children, tableOfContents, header, ...rest }) => {
+const Page = ({
+  article = false,
+  showCanvas = false,
+  children,
+  tableOfContents,
+  header,
+  ...rest
+}) => {
   const Container = article ? 'article' : 'div'
   return (
     <React.Fragment>
@@ -8,25 +15,29 @@ const Page = ({ article = false, children, tableOfContents, header, ...rest }) =
         <Container className='content'>
           {header && (
             <div
-              className='mb-12'
+              className='mb-8'
               style={{
                 padding: '0 var(--article-padding)',
-                fontSize: '0.8rem',
+                fontSize: '0.9rem',
                 fontFamily: 'var(--font-code)',
-                color: 'var(--color-gray--400)',
-                '--link-color': 'var(--color-gray--400)',
+                color: 'var(--color-caption)',
+                '--link-color': 'var(--color-caption)',
               }}
             >
               {header}
             </div>
           )}
           <div
-            style={{
-              background: 'white',
-              borderRadius: '12px',
-              boxShadow: 'var(--shadow-large)',
-              padding: 'var(--article-padding)',
-            }}
+            style={
+              showCanvas
+                ? {
+                    background: 'white',
+                    borderRadius: '12px',
+                    boxShadow: 'var(--shadow-large)',
+                    padding: 'var(--article-padding)',
+                  }
+                : { padding: 'var(--article-padding)' }
+            }
             {...rest}
           >
             {children}
