@@ -4,7 +4,7 @@ import Link from '../Link'
 const Pico = () => {
   return (
     <div className='homepage--pico pr-24 pt-16 mobile-breakout'>
-      <div className='text-container py-24 prose smaller color-gray--500'>
+      <div className='text-container py-24 px-24 prose smaller color-gray--500'>
         <img
           src='/images/pico-logo.png'
           alt='Pico logo'

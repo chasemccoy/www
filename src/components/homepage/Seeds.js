@@ -4,7 +4,7 @@ import {Seeds} from '../Icon';
 
 const SeedsPage = () => {
 	return (
-		<div className="homepage--seeds mobile-breakout">
+		<div className="homepage--seeds">
 			<section className="prose hyphens">
 				<Link className="unstyled" to="https://seeds.sproutsocial.com">
 					<h2 className="mt-0">
