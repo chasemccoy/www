@@ -10,6 +10,7 @@ import { capitalize } from '../../utils'
 import config from '../../../next.config'
 import Metadata from '../../components/Metadata'
 import NoteList from '../../components/NoteList'
+import Page from '../../components/Page'
 
 const githubLink = (slug, category) =>
   `https://github.com/${config.repo}/edit/main/notes/${category}/${slug}.mdx`
@@ -22,57 +23,59 @@ const Category = ({ notes }) => {
   })
 
   return (
-    <div className='prose'>
+    <Page
+      className='prose'
+      header={
+        <header>
+          <h1
+            style={{
+              fontSize: '.75rem',
+              fontFamily: 'var(--font-code)',
+            }}
+            className='normal'
+          >
+            <Link to='/' className='unstyled normal color-gray--400'>
+              ~
+            </Link>
+            <span className='color-gray--400 normal mx-4'>/</span>
+            <Link to='/notes' className='unstyled color-gray--400'>
+              Notes
+            </Link>
+            <span className='color-gray--400 normal ml-4 mr-8'>/</span>
+            <Folder
+              className='inline color-purple mr-4'
+              style={{ width: '1em', position: 'relative', top: '-0.14em' }}
+            />
+            {categoryName}
+          </h1>
+        </header>
+      }
+    >
       <Head>
         <link rel='stylesheet' href='/styles/notes.css' />
       </Head>
 
       <Metadata title={categoryName} />
-
-      <header>
-        <h1 style={{ fontSize: '1.5rem' }}>
-          <Link to='/' className='unstyled color-gray--400'>
-            ~
-          </Link>
-          <span className='color-gray--400 normal mx-4'>/</span>
-          <Link to='/notes' className='unstyled color-gray--400'>
-            Notes
-          </Link>
-          <span className='color-gray--400 normal ml-4 mr-8'>/</span>
-          <Folder
-            className='inline color-purple mr-4'
-            style={{ width: '1em', position: 'relative', top: '-0.14em' }}
-          />
-          {categoryName}
-        </h1>
-      </header>
-
-      <main>
+      <div>
         <NoteList notes={notes} />
-      </main>
-    </div>
+      </div>
+    </Page>
   )
 }
 
-const Note = ({ data }) => {
+const Note = ({ data, portal: Portal }) => {
   const { code, title, excerpt, toc, category, slug } = data
-	const Component = React.useMemo(() => getMDXComponent(code), [code])
+  const Component = React.useMemo(() => getMDXComponent(code), [code])
 
   React.useEffect(() => {
     document.querySelector('body').dataset.section = 'notes'
   })
 
   return (
-    <article className='prose'>
-      <Head>
-        <link rel='stylesheet' href='/styles/notes.css' />
-      </Head>
-
-      <Metadata title={title} description={excerpt} />
-
-      <header className='flow'>
-        <h1>{title}</h1>
-        <p className='lead mt-8 color-caption'>{excerpt}</p>
+    <Page
+      className='prose'
+      tableOfContents={<TableOfContents content={toc} />}
+      header={
         <p className='smaller mt-16'>
           <Link
             className='unstyled bold color-section'
@@ -95,23 +98,33 @@ const Note = ({ data }) => {
             Edit on GitHub
           </Link>
         </p>
-        <TableOfContents content={toc} />
+      }
+    >
+      <Head>
+        <link rel='stylesheet' href='/styles/notes.css' />
+      </Head>
+
+      <Metadata title={title} description={excerpt} />
+
+      <header className='flow'>
+        <h1>{title}</h1>
+        <p className='lead mt-8 color-caption'>{excerpt}</p>
         <hr className='dashed' />
       </header>
 
-      <main className='prose'>
+      <div className='prose'>
         <Component components={mdxComponents} />
-      </main>
-    </article>
+      </div>
+    </Page>
   )
 }
 
 const NotePage = ({ notes, note = {} }) => {
-	if (Array.isArray(notes)) {
+  if (Array.isArray(notes)) {
     return <Category notes={notes} />
   }
 
-	return <Note data={note} />
+  return <Note data={note} />
 }
 
 export const getStaticProps = async ({ params }) => {

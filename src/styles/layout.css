@@ -1,35 +1,48 @@
-#wrapper {
+:root {
+  --article-width: 800px;
+  --sidebar-width: 140px;
+  --article-padding: 32px;
+  --layout-gap: 24px;
   --layout-padding: 16px;
-  --max-width: 752px;
+}
 
-  > div > main {
-    margin-top: 24px;
-    max-width: var(--max-width);
-    margin-left: auto;
-    margin-right: auto;
-    padding: 16px var(--layout-padding) 40px;
-  }
-
-  > div > header {
-    margin-bottom: 0;
-  }
+main {
+  margin-top: 24px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 16px var(--layout-padding) 40px;
 
   @media (--viewport-tiny) {
     --layout-padding: 40px;
   }
+
+  & article {
+    max-width: var(--article-width);
+    min-width: 0;
+  }
+
+  & #sidebar {
+    margin-top: 56px;
+    width: var(--sidebar-width);
+    min-width: var(--sidebar-width);
+    display: none;
+
+    @media (--viewport-small) {
+      display: block;
+    }
+  }
 }
 
-#site-header {
-  border-bottom: 1px solid var(--color-border);
-  position: relative;
+main > .wrapper {
   display: flex;
-  align-items: center;
+  gap: var(--layout-gap);
+  justify-content: center;
 }
 
-#site-header .wrapper {
-  max-width: var(--max-width);
-  flex-grow: 1;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 0 var(--layout-padding);
+footer {
+  margin: 0 auto;
+
+  @media (--viewport-medium) {
+    max-width: calc(var(--article-width) + var(--layout-gap) + var(--sidebar-width));
+  }
 }

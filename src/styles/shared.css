@@ -38,7 +38,7 @@ h6 {
 }
 
 a {
-  --link-underline-color: rgba(var(--section-color-rgb), 0.4);
+  --link-underline-color: rgba(0, 0, 0, 0.15);
   color: var(--link-color);
   text-decoration: underline;
   transition: all 0.25s;
@@ -47,7 +47,7 @@ a {
   text-underline-offset: var(--text-decoration-offset, 0.125rem);
 
   &:hover {
-    color: var(--section-color, var(--link-hover));
+    color: var(--link-hover);
   }
 
   .unstyled {
@@ -183,18 +183,17 @@ ol {
 
 .toc {
   h2 {
-    font-size: 0.9rem;
+    font-size: 0.75rem;
   }
 
   > div {
-    margin-top: 8px; 
+    margin-top: 4px; 
   }
 
   > div > ul {
     list-style-type: none;
-    margin: 8px 0 8px 4px;
-    padding: 0 0 0 12px;
-    border-left: 1px solid var(--color-border);
+    margin: 0;
+    padding: 0;
     font-size: 0.75em;
   }
 
@@ -220,6 +219,7 @@ ol {
 
   a {
     text-decoration: none;
+    --link-color: var(--color-gray--500);
   }
 
   a.selected {

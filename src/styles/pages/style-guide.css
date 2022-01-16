@@ -1,9 +1,5 @@
 h1 {
-  /* background: var(--color-yellow);
-  border: 2px solid black; */
   font-style: italic;
-  /* border-radius: 8px;
-  padding: 0.5em; */
   font-size: 3rem !important;
 
   &:after {
@@ -22,10 +18,6 @@ h1 {
       var(--color-yellow) 100%
     );
   }
-
-  /* @media (--viewport-tiny) {
-    font-size: 3.5rem !important;
-  } */
 
   span:first-child {
     flex-shrink: 0;

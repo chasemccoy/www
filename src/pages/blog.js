@@ -5,6 +5,7 @@ import { getPosts } from '../utils/post'
 import { getDateComponents } from '../utils'
 import Link from '../components/Link'
 import Metadata from '../components/Metadata'
+import Page from '../components/Page'
 
 const DateLabel = ({ date }) => {
   const { month, day } = getDateComponents(date, { monthFormat: 'short' })
@@ -33,7 +34,7 @@ const Blog = ({ posts }) => {
   const years = Object.keys(posts).reverse()
 
   return (
-    <div className='flow'>
+    <Page className='flow'>
       <Head>
         <link rel='stylesheet' href='/styles/blog.css' />
       </Head>
@@ -43,7 +44,7 @@ const Blog = ({ posts }) => {
         description="What's on my mind, and links to some interesting stuff on the web."
       />
 
-      <main className='flow' style={{ '--flow-spacing': '4em' }}>
+      <div className='flow' style={{ '--flow-spacing': '4em' }}>
         {years.map((year) => (
           <React.Fragment key={year}>
             <h2 className='marker mb-24'>
@@ -83,8 +84,8 @@ const Blog = ({ posts }) => {
             </div>
           </React.Fragment>
         ))}
-      </main>
-    </div>
+      </div>
+    </Page>
   )
 }
 

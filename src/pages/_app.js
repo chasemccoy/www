@@ -11,50 +11,6 @@ import { useRouter } from 'next/router'
 
 const fontStyles = `
 @font-face {
-  font-family: 'GT America';
-  font-style: normal;
-  font-weight: normal;
-  font-display: swap;
-  src: url('/fonts/gt-america/GTAmerica-Regular.woff2')
-      format('woff2'),
-    url('/fonts/gt-america/GTAmerica-Regular.woff')
-      format('woff');
-}
-
-@font-face {
-  font-family: 'GT America';
-  font-style: italic;
-  font-weight: normal;
-  font-display: swap;
-  src: url('/fonts/gt-america/GTAmerica-RegularItalic.woff2')
-      format('woff2'),
-    url('/fonts/gt-america/GTAmerica-RegularItalic.woff')
-      format('woff');
-}
-
-@font-face {
-  font-family: 'GT America';
-  font-style: normal;
-  font-weight: bold;
-  font-display: swap;
-  src: url('/fonts/gt-america/GTAmerica-Bold.woff2')
-      format('woff2'),
-    url('/fonts/gt-america/GTAmerica-Bold.woff')
-      format('woff');
-}
-
-@font-face {
-  font-family: 'GT America';
-  font-style: italic;
-  font-weight: bold;
-  font-display: swap;
-  src: url('/fonts/gt-america/GTAmerica-BoldItalic.woff2')
-      format('woff2'),
-    url('/fonts/gt-america/GTAmerica-BoldItalic.woff')
-      format('woff');
-}
-
-@font-face {
   font-family: 'Ivar Text';
   src: url('/fonts/ivar-text/IvarText-Regular.woff2') format('woff2'),
     url('/fonts/ivar-text/IvarText-Regular.woff') format('woff');
@@ -131,7 +87,7 @@ const App = ({ Component, pageProps }) => {
   const { pathname } = useRouter()
 
   return (
-    <div id='wrapper'>
+    <div>
       <Head>
         <meta charSet='utf-8' />
         <meta
@@ -160,21 +116,12 @@ const App = ({ Component, pageProps }) => {
 
       <Metadata />
 
-      <chsmc-iridescence
-        class={pathname === '/' ? 'dark' : undefined}
-      ></chsmc-iridescence>
-
       <div>
         <header id='site-header'>
-          <div className='wrapper mt-24'>
-            <Link to='/' className='inline-block logo'>
-              <chsmc-logo></chsmc-logo>
-            </Link>
-            <Nav />
-          </div>
+          <Nav />
         </header>
 
-        <main style={{ paddingTop: '6px' }}>
+        <main>
           <Component {...pageProps} />
           <Footer />
         </main>

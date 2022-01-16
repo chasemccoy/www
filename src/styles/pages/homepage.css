@@ -1,4 +1,4 @@
-:root {
+/* :root {
   --color-body-background: #222;
   --color-text: var(--color-gray--300);
   --color-header: var(--color-gray--200);
@@ -9,7 +9,7 @@
   --text-decoration-thickness: 1px;
   --text-decoration-offset: 0.08em;
   --ascii-filter: invert();
-}
+} */
 
 h3.subheader {
   font-size: .7rem; 

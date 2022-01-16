@@ -1,48 +1,4 @@
-@font-face {
-  font-family: 'GT America';
-  font-style: normal;
-  font-weight: normal;
-  font-display: swap;
-  src: url('/fonts/gt-america/GTAmerica-Regular.woff2')
-      format('woff2'),
-    url('/fonts/gt-america/GTAmerica-Regular.woff')
-      format('woff');
-}
-
-@font-face {
-  font-family: 'GT America';
-  font-style: italic;
-  font-weight: normal;
-  font-display: swap;
-  src: url('/fonts/gt-america/GTAmerica-RegularItalic.woff2')
-      format('woff2'),
-    url('/fonts/gt-america/GTAmerica-RegularItalic.woff')
-      format('woff');
-}
-
-@font-face {
-  font-family: 'GT America';
-  font-style: normal;
-  font-weight: bold;
-  font-display: swap;
-  src: url('/fonts/gt-america/GTAmerica-Bold.woff2')
-      format('woff2'),
-    url('/fonts/gt-america/GTAmerica-Bold.woff')
-      format('woff');
-}
-
-@font-face {
-  font-family: 'GT America';
-  font-style: italic;
-  font-weight: bold;
-  font-display: swap;
-  src: url('/fonts/gt-america/GTAmerica-BoldItalic.woff2')
-      format('woff2'),
-    url('/fonts/gt-america/GTAmerica-BoldItalic.woff')
-      format('woff');
-}
-
-@font-face {
+/* @font-face {
   font-family: 'Ivar Text';
   src: url('/fonts/ivar-text/IvarText-Regular.woff2') format('woff2'),
     url('/fonts/ivar-text/IvarText-Regular.woff') format('woff');
@@ -112,4 +68,4 @@
   font-weight: normal;
   font-style: normal;
   font-display: swap;
-}
+} */

@@ -5,8 +5,16 @@ import { getPosts, getPost } from '../../../utils/post'
 import mdxComponents from '../../../utils/mdx-components'
 import { formatDate } from '../../../utils'
 import Metadata from '../../../components/Metadata'
+import Page from '../../../components/Page'
 
-const BlogPost = ({ code, title, excerpt, date, image, slug }) => {
+const BlogPost = ({
+  code,
+  title,
+  excerpt,
+  date,
+  image,
+  slug,
+}) => {
   const Component = React.useMemo(() => getMDXComponent(code), [code])
   const formattedDate = formatDate(new Date(date))
 
@@ -15,7 +23,7 @@ const BlogPost = ({ code, title, excerpt, date, image, slug }) => {
   })
 
   return (
-    <article className='prose'>
+    <Page className='prose' header={<p>{formattedDate}</p>}>
       <Head>
         <link rel='stylesheet' href='/styles/blog.css' />
       </Head>
@@ -32,14 +40,14 @@ const BlogPost = ({ code, title, excerpt, date, image, slug }) => {
           {title}
         </h1>
         <p className='lead mt-8 color-caption'>{excerpt}</p>
-        <p className='smaller mt-12 color-caption bold'>{formattedDate}</p>
+
         <hr className='dashed my-16' />
       </header>
 
       <div className='prose blog-content'>
         <Component components={mdxComponents} />
       </div>
-    </article>
+    </Page>
   )
 }
 

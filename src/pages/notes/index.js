@@ -2,6 +2,7 @@ import React from 'react'
 import Head from 'next/head'
 import { getNotes } from '../../utils/note'
 import Link from '../../components/Link'
+import Page from '../../components/Page'
 import Marker from '../../components/Marker'
 import { capitalize } from '../../utils'
 import { Folder } from '../../components/Icon'
@@ -47,7 +48,7 @@ const Notes = ({ notes }) => {
   })
 
   return (
-    <div className='prose'>
+    <Page className='prose'>
       <Head>
         <link rel='stylesheet' href='/styles/notes.css' />
       </Head>
@@ -83,7 +84,7 @@ const Notes = ({ notes }) => {
         </p>
       </header>
 
-      <main className='mt-8'>
+      <div className='mt-8'>
         <p>
           This section is a grab bag of links, clippings, and notes on any and
           all subjects (but mostly web stuff). Notes here are evergreen and are
@@ -204,8 +205,8 @@ const Notes = ({ notes }) => {
             <NoteList notes={notes[category]} />
           </div>
         ))}
-      </main>
-    </div>
+      </div>
+    </Page>
   )
 }
 

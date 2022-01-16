@@ -1,11 +1,3 @@
-:root {
-  /* --color-gray--100: hsl(240, 80%, 97%);
-  --color-gray--200: hsl(240, 80%, 96%);
-  --color-gray--300: hsl(240, 80%, 94%);
-  --color-border: hsl(240, 80%, 95%);
-  --color-caption: hsl(240, 15%, 60%); */
-}
-
 .featured-card {
   background: var(--color-gray--100);
   border-radius: 12px;
