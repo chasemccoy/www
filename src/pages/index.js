@@ -1,6 +1,7 @@
 import React from 'react'
 import Head from 'next/head'
 import Link from '../components/Link'
+import Page from '../components/Page'
 import { Globe, Stripe } from '../components/Icon'
 import DesignSystems from '../components/homepage/DesignSystems'
 import Marker from '../components/Marker'
@@ -25,7 +26,7 @@ const Index = ({ posts }) => {
   })
 
   return (
-    <>
+    <Page>
       <Head>
         <link rel='stylesheet' href='/styles/homepage.css' />
       </Head>
@@ -120,7 +121,7 @@ const Index = ({ posts }) => {
         <Seeds />
         <Pico />
       </div>
-    </>
+    </Page>
   )
 }
 

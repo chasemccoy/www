@@ -3,7 +3,7 @@ import React from 'react';
 export const Components = (props) => (
 	<svg
 		xmlns="http://www.w3.org/2000/svg"
-		fill="var(--color-gray--300)"
+		fill="var(--color-gray--700)"
 		viewBox="0 0 59 39"
 		{...props}
 	>
@@ -14,7 +14,7 @@ export const Components = (props) => (
 export const Documentation = (props) => (
 	<svg
 		xmlns="http://www.w3.org/2000/svg"
-		fill="var(--color-gray--300)"
+		fill="var(--color-gray--700)"
 		viewBox="0 0 89.07 88.58"
 		{...props}
 	>
@@ -33,7 +33,7 @@ export const Documentation = (props) => (
 export const Pattern = (props) => (
 	<svg
 		xmlns="http://www.w3.org/2000/svg"
-		fill="var(--color-gray--300)"
+		fill="var(--color-gray--700)"
 		viewBox="0 0 87.5 92.3"
 		{...props}
 	>
@@ -46,7 +46,7 @@ export const Collab = (props) => (
 	<svg
 		xmlns="http://www.w3.org/2000/svg"
 		viewBox="0 0 88.49 74.11"
-		fill="var(--color-gray--300)"
+		fill="var(--color-gray--700)"
 		{...props}
 	>
 		<path

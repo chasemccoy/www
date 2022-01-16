@@ -20,17 +20,21 @@ main {
     max-width: var(--article-width);
     min-width: 0;
   }
+}
 
-  & #sidebar {
-    margin-top: 56px;
-    width: var(--sidebar-width);
-    min-width: var(--sidebar-width);
-    display: none;
+#sidebar {
+  margin-top: 56px;
+  width: var(--sidebar-width);
+  min-width: var(--sidebar-width);
+  display: none;
 
-    @media (--viewport-small) {
-      display: block;
-    }
+  @media (--viewport-small) {
+    display: block;
   }
+}
+
+#sidebar:empty {
+  display: none;
 }
 
 main > .wrapper {

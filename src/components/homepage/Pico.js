@@ -8,8 +8,8 @@ const Pico = () => {
         <img
           src='/images/pico-logo.png'
           alt='Pico logo'
-          width='72'
           className='mb-40'
+          style={{width: '72px'}}
         />
         <p>
           Pico Digital Film was a fun little camera app for iOS designed by{' '}

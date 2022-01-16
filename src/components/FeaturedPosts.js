@@ -10,14 +10,7 @@ const FeaturedPosts = ({ posts }) => {
         {posts.slice(0, 4).map((post, i) => (
           <React.Fragment key={i}>
             {Boolean(i) && <span className='color-gray--500 mx-8'>×</span>}
-            <Link
-              to={post.slug}
-              style={{
-                textDecorationColor: 'var(--color-gray--600)',
-              }}
-            >
-              {post.title}
-            </Link>
+            <Link to={post.slug}>{post.title}</Link>
           </React.Fragment>
         ))}
       </p>

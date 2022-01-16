@@ -20,7 +20,7 @@ h3.subheader {
 .avatar {
   width: 9em;
   height: 9em;
-  border: 1px dashed var(--color-gray--600);
+  border: 1px dashed var(--color-gray--300);
   padding: 8px;
   border-radius: 50%;
   overflow: hidden;
@@ -37,8 +37,8 @@ h3.subheader {
     overflow: hidden;
     background: repeating-linear-gradient(
       -55deg,
-      var(--color-gray--600),
-      var(--color-gray--600) 0.5px,
+      var(--color-gray--300),
+      var(--color-gray--300) 0.5px,
       var(--color-body-background) 0.5px,
       var(--color-body-background) 3px
     );
@@ -55,11 +55,10 @@ h3.subheader {
 
   h3 {
     font-size: 1.1em;
-    color: var(--color-gray--300);
   }
 
   p {
-    color: var(--color-gray--400);
+    color: var(--color-gray--500);
   }
 
   @media (--viewport-small) {
@@ -151,33 +150,9 @@ h3.subheader {
 }
 
 .homepage--seeds {
-  background: #2f2f2f;
-  --padding: 16px;
-
-  a {
-    color: inherit;
-  }
-
-  a:hover {
-    color: var(--color-gray--400);
-  }
-
-  @media (--viewport-tiny) {
-    border-radius: 12px;
-    --padding: 24px;
-  }
+  --padding: 0;
 
   section:first-child {
-    padding: 48px var(--padding) 0;
-
-    @media (--viewport-tiny) {
-      padding: 24px var(--padding) 0;
-    }
-
-    p.lead a {
-      text-decoration-color: var(--color-gray--600);
-    }
-
     h2 {
       font-size: 2em !important;
       display: inline-flex;
@@ -215,9 +190,9 @@ h3.subheader {
   section:last-child {
     --flow-spacing: 0.75em;
     font-size: 0.9em;
-    border-top: 1px solid var(--color-gray--700);
-    padding: 24px var(--padding) 24px;
-    box-shadow: 2px -16px 32px -4px rgba(0, 0, 0, 0.3);
+    border-top: 1px solid var(--color-border);
+    padding: 24px var(--article-padding);
+    margin: 0 calc(-1 * var(--article-padding));
     position: relative;
 
     span.product {
@@ -229,7 +204,6 @@ h3.subheader {
     }
     
     p.intro {
-      color: white;
       span {
         font-style: italic;
         font-weight: bold;
@@ -247,7 +221,6 @@ h3.subheader {
     ol {
       font-size: 0.9rem;
       overflow: hidden;
-      color: var(--color-gray--300);
 
       > li {
         margin-left: 2.25em;
@@ -284,7 +257,7 @@ h3.subheader {
 
     @media (--viewport-tiny) {
       display: block;
-      margin: -72px -35% 12px 16px;
+      margin: -100px -35% 12px 16px;
       height: 250px;
       width: 400px;
     }
@@ -334,10 +307,7 @@ h3.subheader {
     border-radius: 9999px;
     padding: 12px;
     color: white !important;
-
-    &:hover {
-      background: var(--color-green);
-    }
+    background: var(--color-green);
   }
 }
 
@@ -402,11 +372,12 @@ h3.subheader {
     flex: 1 1 auto;
 
     a {
-      color: inherit;
+      color: var(--color-gray--400);
+      --link-underline-color: var(--color-gray--800);
     }
 
     a:hover {
-      color: var(--color-gray--400);
+      color: var(--color-gray--300);
     }
 
     @media (--viewport-tiny) {

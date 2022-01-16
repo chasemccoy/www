@@ -50,11 +50,13 @@ const SeedsPage = () => {
 				className="mt-32"
 				style={{
 					width: 'calc(100% - var(--padding))',
-					marginLeft: 'auto'
+					marginLeft: 'auto',
+					borderRight: '1px solid var(--color-border)',
+					borderRadius: '8px 8px 0 0',
 				}}
 			/>
 
-			<section className="hyphens prose color-gray--400">
+			<section className="hyphens prose">
 				<img
 					src='/images/seeds.png'
 					className="photo-site"
