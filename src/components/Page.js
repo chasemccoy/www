@@ -44,7 +44,20 @@ const Page = ({
           </div>
         </Container>
 
-        {tableOfContents && <div id='sidebar'>{tableOfContents}</div>}
+        {tableOfContents && (
+          <div
+            id='sidebar'
+            className='flow'
+            style={{
+              '--flow-spacing': '12px',
+              fontSize: '0.75rem',
+              color: 'var(--color-caption)',
+              '--link-color': 'var(--color-caption)',
+            }}
+          >
+            {tableOfContents}
+          </div>
+        )}
       </div>
     </React.Fragment>
   )

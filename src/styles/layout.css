@@ -25,7 +25,7 @@ main {
 }
 
 #sidebar {
-  margin-top: 56px;
+  margin-top: 32px;
   width: var(--sidebar-width);
   min-width: var(--sidebar-width);
   display: none;

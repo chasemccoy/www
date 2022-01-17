@@ -3,8 +3,27 @@ import matter from 'gray-matter'
 import config from '../../next.config'
 import { getFile, getDirList, isDirectory } from './fs'
 import { compileMdx } from './compile-mdx'
+import childProcess from 'child_process'
+import {formatDate} from './index'
 
 const CONTENT_PATH = 'notes'
+
+function execShellCommand(cmd) {
+  const exec = childProcess.exec
+  return new Promise((resolve, reject) => {
+    exec(cmd, (error, stdout, stderr) => {
+      if (error) {
+        console.warn(error)
+      }
+      resolve(stdout ? stdout : stderr)
+    })
+  })
+}
+
+async function getLastModifiedDate(path) {
+  const date = await execShellCommand(`git log -1 --format=%ci ${path}`)
+  return formatDate(new Date(date))
+}
 
 async function getNote(slug) {
   const notes = await getNotes()
@@ -18,11 +37,13 @@ async function getNote(slug) {
     ? `${CONTENT_PATH}/${note.category}/${slug}/index.mdx`
     : `${CONTENT_PATH}/${note.category}/${slug}.mdx`
 
+  const modifiedDate = await getLastModifiedDate(path)
+
   const { code, frontmatter, toc } = await compileMdx(path, slug)
   if (frontmatter.modified) {
     frontmatter.modified = new Date(frontmatter.modified).toISOString()
   }
-  return { slug, code, ...frontmatter, toc, category: note.category }
+  return { slug, code, ...frontmatter, toc, category: note.category, modifiedDate }
 }
 
 async function getCategory(category) {

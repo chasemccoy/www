@@ -56,8 +56,8 @@ const Category = ({ notes }) => {
   )
 }
 
-const Note = ({ data, portal: Portal }) => {
-  const { code, title, excerpt, toc, category, slug } = data
+const Note = ({ data }) => {
+  const { code, title, excerpt, toc, category, slug, modifiedDate } = data
   const Component = React.useMemo(() => getMDXComponent(code), [code])
 
   React.useEffect(() => {
@@ -69,17 +69,25 @@ const Note = ({ data, portal: Portal }) => {
       article
       showCanvas
       className='prose'
-      tableOfContents={<TableOfContents content={toc} />}
+      tableOfContents={
+        <>
+          <TableOfContents content={toc} />
+          <Link to={githubLink(slug, category)} className='block'>
+            Edit on GitHub
+          </Link>
+        </>
+      }
       header={
         <div className='flex space-between'>
-          <Link className='unstyled color-section flex align-center' to={`/notes/${category}`}>
+          <Link
+            className='unstyled color-section flex align-center'
+            to={`/notes/${category}`}
+          >
             <Folder className='inline mr-6' />
             {capitalize(category.replace('-', ' '))}
           </Link>
 
-          <Link className='ml-16 unstyled' to={githubLink(slug, category)}>
-            Edit on GitHub
-          </Link>
+          {modifiedDate && <p>Updated: {modifiedDate}</p>}
         </div>
       }
     >

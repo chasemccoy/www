@@ -183,10 +183,6 @@ ol {
 }
 
 .toc {
-  h2 {
-    font-size: 0.75rem;
-  }
-
   > div {
     margin-top: 4px; 
   }
@@ -195,7 +191,6 @@ ol {
     list-style-type: none;
     margin: 0;
     padding: 0;
-    font-size: 0.75em;
   }
 
   ul ul {
