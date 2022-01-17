@@ -39,7 +39,7 @@ h6 {
 }
 
 a {
-  --link-underline-color: rgba(0, 0, 0, 0.15);
+  --link-underline-color: var(--color-gray--400);
   color: var(--link-color);
   text-decoration: underline;
   transition: all 0.3s;

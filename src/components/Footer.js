@@ -6,9 +6,11 @@ const Sparkles = () => {
 
   const scroll = React.useCallback(() => {
     setMessage((value) => {
-      return value.substring(position.current, value.length) +
+      return (
+        value.substring(position.current, value.length) +
         '' +
         value.substring(0, position.current)
+      )
     })
     position.current++
     if (position.current > message.length) position.current = 0
@@ -25,10 +27,7 @@ const Sparkles = () => {
 const Footer = () => {
   return (
     <footer className='prose mt-48'>
-      <hr
-        className='mobile-breakout dashed'
-        style={{ border: '1px dashed var(--color-border)' }}
-      />
+      <hr className='mobile-breakout dashed' />
 
       <div className='flex align--flex-end'>
         <div style={{ maxWidth: '8em' }}>

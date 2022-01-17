@@ -108,7 +108,7 @@ const Notes = ({ notes }) => {
           />
 
           <div
-            className='quote-card p-16 flex flex-column space-between'
+            className='quote-card flex flex-column space-between'
             style={{
               background: 'var(--color-gray--100)',
               borderRadius: '12px',
@@ -137,7 +137,7 @@ const Notes = ({ notes }) => {
           </div>
 
           <div
-            className='quote-card p-16 flex flex-column'
+            className='quote-card flex flex-column'
             style={{
               background: 'var(--color-gray--100)',
               borderRadius: '12px',
@@ -206,9 +206,11 @@ const Notes = ({ notes }) => {
               <h2 className='mt-0 unstyled'>
                 <Link to={`/notes/${category}`} className='unstyled flex align-center'>
                   <Folder
-                    className='inline mr-8 color-caption'
+                    className='inline mr-6 color-caption'
                     style={{
                       width: '1.25em',
+                      position: 'relative',
+                      top: '-3px'
                     }}
                   />
                   {capitalize(category).replace('-', ' ')}

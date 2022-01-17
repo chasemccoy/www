@@ -70,7 +70,6 @@ export const Folder = (props) => (
 		strokeLinecap="round"
 		strokeLinejoin="round"
 		strokeWidth={2}
-		className="prefix__feather prefix__feather-folder"
 		viewBox="0 0 24 24"
 		{...props}
 	>

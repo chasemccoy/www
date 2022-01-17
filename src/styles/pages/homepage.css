@@ -58,7 +58,7 @@ h3.subheader {
   }
 
   p {
-    color: var(--color-gray--500);
+    color: var(--color-caption);
   }
 
   @media (--viewport-small) {

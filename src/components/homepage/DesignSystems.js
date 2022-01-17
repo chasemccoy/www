@@ -97,7 +97,7 @@ const DesignSystems = () => {
 
         <div className='ml-16'>
           <h2 className='mb-2'>Read my notes on design systems</h2>
-          <p className='color-gray--400'>
+          <p className='color-caption'>
             The notes section of this site contains useful links, quotes, and
             insights related to design systems and the work that goes into them.
           </p>
