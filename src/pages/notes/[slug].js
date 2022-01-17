@@ -18,10 +18,6 @@ const githubLink = (slug, category) =>
 const Category = ({ notes }) => {
   const categoryName = capitalize(notes[1].category.replace('-', ' '))
 
-  React.useEffect(() => {
-    document.querySelector('body').dataset.section = 'notes'
-  })
-
   return (
     <Page
       className='prose'
@@ -60,23 +56,21 @@ const Note = ({ data }) => {
   const { code, title, excerpt, toc, category, slug, modifiedDate } = data
   const Component = React.useMemo(() => getMDXComponent(code), [code])
 
-  React.useEffect(() => {
-    document.querySelector('body').dataset.section = 'notes'
-  })
-
   return (
     <Page
       article
       showCanvas
       className='prose'
       tableOfContents={
-        <>
-          <TableOfContents content={toc} />
-          <hr className='dashed' />
-          <Link to={githubLink(slug, category)} className='block'>
-            Edit on GitHub
-          </Link>
-        </>
+        toc && (
+          <>
+            <TableOfContents content={toc} />
+            <hr className='dashed' />
+            <Link to={githubLink(slug, category)} className='block'>
+              Edit on GitHub
+            </Link>
+          </>
+        )
       }
       header={
         <div className='flex space-between mobile-stack gap-4'>
@@ -84,7 +78,10 @@ const Note = ({ data }) => {
             className='unstyled color-section flex align-center'
             to={`/notes/${category}`}
           >
-            <Folder className='inline mr-6' />
+            <Folder
+              className='inline mr-6'
+              style={{ position: 'relative', top: '-1.5px' }}
+            />
             {capitalize(category.replace('-', ' '))}
           </Link>
 
@@ -122,7 +119,7 @@ const NotePage = ({ notes, note = {} }) => {
 export const getStaticProps = async ({ params }) => {
   if (config.noteCategories.includes(params.slug)) {
     const notes = await getCategory(params.slug)
-    
+
     return {
       props: { notes },
     }

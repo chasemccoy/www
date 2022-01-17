@@ -16,10 +16,6 @@ const Notes = ({ notes, recentNotes }) => {
   const randomQuote = quotes[Math.floor(Math.random() * quotes.length)]
   const recentBook = recentBooks[0]
 
-  React.useEffect(() => {
-    document.querySelector('body').dataset.section = 'notes'
-  })
-
   return (
     <Page className='prose'>
       <Head>

@@ -18,17 +18,17 @@ const NavLink = ({ href, className, children, ...rest }) => {
   )
 }
 
-const Item = ({ href, children, className, ...rest }) => (
-  <li>
+const Item = ({ href, children, className, desktopOnly, ...rest }) => (
+  <li className={clsx(desktopOnly && 'desktop-only')}>
     <NavLink href={href} className={clsx(className, 'unstyled')} {...rest}>
       {children}
     </NavLink>
   </li>
 )
 
-const Separator = () => (
-  <li style={{ display: 'flex', alignItems: 'center' }}>
-    <span className='separator' />
+const Separator = ({className}) => (
+  <li className={clsx('separator', className)}>
+    <span />
   </li>
 )
 
@@ -55,15 +55,23 @@ const Nav = () => {
 
         <Item href='/notes'>Notes</Item>
 
-        <Separator />
+        <Separator className='desktop-only' />
 
-        <Item href='/notes/code'>#code</Item>
+        <Item href='/notes/code' desktopOnly>
+          #code
+        </Item>
 
-        <Item href='/notes/design-systems'>#design systems</Item>
+        <Item href='/notes/design-systems' desktopOnly>
+          #design systems
+        </Item>
 
-        <Item href='/notes/books'>#books</Item>
+        <Item href='/notes/books' desktopOnly>
+          #books
+        </Item>
 
-        <Item href='/notes/quotes'>#quotes</Item>
+        <Item href='/notes/quotes' desktopOnly>
+          #quotes
+        </Item>
       </ul>
     </nav>
   )

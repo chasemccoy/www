@@ -18,10 +18,6 @@ const BlogPost = ({
   const Component = React.useMemo(() => getMDXComponent(code), [code])
   const formattedDate = formatDate(new Date(date))
 
-  React.useEffect(() => {
-    document.querySelector('body').dataset.section = 'blog'
-  })
-
   return (
     <Page article showCanvas className='prose' header={formattedDate}>
       <Head>

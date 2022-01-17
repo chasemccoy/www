@@ -4,18 +4,20 @@ import { compileMdx } from '../../utils/compile-mdx'
 import { getMDXComponent } from 'mdx-bundler/client'
 import TableOfContents from '../../components/TableOfContents'
 import Metadata from '../../components/Metadata'
+import Page from '../../components/Page'
 
 const StyleGuidePage = ({ code, toc }) => {
-  React.useEffect(() => {
-    document.querySelector('body').dataset.section = 'style-guide'
-  })
-
   const Component = React.useMemo(() => getMDXComponent(code), [code])
-  
+
   return (
-    <div className='prose'>
+    <Page
+      article
+      showCanvas
+      tableOfContents={<TableOfContents content={toc} />}
+      className='prose'
+    >
       <Head>
-        <link rel="stylesheet" href="/styles/style-guide.css" />
+        <link rel='stylesheet' href='/styles/style-guide.css' />
       </Head>
 
       <Metadata title='Style guide' />
@@ -25,13 +27,12 @@ const StyleGuidePage = ({ code, toc }) => {
         {/* <span className='subtitle caption sans ml-12 color-caption'>Style, usage, and grammar for the web.</span> */}
       </h1>
       <p className='lead color-caption mt-8'>
-        My personal and always in progress guide to style, usage, and grammar for writing on the web
+        My personal and always in progress guide to style, usage, and grammar
+        for writing on the web
       </p>
 
-      <TableOfContents content={toc} className='mt-24' />
-
       <Component />
-    </div>
+    </Page>
   )
 }
 

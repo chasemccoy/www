@@ -27,10 +27,6 @@ const DateLabel = ({ date }) => {
 }
 
 const Blog = ({ posts }) => {
-  React.useEffect(() => {
-    document.querySelector('body').dataset.section = 'blog'
-  })
-
   const years = Object.keys(posts).reverse()
 
   return (

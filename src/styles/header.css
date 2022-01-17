@@ -1,4 +1,4 @@
-#site-header nav {  
+#site-header nav {
   padding: 8px;
 
   a {
@@ -9,7 +9,7 @@
     color: var(--color-gray--500);
   }
 
-  a[href="/"] {
+  a[href='/'] {
     color: var(--color-text);
   }
 
@@ -50,15 +50,29 @@
   }
 
   .separator {
-    width: 100%;
-    height: 1px;
-    background: var(--color-gray--300);
-    margin: 8px 12px;
+    display: flex;
+    align-items: center;
+
+    & > span {
+      width: 100%;
+      height: 1px;
+      background: var(--color-gray--300);
+      margin: 8px 12px;
+
+      @media (--viewport-small) {
+        width: 1px;
+        height: 60%;
+        margin: 0 8px;
+      }
+    }
+  }
+
+  li.desktop-only,
+  .separator.desktop-only {
+    display: none;
 
     @media (--viewport-small) {
-      width: 1px;
-      height: 60%;
-      margin: 0 8px;
+      display: inherit;
     }
   }
 }
