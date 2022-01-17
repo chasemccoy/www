@@ -6,7 +6,7 @@ import mdxComponents from '../../utils/mdx-components'
 import TableOfContents from '../../components/TableOfContents'
 import Link from '../../components/Link'
 import { Folder } from '../../components/Icon'
-import { capitalize } from '../../utils'
+import { capitalize, formatDate } from '../../utils'
 import config from '../../../next.config'
 import Metadata from '../../components/Metadata'
 import NoteList from '../../components/NoteList'
@@ -87,7 +87,7 @@ const Note = ({ data }) => {
             {capitalize(category.replace('-', ' '))}
           </Link>
 
-          {modifiedDate && <p>Updated: {modifiedDate}</p>}
+          {modifiedDate && <p>Updated: {formatDate(new Date(modifiedDate))}</p>}
         </div>
       }
     >
@@ -121,7 +121,7 @@ const NotePage = ({ notes, note = {} }) => {
 export const getStaticProps = async ({ params }) => {
   if (config.noteCategories.includes(params.slug)) {
     const notes = await getCategory(params.slug)
-
+    
     return {
       props: { notes },
     }

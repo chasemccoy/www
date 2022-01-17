@@ -4,7 +4,6 @@ import config from '../../next.config'
 import { getFile, getDirList, isDirectory } from './fs'
 import { compileMdx } from './compile-mdx'
 import childProcess from 'child_process'
-import {formatDate} from './index'
 
 const CONTENT_PATH = 'notes'
 
@@ -22,7 +21,7 @@ function execShellCommand(cmd) {
 
 async function getLastModifiedDate(path) {
   const date = await execShellCommand(`git log -1 --format=%ci ${path}`)
-  return formatDate(new Date(date))
+  return date
 }
 
 async function getNote(slug) {
@@ -40,10 +39,14 @@ async function getNote(slug) {
   const modifiedDate = await getLastModifiedDate(path)
 
   const { code, frontmatter, toc } = await compileMdx(path, slug)
-  if (frontmatter.modified) {
-    frontmatter.modified = new Date(frontmatter.modified).toISOString()
+  return {
+    slug,
+    code,
+    ...frontmatter,
+    toc,
+    category: note.category,
+    modifiedDate,
   }
-  return { slug, code, ...frontmatter, toc, category: note.category, modifiedDate }
 }
 
 async function getCategory(category) {
@@ -84,13 +87,11 @@ async function getCategory(category) {
   const files = result.filter((v) => Boolean(v))
 
   const posts = await Promise.all(
-    files.map(async ({ slug, content }) => {
+    files.map(async ({ slug, content, path }) => {
       const matterResult = matter(content)
       const frontmatter = matterResult.data
-      if (frontmatter.modified) {
-        frontmatter.modified = new Date(frontmatter.modified).toISOString()
-      }
-      return { slug, ...frontmatter, category }
+      const modifiedDate = await getLastModifiedDate(path)
+      return { slug, ...frontmatter, category, modifiedDate }
     })
   )
 
@@ -119,4 +120,12 @@ async function getNotes(flat = true) {
   return result.flat()
 }
 
-export { getNote, getCategory, getNotes }
+async function getRecentlyModifiedNotes() {
+  const notes = await getNotes()
+  const sorted = notes.sort(
+    (a, b) => -a.modifiedDate.localeCompare(b.modifiedDate)
+  )
+  return sorted
+}
+
+export { getNote, getCategory, getNotes, getRecentlyModifiedNotes }

@@ -1,6 +1,6 @@
 import React from 'react'
 import Head from 'next/head'
-import { getNotes } from '../../utils/note'
+import { getNotes, getRecentlyModifiedNotes } from '../../utils/note'
 import Link from '../../components/Link'
 import Page from '../../components/Page'
 import Marker from '../../components/Marker'
@@ -204,13 +204,16 @@ const Notes = ({ notes }) => {
           {Object.keys(notes).map((category, i) => (
             <div className='mb-48' key={category}>
               <h2 className='mt-0 unstyled'>
-                <Link to={`/notes/${category}`} className='unstyled flex align-center'>
+                <Link
+                  to={`/notes/${category}`}
+                  className='unstyled flex align-center'
+                >
                   <Folder
                     className='inline mr-6 color-caption'
                     style={{
                       width: '1.25em',
                       position: 'relative',
-                      top: '-3px'
+                      top: '-3px',
                     }}
                   />
                   {capitalize(category).replace('-', ' ')}
@@ -228,9 +231,10 @@ const Notes = ({ notes }) => {
 
 export const getStaticProps = async (context) => {
   const notes = await getNotes(false)
+  const recentNotes = await getRecentlyModifiedNotes()
 
   return {
-    props: { notes },
+    props: { notes, recentNotes },
   }
 }
 
