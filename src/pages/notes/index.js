@@ -9,37 +9,10 @@ import { Folder } from '../../components/Icon'
 import clsx from 'clsx'
 import Metadata from '../../components/Metadata'
 import NoteList from '../../components/NoteList'
-import Now from '../../components/Now'
 import { quotes } from '../../../notes/misc/quotes/Quotes'
 import { recents as recentBooks } from '../../../notes/misc/books/Books'
 
-const FeaturedCard = ({ title, description, image, url, className }) => (
-  <Link
-    to={url}
-    className={clsx(
-      'featured-card',
-      'unstyled',
-      'flex',
-      'flex-column',
-      'space-between',
-      className
-    )}
-  >
-    <img src={image} alt='' />
-    <div className='px-16 pb-16'>
-      <h2 className='mt-0 smaller' style={{ fontSize: '1.5em' }}>
-        <Folder
-          className='inline mr-8'
-          style={{ width: '1em', position: 'relative', top: '-0.16em' }}
-        />
-        {title}
-      </h2>
-      <p className='mt-4 color-caption'>{description}</p>
-    </div>
-  </Link>
-)
-
-const Notes = ({ notes }) => {
+const Notes = ({ notes, recentNotes }) => {
   const randomQuote = quotes[Math.floor(Math.random() * quotes.length)]
   const recentBook = recentBooks[0]
 
@@ -91,107 +64,21 @@ const Notes = ({ notes }) => {
           often updated or changed as I learn more about a subject.
         </p>
 
-        <Now />
-
-        <Marker className='mt-32'>Featured</Marker>
+        <Marker className='mt-32'>Recent</Marker>
 
         <div
-          className='mt-24 mb-16 grid'
-          style={{ '--item-min-size': '250px' }}
+          className='mt-16 grid'
+          style={{ '--item-min-size': '250px', '--gap': '12px' }}
         >
-          <FeaturedCard
-            title='Code'
-            description='Useful code snippets and techniqes for making great websites.'
-            image='/images/terminal.png'
-            url='/notes/code'
-            className='code'
-          />
-
-          <div
-            className='quote-card flex flex-column space-between'
-            style={{
-              background: 'var(--color-gray--100)',
-              borderRadius: '12px',
-            }}
-          >
-            <div>
-              <p className='line-clamp' style={{ '--lines': 6 }}>
-                {randomQuote.content}
-              </p>
-              <div className='mt-8 flex align--center space-between'>
-                <p className='italic bold'>— {randomQuote.metadata}</p>
-              </div>
-            </div>
-
-            <Link
-              to='/notes/quotes'
-              className='button mt-16 px-8 py-8 block unstyled bold smaller no-hover'
-              style={{
-                background: 'var(--color-yellow)',
-                borderRadius: '8px',
-                textAlign: 'center',
-              }}
-            >
-              More quotes →
+          {recentNotes.slice(0, 4).map((note) => (
+            <Link to={`/notes/${note.slug}`} className='block unstyled p-16 bg-gray--200 radius-8' key={note.slug}>
+              <div className='bold'>{note.title}</div>
+              <div className='color-caption smaller'>{note.excerpt}</div>
             </Link>
-          </div>
-
-          <div
-            className='quote-card flex flex-column'
-            style={{
-              background: 'var(--color-gray--100)',
-              borderRadius: '12px',
-              justifyContent: 'flex-end',
-            }}
-          >
-            <div className='flex align--flex-start'>
-              <img
-                src={`/img/books/${recentBook.image}`}
-                alt={recentBook.title}
-                style={{
-                  width: '40%',
-                  borderRadius: '4px',
-                  alignSelf: 'flex-start',
-                }}
-              />
-
-              <div className='ml-12' style={{ alignSelf: 'flex-end' }}>
-                <p className='smaller color-caption'>Recently read</p>
-                <p className='mt-8'>
-                  <span
-                    className='bold tighter hyphens'
-                    style={{ fontSize: '1.5rem' }}
-                  >
-                    {recentBook.title}
-                  </span>
-                  <br /> by {recentBook.author}
-                </p>
-              </div>
-            </div>
-
-            <Link
-              to='/notes/books'
-              className='button mt-16 px-8 py-8 block unstyled bold smaller no-hover'
-              style={{
-                background: 'var(--color-blue)',
-                borderRadius: '8px',
-                textAlign: 'center',
-              }}
-            >
-              What I’m reading →
-            </Link>
-          </div>
-
-          <FeaturedCard
-            title='Design systems'
-            description='Notes on what they are, how they work, and more.'
-            image='/images/design-systems.png'
-            url='/notes/design-systems'
-            className='green'
-          />
+          ))}
         </div>
 
-        <Marker className='mt-48'>All notes</Marker>
+        <Marker className='mt-40'>All notes</Marker>
 
         <div
           className='multi-column mt-24'

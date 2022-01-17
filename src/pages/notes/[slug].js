@@ -72,13 +72,14 @@ const Note = ({ data }) => {
       tableOfContents={
         <>
           <TableOfContents content={toc} />
+          <hr className='dashed' />
           <Link to={githubLink(slug, category)} className='block'>
             Edit on GitHub
           </Link>
         </>
       }
       header={
-        <div className='flex space-between'>
+        <div className='flex space-between mobile-stack gap-4'>
           <Link
             className='unstyled color-section flex align-center'
             to={`/notes/${category}`}

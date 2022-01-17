@@ -84,6 +84,12 @@
   }
 }
 
+@each $radius in 4, 8, 12, 16 {
+  .radius-$(radius) {
+    border-radius: $(radius)px;
+  }
+}
+
 .flow {
   & > * + * {
     margin-top: var(--flow-spacing);
@@ -166,6 +172,14 @@
 
 .flex {
   display: flex;
+
+  &.mobile-stack {
+    flex-direction: column;
+
+    @media (--viewport-tiny) {
+      flex-direction: row;
+    }
+  }
 }
 
 .flex-column {
