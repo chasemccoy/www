@@ -14,14 +14,20 @@
   }
 
   a:hover {
-    background: rgba(0, 0, 0, 0.05);
+    background: var(--color-gray--200);
     color: currentColor;
   }
 
   a.selected {
     font-weight: bold;
-    background: rgba(0, 0, 0, 0.05);
+    background: var(--color-gray--200);
     color: inherit;
+  }
+
+  a.shortcut:hover,
+  a.shortcut.selected {
+    font-weight: normal;
+    background: none;
   }
 
   ul {

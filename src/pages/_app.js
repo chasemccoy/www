@@ -47,42 +47,6 @@ const fontStyles = `
 }
 
 @font-face {
-  font-family: 'Blanco';
-  src: url('/fonts/blanco/Blanco-Regular.woff2') format('woff2'),
-    url('/fonts/blanco/Blanco-Regular.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Blanco';
-  src: url('/fonts/blanco/Blanco-Italic.woff2') format('woff2'),
-    url('/fonts/blanco/Blanco-Italic.woff') format('woff');
-  font-weight: normal;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Blanco';
-  src: url('/fonts/blanco/Blanco-Bold.woff2') format('woff2'),
-    url('/fonts/blanco/Blanco-Bold.woff') format('woff');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Blanco';
-  src: url('/fonts/blanco/Blanco-BoldItalic.woff2') format('woff2'),
-    url('/fonts/blanco/Blanco-BoldItalic.woff') format('woff');
-  font-weight: 700;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
   font-family: 'Ivar Text';
   src: url('/fonts/ivar-text/IvarText-Regular.woff2') format('woff2'),
     url('/fonts/ivar-text/IvarText-Regular.woff') format('woff');
@@ -149,15 +113,6 @@ const fontStyles = `
   font-family: 'Source Code Pro';
   src: url('/fonts/source-code-pro/SourceCodePro-Regular.woff2') format('woff2'),
       url('/fonts/source-code-pro/SourceCodePro-Regular.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Pitch Sans';
-  src: url('/fonts/pitch/PitchSans-Regular.woff2') format('woff2'),
-      url('/fonts/pitch/PitchSans-Regular.woff') format('woff');
   font-weight: normal;
   font-style: normal;
   font-display: swap;

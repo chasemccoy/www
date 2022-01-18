@@ -14,7 +14,7 @@ main {
 
   @media (--viewport-tiny) {
     --layout-padding: 40px;
-    --article-padding: 32px;
+    --article-padding: 28px;
   }
 
   & .content {

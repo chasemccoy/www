@@ -26,7 +26,7 @@ const Item = ({ href, children, className, desktopOnly, ...rest }) => (
   </li>
 )
 
-const Separator = ({className}) => (
+const Separator = ({ className }) => (
   <li className={clsx('separator', className)}>
     <span />
   </li>
@@ -57,19 +57,19 @@ const Nav = () => {
 
         <Separator className='desktop-only' />
 
-        <Item href='/notes/code' desktopOnly>
+        <Item href='/notes/code' desktopOnly className='shortcut'>
           #code
         </Item>
 
-        <Item href='/notes/design-systems' desktopOnly>
+        <Item href='/notes/design-systems' desktopOnly className='shortcut'>
           #design systems
         </Item>
 
-        <Item href='/notes/books' desktopOnly>
+        <Item href='/notes/books' desktopOnly className='shortcut'>
           #books
         </Item>
 
-        <Item href='/notes/quotes' desktopOnly>
+        <Item href='/notes/quotes' desktopOnly className='shortcut'>
           #quotes
         </Item>
       </ul>

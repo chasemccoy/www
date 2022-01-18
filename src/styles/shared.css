@@ -232,6 +232,7 @@ ol {
   --section-color: var(--color-text);
 
   &:hover {
+    color: inherit;
     background: var(--color-gray--100);
   }
 

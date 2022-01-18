@@ -46,6 +46,21 @@ const Category = ({ notes }) => {
       <Metadata title={categoryName} />
 
       <div>
+        {/* <div
+          className='grid'
+          style={{ '--item-min-size': '250px', '--gap': '12px' }}
+        >
+          {notes.map((note) => (
+            <Link
+              to={`/notes/${note.slug}`}
+              className='block unstyled p-16 bg-gray--200 radius-8'
+              key={note.slug}
+            >
+              <div className='bold'>{note.title}</div>
+              <div className='color-caption smaller'>{note.excerpt}</div>
+            </Link>
+          ))}
+        </div> */}
         <NoteList notes={notes} />
       </div>
     </Page>

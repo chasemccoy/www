@@ -47,7 +47,7 @@ article {
 }
 
 hr {
-  background: var(--color-border);
+  background: var(--color-gray--200);
   height: 4px;
   border: none;
 
