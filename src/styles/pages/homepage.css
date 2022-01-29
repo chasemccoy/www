@@ -311,40 +311,6 @@ h3.subheader {
   }
 }
 
-.contact {
-  ul {
-    li {
-      display: block;
-      margin-left: 0;
-
-      &:before {
-        content: "";
-      }
-
-      @media (--viewport-small) {
-        display: inline;
-      }
-    }
-
-    li + li {
-      margin-left: 0;
-
-      @media (--viewport-small) {
-        margin-left: 1.5em;
-      }
-    }
-
-    svg {
-      margin-top: -4px;
-      margin-right: 2px;
-    }
-
-    a:hover > span {
-      text-decoration: underline;
-    }
-  }
-}
-
 .previously {
   > * + * {
     margin-top: 0;

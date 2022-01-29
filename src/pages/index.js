@@ -2,38 +2,37 @@ import React from 'react'
 import Head from 'next/head'
 import Link from '../components/Link'
 import Page from '../components/Page'
-import { Globe, Stripe } from '../components/Icon'
-import DesignSystems from '../components/homepage/DesignSystems'
 import Marker from '../components/Marker'
-import FeaturedPosts from '../components/FeaturedPosts'
-import Museo from '../components/homepage/Museo'
-import Seeds from '../components/homepage/Seeds'
-import Pico from '../components/homepage/Pico'
 import { getPosts } from '../utils/post'
+import { getRecentlyModifiedNotes } from '../utils/note'
 import PropertyList from '../components/PropertyList'
 
-const Index = ({ posts }) => {
+const Index = ({ posts, recentNotes }) => {
   return (
-    <Page className='prose'>
+    <Page>
       <Head>
         <link rel='stylesheet' href='/styles/homepage.css' />
       </Head>
 
-      <h2 className='serif normal mt-0 smaller'>
+      <h2
+        className='serif normal mt-0'
+        style={{ fontSize: '1.3rem', lineHeight: '1.4' }}
+      >
         <i>Chase McCoy</i> is a product designer, front-end engineer, and
-        internet explorer working on design systems at Stripe.
+        internet explorer working on design systems at{' '}
+        <Link href='https://stripe.com'>Stripe</Link>.
       </h2>
 
       <img
         src='/images/portrait.jpg'
         alt='Chase McCoy'
-        className='mt-40 mb-48'
+        className='mt-32 mb-40'
         style={{
           borderRadius: '8px',
           border: '1px solid var(--color-border)',
           width: 'calc(100% + 128px)',
           marginLeft: '-64px',
-          maxWidth: 'none'
+          maxWidth: 'none',
         }}
       />
 
@@ -60,29 +59,50 @@ const Index = ({ posts }) => {
         <Pico />
       </div> */}
 
-      <PropertyList label='Now'>
-        <p>
-          A talk about longevity in technology: can a person have 20 years of
-          experience or five years, repeated four times?
-        </p>
-      </PropertyList>
-      <hr className='dashed' />
-      <PropertyList label='2020'>
-        <p>
-          A talk about longevity in technology: can a person have 20 years of
-          experience or five years, repeated four times? A talk about longevity
-          in technology: can a person have 20 years of experience or five years,
-          repeated four times?
-        </p>
-      </PropertyList>
-      <hr className='dashed' />
-      <PropertyList label='2017'>
-        <p>Some paragraph of information</p>
-      </PropertyList>
-      <hr className='dashed' />
-      <PropertyList label='Now'>
-        <p>Some paragraph of information</p>
-      </PropertyList>
+      <div className='flow' style={{'--flow-spacing': '1rem'}}>
+        <PropertyList label='Now'>
+          <h4>Design Systems at Stripe</h4>
+          <p className='color-caption mt-4'>
+            Currently, I’m a Staff Product Designer a
+          </p>
+        </PropertyList>
+        <hr className='dashed' />
+        <PropertyList label='2017 – 2020'>
+          <h4>Design Systems at Sprout Social</h4>
+          <p className='color-caption mt-4'>
+            A talk about longevity in technology: can a person have 20 years of
+            experience or five years, repeated four times? A talk about
+            longevity in technology: can a person have 20 years of experience or
+            five years, repeated four times?
+          </p>
+        </PropertyList>
+        <hr className='dashed' />
+        <PropertyList label='2017'>
+          <h4>iOS design and development</h4>
+        </PropertyList>
+        <hr className='dashed' />
+        <PropertyList label='2013 – 2017'>
+          <h4>Computer Science at Mississippi State University</h4>
+          <p>Some paragraph of information</p>
+        </PropertyList>
+      </div>
+
+      <h3 className='mt-48 subheader'>Recent notes</h3>
+      {recentNotes.map((note) => (
+        <PropertyList key={note.slug} label={note.title}>
+          {note.excerpt}
+        </PropertyList>
+      ))}
+
+      <h3 className='mt-48 subheader'>Featured writing</h3>
+      {posts.map((post) => (
+        <div key={post.slug}>
+          <h4>
+            <Link to={post.slug}>{post.title}</Link>
+          </h4>
+          <p>{post.excerpt}</p>
+        </div>
+      ))}
     </Page>
   )
 }
@@ -90,9 +110,13 @@ const Index = ({ posts }) => {
 export const getStaticProps = async (context) => {
   const posts = await getPosts()
   const featuredPosts = posts.filter((post) => Boolean(post.featured))
+  const recentNotes = await getRecentlyModifiedNotes()
 
   return {
-    props: { posts: featuredPosts },
+    props: {
+      posts: featuredPosts.slice(0, 4),
+      recentNotes: recentNotes.slice(0, 4),
+    },
   }
 }
 

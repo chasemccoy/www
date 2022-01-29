@@ -261,7 +261,25 @@ ol {
 .property-list {
   @media (--viewport-small) {
     display: grid;
-    grid-template-columns: 15% 1fr;
+    grid-template-columns: var(--label-width, 18%) 1fr;
     align-items: baseline;
+  }
+}
+
+.contact {
+  ul {
+    margin: 0;
+    li {
+      display: inline;
+      margin-left: 0;
+
+      &:before {
+        content: "";
+      }
+    }
+
+    li + li {
+      margin-left: 1.25em;
+    }
   }
 }

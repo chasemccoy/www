@@ -1,9 +1,9 @@
 :root {
   --article-width: 720px;
   --sidebar-width: 140px;
-  --article-padding: 12px;
+  --article-padding: 16px;
   --layout-gap: 24px;
-  --layout-padding: 8px;
+  --layout-padding: 0px;
 }
 
 main {
@@ -47,8 +47,22 @@ main > .wrapper {
 
 footer {
   margin: 0 auto;
+  padding: 0 var(--article-padding);
 
   @media (--viewport-medium) {
     max-width: calc(var(--article-width) + var(--layout-gap) + var(--sidebar-width));
+  }
+
+  & > div {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: flex-start;
+    gap: 24px;
+
+    @media (--viewport-small) {
+      flex-direction: row;
+      align-items: flex-end;
+      justify-content: space-between;
+    }
   }
 }
