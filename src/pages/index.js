@@ -24,7 +24,18 @@ const Index = ({ posts }) => {
         internet explorer working on design systems at Stripe.
       </h2>
 
-      <img src='/images/portrait.jpg' alt='Chase McCoy' />
+      <img
+        src='/images/portrait.jpg'
+        alt='Chase McCoy'
+        className='mt-40 mb-48'
+        style={{
+          borderRadius: '8px',
+          border: '1px solid var(--color-border)',
+          width: 'calc(100% + 128px)',
+          marginLeft: '-64px',
+          maxWidth: 'none'
+        }}
+      />
 
       {/* <div className='prose'>
         <FeaturedPosts posts={posts} />
@@ -56,7 +67,7 @@ const Index = ({ posts }) => {
         </p>
       </PropertyList>
       <hr className='dashed' />
-      <PropertyList label='Now'>
+      <PropertyList label='2020'>
         <p>
           A talk about longevity in technology: can a person have 20 years of
           experience or five years, repeated four times? A talk about longevity
@@ -65,7 +76,7 @@ const Index = ({ posts }) => {
         </p>
       </PropertyList>
       <hr className='dashed' />
-      <PropertyList label='Now'>
+      <PropertyList label='2017'>
         <p>Some paragraph of information</p>
       </PropertyList>
       <hr className='dashed' />
