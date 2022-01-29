@@ -1,25 +1,21 @@
 import React from 'react'
 import Head from 'next/head'
-import { getMDXComponent } from 'mdx-bundler/client'
 import { getPosts, getPost } from '../../../utils/post'
-import mdxComponents from '../../../utils/mdx-components'
 import { formatDate } from '../../../utils'
 import Metadata from '../../../components/Metadata'
 import Page from '../../../components/Page'
+import RenderMDX from '../../../components/RenderMDX'
 
-const BlogPost = ({
-  code,
-  title,
-  excerpt,
-  date,
-  image,
-  slug,
-}) => {
-  const Component = React.useMemo(() => getMDXComponent(code), [code])
+const BlogPost = ({ code, title, excerpt, date, image, slug }) => {
   const formattedDate = formatDate(new Date(date))
 
   return (
-    <Page article showCanvas className='prose' header={formattedDate}>
+    <Page
+      article
+      showCanvas={!!excerpt}
+      className='prose'
+      header={excerpt && formattedDate}
+    >
       <Head>
         <link rel='stylesheet' href='/styles/blog.css' />
       </Head>
@@ -32,16 +28,27 @@ const BlogPost = ({
       />
 
       <header>
-        <h1 className='tighter' style={{ fontSize: '1.8em' }}>
-          {title}
-        </h1>
-        <p className='lead mt-8 color-caption'>{excerpt}</p>
+        {excerpt ? (
+          <React.Fragment>
+            <h1 className='tighter' style={{ fontSize: '1.8em' }}>
+              {title}
+            </h1>
+            <p className='lead mt-8 color-caption'>{excerpt}</p>
+          </React.Fragment>
+        ) : (
+          <React.Fragment>
+            <h1 style={{ fontSize: '1rem' }}>
+              <span className='normal color-caption'>{formattedDate} —</span>{' '}
+              {title}
+            </h1>
+          </React.Fragment>
+        )}
 
         <hr className='dashed my-16' />
       </header>
 
       <div className='prose blog-content'>
-        <Component components={mdxComponents} />
+        <RenderMDX code={code} />
       </div>
     </Page>
   )

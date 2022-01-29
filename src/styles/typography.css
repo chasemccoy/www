@@ -23,6 +23,10 @@ h1, h2, h3, h4, h5, h6 {
     margin-top: 1.25rem;
   }
 
+  blockquote > * + * {
+    margin-top: var(--flow-spacing);
+  }
+
   h1 + *,
   h2 + *,
   h3 + *,

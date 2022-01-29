@@ -1,4 +1,5 @@
 import React from 'react'
+import Link from './Link'
 
 const Sparkles = () => {
   const [message, setMessage] = React.useState('・゜✧.・.・゜✧・.')
@@ -40,6 +41,7 @@ const Footer = () => {
             }}
           />
         </div>
+
         <div className='ml-16 mb-2' style={{ flex: '1 0 auto' }}>
           <Sparkles />
           <p className='color-gray--500 smaller mt-12'>
@@ -55,6 +57,44 @@ const Footer = () => {
             </span>
           </p>
           <p className='color-gray--500 smaller'>Come back soon!</p>
+        </div>
+
+        <div className='contact'>
+          <ul
+            className='mt-8 mb-12 smaller'
+            style={{ '--link-color': 'var(--color-caption)' }}
+          >
+            <li>
+              <Link to='https://chs.is/tweeting' className='unstyled'>
+                Twitter
+              </Link>
+            </li>
+            <li>
+              <Link to='mailto:hi@chasem.co' className='unstyled'>
+                Email
+              </Link>
+            </li>
+            <li>
+              <Link to='https://chs.is/coding' className='unstyled'>
+                GitHub
+              </Link>
+            </li>
+            <li>
+              <Link to='https://chs.is/ig' className='unstyled'>
+                Instagram
+              </Link>
+            </li>
+            <li>
+              <Link to='https://chs.is/listening' className='unstyled'>
+                Spotify
+              </Link>
+            </li>
+            <li>
+              <Link to='/feed.xml' className='unstyled'>
+                RSS
+              </Link>
+            </li>
+          </ul>
         </div>
       </div>
     </footer>

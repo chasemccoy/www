@@ -1,8 +1,6 @@
 import React from 'react'
 import Head from 'next/head'
-import { getMDXComponent } from 'mdx-bundler/client'
 import { getNote, getCategory, getNotes } from '../../utils/note'
-import mdxComponents from '../../utils/mdx-components'
 import TableOfContents from '../../components/TableOfContents'
 import Link from '../../components/Link'
 import { Folder } from '../../components/Icon'
@@ -11,6 +9,7 @@ import config from '../../../next.config'
 import Metadata from '../../components/Metadata'
 import NoteList from '../../components/NoteList'
 import Page from '../../components/Page'
+import RenderMDX from '../../components/RenderMDX'
 
 const githubLink = (slug, category) =>
   `https://github.com/${config.repo}/edit/main/notes/${category}/${slug}.mdx`
@@ -69,7 +68,6 @@ const Category = ({ notes }) => {
 
 const Note = ({ data }) => {
   const { code, title, excerpt, toc, category, slug, modifiedDate } = data
-  const Component = React.useMemo(() => getMDXComponent(code), [code])
 
   return (
     <Page
@@ -117,7 +115,7 @@ const Note = ({ data }) => {
       </header>
 
       <div className='prose'>
-        <Component components={mdxComponents} />
+        <RenderMDX code={code} />
       </div>
     </Page>
   )

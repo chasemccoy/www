@@ -1,7 +1,7 @@
 :root {
-  --article-width: 760px;
+  --article-width: 720px;
   --sidebar-width: 140px;
-  --article-padding: 16px;
+  --article-padding: 12px;
   --layout-gap: 24px;
   --layout-padding: 8px;
 }
@@ -14,7 +14,7 @@ main {
 
   @media (--viewport-tiny) {
     --layout-padding: 40px;
-    --article-padding: 28px;
+    --article-padding: 32px;
   }
 
   & .content {

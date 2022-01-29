@@ -6,6 +6,7 @@ import { getDateComponents } from '../utils'
 import Link from '../components/Link'
 import Metadata from '../components/Metadata'
 import Page from '../components/Page'
+import RenderMDX from '../components/RenderMDX'
 
 const DateLabel = ({ date }) => {
   const { month, day } = getDateComponents(date, { monthFormat: 'short' })
@@ -22,6 +23,26 @@ const DateLabel = ({ date }) => {
         {month}
       </span>
       <span className='bold larger tighter'>{day}</span>
+    </div>
+  )
+}
+
+const ShortPost = ({ title, date, code, slug }) => {
+  const { month, day } = getDateComponents(new Date(date))
+  return (
+    <div className='flow' style={{ '--flow-spacing': '1rem' }}>
+      <a href={slug} className='unstyled'>
+        <h1 style={{ fontSize: '1rem' }}>
+          <span className='normal color-caption'>
+            {month} {day} —
+          </span>{' '}
+          {title}
+        </h1>
+      </a>
+
+      <div className='prose blog-content'>
+        <RenderMDX code={code} />
+      </div>
     </div>
   )
 }
@@ -48,35 +69,39 @@ const Blog = ({ posts }) => {
             </h2>
 
             <div className='flex flex-column gap-40 mt-0'>
-              {posts[year].map((post, i) => (
-                <Link
-                  href={post.slug}
-                  className='block unstyled no-hover post-preview'
-                  key={i}
-                >
-                  <article className='post-preview flex flex-column align--flex-start gap-16'>
-                    <div className='flex align--flex-start gap-16'>
-                      <DateLabel date={new Date(post.date)} />
-                      <div>
-                        <h2
-                          className='tighter'
-                          style={{ fontSize: '1.4em', marginTop: '-4px' }}
-                        >
-                          {post.title}
-                        </h2>
-                        <p className='color-caption mt-4'>{post.excerpt}</p>
+              {posts[year].map((post, i) =>
+                post.excerpt ? (
+                  <Link
+                    href={post.slug}
+                    className='block unstyled no-hover post-preview'
+                    key={i}
+                  >
+                    <article className='post-preview flex flex-column align--flex-start gap-16'>
+                      <div className='flex align--flex-start gap-16'>
+                        <DateLabel date={new Date(post.date)} />
+                        <div>
+                          <h2
+                            className='tighter'
+                            style={{ fontSize: '1.4em', marginTop: '-4px' }}
+                          >
+                            {post.title}
+                          </h2>
+                          <p className='color-caption mt-4'>{post.excerpt}</p>
+                        </div>
                       </div>
-                    </div>
 
-                    {post.image && (
-                      <img
-                        src={`/img/${post.params.slug}/${post.image}`}
-                        alt=''
-                      />
-                    )}
-                  </article>
-                </Link>
-              ))}
+                      {post.image && (
+                        <img
+                          src={`/img/${post.params.slug}/${post.image}`}
+                          alt=''
+                        />
+                      )}
+                    </article>
+                  </Link>
+                ) : (
+                  <ShortPost {...post} />
+                )
+              )}
             </div>
           </React.Fragment>
         ))}

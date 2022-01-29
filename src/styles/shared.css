@@ -1,14 +1,13 @@
-@import "resetti";
-@import "./theme.css";
-@import "./typography.css";
-@import "./utilities.css";
-@import "./layout.css";
-@import "./article.css";
-@import "./header.css";
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,600;1,400;1,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;1,400;1,600&display=swap');
 
-:focus:not(:focus-visible) {
-  outline: none;
-}
+@import 'resetti';
+@import './theme.css';
+@import './typography.css';
+@import './utilities.css';
+@import './layout.css';
+@import './article.css';
+@import './header.css';
 
 html {
   overflow-y: scroll;
@@ -88,9 +87,10 @@ code a {
 
 blockquote {
   position: relative;
-  margin-left: 0.5em;
-  padding: 4px 0.5em 4px 1.2em;
+  margin-left: 0.1em;
+  padding: 4px 0.5em 4px 1.5em;
   font-size: 0.95em;
+  color: var(--color-caption);
 
   &:before {
     content: '';
@@ -107,10 +107,10 @@ blockquote {
 mark {
   background-color: #fff2ac;
   background-image: linear-gradient(to right, #ffe359 0%, #fff2ac 100%);
-  border-radius: .5em .3em;
+  border-radius: 0.5em 0.3em;
   box-decoration-break: clone;
   margin: 0 -0.4em;
-  padding: .15em .4em;
+  padding: 0.15em 0.4em;
 }
 
 ul {
@@ -122,7 +122,7 @@ ul {
   }
 
   > li:before {
-    content: "–";
+    content: '–';
     margin-left: -1em;
     margin-top: -1px;
     float: left;
@@ -174,8 +174,8 @@ ol {
   }
 
   > li:before {
-    content: counter(ol-counter) ". ";
-    font-feature-settings: "tnum";
+    content: counter(ol-counter) '. ';
+    font-feature-settings: 'tnum';
     padding-right: 0.5em;
     position: absolute;
     left: calc(-1 * var(--offset));
@@ -184,7 +184,7 @@ ol {
 
 .toc {
   > div {
-    margin-top: 4px; 
+    margin-top: 4px;
   }
 
   > div > ul {
@@ -226,7 +226,7 @@ ol {
 .bookmark {
   max-width: none;
   overflow: hidden;
-  border: 1px solid var(--color-border); 
+  border: 1px solid var(--color-border);
   color: inherit;
   border-radius: 8px;
   --section-color: var(--color-text);
@@ -236,7 +236,8 @@ ol {
     background: var(--color-gray--100);
   }
 
-  img, .image {
+  img,
+  .image {
     width: 120px;
     height: 100%;
     object-fit: cover;
@@ -254,5 +255,13 @@ ol {
 .callout aside {
   p:last-child {
     margin: 0;
+  }
+}
+
+.property-list {
+  @media (--viewport-small) {
+    display: grid;
+    grid-template-columns: 15% 1fr;
+    align-items: baseline;
   }
 }
