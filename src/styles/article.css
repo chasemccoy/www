@@ -64,24 +64,11 @@ hr {
 
     &:before {
       content: "・゜✧.・";
-      color: var(--color-blue);
+      color: var(--color-accent);
       display: block;
       width: 100%;
       text-align: center;
-      font-weight: bold;
       font-size: 1.5em;
-    }
-
-    &:nth-of-type(2n):before, &:nth-of-type(7n):before {
-      color: var(--color-green);
-    }
-
-    &:nth-of-type(3n):before {
-      color: var(--color-red);
-    }
-
-    &:nth-of-type(4n):before {
-      color: var(--color-purple);
     }
   }
 }

@@ -163,9 +163,7 @@ const Books = () => {
 
   return (
     <>
-      <h2 className='marker mt-32'>
-        <span>Recently read</span>
-      </h2>
+      <h2 className='mt-32'>Recently read</h2>
 
       <div className='horizontal-scroll mt-24 pb-24'>
         {recents.map((book) => (
@@ -173,9 +171,7 @@ const Books = () => {
         ))}
       </div>
 
-      <h2 className='marker mt-40'>
-        <span>Favorites</span>
-      </h2>
+      <h2 className='mt-40'>Favorites</h2>
 
       <div
         className='grid mt-32'

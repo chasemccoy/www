@@ -310,7 +310,7 @@ h2.marker {
   span {
     text-transform: uppercase;
     color: var(--color-caption);
-    font-family: 'Founders Mono';
+    font-family: var(--font-code);
   }
 
   &:after {
