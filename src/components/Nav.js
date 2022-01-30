@@ -55,7 +55,7 @@ const Nav = () => {
 
         <Item href='/notes'>Notes</Item>
 
-        <Separator className='desktop-only' />
+        {/* <Separator className='desktop-only' />
 
         <Item href='/notes/code' desktopOnly className='shortcut'>
           #code
@@ -71,7 +71,7 @@ const Nav = () => {
 
         <Item href='/notes/quotes' desktopOnly className='shortcut'>
           #quotes
-        </Item>
+        </Item> */}
       </ul>
     </nav>
   )

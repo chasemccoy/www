@@ -67,7 +67,7 @@ const Notes = ({ notes, recentNotes }) => {
           style={{ '--item-min-size': '250px', '--gap': '12px' }}
         >
           {recentNotes.slice(0, 4).map((note) => (
-            <Link to={`/notes/${note.slug}`} className='block unstyled p-16 bg-gray--200 radius-8' key={note.slug}>
+            <Link to={`/notes/${note.slug}`} className='block unstyled p-16 card' key={note.slug}>
               <div className='bold'>{note.title}</div>
               <div className='color-caption smaller'>{note.excerpt}</div>
             </Link>

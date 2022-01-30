@@ -74,7 +74,7 @@
   }
 }
 
-@each $color in red, yellow, blue, green, purple, caption {
+@each $color in accent, caption {
   .color-$(color) {
     color: var(--color-$(color));
   }
@@ -363,5 +363,34 @@ h2.marker {
     width: var(--size);
     background: var(--color);
     mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 96 96' fill='currentColor' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M43.68 2.485a6 6 0 018.64 0l3.654 3.792a6 6 0 005.982 1.603l5.06-1.458a6 6 0 017.484 4.321l1.267 5.11a6 6 0 004.38 4.38l5.11 1.267a6 6 0 014.32 7.485l-1.457 5.06a6 6 0 001.603 5.98l3.792 3.654a6 6 0 010 8.642l-3.792 3.653a6 6 0 00-1.603 5.982l1.458 5.06a6 6 0 01-4.321 7.484l-5.11 1.267a6 6 0 00-4.38 4.38l-1.267 5.11a6 6 0 01-7.484 4.32l-5.06-1.457a6 6 0 00-5.982 1.603l-3.653 3.792a6 6 0 01-8.642 0l-3.653-3.792a6 6 0 00-5.982-1.603l-5.06 1.458a6 6 0 01-7.484-4.321l-1.267-5.11a6 6 0 00-4.38-4.38l-5.11-1.267a6 6 0 01-4.32-7.484l1.457-5.06a6 6 0 00-1.603-5.982l-3.792-3.653a6 6 0 010-8.642l3.792-3.653a6 6 0 001.603-5.982l-1.458-5.06a6 6 0 014.321-7.484l5.11-1.267a6 6 0 004.38-4.38l1.267-5.11a6 6 0 017.485-4.32l5.06 1.457a6 6 0 005.98-1.603l3.654-3.792z'/%3E%3C/svg%3E");
+  }
+}
+
+.card {
+  position: relative;
+  background: var(--color-gray--200);
+  border-radius: 8px;
+  border: 1px solid transparent;
+
+  &:hover {
+    color: var(--color-text);
+    border: 1px solid var(--color-accent);
+  }
+
+  &:hover:before {
+    opacity: 1;
+  }
+
+  &:before {
+    content: ' ';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    box-shadow: var(--shadow-small);
+    opacity: 0;
+    transition: opacity 300ms;
+    border-radius: 8px;
   }
 }

@@ -6,6 +6,7 @@ import Marker from '../components/Marker'
 import { getPosts } from '../utils/post'
 import { getRecentlyModifiedNotes } from '../utils/note'
 import PropertyList from '../components/PropertyList'
+import Museo from '../components/homepage/Museo'
 
 const Index = ({ posts, recentNotes }) => {
   return (
@@ -16,7 +17,7 @@ const Index = ({ posts, recentNotes }) => {
 
       <h2
         className='serif normal mt-0'
-        style={{ fontSize: '1.3rem', lineHeight: '1.4' }}
+        style={{ fontSize: '1.35rem', lineHeight: '1.4' }}
       >
         <i>Chase McCoy</i> is a product designer, front-end engineer, and
         internet explorer working on design systems at{' '}
@@ -26,7 +27,7 @@ const Index = ({ posts, recentNotes }) => {
       <img
         src='/images/portrait.jpg'
         alt='Chase McCoy'
-        className='mt-32 mb-40'
+        className='my-32'
         style={{
           borderRadius: '8px',
           border: '1px solid var(--color-border)',
@@ -49,17 +50,14 @@ const Index = ({ posts, recentNotes }) => {
 
       <DesignSystems /> */}
 
-      {/* <hr className='mt-40 mb-24' />
-
-      <Museo /> */}
-
       {/* <div className='previously mt-40'>
         <Marker className='previously'>Previously</Marker>
         <Seeds />
         <Pico />
       </div> */}
 
-      <div className='flow' style={{'--flow-spacing': '1rem'}}>
+      <div className='flow' style={{ '--flow-spacing': '1rem' }}>
+        <Marker className='mt-48'>Experience</Marker>
         <PropertyList label='Now'>
           <h4>Design Systems at Stripe</h4>
           <p className='color-caption mt-4'>
@@ -87,22 +85,29 @@ const Index = ({ posts, recentNotes }) => {
         </PropertyList>
       </div>
 
-      <h3 className='mt-48 subheader'>Recent notes</h3>
+      {/* <h3 className='mt-48 subheader'>Recent notes</h3>
       {recentNotes.map((note) => (
         <PropertyList key={note.slug} label={note.title}>
           {note.excerpt}
         </PropertyList>
-      ))}
+      ))} */}
 
-      <h3 className='mt-48 subheader'>Featured writing</h3>
-      {posts.map((post) => (
-        <div key={post.slug}>
-          <h4>
-            <Link to={post.slug}>{post.title}</Link>
-          </h4>
-          <p>{post.excerpt}</p>
-        </div>
-      ))}
+      <div className='flow' style={{ '--flow-spacing': '1rem' }}>
+        <Marker className='mt-48'>Select writing</Marker>
+        {posts.map((post) => (
+          <div key={post.slug}>
+            <h4>
+              <Link to={post.slug}>{post.title}</Link>
+            </h4>
+            <p>{post.excerpt}</p>
+          </div>
+        ))}
+        <Link to='/blog' className='block bold unstyled color-caption'>Read more →</Link>
+      </div>
+
+      <hr className='mt-40 mb-24' />
+
+      <Museo />
     </Page>
   )
 }
@@ -114,7 +119,7 @@ export const getStaticProps = async (context) => {
 
   return {
     props: {
-      posts: featuredPosts.slice(0, 4),
+      posts: featuredPosts.slice(0, 3),
       recentNotes: recentNotes.slice(0, 4),
     },
   }

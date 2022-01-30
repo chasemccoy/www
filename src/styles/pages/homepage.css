@@ -95,7 +95,7 @@ h3.subheader {
       font-size: 0.6em;
       transform: translateY(-.45ex);
       align-self: flex-end;
-      color: white;
+      color: var(--color-caption);
     }
   }
 

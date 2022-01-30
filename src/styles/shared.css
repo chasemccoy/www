@@ -38,11 +38,11 @@ h6 {
 }
 
 a {
-  --link-underline-color: var(--color-gray--400);
+  --link-underline-color: var(--color-gray--300);
   color: var(--link-color);
   text-decoration: underline;
   transition: all 0.3s;
-  text-decoration-thickness: var(--text-decoration-thickness, 1px);
+  text-decoration-thickness: var(--text-decoration-thickness, 2.5px);
   text-decoration-color: var(--link-underline-color);
   text-underline-offset: var(--text-decoration-offset, 0.05rem);
 
