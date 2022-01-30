@@ -4,9 +4,13 @@
   a {
     display: block;
     position: relative;
-    padding: 6px 12px;
+    padding: 8px 16px;
     border-radius: 8px;
     color: var(--color-gray--500);
+
+    @media (--viewport-small) {
+      padding: 6px 12px;
+    }
   }
 
   a[href='/'] {
