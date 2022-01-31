@@ -27,7 +27,7 @@ const Museo = (props) => {
 						interface that connects you with the the following institutions:
 					</p>
 
-					<ul className="smaller mt-12">
+					<ul className="smaller mt-8">
 						<li>
 							<Link to="https://www.artic.edu/archival-collections/explore-the-collection">
 								The Art Institute of Chicago
@@ -41,11 +41,7 @@ const Museo = (props) => {
 								The Harvard Art Museums
 							</Link>
 						</li>
-						<li>
-							<Link to="https://digitalcollections.nypl.org">
-								The New York Public Library Digital Collection
-							</Link>
-						</li>
+						<li>And more...</li>
 					</ul>
 
 					<p className="smaller mt-12">

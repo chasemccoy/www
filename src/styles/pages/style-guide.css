@@ -6,16 +6,16 @@ h1 {
     content: '';
     display: block;
     height: 20px;
-    margin-top: -16px;
+    margin-top: -14px;
     background: var(--color-yellow);
     background: linear-gradient(
       to bottom,
-      var(--color-yellow) 0%,
-      var(--color-yellow) 60%,
+      var(--color-accent) 0%,
+      var(--color-accent) 60%,
       white 60%,
       white 80%,
-      var(--color-yellow) 80%,
-      var(--color-yellow) 100%
+      var(--color-accent) 80%,
+      var(--color-accent) 100%
     );
   }
 
@@ -28,8 +28,4 @@ h1 {
     line-height: 1.5 !important;
     display: inline-flex;
   }
-}
-
-*:not(.toc) > h2 {
-  font-family: var(--font-header) !important;
 }

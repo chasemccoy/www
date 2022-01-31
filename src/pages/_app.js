@@ -11,78 +11,6 @@ import { useRouter } from 'next/router'
 
 const fontStyles = `
 @font-face {
-  font-family: 'Inter';
-  src: url('/fonts/inter/Inter-Regular.woff2') format('woff2'),
-    url('/fonts/inter/Inter-Regular.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Inter';
-  src: url('/fonts/inter/Inter-Italic.woff2') format('woff2'),
-    url('/fonts/inter/Inter-Italic.woff') format('woff');
-  font-weight: normal;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Inter';
-  src: url('/fonts/inter/Inter-Bold.woff2') format('woff2'),
-    url('/fonts/inter/Inter-Bold.woff') format('woff');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Inter';
-  src: url('/fonts/inter/Inter-BoldItalic.woff2') format('woff2'),
-    url('/fonts/inter/Inter-BoldItalic.woff') format('woff');
-  font-weight: 700;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Ivar Text';
-  src: url('/fonts/ivar-text/IvarText-Regular.woff2') format('woff2'),
-    url('/fonts/ivar-text/IvarText-Regular.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Ivar Text';
-  src: url('/fonts/ivar-text/IvarText-Italic.woff2') format('woff2'),
-    url('/fonts/ivar-text/IvarText-Italic.woff') format('woff');
-  font-weight: normal;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Ivar Text';
-  src: url('/fonts/ivar-text/IvarText-Medium.woff2') format('woff2'),
-    url('/fonts/ivar-text/IvarText-Medium.woff') format('woff');
-  font-weight: bold;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Ivar Text';
-  src: url('/fonts/ivar-text/IvarText-MediumItalic.woff2') format('woff2'),
-    url('/fonts/ivar-text/IvarText-MediumItalic.woff') format('woff');
-  font-weight: bold;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
   font-family: 'Source Code Pro';
   src: url('/fonts/source-code-pro/SourceCodePro-It.woff2') format('woff2'),
       url('/fonts/source-code-pro/SourceCodePro-It.woff') format('woff');
@@ -113,15 +41,6 @@ const fontStyles = `
   font-family: 'Source Code Pro';
   src: url('/fonts/source-code-pro/SourceCodePro-Regular.woff2') format('woff2'),
       url('/fonts/source-code-pro/SourceCodePro-Regular.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Founders Mono';
-  src: url('/fonts/founders/founders-grotesk-mono-regular.woff2') format('woff2'),
-      url('/fonts/founders/founders-grotesk-mono-regular.woff') format('woff');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
