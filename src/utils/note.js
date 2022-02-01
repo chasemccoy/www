@@ -21,7 +21,7 @@ function execShellCommand(cmd) {
 
 async function getLastModifiedDate(path) {
   const date = await execShellCommand(`git log -1 --format=%ci ${path}`)
-  return date
+  return date.replace('\n', '')
 }
 
 async function getNote(slug) {
