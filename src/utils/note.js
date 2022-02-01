@@ -22,10 +22,8 @@ function execShellCommand(cmd) {
 async function getLastModifiedDate(path) {
   let date = await execShellCommand(`git log -1 --format=%cD ${path}`)
   date = new Date(date.replace('\n', ''))
-  const correctedDate = new Date(
-    date.getTime() + date.getTimezoneOffset() * -60000
-  )
-  return correctedDate.toString()
+  date.setHours(0, 0, 0, 0)
+  return date.toString()
 }
 
 async function getNote(slug) {
@@ -127,7 +125,7 @@ async function getNotes(flat = true) {
 async function getRecentlyModifiedNotes() {
   const notes = await getNotes()
   const sorted = notes.sort(
-    (a, b) => -a.modifiedDate.localeCompare(b.modifiedDate)
+    (a, b) => new Date(b.modifiedDate) - new Date(a.modifiedDate)
   )
   return sorted
 }

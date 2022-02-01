@@ -66,8 +66,12 @@ const Notes = ({ notes, recentNotes }) => {
           className='mt-16 grid'
           style={{ '--item-min-size': '250px', '--gap': '12px' }}
         >
-          {recentNotes.slice(0, 4).map((note) => (
-            <Link to={`/notes/${note.slug}`} className='block unstyled p-16 card' key={note.slug}>
+          {recentNotes.map((note) => (
+            <Link
+              to={`/notes/${note.slug}`}
+              className='block unstyled p-16 card'
+              key={note.slug}
+            >
               <div className='bold'>{note.title}</div>
               <div className='color-caption smaller'>{note.excerpt}</div>
             </Link>
@@ -117,7 +121,7 @@ export const getStaticProps = async (context) => {
   const recentNotes = await getRecentlyModifiedNotes()
 
   return {
-    props: { notes, recentNotes },
+    props: { notes, recentNotes: recentNotes.slice(0, 4) },
   }
 }
 
