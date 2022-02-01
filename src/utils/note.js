@@ -20,8 +20,12 @@ function execShellCommand(cmd) {
 }
 
 async function getLastModifiedDate(path) {
-  const date = await execShellCommand(`git log -1 --format=%ci ${path}`)
-  return date.replace('\n', '')
+  let date = await execShellCommand(`git log -1 --format=%cD ${path}`)
+  date = new Date(date.replace('\n', ''))
+  const correctedDate = new Date(
+    date.getTime() + date.getTimezoneOffset() * -60000
+  )
+  return correctedDate.toString()
 }
 
 async function getNote(slug) {
