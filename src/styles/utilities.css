@@ -388,7 +388,7 @@ h2.marker {
     right: 0;
     bottom: 0;
     left: 0;
-    box-shadow: var(--shadow-small);
+    box-shadow: var(--shadow-medium);
     opacity: 0;
     transition: opacity 300ms;
     border-radius: 8px;

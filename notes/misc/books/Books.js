@@ -4,6 +4,30 @@ import clsx from 'clsx'
 
 export const recents = [
   {
+    title: 'Laziness Does Not Exist',
+    author: 'Devon Price',
+    url: 'https://bookshop.org/books/laziness-does-not-exist/9781982140106',
+    image: 'laziness.jpeg'
+  },
+  {
+    title: 'They Can’t Kill Us Until They Kill Us',
+    author: 'Hanif Abdurraqib',
+    url: 'https://bookshop.org/books/they-can-t-kill-us-until-they-kill-us/9781937512651',
+    image: 'kill-us.jpeg'
+  },
+  {
+    title: 'A Swim in a Pond in the Rain',
+    author: 'George Saunders',
+    url: 'https://bookshop.org/books/a-swim-in-a-pond-in-the-rain-in-which-four-russians-give-a-master-class-on-writing-reading-and-life/9781984856029',
+    image: 'saunders.jpeg'
+  },
+  {
+    title: 'LaserWriter II',
+    author: 'Tamara Shopsin',
+    url: 'https://bookshop.org/books/laserwriter-ii/9780374602574',
+    image: 'laserwriter.jpeg'
+  },
+  {
     title: 'Bird by Bird',
     author: 'Anne Lamott',
     url: 'https://bookshop.org/books/bird-by-bird-some-instructions-on-writing-and-life/9780385480017',

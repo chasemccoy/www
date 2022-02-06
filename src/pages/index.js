@@ -37,7 +37,7 @@ const Index = ({ posts, recentNotes }) => {
         }}
       >
         <i>Chase McCoy</i> is a Product Designer at{' '}
-        <Link href='https://stripe.com'>Stripe</Link> focused on building, evangelizing, and supporting design systems.
+        <Link href='https://stripe.com'>Stripe</Link> focused on building, evangelizing, and growing design systems.
       </h2>
 
       <p className='color-caption mt-8'>
@@ -73,7 +73,7 @@ const Index = ({ posts, recentNotes }) => {
         <PropertyList label='Now'>
           <h4>Design Systems at Stripe</h4>
           <p className='color-caption mt-2'>
-            I’m currently working on Sail—the Stripe product design system.
+            I’m currently working on Sail, the design ecosystem powering web products at Stripe. 
           </p>
         </PropertyList>
         <hr className='dashed' />
