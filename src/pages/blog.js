@@ -30,7 +30,7 @@ const DateLabel = ({ date }) => {
 const ShortPost = ({ title, date, code, slug }) => {
   const { month, day } = getDateComponents(new Date(date))
   return (
-    <div className='flow' style={{ '--flow-spacing': '1rem' }}>
+    <article className='flow' style={{ '--flow-spacing': '1rem' }}>
       <a href={slug} className='unstyled'>
         <h1 style={{ fontSize: '1rem' }}>
           <span className='normal color-caption'>
@@ -43,7 +43,7 @@ const ShortPost = ({ title, date, code, slug }) => {
       <div className='prose blog-content'>
         <RenderMDX code={code} />
       </div>
-    </div>
+    </article>
   )
 }
 
