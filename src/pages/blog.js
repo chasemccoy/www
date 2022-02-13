@@ -27,6 +27,29 @@ const DateLabel = ({ date }) => {
   )
 }
 
+const PostPreview = ({ slug, date, title, excerpt, params, image }) => {
+  return (
+    <Link href={slug} className='block unstyled no-hover post-preview'>
+      <article className='post-preview flex flex-column align--flex-start gap-16'>
+        <div className='flex align--flex-start gap-16'>
+          <DateLabel date={new Date(date)} />
+          <div>
+            <h2
+              className='tighter'
+              style={{ fontSize: '1.4em', marginTop: '-4px' }}
+            >
+              {title}
+            </h2>
+            <p className='color-caption mt-4'>{excerpt}</p>
+          </div>
+        </div>
+
+        {image && <img src={`/img/${params.slug}/${image}`} alt='' />}
+      </article>
+    </Link>
+  )
+}
+
 const ShortPost = ({ title, date, code, slug }) => {
   const { month, day } = getDateComponents(new Date(date))
   return (
@@ -71,35 +94,11 @@ const Blog = ({ posts }) => {
             <div className='flex flex-column gap-40 mt-0'>
               {posts[year].map((post, i) =>
                 post.excerpt ? (
-                  <Link
-                    href={post.slug}
-                    className='block unstyled no-hover post-preview'
-                    key={i}
-                  >
-                    <article className='post-preview flex flex-column align--flex-start gap-16'>
-                      <div className='flex align--flex-start gap-16'>
-                        <DateLabel date={new Date(post.date)} />
-                        <div>
-                          <h2
-                            className='tighter'
-                            style={{ fontSize: '1.4em', marginTop: '-4px' }}
-                          >
-                            {post.title}
-                          </h2>
-                          <p className='color-caption mt-4'>{post.excerpt}</p>
-                        </div>
-                      </div>
-
-                      {post.image && (
-                        <img
-                          src={`/img/${post.params.slug}/${post.image}`}
-                          alt=''
-                        />
-                      )}
-                    </article>
-                  </Link>
+                  <PostPreview key={i} {...post} />
                 ) : (
-                  <ShortPost {...post} />
+                  <div key={i} className={i !== 0 ? 'my-24' : undefined}>
+                    <ShortPost {...post} />
+                  </div>
                 )
               )}
             </div>
