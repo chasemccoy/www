@@ -1,5 +1,4 @@
 import React from 'react'
-import Head from 'next/head'
 import Link from '../components/Link'
 import Page from '../components/Page'
 import Marker from '../components/Marker'
@@ -11,10 +10,6 @@ import Museo from '../components/homepage/Museo'
 const Index = ({ posts, recentNotes }) => {
   return (
     <Page>
-      <Head>
-        <link rel='stylesheet' href='/styles/homepage.css' />
-      </Head>
-
       {/* <h2
         className='serif normal mt-0'
         style={{

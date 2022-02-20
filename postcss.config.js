@@ -1,7 +1,7 @@
 module.exports = {
 	plugins: {
 		'postcss-import': {
-			from: 'src/styles/shared.css'
+			from: 'src/styles/styles.css'
 		},
 		'postcss-each': {},
 		'postcss-simple-vars': {},

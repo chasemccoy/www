@@ -1,5 +1,4 @@
 import React from 'react'
-import Head from 'next/head'
 import { getNote, getCategory, getNotes } from '../../utils/note'
 import TableOfContents from '../../components/TableOfContents'
 import Link from '../../components/Link'
@@ -38,10 +37,6 @@ const Category = ({ notes }) => {
         </h1>
       }
     >
-      <Head>
-        <link rel='stylesheet' href='/styles/notes.css' />
-      </Head>
-
       <Metadata title={categoryName} />
 
       <NoteList notes={notes} />
@@ -85,10 +80,6 @@ const Note = ({ data }) => {
         </div>
       }
     >
-      <Head>
-        <link rel='stylesheet' href='/styles/notes.css' />
-      </Head>
-
       <Metadata title={title} description={excerpt} />
 
       <header className='flow'>

@@ -1,5 +1,4 @@
 import React from 'react'
-import Head from 'next/head'
 import { getNotes, getRecentlyModifiedNotes } from '../../utils/note'
 import Link from '../../components/Link'
 import Page from '../../components/Page'
@@ -18,10 +17,6 @@ const Notes = ({ notes, recentNotes }) => {
 
   return (
     <Page className='prose'>
-      <Head>
-        <link rel='stylesheet' href='/styles/notes.css' />
-      </Head>
-
       <Metadata
         title='Notes'
         description="My digital garden containing a collection of links, thoughts, ideas, images, quotes, and other miscellanea I've collected on my travels across the web."

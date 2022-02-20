@@ -1,5 +1,4 @@
 import React from 'react'
-import Head from 'next/head'
 import groupBy from 'just-group-by'
 import { getPosts } from '../utils/post'
 import { getDateComponents } from '../utils'
@@ -75,10 +74,6 @@ const Blog = ({ posts }) => {
 
   return (
     <Page className='flow'>
-      <Head>
-        <link rel='stylesheet' href='/styles/blog.css' />
-      </Head>
-
       <Metadata
         title='Blog'
         description="What's on my mind, and links to some interesting stuff on the web."

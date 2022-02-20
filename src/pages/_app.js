@@ -67,10 +67,6 @@ const App = ({ Component, pageProps }) => {
         <link rel='icon' href='/favicon.ico' />
         <link rel='apple-touch-icon' href='/apple-touch-icon.png' />
         <style dangerouslySetInnerHTML={{ __html: fontStyles }} />
-        <link rel='stylesheet' href='/styles/shared.css' />
-        <link rel='prefetch' href='/styles/blog.css' as='style' />
-        <link rel='prefetch' href='/styles/homepage.css' as='style' />
-        <link rel='prefetch' href='/styles/notes.css' as='style' />
       </Head>
 
       <Script

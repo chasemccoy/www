@@ -1,13 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,600;1,400;1,600&family=Source+Sans+3:ital,wght@0,400;0,600;1,400;1,600&display=swap');
-
-@import 'resetti';
-@import './theme.css';
-@import './typography.css';
-@import './utilities.css';
-@import './layout.css';
-@import './article.css';
-@import './header.css';
-
 html {
   overflow-y: scroll;
   line-height: var(--root-line-height);

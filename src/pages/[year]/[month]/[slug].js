@@ -1,5 +1,4 @@
 import React from 'react'
-import Head from 'next/head'
 import { getPosts, getPost } from '../../../utils/post'
 import { formatDate } from '../../../utils'
 import Metadata from '../../../components/Metadata'
@@ -16,10 +15,6 @@ const BlogPost = ({ code, title, excerpt, date, image, slug }) => {
       className='prose'
       header={excerpt && formattedDate}
     >
-      <Head>
-        <link rel='stylesheet' href='/styles/blog.css' />
-      </Head>
-
       <Metadata
         article
         title={title}
