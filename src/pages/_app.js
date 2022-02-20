@@ -64,6 +64,11 @@ const App = ({ Component, pageProps }) => {
           title='Chase McCoy'
           href='/feed.xml'
         />
+        <link
+          rel='preconnect'
+          href='https://fonts.gstatic.com'
+          crossOrigin='anonymous'
+        />
         <link rel='icon' href='/favicon.ico' />
         <link rel='apple-touch-icon' href='/apple-touch-icon.png' />
         <style dangerouslySetInnerHTML={{ __html: fontStyles }} />

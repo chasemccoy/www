@@ -8,8 +8,6 @@ export default function Document() {
       </Head>
 
       <body>
-        {/* Fixes a FOUC issue in Chrome (https://github.com/vercel/next.js/issues/15642) */}
-        {/* <script>0</script> */}
         <Main />
         <NextScript />
       </body>
