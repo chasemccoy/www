@@ -3,6 +3,10 @@ import sortBy from 'sort-by'
 
 export const quotes = [
   {
+    content: "There are no separate systems. The world is a continuum. Where to draw a boundary around a system depends on the purpose of the discussion.",
+    metadata: "Donella H. Meadows"
+  },
+  {
     content:
       "Be regular and orderly in your life, so that you may be violent and original in your work.",
     metadata: "Gustave Flaubert",

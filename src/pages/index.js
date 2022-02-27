@@ -10,19 +10,6 @@ import Museo from '../components/homepage/Museo'
 const Index = ({ posts, recentNotes }) => {
   return (
     <Page>
-      {/* <h2
-        className='serif normal mt-0'
-        style={{
-          fontSize: '1.4rem',
-          lineHeight: '1.4',
-          letterSpacing: '-0.5px',
-        }}
-      >
-        <i>Chase McCoy</i> is a product designer, front-end engineer, and
-        internet explorer working on design systems at{' '}
-        <Link href='https://stripe.com'>Stripe</Link>.
-      </h2> */}
-
       <h2
         className='serif normal mt-0'
         style={{
@@ -31,18 +18,22 @@ const Index = ({ posts, recentNotes }) => {
           letterSpacing: '-0.5px',
         }}
       >
-        <i>Chase McCoy</i> is a Product Designer at{' '}
-        <Link href='https://stripe.com'>Stripe</Link> focused on building, evangelizing, and growing design systems.
+        <i>Chase McCoy</i> is a product designer at{' '}
+        <Link href='https://stripe.com'>Stripe</Link> focused on building,
+        evangelizing, and growing design systems.
       </h2>
 
-      <p className='color-caption mt-8'>
-        When he’s not at his computer you can find him thinking and writing
-        about design advocacy, digital gardening, hypertext, internet culture,
-        online communities, indie publishing, creative coding, digital
-        preservationism, and a diverse & open web.
+      <p
+        className='color-caption mt-8'
+        style={{
+          '--link-color': 'var(--color-caption)',
+        }}
+      >
+        I’m interested in the texture of the web—how we shape it and how we are
+        shaped by it. You can learn more about me by{' '}
+        <Link href='/blog'>reading my blog</Link>, perusing{' '}
+        <Link href='/notes'>my digital garden</Link> of public notes, and browsing <Link href='/notes/books'>my bookshelf</Link>.
       </p>
-
-      {/* <p className='color-caption mt-12'>Interests include design advocacy, digital gardening, </p> */}
 
       <img
         src='/images/portrait.jpg'
@@ -68,7 +59,8 @@ const Index = ({ posts, recentNotes }) => {
         <PropertyList label='Now'>
           <h4>Design Systems at Stripe</h4>
           <p className='color-caption mt-2'>
-            I’m currently working on Sail, the design ecosystem powering web products at Stripe. 
+            I’m currently working on Sail, the design ecosystem powering web
+            products at Stripe.
           </p>
         </PropertyList>
         <hr className='dashed' />
