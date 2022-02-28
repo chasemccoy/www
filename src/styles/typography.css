@@ -18,6 +18,10 @@ h1, h2, h3, h4, h5, h6 {
   li > p + p {
     margin-top: 0.25rem;
   }
+  
+  li > p:not(:first-of-type) + p {
+    margin-top: 0.75rem;
+  }
 
   li + li > p:first-child {
     margin-top: 1.25rem;
