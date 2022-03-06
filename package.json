@@ -17,7 +17,8 @@
     "build:css": "postcss src/styles/{styles,pages/*}.css -d public/styles  --verbose",
     "copy-images": "node ./bin/copy-images",
     "generate-feed": "node .next/server/generate-feed",
-    "lint": "yarn next lint"
+    "lint": "yarn next lint",
+    "format": "prettier --write --ignore-path .gitignore ."
   },
   "author": "Chase McCoy",
   "license": "MIT",
@@ -52,6 +53,7 @@
     "esbuild": "^0.14.23",
     "eslint": "^8.9.0",
     "eslint-config-next": "^12.1.0",
+    "eslint-config-prettier": "^8.5.0",
     "feed": "^4.2.2",
     "fs-extra": "^9.1.0",
     "postcss": "^8.3.6",
@@ -61,6 +63,7 @@
     "postcss-nested": "^5.0.5",
     "postcss-preset-env": "^6.7.0",
     "postcss-simple-vars": "^6.0.3",
+    "prettier": "^2.5.1",
     "rimraf": "^3.0.2"
   },
   "engines": {

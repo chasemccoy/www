@@ -14,7 +14,7 @@ const Bookmark = ({ url }) => {
     }
 
     fetchData()
-  }, [])
+  }, [url])
 
   if (!data) {
     return <a href={url} target='_blank' className='bookmark-loader' />

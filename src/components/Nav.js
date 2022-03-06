@@ -54,24 +54,6 @@ const Nav = () => {
         </Item>
 
         <Item href='/notes'>Notes</Item>
-
-        {/* <Separator className='desktop-only' />
-
-        <Item href='/notes/code' desktopOnly className='shortcut'>
-          #code
-        </Item>
-
-        <Item href='/notes/design-systems' desktopOnly className='shortcut'>
-          #design systems
-        </Item>
-
-        <Item href='/notes/books' desktopOnly className='shortcut'>
-          #books
-        </Item>
-
-        <Item href='/notes/quotes' desktopOnly className='shortcut'>
-          #quotes
-        </Item> */}
       </ul>
     </nav>
   )
