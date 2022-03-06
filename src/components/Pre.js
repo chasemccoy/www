@@ -1,7 +1,7 @@
-import React from 'react';
+import React from 'react'
 
 const Pre = (preProps) => {
-	return <pre {...preProps} />;
-};
+  return <pre {...preProps} />
+}
 
-export default Pre;
+export default Pre

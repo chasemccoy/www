@@ -47,7 +47,7 @@ article {
 
   .ol-fancy + ol {
     --offset: 2.5rem;
-  
+
     li:before {
       content: counter(ol-counter);
       background: var(--color-gray--200);
@@ -81,7 +81,7 @@ hr {
     padding: 0.5em 0;
 
     &:before {
-      content: "・゜✧.・";
+      content: '・゜✧.・';
       color: var(--color-accent);
       display: block;
       width: 100%;
@@ -98,11 +98,11 @@ pre {
   padding: 0 var(--article-padding);
   overflow: auto;
   background: var(--color-gray--0) !important;
-  
+
   @media (--viewport-tiny) {
     width: auto;
     margin: 0;
-    
+
     border-radius: 8px;
   }
 

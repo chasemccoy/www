@@ -18,19 +18,19 @@ const Category = ({ notes }) => {
 
   return (
     <Page
-      className='prose'
+      className="prose"
       header={
-        <h1 className='normal' style={{ color: 'inherit' }}>
-          <Link to='/' className='unstyled normal'>
+        <h1 className="normal" style={{ color: 'inherit' }}>
+          <Link to="/" className="unstyled normal">
             ~
           </Link>
-          <span className='normal mx-4'>/</span>
-          <Link to='/notes' className='unstyled'>
+          <span className="normal mx-4">/</span>
+          <Link to="/notes" className="unstyled">
             Notes
           </Link>
-          <span className='normal ml-4 mr-8'>/</span>
+          <span className="normal ml-4 mr-8">/</span>
           <Folder
-            className='inline mr-4'
+            className="inline mr-4"
             style={{ width: '1em', position: 'relative', top: '-0.14em' }}
           />
           {categoryName}
@@ -51,26 +51,26 @@ const Note = ({ data }) => {
     <Page
       article
       showCanvas
-      className='prose'
+      className="prose"
       tableOfContents={
         toc && (
           <>
             <TableOfContents content={toc} />
-            <hr className='dashed' />
-            <Link to={githubLink(slug, category)} className='block'>
+            <hr className="dashed" />
+            <Link to={githubLink(slug, category)} className="block">
               Edit on GitHub
             </Link>
           </>
         )
       }
       header={
-        <div className='flex space-between mobile-stack gap-4'>
+        <div className="flex space-between mobile-stack gap-4">
           <Link
-            className='unstyled color-section flex align-center'
+            className="unstyled color-section flex align-center"
             to={`/notes/${category}`}
           >
             <Folder
-              className='inline mr-6'
+              className="inline mr-6"
               style={{ position: 'relative', top: '-1.5px' }}
             />
             {capitalize(category.replace('-', ' '))}
@@ -82,13 +82,13 @@ const Note = ({ data }) => {
     >
       <Metadata title={title} description={excerpt} />
 
-      <header className='flow'>
+      <header className="flow">
         <h1>{title}</h1>
-        <p className='lead mt-8 color-caption'>{excerpt}</p>
-        <hr className='dashed' />
+        <p className="lead mt-8 color-caption">{excerpt}</p>
+        <hr className="dashed" />
       </header>
 
-      <div className='prose'>
+      <div className="prose">
         <RenderMDX code={code} />
       </div>
     </Page>

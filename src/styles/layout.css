@@ -50,7 +50,9 @@ footer {
   padding: 0 var(--article-padding);
 
   @media (--viewport-medium) {
-    max-width: calc(var(--article-width) + var(--layout-gap) + var(--sidebar-width));
+    max-width: calc(
+      var(--article-width) + var(--layout-gap) + var(--sidebar-width)
+    );
   }
 
   & > div {

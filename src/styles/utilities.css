@@ -1,66 +1,66 @@
 @each $space in 0, 1, 2, 4, 6, 8, 12, 16, 20, 24, 32, 40, 48 {
   .gap-$(space) {
-    gap: $(space)px;
+    gap: $(space) px;
   }
 
   .m-$(space) {
-    margin: $(space)px !important;
+    margin: $(space) px !important;
   }
 
   .mx-$(space) {
-    margin-right: $(space)px !important;
-    margin-left: $(space)px !important;
+    margin-right: $(space) px !important;
+    margin-left: $(space) px !important;
   }
 
   .my-$(space) {
-    margin-top: $(space)px !important;
-    margin-bottom: $(space)px !important;
+    margin-top: $(space) px !important;
+    margin-bottom: $(space) px !important;
   }
 
   .mt-$(space) {
-    margin-top: $(space)px !important;
+    margin-top: $(space) px !important;
   }
 
   .mr-$(space) {
-    margin-right: $(space)px !important;
+    margin-right: $(space) px !important;
   }
 
   .mb-$(space) {
-    margin-bottom: $(space)px !important;
+    margin-bottom: $(space) px !important;
   }
 
   .ml-$(space) {
-    margin-left: $(space)px !important;
+    margin-left: $(space) px !important;
   }
 
   .p-$(space) {
-    padding: $(space)px !important;
+    padding: $(space) px !important;
   }
 
   .px-$(space) {
-    padding-right: $(space)px !important;
-    padding-left: $(space)px !important;
+    padding-right: $(space) px !important;
+    padding-left: $(space) px !important;
   }
 
   .py-$(space) {
-    padding-top: $(space)px !important;
-    padding-bottom: $(space)px !important;
+    padding-top: $(space) px !important;
+    padding-bottom: $(space) px !important;
   }
 
   .pt-$(space) {
-    padding-top: $(space)px !important;
+    padding-top: $(space) px !important;
   }
 
   .pr-$(space) {
-    padding-right: $(space)px !important;
+    padding-right: $(space) px !important;
   }
 
   .pb-$(space) {
-    padding-bottom: $(space)px !important;
+    padding-bottom: $(space) px !important;
   }
 
   .pl-$(space) {
-    padding-left: $(space)px !important;
+    padding-left: $(space) px !important;
   }
 }
 
@@ -86,7 +86,7 @@
 
 @each $radius in 4, 8, 12, 16 {
   .radius-$(radius) {
-    border-radius: $(radius)px;
+    border-radius: $(radius) px;
   }
 }
 
@@ -194,7 +194,8 @@
   align-items: flex-end;
 }
 
-.align--center, .align-center {
+.align--center,
+.align-center {
   align-items: center;
 }
 
@@ -251,14 +252,14 @@
 
   @supports (width: min(var(--min-width), 100%)) {
     grid-template-columns: repeat(
-      auto-fit, 
+      auto-fit,
       minmax(min(var(--item-min-size), 100%), 1fr)
     );
   }
 }
 
 .horizontal-scroll {
-   --gap: 1rem;
+  --gap: 1rem;
   width: 100%;
   display: flex;
   flex-wrap: nowrap;
@@ -275,7 +276,7 @@
 
 .eyebrow {
   color: var(--color-caption);
-  font-size: .9rem !important;
+  font-size: 0.9rem !important;
   font-weight: normal;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -326,7 +327,7 @@ h2.marker {
 
 .line-clamp {
   --lines: 2;
-  overflow : hidden;
+  overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
   -webkit-line-clamp: var(--lines);
@@ -342,7 +343,7 @@ h2.marker {
   z-index: 1;
 
   &:before {
-    content: "Highlight";
+    content: 'Highlight';
     display: block;
     font-family: var(--font-code);
     font-size: 0.8rem;

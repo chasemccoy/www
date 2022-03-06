@@ -1,16 +1,16 @@
 import React from 'react'
 import Markdown from 'react-markdown'
 
-const Image = ({title, alt, ...rest}) => {
+const Image = ({ title, alt, ...rest }) => {
   if (title) {
     return (
       <figure>
         <img alt={alt || title} {...rest} />
-        <figcaption className='image-caption sans'>
+        <figcaption className="image-caption sans">
           <Markdown
             disallowedElements={['p']}
             unwrapDisallowed
-            linkTarget='_blank'
+            linkTarget="_blank"
           >
             {title}
           </Markdown>

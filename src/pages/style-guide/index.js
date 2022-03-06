@@ -12,19 +12,17 @@ const StyleGuidePage = ({ code, toc }) => {
       article
       showCanvas
       tableOfContents={<TableOfContents content={toc} />}
-      className='prose'
+      className="prose"
     >
       <Head>
-        <link rel='stylesheet' href='/styles/style-guide.css' />
+        <link rel="stylesheet" href="/styles/style-guide.css" />
       </Head>
 
-      <Metadata title='Style guide' />
+      <Metadata title="Style guide" />
 
-      <h1 className='serif normal'>
-        Style Guide
-      </h1>
+      <h1 className="serif normal">Style Guide</h1>
 
-      <p className='lead color-caption mt-8'>
+      <p className="lead color-caption mt-8">
         My personal and always in progress guide to style, usage, and grammar
         for writing on the web
       </p>

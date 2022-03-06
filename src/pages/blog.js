@@ -12,38 +12,38 @@ const DateLabel = ({ date }) => {
 
   return (
     <div
-      className='date-label bg-gray--200 px-12 pt-6 pb-4 flex flex-column align--center'
+      className="date-label bg-gray--200 px-12 pt-6 pb-4 flex flex-column align--center"
       style={{ borderRadius: '8px' }}
     >
       <span
-        className='smaller tighter uppercase color-caption'
+        className="smaller tighter uppercase color-caption"
         style={{ fontSize: '0.6em' }}
       >
         {month}
       </span>
-      <span className='bold larger tighter'>{day}</span>
+      <span className="bold larger tighter">{day}</span>
     </div>
   )
 }
 
 const PostPreview = ({ slug, date, title, excerpt, params, image }) => {
   return (
-    <Link href={slug} className='block unstyled no-hover post-preview'>
-      <article className='post-preview flex flex-column align--flex-start gap-16'>
-        <div className='flex align--flex-start gap-16'>
+    <Link href={slug} className="block unstyled no-hover post-preview">
+      <article className="post-preview flex flex-column align--flex-start gap-16">
+        <div className="flex align--flex-start gap-16">
           <DateLabel date={new Date(date)} />
           <div>
             <h2
-              className='tighter'
+              className="tighter"
               style={{ fontSize: '1.4em', marginTop: '-4px' }}
             >
               {title}
             </h2>
-            <p className='color-caption mt-4'>{excerpt}</p>
+            <p className="color-caption mt-4">{excerpt}</p>
           </div>
         </div>
 
-        {image && <img src={`/img/${params.slug}/${image}`} alt='' />}
+        {image && <img src={`/img/${params.slug}/${image}`} alt="" />}
       </article>
     </Link>
   )
@@ -52,17 +52,17 @@ const PostPreview = ({ slug, date, title, excerpt, params, image }) => {
 const ShortPost = ({ title, date, code, slug }) => {
   const { month, day } = getDateComponents(new Date(date))
   return (
-    <article className='flow' style={{ '--flow-spacing': '1rem' }}>
-      <a href={slug} className='unstyled'>
+    <article className="flow" style={{ '--flow-spacing': '1rem' }}>
+      <a href={slug} className="unstyled">
         <h1 style={{ fontSize: '1rem' }}>
-          <span className='normal color-caption'>
+          <span className="normal color-caption">
             {month} {day} —
           </span>{' '}
           {title}
         </h1>
       </a>
 
-      <div className='prose blog-content'>
+      <div className="prose blog-content">
         <RenderMDX code={code} />
       </div>
     </article>
@@ -73,20 +73,20 @@ const Blog = ({ posts }) => {
   const years = Object.keys(posts).reverse()
 
   return (
-    <Page className='flow'>
+    <Page className="flow">
       <Metadata
-        title='Blog'
+        title="Blog"
         description="What's on my mind, and links to some interesting stuff on the web."
       />
 
-      <div className='flow' style={{ '--flow-spacing': '4em' }}>
+      <div className="flow" style={{ '--flow-spacing': '4em' }}>
         {years.map((year) => (
           <React.Fragment key={year}>
-            <h2 className='marker mb-24'>
+            <h2 className="marker mb-24">
               <span>{year}</span>
             </h2>
 
-            <div className='flex flex-column gap-40 mt-0'>
+            <div className="flex flex-column gap-40 mt-0">
               {posts[year].map((post, i) =>
                 post.excerpt ? (
                   <PostPreview key={i} {...post} />

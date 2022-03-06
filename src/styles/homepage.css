@@ -15,7 +15,7 @@
     .subtitle {
       display: inline-block;
       font-size: 0.6em;
-      transform: translateY(-.45ex);
+      transform: translateY(-0.45ex);
       align-self: flex-end;
       color: var(--color-caption);
     }

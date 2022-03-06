@@ -7,7 +7,7 @@ const Link = ({ to, href, ...rest }) => {
   if (to) {
     newTab = to.startsWith('http')
   }
-	
+
   if (href) {
     newTab = href.startsWith('http')
   }

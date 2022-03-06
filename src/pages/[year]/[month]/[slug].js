@@ -12,7 +12,7 @@ const BlogPost = ({ code, title, excerpt, date, image, slug }) => {
     <Page
       article
       showCanvas={!!excerpt}
-      className='prose'
+      className="prose"
       header={excerpt && formattedDate}
     >
       <Metadata
@@ -25,24 +25,24 @@ const BlogPost = ({ code, title, excerpt, date, image, slug }) => {
       <header>
         {excerpt ? (
           <React.Fragment>
-            <h1 className='tighter' style={{ fontSize: '1.8em' }}>
+            <h1 className="tighter" style={{ fontSize: '1.8em' }}>
               {title}
             </h1>
-            <p className='lead mt-8 color-caption'>{excerpt}</p>
+            <p className="lead mt-8 color-caption">{excerpt}</p>
           </React.Fragment>
         ) : (
           <React.Fragment>
             <h1 style={{ fontSize: '1rem' }}>
-              <span className='normal color-caption'>{formattedDate} —</span>{' '}
+              <span className="normal color-caption">{formattedDate} —</span>{' '}
               {title}
             </h1>
           </React.Fragment>
         )}
 
-        <hr className='dashed my-16' />
+        <hr className="dashed my-16" />
       </header>
 
-      <div className='prose blog-content'>
+      <div className="prose blog-content">
         <RenderMDX code={code} />
       </div>
     </Page>

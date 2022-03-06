@@ -22,20 +22,20 @@ const Sparkles = () => {
     scroll()
   }, [scroll])
 
-  return <span className='color-gray--500'>{message}</span>
+  return <span className="color-gray--500">{message}</span>
 }
 
 const Footer = () => {
   return (
-    <footer className='prose mt-48'>
-      <hr className='mobile-breakout dashed' />
+    <footer className="prose mt-48">
+      <hr className="mobile-breakout dashed" />
 
       <div>
-        <div className='flex align--flex-end'>
+        <div className="flex align--flex-end">
           <div style={{ maxWidth: '8em' }}>
             <img
-              src='/images/ascii-house.png'
-              alt=''
+              src="/images/ascii-house.png"
+              alt=""
               style={{
                 filter: 'var(--ascii-filter)',
                 opacity: '0.75',
@@ -43,10 +43,10 @@ const Footer = () => {
             />
           </div>
 
-          <div className='ml-16 mb-2' style={{ flex: '1 0 auto' }}>
+          <div className="ml-16 mb-2" style={{ flex: '1 0 auto' }}>
             <Sparkles />
-            <p className='color-gray--500 smaller mt-12'>
-              Made with <span className='color-red'>&#9829;</span> in Chicago{' '}
+            <p className="color-gray--500 smaller mt-12">
+              Made with <span className="color-red">&#9829;</span> in Chicago{' '}
               <span
                 style={{
                   fontSize: '1.4em',
@@ -57,42 +57,42 @@ const Footer = () => {
                 &#10038;
               </span>
             </p>
-            <p className='color-gray--500 smaller'>Come back soon!</p>
+            <p className="color-gray--500 smaller">Come back soon!</p>
           </div>
         </div>
 
-        <div className='contact'>
+        <div className="contact">
           <ul
-            className='smaller'
+            className="smaller"
             style={{ '--link-color': 'var(--color-caption)' }}
           >
             <li>
-              <Link to='https://chs.is/tweeting' className='unstyled'>
+              <Link to="https://chs.is/tweeting" className="unstyled">
                 Twitter
               </Link>
             </li>
             <li>
-              <Link to='mailto:hi@chasem.co' className='unstyled'>
+              <Link to="mailto:hi@chasem.co" className="unstyled">
                 Email
               </Link>
             </li>
             <li>
-              <Link to='https://chs.is/coding' className='unstyled'>
+              <Link to="https://chs.is/coding" className="unstyled">
                 GitHub
               </Link>
             </li>
             <li>
-              <Link to='https://chs.is/ig' className='unstyled'>
+              <Link to="https://chs.is/ig" className="unstyled">
                 Instagram
               </Link>
             </li>
             <li>
-              <Link to='https://chs.is/listening' className='unstyled'>
+              <Link to="https://chs.is/listening" className="unstyled">
                 Spotify
               </Link>
             </li>
             <li>
-              <Link to='/feed.xml' className='unstyled'>
+              <Link to="/feed.xml" className="unstyled">
                 RSS
               </Link>
             </li>

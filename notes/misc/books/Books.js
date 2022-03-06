@@ -7,25 +7,25 @@ export const recents = [
     title: 'Laziness Does Not Exist',
     author: 'Devon Price',
     url: 'https://bookshop.org/books/laziness-does-not-exist/9781982140106',
-    image: 'laziness.jpeg'
+    image: 'laziness.jpeg',
   },
   {
     title: 'They Can’t Kill Us Until They Kill Us',
     author: 'Hanif Abdurraqib',
     url: 'https://bookshop.org/books/they-can-t-kill-us-until-they-kill-us/9781937512651',
-    image: 'kill-us.jpeg'
+    image: 'kill-us.jpeg',
   },
   {
     title: 'A Swim in a Pond in the Rain',
     author: 'George Saunders',
     url: 'https://bookshop.org/books/a-swim-in-a-pond-in-the-rain-in-which-four-russians-give-a-master-class-on-writing-reading-and-life/9781984856029',
-    image: 'saunders.jpeg'
+    image: 'saunders.jpeg',
   },
   {
     title: 'LaserWriter II',
     author: 'Tamara Shopsin',
     url: 'https://bookshop.org/books/laserwriter-ii/9780374602574',
-    image: 'laserwriter.jpeg'
+    image: 'laserwriter.jpeg',
   },
   {
     title: 'Bird by Bird',
@@ -159,11 +159,11 @@ export const favorites = [
 ]
 
 const Book = ({ book, small = false, ...rest }) => (
-  <div className='flex align--flex-end' {...rest}>
+  <div className="flex align--flex-end" {...rest}>
     <a
       href={book.url}
-      target='__blank'
-      className='unstyled'
+      target="__blank"
+      className="unstyled"
       style={{ width: '100%' }}
     >
       <img
@@ -172,11 +172,11 @@ const Book = ({ book, small = false, ...rest }) => (
         style={{ boxShadow: 'var(--shadow-medium)', width: '100%', margin: 0 }}
       />
 
-      <div className='mt-8' style={{ height: '6em' }}>
+      <div className="mt-8" style={{ height: '6em' }}>
         <h3 className={clsx('serif', !small && 'larger', 'mb-2', 'mt-4')}>
           {book.title}
         </h3>
-        <p className='smaller color-gray--500 mt-4'>{book.author}</p>
+        <p className="smaller color-gray--500 mt-4">{book.author}</p>
       </div>
     </a>
   </div>
@@ -187,18 +187,18 @@ const Books = () => {
 
   return (
     <>
-      <h2 className='mt-32'>Recently read</h2>
+      <h2 className="mt-32">Recently read</h2>
 
-      <div className='horizontal-scroll mt-24 pb-24'>
+      <div className="horizontal-scroll mt-24 pb-24">
         {recents.map((book) => (
           <Book small book={book} key={book.title} style={{ width: '160px' }} />
         ))}
       </div>
 
-      <h2 className='mt-40'>Favorites</h2>
+      <h2 className="mt-40">Favorites</h2>
 
       <div
-        className='grid mt-32'
+        className="grid mt-32"
         style={{ '--gap': '24px', '--item-min-size': '150px' }}
       >
         {sortedFavorites.map((book) => (

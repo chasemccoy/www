@@ -53,36 +53,36 @@ const App = ({ Component, pageProps }) => {
   return (
     <div>
       <Head>
-        <meta charSet='utf-8' />
+        <meta charSet="utf-8" />
         <meta
-          name='viewport'
-          content='width=device-width, initial-scale=1, shrink-to-fit=no'
+          name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no"
         />
         <link
-          rel='alternate'
-          type='application/rss+xml'
-          title='Chase McCoy'
-          href='/feed.xml'
+          rel="alternate"
+          type="application/rss+xml"
+          title="Chase McCoy"
+          href="/feed.xml"
         />
         <link
-          rel='preconnect'
-          href='https://fonts.gstatic.com'
-          crossOrigin='anonymous'
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
         />
-        <link rel='icon' href='/favicon.ico' />
-        <link rel='apple-touch-icon' href='/apple-touch-icon.png' />
+        <link rel="icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <style dangerouslySetInnerHTML={{ __html: fontStyles }} />
       </Head>
 
       <Script
-        src='https://platform.twitter.com/widgets.js'
-        strategy='lazyOnload'
+        src="https://platform.twitter.com/widgets.js"
+        strategy="lazyOnload"
       />
 
       <Metadata />
 
       <div>
-        <header id='site-header'>
+        <header id="site-header">
           <Nav />
         </header>
 

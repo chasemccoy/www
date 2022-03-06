@@ -25,7 +25,7 @@ const getOEmbedConfig = ({ provider }) => {
 }
 
 async function compileMdx(path, slug) {
-	path = nodePath.resolve(path)
+  path = nodePath.resolve(path)
   let tocData = null
 
   const imageTransformer = () => {

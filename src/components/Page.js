@@ -11,11 +11,11 @@ const Page = ({
   const Container = article ? 'article' : 'div'
   return (
     <React.Fragment>
-      <div className='wrapper'>
-        <Container className='content'>
+      <div className="wrapper">
+        <Container className="content">
           {header && (
             <div
-              className='mb-8'
+              className="mb-8"
               style={{
                 padding: '0 var(--article-padding)',
                 fontSize: '0.8rem',
@@ -46,8 +46,8 @@ const Page = ({
 
         {tableOfContents && (
           <div
-            id='sidebar'
-            className='flow'
+            id="sidebar"
+            className="flow"
             style={{
               '--flow-spacing': '12px',
               fontSize: '0.75rem',

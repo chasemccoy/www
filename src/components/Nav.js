@@ -41,19 +41,19 @@ const Nav = () => {
 
   return (
     <nav>
-      <ul className='unstyled'>
-        <Item href='/' className='bold'>
+      <ul className="unstyled">
+        <Item href="/" className="bold">
           Chase M.
         </Item>
 
         <Item
-          href='/blog'
+          href="/blog"
           className={clsx(blogLinkMatcher(asPath) && 'selected')}
         >
           Blog
         </Item>
 
-        <Item href='/notes'>Notes</Item>
+        <Item href="/notes">Notes</Item>
       </ul>
     </nav>
   )

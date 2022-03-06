@@ -6,19 +6,19 @@
 :root {
   --root-font-size: 17px;
   --root-line-height: 1.45;
-  
+
   --color-gray--0: #fafafa;
-  --color-gray--100: #F8F8F7;
-  --color-gray--200: #ECECE9;
-  --color-gray--300: #DDDDD5;
-  --color-gray--400: #BCBCA9;
-  --color-gray--500: #83837C;
+  --color-gray--100: #f8f8f7;
+  --color-gray--200: #ecece9;
+  --color-gray--300: #ddddd5;
+  --color-gray--400: #bcbca9;
+  --color-gray--500: #83837c;
   --color-gray--600: #525252;
   --color-gray--700: #404040;
   --color-gray--800: #262626;
   --color-gray--900: #171717;
-  
-  --color-accent: #78A970;
+
+  --color-accent: #78a970;
 
   --link-color: var(--color-text);
   --link-hover: var(--color-accent);
@@ -33,7 +33,8 @@
   --font-body: 'Source Sans 3', 'Inter', system-ui, -apple-system,
     BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell',
     'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-  --font-header: 'Source Serif 4', 'Ivar Text', Charter, Georgia, Times New Roman, serif;
+  --font-header: 'Source Serif 4', 'Ivar Text', Charter, Georgia,
+    Times New Roman, serif;
 
   --shadow-small: 0 0 transparent, 0 0 transparent,
     0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);

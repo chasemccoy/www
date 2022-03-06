@@ -18,7 +18,7 @@
     "copy-images": "node ./bin/copy-images",
     "generate-feed": "node .next/server/generate-feed",
     "lint": "yarn next lint",
-    "format": "prettier --write --ignore-path .gitignore ."
+    "format": "prettier --write ."
   },
   "author": "Chase McCoy",
   "license": "MIT",

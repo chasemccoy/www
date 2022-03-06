@@ -263,7 +263,7 @@ ol {
       margin-left: 0;
 
       &:before {
-        content: "";
+        content: '';
       }
     }
 

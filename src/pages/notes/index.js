@@ -16,16 +16,16 @@ const Notes = ({ notes, recentNotes }) => {
   const recentBook = recentBooks[0]
 
   return (
-    <Page className='prose'>
+    <Page className="prose">
       <Metadata
-        title='Notes'
+        title="Notes"
         description="My digital garden containing a collection of links, thoughts, ideas, images, quotes, and other miscellanea I've collected on my travels across the web."
       />
 
       <header>
         <h1>
           <span
-            className='smaller'
+            className="smaller"
             style={{ position: 'relative', top: '-3px' }}
           >
             🌱
@@ -33,14 +33,14 @@ const Notes = ({ notes, recentNotes }) => {
           Notes
         </h1>
         <p
-          className='mt-12 serif hyphens'
+          className="mt-12 serif hyphens"
           style={{
             fontSize: '1.4rem',
             lineHeight: 1.3,
           }}
         >
           Welcome to my{' '}
-          <Link to='/notes/digital-gardens' className='italic'>
+          <Link to="/notes/digital-gardens" className="italic">
             digital&nbsp;garden
           </Link>
           —a personal wiki of neat stuff I’ve collected during my travels on the
@@ -48,35 +48,35 @@ const Notes = ({ notes, recentNotes }) => {
         </p>
       </header>
 
-      <div className='mt-8'>
+      <div className="mt-8">
         <p>
           This section is a grab bag of links, clippings, and notes on any and
           all subjects (but mostly web stuff). Notes here are evergreen and are
           often updated or changed as I learn more about a subject.
         </p>
 
-        <Marker className='mt-32'>Recent</Marker>
+        <Marker className="mt-32">Recent</Marker>
 
         <div
-          className='mt-16 grid'
+          className="mt-16 grid"
           style={{ '--item-min-size': '250px', '--gap': '12px' }}
         >
           {recentNotes.map((note) => (
             <Link
               to={`/notes/${note.slug}`}
-              className='block unstyled p-16 card'
+              className="block unstyled p-16 card"
               key={note.slug}
             >
-              <div className='bold'>{note.title}</div>
-              <div className='color-caption smaller'>{note.excerpt}</div>
+              <div className="bold">{note.title}</div>
+              <div className="color-caption smaller">{note.excerpt}</div>
             </Link>
           ))}
         </div>
 
-        <Marker className='mt-40'>All notes</Marker>
+        <Marker className="mt-40">All notes</Marker>
 
         <div
-          className='multi-column mt-24'
+          className="multi-column mt-24"
           style={{
             '--columns': 2,
             '--min-column-width': '12em',
@@ -84,14 +84,14 @@ const Notes = ({ notes, recentNotes }) => {
           }}
         >
           {Object.keys(notes).map((category, i) => (
-            <div className='mb-48' key={category}>
-              <h2 className='mt-0 unstyled'>
+            <div className="mb-48" key={category}>
+              <h2 className="mt-0 unstyled">
                 <Link
                   to={`/notes/${category}`}
-                  className='unstyled flex align-center'
+                  className="unstyled flex align-center"
                 >
                   <Folder
-                    className='inline mr-6 color-caption'
+                    className="inline mr-6 color-caption"
                     style={{
                       width: '1.25em',
                       position: 'relative',
