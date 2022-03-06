@@ -1,66 +1,66 @@
 @each $space in 0, 1, 2, 4, 6, 8, 12, 16, 20, 24, 32, 40, 48 {
   .gap-$(space) {
-    gap: $(space) px;
+    gap: $(space)px;
   }
 
   .m-$(space) {
-    margin: $(space) px !important;
+    margin: $(space)px !important;
   }
 
   .mx-$(space) {
-    margin-right: $(space) px !important;
-    margin-left: $(space) px !important;
+    margin-right: $(space)px !important;
+    margin-left: $(space)px !important;
   }
 
   .my-$(space) {
-    margin-top: $(space) px !important;
-    margin-bottom: $(space) px !important;
+    margin-top: $(space)px !important;
+    margin-bottom: $(space)px !important;
   }
 
   .mt-$(space) {
-    margin-top: $(space) px !important;
+    margin-top: $(space)px !important;
   }
 
   .mr-$(space) {
-    margin-right: $(space) px !important;
+    margin-right: $(space)px !important;
   }
 
   .mb-$(space) {
-    margin-bottom: $(space) px !important;
+    margin-bottom: $(space)px !important;
   }
 
   .ml-$(space) {
-    margin-left: $(space) px !important;
+    margin-left: $(space)px !important;
   }
 
   .p-$(space) {
-    padding: $(space) px !important;
+    padding: $(space)px !important;
   }
 
   .px-$(space) {
-    padding-right: $(space) px !important;
-    padding-left: $(space) px !important;
+    padding-right: $(space)px !important;
+    padding-left: $(space)px !important;
   }
 
   .py-$(space) {
-    padding-top: $(space) px !important;
-    padding-bottom: $(space) px !important;
+    padding-top: $(space)px !important;
+    padding-bottom: $(space)px !important;
   }
 
   .pt-$(space) {
-    padding-top: $(space) px !important;
+    padding-top: $(space)px !important;
   }
 
   .pr-$(space) {
-    padding-right: $(space) px !important;
+    padding-right: $(space)px !important;
   }
 
   .pb-$(space) {
-    padding-bottom: $(space) px !important;
+    padding-bottom: $(space)px !important;
   }
 
   .pl-$(space) {
-    padding-left: $(space) px !important;
+    padding-left: $(space)px !important;
   }
 }
 
@@ -86,7 +86,7 @@
 
 @each $radius in 4, 8, 12, 16 {
   .radius-$(radius) {
-    border-radius: $(radius) px;
+    border-radius: $(radius)px;
   }
 }
 
