@@ -72,7 +72,7 @@ async function compileMdx(path, slug) {
   const { frontmatter, code } = await bundleMDX({
     file: path,
     cwd: nodePath.resolve(path, '..'),
-    xdmOptions(options) {
+    mdxOptions(options) {
       options.remarkPlugins = [
         ...(options.remarkPlugins ?? []),
         ...remarkPlugins,
