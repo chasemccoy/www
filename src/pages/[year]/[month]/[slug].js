@@ -22,7 +22,18 @@ const BlogPost = ({ code, title, excerpt, date, image, slug }) => {
         image={image ? `/img/${slug}/${image}` : undefined}
       />
 
-      <header>
+      <header className='my-40'>
+        <div
+          className="mb-8"
+          style={{
+            fontSize: '0.8rem',
+            fontFamily: 'var(--font-code)',
+            color: 'var(--color-caption)',
+            '--link-color': 'var(--color-caption)',
+          }}
+        >
+          {formattedDate}
+        </div>
         {excerpt ? (
           <React.Fragment>
             <h1 className="tighter" style={{ fontSize: '1.8em' }}>
@@ -39,7 +50,7 @@ const BlogPost = ({ code, title, excerpt, date, image, slug }) => {
           </React.Fragment>
         )}
 
-        <hr className="dashed my-16" />
+        <hr className="dashed my-16 mt-40" />
       </header>
 
       <div className="prose blog-content">

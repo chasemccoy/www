@@ -27,9 +27,7 @@ const Sparkles = () => {
 
 const Footer = () => {
   return (
-    <footer className="prose mt-48">
-      <hr className="mobile-breakout dashed" />
-
+    <footer className="prose">
       <div>
         <div className="flex align--flex-end">
           <div style={{ maxWidth: '8em' }}>

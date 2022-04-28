@@ -1,26 +1,23 @@
 :root {
-  --article-width: 744px;
   --sidebar-width: 140px;
-  --article-padding: 16px;
   --layout-gap: 24px;
-  --layout-padding: 0px;
+  --layout-padding: 20px;
 }
 
 main {
-  margin-top: 8px;
-  margin-left: auto;
-  margin-right: auto;
+  /* margin: 8px; */
   padding: 16px var(--layout-padding) 40px;
+  background: var(--color-body-background);
+  border-radius: 0 0 1rem 1rem;
+  display: grid;
+  grid-template-columns: 1fr min(40rem, 100%) 1fr;
+
+  > * {
+    grid-column: 2;
+  }
 
   @media (--viewport-small) {
     --layout-padding: 40px;
-    --article-padding: 32px;
-  }
-
-  & .content {
-    max-width: var(--article-width);
-    min-width: 0;
-    flex-grow: 1;
   }
 }
 
@@ -39,15 +36,15 @@ main {
   display: none;
 }
 
-main > .wrapper {
-  display: flex;
-  gap: var(--layout-gap);
-  justify-content: center;
-}
-
 footer {
   margin: 0 auto;
-  padding: 0 var(--article-padding);
+  padding: 2rem var(--layout-padding);
+  display: grid;
+  grid-template-columns: 1fr min(40rem, 100%) 1fr;
+
+  > * {
+    grid-column: 2;
+  }
 
   @media (--viewport-medium) {
     max-width: calc(

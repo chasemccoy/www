@@ -5,8 +5,8 @@ article {
 
   img {
     max-width: none;
-    width: calc(100% + var(--article-padding) * 2);
-    margin-left: calc(var(--article-padding) * -1);
+    width: calc(100% + var(--layout-padding) * 2);
+    margin-left: calc(var(--layout-padding) * -1);
   }
 
   @media (--viewport-small) {
@@ -93,9 +93,9 @@ hr {
 
 pre {
   border-radius: 0;
-  width: calc(100% + var(--article-padding) * 2);
-  margin-left: calc(var(--article-padding) * -1);
-  padding: 0 var(--article-padding);
+  width: calc(100% + var(--layout-padding) * 2);
+  margin-left: calc(var(--layout-padding) * -1);
+  padding: 0 var(--layout-padding);
   overflow: auto;
   background: var(--color-gray--0) !important;
 

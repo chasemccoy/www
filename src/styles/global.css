@@ -7,9 +7,23 @@ body {
   font-family: var(--font-body);
   overflow: hidden;
   min-height: 100vh;
-  background: var(--color-body-background);
+  background: var(--color-accent);
   color: var(--color-text);
   -webkit-font-smoothing: antialiased;
+}
+
+body:before {
+  content: "";
+  height: 48px;
+  width: 100%;
+  display: block;
+  background: linear-gradient(
+    #FAC742 20%,
+    #FBD254 0 40%,
+    #FDDE76 0 60%,
+    #FDE7A1 0 80%,
+    #FEF3CF 0
+  );
 }
 
 h1,

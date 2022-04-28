@@ -51,7 +51,7 @@ const App = ({ Component, pageProps }) => {
   const { pathname } = useRouter()
 
   return (
-    <div>
+    <>
       <Head>
         <meta charSet="utf-8" />
         <meta
@@ -81,17 +81,16 @@ const App = ({ Component, pageProps }) => {
 
       <Metadata />
 
-      <div>
-        <header id="site-header">
-          <Nav />
-        </header>
+      {/* <header id="site-header">
+        <Nav />
+      </header> */}
 
-        <main>
-          <Component {...pageProps} />
-          <Footer />
-        </main>
-      </div>
-    </div>
+      <main>
+        <Component {...pageProps} />
+      </main>
+
+      <Footer />
+    </>
   )
 }
 

@@ -82,7 +82,7 @@ const Note = ({ data }) => {
     >
       <Metadata title={title} description={excerpt} />
 
-      <header className="flow">
+      <header className="flow center my-40">
         <h1>{title}</h1>
         <p className="lead mt-8 color-caption">{excerpt}</p>
         <hr className="dashed" />

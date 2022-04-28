@@ -199,6 +199,10 @@
   align-items: center;
 }
 
+.center {
+  text-align: center;
+}
+
 .flex--no-shrink {
   flex-shrink: 0;
 }
@@ -233,9 +237,9 @@
 
 .mobile-breakout {
   max-width: none;
-  width: calc(100% + (var(--article-padding) * 2));
-  margin-left: calc(var(--article-padding) * -1);
-  margin-right: calc(var(--article-padding) * -1);
+  width: calc(100% + (var(--layout-padding) * 2));
+  margin-left: calc(var(--layout-padding) * -1);
+  margin-right: calc(var(--layout-padding) * -1);
   border-radius: 0;
 
   @media (--viewport-tiny) {
