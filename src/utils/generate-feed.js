@@ -2,8 +2,8 @@ import React from 'react'
 import fs from 'fs-extra'
 import path from 'path'
 import { Feed } from 'feed'
-import { getPosts, getPost } from '../src/utils/post'
-import mdxComponents from '../src/utils/mdx-components'
+import { getPosts, getPost } from './post'
+import mdxComponents from './mdx-components'
 import ReactDOMServer from 'react-dom/server'
 import { getMDXComponent } from 'mdx-bundler/client'
 
@@ -33,7 +33,7 @@ const feed = new Feed({
   author,
 })
 
-const generateFeeds = async () => {
+export const generateFeed = async () => {
   const posts = await getPosts()
 
   for (const postObject of posts) {
@@ -58,5 +58,3 @@ const generateFeeds = async () => {
   fs.writeFileSync(path.join(destination, 'feed.xml'), feed.rss2())
   // fs.writeFileSync(path.join(destination, 'feed.json'), feed.json1());
 }
-
-generateFeeds()

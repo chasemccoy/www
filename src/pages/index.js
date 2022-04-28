@@ -4,6 +4,7 @@ import Page from '../components/Page'
 import Marker from '../components/Marker'
 import { getPosts } from '../utils/post'
 import { getRecentlyModifiedNotes } from '../utils/note'
+import { generateFeed } from '../utils/generate-feed'
 import PropertyList from '../components/PropertyList'
 import Museo from '../components/homepage/Museo'
 
@@ -144,6 +145,10 @@ const Index = ({ posts, recentNotes }) => {
 }
 
 export const getStaticProps = async (context) => {
+  if (process.env.NODE_ENV === 'production') {
+    await generateFeed()
+  }
+  
   const posts = await getPosts()
   const featuredPosts = posts.filter((post) => Boolean(post.featured))
   const recentNotes = await getRecentlyModifiedNotes()
