@@ -235,6 +235,7 @@
   max-width: none;
   width: calc(100% + (var(--article-padding) * 2));
   margin-left: calc(var(--article-padding) * -1);
+  margin-right: calc(var(--article-padding) * -1);
   border-radius: 0;
 
   @media (--viewport-tiny) {

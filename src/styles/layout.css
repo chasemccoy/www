@@ -12,7 +12,7 @@ main {
   margin-right: auto;
   padding: 16px var(--layout-padding) 40px;
 
-  @media (--viewport-tiny) {
+  @media (--viewport-small) {
     --layout-padding: 40px;
     --article-padding: 32px;
   }
