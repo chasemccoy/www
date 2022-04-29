@@ -1,5 +1,5 @@
 :root {
-  --content-width: 40rem;
+  --content-width: 38rem;
   --sidebar-width: 140px;
   --layout-gap: 24px;
   --layout-padding: 20px;
@@ -16,7 +16,7 @@
   }
 }
 
-.has-sidebar.layout-grid {
+.has-sidebar .layout-grid {
   grid-template-columns: 1fr min(
       var(--content-width) + var(--sidebar-width),
       100%

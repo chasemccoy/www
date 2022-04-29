@@ -12,16 +12,13 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-body:before {
-  content: "";
+.stripes {
   height: 48px;
   width: 100%;
-  display: block;
   background: linear-gradient(
-    #FAC742 20%,
-    #FBD254 0 40%,
-    #FDDE76 0 60%,
-    #FDE7A1 0 80%,
+    #FBD254 0 25%,
+    #FDDE76 0 50%,
+    #FDE7A1 0 75%,
     #FEF3CF 0
   );
 }

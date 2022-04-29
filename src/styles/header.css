@@ -1,43 +1,24 @@
-#site-header nav {
-  padding: 8px;
-
+#site-header {
+  font-size: 0.75em;
+  line-height: 1.5;
+  
   a {
     display: block;
-    position: relative;
-    padding: 6px 12px;
-    border-radius: 8px;
-    color: var(--color-gray--500);
-  }
-
-  a[href='/'] {
-    color: var(--color-text);
   }
 
   a:hover {
-    background: var(--color-gray--200);
     color: currentColor;
   }
+}
 
-  a.selected {
-    font-weight: bold;
-    background: var(--color-gray--200);
-    color: inherit;
-  }
-
-  a.shortcut:hover,
-  a.shortcut.selected {
-    font-weight: normal;
-    background: none;
-  }
-
-  ul {
-    display: flex;
-  }
+#site-header nav {
+  padding: 0.25rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
   li {
     display: inline-block;
-    font-size: 0.75em;
-    line-height: 1.5;
   }
 
   li + li {

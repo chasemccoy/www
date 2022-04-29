@@ -54,7 +54,7 @@ const Index = ({ posts, recentNotes }) => {
         <Marker className="mt-48">Select writing</Marker>
         {posts.map((post) => (
           <div key={post.slug}>
-            <h4>
+            <h4 className='bold'>
               <Link to={post.slug}>{post.title}</Link>
             </h4>
             <p className="color-caption mt-2">{post.excerpt}</p>
@@ -74,7 +74,7 @@ const Index = ({ posts, recentNotes }) => {
       >
         <Marker className="mt-48">Experience</Marker>
         <PropertyList label="Now">
-          <h4>Design Systems at Stripe</h4>
+          <h4 className='bold'>Design Systems at Stripe</h4>
           <p className="color-caption mt-2">
             I’m currently working on Sail, the multi-product design system at
             Stripe.
@@ -82,7 +82,7 @@ const Index = ({ posts, recentNotes }) => {
         </PropertyList>
         <hr className="dashed" />
         <PropertyList label="2017 – 2020">
-          <h4>Design Systems at Sprout Social</h4>
+          <h4 className='bold'>Design Systems at Sprout Social</h4>
           <p className="color-caption mt-2">
             I previously led the Design Systems team at Sprout Social working on
             the{' '}
@@ -106,7 +106,7 @@ const Index = ({ posts, recentNotes }) => {
         </PropertyList>
         <hr className="dashed" />
         <PropertyList label="2014 – 2017">
-          <h4>iOS design and development</h4>
+          <h4 className='bold'>iOS design and development</h4>
           <p className="color-caption mt-2">
             I began my career as an iOS designer and developer (working in both
             Swift and Objective-C). Outside of my day job at the{' '}
@@ -122,7 +122,7 @@ const Index = ({ posts, recentNotes }) => {
         </PropertyList>
         <hr className="dashed" />
         <PropertyList label="2013 – 2017">
-          <h4>Computer Science at Mississippi State University</h4>
+          <h4 className='bold'>Computer Science at Mississippi State University</h4>
           <p className="color-caption mt-2">
             While most of my work now focused on design, my academic background
             is computer science and software development.

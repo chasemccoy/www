@@ -85,15 +85,19 @@ const App = ({ Component, pageProps }) => {
 
       <Metadata />
 
-      {/* <header id="site-header">
-        <Nav />
-      </header> */}
+      <div className={clsx(hasSidebar && 'has-sidebar')}>
+        <header id="site-header" className="layout-grid">
+          <Nav />
+        </header>
 
-      <main className={clsx('layout-grid', hasSidebar && 'has-sidebar')}>
-        <Component {...pageProps} />
-      </main>
+        <div className='stripes' />
 
-      <Footer className={clsx('layout-grid', hasSidebar && 'has-sidebar')} />
+        <main className='layout-grid'>
+          <Component {...pageProps} />
+        </main>
+
+        <Footer className='layout-grid' />
+      </div>
     </LayoutContext.Provider>
   )
 }

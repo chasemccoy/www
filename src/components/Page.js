@@ -22,14 +22,13 @@ const Page = ({
       <div
         id="content"
         className={clsx(className, 'flex flex-column')}
-        style={{'--flow-spacing': '2rem'}}
         {...rest}
       >
         {header}
 
-       {header && <hr className="dashed" />}
+       {header && <hr className="dashed my-32" />}
 
-        <div className="wrapper">
+        <div className="wrapper mt-0">
           <Container>{children}</Container>
           {tableOfContents && (
             <div

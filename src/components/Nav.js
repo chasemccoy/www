@@ -18,17 +18,11 @@ const NavLink = ({ href, className, children, ...rest }) => {
   )
 }
 
-const Item = ({ href, children, className, desktopOnly, ...rest }) => (
-  <li className={clsx(desktopOnly && 'desktop-only')}>
+const Item = ({ href, children, className, ...rest }) => (
+  <li>
     <NavLink href={href} className={clsx(className, 'unstyled')} {...rest}>
       {children}
     </NavLink>
-  </li>
-)
-
-const Separator = ({ className }) => (
-  <li className={clsx('separator', className)}>
-    <span />
   </li>
 )
 
@@ -41,11 +35,11 @@ const Nav = () => {
 
   return (
     <nav>
-      <ul className="unstyled">
-        <Item href="/" className="bold">
-          Chase M.
-        </Item>
+      <Link href='/'>
+        <a className='unstyled bold'>Chase M.</a>
+      </Link>
 
+      <ul className="unstyled">
         <Item
           href="/blog"
           className={clsx(blogLinkMatcher(asPath) && 'selected')}
