@@ -11,7 +11,7 @@ const BlogPost = ({ code, title, excerpt, date, image, slug }) => {
   const formattedDate = formatDate(new Date(date))
 
   return (
-    <Page article>
+    <Page article className="prose">
       <Metadata
         article
         title={title}
@@ -19,7 +19,7 @@ const BlogPost = ({ code, title, excerpt, date, image, slug }) => {
         image={image ? `/img/${slug}/${image}` : undefined}
       />
 
-      <header className={clsx('my-24', excerpt && 'center')}>
+      <header className={clsx('flow', excerpt && 'center', 'mb-24')}>
         {excerpt ? (
           <React.Fragment>
             <div

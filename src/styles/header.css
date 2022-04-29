@@ -1,9 +1,29 @@
 #site-header {
-  font-size: 0.75em;
+  padding: 1.5rem var(--layout-padding) 0;
+  font-size: 0.8em;
   line-height: 1.5;
-  
+
   a {
     display: block;
+    border-bottom: 2px solid transparent;
+  }
+
+  a[href='/'] {
+    font-weight: bold;
+    /* border-top: 1px dashed #E5A702; */
+    /* border-bottom: 12px solid #fbd254; */
+    /* padding: 6px 16px 4px 0; */
+    /* font-family: var(--font-code); */
+    /* font-size: 1rem; */
+  }
+
+  a:not([href='/']) {
+    padding: 0 6px 4px;
+  }
+
+  a:not([href='/']):hover {
+    border-bottom: 2px solid #E5A702;
+    /* font-style: italic; */
   }
 
   a:hover {
@@ -12,17 +32,16 @@
 }
 
 #site-header nav {
-  padding: 0.25rem 0;
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: baseline;
+
+  ul {
+    display: flex;
+    gap: 24px;
+  }
 
   li {
     display: inline-block;
-  }
-
-  li + li {
-    margin-left: 8px;
-    margin-top: 0;
   }
 }

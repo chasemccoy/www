@@ -311,7 +311,7 @@ h2.marker {
   grid-template-columns: auto minmax(20px, 1fr);
   gap: 12px;
   align-items: center;
-  font-size: 0.8rem;
+  font-size: 0.7rem;
 
   span {
     text-transform: uppercase;

@@ -36,7 +36,7 @@ const Nav = () => {
   return (
     <nav>
       <Link href='/'>
-        <a className='unstyled bold'>Chase M.</a>
+        <a className='unstyled'>Chase McCoy</a>
       </Link>
 
       <ul className="unstyled">
