@@ -5,6 +5,7 @@ import Metadata from '../../../components/Metadata'
 import Page from '../../../components/Page'
 import RenderMDX from '../../../components/RenderMDX'
 import clsx from 'clsx'
+import { Clock } from '../../../components/Icon'
 
 const BlogPost = ({ code, title, excerpt, date, image, slug }) => {
   const formattedDate = formatDate(new Date(date))
@@ -22,14 +23,15 @@ const BlogPost = ({ code, title, excerpt, date, image, slug }) => {
         {excerpt ? (
           <React.Fragment>
             <div
-              className="mb-8"
+              className="inline-flex align-center mb-16 mono color-caption"
               style={{
                 fontSize: '0.8rem',
-                fontFamily: 'var(--font-code)',
-                color: 'var(--color-caption)',
-                '--link-color': 'var(--color-caption)',
               }}
             >
+              <Clock
+                className="inline mr-6"
+                style={{ position: 'relative', top: '-1.5px' }}
+              />
               {formattedDate}
             </div>
             <h1 className="tighter serif" style={{ fontSize: '1.8em' }}>

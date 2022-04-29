@@ -1,11 +1,13 @@
 import React from 'react'
 import { LayoutContext } from '../pages/_app'
+import clsx from 'clsx'
 
 const Page = ({
   article = false,
   children,
   tableOfContents,
   header,
+  className,
   ...rest
 }) => {
   const { setHasSidebar } = React.useContext(LayoutContext)
@@ -19,9 +21,14 @@ const Page = ({
     <React.Fragment>
       <div
         id="content"
+        className={clsx(className, 'flex flex-column')}
+        style={{'--flow-spacing': '2rem'}}
         {...rest}
       >
         {header}
+
+       {header && <hr className="dashed" />}
+
         <div className="wrapper">
           <Container>{children}</Container>
           {tableOfContents && (

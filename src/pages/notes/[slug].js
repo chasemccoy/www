@@ -60,9 +60,14 @@ const Note = ({ data }) => {
         )
       }
       header={
-        <header className="flow center my-40">
+        <header className="flow center">
           <h1>{title}</h1>
-          <p className="lead mt-8 color-caption">{excerpt}</p>
+          <p
+            className="lead mt-8 color-caption"
+            style={{ maxWidth: '70ch', margin: '0 auto' }}
+          >
+            {excerpt}
+          </p>
           <div
             className="mt-16 mono color-caption flex align-center gap-24 justify-center"
             style={{ fontSize: '0.7em' }}
@@ -88,7 +93,6 @@ const Note = ({ data }) => {
               </span>
             )}
           </div>
-          <hr className="dashed" />
         </header>
       }
     >

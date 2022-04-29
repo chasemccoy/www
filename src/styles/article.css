@@ -73,11 +73,13 @@ hr {
   background: var(--color-gray--200);
   height: 4px;
   border: none;
+  margin: 0;
 
   &.dashed {
     background: none;
     border-top: 1px dashed var(--color-border);
     height: 1px;
+    width: 100%;
   }
 
   &.vertical {
