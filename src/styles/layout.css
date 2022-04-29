@@ -17,9 +17,10 @@
 }
 
 .has-sidebar.layout-grid {
-  grid-template-columns:
-    1fr min(var(--content-width) + var(--sidebar-width), 100%)
-    1fr;
+  grid-template-columns: 1fr min(
+      var(--content-width) + var(--sidebar-width),
+      100%
+    ) 1fr;
 }
 
 main {

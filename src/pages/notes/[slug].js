@@ -2,7 +2,7 @@ import React from 'react'
 import { getNote, getCategory, getNotes } from '../../utils/note'
 import TableOfContents from '../../components/TableOfContents'
 import Link from '../../components/Link'
-import { Folder } from '../../components/Icon'
+import { Folder, Clock } from '../../components/Icon'
 import { capitalize, formatDate } from '../../utils'
 import config from '../../../next.config'
 import Metadata from '../../components/Metadata'
@@ -60,23 +60,34 @@ const Note = ({ data }) => {
         )
       }
       header={
-        // <div className="flex space-between mobile-stack gap-4">
-        //   <Link
-        //     className="unstyled color-section flex align-center"
-        //     to={`/notes/${category}`}
-        //   >
-        //     <Folder
-        //       className="inline mr-6"
-        //       style={{ position: 'relative', top: '-1.5px' }}
-        //     />
-        //     {capitalize(category.replace('-', ' '))}
-        //   </Link>
-
-        //   {modifiedDate && <p>Updated: {formatDate(new Date(modifiedDate))}</p>}
-        // </div>
         <header className="flow center my-40">
           <h1>{title}</h1>
           <p className="lead mt-8 color-caption">{excerpt}</p>
+          <div
+            className="mt-16 mono color-caption flex align-center gap-24 justify-center"
+            style={{ fontSize: '0.7em' }}
+          >
+            <Link
+              className="inline-flex align-center color-caption"
+              to={`/notes/${category}`}
+            >
+              <Folder
+                className="inline mr-6"
+                style={{ position: 'relative', top: '-1.5px' }}
+              />
+              {capitalize(category.replace('-', ' '))}
+            </Link>
+
+            {modifiedDate && (
+              <span className="inline-flex align-center">
+                <Clock
+                  className="inline mr-6"
+                  style={{ position: 'relative', top: '-1.5px' }}
+                />
+                {formatDate(new Date(modifiedDate))}
+              </span>
+            )}
+          </div>
           <hr className="dashed" />
         </header>
       }
