@@ -17,27 +17,24 @@ const Category = ({ notes }) => {
   const categoryName = capitalize(notes[1].category.replace('-', ' '))
 
   return (
-    <Page
-      className="prose"
-      header={
-        <h1 className="normal" style={{ color: 'inherit' }}>
-          <Link to="/" className="unstyled normal">
-            ~
-          </Link>
-          <span className="normal mx-4">/</span>
-          <Link to="/notes" className="unstyled">
-            Notes
-          </Link>
-          <span className="normal ml-4 mr-8">/</span>
-          <Folder
-            className="inline mr-4"
-            style={{ width: '1em', position: 'relative', top: '-0.14em' }}
-          />
-          {categoryName}
-        </h1>
-      }
-    >
+    <Page className="prose">
       <Metadata title={categoryName} />
+
+      <h1 className="normal" style={{ color: 'inherit' }}>
+        <Link to="/" className="unstyled normal">
+          ~
+        </Link>
+        <span className="normal mx-4">/</span>
+        <Link to="/notes" className="unstyled">
+          Notes
+        </Link>
+        <span className="normal ml-4 mr-8">/</span>
+        <Folder
+          className="inline mr-4"
+          style={{ width: '1em', position: 'relative', top: '-0.14em' }}
+        />
+        {categoryName}
+      </h1>
 
       <NoteList notes={notes} />
     </Page>
@@ -64,29 +61,28 @@ const Note = ({ data }) => {
         )
       }
       header={
-        <div className="flex space-between mobile-stack gap-4">
-          <Link
-            className="unstyled color-section flex align-center"
-            to={`/notes/${category}`}
-          >
-            <Folder
-              className="inline mr-6"
-              style={{ position: 'relative', top: '-1.5px' }}
-            />
-            {capitalize(category.replace('-', ' '))}
-          </Link>
+        // <div className="flex space-between mobile-stack gap-4">
+        //   <Link
+        //     className="unstyled color-section flex align-center"
+        //     to={`/notes/${category}`}
+        //   >
+        //     <Folder
+        //       className="inline mr-6"
+        //       style={{ position: 'relative', top: '-1.5px' }}
+        //     />
+        //     {capitalize(category.replace('-', ' '))}
+        //   </Link>
 
-          {modifiedDate && <p>Updated: {formatDate(new Date(modifiedDate))}</p>}
-        </div>
+        //   {modifiedDate && <p>Updated: {formatDate(new Date(modifiedDate))}</p>}
+        // </div>
+        <header className="flow center my-40">
+          <h1>{title}</h1>
+          <p className="lead mt-8 color-caption">{excerpt}</p>
+          <hr className="dashed" />
+        </header>
       }
     >
       <Metadata title={title} description={excerpt} />
-
-      <header className="flow center my-40">
-        <h1>{title}</h1>
-        <p className="lead mt-8 color-caption">{excerpt}</p>
-        <hr className="dashed" />
-      </header>
 
       <div className="prose">
         <RenderMDX code={code} />

@@ -37,7 +37,7 @@ const Index = ({ posts, recentNotes }) => {
         browsing <Link href="/notes/books">my bookshelf</Link>.
       </p>
 
-      <img
+      {/* <img
         src="/images/portrait.jpg"
         alt="Chase McCoy"
         className="my-32"
@@ -48,7 +48,22 @@ const Index = ({ posts, recentNotes }) => {
           marginLeft: '-64px',
           maxWidth: 'none',
         }}
-      />
+      /> */}
+
+      <div className="flow" style={{ '--flow-spacing': '1rem' }}>
+        <Marker className="mt-48">Select writing</Marker>
+        {posts.map((post) => (
+          <div key={post.slug}>
+            <h4>
+              <Link to={post.slug}>{post.title}</Link>
+            </h4>
+            <p className="color-caption mt-2">{post.excerpt}</p>
+          </div>
+        ))}
+        <Link to="/blog" className="block bold unstyled color-caption">
+          Read more →
+        </Link>
+      </div>
 
       <div
         className="flow"
@@ -115,27 +130,21 @@ const Index = ({ posts, recentNotes }) => {
         </PropertyList>
       </div>
 
-      {/* <h3 className='mt-48 subheader'>Recent notes</h3>
-      {recentNotes.map((note) => (
-        <PropertyList key={note.slug} label={note.title}>
-          {note.excerpt}
-        </PropertyList>
-      ))} */}
-
-      <div className="flow" style={{ '--flow-spacing': '1rem' }}>
-        <Marker className="mt-48">Select writing</Marker>
-        {posts.map((post) => (
-          <div key={post.slug}>
-            <h4>
-              <Link to={post.slug}>{post.title}</Link>
-            </h4>
-            <p className="color-caption mt-2">{post.excerpt}</p>
-          </div>
+      {/* <div className="flow" style={{ '--flow-spacing': '1rem' }}>
+        <Marker className="mt-48">Recent notes</Marker>
+        {recentNotes.map((note, i) => (
+          <>
+            {i !== 0 && <hr className="dashed" />}
+            <PropertyList
+              key={note.slug}
+              label={note.title}
+              style={{ '--label-width': '24%' }}
+            >
+              {note.excerpt}
+            </PropertyList>
+          </>
         ))}
-        <Link to="/blog" className="block bold unstyled color-caption">
-          Read more →
-        </Link>
-      </div>
+      </div> */}
 
       <hr className="mt-40 mb-32" />
 
@@ -148,7 +157,7 @@ export const getStaticProps = async (context) => {
   if (process.env.NODE_ENV === 'production') {
     await generateFeed()
   }
-  
+
   const posts = await getPosts()
   const featuredPosts = posts.filter((post) => Boolean(post.featured))
   const recentNotes = await getRecentlyModifiedNotes()

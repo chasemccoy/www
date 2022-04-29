@@ -33,12 +33,12 @@ const PostPreview = ({ slug, date, title, excerpt, params, image }) => {
         <div className="flex align--flex-start gap-16">
           <DateLabel date={new Date(date)} />
           <div>
-            <h2
+            <h1
               className="tighter"
               style={{ fontSize: '1.4em', marginTop: '-4px' }}
             >
               {title}
-            </h2>
+            </h1>
             <p className="color-caption mt-4">{excerpt}</p>
           </div>
         </div>
@@ -54,7 +54,7 @@ const ShortPost = ({ title, date, code, slug }) => {
   return (
     <article className="flow" style={{ '--flow-spacing': '1rem' }}>
       <a href={slug} className="unstyled">
-        <h1 style={{ fontSize: '1rem' }}>
+        <h1 className='sans bold' style={{ fontSize: '1rem' }}>
           <span className="normal color-caption">
             {month} {day} —
           </span>{' '}

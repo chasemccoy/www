@@ -33,6 +33,7 @@ h4,
 h5,
 h6 {
   color: var(--color-header);
+  font-weight: normal;
 
   &.unstyled {
     font-size: 1rem;
@@ -44,8 +45,8 @@ a {
   --link-underline-color: var(--color-gray--300);
   color: var(--link-color);
   text-decoration: underline;
-  transition: all 0.3s;
-  text-decoration-thickness: var(--text-decoration-thickness, 2.5px);
+  transition: all 0.2s;
+  text-decoration-thickness: var(--text-decoration-thickness, 2px);
   text-decoration-color: var(--link-underline-color);
   text-underline-offset: var(--text-decoration-offset, 0.05rem);
 
@@ -265,6 +266,7 @@ ol {
   @media (--viewport-small) {
     display: grid;
     grid-template-columns: var(--label-width, 18%) 1fr;
+    gap: 24px;
     align-items: baseline;
   }
 }

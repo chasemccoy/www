@@ -4,17 +4,13 @@ import { formatDate } from '../../../utils'
 import Metadata from '../../../components/Metadata'
 import Page from '../../../components/Page'
 import RenderMDX from '../../../components/RenderMDX'
+import clsx from 'clsx'
 
 const BlogPost = ({ code, title, excerpt, date, image, slug }) => {
   const formattedDate = formatDate(new Date(date))
 
   return (
-    <Page
-      article
-      showCanvas={!!excerpt}
-      className="prose"
-      header={excerpt && formattedDate}
-    >
+    <Page article>
       <Metadata
         article
         title={title}
@@ -22,35 +18,35 @@ const BlogPost = ({ code, title, excerpt, date, image, slug }) => {
         image={image ? `/img/${slug}/${image}` : undefined}
       />
 
-      <header className='my-40'>
-        <div
-          className="mb-8"
-          style={{
-            fontSize: '0.8rem',
-            fontFamily: 'var(--font-code)',
-            color: 'var(--color-caption)',
-            '--link-color': 'var(--color-caption)',
-          }}
-        >
-          {formattedDate}
-        </div>
+      <header className={clsx('my-24', excerpt && 'center')}>
         {excerpt ? (
           <React.Fragment>
-            <h1 className="tighter" style={{ fontSize: '1.8em' }}>
+            <div
+              className="mb-8"
+              style={{
+                fontSize: '0.8rem',
+                fontFamily: 'var(--font-code)',
+                color: 'var(--color-caption)',
+                '--link-color': 'var(--color-caption)',
+              }}
+            >
+              {formattedDate}
+            </div>
+            <h1 className="tighter serif" style={{ fontSize: '1.8em' }}>
               {title}
             </h1>
             <p className="lead mt-8 color-caption">{excerpt}</p>
           </React.Fragment>
         ) : (
           <React.Fragment>
-            <h1 style={{ fontSize: '1rem' }}>
+            <h1 className="sans" style={{ fontSize: '1rem' }}>
               <span className="normal color-caption">{formattedDate} —</span>{' '}
               {title}
             </h1>
           </React.Fragment>
         )}
 
-        <hr className="dashed my-16 mt-40" />
+        {excerpt && <hr className="vertical mt-24" />}
       </header>
 
       <div className="prose blog-content">

@@ -125,7 +125,7 @@
 }
 
 .serif {
-  font-family: var(--font-header) !important;
+  font-family: var(--font-header);
 }
 
 .mono {

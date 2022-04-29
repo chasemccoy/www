@@ -8,6 +8,9 @@ import '../components/Logo'
 import '../components/Iridescence'
 import Script from 'next/script'
 import { useRouter } from 'next/router'
+import clsx from 'clsx'
+
+export const LayoutContext = React.createContext({})
 
 const fontStyles = `
 @font-face {
@@ -49,9 +52,15 @@ const fontStyles = `
 
 const App = ({ Component, pageProps }) => {
   const { pathname } = useRouter()
+  const [context, setContext] = React.useState({})
+  const { hasSidebar } = context
+
+  const updateContext = (newContext) => {
+    setContext({ ...context, ...newContext })
+  }
 
   return (
-    <>
+    <LayoutContext.Provider value={{ updateContext }}>
       <Head>
         <meta charSet="utf-8" />
         <meta
@@ -85,12 +94,12 @@ const App = ({ Component, pageProps }) => {
         <Nav />
       </header> */}
 
-      <main>
+      <main className={clsx('layout-grid', hasSidebar && 'has-sidebar')}>
         <Component {...pageProps} />
       </main>
 
-      <Footer />
-    </>
+      <Footer className={clsx('layout-grid', hasSidebar && 'has-sidebar')} />
+    </LayoutContext.Provider>
   )
 }
 

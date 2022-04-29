@@ -1,5 +1,6 @@
 import React from 'react'
 import Link from './Link'
+import clsx from 'clsx'
 
 const Sparkles = () => {
   const [message, setMessage] = React.useState('・゜✧.・.・゜✧・.')
@@ -25,9 +26,9 @@ const Sparkles = () => {
   return <span className="color-gray--500">{message}</span>
 }
 
-const Footer = () => {
+const Footer = ({className}) => {
   return (
-    <footer className="prose">
+    <footer className={clsx(className, 'prose')}>
       <div>
         <div className="flex align--flex-end">
           <div style={{ maxWidth: '8em' }}>

@@ -67,8 +67,8 @@ const Notes = ({ notes, recentNotes }) => {
               className="block unstyled p-16 card"
               key={note.slug}
             >
-              <div className="bold">{note.title}</div>
-              <div className="color-caption smaller">{note.excerpt}</div>
+              <h2 className="mt-0" style={{fontSize: '1rem'}}>{note.title}</h2>
+              <div className="color-caption smaller mt-4">{note.excerpt}</div>
             </Link>
           ))}
         </div>

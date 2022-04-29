@@ -1,4 +1,9 @@
 article {
+  h1 {
+    font-family: var(--font-header);
+    font-weight: 400;
+  }
+
   h2:first-child {
     margin-top: 0;
   }
@@ -75,6 +80,21 @@ hr {
     height: 1px;
   }
 
+  &.vertical {
+    background: none;
+    height: 64px;
+    position: relative;
+
+    &:after {
+      content: '';
+      position: absolute;
+      width: 2px;
+      height: 100%;
+      background: var(--color-border);
+      border-radius: 100px;
+    }
+  }
+
   &.break {
     background: none;
     height: auto;
@@ -97,7 +117,7 @@ pre {
   margin-left: calc(var(--layout-padding) * -1);
   padding: 0 var(--layout-padding);
   overflow: auto;
-  background: var(--color-gray--0) !important;
+  background: var(--color-gray--100) !important;
 
   @media (--viewport-tiny) {
     width: auto;
@@ -117,7 +137,7 @@ pre {
 code {
   font-feature-settings: normal;
   font-family: var(--font-code);
-  background-color: var(--color-gray--0);
+  background-color: var(--color-gray--100);
   border: 0.5px solid var(--color-border);
   padding: 0.2em 0.3em;
   vertical-align: middle;
@@ -129,7 +149,6 @@ code {
 
 .image-caption {
   color: var(--color-caption);
-  max-width: 550px;
 }
 
 twitter-widget {
