@@ -47,7 +47,6 @@ const Note = ({ data }) => {
   return (
     <Page
       article
-      showCanvas
       className="prose"
       tableOfContents={
         toc && (

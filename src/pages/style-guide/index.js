@@ -10,7 +10,6 @@ const StyleGuidePage = ({ code, toc }) => {
   return (
     <Page
       article
-      showCanvas
       tableOfContents={<TableOfContents content={toc} />}
       className="prose"
     >

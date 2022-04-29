@@ -52,15 +52,10 @@ const fontStyles = `
 
 const App = ({ Component, pageProps }) => {
   const { pathname } = useRouter()
-  const [context, setContext] = React.useState({})
-  const { hasSidebar } = context
-
-  const updateContext = (newContext) => {
-    setContext({ ...context, ...newContext })
-  }
+  const [hasSidebar, setHasSidebar] = React.useState(false)
 
   return (
-    <LayoutContext.Provider value={{ updateContext }}>
+    <LayoutContext.Provider value={{ setHasSidebar }}>
       <Head>
         <meta charSet="utf-8" />
         <meta

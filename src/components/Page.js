@@ -8,14 +8,12 @@ const Page = ({
   header,
   ...rest
 }) => {
-  const { updateContext } = React.useContext(LayoutContext)
+  const { setHasSidebar } = React.useContext(LayoutContext)
   const Container = article ? 'article' : 'div'
 
   React.useEffect(() => {
-    updateContext({
-      hasSidebar: !!tableOfContents,
-    })
-  }, [tableOfContents, updateContext])
+    setHasSidebar(!!tableOfContents)
+  }, [tableOfContents, setHasSidebar])
 
   return (
     <React.Fragment>
