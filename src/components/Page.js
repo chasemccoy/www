@@ -1,5 +1,4 @@
 import React from 'react'
-import { LayoutContext } from '../pages/_app'
 import clsx from 'clsx'
 
 const Page = ({
@@ -8,14 +7,14 @@ const Page = ({
   tableOfContents,
   header,
   className,
+  setHasSidebar,
   ...rest
 }) => {
-  const { setHasSidebar } = React.useContext(LayoutContext)
   const Container = article ? 'article' : 'div'
 
-  React.useEffect(() => {
-    setHasSidebar(!!tableOfContents)
-  }, [tableOfContents, setHasSidebar])
+  if (!!tableOfContents && setHasSidebar) {
+    setHasSidebar(true)
+  }
 
   return (
     <React.Fragment>
