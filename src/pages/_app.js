@@ -7,10 +7,7 @@ import Link from '../components/Link'
 import '../components/Logo'
 import '../components/Iridescence'
 import Script from 'next/script'
-import { useRouter } from 'next/router'
 import clsx from 'clsx'
-
-export const LayoutContext = React.createContext({})
 
 const fontStyles = `
 @font-face {
@@ -69,10 +66,6 @@ const fontStyles = `
 `
 
 const App = ({ Component, pageProps }) => {
-  const [hasSidebar, setHasSidebar] = React.useState(false)
-
-  console.log(hasSidebar)
-
   return (
     <>
       <Head>
@@ -104,7 +97,7 @@ const App = ({ Component, pageProps }) => {
 
       <Metadata />
 
-      <div className={clsx(hasSidebar && 'has-sidebar')}>
+      <div className={clsx(pageProps.hasSidebar && 'has-sidebar')}>
         <header id="site-header" className="layout-grid">
           <Nav />
         </header>
@@ -112,7 +105,7 @@ const App = ({ Component, pageProps }) => {
         <div className='stripes' />
 
         <main className='layout-grid'>
-          <Component setHasSidebar={setHasSidebar} {...pageProps} />
+          <Component {...pageProps} />
         </main>
 
         <Footer className='layout-grid' />

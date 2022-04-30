@@ -42,18 +42,8 @@ const Category = ({ notes }) => {
   )
 }
 
-const Note = ({ data, setHasSidebar }) => {
+const Note = ({ data }) => {
   const { code, title, excerpt, toc, category, slug, modifiedDate } = data
-  
-  React.useEffect(() => {
-    if (toc) {
-      setHasSidebar(true)
-    }
-
-    return () => {
-      setHasSidebar(false)
-    }
-  }, [setHasSidebar, toc])
 
   return (
     <Page
@@ -116,12 +106,12 @@ const Note = ({ data, setHasSidebar }) => {
   )
 }
 
-const NotePage = ({ notes, note = {}, setHasSidebar }) => {
+const NotePage = ({ notes, note = {} }) => {
   if (Array.isArray(notes)) {
     return <Category notes={notes} />
   }
 
-  return <Note data={note} setHasSidebar={setHasSidebar} />
+  return <Note data={note} />
 }
 
 export const getStaticProps = async ({ params }) => {
@@ -136,7 +126,7 @@ export const getStaticProps = async ({ params }) => {
   const note = await getNote(params.slug)
 
   return {
-    props: { note },
+    props: { note, hasSidebar: !!note.toc },
   }
 }
 
