@@ -121,15 +121,15 @@
 }
 
 .sans {
-  font-family: var(--font-body);
+  font-family: var(--font-body) !important;
 }
 
 .serif {
-  font-family: var(--font-header);
+  font-family: var(--font-header) !important;
 }
 
 .mono {
-  font-family: var(--font-code);
+  font-family: var(--font-code) !important;
 }
 
 .hyphens {
@@ -265,17 +265,37 @@
 
 .horizontal-scroll {
   --gap: 1rem;
-  width: 100%;
-  display: flex;
-  flex-wrap: nowrap;
-  overflow-x: auto;
+  position: relative;
 
-  > * {
-    flex: 0 0 auto;
+  & > div {
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding: 0 100px 0 0;
+    
+    scroll-snap-type: x mandatory;
+  
+    > * {
+      flex: 0 0 auto;
+      scroll-snap-align: start;
+    }
+  
+    > * + * {
+      margin-left: var(--gap);
+    }
   }
 
-  > * + * {
-    margin-left: var(--gap);
+  &:after {
+    content: "";
+    pointer-events: none;
+    position: absolute;
+    height: 100%;
+    width: 25%;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, var(--color-body-background) 95%);
   }
 }
 
@@ -311,7 +331,7 @@ h2.marker {
   grid-template-columns: auto minmax(20px, 1fr);
   gap: 12px;
   align-items: center;
-  font-size: 0.7rem;
+  font-size: 0.8rem;
 
   span {
     text-transform: uppercase;

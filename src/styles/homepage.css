@@ -11,14 +11,11 @@
 
     a {
       display: inline-flex;
-      align-items: center;
+      align-items: baseline;
     }
 
     .subtitle {
-      display: inline-block;
       font-size: 0.6em;
-      transform: translateY(-0.45ex);
-      align-self: flex-end;
       color: var(--color-caption);
     }
   }
@@ -43,6 +40,7 @@
   .image-container {
     display: flex;
     min-width: 240px;
+    width: 100%;
   }
 
   img:not(.mobile-only) {
@@ -55,9 +53,11 @@
 
   img.mobile-only {
     margin-top: 16px;
-    height: 200px;
+    margin-bottom: -40px;
+    height: 250px;
     object-fit: cover;
     object-position: 50% 70%;
+    border-radius: 1rem;
 
     @media (--viewport-tiny) {
       display: none;

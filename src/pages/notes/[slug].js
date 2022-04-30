@@ -20,12 +20,15 @@ const Category = ({ notes }) => {
     <Page className="prose">
       <Metadata title={categoryName} />
 
-      <h1 className="normal" style={{ color: 'inherit' }}>
-        <Link to="/" className="unstyled normal">
+      <h1
+        className="normal mono mb-24"
+        style={{ color: 'inherit', fontSize: '0.8rem' }}
+      >
+        <Link to="/" className="unstyled">
           ~
         </Link>
         <span className="normal mx-4">/</span>
-        <Link to="/notes" className="unstyled">
+        <Link to="/notes">
           Notes
         </Link>
         <span className="normal ml-4 mr-8">/</span>
@@ -61,7 +64,7 @@ const Note = ({ data }) => {
       }
       header={
         <header className="flow center">
-          <h1>{title}</h1>
+          <h1 className='long-form'>{title}</h1>
           <p
             className="lead mt-8 color-caption"
             style={{ maxWidth: '70ch', margin: '0 auto' }}

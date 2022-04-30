@@ -34,7 +34,7 @@ const BlogPost = ({ code, title, excerpt, date, image, slug }) => {
               />
               {formattedDate}
             </div>
-            <h1 className="tighter serif" style={{ fontSize: '1.8em' }}>
+            <h1 className="serif long-form" style={{ fontSize: '1.8em' }}>
               {title}
             </h1>
             <p className="lead mt-8 color-caption">{excerpt}</p>

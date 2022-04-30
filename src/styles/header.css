@@ -5,16 +5,12 @@
 
   a {
     display: block;
-    border-bottom: 2px solid transparent;
+    border-bottom: 4px solid transparent;
   }
 
   a[href='/'] {
     font-weight: bold;
-    /* border-top: 1px dashed #E5A702; */
-    /* border-bottom: 12px solid #fbd254; */
-    /* padding: 6px 16px 4px 0; */
-    /* font-family: var(--font-code); */
-    /* font-size: 1rem; */
+    font-size: 1.15em;
   }
 
   a:not([href='/']) {
@@ -22,12 +18,15 @@
   }
 
   a:not([href='/']):hover {
-    border-bottom: 2px solid #E5A702;
-    /* font-style: italic; */
+    border-bottom: 4px solid #e5a702;
   }
 
   a:hover {
     color: currentColor;
+  }
+
+  a.selected {
+    border-bottom: 4px solid #e5a702;
   }
 }
 
@@ -38,7 +37,7 @@
 
   ul {
     display: flex;
-    gap: 24px;
+    gap: 16px;
   }
 
   li {

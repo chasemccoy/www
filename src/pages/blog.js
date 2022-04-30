@@ -29,12 +29,12 @@ const DateLabel = ({ date }) => {
 const PostPreview = ({ slug, date, title, excerpt, params, image }) => {
   return (
     <Link href={slug} className="block unstyled no-hover post-preview">
-      <article className="post-preview flex flex-column align--flex-start gap-16">
+      <article className="prose post-preview flex flex-column align--flex-start gap-16">
         <div className="flex align--flex-start gap-16">
           <DateLabel date={new Date(date)} />
           <div>
             <h1
-              className="tighter"
+              className="long-form"
               style={{ fontSize: '1.4em', marginTop: '-4px' }}
             >
               {title}

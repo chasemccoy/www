@@ -29,7 +29,7 @@ const Page = ({
        {header && <hr className="dashed my-32" />}
 
         <div className="wrapper mt-0">
-          <Container>{children}</Container>
+          <Container style={{width: '100%'}}>{children}</Container>
           {tableOfContents && (
             <div
               id="sidebar"

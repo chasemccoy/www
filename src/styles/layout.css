@@ -37,6 +37,7 @@ main {
 .wrapper {
   display: flex;
   gap: 40px;
+  width: 100%;
 }
 
 #sidebar {

@@ -14,6 +14,24 @@ export const LayoutContext = React.createContext({})
 
 const fontStyles = `
 @font-face {
+  font-family: 'GT Alpina';
+  src: url('/fonts/gt-alpina/GTAlpina-Rg.woff2') format('woff2'),
+      url('/fonts/gt-alpina/GTAlpina-Rg.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'GT Alpina';
+  src: url('/fonts/gt-alpina/GTAlpina-RgIt.woff2') format('woff2'),
+      url('/fonts/gt-alpina/GTAlpina-RgIt.woff') format('woff');
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
   font-family: 'Source Code Pro';
   src: url('/fonts/source-code-pro/SourceCodePro-It.woff2') format('woff2'),
       url('/fonts/source-code-pro/SourceCodePro-It.woff') format('woff');

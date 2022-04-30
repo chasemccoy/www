@@ -30,7 +30,6 @@ h4,
 h5,
 h6 {
   color: var(--color-header);
-  font-weight: normal;
 
   &.unstyled {
     font-size: 1rem;

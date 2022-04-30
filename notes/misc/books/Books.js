@@ -190,9 +190,16 @@ const Books = () => {
       <h2 className="mt-32">Recently read</h2>
 
       <div className="horizontal-scroll mt-24 pb-24">
-        {recents.map((book) => (
-          <Book small book={book} key={book.title} style={{ width: '160px' }} />
-        ))}
+        <div>
+          {recents.map((book) => (
+            <Book
+              small
+              book={book}
+              key={book.title}
+              style={{ width: '160px' }}
+            />
+          ))}
+        </div>
       </div>
 
       <h2 className="mt-40">Favorites</h2>
