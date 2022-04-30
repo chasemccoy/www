@@ -68,12 +68,39 @@ const fontStyles = `
 }
 `
 
-const App = ({ Component, pageProps }) => {
-  const { pathname } = useRouter()
+const LayoutContextProvider = ({ children }) => {
   const [hasSidebar, setHasSidebar] = React.useState(false)
 
   return (
-    <LayoutContext.Provider value={{ setHasSidebar }}>
+    <LayoutContext.Provider value={{ hasSidebar, setHasSidebar }}>
+      {children}
+    </LayoutContext.Provider>
+  )
+}
+
+const AppLayout = ({ children }) => {
+  const { hasSidebar } = React.useContext(LayoutContext)
+
+  return (
+    <div className={clsx(hasSidebar && 'has-sidebar')}>
+      <header id="site-header" className="layout-grid">
+        <Nav />
+      </header>
+
+      <div className="stripes" />
+
+      <main className="layout-grid">{children}</main>
+
+      <Footer className="layout-grid" />
+    </div>
+  )
+}
+
+const App = ({ Component, pageProps }) => {
+  const { pathname } = useRouter()
+
+  return (
+    <LayoutContextProvider>
       <Head>
         <meta charSet="utf-8" />
         <meta
@@ -103,20 +130,10 @@ const App = ({ Component, pageProps }) => {
 
       <Metadata />
 
-      <div className={clsx(hasSidebar && 'has-sidebar')}>
-        <header id="site-header" className="layout-grid">
-          <Nav />
-        </header>
-
-        <div className='stripes' />
-
-        <main className='layout-grid'>
-          <Component {...pageProps} />
-        </main>
-
-        <Footer className='layout-grid' />
-      </div>
-    </LayoutContext.Provider>
+      <AppLayout>
+        <Component {...pageProps} />
+      </AppLayout>
+    </LayoutContextProvider>
   )
 }
 

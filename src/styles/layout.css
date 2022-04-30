@@ -51,7 +51,6 @@ main {
   margin: 8px 0 0;
   width: var(--sidebar-width);
   min-width: 100%;
-  /* display: none; */
   order: -1;
 
   h2 {
