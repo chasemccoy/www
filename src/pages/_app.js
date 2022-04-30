@@ -71,6 +71,8 @@ const fontStyles = `
 const App = ({ Component, pageProps }) => {
   const [hasSidebar, setHasSidebar] = React.useState(false)
 
+  console.log(hasSidebar)
+
   return (
     <>
       <Head>
