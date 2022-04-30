@@ -116,7 +116,7 @@ export const getStaticProps = async (context) => {
   const recentNotes = await getRecentlyModifiedNotes()
 
   return {
-    props: { notes, recentNotes: recentNotes.slice(0, 4) },
+    props: { notes, recentNotes: recentNotes.slice(0, 6) },
   }
 }
 

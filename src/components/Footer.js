@@ -23,10 +23,10 @@ const Sparkles = () => {
     scroll()
   }, [scroll])
 
-  return <span className="color-gray--500">{message}</span>
+  return <span>{message}</span>
 }
 
-const Footer = ({className}) => {
+const Footer = ({ className }) => {
   return (
     <footer className={clsx(className, 'prose')}>
       <div>
@@ -44,7 +44,7 @@ const Footer = ({className}) => {
 
           <div className="ml-16 mb-2" style={{ flex: '1 0 auto' }}>
             <Sparkles />
-            <p className="color-gray--500 smaller mt-12">
+            <p className="smaller mt-12">
               Made with <span className="color-red">&#9829;</span> in Chicago{' '}
               <span
                 style={{
@@ -56,15 +56,12 @@ const Footer = ({className}) => {
                 &#10038;
               </span>
             </p>
-            <p className="color-gray--500 smaller">Come back soon!</p>
+            <p className="smaller">Come back soon!</p>
           </div>
         </div>
 
         <div className="contact">
-          <ul
-            className="smaller"
-            style={{ '--link-color': 'var(--color-caption)' }}
-          >
+          <ul className="smaller">
             <li>
               <Link to="https://chs.is/tweeting" className="unstyled">
                 Twitter

@@ -1,6 +1,6 @@
 #site-header {
-  padding: 1.5rem var(--layout-padding) 0;
-  font-size: 0.8em;
+  padding: 1.25rem var(--layout-padding) 0;
+  font-size: 0.75em;
   line-height: 1.5;
 
   a {
@@ -10,11 +10,11 @@
 
   a[href='/'] {
     font-weight: bold;
-    font-size: 1.15em;
+    font-size: 1.1em;
   }
 
   a:not([href='/']) {
-    padding: 0 6px 4px;
+    padding: 0 6px 2px;
   }
 
   a:not([href='/']):hover {

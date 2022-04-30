@@ -8,7 +8,7 @@ const TableOfContents = ({ content, className }) => {
 
   return (
     <div className={clsx('toc', className)}>
-      <h2 className="mt-0 mb-8">Table of contents</h2>
+      <h2 className="mt-0 mb-4">Table of contents</h2>
       <div dangerouslySetInnerHTML={{ __html: content }} />
     </div>
   )

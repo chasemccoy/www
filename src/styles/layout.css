@@ -66,6 +66,7 @@ footer {
   padding: 2rem var(--layout-padding);
   display: grid;
   grid-template-columns: 1fr min(40rem, 100%) 1fr;
+  font-size: 0.9rem;
 
   > * {
     grid-column: 2;
