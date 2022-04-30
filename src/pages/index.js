@@ -15,7 +15,7 @@ const Index = ({ posts, recentNotes }) => {
         className="serif normal mt-0"
         style={{
           fontSize: '1.4rem',
-          lineHeight: '1.4',
+          lineHeight: '1.3',
           letterSpacing: '-0.5px',
         }}
       >
@@ -36,20 +36,7 @@ const Index = ({ posts, recentNotes }) => {
         <Link href="/notes">my digital garden</Link> of public notes, and
         browsing <Link href="/notes/books">my bookshelf</Link>.
       </p>
-
-      {/* <img
-        src="/images/portrait.jpg"
-        alt="Chase McCoy"
-        className="my-32"
-        style={{
-          borderRadius: '8px',
-          border: '1px solid var(--color-border)',
-          width: 'calc(100% + 128px)',
-          marginLeft: '-64px',
-          maxWidth: 'none',
-        }}
-      /> */}
-
+      
       <div className="flow" style={{ '--flow-spacing': '1rem' }}>
         <Marker className="mt-48">Select writing</Marker>
         {posts.map((post) => (

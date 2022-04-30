@@ -43,7 +43,13 @@ const PostPreview = ({ slug, date, title, excerpt, params, image }) => {
           </div>
         </div>
 
-        {image && <img src={`/img/${params.slug}/${image}`} alt="" />}
+        {image && (
+          <img
+            src={`/img/${params.slug}/${image}`}
+            alt=""
+            style={{ boxShadow: '0 0 0 1px rgba(0 0 0 / 10%)' }}
+          />
+        )}
       </article>
     </Link>
   )
@@ -54,7 +60,7 @@ const ShortPost = ({ title, date, code, slug }) => {
   return (
     <article className="flow" style={{ '--flow-spacing': '1rem' }}>
       <a href={slug} className="unstyled">
-        <h1 className='sans bold' style={{ fontSize: '1rem' }}>
+        <h1 className="sans bold" style={{ fontSize: '1rem' }}>
           <span className="normal color-caption">
             {month} {day} —
           </span>{' '}
