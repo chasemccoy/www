@@ -1,7 +1,7 @@
 :root {
   --content-width: 38rem;
   --sidebar-width: 140px;
-  --layout-gap: 24px;
+  --layout-gap: 48px;
   --layout-padding: 20px;
 }
 
@@ -17,10 +17,12 @@
 }
 
 .has-sidebar .layout-grid {
-  grid-template-columns: 1fr min(
-      var(--content-width) + var(--sidebar-width),
+  grid-template-columns:
+    1fr min(
+      var(--content-width) + var(--layout-gap) + var(--sidebar-width),
       100%
-    ) 1fr;
+    )
+    1fr;
 }
 
 main {
@@ -36,15 +38,21 @@ main {
 
 .wrapper {
   display: flex;
-  gap: 40px;
+  gap: var(--layout-gap);
   width: 100%;
+  flex-direction: column;
+
+  @media (--viewport-small) {
+    flex-direction: row;
+  }
 }
 
 #sidebar {
   margin: 8px 0 0;
   width: var(--sidebar-width);
-  min-width: var(--sidebar-width);
-  display: none;
+  min-width: 100%;
+  /* display: none; */
+  order: -1;
 
   h2 {
     font-size: 0.8rem;
@@ -54,6 +62,8 @@ main {
 
   @media (--viewport-small) {
     display: block;
+    order: -1;
+    min-width: var(--sidebar-width);
   }
 }
 
