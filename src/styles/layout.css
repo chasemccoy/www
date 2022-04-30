@@ -74,18 +74,28 @@ main {
 footer {
   margin: 0 auto;
   padding: 2rem var(--layout-padding);
-  display: grid;
-  grid-template-columns: 1fr min(40rem, 100%) 1fr;
-  font-size: 0.9rem;
 
-  > * {
-    grid-column: 2;
+  mix-blend-mode: color-burn;
+  position: relative;
+  transition: opacity 0.5s ease-in-out;
+  --link-hover: var(--color-body);
+
+  @media (pointer: fine) {
+    opacity: 0.6;
   }
 
-  @media (--viewport-medium) {
-    max-width: calc(
-      var(--article-width) + var(--layout-gap) + var(--sidebar-width)
-    );
+  &:hover {
+    opacity: 1;
+  }
+
+  &:after {
+    content: "";
+    position: absolute;
+    top: -24px;
+    bottom: -500px;
+    left: -50vw;
+    right: -50vw;
+    z-index: -1;
   }
 
   & > div {

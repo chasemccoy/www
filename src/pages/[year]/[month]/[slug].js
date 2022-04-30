@@ -23,7 +23,8 @@ const BlogPost = ({ code, title, excerpt, date, image, slug }) => {
         {excerpt ? (
           <React.Fragment>
             <div
-              className="inline-flex align-center mb-12 mono color-caption"
+              className="mb-12 mono color-caption pill"
+              title="Publish date"
               style={{
                 fontSize: '0.8rem',
               }}

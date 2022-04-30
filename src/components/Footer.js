@@ -31,7 +31,7 @@ const Footer = ({ className }) => {
     <footer className={clsx(className, 'prose')}>
       <div>
         <div className="flex align--flex-end">
-          <div style={{ maxWidth: '8em' }}>
+          {/* <div style={{ maxWidth: '8em' }}>
             <img
               src="/images/ascii-house.png"
               alt=""
@@ -40,7 +40,7 @@ const Footer = ({ className }) => {
                 opacity: '0.75',
               }}
             />
-          </div>
+          </div> */}
 
           <div className="ml-16 mb-2" style={{ flex: '1 0 auto' }}>
             <Sparkles />

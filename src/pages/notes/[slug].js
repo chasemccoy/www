@@ -28,9 +28,7 @@ const Category = ({ notes }) => {
           ~
         </Link>
         <span className="normal mx-4">/</span>
-        <Link to="/notes">
-          Notes
-        </Link>
+        <Link to="/notes">Notes</Link>
         <span className="normal ml-4 mr-8">/</span>
         <Folder
           className="inline mr-4"
@@ -64,7 +62,7 @@ const Note = ({ data }) => {
       }
       header={
         <header className="flow center">
-          <h1 className='long-form'>{title}</h1>
+          <h1 className="long-form">{title}</h1>
           <p
             className="lead mt-8 color-caption"
             style={{ maxWidth: '70ch', margin: '0 auto' }}
@@ -87,7 +85,7 @@ const Note = ({ data }) => {
             </Link>
 
             {modifiedDate && (
-              <span className="inline-flex align-center">
+              <span title="Last modified">
                 <Clock
                   className="inline mr-6"
                   style={{ position: 'relative', top: '-1.5px' }}
