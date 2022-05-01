@@ -21,7 +21,7 @@ const Notes = ({ notes, recentNotes }) => {
         description="My digital garden containing a collection of links, thoughts, ideas, images, quotes, and other miscellanea I've collected on my travels across the web."
       />
 
-      <header>
+      <header className='center mb-24'>
         <h1>
           <span
             className="smaller"
@@ -32,7 +32,7 @@ const Notes = ({ notes, recentNotes }) => {
           Notes
         </h1>
         <p
-          className="mt-12 serif hyphens"
+          className="mt-8 serif hyphens"
           style={{
             fontSize: '1.4rem',
             lineHeight: 1.3,
@@ -67,7 +67,7 @@ const Notes = ({ notes, recentNotes }) => {
               key={note.slug}
             >
               <h2 className="mt-0" style={{fontSize: '1rem'}}>{note.title}</h2>
-              <div className="color-caption smaller mt-4">{note.excerpt}</div>
+              <div className="color-caption smaller mt-0">{note.excerpt}</div>
             </Link>
           ))}
         </div>
