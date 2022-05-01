@@ -6,12 +6,19 @@
   [headers.values]
     # cache for 1 year 
     "Cache-Control" = "public, max-age=31536000, s-maxage=31536000"
-    
-[[redirects]]
-  from = "/books"
-  to = "/notes/books"
 
 [[plugins]]
   package = "@netlify/plugin-lighthouse"
   [plugins.inputs]
     output_path = "lighthouse.html"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+[[redirects]]
+  from = "/books"
+  to = "/notes/books"
+
+[[redirects]]
+  from = "/quotes"
+  to = "/notes/quotes"

@@ -1,94 +1,116 @@
 import React from 'react'
-import Head from 'next/head'
 import groupBy from 'just-group-by'
 import { getPosts } from '../utils/post'
 import { getDateComponents } from '../utils'
 import Link from '../components/Link'
 import Metadata from '../components/Metadata'
+import Page from '../components/Page'
+import RenderMDX from '../components/RenderMDX'
 
 const DateLabel = ({ date }) => {
   const { month, day } = getDateComponents(date, { monthFormat: 'short' })
 
   return (
     <div
-      className='date-label bg-gray--100 px-12 py-4 flex flex-column align--center'
+      className="date-label bg-gray--200 px-12 pt-6 pb-4 flex flex-column align--center"
       style={{ borderRadius: '8px' }}
     >
       <span
-        className='smaller tighter uppercase color-caption'
-        style={{ fontSize: '0.65em' }}
+        className="smaller tighter uppercase color-caption"
+        style={{ fontSize: '0.6em' }}
       >
         {month}
       </span>
-      <span className='bold larger tighter'>{day}</span>
+      <span className="bold larger tighter">{day}</span>
     </div>
+  )
+}
+
+const PostPreview = ({ slug, date, title, excerpt, params, image }) => {
+  return (
+    <Link href={slug} className="block unstyled no-hover post-preview">
+      <article className="prose post-preview flex flex-column align--flex-start gap-16">
+        <div className="flex align--flex-start gap-16">
+          <DateLabel date={new Date(date)} />
+          <div>
+            <h1
+              className="long-form"
+              style={{ fontSize: '1.4em', marginTop: '-4px' }}
+            >
+              {title}
+            </h1>
+            <p className="color-caption mt-4">{excerpt}</p>
+          </div>
+        </div>
+
+        {image && (
+          <img
+            src={`/img/${params.slug}/${image}`}
+            alt=""
+            style={{ boxShadow: '0 0 0 1px rgba(0 0 0 / 10%)' }}
+          />
+        )}
+      </article>
+    </Link>
+  )
+}
+
+const ShortPost = ({ title, date, code, slug }) => {
+  const { month, day } = getDateComponents(new Date(date))
+  return (
+    <article className="flow" style={{ '--flow-spacing': '1rem' }}>
+      <a href={slug} className="unstyled">
+        <h1 className="sans bold" style={{ fontSize: '1rem' }}>
+          <span className="normal color-caption">
+            {month} {day} —
+          </span>{' '}
+          {title}
+        </h1>
+      </a>
+
+      <div className="prose blog-content">
+        <RenderMDX code={code} />
+      </div>
+    </article>
   )
 }
 
 const Blog = ({ posts }) => {
-  React.useEffect(() => {
-    document.querySelector('body').dataset.section = 'blog'
-  })
-
   const years = Object.keys(posts).reverse()
 
   return (
-    <div className='flow'>
-      <Head>
-        <link rel='stylesheet' href='/styles/blog.css' />
-      </Head>
-
+    <Page className="flow">
       <Metadata
-        title='Blog'
+        title="Blog"
         description="What's on my mind, and links to some interesting stuff on the web."
       />
 
-      <main className='flow' style={{ '--flow-spacing': '4em' }}>
+      <div className="flow" style={{ '--flow-spacing': '4em' }}>
         {years.map((year) => (
           <React.Fragment key={year}>
-            <h2 className='marker mb-24'>
+            <h2 className="marker mb-24">
               <span>{year}</span>
             </h2>
 
-            <div className='flex flex-column gap-40 mt-0'>
-              {posts[year].map((post, i) => (
-                <Link
-                  href={post.slug}
-                  className='block unstyled no-hover post-preview'
-                  key={i}
-                >
-                  <article className='post-preview flex flex-column align--flex-start gap-16'>
-                    <div className='flex align--flex-start gap-16'>
-                      <DateLabel date={new Date(post.date)} />
-                      <div>
-                        <h2
-                          className='tighter'
-                          style={{ fontSize: '1.4em', marginTop: '-4px' }}
-                        >
-                          {post.title}
-                        </h2>
-                        <p className='color-caption mt-4'>{post.excerpt}</p>
-                      </div>
-                    </div>
-
-                    {post.image && (
-                      <img
-                        src={`/img/${post.params.slug}/${post.image}`}
-                        alt=''
-                      />
-                    )}
-                  </article>
-                </Link>
-              ))}
+            <div className="flex flex-column gap-40 mt-0">
+              {posts[year].map((post, i) =>
+                post.excerpt ? (
+                  <PostPreview key={i} {...post} />
+                ) : (
+                  <div key={i} className={i !== 0 ? 'my-24' : undefined}>
+                    <ShortPost {...post} />
+                  </div>
+                )
+              )}
             </div>
           </React.Fragment>
         ))}
-      </main>
-    </div>
+      </div>
+    </Page>
   )
 }
 
-export const getStaticProps = async (context) => {
+export const getStaticProps = async () => {
   const posts = await getPosts()
   const postsByYear = groupBy(posts, (item) => {
     const { year } = getDateComponents(new Date(item.date))

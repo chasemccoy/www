@@ -1,35 +1,112 @@
-#wrapper {
-  --layout-padding: 16px;
-  --max-width: 752px;
+:root {
+  --content-width: 38rem;
+  --sidebar-width: 140px;
+  --layout-gap: 48px;
+  --layout-padding: 20px;
+}
 
-  > div > main {
-    margin-top: 24px;
-    max-width: var(--max-width);
-    margin-left: auto;
-    margin-right: auto;
-    padding: 16px var(--layout-padding) 40px;
+.layout-grid {
+  display: grid;
+  grid-template-columns:
+    1fr min(var(--content-width), 100%)
+    1fr;
+
+  > * {
+    grid-column: 2;
   }
+}
 
-  > div > header {
-    margin-bottom: 0;
-  }
+.has-sidebar .layout-grid {
+  grid-template-columns:
+    1fr min(
+      var(--content-width) + var(--layout-gap) + var(--sidebar-width),
+      100%
+    )
+    1fr;
+}
 
-  @media (--viewport-tiny) {
+main {
+  padding: 32px var(--layout-padding);
+  background: var(--color-body-background);
+  border-radius: 0 0 1rem 1rem;
+  min-height: 70vh;
+
+  @media (--viewport-small) {
     --layout-padding: 40px;
   }
 }
 
-#site-header {
-  border-bottom: 1px solid var(--color-border);
-  position: relative;
+.wrapper {
   display: flex;
-  align-items: center;
+  gap: var(--layout-gap);
+  width: 100%;
+  flex-direction: column;
+
+  @media (--viewport-small) {
+    flex-direction: row;
+  }
 }
 
-#site-header .wrapper {
-  max-width: var(--max-width);
-  flex-grow: 1;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 0 var(--layout-padding);
+#sidebar {
+  margin: 8px 0 0;
+  width: var(--sidebar-width);
+  min-width: 100%;
+  order: -1;
+
+  h2 {
+    font-size: 0.8rem;
+    font-family: var(--font-body);
+    font-weight: bold;
+  }
+
+  @media (--viewport-small) {
+    display: block;
+    order: -1;
+    min-width: var(--sidebar-width);
+  }
+}
+
+#sidebar:empty {
+  display: none;
+}
+
+footer {
+  margin: 0 auto;
+  padding: 2rem var(--layout-padding);
+
+  mix-blend-mode: color-burn;
+  position: relative;
+  transition: opacity 0.5s ease-in-out;
+  --link-hover: var(--color-body);
+
+  @media (pointer: fine) {
+    opacity: 0.6;
+  }
+
+  &:hover {
+    opacity: 1;
+  }
+
+  &:after {
+    content: "";
+    position: absolute;
+    top: -24px;
+    bottom: -500px;
+    left: -50vw;
+    right: -50vw;
+    z-index: -1;
+  }
+
+  & > div {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: flex-start;
+    gap: 24px;
+
+    @media (--viewport-small) {
+      flex-direction: row;
+      align-items: flex-end;
+      justify-content: space-between;
+    }
+  }
 }

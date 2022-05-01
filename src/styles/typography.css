@@ -2,7 +2,12 @@
   --flow-spacing: 1.1rem;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-size: 1em;
 }
 
@@ -12,15 +17,23 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   li + li {
-    margin-top: 0.5rem;
+    margin-top: 0.4rem;
+  }
+d
+  li > p + p {
+    margin-top: 0.25rem;
   }
 
-  li > p + p {
-    margin-top: 0.5rem;
+  li > p:not(:first-of-type) + p {
+    margin-top: 0.75rem;
   }
 
   li + li > p:first-child {
     margin-top: 1.25rem;
+  }
+
+  blockquote > * + * {
+    margin-top: var(--flow-spacing);
   }
 
   h1 + *,
@@ -39,13 +52,18 @@ h1, h2, h3, h4, h5, h6 {
   h5,
   h6 {
     margin-top: clamp(2rem, 1.6em, 9999rem);
-    line-height: 1.2;
-    font-family: var(--font-body);
   }
 
   h1 {
     margin-top: 0;
     font-size: calc(2rem * var(--heading-scale, 1));
+  }
+  
+  h1.long-form {
+    line-height: 1.2;
+    font-family: var(--font-header);
+    font-weight: normal;
+    letter-spacing: -0.02em;
   }
 
   h2 {
@@ -73,7 +91,7 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   .lead {
-    font-size: 1.25rem;
+    font-size: 1.1rem;
     line-height: 1.3;
   }
 

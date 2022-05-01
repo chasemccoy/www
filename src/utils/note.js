@@ -3,8 +3,28 @@ import matter from 'gray-matter'
 import config from '../../next.config'
 import { getFile, getDirList, isDirectory } from './fs'
 import { compileMdx } from './compile-mdx'
+import childProcess from 'child_process'
 
 const CONTENT_PATH = 'notes'
+
+function execShellCommand(cmd) {
+  const exec = childProcess.exec
+  return new Promise((resolve, reject) => {
+    exec(cmd, (error, stdout, stderr) => {
+      if (error) {
+        console.warn(error)
+      }
+      resolve(stdout ? stdout : stderr)
+    })
+  })
+}
+
+async function getLastModifiedDate(path) {
+  let date = await execShellCommand(`git log -1 --format=%cD ${path}`)
+  date = new Date(date.replace('\n', ''))
+  date.setHours(0, 0, 0, 0)
+  return date.toString()
+}
 
 async function getNote(slug) {
   const notes = await getNotes()
@@ -18,11 +38,17 @@ async function getNote(slug) {
     ? `${CONTENT_PATH}/${note.category}/${slug}/index.mdx`
     : `${CONTENT_PATH}/${note.category}/${slug}.mdx`
 
+  const modifiedDate = await getLastModifiedDate(path)
+
   const { code, frontmatter, toc } = await compileMdx(path, slug)
-  if (frontmatter.modified) {
-    frontmatter.modified = new Date(frontmatter.modified).toISOString()
+  return {
+    slug,
+    code,
+    ...frontmatter,
+    toc,
+    category: note.category,
+    modifiedDate,
   }
-  return { slug, code, ...frontmatter, toc, category: note.category }
 }
 
 async function getCategory(category) {
@@ -63,13 +89,11 @@ async function getCategory(category) {
   const files = result.filter((v) => Boolean(v))
 
   const posts = await Promise.all(
-    files.map(async ({ slug, content }) => {
+    files.map(async ({ slug, content, path }) => {
       const matterResult = matter(content)
       const frontmatter = matterResult.data
-      if (frontmatter.modified) {
-        frontmatter.modified = new Date(frontmatter.modified).toISOString()
-      }
-      return { slug, ...frontmatter, category }
+      const modifiedDate = await getLastModifiedDate(path)
+      return { slug, ...frontmatter, category, modifiedDate }
     })
   )
 
@@ -98,4 +122,12 @@ async function getNotes(flat = true) {
   return result.flat()
 }
 
-export { getNote, getCategory, getNotes }
+async function getRecentlyModifiedNotes() {
+  const notes = await getNotes()
+  const sorted = notes.sort(
+    (a, b) => new Date(b.modifiedDate) - new Date(a.modifiedDate)
+  )
+  return sorted
+}
+
+export { getNote, getCategory, getNotes, getRecentlyModifiedNotes }

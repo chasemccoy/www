@@ -1,0 +1,71 @@
+.museo {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px;
+
+  h1 {
+    font-size: 2.8em;
+    font-family: var(--font-header);
+    font-weight: normal;
+
+    a {
+      display: inline-flex;
+      align-items: baseline;
+    }
+
+    .subtitle {
+      font-size: 0.6em;
+      color: var(--color-caption);
+    }
+  }
+
+  a {
+    color: inherit;
+  }
+
+  a:hover {
+    color: var(--color-gray--500);
+  }
+
+  .prose {
+    display: flex;
+    flex-direction: column;
+  }
+
+  ul li + li {
+    margin-top: 4px;
+  }
+
+  .image-container {
+    display: flex;
+    min-width: 240px;
+    width: 100%;
+  }
+
+  img:not(.mobile-only) {
+    display: none;
+
+    @media (--viewport-tiny) {
+      display: block;
+    }
+  }
+
+  img.mobile-only {
+    margin-top: 16px;
+    margin-bottom: -40px;
+    height: 250px;
+    object-fit: cover;
+    object-position: 50% 70%;
+    border-radius: 1rem;
+
+    @media (--viewport-tiny) {
+      display: none;
+    }
+  }
+
+  @media (--viewport-tiny) {
+    flex-wrap: nowrap;
+    gap: 32px;
+  }
+}

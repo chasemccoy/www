@@ -1,7 +1,6 @@
 ---
 title: CSS recipes
 excerpt: Helpful techniques and snippets for working with my favorite language.
-modified: 2020-03-21
 tags:
   - css
   - web dev
@@ -13,6 +12,14 @@ tags:
 Use the `<details>` element
 
 <Bookmark url='https://css-tricks.com/quick-reminder-that-details-summary-is-the-easiest-way-ever-to-make-an-accordion/' />
+
+## Borders on images that match the background color 
+
+If your website has a white background and you're displaying images (such as user avatars), it's likely that some images might have a white or near-white background as well, which can make them hard to distinguish. Using a subtle box shadow will create a visible border for these cases that is not really noticeable otherwise like a normal border would be:
+
+```css
+box-shadow: 0 0 0 1px rgba(0 0 0 / 10%);
+```
 
 ## Checkboxes
 

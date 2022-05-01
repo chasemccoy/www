@@ -53,9 +53,11 @@ async function getPosts() {
       }
 
       const postFile = await getFile(file.path, file.sha)
+      const slug = fileDir.replace(`${CONTENT_PATH}/`, '').replace('.mdx', '')
+
       return {
         ...postFile,
-        slug: fileDir.replace(`${CONTENT_PATH}/`, '').replace('.mdx', ''),
+        slug,
       }
     })
   )
@@ -69,11 +71,18 @@ async function getPosts() {
       frontmatter.date = new Date(frontmatter.date).toISOString()
       const params = getParamsForPost(slug, frontmatter.date)
       const fullSlug = `/${params.year}/${params.month}/${slug}`
+      let code = undefined
+
+      if (!frontmatter.excerpt) {
+        const post = await getPost(slug)
+        code = post.code
+      }
 
       return {
         slug: fullSlug,
         params: { ...params },
         ...frontmatter,
+        ...(code ? { code } : {}),
       }
     })
   )

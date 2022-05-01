@@ -3,89 +3,26 @@ import Head from 'next/head'
 import Nav from '../components/Nav'
 import Footer from '../components/Footer'
 import Metadata from '../components/Metadata'
-import Link from '../components/Link'
 import '../components/Logo'
 import '../components/Iridescence'
 import Script from 'next/script'
-import { useRouter } from 'next/router'
+import clsx from 'clsx'
 
 const fontStyles = `
 @font-face {
-  font-family: 'GT America';
-  font-style: normal;
-  font-weight: normal;
-  font-display: swap;
-  src: url('/fonts/gt-america/GTAmerica-Regular.woff2')
-      format('woff2'),
-    url('/fonts/gt-america/GTAmerica-Regular.woff')
-      format('woff');
-}
-
-@font-face {
-  font-family: 'GT America';
-  font-style: italic;
-  font-weight: normal;
-  font-display: swap;
-  src: url('/fonts/gt-america/GTAmerica-RegularItalic.woff2')
-      format('woff2'),
-    url('/fonts/gt-america/GTAmerica-RegularItalic.woff')
-      format('woff');
-}
-
-@font-face {
-  font-family: 'GT America';
-  font-style: normal;
-  font-weight: bold;
-  font-display: swap;
-  src: url('/fonts/gt-america/GTAmerica-Bold.woff2')
-      format('woff2'),
-    url('/fonts/gt-america/GTAmerica-Bold.woff')
-      format('woff');
-}
-
-@font-face {
-  font-family: 'GT America';
-  font-style: italic;
-  font-weight: bold;
-  font-display: swap;
-  src: url('/fonts/gt-america/GTAmerica-BoldItalic.woff2')
-      format('woff2'),
-    url('/fonts/gt-america/GTAmerica-BoldItalic.woff')
-      format('woff');
-}
-
-@font-face {
-  font-family: 'Ivar Text';
-  src: url('/fonts/ivar-text/IvarText-Regular.woff2') format('woff2'),
-    url('/fonts/ivar-text/IvarText-Regular.woff') format('woff');
+  font-family: 'GT Alpina';
+  src: url('/fonts/gt-alpina/GTAlpina-Rg.woff2') format('woff2'),
+      url('/fonts/gt-alpina/GTAlpina-Rg.woff') format('woff');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Ivar Text';
-  src: url('/fonts/ivar-text/IvarText-Italic.woff2') format('woff2'),
-    url('/fonts/ivar-text/IvarText-Italic.woff') format('woff');
+  font-family: 'GT Alpina';
+  src: url('/fonts/gt-alpina/GTAlpina-RgIt.woff2') format('woff2'),
+      url('/fonts/gt-alpina/GTAlpina-RgIt.woff') format('woff');
   font-weight: normal;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Ivar Text';
-  src: url('/fonts/ivar-text/IvarText-Medium.woff2') format('woff2'),
-    url('/fonts/ivar-text/IvarText-Medium.woff') format('woff');
-  font-weight: bold;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Ivar Text';
-  src: url('/fonts/ivar-text/IvarText-MediumItalic.woff2') format('woff2'),
-    url('/fonts/ivar-text/IvarText-MediumItalic.woff') format('woff');
-  font-weight: bold;
   font-style: italic;
   font-display: swap;
 }
@@ -128,58 +65,51 @@ const fontStyles = `
 `
 
 const App = ({ Component, pageProps }) => {
-  const { pathname } = useRouter()
-
   return (
-    <div id='wrapper'>
+    <>
       <Head>
-        <meta charSet='utf-8' />
+        <meta charSet="utf-8" />
         <meta
-          name='viewport'
-          content='width=device-width, initial-scale=1, shrink-to-fit=no'
+          name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no"
         />
         <link
-          rel='alternate'
-          type='application/rss+xml'
-          title='Chase McCoy'
-          href='/feed.xml'
+          rel="alternate"
+          type="application/rss+xml"
+          title="Chase McCoy"
+          href="/feed.xml"
         />
-        <link rel='icon' href='/favicon.ico' />
-        <link rel='apple-touch-icon' href='/apple-touch-icon.png' />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
+        <link rel="icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <style dangerouslySetInnerHTML={{ __html: fontStyles }} />
-        <link rel='stylesheet' href='/styles/shared.css' />
-        <link rel='prefetch' href='/styles/blog.css' as='style' />
-        <link rel='prefetch' href='/styles/homepage.css' as='style' />
-        <link rel='prefetch' href='/styles/notes.css' as='style' />
       </Head>
 
       <Script
-        src='https://platform.twitter.com/widgets.js'
-        strategy='lazyOnload'
+        src="https://platform.twitter.com/widgets.js"
+        strategy="lazyOnload"
       />
 
       <Metadata />
 
-      <chsmc-iridescence
-        class={pathname === '/' ? 'dark' : undefined}
-      ></chsmc-iridescence>
-
-      <div>
-        <header id='site-header'>
-          <div className='wrapper mt-24'>
-            <Link to='/' className='inline-block logo'>
-              <chsmc-logo></chsmc-logo>
-            </Link>
-            <Nav />
-          </div>
+      <div className={clsx(pageProps.hasSidebar && 'has-sidebar')}>
+        <header id="site-header" className="layout-grid">
+          <Nav />
         </header>
 
-        <main style={{ paddingTop: '6px' }}>
+        <div className='stripes' />
+
+        <main className='layout-grid'>
           <Component {...pageProps} />
-          <Footer />
         </main>
+
+        <Footer className='layout-grid' />
       </div>
-    </div>
+    </>
   )
 }
 

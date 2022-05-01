@@ -1,0 +1,9 @@
+.quote {
+  &:not(:last-child) {
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}

@@ -1,41 +1,35 @@
 import React from 'react'
-import Head from 'next/head'
 import { compileMdx } from '../../utils/compile-mdx'
-import { getMDXComponent } from 'mdx-bundler/client'
 import TableOfContents from '../../components/TableOfContents'
 import Metadata from '../../components/Metadata'
+import Page from '../../components/Page'
+import RenderMDX from '../../components/RenderMDX'
 
 const StyleGuidePage = ({ code, toc }) => {
-  React.useEffect(() => {
-    document.querySelector('body').dataset.section = 'style-guide'
-  })
-
-  const Component = React.useMemo(() => getMDXComponent(code), [code])
-  
   return (
-    <div className='prose'>
-      <Head>
-        <link rel="stylesheet" href="/styles/style-guide.css" />
-      </Head>
+    <Page
+      article
+      header={
+        <div className='center'>
+          <h1 className="serif normal">Style Guide</h1>
 
-      <Metadata title='Style guide' />
+          <p className="lead color-caption mt-8">
+            My personal and always in progress guide to style, usage, and
+            grammar for writing on the web
+          </p>
+        </div>
+      }
+      tableOfContents={<TableOfContents content={toc} />}
+      className="prose"
+    >
+      <Metadata title="Style guide" />
 
-      <h1 className='serif normal'>
-        <span>Style Guide</span>
-        {/* <span className='subtitle caption sans ml-12 color-caption'>Style, usage, and grammar for the web.</span> */}
-      </h1>
-      <p className='lead color-caption mt-8'>
-        My personal and always in progress guide to style, usage, and grammar for writing on the web
-      </p>
-
-      <TableOfContents content={toc} className='mt-24' />
-
-      <Component />
-    </div>
+      <RenderMDX code={code} />
+    </Page>
   )
 }
 
-export const getStaticProps = async (context) => {
+export const getStaticProps = async () => {
   const { code, toc } = await compileMdx('src/pages/style-guide/index.mdx')
 
   return {
