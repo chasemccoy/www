@@ -9,7 +9,7 @@ const CONTENT_PATH = 'notes'
 
 function execShellCommand(cmd) {
   const exec = childProcess.exec
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     exec(cmd, (error, stdout, stderr) => {
       if (error) {
         console.warn(error)
@@ -74,10 +74,10 @@ async function getCategory(category) {
         return null
       }
 
-      const postFile = await getFile(file.path, file.sha)
+      const noteFile = await getFile(file.path, file.sha)
 
       return {
-        ...postFile,
+        ...noteFile,
         slug: fileDir
           .replace('notes/', '')
           .replace(`${category}/`, '')
@@ -88,7 +88,7 @@ async function getCategory(category) {
 
   const files = result.filter((v) => Boolean(v))
 
-  const posts = await Promise.all(
+  const notes = await Promise.all(
     files.map(async ({ slug, content, path }) => {
       const matterResult = matter(content)
       const frontmatter = matterResult.data
@@ -97,7 +97,11 @@ async function getCategory(category) {
     })
   )
 
-  return posts.filter((p) => !p.hidden)
+  return notes
+    .filter((note) => !note.hidden)
+    .sort((a, b) => {
+      return a.title.localeCompare(b.title)
+    })
 }
 
 async function getNotes(flat = true) {
@@ -108,11 +112,11 @@ async function getNotes(flat = true) {
   )
 
   if (!flat) {
-    const groups = result.reduce((acc, posts) => {
-      const category = posts[0].category
+    const groups = result.reduce((acc, notes) => {
+      const category = notes[0].category
       return {
         ...acc,
-        [category]: posts,
+        [category]: notes,
       }
     }, {})
 

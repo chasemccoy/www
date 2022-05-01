@@ -4,5 +4,8 @@
     "@next/next/no-css-tags": "off",
     "@next/next/no-img-element": "off",
     "react/jsx-no-target-blank": "off"
+  },
+  "env": {
+    "es6": true
   }
 }

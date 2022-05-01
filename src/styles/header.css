@@ -51,7 +51,7 @@
     content: "";
     position: absolute;
     top: -100px;
-    bottom: -100px;
+    bottom: -64px;
     left: -50vw;
     right: -50vw;
     z-index: -1;
