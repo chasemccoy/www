@@ -110,7 +110,7 @@ const Blog = ({ posts }) => {
   )
 }
 
-export const getStaticProps = async (context) => {
+export const getStaticProps = async () => {
   const posts = await getPosts()
   const postsByYear = groupBy(posts, (item) => {
     const { year } = getDateComponents(new Date(item.date))

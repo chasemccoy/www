@@ -5,15 +5,14 @@ import Page from '../../components/Page'
 import Marker from '../../components/Marker'
 import { capitalize } from '../../utils'
 import { Folder } from '../../components/Icon'
-import clsx from 'clsx'
 import Metadata from '../../components/Metadata'
 import NoteList from '../../components/NoteList'
-import { quotes } from '../../../notes/misc/quotes/Quotes'
-import { recents as recentBooks } from '../../../notes/misc/books/Books'
+// import { quotes } from '../../../notes/misc/quotes/Quotes'
+// import { recents as recentBooks } from '../../../notes/misc/books/Books'
 
 const Notes = ({ notes, recentNotes }) => {
-  const randomQuote = quotes[Math.floor(Math.random() * quotes.length)]
-  const recentBook = recentBooks[0]
+  // const randomQuote = quotes[Math.floor(Math.random() * quotes.length)]
+  // const recentBook = recentBooks[0]
 
   return (
     <Page className="prose">
@@ -83,7 +82,7 @@ const Notes = ({ notes, recentNotes }) => {
             '--gap': '32px',
           }}
         >
-          {Object.keys(notes).map((category, i) => (
+          {Object.keys(notes).map((category) => (
             <div className="mb-48" key={category}>
               <h2 className="mt-0 unstyled">
                 <Link
@@ -111,7 +110,7 @@ const Notes = ({ notes, recentNotes }) => {
   )
 }
 
-export const getStaticProps = async (context) => {
+export const getStaticProps = async () => {
   const notes = await getNotes(false)
   const recentNotes = await getRecentlyModifiedNotes()
 

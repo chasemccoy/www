@@ -8,7 +8,7 @@ import { generateFeed } from '../utils/generate-feed'
 import PropertyList from '../components/PropertyList'
 import Museo from '../components/homepage/Museo'
 
-const Index = ({ posts, recentNotes }) => {
+const Index = ({ posts }) => {
   return (
     <Page>
       <h2
@@ -36,7 +36,7 @@ const Index = ({ posts, recentNotes }) => {
         <Link href="/notes">my digital garden</Link> of public notes, and
         browsing <Link href="/notes/books">my bookshelf</Link>.
       </p>
-      
+
       <div className="flow" style={{ '--flow-spacing': '1rem' }}>
         <Marker className="mt-48">Select writing</Marker>
         {posts.map((post) => (
@@ -140,7 +140,7 @@ const Index = ({ posts, recentNotes }) => {
   )
 }
 
-export const getStaticProps = async (context) => {
+export const getStaticProps = async () => {
   if (process.env.NODE_ENV === 'production') {
     await generateFeed()
   }

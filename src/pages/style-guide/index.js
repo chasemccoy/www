@@ -1,5 +1,4 @@
 import React from 'react'
-import Head from 'next/head'
 import { compileMdx } from '../../utils/compile-mdx'
 import TableOfContents from '../../components/TableOfContents'
 import Metadata from '../../components/Metadata'
@@ -23,10 +22,6 @@ const StyleGuidePage = ({ code, toc }) => {
       tableOfContents={<TableOfContents content={toc} />}
       className="prose"
     >
-      {/* <Head>
-        <link rel="stylesheet" href="/styles/style-guide.css" />
-      </Head> */}
-
       <Metadata title="Style guide" />
 
       <RenderMDX code={code} />
@@ -34,7 +29,7 @@ const StyleGuidePage = ({ code, toc }) => {
   )
 }
 
-export const getStaticProps = async (context) => {
+export const getStaticProps = async () => {
   const { code, toc } = await compileMdx('src/pages/style-guide/index.mdx')
 
   return {
