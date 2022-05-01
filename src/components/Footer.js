@@ -31,18 +31,7 @@ const Footer = ({ className }) => {
     <footer className={clsx(className, 'prose')}>
       <div>
         <div className="flex align--flex-end">
-          {/* <div style={{ maxWidth: '8em' }}>
-            <img
-              src="/images/ascii-house.png"
-              alt=""
-              style={{
-                filter: 'var(--ascii-filter)',
-                opacity: '0.75',
-              }}
-            />
-          </div> */}
-
-          <div className="ml-16 mb-2" style={{ flex: '1 0 auto' }}>
+          <div style={{ flex: '1 0 auto' }}>
             <Sparkles />
             <p className="smaller mt-12">
               Made with <span className="color-red">&#9829;</span> in Chicago{' '}
