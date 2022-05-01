@@ -3,8 +3,6 @@ import Head from 'next/head'
 import Nav from '../components/Nav'
 import Footer from '../components/Footer'
 import Metadata from '../components/Metadata'
-import '../components/Logo'
-import '../components/Iridescence'
 import Script from 'next/script'
 import clsx from 'clsx'
 
