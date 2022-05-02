@@ -63,8 +63,7 @@ const Index = ({ posts }) => {
         <PropertyList label="Now">
           <h4>Design Systems at Stripe</h4>
           <p className="color-caption mt-2">
-            I’m currently working on Sail, the multi-product design system at
-            Stripe.
+            I’m currently working on Sail, the design system powering many of Stripe’s web products. 
           </p>
         </PropertyList>
         <hr className="dashed" />
