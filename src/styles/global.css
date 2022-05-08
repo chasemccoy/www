@@ -194,6 +194,7 @@ ol {
   }
 
   ul ul {
+    display: none;
     margin: 4px 0 0 12px;
   }
 
@@ -221,6 +222,10 @@ ol {
 
   a.selected {
     color: var(--section-color);
+  }
+
+  p {
+    margin: 0 !important;
   }
 }
 
