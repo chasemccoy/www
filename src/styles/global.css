@@ -98,22 +98,24 @@ blockquote {
     margin-bottom: 8px;
   }
 
-  & > p:first-of-type:before {
-    content: "“";
-    font-size: 1.2em;
-    line-height: 1;
+  & > p:first-of-type:before,
+  & > p:first-of-type:after {
+    font-size: 1.4em;
+    line-height: 0;
     color: var(--color-caption);
+    display: inline-block;
+    position: relative;
+    top: 6px;
+  }
+
+  & > p:first-of-type:before {
+    content: '“';
     margin-left: -0.6em;
     margin-right: 0.1em;
-    display: inline-block;
   }
 
   & > p:last-of-type:after {
-    content: "”";
-    font-size: 1.2em;
-    line-height: 1;
-    color: var(--color-caption);
-    display: inline-block;
+    content: '”';
   }
 }
 

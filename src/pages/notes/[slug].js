@@ -44,10 +44,10 @@ const Note = ({ data }) => {
             style={{ fontSize: '0.7em' }}
           >
             {tags && (
-              <div>
+              <span title="Tags">
                 <Tag className="inline mr-6" />
                 <span>{tags.join(', ')}</span>
-              </div>
+              </span>
             )}
             {modifiedDate && (
               <span title="Last modified">

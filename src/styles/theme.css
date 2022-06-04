@@ -11,9 +11,9 @@
     --root-font-size: 17px;
   }
 
-  @media (--viewport-medium) {
+  /* @media (--viewport-medium) {
     --root-font-size: 18px;
-  }
+  } */
 
   --color-gray--0: #fafafa;
   --color-gray--100: #FAF7ED;

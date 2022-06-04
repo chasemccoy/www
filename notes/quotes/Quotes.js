@@ -82,13 +82,13 @@ const Quotes = () => {
 
   return (
     <div
-      className="multi-column mt-24"
+      className="multi-column"
       style={{ '--columns': 2, '--min-column-width': '15em', '--gap': '32px' }}
     >
       {sortedQuotes.map((quote, i) => (
         <div className="quote mb-16 pb-16" key={i}>
           <p className="serif">{quote.content}</p>
-          <p className="mt-8 bold color-gray--600">— {quote.metadata}</p>
+          <p className="mt-8 bold color-caption smaller">— {quote.metadata}</p>
         </div>
       ))}
     </div>
