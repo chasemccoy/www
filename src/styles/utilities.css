@@ -359,25 +359,6 @@ h2.marker {
   -webkit-box-orient: vertical;
 }
 
-.highlight {
-  font-weight: bold;
-  font-size: 1.5em;
-  line-height: 1.3;
-  padding: 1em 0 0;
-  position: relative;
-  z-index: 1;
-
-  &:before {
-    content: 'Highlight';
-    display: block;
-    font-family: var(--font-code);
-    font-size: 0.8rem;
-    font-weight: normal;
-    margin: 0 0 8px;
-    color: var(--color-caption);
-  }
-}
-
 .card {
   position: relative;
   background: var(--color-gray--200);

@@ -12,7 +12,11 @@ const Bookmark = ({ url }) => {
       setData(json)
     }
 
-    fetchData()
+    try {
+      fetchData()
+    } catch (error) {
+      console.log(error)
+    }
   }, [url])
 
   if (!data) {

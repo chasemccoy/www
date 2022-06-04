@@ -45,10 +45,7 @@ const Note = ({ data }) => {
           >
             {tags && (
               <div>
-                <Tag
-                  className="inline mr-6"
-                  style={{ position: 'relative', top: '-1.5px' }}
-                />
+                <Tag className="inline mr-6" />
                 <span>{tags.join(', ')}</span>
               </div>
             )}

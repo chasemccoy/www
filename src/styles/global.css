@@ -86,21 +86,34 @@ code a {
 }
 
 blockquote {
-  position: relative;
-  margin-left: 0.1em;
-  padding: 4px 0.5em 4px 1.25em;
-  font-size: 0.95em;
-  color: var(--color-caption);
+  font-size: 1.25em;
+  line-height: 1.4;
 
   &:before {
     content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 6px;
+    display: block;
+    width: 100%;
     background: var(--color-accent);
-    border-radius: 3px;
-    height: 100%;
+    height: 2px;
+    margin-bottom: 8px;
+  }
+
+  & > p:first-of-type:before {
+    content: "“";
+    font-size: 1.2em;
+    line-height: 1;
+    color: var(--color-caption);
+    margin-left: -0.6em;
+    margin-right: 0.1em;
+    display: inline-block;
+  }
+
+  & > p:last-of-type:after {
+    content: "”";
+    font-size: 1.2em;
+    line-height: 1;
+    color: var(--color-caption);
+    display: inline-block;
   }
 }
 
