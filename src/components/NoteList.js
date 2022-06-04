@@ -9,7 +9,7 @@ const NoteList = ({ notes }) => {
           {i !== 0 && <hr className="dashed mb-12" />}
           <Link
             to={`/notes/${slug}`}
-            className="block unstyled smaller tighter"
+            className="block unstyled tighter"
           >
             {title}
           </Link>

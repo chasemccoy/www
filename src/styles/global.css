@@ -299,6 +299,7 @@ ol {
     display: flex;
     gap: 8px;
     flex-wrap: wrap;
+    justify-content: center;
   }
 
   legend {
@@ -332,7 +333,8 @@ ol {
   }
 
   input[type='radio']:checked + label {
-    background: black;
+    background: var(--color-text);
+    border-color: transparent;
     color: white;
   }
 }

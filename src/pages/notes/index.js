@@ -9,8 +9,19 @@ import NoteList from '../../components/NoteList'
 
 const Notes = ({ notes, recentNotes, tags }) => {
   const [selectedTag, setSelectedTag] = React.useState(null)
+  console.log(tags)
 
-  const notesToRender = selectedTag ? tags[selectedTag] : notes
+  const noteIsFiltered = (tags) => {
+    if (selectedTag === 'misc') {
+      return tags.length !== 0
+    }
+
+    if (selectedTag) {
+      return !tags.includes(selectedTag)
+    }
+
+    return false
+  }
 
   return (
     <Page className="prose">
@@ -46,13 +57,13 @@ const Notes = ({ notes, recentNotes, tags }) => {
       </header>
 
       <div className="mt-8">
-        <p>
+        {/* <p>
           This section is a grab bag of links, clippings, and notes on any and
           all subjects (but mostly web stuff). Notes here are evergreen and are
           often updated or changed as I learn more about a subject.
-        </p>
+        </p> */}
 
-        <Marker className="mt-32">Recent</Marker>
+        {/* <Marker className="mt-32">Recent</Marker>
 
         <div
           className="mt-16 grid"
@@ -67,16 +78,16 @@ const Notes = ({ notes, recentNotes, tags }) => {
               <h2 className="mt-0" style={{ fontSize: '1rem' }}>
                 {note.title}
               </h2>
-              <div className="color-caption smaller mt-0">{note.excerpt}</div>
+              <div className="color-caption smaller mt-4">{note.excerpt}</div>
             </Link>
           ))}
         </div>
 
         <Marker className="mt-40">
           {selectedTag ? `Notes tagged with “${selectedTag}”` : 'All notes'}
-        </Marker>
+        </Marker> */}
 
-        <form className="smaller tag-filter mt-16">
+        <form className="smaller tag-filter mt-24">
           <fieldset>
             <legend>Tags</legend>
             <input
@@ -87,32 +98,47 @@ const Notes = ({ notes, recentNotes, tags }) => {
               onChange={() => setSelectedTag(null)}
             />
             <label htmlFor="all">all</label>
-            {Object.keys(tags).map((tag) => {
-              return (
-                <React.Fragment key={tag}>
-                  <input
-                    type="radio"
-                    value={tag}
-                    id={tag}
-                    checked={tag === selectedTag}
-                    onChange={(e) => setSelectedTag(e.target.value)}
-                  />
-                  <label htmlFor={tag}>{tag}</label>
-                </React.Fragment>
-              )
-            })}
+            {Object.keys(tags)
+              .sort()
+              .map((tag) => {
+                return (
+                  <React.Fragment key={tag}>
+                    <input
+                      type="radio"
+                      value={tag}
+                      id={tag}
+                      checked={tag === selectedTag}
+                      onChange={(e) => setSelectedTag(e.target.value)}
+                    />
+                    <label htmlFor={tag}>{tag}</label>
+                  </React.Fragment>
+                )
+              })}
           </fieldset>
         </form>
 
-        <div
-          className="multi-column mt-24"
-          style={{
-            '--columns': 2,
-            '--min-column-width': '12em',
-            '--gap': '32px',
-          }}
-        >
-          <NoteList notes={notesToRender} />
+        <div className="mt-32 note-grid">
+          {notes.map(({ slug, title, excerpt, tags = [] }) => (
+            <React.Fragment key={slug}>
+              {/* {i !== 0 && <hr className="dashed my-12" />} */}
+              <Link
+                to={`/notes/${slug}`}
+                className="inline-block unstyled tighter card p-16 mb-16"
+                style={
+                  noteIsFiltered(tags)
+                    ? { opacity: '0.45', width: '100%' }
+                    : { width: '100%' }
+                }
+              >
+                <div className="bold">{title}</div>
+                {excerpt && (
+                  <div className="color-caption smaller mt-4">{excerpt}</div>
+                )}
+              </Link>
+            </React.Fragment>
+          ))}
+
+          {/* <NoteList notes={notesToRender} /> */}
         </div>
       </div>
     </Page>
@@ -123,7 +149,6 @@ export const getStaticProps = async () => {
   const notes = await getNotes(false)
   const recentNotes = await getRecentlyModifiedNotes()
   const tags = await getTags()
-  console.log(tags)
 
   return {
     props: { notes, recentNotes: recentNotes.slice(0, 6), tags },

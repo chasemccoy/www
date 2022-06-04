@@ -7,3 +7,22 @@
     margin-bottom: 0;
   }
 }
+
+.note-grid {
+  --columns: 2;
+  --min-column-width: 15em;
+  --gap: 16px;
+
+  columns: var(--columns) var(--min-column-width);
+  column-gap: var(--gap);
+
+  > * {
+    break-inside: avoid;
+  }
+
+  @media (--viewport-large) {
+    --columns: 3;
+    width: calc(100% + 400px);
+    margin-left: -200px;
+  }
+}

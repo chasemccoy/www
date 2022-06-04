@@ -61,16 +61,12 @@ async function getTags() {
         tags[tag].push(note)
       })
     }
+    else {
+      tags.misc = tags.misc ? tags.misc.concat(note) : [note]
+    }
   })
 
   return tags
-  // const tags = new Set()
-  // notes.forEach((note) => {
-  //   if (note.tags) {
-  //     note.tags.forEach((tag) => tags.add(tag))
-  //   }
-  // })
-  // return Array.from(tags)
 }
 
 async function getNotes() {
