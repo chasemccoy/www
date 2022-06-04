@@ -1,6 +1,4 @@
-import nodePath from 'path'
 import matter from 'gray-matter'
-import config from '../../next.config'
 import { getFile, getDirList, isDirectory } from './fs'
 import { compileMdx } from './compile-mdx'
 import childProcess from 'child_process'
@@ -33,10 +31,10 @@ async function getNote(slug) {
     throw new Error(`Note for slug "${slug}" wasn’t found`)
   }
 
-  const isDir = await isDirectory(`${CONTENT_PATH}/${note.category}/${slug}`)
+  const isDir = await isDirectory(`${CONTENT_PATH}/${slug}`)
   const path = isDir
-    ? `${CONTENT_PATH}/${note.category}/${slug}/index.mdx`
-    : `${CONTENT_PATH}/${note.category}/${slug}.mdx`
+    ? `${CONTENT_PATH}/${slug}/index.mdx`
+    : `${CONTENT_PATH}/${slug}.mdx`
 
   const modifiedDate = await getLastModifiedDate(path)
 
@@ -46,13 +44,37 @@ async function getNote(slug) {
     code,
     ...frontmatter,
     toc,
-    category: note.category,
     modifiedDate,
   }
 }
 
-async function getCategory(category) {
-  const data = await getDirList(nodePath.join('notes', category))
+async function getTags() {
+  const notes = await getNotes()
+  const tags = {}
+
+  notes.forEach((note) => {
+    if (note.tags) {
+      note.tags.forEach((tag) => {
+        if (!tags[tag]) {
+          tags[tag] = []
+        }
+        tags[tag].push(note)
+      })
+    }
+  })
+
+  return tags
+  // const tags = new Set()
+  // notes.forEach((note) => {
+  //   if (note.tags) {
+  //     note.tags.forEach((tag) => tags.add(tag))
+  //   }
+  // })
+  // return Array.from(tags)
+}
+
+async function getNotes() {
+  const data = await getDirList(CONTENT_PATH)
 
   if (!Array.isArray(data)) {
     throw new Error('No notes found')
@@ -78,10 +100,7 @@ async function getCategory(category) {
 
       return {
         ...noteFile,
-        slug: fileDir
-          .replace('notes/', '')
-          .replace(`${category}/`, '')
-          .replace('.mdx', ''),
+        slug: fileDir.replace('notes/', '').replace('.mdx', ''),
       }
     })
   )
@@ -93,7 +112,7 @@ async function getCategory(category) {
       const matterResult = matter(content)
       const frontmatter = matterResult.data
       const modifiedDate = await getLastModifiedDate(path)
-      return { slug, ...frontmatter, category, modifiedDate }
+      return { slug, ...frontmatter, modifiedDate }
     })
   )
 
@@ -104,27 +123,80 @@ async function getCategory(category) {
     })
 }
 
-async function getNotes(flat = true) {
-  const result = await Promise.all(
-    config.noteCategories.map((category) => {
-      return getCategory(category)
-    })
-  )
+// async function getCategory(category) {
+//   const data = await getDirList(nodePath.join('notes', category))
 
-  if (!flat) {
-    const groups = result.reduce((acc, notes) => {
-      const category = notes[0].category
-      return {
-        ...acc,
-        [category]: notes,
-      }
-    }, {})
+//   if (!Array.isArray(data)) {
+//     throw new Error('No notes found')
+//   }
 
-    return groups
-  }
+//   const result = await Promise.all(
+//     data.map(async ({ path: fileDir }) => {
+//       const fileData = await getDirList(fileDir)
 
-  return result.flat()
-}
+//       const file = Array.isArray(fileData)
+//         ? fileData.find(
+//             ({ type, path }) =>
+//               (type === 'file' && path.endsWith('mdx')) || path.endsWith('md')
+//           )
+//         : fileData
+
+//       if (!file) {
+//         console.warn(`No index.mdx file for ${fileDir}`)
+//         return null
+//       }
+
+//       const noteFile = await getFile(file.path, file.sha)
+
+//       return {
+//         ...noteFile,
+//         slug: fileDir
+//           .replace('notes/', '')
+//           .replace(`${category}/`, '')
+//           .replace('.mdx', ''),
+//       }
+//     })
+//   )
+
+//   const files = result.filter((v) => Boolean(v))
+
+//   const notes = await Promise.all(
+//     files.map(async ({ slug, content, path }) => {
+//       const matterResult = matter(content)
+//       const frontmatter = matterResult.data
+//       const modifiedDate = await getLastModifiedDate(path)
+//       return { slug, ...frontmatter, category, modifiedDate }
+//     })
+//   )
+
+//   return notes
+//     .filter((note) => !note.hidden)
+//     .sort((a, b) => {
+//       return a.title.localeCompare(b.title)
+//     })
+// }
+
+// async function getNotes(flat = true) {
+//   const result = await Promise.all(
+//     config.noteCategories.map((category) => {
+//       return getCategory(category)
+//     })
+//   )
+
+//   if (!flat) {
+//     const groups = result.reduce((acc, notes) => {
+//       const category = notes[0].category
+//       return {
+//         ...acc,
+//         [category]: notes,
+//       }
+//     }, {})
+
+//     return groups
+//   }
+
+//   return result.flat()
+// }
 
 async function getRecentlyModifiedNotes() {
   const notes = await getNotes()
@@ -134,4 +206,4 @@ async function getRecentlyModifiedNotes() {
   return sorted
 }
 
-export { getNote, getCategory, getNotes, getRecentlyModifiedNotes }
+export { getNote, getNotes, getRecentlyModifiedNotes, getTags }

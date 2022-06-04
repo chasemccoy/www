@@ -1,49 +1,49 @@
 import React from 'react'
-import { getNote, getCategory, getNotes } from '../../utils/note'
+import { getNote, getNotes } from '../../utils/note'
 import TableOfContents from '../../components/TableOfContents'
 import Link from '../../components/Link'
-import { Folder, Clock } from '../../components/Icon'
+import { Tag, Clock } from '../../components/Icon'
 import { capitalize, formatDate } from '../../utils'
 import config from '../../../next.config'
 import Metadata from '../../components/Metadata'
-import NoteList from '../../components/NoteList'
+// import NoteList from '../../components/NoteList'
 import Page from '../../components/Page'
 import RenderMDX from '../../components/RenderMDX'
 
-const githubLink = (slug, category) =>
-  `https://github.com/${config.repo}/edit/main/notes/${category}/${slug}.mdx`
+const githubLink = (slug) =>
+  `https://github.com/${config.repo}/edit/main/notes/${slug}.mdx`
 
-const Category = ({ notes }) => {
-  const categoryName = capitalize(notes[1].category.replace('-', ' '))
+// const Category = ({ notes }) => {
+//   const categoryName = capitalize(notes[1].category.replace('-', ' '))
 
-  return (
-    <Page className="prose">
-      <Metadata title={categoryName} />
+//   return (
+//     <Page className="prose">
+//       <Metadata title={categoryName} />
 
-      <h1
-        className="normal mono mb-24"
-        style={{ color: 'inherit', fontSize: '0.8rem' }}
-      >
-        <Link to="/" className="unstyled">
-          ~
-        </Link>
-        <span className="normal mx-4">/</span>
-        <Link to="/notes">Notes</Link>
-        <span className="normal ml-4 mr-8">/</span>
-        <Folder
-          className="inline mr-4"
-          style={{ width: '1em', position: 'relative', top: '-0.14em' }}
-        />
-        {categoryName}
-      </h1>
+//       <h1
+//         className="normal mono mb-24"
+//         style={{ color: 'inherit', fontSize: '0.8rem' }}
+//       >
+//         <Link to="/" className="unstyled">
+//           ~
+//         </Link>
+//         <span className="normal mx-4">/</span>
+//         <Link to="/notes">Notes</Link>
+//         <span className="normal ml-4 mr-8">/</span>
+//         <Folder
+//           className="inline mr-4"
+//           style={{ width: '1em', position: 'relative', top: '-0.14em' }}
+//         />
+//         {categoryName}
+//       </h1>
 
-      <NoteList notes={notes} />
-    </Page>
-  )
-}
+//       <NoteList notes={notes} />
+//     </Page>
+//   )
+// }
 
 const Note = ({ data }) => {
-  const { code, title, excerpt, toc, category, slug, modifiedDate } = data
+  const { code, title, excerpt, toc, slug, modifiedDate, tags } = data
 
   return (
     <Page
@@ -54,7 +54,7 @@ const Note = ({ data }) => {
           <>
             <TableOfContents content={toc} />
             <hr className="dashed" />
-            <Link to={githubLink(slug, category)} className="block">
+            <Link to={githubLink(slug)} className="block">
               Edit on GitHub
             </Link>
           </>
@@ -73,7 +73,16 @@ const Note = ({ data }) => {
             className="mt-16 mono color-caption flex align-center gap-24 justify-center"
             style={{ fontSize: '0.7em' }}
           >
-            <Link
+            {tags && (
+              <div>
+                <Tag
+                  className="inline mr-6"
+                  style={{ position: 'relative', top: '-1.5px' }}
+                />
+                <span>{tags.join(', ')}</span>
+              </div>
+            )}
+            {/* <Link
               className="inline-flex align-center color-caption"
               to={`/notes/${category}`}
             >
@@ -82,7 +91,7 @@ const Note = ({ data }) => {
                 style={{ position: 'relative', top: '-1.5px' }}
               />
               {capitalize(category.replace('-', ' '))}
-            </Link>
+            </Link> */}
 
             {modifiedDate && (
               <span title="Last modified">
@@ -106,22 +115,22 @@ const Note = ({ data }) => {
   )
 }
 
-const NotePage = ({ notes, note = {} }) => {
-  if (Array.isArray(notes)) {
-    return <Category notes={notes} />
-  }
+const NotePage = ({ note = {} }) => {
+  // if (Array.isArray(notes)) {
+  //   return <Category notes={notes} />
+  // }
 
   return <Note data={note} />
 }
 
 export const getStaticProps = async ({ params }) => {
-  if (config.noteCategories.includes(params.slug)) {
-    const notes = await getCategory(params.slug)
+  // if (config.noteCategories.includes(params.slug)) {
+  //   const notes = await getCategory(params.slug)
 
-    return {
-      props: { notes },
-    }
-  }
+  //   return {
+  //     props: { notes },
+  //   }
+  // }
 
   const note = await getNote(params.slug)
 
@@ -137,12 +146,12 @@ export const getStaticPaths = async () => {
     params: { slug: note.slug },
   }))
 
-  const categoryPaths = config.noteCategories.map((category) => ({
-    params: { slug: category },
-  }))
+  // const categoryPaths = config.noteCategories.map((category) => ({
+  //   params: { slug: category },
+  // }))
 
   return {
-    paths: [...notePaths, ...categoryPaths],
+    paths: [...notePaths],
     fallback: false,
   }
 }

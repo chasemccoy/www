@@ -1,18 +1,16 @@
 import React from 'react'
-import { getNotes, getRecentlyModifiedNotes } from '../../utils/note'
+import { getNotes, getRecentlyModifiedNotes, getTags } from '../../utils/note'
 import Link from '../../components/Link'
 import Page from '../../components/Page'
 import Marker from '../../components/Marker'
-import { capitalize } from '../../utils'
-import { Folder } from '../../components/Icon'
+// import { capitalize } from '../../utils'
 import Metadata from '../../components/Metadata'
 import NoteList from '../../components/NoteList'
-// import { quotes } from '../../../notes/misc/quotes/Quotes'
-// import { recents as recentBooks } from '../../../notes/misc/books/Books'
 
-const Notes = ({ notes, recentNotes }) => {
-  // const randomQuote = quotes[Math.floor(Math.random() * quotes.length)]
-  // const recentBook = recentBooks[0]
+const Notes = ({ notes, recentNotes, tags }) => {
+  const [selectedTag, setSelectedTag] = React.useState(null)
+
+  const notesToRender = selectedTag ? tags[selectedTag] : notes
 
   return (
     <Page className="prose">
@@ -21,7 +19,7 @@ const Notes = ({ notes, recentNotes }) => {
         description="My digital garden containing a collection of links, thoughts, ideas, images, quotes, and other miscellanea I've collected on my travels across the web."
       />
 
-      <header className='center mb-24'>
+      <header className="center mb-24">
         <h1>
           <span
             className="smaller"
@@ -66,13 +64,45 @@ const Notes = ({ notes, recentNotes }) => {
               className="block unstyled p-16 card"
               key={note.slug}
             >
-              <h2 className="mt-0" style={{fontSize: '1rem'}}>{note.title}</h2>
+              <h2 className="mt-0" style={{ fontSize: '1rem' }}>
+                {note.title}
+              </h2>
               <div className="color-caption smaller mt-0">{note.excerpt}</div>
             </Link>
           ))}
         </div>
 
-        <Marker className="mt-40">All notes</Marker>
+        <Marker className="mt-40">
+          {selectedTag ? `Notes tagged with “${selectedTag}”` : 'All notes'}
+        </Marker>
+
+        <form className="smaller tag-filter mt-16">
+          <fieldset>
+            <legend>Tags</legend>
+            <input
+              type="radio"
+              value="all"
+              id="all"
+              checked={!selectedTag}
+              onChange={() => setSelectedTag(null)}
+            />
+            <label htmlFor="all">all</label>
+            {Object.keys(tags).map((tag) => {
+              return (
+                <React.Fragment key={tag}>
+                  <input
+                    type="radio"
+                    value={tag}
+                    id={tag}
+                    checked={tag === selectedTag}
+                    onChange={(e) => setSelectedTag(e.target.value)}
+                  />
+                  <label htmlFor={tag}>{tag}</label>
+                </React.Fragment>
+              )
+            })}
+          </fieldset>
+        </form>
 
         <div
           className="multi-column mt-24"
@@ -82,28 +112,7 @@ const Notes = ({ notes, recentNotes }) => {
             '--gap': '32px',
           }}
         >
-          {Object.keys(notes).map((category) => (
-            <div className="mb-48" key={category}>
-              <h2 className="mt-0 unstyled">
-                <Link
-                  to={`/notes/${category}`}
-                  className="unstyled flex align-center"
-                >
-                  <Folder
-                    className="inline mr-6 color-caption"
-                    style={{
-                      width: '1.25em',
-                      position: 'relative',
-                      top: '-3px',
-                    }}
-                  />
-                  {capitalize(category).replace('-', ' ')}
-                </Link>
-              </h2>
-
-              <NoteList notes={notes[category]} />
-            </div>
-          ))}
+          <NoteList notes={notesToRender} />
         </div>
       </div>
     </Page>
@@ -113,9 +122,11 @@ const Notes = ({ notes, recentNotes }) => {
 export const getStaticProps = async () => {
   const notes = await getNotes(false)
   const recentNotes = await getRecentlyModifiedNotes()
+  const tags = await getTags()
+  console.log(tags)
 
   return {
-    props: { notes, recentNotes: recentNotes.slice(0, 6) },
+    props: { notes, recentNotes: recentNotes.slice(0, 6), tags },
   }
 }
 
