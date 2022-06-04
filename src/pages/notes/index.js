@@ -1,15 +1,11 @@
 import React from 'react'
-import { getNotes, getRecentlyModifiedNotes, getTags } from '../../utils/note'
+import { getNotes, getTags } from '../../utils/note'
 import Link from '../../components/Link'
 import Page from '../../components/Page'
-import Marker from '../../components/Marker'
-// import { capitalize } from '../../utils'
 import Metadata from '../../components/Metadata'
-import NoteList from '../../components/NoteList'
 
-const Notes = ({ notes, recentNotes, tags }) => {
+const Notes = ({ notes, tags }) => {
   const [selectedTag, setSelectedTag] = React.useState(null)
-  console.log(tags)
 
   const noteIsFiltered = (tags) => {
     if (selectedTag === 'misc') {
@@ -57,36 +53,6 @@ const Notes = ({ notes, recentNotes, tags }) => {
       </header>
 
       <div className="mt-8">
-        {/* <p>
-          This section is a grab bag of links, clippings, and notes on any and
-          all subjects (but mostly web stuff). Notes here are evergreen and are
-          often updated or changed as I learn more about a subject.
-        </p> */}
-
-        {/* <Marker className="mt-32">Recent</Marker>
-
-        <div
-          className="mt-16 grid"
-          style={{ '--item-min-size': '250px', '--gap': '12px' }}
-        >
-          {recentNotes.map((note) => (
-            <Link
-              to={`/notes/${note.slug}`}
-              className="block unstyled p-16 card"
-              key={note.slug}
-            >
-              <h2 className="mt-0" style={{ fontSize: '1rem' }}>
-                {note.title}
-              </h2>
-              <div className="color-caption smaller mt-4">{note.excerpt}</div>
-            </Link>
-          ))}
-        </div>
-
-        <Marker className="mt-40">
-          {selectedTag ? `Notes tagged with “${selectedTag}”` : 'All notes'}
-        </Marker> */}
-
         <form className="smaller tag-filter mt-24">
           <fieldset>
             <legend>Tags</legend>
@@ -120,7 +86,6 @@ const Notes = ({ notes, recentNotes, tags }) => {
         <div className="mt-32 note-grid">
           {notes.map(({ slug, title, excerpt, tags = [] }) => (
             <React.Fragment key={slug}>
-              {/* {i !== 0 && <hr className="dashed my-12" />} */}
               <Link
                 to={`/notes/${slug}`}
                 className="inline-block unstyled tighter card p-16 mb-16"
@@ -137,8 +102,6 @@ const Notes = ({ notes, recentNotes, tags }) => {
               </Link>
             </React.Fragment>
           ))}
-
-          {/* <NoteList notes={notesToRender} /> */}
         </div>
       </div>
     </Page>
@@ -146,12 +109,11 @@ const Notes = ({ notes, recentNotes, tags }) => {
 }
 
 export const getStaticProps = async () => {
-  const notes = await getNotes(false)
-  const recentNotes = await getRecentlyModifiedNotes()
+  const notes = await getNotes()
   const tags = await getTags()
 
   return {
-    props: { notes, recentNotes: recentNotes.slice(0, 6), tags },
+    props: { notes, tags },
   }
 }
 

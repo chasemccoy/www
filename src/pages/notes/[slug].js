@@ -3,44 +3,14 @@ import { getNote, getNotes } from '../../utils/note'
 import TableOfContents from '../../components/TableOfContents'
 import Link from '../../components/Link'
 import { Tag, Clock } from '../../components/Icon'
-import { capitalize, formatDate } from '../../utils'
+import { formatDate } from '../../utils'
 import config from '../../../next.config'
 import Metadata from '../../components/Metadata'
-// import NoteList from '../../components/NoteList'
 import Page from '../../components/Page'
 import RenderMDX from '../../components/RenderMDX'
 
 const githubLink = (slug) =>
   `https://github.com/${config.repo}/edit/main/notes/${slug}.mdx`
-
-// const Category = ({ notes }) => {
-//   const categoryName = capitalize(notes[1].category.replace('-', ' '))
-
-//   return (
-//     <Page className="prose">
-//       <Metadata title={categoryName} />
-
-//       <h1
-//         className="normal mono mb-24"
-//         style={{ color: 'inherit', fontSize: '0.8rem' }}
-//       >
-//         <Link to="/" className="unstyled">
-//           ~
-//         </Link>
-//         <span className="normal mx-4">/</span>
-//         <Link to="/notes">Notes</Link>
-//         <span className="normal ml-4 mr-8">/</span>
-//         <Folder
-//           className="inline mr-4"
-//           style={{ width: '1em', position: 'relative', top: '-0.14em' }}
-//         />
-//         {categoryName}
-//       </h1>
-
-//       <NoteList notes={notes} />
-//     </Page>
-//   )
-// }
 
 const Note = ({ data }) => {
   const { code, title, excerpt, toc, slug, modifiedDate, tags } = data
@@ -82,17 +52,6 @@ const Note = ({ data }) => {
                 <span>{tags.join(', ')}</span>
               </div>
             )}
-            {/* <Link
-              className="inline-flex align-center color-caption"
-              to={`/notes/${category}`}
-            >
-              <Folder
-                className="inline mr-6"
-                style={{ position: 'relative', top: '-1.5px' }}
-              />
-              {capitalize(category.replace('-', ' '))}
-            </Link> */}
-
             {modifiedDate && (
               <span title="Last modified">
                 <Clock
@@ -116,10 +75,6 @@ const Note = ({ data }) => {
 }
 
 const NotePage = ({ note = {} }) => {
-  // if (Array.isArray(notes)) {
-  //   return <Category notes={notes} />
-  // }
-
   return <Note data={note} />
 }
 
