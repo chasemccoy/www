@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
-const API_URL = (url) => `https://api.microlink.io?url=${url}`
+const API_URL = (url) => `https://cloudfare-test.chsmc.workers.dev/url-metadata?url=${url}`
 
 const Bookmark = ({ url }) => {
   const [data, setData] = useState(null)
@@ -9,7 +9,7 @@ const Bookmark = ({ url }) => {
     const fetchData = async () => {
       const response = await fetch(API_URL(url))
       const json = await response.json()
-      setData(json.data)
+      setData(json)
     }
 
     fetchData()
@@ -23,7 +23,7 @@ const Bookmark = ({ url }) => {
     <a href={url} target="_blank" className="unstyled bookmark flex">
       {data.image && (
         <div className="flex--no-shrink">
-          <img src={data.image.url} alt="" />
+          <img src={data.image} alt="" />
         </div>
       )}
 

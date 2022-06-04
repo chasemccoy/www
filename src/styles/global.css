@@ -88,7 +88,7 @@ code a {
 blockquote {
   position: relative;
   margin-left: 0.1em;
-  padding: 4px 0.5em 4px 1.5em;
+  padding: 4px 0.5em 4px 1.25em;
   font-size: 0.95em;
   color: var(--color-caption);
 

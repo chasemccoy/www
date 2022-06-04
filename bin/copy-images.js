@@ -1,7 +1,8 @@
 const fs = require('fs-extra')
 const path = require('path')
 
-const source = path.join(__dirname, '../posts')
+const postsPath = path.join(__dirname, '../posts')
+const notesPath = path.join(__dirname, '../notes')
 const destination = path.join(__dirname, '../public/img')
 const regex = /\.(gif|jpe?g|png|webp|svg)$/i
 
@@ -16,7 +17,8 @@ const filter = async (src) => {
 
 async function copyImages() {
   try {
-    await fs.copy(source, destination, { filter })
+    await fs.copy(postsPath, destination, { filter })
+    await fs.copy(notesPath, destination, { filter })
   } catch (error) {
     console.error(error)
   }

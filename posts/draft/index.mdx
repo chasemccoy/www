@@ -1,0 +1,37 @@
+---
+title: Silos and pastures
+excerpt: The web doesn’t exist on our client devices, it exists on the  servers between us.
+image: image.png
+date: 2022-05-28
+hidden: true
+---
+
+This week I stumbled upon [a project by a student named Jeeyoon Hyun called "Personal Pet Pages"](https://itp.nyu.edu/thesis2022/?jeeyoon-hyun) which is a small, personal web server with a screen displaying what's going on inside the server.
+
+> Ever since we’ve decided that servers are something heavy, enigmatic, gigantic black boxes belonging to corporations - not individuals - we have slowly lost agency towards our own small space on the Internet. But actually, servers are just computers. Just as your favorite cassette player or portable game console, they are something that you can possess and understand and enjoy.
+
+[ITP Thesis Archives 2022](https://itp.nyu.edu/thesis2022/?jeeyoon-hyun)
+
+---
+
+An increasing amount of personal computing happens on servers nowadays, but we've made hardly any progress on making servers fit into our lives like other devices.
+
+---
+
+Our connections to the internet are a one-way mirror. 
+
+> It’s not impossible to host a small internet service from a computer in your home, but it takes some fairly intense tinkering and maintenance, so it remains the pastime of … the fairly intense. Brittle router admin is no match for the sleek, there-it-is seduction of big platforms and/or cloud data centers.
+
+[Bad hosts, or: how I learned to stop worrying and love the overlay network](https://www.robinsloan.com/lab/bad-hosts/)
+
+> There are workarounds for NAT, ubiquitous hacks, but they all require centralized intermediaries. Think of video chat. While we’re chatting, the video is flowing straight from my computer to yours — in a sense, we are each hosting a small internet service for each other! But we can’t initiate that connection ourselves. It requires a third host, one with a public IPv4 address. That host “punches a hole” through our one-way NAT mirrors and ties us together.
+
+> The workarounds are fine as far as they go, but NAT tricks can’t get us the one thing we really want, the foundational internet thing: the ability to simply listen for connections. Therefore, whole classes of possible services and relationships don’t exist; a whole alternate internet history.
+>
+> As home internet users, we can only speak and request, not listen and serve.
+
+[Robin has previously written about their love for cloud functions](https://www.robinsloan.com/lab/cloud-study/), and it makes sense why they feel so good—they can listen for connections on or behalf. But we don't own the computers those functions run on. What if we could own personal servers that not only hosts these functions but also let's us see them run, visually, in real time.  
+
+> The Mac and Web have a long history together. From the very beginning, Mac OS X included the ability to run an Apache web server by clicking a Start button:
+> 
+> ![Sharing preferences in Mac OS X 10.0](image.png "Sharing preferences in Mac OS X 10.0. Courtesy 512pixels.net")

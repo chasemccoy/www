@@ -6,7 +6,7 @@ const Image = ({ title, alt, ...rest }) => {
     return (
       <figure>
         <img alt={alt || title} {...rest} />
-        <figcaption className="image-caption sans">
+        <figcaption className="image-caption">
           <Markdown
             disallowedElements={['p']}
             unwrapDisallowed

@@ -42,7 +42,7 @@ d
   h4 + *,
   h5 + *,
   h6 + * {
-    margin-top: 0.75em;
+    margin-top: 0.5em;
   }
 
   h1,
@@ -52,6 +52,7 @@ d
   h5,
   h6 {
     margin-top: clamp(2rem, 1.6em, 9999rem);
+    line-height: 1.2;
   }
 
   h1 {
@@ -101,9 +102,11 @@ d
 
   .caption,
   figure > * + figcaption {
-    margin-top: 0.8em;
-    font-size: 0.83em;
+    font-family: var(--font-code);
+    margin-top: 0.6em;
+    font-size: 0.8em;
     line-height: 1.4;
+    letter-spacing: -.5px;
   }
 
   li > ul,
