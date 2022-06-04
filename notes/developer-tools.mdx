@@ -1,0 +1,38 @@
+---
+title: Developer tooling for design systems
+excerpt: Often times, the source of truth in a system lies with the engineers, not the designers. Making sure devs can maintain the system is essential.
+tags:
+  - design systems
+---
+
+## Linting for product correctness
+
+Inspired by [this tweet thread by Rafael Mendiola](https://twitter.com/GroundControl/status/1176512381519912961), where he describes the idea of creating custom ESLint plugin to enforce rules that help developers adhere to a design system.
+
+It culminates in an example `eslint-plugin-design-system`:
+
+<Bookmark url='https://github.com/dslounge/eslint-plugin-design-system/' />{' '}
+
+And here's a good article on how to write custom ESLint plugins:
+
+<Bookmark url='https://flexport.engineering/writing-custom-lint-rules-for-your-picky-developers-67732afa1803' />
+
+## SLDS Validator
+
+The team behind the Salesforce Lightning design system [created an neat extension for VS Code](https://medium.com/salesforce-ux/slds-vs-code-win-403d7edd22ac):
+
+> SLDS Validator scans your markup, validates it against a database of guidelines/tips/gotchas/etc. extracted from the SLDS documentation, and offers suggestions on how to improve your code.
+
+[And it's open source](https://github.com/forcedotcom/salesforcedx-vscode-slds)!
+
+## Splash zones
+
+In this case, a "splash zone" refers to the parts of a system affected by a change to the system. If I edit a component, what other components are affected?
+
+Some devs at Shopify have built a `yarn splash` command that determines the splash zone of changes to their component library:
+
+https://twitter.com/kaelig/status/1172579203893456896'
+
+Their tools is conveniently open sourced:
+
+<Bookmark url='https://github.com/Shopify/polaris-react/tree/master/scripts/splash' />

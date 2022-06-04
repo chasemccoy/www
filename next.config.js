@@ -4,5 +4,4 @@ module.exports = {
     dirs: ['pages', 'components', 'utils'],
   },
   repo: 'chasemccoy/www',
-  noteCategories: ['code', 'design-systems', 'misc']
 }
