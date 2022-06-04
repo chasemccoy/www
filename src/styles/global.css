@@ -319,6 +319,7 @@ ol {
     font-size: 0.75em;
     transition: all 0.15s;
     border-radius: 999px;
+    color: var(--color-caption);
   }
 
   input[type='radio'] {
@@ -330,6 +331,7 @@ ol {
   input[type='radio']:focus + label,
   input[type='radio']:hover + label {
     background: rgba(0, 0, 0, 0.05);
+    color: var(--color-text);
   }
 
   input[type='radio']:checked + label {

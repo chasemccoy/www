@@ -8,6 +8,41 @@ import clsx from 'clsx'
 
 const fontStyles = `
 @font-face {
+  font-family: 'Untitled Sans';
+  src: url('/fonts/untitled-sans/UntitledSansWeb-Regular.woff2') format('woff2'),
+    url('/fonts/untitled-sans/UntitledSansWeb-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Untitled Sans';
+  src: url('/fonts/untitled-sans/UntitledSansWeb-RegularItalic.woff2')
+      format('woff2'),
+    url('/fonts/untitled-sans/UntitledSansWeb-RegularItalic.woff')
+      format('woff');
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Untitled Sans';
+  src: url('/fonts/untitled-sans/UntitledSansWeb-Medium.woff2') format('woff2'),
+    url('/fonts/untitled-sans/UntitledSansWeb-Medium.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Untitled Sans';
+  src: url('/fonts/untitled-sans/UntitledSansWeb-MediumItalic.woff2')
+      format('woff2'),
+    url('/fonts/untitled-sans/UntitledSansWeb-MediumItalic.woff') format('woff');
+  font-weight: 700;
+  font-style: italic;
+}
+
+@font-face {
   font-family: 'GT Alpina';
   src: url('/fonts/gt-alpina/GTAlpina-Rg.woff2') format('woff2'),
       url('/fonts/gt-alpina/GTAlpina-Rg.woff') format('woff');
