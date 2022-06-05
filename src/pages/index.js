@@ -14,7 +14,7 @@ const Index = ({ posts }) => {
       <h2
         className="serif normal mt-0"
         style={{
-          fontSize: '1.4rem',
+          fontSize: '1.5rem',
           lineHeight: '1.3',
           letterSpacing: '-0.5px',
         }}
@@ -47,7 +47,7 @@ const Index = ({ posts }) => {
             <p className="color-caption mt-2">{post.excerpt}</p>
           </div>
         ))}
-        <Link to="/blog" className="block bold unstyled color-caption">
+        <Link to="/blog" className="block bold unstyled color-caption smaller">
           Read more →
         </Link>
       </div>
@@ -63,7 +63,8 @@ const Index = ({ posts }) => {
         <PropertyList label="Now">
           <h4>Design Systems at Stripe</h4>
           <p className="color-caption mt-2">
-            I’m currently working on Sail, the design system powering many of Stripe’s web products. 
+            I’m currently working on Sail, the design system powering Stripe’s web products and{' '}
+            <Link href="https://stripe.com/apps">Stripe Apps</Link>.
           </p>
         </PropertyList>
         <hr className="dashed" />

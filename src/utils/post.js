@@ -30,7 +30,7 @@ async function getPost(slug) {
   return { slug, code, ...frontmatter }
 }
 
-async function getPosts() {
+async function getPosts({includeDrafts = false} = {}) {
   const data = await getDirList(CONTENT_PATH)
 
   if (!Array.isArray(data)) {
@@ -86,6 +86,12 @@ async function getPosts() {
       }
     })
   )
+
+  if (includeDrafts) {
+    return posts
+    .filter(({ title }) => Boolean(title))
+    .sort(sortBy('-date'))
+  }
 
   return posts
     .filter(({ title, hidden }) => !hidden && Boolean(title))

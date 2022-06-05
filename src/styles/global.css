@@ -117,6 +117,19 @@ blockquote {
   & > p:last-of-type:after {
     content: '”';
   }
+
+  cite {
+    display: block;
+    font-size: 1rem;
+    margin-top: 0.75rem !important;
+    color: var(--color-caption);
+    --link-color: var(--color-caption);
+    font-style: normal;
+  }
+
+  cite:before {
+    content: '↑ ';
+  }
 }
 
 mark {
