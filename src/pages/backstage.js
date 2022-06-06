@@ -11,7 +11,7 @@ const Backstage = ({ drafts, tags }) => {
     <Page className='prose'>
       <Metadata title="Backstage" />
 
-      <h1>How this site works</h1>
+      <h1>🤫 Backstage</h1>
 
       {drafts && drafts.length > 0 && (
         <div className="flow">
