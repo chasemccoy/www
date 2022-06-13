@@ -59,14 +59,14 @@ const ShortPost = ({ title, date, code, slug }) => {
   const { month, day } = getDateComponents(new Date(date))
   return (
     <article className="flow" style={{ '--flow-spacing': '1rem' }}>
-      <a href={slug} className="unstyled">
+      <Link href={slug} className="unstyled">
         <h1 className="sans bold" style={{ fontSize: '1rem' }}>
           <span className="normal color-caption">
             {month} {day} —
           </span>{' '}
           {title}
         </h1>
-      </a>
+      </Link>
 
       <div className="prose blog-content">
         <RenderMDX code={code} />
@@ -97,7 +97,7 @@ const Blog = ({ posts }) => {
                 post.excerpt ? (
                   <PostPreview key={i} {...post} />
                 ) : (
-                  <div key={i} className={i !== 0 ? 'my-24' : undefined}>
+                  <div key={i} className={i !== 0 ? 'my-48' : undefined}>
                     <ShortPost {...post} />
                   </div>
                 )
