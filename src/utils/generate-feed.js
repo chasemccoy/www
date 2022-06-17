@@ -9,7 +9,13 @@ import { getMDXComponent } from 'mdx-bundler/client'
 
 const destination = path.join(process.cwd(), 'public')
 
-const postURL = (slug) => path.join('https://chasem.co', slug)
+const getURLForPost = (slug, postDate) => {
+  const date = new Date(postDate)
+  const year = date.getFullYear().toString()
+  const month = ('0' + (date.getMonth() + 1)).slice(-2)
+  return 'https://chasem.co' + `/${year}/${month}/${slug}`
+}
+
 const author = {
   name: 'Chase McCoy',
   email: 'hi@chasem.co',
@@ -47,7 +53,7 @@ export const generateFeed = async () => {
     feed.addItem({
       title: post.title,
       id: post.slug,
-      link: postURL(post.slug),
+      link: getURLForPost(post.slug, post.date),
       description: html,
       // content: html,
       author: [author],
