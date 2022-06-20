@@ -29,7 +29,6 @@ const feed = new Feed({
   id: 'http://chasem.co',
   link: 'http://chasem.co',
   language: 'en',
-  image: 'http://chasem.co/site-image.png',
   favicon: 'http://chasem.co/favicon.ico',
   generator: 'chasem.co',
   feedLinks: {
