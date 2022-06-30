@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
-const API_URL = (url) => `https://cloudfare-test.chsmc.workers.dev/url-metadata?url=${url}`
+const API_URL = (url) => `https://api.chsmc.workers.dev/url-metadata?url=${url}`
 
 const Bookmark = ({ url }) => {
   const [data, setData] = useState(null)
