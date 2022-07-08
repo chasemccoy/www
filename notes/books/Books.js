@@ -173,7 +173,7 @@ const Book = ({ book, small = false, ...rest }) => (
       />
 
       <div className="mt-8" style={{ height: '6em' }}>
-        <h3 className={clsx('serif', !small && 'larger', 'mb-2', 'mt-4')}>
+        <h3 className={clsx('serif', !small && 'larger', 'mb-2', 'mt-4', 'normal')}>
           {book.title}
         </h3>
         <p className="smaller color-gray--500 mt-4">{book.author}</p>
