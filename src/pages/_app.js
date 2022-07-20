@@ -3,7 +3,6 @@ import Head from 'next/head'
 import Nav from '../components/Nav'
 import Footer from '../components/Footer'
 import Metadata from '../components/Metadata'
-import Script from 'next/script'
 import clsx from 'clsx'
 
 const fontStyles = `
@@ -122,25 +121,22 @@ const App = ({ Component, pageProps }) => {
         <style dangerouslySetInnerHTML={{ __html: fontStyles }} />
       </Head>
 
-      <Script
-        src="https://platform.twitter.com/widgets.js"
-        strategy="lazyOnload"
-      />
-
       <Metadata />
 
-      <div className={clsx(pageProps.hasSidebar && 'has-sidebar')}>
+      <div
+        className={clsx(pageProps.hasSidebar && 'has-sidebar', pageProps.class)}
+      >
         <header id="site-header" className="layout-grid">
           <Nav />
         </header>
 
-        <div className='stripes' />
+        <div className="stripes" />
 
-        <main className='layout-grid'>
+        <main className="layout-grid">
           <Component {...pageProps} />
         </main>
 
-        <Footer className='layout-grid' />
+        <Footer className="layout-grid" />
       </div>
     </>
   )
