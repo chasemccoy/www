@@ -21,10 +21,6 @@ article {
     }
   }
 
-  twitter-widget {
-    margin-bottom: 1.5em !important;
-  }
-
   pre {
     position: relative;
     padding-left: 42px;
@@ -43,13 +39,17 @@ article {
       overflow: hidden;
       text-align: right;
       font-family: var(--font-code);
-      font-size: 0.75em;
+      font-size: 0.8em;
       line-height: var(--root-line-height);
       padding-right: 12px;
     }
   }
 
-  .ol-fancy + ol {
+  .ol-fancy {
+    margin-top: 1.5em;
+  }
+
+  .ol-fancy > ol {
     --offset: 2.5rem;
 
     li:before {
@@ -151,16 +151,6 @@ code {
 
 .image-caption {
   color: var(--color-caption);
-}
-
-twitter-widget {
-  width: 100% !important;
-  max-width: 100% !important;
-}
-
-twitter-widget::shadow .EmbeddedTweet {
-  width: 100% !important;
-  max-width: 100% !important;
 }
 
 .prose > * + .twitter-tweet {

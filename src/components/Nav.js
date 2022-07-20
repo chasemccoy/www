@@ -33,8 +33,6 @@ const blogLinkMatcher = (pathname) => regex.test(pathname)
 const Nav = () => {
   const { asPath } = useRouter()
 
-  console.log(process.env.NODE_ENV)
-
   return (
     <nav>
       <Link href="/">

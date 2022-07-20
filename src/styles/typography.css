@@ -35,16 +35,12 @@ h6 {
     margin: 2rem 0 1.8rem;
   }
 
-  blockquote > * + * {
-    margin-top: var(--flow-spacing);
-  }
-
-  h1 + *,
-  h2 + *,
-  h3 + *,
-  h4 + *,
-  h5 + *,
-  h6 + * {
+  :where(h1 + *),
+  :where(h2 + *),
+  :where(h3 + *),
+  :where(h4 + *),
+  :where(h5 + *),
+  :where(h6 + *) {
     margin-top: 0.5em;
   }
 
@@ -99,7 +95,7 @@ h6 {
     line-height: 1.3;
   }
 
-  :is(h1, h2, h3, h4, h5, h6) + :is(h1, h2, h3, h4, h5, h6) {
+  :where(h1, h2, h3, h4, h5, h6) + :where(h1, h2, h3, h4, h5, h6) {
     margin-top: 1.2em;
   }
 
@@ -124,7 +120,7 @@ h6 {
   }
 
   code {
-    font-size: 0.75em;
+    font-size: 0.8em;
   }
 
   table {
@@ -156,8 +152,12 @@ h6 {
     padding-right: 0;
   }
 
-  :is(h1, h2, h3, h4, h5, h6) + .bookmark,
-  :is(h1, h2, h3, h4, h5, h6) + .bookmark-loader {
+  :where(h1, h2, h3, h4, h5, h6) + .bookmark,
+  :where(h1, h2, h3, h4, h5, h6) + .bookmark-loader {
     margin-top: 1.25rem;
   }
+}
+
+:where(.prose blockquote > * + *) {
+  margin-top: var(--flow-spacing);
 }

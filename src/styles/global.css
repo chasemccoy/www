@@ -121,7 +121,7 @@ blockquote {
   cite {
     display: block;
     font-size: 1rem;
-    margin-top: 0.75rem !important;
+    margin-top: 0.75rem;
     color: var(--color-caption);
     --link-color: var(--color-caption);
     font-style: normal;
@@ -366,5 +366,27 @@ ol {
     background: var(--color-text);
     border-color: transparent;
     color: white;
+  }
+}
+
+a.button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0.5em 1.25em;
+  margin: 0.5em 0;
+  border: 1px solid var(--color-border);
+  border-radius: 9999em;
+  background: var(--color-gray--100);
+  color: var(--color-text);
+  font-size: 0.85em;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.15s;
+  cursor: pointer;
+  --link-color: var(--color-text);
+
+  &:hover {
+    background: var(--color-gray--200);
   }
 }
