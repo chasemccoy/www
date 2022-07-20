@@ -33,10 +33,12 @@ const blogLinkMatcher = (pathname) => regex.test(pathname)
 const Nav = () => {
   const { asPath } = useRouter()
 
+  console.log(process.env.NODE_ENV)
+
   return (
     <nav>
-      <Link href='/'>
-        <a className='unstyled'>Chase McCoy</a>
+      <Link href="/">
+        <a className="unstyled">Chase McCoy</a>
       </Link>
 
       <ul className="unstyled">
@@ -48,6 +50,10 @@ const Nav = () => {
         </Item>
 
         <Item href="/notes">Notes</Item>
+
+        {process.env.NODE_ENV === 'development' && (
+          <Item href="/backstage">Backstage</Item>
+        )}
       </ul>
     </nav>
   )
