@@ -30,7 +30,7 @@ async function getPost(slug) {
   return { slug, code, ...frontmatter }
 }
 
-async function getPosts({includeDrafts = false} = {}) {
+async function getPosts({ includeDrafts = false } = {}) {
   const data = await getDirList(CONTENT_PATH)
 
   if (!Array.isArray(data)) {
@@ -68,6 +68,11 @@ async function getPosts({includeDrafts = false} = {}) {
     files.map(async ({ slug, content }) => {
       const matterResult = matter(content)
       const frontmatter = matterResult.data
+      if (!frontmatter.date) {
+        throw new Error(
+          `Post with title “${frontmatter.title}” has no publish date`
+        )
+      }
       frontmatter.date = new Date(frontmatter.date).toISOString()
       const params = getParamsForPost(slug, frontmatter.date)
       const fullSlug = `/${params.year}/${params.month}/${slug}`
@@ -88,9 +93,7 @@ async function getPosts({includeDrafts = false} = {}) {
   )
 
   if (includeDrafts) {
-    return posts
-    .filter(({ title }) => Boolean(title))
-    .sort(sortBy('-date'))
+    return posts.filter(({ title }) => Boolean(title)).sort(sortBy('-date'))
   }
 
   return posts
