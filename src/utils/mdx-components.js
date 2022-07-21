@@ -5,6 +5,7 @@ import Image from '../components/Image'
 import Bookmark from '../components/Bookmark'
 import Video from '../components/Video'
 import Callout from '../components/Callout'
+import Button from '../components/Button'
 
 const components = {
   Callout: Callout,
@@ -15,6 +16,7 @@ const components = {
   pre: Pre,
   a: Link,
   img: Image,
+  Button,
 }
 
 export default components

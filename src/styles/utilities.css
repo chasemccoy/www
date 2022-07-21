@@ -320,12 +320,6 @@
   }
 }
 
-a.button {
-  &:hover {
-    filter: brightness(0.9);
-  }
-}
-
 h2.marker {
   display: grid;
   grid-template-columns: auto minmax(20px, 1fr);

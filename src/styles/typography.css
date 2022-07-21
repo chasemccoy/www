@@ -19,38 +19,45 @@ h6 {
   li + li {
     margin-top: 0.4rem;
   }
-  d li > p + p {
+
+  /* Spacing between first and second paragraph in list items */
+  li > p + p {
     margin-top: 0.25rem;
   }
 
+  /* Spacing between other paragraphs in list items */
   li > p:not(:first-of-type) + p {
     margin-top: 0.75rem;
   }
 
+  /* More spacing between list items if they contain full paragraphs */
   li + li > p:first-child {
-    margin-top: 1.25rem;
+    margin-top: 1rem;
   }
 
   blockquote {
     margin: 2rem 0 1.8rem;
   }
 
-  :where(h1 + *),
-  :where(h2 + *),
-  :where(h3 + *),
-  :where(h4 + *),
-  :where(h5 + *),
-  :where(h6 + *) {
+  a.button {
+    margin-block: 0.75rem;
+  }
+
+  a.button:last-child {
+    margin-bottom: 0;
+  }
+
+  :where(h1 + *:not(:is(ol, ul))),
+  :where(h2 + *:not(:is(ol, ul))),
+  :where(h3 + *:not(:is(ol, ul))),
+  :where(h4 + *:not(:is(ol, ul))),
+  :where(h5 + *:not(:is(ol, ul))),
+  :where(h6 + *:not(:is(ol, ul))) {
     margin-top: 0.5em;
   }
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    margin-top: clamp(2rem, 1.6em, 9999rem);
+  :where(h1, h2, h3, h4, h5, h6) {
+    margin-top: clamp(2rem, 1.5em, 9999rem);
     line-height: 1.2;
   }
 

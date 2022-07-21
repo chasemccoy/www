@@ -1,11 +1,10 @@
 module.exports = {
   eslint: {
-    // ignoreDuringBuilds: true,
     dirs: ['pages', 'components', 'utils'],
   },
   experimental: {
     legacyBrowsers: false,
-    browsersListForSwc: true
+    browsersListForSwc: true,
   },
   repo: 'chasemccoy/www',
 }

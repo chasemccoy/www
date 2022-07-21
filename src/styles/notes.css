@@ -26,3 +26,38 @@
     margin-left: -200px;
   }
 }
+
+.chase-os x-tools {
+  display: block;
+  margin: 1.5rem 0;
+
+  img {
+    width: 20%;
+    margin: 0 24px 24px 0;
+    float: left;
+  }
+
+  hr {
+    clear: both;
+  }
+
+  > div {
+    overflow: hidden;
+  }
+
+  h3 {
+    margin: 0;
+  }
+}
+
+.chase-os x-shortcuts {
+  display: block;
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 8px;
+  row-gap: 12px;
+
+  a.button {
+    margin: 0;
+  }
+}
