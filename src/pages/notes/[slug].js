@@ -76,18 +76,10 @@ const NotePage = ({ note = {} }) => {
 }
 
 export const getStaticProps = async ({ params }) => {
-  // if (config.noteCategories.includes(params.slug)) {
-  //   const notes = await getCategory(params.slug)
-
-  //   return {
-  //     props: { notes },
-  //   }
-  // }
-
   const note = await getNote(params.slug)
 
   return {
-    props: { note, hasSidebar: !!note.toc },
+    props: { note, hasSidebar: !!note.toc, class: note.class || null },
   }
 }
 
@@ -97,10 +89,6 @@ export const getStaticPaths = async () => {
   const notePaths = notes.map((note) => ({
     params: { slug: note.slug },
   }))
-
-  // const categoryPaths = config.noteCategories.map((category) => ({
-  //   params: { slug: category },
-  // }))
 
   return {
     paths: [...notePaths],
