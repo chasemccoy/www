@@ -31,7 +31,7 @@
   display: block;
   margin: 1.5rem 0;
 
-  img {
+  & > *:not(.prose) > img {
     width: 20%;
     margin: 0 24px 24px 0;
     float: left;
