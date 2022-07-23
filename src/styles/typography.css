@@ -47,6 +47,11 @@ h6 {
     margin-bottom: 0;
   }
 
+  a.button + * {
+    /* Because margins don't collapse on elements that are flex or inline-flex */
+    margin-top: 0;
+  }
+
   :where(h1 + *:not(:is(ol, ul))),
   :where(h2 + *:not(:is(ol, ul))),
   :where(h3 + *:not(:is(ol, ul))),
