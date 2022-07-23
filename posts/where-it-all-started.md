@@ -1,0 +1,11 @@
+---
+title: Where it all started
+date: 2022-07-22
+hidden: true
+---
+
+I remember the first time I saw a Mac in person. I was in elementary school, but on the campus of the nearby college because my dad had a gig as a stand-in drummer for a local band. 
+
+I was hanging out backstage—something I often had the privilege of doing from a young age as the son of a drummer—and I saw a girl, sitting on the ground, typing away on a brand new MacBook Air. 
+
+The Air had just been introduced to the world, and I remember reading about it online. Steve Jobs had walked on stage with a manilla envelope, opened it, and pulled out the thinnest computer I had ever seen. I had no idea a computer could even look like that. 
