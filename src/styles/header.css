@@ -8,11 +8,9 @@
     #fef3cf 0
   );
 
-  @media (pointer: fine) {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-  }
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
 #site-header {
