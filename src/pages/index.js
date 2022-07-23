@@ -3,7 +3,6 @@ import Link from '../components/Link'
 import Page from '../components/Page'
 import Marker from '../components/Marker'
 import { getPosts } from '../utils/post'
-import { getRecentlyModifiedNotes } from '../utils/note'
 import { generateFeed } from '../utils/generate-feed'
 import PropertyList from '../components/PropertyList'
 import Museo from '../components/homepage/Museo'
@@ -19,23 +18,33 @@ const Index = ({ posts }) => {
           letterSpacing: '-0.5px',
         }}
       >
-        <i>Chase McCoy</i> is a product designer at{' '}
+        <i>Chase McCoy</i> is a web designer at{' '}
         <Link href="https://stripe.com">Stripe</Link> focused on building,
         evangelizing, and growing design systems.
       </h2>
 
-      <p
-        className="color-caption mt-8"
+      <div
+        className="prose color-caption mt-8"
         style={{
           '--link-color': 'var(--color-caption)',
         }}
       >
-        I’m interested in the texture of the web—how we shape it and how we are
-        shaped by it. You can learn more about me by{' '}
-        <Link href="/blog">reading my blog</Link>, perusing{' '}
-        <Link href="/notes">my digital garden</Link> of public notes, and
-        browsing <Link href="/notes/books">my bookshelf</Link>.
-      </p>
+        <p>
+          I’m interested in the texture of the web—how we shape it and how we
+          are shaped by it. You can learn more about me by{' '}
+          <Link href="/blog">reading my blog</Link>, perusing{' '}
+          <Link href="/notes">my digital garden</Link> of public notes, and
+          browsing <Link href="/notes/books">my bookshelf</Link>.
+        </p>
+
+        <p>
+          I live in and draw inspiration from the{' '}
+          <a href="https://en.wikipedia.org/wiki/Frank_Lloyd_Wright%E2%80%93Prairie_School_of_Architecture_Historic_District">
+            Frank Lloyd Wright Historic District
+          </a>{' '}
+          of Oak Park, Illinois.
+        </p>
+      </div>
 
       <div className="flow" style={{ '--flow-spacing': '1rem' }}>
         <Marker className="mt-48">Select writing</Marker>
@@ -63,7 +72,8 @@ const Index = ({ posts }) => {
         <PropertyList label="Now">
           <h4>Design Systems at Stripe</h4>
           <p className="color-caption mt-2">
-            I’m currently working on Sail, the design system powering Stripe’s web products and{' '}
+            I’m currently working on Sail, the design system powering Stripe’s
+            web products and{' '}
             <Link href="https://stripe.com/apps">Stripe Apps</Link>.
           </p>
         </PropertyList>
@@ -117,22 +127,6 @@ const Index = ({ posts }) => {
         </PropertyList>
       </div>
 
-      {/* <div className="flow" style={{ '--flow-spacing': '1rem' }}>
-        <Marker className="mt-48">Recent notes</Marker>
-        {recentNotes.map((note, i) => (
-          <>
-            {i !== 0 && <hr className="dashed" />}
-            <PropertyList
-              key={note.slug}
-              label={note.title}
-              style={{ '--label-width': '24%' }}
-            >
-              {note.excerpt}
-            </PropertyList>
-          </>
-        ))}
-      </div> */}
-
       <hr className="mt-40 mb-32" />
 
       <Museo />
@@ -147,12 +141,10 @@ export const getStaticProps = async () => {
 
   const posts = await getPosts()
   const featuredPosts = posts.filter((post) => Boolean(post.featured))
-  const recentNotes = await getRecentlyModifiedNotes()
 
   return {
     props: {
       posts: featuredPosts.slice(0, 3),
-      recentNotes: recentNotes.slice(0, 4),
     },
   }
 }

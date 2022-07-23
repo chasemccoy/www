@@ -5,22 +5,12 @@ html {
 
 body {
   font-family: var(--font-body);
-  overflow: hidden;
+  /* overflow: hidden; */
+  /* max-width: 100vw; */
   min-height: 100vh;
   background: var(--color-accent);
   color: var(--color-text);
   -webkit-font-smoothing: antialiased;
-}
-
-.stripes {
-  height: 48px;
-  width: 100%;
-  background: linear-gradient(
-    #fbd254 0 25%,
-    #fdde76 0 50%,
-    #fde7a1 0 75%,
-    #fef3cf 0
-  );
 }
 
 h1,

@@ -87,16 +87,6 @@ footer {
     opacity: 1;
   }
 
-  &:after {
-    content: "";
-    position: absolute;
-    top: -24px;
-    bottom: -500px;
-    left: -50vw;
-    right: -50vw;
-    z-index: -1;
-  }
-
   & > div {
     display: flex;
     flex-direction: column-reverse;

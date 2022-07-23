@@ -1,4 +1,3 @@
-import React from 'react'
 import Link from '../components/Link'
 import Pre from '../components/Pre'
 import Image from '../components/Image'
@@ -9,8 +8,6 @@ import Button from '../components/Button'
 
 const components = {
   Callout: Callout,
-  Link,
-  Wide: React.Fragment,
   Video: Video,
   Bookmark: Bookmark,
   pre: Pre,
