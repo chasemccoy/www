@@ -48,7 +48,7 @@ main {
 }
 
 #sidebar {
-  margin: 8px 0 0;
+  margin: 4px 0 0;
   width: var(--sidebar-width);
   min-width: 100%;
   order: -1;
