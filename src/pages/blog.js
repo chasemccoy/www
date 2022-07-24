@@ -68,7 +68,7 @@ const ShortPost = ({ title, date, code, slug }) => {
         </h1>
       </Link>
 
-      <div className="prose blog-content">
+      <div className="prose">
         <RenderMDX code={code} />
       </div>
     </article>

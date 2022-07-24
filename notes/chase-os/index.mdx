@@ -4,7 +4,7 @@ excerpt: My personal operating systems.
 class: chase-os
 ---
 
-The information outlined here is largely for me as a way to think through my personal processes, communicate them back to myself, and improve them over time.
+The information outlined here is largely for me as a way to think through my personal processes, communicate them back to myself, and improve them over time. Note that many of the links here will not work for you.
 
 A few shortcuts:
 
@@ -14,11 +14,34 @@ A few shortcuts:
   <Button url="https://www.figma.com/file/u6C1Ws8UvnFIBpA6XgCrWg/%F0%9F%97%83-Swipe-file?node-id=2%3A5">Figma swipe file</Button>
   <Button url="things:///add?show-quick-entry=true">Add task to Things</Button>
   <Button href="https://github.com/chasemccoy/dotfiles">My dotfiles</Button>
+  <Button url="roam://#/app/chase/page/ZiuIouwPb">Favorite tags in Roam</Button>
 </x-shortcuts>
+
+## Focus modes
+
+Knowing what mode my brain is in can help me focus my attention on the right tasks at the right time. This idea was shamelessly stolen from [The Anatomy of Equanimity](https://anatomy.1651.org).
+
+<div className='ol-fancy'>
+1. **Connect & play**  
+    Scrolling through Twitter, playing guitar, watching a video, creative coding, tinkering with a new idea or design, etc. 
+2. **Read & study**  
+    Getting through my backlog of bookmarks and articles to read, or diving into materials on a particular topic. Logging information into my knowledge base and connecting ideas.
+3. **Create**  
+    This includes my typical work at the day job as well as working on my website or some other project.
+</div>
+
+---
 
 ## Systems 
 
 The processes and infrastructure I've established for dealing with a constant stream of information and media. 
+
+### Inboxes
+
+- Simplenote for notes, ideas, blog posts 
+- Things for tasks 
+- Readwise for quotes and passages to revisit 
+- My personal API for saving links to read later 
 
 ### Capturing quotes
 
@@ -44,16 +67,34 @@ I've tried using dedicated apps for this, but turns out it's really nice to be a
 
 ### Tasks
 
+I use Things to organize tasks, along with a paper notebook to keep track of things I'm focused on in the very short term (usually a week or less). 
+
 <Button url="things:///add?show-quick-entry=true">Add task to Things</Button>
 
-### Notes
+#### Regular reviews are key, and I am bad at them
+
+TODO
+
+### Notes and ideas
+
+- **[Simplenote](https://simplenote.com/) is my notes inbox.**
+- **[Roam Research](https://roamresearch.com/) is for long term storage of notes with the goal of creating a searchable commonplace book.**
+
+    Roam is for things that I don't necessarily need to do anything about.
+
+    Roam's mobile app is horrible, and the website, though mobile-optimized, is very slow to load. This means I don't usually use Roam for jotting down quick ideas or thoughts. It's more of a destination or an archive than a work bench.
+
+    A "note" here can refer to an original bit of text or even just a link—the important part is that the note is tagged with relevant concepts or ideas. In Roam, tags *are* notes and this cross-referencing creates a web of traversable paths through my knowledge base.
+
+    <Button url="roam://#/app/chase/page/ZiuIouwPb">Favorite tags</Button>
+
+- **The notes section of my website (which you are on right now) is where my *durable* or *evergreen* notes live.**
 
 - [Taxonomy of note types](https://notes.andymatuschak.org/Taxonomy_of_note_types)
 
 ### Bookmarks 
 
 I run my own little bookmarking service that stores a running log of links. It’s dead simple and dead fast and I use shortcuts on iOS and Mac to send links to it via a REST API, which I can then query to pull my bookmarks into various useful places. 
-
 
 ### Blog posts
 
@@ -65,7 +106,19 @@ When a draft is still a work in progress I use `hidden: true` in the frontmatter
 
 ## Tools of the trade
 
+I find that the more complex a system is, the more likely it is to break. While I use many tools and helpers, these are the ones that make up my basic toolkit—with these and MacOS I can accomplish just about everything I need with ease. I am constantly trying to shorten this list when I can. 
+
 <x-tools>
+
+![](arc.png)
+
+<div className='prose'>
+  ### Arc
+
+  Arc is my web browser, and one of the most exciting things to happen for the web in decades.
+</div>
+
+---
 
 ![](broadsheet.png)
 
@@ -76,7 +129,7 @@ When a draft is still a work in progress I use `hidden: true` in the frontmatter
 
   ![A screenshot of Broadsheet](broadsheet-screenshot.png)
   
-  I built Broadsheet because I wanted a starting point for journeys across the web. At its core it’s a collection of links and some associated media. 
+  I built Broadsheet because I wanted a starting point for journeys across the web, and a healthier default for when I'm looking for something to fill my attention.
   
   I also have a small text editor built into Broadsheet that allows me to jot down notes or even draft blog posts as I’m browsing and reading. I like it because it's not a feed of immutable-feeling posts—it's a blob of HTML that I can edit, rearrange, and add to however I'd like with 0 friction. This is a great example of making dedicated space for creation in the places where you’re commonly inspired.
 </div>

@@ -40,16 +40,11 @@ h6 {
   }
 
   a.button {
-    margin-block: 0.75rem;
+    margin-top: 0.75rem;
   }
 
   a.button:last-child {
     margin-bottom: 0;
-  }
-
-  a.button + * {
-    /* Because margins don't collapse on elements that are flex or inline-flex */
-    margin-top: 0;
   }
 
   :where(h1 + *:not(:is(ol, ul))),
@@ -62,7 +57,7 @@ h6 {
   }
 
   :where(h1, h2, h3, h4, h5, h6) {
-    margin-top: clamp(2rem, 1.5em, 9999rem);
+    margin-top: 1.5em;
     line-height: 1.2;
   }
 
@@ -79,6 +74,7 @@ h6 {
   }
 
   h2 {
+    margin-top: 1.6em;
     font-size: calc(1.5rem * var(--heading-scale, 1));
   }
 
@@ -87,6 +83,7 @@ h6 {
   }
 
   h3 {
+    margin-top: 1.6em;
     font-size: calc(1.25rem * var(--heading-scale, 1));
   }
 

@@ -20,7 +20,7 @@
     break-inside: avoid;
   }
 
-  @media (--viewport-large) {
+  @media (min-width: 1080px) {
     --columns: 3;
     width: calc(100% + 400px);
     margin-left: -200px;

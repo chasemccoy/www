@@ -52,7 +52,7 @@ const BlogPost = ({ code, title, excerpt, date, image, slug }) => {
         {excerpt && <hr className="vertical mt-24" />}
       </header>
 
-      <div className="prose blog-content">
+      <div className="prose">
         <RenderMDX code={code} />
       </div>
     </Page>
