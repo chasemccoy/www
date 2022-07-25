@@ -23,12 +23,7 @@ const Index = ({ posts }) => {
         evangelizing, and growing design systems.
       </h2>
 
-      <div
-        className="prose color-caption mt-8"
-        style={{
-          '--link-color': 'var(--color-caption)',
-        }}
-      >
+      <div className="prose mt-8">
         <p>
           I’m interested in the texture of the web—how we shape it and how we
           are shaped by it. You can learn more about me by{' '}
@@ -53,7 +48,7 @@ const Index = ({ posts }) => {
             <h4>
               <Link to={post.slug}>{post.title}</Link>
             </h4>
-            <p className="color-caption mt-2">{post.excerpt}</p>
+            <p className="mt-2">{post.excerpt}</p>
           </div>
         ))}
         <Link to="/blog" className="block bold unstyled color-caption smaller">
@@ -65,13 +60,12 @@ const Index = ({ posts }) => {
         className="flow"
         style={{
           '--flow-spacing': '1rem',
-          '--link-color': 'var(--color-caption)',
         }}
       >
         <Marker className="mt-48">Experience</Marker>
         <PropertyList label="Now">
           <h4>Design Systems at Stripe</h4>
-          <p className="color-caption mt-2">
+          <p className="mt-2">
             I’m currently working on Sail, the design system powering Stripe’s
             web products and{' '}
             <Link href="https://stripe.com/apps">Stripe Apps</Link>.
@@ -80,7 +74,7 @@ const Index = ({ posts }) => {
         <hr className="dashed" />
         <PropertyList label="2017 – 2020">
           <h4>Design Systems at Sprout Social</h4>
-          <p className="color-caption mt-2">
+          <p className="mt-2">
             I previously led the Design Systems team at Sprout Social working on
             the{' '}
             <Link href="https://seeds.sproutsocial.com">
@@ -104,7 +98,7 @@ const Index = ({ posts }) => {
         <hr className="dashed" />
         <PropertyList label="2014 – 2017">
           <h4>iOS design and development</h4>
-          <p className="color-caption mt-2">
+          <p className="mt-2">
             I began my career as an iOS designer and developer (working in both
             Swift and Objective-C). Outside of my day job at the{' '}
             <Link to="https://www.nsparc.msstate.edu/">
@@ -120,7 +114,7 @@ const Index = ({ posts }) => {
         <hr className="dashed" />
         <PropertyList label="2013 – 2017">
           <h4>Computer Science at Mississippi State University</h4>
-          <p className="color-caption mt-2">
+          <p className="mt-2">
             While most of my work now focused on design, my academic background
             is computer science and software development.
           </p>
