@@ -34,18 +34,9 @@ const Footer = ({ className }) => {
           <div style={{ flex: '1 0 auto' }}>
             <Sparkles />
             <p className="smaller mt-12">
-              Made with <span className="color-red">&#9829;</span> in Chicago{' '}
-              <span
-                style={{
-                  fontSize: '1.4em',
-                  verticalAlign: 'text-bottom',
-                  lineHeight: 1,
-                }}
-              >
-                &#10038;
-              </span>
+              Made with HTML, CSS, and{' '}
+              <span className="color-red">&#9829;</span>
             </p>
-            <p className="smaller">Come back soon!</p>
           </div>
         </div>
 
@@ -64,11 +55,6 @@ const Footer = ({ className }) => {
             <li>
               <Link to="https://chs.is/coding" className="unstyled">
                 GitHub
-              </Link>
-            </li>
-            <li>
-              <Link to="https://chs.is/ig" className="unstyled">
-                Instagram
               </Link>
             </li>
             <li>

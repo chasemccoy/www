@@ -13,9 +13,9 @@ const Index = ({ posts }) => {
       <h2
         className="serif normal mt-0"
         style={{
-          fontSize: '1.5rem',
+          fontSize: '1.6rem',
           lineHeight: '1.3',
-          letterSpacing: '-0.5px',
+          letterSpacing: '-0.3px',
         }}
       >
         <i>Chase McCoy</i> is a web designer at{' '}
