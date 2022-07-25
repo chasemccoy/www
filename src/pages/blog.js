@@ -55,7 +55,7 @@ const PostPreview = ({ slug, date, title, excerpt, params, image }) => {
   )
 }
 
-const ShortPost = ({ title, date, code, slug }) => {
+const ShortPost = ({ title, date, code, slug, collapsed }) => {
   const { month, day } = getDateComponents(new Date(date))
   return (
     <article className="flow" style={{ '--flow-spacing': '1rem' }}>
@@ -68,14 +68,17 @@ const ShortPost = ({ title, date, code, slug }) => {
         </h1>
       </Link>
 
-      <div className="prose">
-        <RenderMDX code={code} />
-      </div>
+      {!collapsed && (
+        <div className="prose">
+          <RenderMDX code={code} />
+        </div>
+      )}
     </article>
   )
 }
 
 const Blog = ({ posts }) => {
+  const [collapsed, setCollapsed] = React.useState(false)
   const years = Object.keys(posts).reverse()
 
   return (
@@ -86,19 +89,28 @@ const Blog = ({ posts }) => {
       />
 
       <div className="flow" style={{ '--flow-spacing': '4em' }}>
+        {process.env.NODE_ENV === 'development' && (
+          <button onClick={() => setCollapsed(!collapsed)}>
+            {collapsed ? 'Expand' : 'Collapse'}
+          </button>
+        )}
+
         {years.map((year) => (
           <React.Fragment key={year}>
             <h2 className="marker mb-24">
               <span>{year}</span>
             </h2>
 
-            <div className="flex flex-column gap-40 mt-0">
+            <div className="flex flex-column mt-0 gap-40">
               {posts[year].map((post, i) =>
                 post.excerpt ? (
                   <PostPreview key={i} {...post} />
                 ) : (
-                  <div key={i} className={i !== 0 ? 'my-48' : undefined}>
-                    <ShortPost {...post} />
+                  <div
+                    key={i}
+                    className={i !== 0 && !collapsed ? 'my-48' : undefined}
+                  >
+                    <ShortPost {...post} collapsed={collapsed} />
                   </div>
                 )
               )}

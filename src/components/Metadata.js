@@ -18,7 +18,7 @@ const defaults = {
 const Metadata = ({
   title = defaults.title,
   description = defaults.description,
-  image = '/site-image.png',
+  image,
   article,
 }) => {
   const imageURL = defaults.siteUrl + image
@@ -39,7 +39,7 @@ const Metadata = ({
         content={description}
         key="og:description"
       />
-      <meta property="og:image" content={imageURL} key="og:image" />
+      {image && <meta property="og:image" content={imageURL} key="og:image" />}
       <meta property="twitter:image" content={imageURL} key="twitter:image" />
       <meta name="twitter:card" content="summary" />
       <meta name="twitter:creator" content={defaults.social.twitter} />
