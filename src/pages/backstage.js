@@ -8,14 +8,14 @@ import Marker from '../components/Marker'
 
 const Backstage = ({ drafts, tags }) => {
   return (
-    <Page className='prose'>
+    <Page className="prose">
       <Metadata title="Backstage" />
 
       <h1>🤫 Backstage</h1>
 
       {drafts && drafts.length > 0 && (
         <div className="flow">
-          <Marker className='mb-16'>Drafts</Marker>
+          <Marker className="mb-16">Drafts</Marker>
 
           {drafts.map((post, i) => (
             <Link to={post.slug} key={i} className="block">
@@ -40,7 +40,9 @@ const Backstage = ({ drafts, tags }) => {
 
 export const getStaticProps = async () => {
   const posts = await getPosts({ includeDrafts: true })
-  const drafts = posts.filter((post) => post.hidden)
+  const drafts = posts.filter(
+    (post) => post.hidden && new Date(post.date).getFullYear() > 2020
+  )
   const tags = await getTags()
 
   return {

@@ -6,13 +6,13 @@ import Page from '../components/Page'
 
 const Markdown = () => {
   return (
-    <Page className="prose" article title="Markdown">
+    <Page className="prose" article>
       <Metadata article title="Markdown" />
 
       <h1 className="long-form">Markdown</h1>
 
       <div className="prose">
-        <p className="lead">
+        <p className="lead" style={{ color: 'var(--color-caption)' }}>
           Until now, trying to style an article, document, or blog post with
           Tailwind has been a tedious task that required a keen eye for
           typography and a lot of complex custom CSS.
@@ -123,7 +123,7 @@ const Markdown = () => {
             src="https://images.unsplash.com/photo-1556740758-90de374c12ad?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80"
             alt=""
           />
-          <figcaption>
+          <figcaption className="image-caption">
             Contrary to popular belief, Lorem Ipsum is not simply random text.
             It has roots in a piece of classical Latin literature from 45 BC,
             making it over 2000 years old.

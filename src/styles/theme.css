@@ -11,13 +11,20 @@
     --root-font-size: 17px;
   }
 
-  --color-gray--0: #fafafa;
   --color-gray--100: #fbfaf9;
   --color-gray--200: #f6f6f3;
   --color-gray--300: #e5e2dc;
   --color-gray--400: #c6c2b9;
   --color-gray--500: #928f87;
   --color-gray--700: #404040;
+
+  /* --color-gray--100: hsl(43, 20%, 98%);
+  --color-gray--200: hsl(43, 15%, 96%);
+  --color-gray--300: hsl(43, 15%, 86%);
+  --color-gray--400: hsl(43, 15%, 73%);
+  --color-gray--500: hsl(43, 15%, 53%);
+  --color-gray--600: hsl(43, 15%, 38%);
+  --color-gray--700: hsl(43, 15%, 23%); */
 
   --color-accent: #fac742;
 
