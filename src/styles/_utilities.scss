@@ -1,92 +1,92 @@
 @each $space in 0, 1, 2, 4, 6, 8, 12, 16, 20, 24, 32, 40, 48 {
-  .gap-$(space) {
-    gap: $(space)px;
+  .gap-#{$space} {
+    gap: #{$space}px;
   }
 
-  .m-$(space) {
-    margin: $(space)px !important;
+  .m-#{$space} {
+    margin: #{$space}px !important;
   }
 
-  .mx-$(space) {
-    margin-right: $(space)px !important;
-    margin-left: $(space)px !important;
+  .mx-#{$space} {
+    margin-right: #{$space}px !important;
+    margin-left: #{$space}px !important;
   }
 
-  .my-$(space) {
-    margin-top: $(space)px !important;
-    margin-bottom: $(space)px !important;
+  .my-#{$space} {
+    margin-top: #{$space}px !important;
+    margin-bottom: #{$space}px !important;
   }
 
-  .mt-$(space) {
-    margin-top: $(space)px !important;
+  .mt-#{$space} {
+    margin-top: #{$space}px !important;
   }
 
-  .mr-$(space) {
-    margin-right: $(space)px !important;
+  .mr-#{$space} {
+    margin-right: #{$space}px !important;
   }
 
-  .mb-$(space) {
-    margin-bottom: $(space)px !important;
+  .mb-#{$space} {
+    margin-bottom: #{$space}px !important;
   }
 
-  .ml-$(space) {
-    margin-left: $(space)px !important;
+  .ml-#{$space} {
+    margin-left: #{$space}px !important;
   }
 
-  .p-$(space) {
-    padding: $(space)px !important;
+  .p-#{$space} {
+    padding: #{$space}px !important;
   }
 
-  .px-$(space) {
-    padding-right: $(space)px !important;
-    padding-left: $(space)px !important;
+  .px-#{$space} {
+    padding-right: #{$space}px !important;
+    padding-left: #{$space}px !important;
   }
 
-  .py-$(space) {
-    padding-top: $(space)px !important;
-    padding-bottom: $(space)px !important;
+  .py-#{$space} {
+    padding-top: #{$space}px !important;
+    padding-bottom: #{$space}px !important;
   }
 
-  .pt-$(space) {
-    padding-top: $(space)px !important;
+  .pt-#{$space} {
+    padding-top: #{$space}px !important;
   }
 
-  .pr-$(space) {
-    padding-right: $(space)px !important;
+  .pr-#{$space} {
+    padding-right: #{$space}px !important;
   }
 
-  .pb-$(space) {
-    padding-bottom: $(space)px !important;
+  .pb-#{$space} {
+    padding-bottom: #{$space}px !important;
   }
 
-  .pl-$(space) {
-    padding-left: $(space)px !important;
+  .pl-#{$space} {
+    padding-left: #{$space}px !important;
   }
 }
 
 @each $color in 0, 100, 200, 300, 400, 500, 600, 700, 800, 900 {
-  .color-gray--$(color) {
-    color: var(--color-gray--$(color));
+  .color-gray--#{$color} {
+    color: var(--color-gray--#{$color});
   }
 
-  .bg-gray--$(color) {
-    background: var(--color-gray--$(color));
+  .bg-gray--#{$color} {
+    background: var(--color-gray--#{$color});
   }
 }
 
 @each $color in accent, caption {
-  .color-$(color) {
-    color: var(--color-$(color));
+  .color-#{$color} {
+    color: var(--color-#{$color});
   }
 
-  .bg-$(color) {
-    background: var(--color-$(color));
+  .bg-#{$color} {
+    background: var(--color-#{$color});
   }
 }
 
 @each $radius in 4, 8, 12, 16 {
-  .radius-$(radius) {
-    border-radius: $(radius)px;
+  .radius-#{$radius} {
+    border-radius: #{$radius}px;
   }
 }
 
@@ -176,7 +176,7 @@
   &.mobile-stack {
     flex-direction: column;
 
-    @media (--viewport-tiny) {
+    @include tiny {
       flex-direction: row;
     }
   }
@@ -242,7 +242,7 @@
   margin-right: calc(var(--layout-padding) * -1);
   border-radius: 0;
 
-  @media (--viewport-tiny) {
+  @include tiny {
     max-width: 100%;
     width: 100%;
     margin-left: 0;
@@ -273,21 +273,21 @@
     flex-wrap: nowrap;
     overflow-x: auto;
     padding: 0 100px 0 0;
-    
+
     scroll-snap-type: x mandatory;
-  
+
     > * {
       flex: 0 0 auto;
       scroll-snap-align: start;
     }
-  
+
     > * + * {
       margin-left: var(--gap);
     }
   }
 
   &:after {
-    content: "";
+    content: '';
     pointer-events: none;
     position: absolute;
     height: 100%;
@@ -295,7 +295,11 @@
     top: 0;
     bottom: 0;
     right: 0;
-    background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, var(--color-body-background) 95%);
+    background: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0) 0%,
+      var(--color-body-background) 95%
+    );
   }
 }
 
@@ -338,7 +342,7 @@ h2.marker {
     border-top: 1px dashed var(--color-border);
   }
 
-  @media (--viewport-tiny) {
+  @include tiny {
     width: 100%;
     margin-right: 0;
   }

@@ -1,13 +1,32 @@
-@custom-media --viewport-tiny (min-width: 550px);
-@custom-media --viewport-small (min-width: 700px);
-@custom-media --viewport-medium (min-width: 900px);
-@custom-media --viewport-large (min-width: 1200px);
+@mixin tiny {
+  @media (min-width: 550px) {
+    @content;
+  }
+}
+
+@mixin small {
+  @media (min-width: 700px) {
+    @content;
+  }
+}
+
+@mixin medium {
+  @media (min-width: 900px) {
+    @content;
+  }
+}
+
+@mixin large {
+  @media (min-width: 1200px) {
+    @content;
+  }
+}
 
 :root {
   --root-font-size: 16px;
   --root-line-height: 1.5;
 
-  @media (--viewport-tiny) {
+  @include tiny {
     --root-font-size: 17px;
   }
 

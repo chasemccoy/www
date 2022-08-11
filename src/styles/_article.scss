@@ -13,7 +13,7 @@ article {
     margin-left: calc(var(--layout-padding) * -1);
   }
 
-  @media (--viewport-small) {
+  @include small {
     img {
       max-width: 100%;
       width: 100%;
@@ -121,7 +121,7 @@ pre {
   overflow: auto;
   background: var(--color-gray--100) !important;
 
-  @media (--viewport-tiny) {
+  @include tiny {
     width: auto;
     margin: 0;
 

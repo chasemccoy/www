@@ -46,7 +46,7 @@
   img:not(.mobile-only) {
     display: none;
 
-    @media (--viewport-tiny) {
+    @include tiny {
       display: block;
     }
   }
@@ -59,12 +59,12 @@
     object-position: 50% 70%;
     border-radius: 1rem;
 
-    @media (--viewport-tiny) {
+    @include tiny {
       display: none;
     }
   }
 
-  @media (--viewport-tiny) {
+  @include tiny {
     flex-wrap: nowrap;
     gap: 32px;
   }

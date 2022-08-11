@@ -4,9 +4,7 @@ import Script from 'next/script'
 export default function Document() {
   return (
     <Html lang="en">
-      <Head>
-        <link rel="stylesheet" href="/styles/styles.css" />
-      </Head>
+      <Head />
 
       <body>
         {/* Fixes a FOUC issue in Safari (https://github.com/vercel/next.js/issues/15642) */}

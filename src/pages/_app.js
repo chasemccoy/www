@@ -4,6 +4,7 @@ import Nav from '../components/Nav'
 import Footer from '../components/Footer'
 import Metadata from '../components/Metadata'
 import clsx from 'clsx'
+import '../styles/styles.scss'
 
 const fontStyles = `
 @font-face {

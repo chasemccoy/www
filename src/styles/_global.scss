@@ -64,7 +64,7 @@ a.no-hover:hover {
 iframe {
   border-radius: 8px;
 
-  @media (--viewport-small) {
+  @include small {
     border-radius: 0;
   }
 }
@@ -283,7 +283,7 @@ ol {
 }
 
 .property-list {
-  @media (--viewport-small) {
+  @include small {
     display: grid;
     grid-template-columns: var(--label-width, 18%) 1fr;
     gap: 24px;

@@ -31,7 +31,7 @@ main {
   border-radius: 0 0 1rem 1rem;
   min-height: 70vh;
 
-  @media (--viewport-small) {
+  @include small {
     --layout-padding: 40px;
   }
 }
@@ -42,7 +42,7 @@ main {
   width: 100%;
   flex-direction: column;
 
-  @media (--viewport-small) {
+  @include small {
     flex-direction: row;
   }
 }
@@ -59,7 +59,7 @@ main {
     font-weight: bold;
   }
 
-  @media (--viewport-small) {
+  @include small {
     display: block;
     order: -1;
     min-width: var(--sidebar-width);
@@ -93,7 +93,7 @@ footer {
     align-items: flex-start;
     gap: 24px;
 
-    @media (--viewport-small) {
+    @include small {
       flex-direction: row;
       align-items: flex-end;
       justify-content: space-between;

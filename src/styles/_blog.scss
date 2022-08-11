@@ -25,7 +25,7 @@ article.post-preview {
     width: 100%;
     border-radius: 6px;
 
-    @media (--viewport-tiny) {
+    @include tiny {
       aspect-ratio: 1 / 1;
       width: auto;
       max-width: 40%;
@@ -34,7 +34,7 @@ article.post-preview {
     }
   }
 
-  @media (--viewport-tiny) {
+  @include tiny {
     flex-direction: row;
   }
 }
