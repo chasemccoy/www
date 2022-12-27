@@ -36,6 +36,7 @@
     "sass": "^1.57.1"
   },
   "devDependencies": {
+    "@netlify/plugin-lighthouse": "^4.0.3",
     "concurrently": "^7.6.0"
   }
 }
