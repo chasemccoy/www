@@ -94,6 +94,7 @@
   @include small {
     .previous-post + .next-post {
       text-align: right;
+      border-left: 1px solid var(--color-border);
     }
   }
 
