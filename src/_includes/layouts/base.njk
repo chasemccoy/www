@@ -1,0 +1,56 @@
+{% set pageTitle = metadata.title %}
+
+{% if title %}
+  {% set pageTitle %}{{ title }} | {{ metadata.title }}{% endset %}
+{% endif %}
+
+<!doctype html>
+<html lang="en">
+  <!-- 
+  I know that I am not a category. 
+  I am not a thing - a noun. 
+  I seem to be a verb, an evolutionary process - an integral function of the universe.
+
+  R. Buckminster Fuller
+-->
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="{{ eleventy.generator }}">
+    <title>{{pageTitle}}</title>
+    <meta name="description" content="{{ description or metadata.description }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="{{ '/css/styles.css' }}">
+    <link rel="alternate" href="{{ metadata.feed.path }}" type="application/atom+xml" title="{{ metadata.title }}">
+    <link rel="alternate" href="{{ metadata.jsonfeed.path }}" type="application/json" title="{{ metadata.title }}">
+    <link rel="icon" href="/favicon.png" type="image/png">
+    <meta property="og:site_name" content="Chase McCoy">
+    <meta property="og:url" content="https://chasem.co/">
+    <meta property="og:title" content="{{ pageTitle }}">
+    <meta name="twitter:creator" content="@chase_mccoy">
+    <meta name="twitter:title" content="{{ pageTitle }}">
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Source+Serif+Pro:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+      @font-face {
+        font-family: 'Batmip';
+        src: url("/fonts/batmip/Batmip-Fraktur.woff2") format('woff2'), url("/fonts/batmip/Batmip-Fraktur.woff") format('woff');
+        font-weight: 600;
+        font-style: normal;
+        font-display: block;
+      }
+    </style>
+    {% if css %}
+      <link rel="stylesheet" href="/css/{{css}}"/>
+    {% endif %}
+    <script src="/js/index.js" defer></script>
+  </head>
+  <body {% if templateClass %} class="{{ templateClass }}"{% endif %}>
+    <main>
+      <div class="wrapper">
+        {{ content | safe }}
+      </div>
+    </main>
+  </body>
+</html>

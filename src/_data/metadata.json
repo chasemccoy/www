@@ -1,0 +1,20 @@
+{
+  "title": "Chase McCoy",
+  "url": "https://chasem.co/",
+  "language": "en",
+  "description": "I am writing about my experiences as a naval navel-gazer.",
+  "feed": {
+    "subtitle": "I am writing about my experiences as a naval navel-gazer.",
+    "path": "/feed.xml",
+    "id": "https://chasem.co/"
+  },
+  "jsonfeed": {
+    "path": "/feed.json",
+    "url": "https://chasem.co/feed.json"
+  },
+  "author": {
+    "name": "Chase McCoy",
+    "email": "hi@chasem.co",
+    "url": "https://chasem.co"
+  }
+}

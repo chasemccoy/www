@@ -1,0 +1,36 @@
+---
+title: Markdoc
+date: 2022-05-15
+---
+
+This week the team behind [Stripe's documentation](https://stripe.com/docs) launched [Markdoc](https://markdoc.io), the toolchain used internally to author and manage all of our docs. I've had the pleasure of working with this team and Markdoc internally at Stripe for some time, and I wanted to write a bit about why it's such an exciting tool.
+
+I have quite a bit of experience building content-heavy documentation sites for design systems, most of which have previously used [MDX](https://mdxjs.com). MDX was a revolution due to the ease of use and familiarity of Markdown married with the power of being able to render arbitrary React components within your document. But in every MDX project I've worked on there have eventually been scaling and maintenance issues with closely marrying content/data and code.
+
+Markdoc creates cleaner boundaries between your content and the code that powers and enriches it. If MDX is "docs as code" then Markdoc is "docs as data". MDX gives authors the full power of JSX, whereas Markdoc requires maintainers to carefully consider the primitives that are exposed to authors, and how they are exposed. Markdoc includes tooling to validate that content has been authored correctly and according to spec, whereas MDX is a free-for-all.
+
+Another benefit of Markdoc is that it doesn't require abandoning Markdown to achieve customization. While I think some of this has been addressed in MDX v2, consider a case where you want to render a `<ul>` with a custom class name attached. In MDX, you need to bail out of Markdown and fall back to HTML or JSX:
+
+```md
+# Some fancy list:
+
+<ul class='fancy'>
+  <li>Item 1</li>
+  <li>Item 2</li>
+  <li>Item 3</li>
+</ul>
+```
+
+With Markdoc, you can attach an annotation to Markdown elements while still using Markdown syntax:
+
+```md
+# Some fancy list:
+
+- Item 1 {% raw %}{% .fancy %}{% endraw %}
+- Item 2
+- Item 3
+```
+
+This is a lot easier to maintain and also retains the value of a Markdown powered authoring environment—Markdown is easy to use, even for non-technical contributors!
+
+There are a lot of other reasons to love Markdoc that I won't get into here. I am a big fan of the tool (as a user, not just because I work at Stripe) and I'm leveraging it to build the documentation site for Stripe's design system. Congrats to the Docs team for creating such a robust tool and for making it available to the world as an open source project.

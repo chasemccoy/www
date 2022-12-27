@@ -1,11 +1,2 @@
-.DS_Store
-node_modules
-yarn-error.log
-/functions/app/build
-/public/styles
-/public/img
-.site
-.next
-# Local Netlify folder
-.netlify
-public/feed.xml
+_site/
+node_modules/

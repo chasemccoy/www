@@ -1,0 +1,55 @@
+book-mark {
+  display: block;
+}
+
+book-mark a {
+  max-width: none;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  color: inherit;
+  border-radius: 8px;
+  --section-color: var(--color-text);
+
+  &:hover {
+    color: inherit;
+    background: var(--color-offset);
+  }
+
+  > div {
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  h2 {
+    font-size: 1rem !important;
+    font-family: var(--font-body);
+  }
+
+  p {
+    color: var(--color-caption);
+    margin-top: 2px !important;
+  }
+
+  p:last-child {
+    font-family: var(--font-code);
+    font-size: 0.75em;
+  }
+
+  img {
+    display: block;
+    width: 120px;
+    aspect-ratio: 1 / 0.75;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+}
+
+book-mark a.loading {
+  display: block;
+  width: 100%;
+  height: 120px;
+  background: var(--color-offset);
+  border-radius: 8px;
+}

@@ -1,5 +1,6 @@
 [build]
-  publish = ".site"
+  publish = "_site"
+  command = "yarn build"
 
 [[headers]]
   for = "/fonts/*"
@@ -11,14 +12,11 @@
   package = "@netlify/plugin-lighthouse"
   [plugins.inputs]
     output_path = "lighthouse.html"
+    
+# [[redirects]]
+#   from = "/books"
+#   to = "/notes/books"
 
-[[plugins]]
-  package = "@netlify/plugin-nextjs"
-
-[[redirects]]
-  from = "/books"
-  to = "/notes/books"
-
-[[redirects]]
-  from = "/quotes"
-  to = "/notes/quotes"
+# [[redirects]]
+#   from = "/quotes"
+#   to = "/notes/quotes"

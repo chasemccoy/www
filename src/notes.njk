@@ -1,0 +1,40 @@
+---
+title: Notes
+layout: layouts/page.njk
+permalink: /notes/
+templateClass: notes
+---
+
+<script src="/js/filter-container.js" defer></script>
+
+<div class='breadcrumbs mb-12'>
+  <a href='/' class='bold'>Chase M.</a>
+  <a href='/notes'>Notes</a>
+</div>
+
+<p class='lead'>
+  Welcome to my <i>
+    <a href="/notes/digital-gardens">digital garden</a>
+  </i>—a personal wiki of neat stuff I’ve collected during my travels on the web.
+</p>
+
+<filter-container oninit delimiter="," filter-mode="all">
+  <form aria-label="Filter by tag">
+    <input type="radio" name="tag" value="" data-filter-key="tags" id="all" checked/>
+    <label for="all">all</label>
+
+    {% for tag in collections.tagList | sort %}
+      <input type="radio" name="tag" value="{{tag}}" data-filter-key="tags" id="{{tag}}"/>
+      <label for="{{tag}}">#{{ tag }}</label>
+    {% endfor %}
+  </form>
+
+  <section class='note-list'>
+    {% for note in collections.notes | filterHidden | sort(false, false, "data.title") %}
+      <a href="{{ note.url }}" class='note-tile unstyled' data-filter-tags="{{note.data.tags | filterTagList }}">
+        <h3>{{ note.data.title }}</h3>
+        <p>{{ note.data.excerpt}}</p>
+      </a>
+    {% endfor %}
+  </section>
+</filter-container>

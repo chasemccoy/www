@@ -1,0 +1,204 @@
+:root {
+  --mono-1: hsl(43, 8%, 24%);
+  --mono-2: hsl(43, 4%, 64%);
+  --hue-1: hsl(198, 99%, 37%);
+  --hue-2: hsl(221, 87%, 60%);
+  --hue-3: hsl(301, 63%, 40%);
+  --hue-4: hsl(119, 34%, 47%);
+  --hue-5: hsl(5, 74%, 59%);
+  --hue-6: hsl(344, 84%, 43%);
+  --hue-7: hsl(35, 99%, 36%);
+
+  @media (prefers-color-scheme: dark) {
+    --mono-1: hsl(43, 14%, 71%);
+    --mono-2: hsl(43, 10%, 40%);
+    --hue-1: hsl(187, 47%, 55%);
+    --hue-2: hsl(207, 82%, 66%);
+    --hue-3: hsl(286, 60%, 67%);
+    --hue-4: hsl(95, 38%, 62%);
+    --hue-5: hsl(355, 65%, 65%);
+    --hue-6: hsl(5, 48%, 51%);
+    --hue-7: hsl(29, 54%, 61%);
+  }
+}
+
+code[class*='language-'],
+pre[class*='language-'] {
+  color: var(--mono-1);
+  direction: ltr;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  line-height: 1.5;
+  -moz-tab-size: 2;
+  -o-tab-size: 2;
+  tab-size: 2;
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+.token.comment,
+.token.prolog,
+.token.cdata {
+  color: var(--mono-2);
+}
+
+.token.doctype,
+.token.punctuation,
+.token.entity {
+  color: var(--mono-1);
+}
+
+.token.attr-name,
+.token.class-name,
+.token.boolean,
+.token.constant,
+.token.number,
+.token.atrule {
+  color: var(--hue-7);
+}
+
+.token.keyword {
+  color: var(--hue-3);
+}
+
+.token.property,
+.token.tag,
+.token.symbol,
+.token.deleted,
+.token.important {
+  color: var(--hue-5);
+}
+
+.token.selector,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted,
+.token.regex,
+.token.attr-value,
+.token.attr-value > .token.punctuation {
+  color: var(--hue-4);
+}
+
+.token.variable,
+.token.operator,
+.token.function {
+  color: var(--hue-2);
+}
+
+.token.url {
+  color: var(--hue-1);
+}
+
+/* HTML overrides */
+.token.attr-value > .token.punctuation.attr-equals,
+.token.special-attr > .token.attr-value > .token.value.css {
+  color: var(--mono-1);
+}
+
+/* CSS overrides */
+.language-css .token.selector {
+  color: var(--hue-5);
+}
+
+.language-css .token.property {
+  color: var(--mono-1);
+}
+
+.language-css .token.function,
+.language-css .token.url > .token.function {
+  color: var(--hue-1);
+}
+
+.language-css .token.url > .token.string.url {
+  color: var(--hue-4);
+}
+
+.language-css .token.important,
+.language-css .token.atrule .token.rule {
+  color: var(--hue-3);
+}
+
+/* JS overrides */
+.language-javascript .token.operator {
+  color: var(--hue-3);
+}
+
+.language-javascript
+  .token.template-string
+  > .token.interpolation
+  > .token.interpolation-punctuation.punctuation {
+  color: var(--hue-6);
+}
+
+/* JSON overrides */
+.language-json .token.operator {
+  color: var(--mono-1);
+}
+
+.language-json .token.null.keyword {
+  color: var(--hue-7);
+}
+
+/* MD overrides */
+.language-markdown .token.url,
+.language-markdown .token.url > .token.operator,
+.language-markdown .token.url-reference.url > .token.string {
+  color: var(--mono-1);
+}
+
+.language-markdown .token.url > .token.content {
+  color: var(--hue-2);
+}
+
+.language-markdown .token.url > .token.url,
+.language-markdown .token.url-reference.url {
+  color: var(--hue-1);
+}
+
+.language-markdown .token.blockquote.punctuation,
+.language-markdown .token.hr.punctuation {
+  color: var(--mono-2);
+  font-style: italic;
+}
+
+.language-markdown .token.code-snippet {
+  color: var(--hue-4);
+}
+
+.language-markdown .token.bold .token.content {
+  color: var(--hue-7);
+}
+
+.language-markdown .token.italic .token.content {
+  color: var(--hue-3);
+}
+
+.language-markdown .token.strike .token.content,
+.language-markdown .token.strike .token.punctuation,
+.language-markdown .token.list.punctuation,
+.language-markdown .token.title.important > .token.punctuation {
+  color: var(--hue-5);
+}
+
+/* General */
+.token.bold {
+  font-weight: bold;
+}
+
+.token.comment,
+.token.italic {
+  font-style: italic;
+}
+
+.token.entity {
+  cursor: help;
+}
+
+.token.namespace {
+  opacity: 0.8;
+}

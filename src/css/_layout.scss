@@ -1,0 +1,23 @@
+:root {
+  --layout-padding: 1rem;
+  --content-width: 66ch;
+
+  @include small {
+    --layout-padding: 1.5rem;
+  }
+}
+
+main {
+  padding: var(--layout-padding);
+  min-height: 100vh;
+
+  @include small {
+    padding-block: 3rem;
+    padding-inline: 4rem var(--layout-padding);
+  }
+
+  .wrapper {
+    max-width: var(--content-width);
+    padding-bottom: 48px;
+  }
+}

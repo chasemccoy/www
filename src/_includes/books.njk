@@ -1,0 +1,9 @@
+<div class='books'>
+  {% for book in books.favorites %}
+    <a href="{{book.url}}" class='block unstyled' target="_blank">
+      {% set imageURL = "./public/images/books/" + book.image %}
+      {% image imageURL,
+      book.title %}
+    </a>
+  {% endfor %}
+</div>

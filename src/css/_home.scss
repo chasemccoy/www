@@ -1,0 +1,78 @@
+.home h1.intro {
+  font-family: var(--font-header);
+  font-size: 2.5rem;
+  line-height: 1.1;
+}
+
+bookmark-list,
+.blogroll {
+  a {
+    color: var(--color-text);
+  }
+}
+
+bookmark-list {
+  display: block;
+
+  a:hover {
+    color: var(--link-color);
+  }
+
+  a + a:before {
+    content: '◆';
+    margin: 0 0.5em;
+    text-decoration: none;
+    font-size: 1em;
+    display: inline-block;
+    transform: translateY(-1px);
+    color: var(--color-border);
+  }
+}
+
+.home .museo {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+  margin-block: 1.5em 3em;
+
+  svg {
+    max-width: 200px;
+    margin-top: 8px;
+  }
+
+  > div {
+    min-width: 0;
+  }
+
+  img {
+    max-height: 150px;
+    border-radius: 99999em;
+    object-fit: cover;
+  }
+
+  @include small {
+    flex-direction: row;
+
+    img {
+      max-height: none;
+      max-width: 150px;
+    }
+  }
+}
+
+.home .blogroll {
+  columns: 3 150px;
+  column-gap: 1rem;
+
+  li {
+    margin: 0;
+  }
+
+  li:before {
+    content: none;
+  }
+
+  a:hover {
+    color: var(--link-color);
+  }
+}
