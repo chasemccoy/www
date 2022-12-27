@@ -16,6 +16,7 @@ section-header h2 {
     align-items: center;
     gap: 4px;
     font-size: 1.5rem;
+    line-height: 1;
   }
 
   @include tiny {
@@ -27,4 +28,5 @@ section-header h2 {
 section-header:not(.eyebrow) h2:after {
   content: '';
   border-top: 1px dashed var(--color-border);
+  transform: translateY(2px);
 }

@@ -27,3 +27,28 @@ templateClass: blog post
 
   {{ content | safe }}
 </article>
+
+{% set previousPost = collections.posts | filterHidden | getPreviousCollectionItem(page) %}
+
+{% set nextPost = collections.posts | filterHidden | getNextCollectionItem(page) %}
+
+<nav class='post-pagination'>
+  <ul class='unstyled'>
+    {% if previousPost %}
+      <li class='previous-post'>
+        <a href="{{ previousPost.url }}" class='unstyled'>
+          <span class='label'>Previous</span>
+          <span>{{ previousPost.data.title }}</span></a>
+      </li>
+    {% endif %}
+
+    {% if nextPost %}
+      <li class='next-post'>
+        <a href="{{ nextPost.url }}" class='unstyled'>
+          <span class='label'>Next</span>
+          <span>{{ nextPost.data.title }}</span>
+        </a>
+      {% endif %}
+    </li>
+  </ul>
+</nav>

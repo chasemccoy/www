@@ -1,9 +1,35 @@
 ---
+title: Backstage
 layout: layouts/page.njk
 permalink: /backstage/
+templateClass: blog
 ---
 
-<h1>Backstage</h1>
+<div class='prose'>
+  <div class='breadcrumbs mb-12'>
+    <a href='/' class='bold'>Home</a>
+  </div>
 
-{# {% set postslist = collections.posts | onlyHiddenPosts %}
-{% include "postslist.njk" %} #}
+  <h1 class='font-header'>
+    <a href="/backstage" class="unstyled">Backstage</a>
+  </h1>
+</div>
+
+{% set postslist = collections.posts | onlyHiddenPosts %}
+
+<div class='flex flex-column' style="gap: 1em;">
+  <section-header>Drafts</section-header>
+  <div class='flex flex-column' style="gap: 1em;">
+    {% for post in postslist | reverse %}
+      <a href="{{post.url}}" class='unstyled block post-preview'>
+        <div>
+          {% if post.data.title %}
+            <h3>
+              <span>{{ post.data.title }}</span>&nbsp;<time datetime="{{ post.date | htmlDateString }}">{{ post.date | shortDate }}</time>
+            </h3>
+          {% endif %}
+        </div>
+      </a>
+    {% endfor %}
+  </div>
+</div>
