@@ -21,17 +21,20 @@ templateClass: notes
 <filter-container oninit delimiter="," filter-mode="all">
   <form aria-label="Filter by tag">
     <input type="radio" name="tag" value="" data-filter-key="tags" id="all" checked/>
-    <label for="all">all</label>
+    <label for="all">all&nbsp;{{collections.notes | filterHidden | length }}</label>
+
+    <input type="radio" name="tag" value="misc" data-filter-key="tags" id="misc"/>
+    <label for="misc">#misc&nbsp;{{collections.notes | filterHidden | noTags | length }}</label>
 
     {% for tag in collections.tagList | sort %}
       <input type="radio" name="tag" value="{{tag}}" data-filter-key="tags" id="{{tag}}"/>
-      <label for="{{tag}}">#{{ tag }}</label>
+      <label for="{{tag}}">#{{ tag }}&nbsp;{{collections[tag] | filterHidden | length }}</label>
     {% endfor %}
   </form>
 
   <section class='note-list'>
     {% for note in collections.notes | filterHidden | sort(false, false, "data.title") %}
-      <a href="{{ note.url }}" class='note-tile unstyled' data-filter-tags="{{note.data.tags | filterTagList }}">
+      <a href="{{ note.url }}" class='note-tile unstyled' data-filter-tags="{% if note.data.tags | filterTagList | length === 0 %}misc{% else %}{{note.data.tags | filterTagList }}{% endif %}">
         <h3>{{ note.data.title }}</h3>
         <p>{{ note.data.excerpt}}</p>
       </a>

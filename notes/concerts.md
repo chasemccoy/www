@@ -106,5 +106,5 @@ June 4 — Chicago, IL
 
 ## 2021
 
-**Kanye West: Donda listening experience** @ Soldier Field   
+**Kanye West: Donda listening experience** @ Soldier Field  
 August 26 — Chicago, IL
