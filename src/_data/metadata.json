@@ -2,9 +2,9 @@
   "title": "Chase McCoy",
   "url": "https://chasem.co/",
   "language": "en",
-  "description": "I am writing about my experiences as a naval navel-gazer.",
+  "description": "Chase McCoy explores, builds, & writes about the web.",
   "feed": {
-    "subtitle": "I am writing about my experiences as a naval navel-gazer.",
+    "subtitle": "Chase McCoy explores, builds, & writes about the web",
     "path": "/feed.xml",
     "id": "https://chasem.co/"
   },
