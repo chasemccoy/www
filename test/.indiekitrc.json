@@ -1,0 +1,21 @@
+{
+  "plugins": ["@indiekit/store-github"],
+  "publication": {
+    "me": "https://chasem.co",
+    "postTypes": [
+      {
+        "type": "article",
+        "name": "Blog post",
+        "post": {
+          "path": "posts/{slug}.md",
+          "url": "{yyyy}-{MM}-{slug}"
+        }
+      }
+    ]
+  },
+  "@indiekit/store-github": {
+    "user": "chasemccoy",
+    "repo": "www",
+    "branch": "main"
+  }
+}
