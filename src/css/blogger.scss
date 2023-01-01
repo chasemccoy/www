@@ -1,0 +1,74 @@
+@import 'reset';
+
+html,
+body {
+  height: 100%;
+}
+
+main {
+  height: 100vh;
+}
+
+.wrapper {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+header {
+  padding-inline: 1rem;
+  padding-block: 0.5rem;
+  border-bottom: 1px solid gray;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.toolbar {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.workspace {
+  display: flex;
+  height: 100%;
+  overflow: auto;
+  padding-inline: 1rem;
+
+  .sidebar {
+    flex-basis: 30vw;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  .editor-area {
+    flex-grow: 1;
+    padding-bottom: 1rem;
+  }
+
+  #editor {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+#file-list,
+#drafts-list {
+  padding: 0;
+  list-style-type: none;
+
+  button {
+    appearance: none;
+    all: unset;
+    color: blue;
+    cursor: pointer;
+    text-decoration: underline;
+  }
+}

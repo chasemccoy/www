@@ -21,7 +21,11 @@
     <meta name="description" content="{{ description or metadata.description }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="{{ '/css/styles.css' }}">
+    {% if css %}
+      <link rel="stylesheet" href="/css/{{css}}"/>
+    {% else %}
+      <link rel="stylesheet" href="{{ '/css/styles.css' }}">
+    {% endif %}
     <link rel="alternate" href="{{ metadata.feed.path }}" type="application/atom+xml" title="{{ metadata.title }}">
     <link rel="alternate" href="{{ metadata.jsonfeed.path }}" type="application/json" title="{{ metadata.title }}">
     <link rel="icon" href="/favicon.png" type="image/png">
@@ -41,10 +45,10 @@
         font-display: block;
       }
     </style>
-    {% if css %}
-      <link rel="stylesheet" href="/css/{{css}}"/>
-    {% endif %}
     <script src="/js/index.js" defer></script>
+    {% if js %}
+      <script src="/js/{{js}}.js" defer type="module"></script>
+    {% endif %}
   </head>
   <body {% if templateClass %} class="{{ templateClass }}"{% endif %}>
     <main>

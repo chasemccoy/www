@@ -1,0 +1,160 @@
+import { get, set } from 'https://unpkg.com/idb-keyval@5.0.2/dist/esm/index.js'
+
+// Assumptions:
+// - Will only show posts that have a title
+const App = {}
+
+const getDirectory = async () => {
+  try {
+    const directoryHandleOrUndefined = await get('directory')
+    if (directoryHandleOrUndefined) {
+      App.directory = directoryHandleOrUndefined
+      return App.directory
+    }
+    const directoryHandle = await window.showDirectoryPicker({
+      mode: 'readwrite',
+    })
+    await set('directory', directoryHandle)
+    App.directory = directoryHandle
+    return App.directory
+  } catch (error) {
+    alert(error.name, error.message)
+  }
+}
+
+const verifyPermission = async (handle) => {
+  const options = { mode: 'readwrite' }
+
+  // Check if permission was already granted. If so, return true.
+  if ((await handle.queryPermission(options)) === 'granted') {
+    return true
+  }
+  // Request permission. If the user grants permission, return true.
+  if ((await handle.requestPermission(options)) === 'granted') {
+    return true
+  }
+  // The user didn't grant permission, so return false.
+  return false
+}
+
+const getDataForFile = async (fileHandle) => {
+  const file = await fileHandle.getFile()
+  const contents = await file.text()
+  const titleRegex = /title: (.*)/
+  const hiddenRegex = /hidden: true/
+  const match = contents.match(titleRegex)
+  const draft = hiddenRegex.test(contents)
+  if (match) {
+    const title = match[1]
+    return {
+      title,
+      contents,
+      draft,
+    }
+  } else {
+    return {
+      contents,
+      draft,
+    }
+  }
+}
+
+const writeFile = async (fileHandle, contents) => {
+  const writable = await fileHandle.createWritable()
+  await writable.write(contents)
+  await writable.close()
+}
+
+const initApp = () => {
+  App.pickerButton = document.getElementById('pick-directory')
+  App.fileList = document.getElementById('file-list')
+  App.draftsList = document.getElementById('drafts-list')
+  App.editor = document.getElementById('editor')
+  App.saveButton = document.getElementById('save')
+
+  App.editor.oninput = (e) => {
+    App.saveButton.hidden = false
+    App.editorState = 'dirty'
+  }
+
+  App.pickerButton.onclick = async () => {
+    await getDirectory()
+    await verifyPermission(App.directory)
+    App.files = []
+
+    for await (const entry of App.directory.values()) {
+      if (entry.kind === 'file' && entry.name.endsWith('.md')) {
+        const data = await getDataForFile(entry)
+        Object.assign(entry, data)
+        if (data.title) {
+          App.files.push(entry)
+        }
+      } else if (entry.kind === 'directory') {
+        const fileEntry = await entry.getFileHandle('index.md')
+        const data = await getDataForFile(fileEntry)
+        Object.assign(fileEntry, data)
+        if (data.title) {
+          App.files.push(fileEntry)
+        }
+      }
+    }
+
+    App.saveButton.onclick = async () => {
+      if (App.currentFile) {
+        await writeFile(App.currentFile, App.editor.value)
+        App.editorState = ''
+        App.saveButton.hidden = true
+      }
+    }
+
+    App.files = App.files.sort((a, b) =>
+      a.title.toLowerCase().localeCompare(b.title.toLowerCase())
+    )
+
+    populateFiles()
+  }
+}
+
+const populateFiles = async () => {
+  App.fileList.innerHTML = ''
+  App.draftsList.innerHTML = ''
+
+  for (const file of App.files) {
+    const li = document.createElement('li')
+    const button = document.createElement('button')
+    button.onclick = () => {
+      if (App.editorState === 'dirty') {
+        if (confirm('You have unsaved changes.')) {
+          App.editor.value = file.contents
+          App.editorState = ''
+          App.saveButton.hidden = true
+          App.currentFile = file
+        }
+      } else {
+        App.editor.value = file.contents
+        App.editorState = ''
+        App.saveButton.hidden = true
+        App.currentFile = file
+      }
+    }
+    button.innerText = file.title
+    li.appendChild(button)
+    if (file.draft) {
+      App.draftsList.appendChild(li)
+    } else {
+      App.fileList.appendChild(li)
+    }
+  }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  initApp()
+})
+
+window.onbeforeunload = function (e) {
+  e.preventDefault()
+
+  if (App.editorState === 'dirty') {
+    return 'You have unsaved changes. Are you sure you want to close this tab?'
+  }
+}

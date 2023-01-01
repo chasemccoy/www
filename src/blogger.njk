@@ -1,0 +1,33 @@
+---
+title: Blogger
+permalink: /blogger/
+layout: 'layouts/base.njk'
+css: blogger.css
+js: blogger
+---
+
+<header>
+  <h1>Blogger</h1>
+
+  <div class='toolbar'>
+    <button id='pick-directory'>Choose folder</button>
+    <button id='save' hidden>Save</button>
+  </div>
+</header>
+
+<div class='workspace'>
+  <div class='sidebar'>
+    <div>
+      <h2>Drafts</h2>
+      <ul id='drafts-list'></ul>
+    </div>
+
+    <div>
+      <h2>Published</h2>
+      <ul id='file-list'></ul>
+    </div>
+  </div>
+  <div class='editor-area'>
+    <textarea id='editor' contenteditable rows="5" cols="60" value=""></textarea>
+  </div>
+</div>
