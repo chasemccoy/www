@@ -1,13 +1,15 @@
 ---
-title: Blogger
-permalink: /blogger/
+title: Faulkner
+permalink: /faulkner/
 layout: 'layouts/base.njk'
 css: blogger.css
 js: blogger
 ---
 
+<script src="/js/ace/ace.js"></script>
+
 <header>
-  <h1>Blogger</h1>
+  <h1>Faulkner</h1>
 
   <div class='toolbar'>
     <button id='pick-directory'>Choose folder</button>
@@ -18,7 +20,7 @@ js: blogger
 <div class='workspace'>
   <div class='sidebar'>
     <div>
-      <h2>Drafts</h2>
+      <h2>In progress</h2>
       <ul id='drafts-list' class='unstyled'></ul>
     </div>
 
@@ -28,6 +30,7 @@ js: blogger
     </div>
   </div>
   <article class='editor-area'>
-    <textarea id='editor' contenteditable value=""></textarea>
+    {# <textarea id='editor' contenteditable value=""></textarea> #}
+    <div id="editor"></div>
   </article>
 </div>

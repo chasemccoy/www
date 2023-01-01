@@ -69,18 +69,50 @@ const initApp = () => {
   App.pickerButton = document.getElementById('pick-directory')
   App.fileList = document.getElementById('file-list')
   App.draftsList = document.getElementById('drafts-list')
-  App.editor = document.getElementById('editor')
+  // App.editor = document.getElementById('editor')
   App.saveButton = document.getElementById('save')
 
-  App.editor.oninput = (e) => {
-    if (App.editor.value !== App.currentFile.contents) {
+  App.editor = ace.edit('editor')
+  App.editor.setTheme('ace/theme/github')
+  App.editor.session.setMode('ace/mode/markdown')
+
+  // All options are listed here:
+  // https://github.com/ajaxorg/ace/wiki/Configuring-Ace
+  App.editor.setOptions({
+    fontFamily: 'JetBrains Mono',
+    fontSize: '0.9rem',
+    behavioursEnabled: true,
+    enableAutoIndent: true,
+    showLineNumbers: true,
+    showPrintMargin: false,
+    showFoldWidgets: false,
+    showGutter: true,
+    indentedSoftWrap: false,
+    useWorker: false,
+    wrap: 64,
+    tabSize: 2,
+    keyboardHandler: 'ace/keyboard/vscode',
+  })
+
+  App.editor.session.on('change', async (delta) => {
+    if (App.editor.getValue() !== App.currentFile.contents) {
       App.saveButton.hidden = false
       App.editorState = 'dirty'
     } else {
       App.saveButton.hidden = true
       App.editorState = ''
     }
-  }
+  })
+
+  // App.editor.oninput = (e) => {
+  //   if (App.editor.value !== App.currentFile.contents) {
+  //     App.saveButton.hidden = false
+  //     App.editorState = 'dirty'
+  //   } else {
+  //     App.saveButton.hidden = true
+  //     App.editorState = ''
+  //   }
+  // }
 
   App.pickerButton.onclick = async () => {
     await getDirectory()
@@ -109,7 +141,7 @@ const initApp = () => {
 
     App.saveButton.onclick = async () => {
       if (App.currentFile) {
-        await writeFile(App.currentFile, App.editor.value)
+        await writeFile(App.currentFile, App.editor.getValue())
         App.editorState = ''
         App.saveButton.hidden = true
       }
@@ -141,7 +173,7 @@ const populateFiles = async () => {
     button.onclick = () => {
       if (App.editorState === 'dirty') {
         if (confirm('You have unsaved changes.')) {
-          App.editor.value = file.contents
+          App.editor.session.setValue(file.contents)
           App.editorState = ''
           App.saveButton.hidden = true
           App.currentFile = file
@@ -149,7 +181,7 @@ const populateFiles = async () => {
           button.dataset.active = true
         }
       } else {
-        App.editor.value = file.contents
+        App.editor.session.setValue(file.contents)
         App.editorState = ''
         App.saveButton.hidden = true
         App.currentFile = file
