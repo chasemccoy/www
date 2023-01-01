@@ -73,13 +73,21 @@ const initApp = () => {
   App.saveButton = document.getElementById('save')
 
   App.editor.oninput = (e) => {
-    App.saveButton.hidden = false
-    App.editorState = 'dirty'
+    if (App.editor.value !== App.currentFile.contents) {
+      App.saveButton.hidden = false
+      App.editorState = 'dirty'
+    } else {
+      App.saveButton.hidden = true
+      App.editorState = ''
+    }
   }
 
   App.pickerButton.onclick = async () => {
     await getDirectory()
-    await verifyPermission(App.directory)
+    const success = await verifyPermission(App.directory)
+    if (success) {
+      App.pickerButton.hidden = true
+    }
     App.files = []
 
     for await (const entry of App.directory.values()) {
@@ -115,6 +123,13 @@ const initApp = () => {
   }
 }
 
+const clearActiveNavItems = () => {
+  const activeItems = document.querySelectorAll('ul button[data-active]')
+  activeItems.forEach((item) => {
+    delete item.dataset.active
+  })
+}
+
 const populateFiles = async () => {
   App.fileList.innerHTML = ''
   App.draftsList.innerHTML = ''
@@ -122,6 +137,7 @@ const populateFiles = async () => {
   for (const file of App.files) {
     const li = document.createElement('li')
     const button = document.createElement('button')
+
     button.onclick = () => {
       if (App.editorState === 'dirty') {
         if (confirm('You have unsaved changes.')) {
@@ -129,14 +145,19 @@ const populateFiles = async () => {
           App.editorState = ''
           App.saveButton.hidden = true
           App.currentFile = file
+          clearActiveNavItems()
+          button.dataset.active = true
         }
       } else {
         App.editor.value = file.contents
         App.editorState = ''
         App.saveButton.hidden = true
         App.currentFile = file
+        clearActiveNavItems()
+        button.dataset.active = true
       }
     }
+
     button.innerText = file.title
     li.appendChild(button)
     if (file.draft) {
