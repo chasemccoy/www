@@ -13,6 +13,7 @@ js: blogger
 
   <div class='toolbar'>
     <button id='pick-directory'>Choose folder</button>
+    <button id='create-button' hidden>Create</button>
     <button id='save' hidden>Save</button>
   </div>
 </header>
@@ -34,3 +35,19 @@ js: blogger
     <div id="editor"></div>
   </article>
 </div>
+
+<dialog id='create-dialog'>
+  <h2>Create new blog post</h2>
+
+  <form method="dialog">
+    <label>
+      Title
+      <input type="text" name="title" autofocus/>
+    </label>
+
+    <footer>
+      <button type="reset" onclick="this.closest('dialog').close('cancel')">Cancel</button>
+      <button type="submit" value="confirm">Create</button>
+    </footer>
+  </form>
+</dialog>

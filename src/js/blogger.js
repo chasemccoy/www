@@ -82,6 +82,8 @@ const initApp = () => {
   App.draftsList = document.getElementById('drafts-list')
   // App.editor = document.getElementById('editor')
   App.saveButton = document.getElementById('save')
+  App.createDialog = document.getElementById('create-dialog')
+  App.createButton = document.getElementById('create-button')
 
   App.editor = ace.edit('editor')
   App.editor.setTheme('ace/theme/github')
@@ -106,7 +108,7 @@ const initApp = () => {
   })
 
   App.editor.session.on('change', async (delta) => {
-    if (App.editor.getValue() !== App.currentFile.contents) {
+    if (App.currentFile && App.editor.getValue() !== App.currentFile.contents) {
       App.saveButton.hidden = false
       App.editorState = 'dirty'
     } else {
@@ -120,6 +122,7 @@ const initApp = () => {
     const success = await verifyPermission(App.directory)
     if (success) {
       App.pickerButton.hidden = true
+      App.createButton.hidden = false
     }
     App.files = []
 
@@ -147,6 +150,37 @@ const initApp = () => {
         App.saveButton.hidden = true
       }
     }
+
+    App.createButton.onclick = () => {
+      App.createDialog.showModal()
+    }
+
+    App.createDialog.onclose = ({ target: dialog }) => {
+      if (dialog.returnValue === 'confirm') {
+        const formData = new FormData(dialog.querySelector('form'))
+        console.info('Dialog form data', Object.fromEntries(formData.entries()))
+
+        if (formData.title) {
+          // slugify title
+          // generate frontmatter with date
+          // create file
+        }
+
+        dialog.querySelector('form')?.reset()
+      }
+    }
+
+    // App.createDialog.addEventListener('click', (event) => {
+    //   const rect = App.createDialog.getBoundingClientRect()
+    //   if (
+    //     event.clientY < rect.top ||
+    //     event.clientY > rect.bottom ||
+    //     event.clientX < rect.left ||
+    //     event.clientX > rect.right
+    //   ) {
+    //     App.createDialog.close()
+    //   }
+    // })
 
     App.files = App.files.sort((a, b) =>
       a.title.toLowerCase().localeCompare(b.title.toLowerCase())
