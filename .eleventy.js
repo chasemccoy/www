@@ -137,6 +137,9 @@ module.exports = function (config) {
     ui: false,
     ghostMode: false,
     files: './_site/css/**/*.css',
+    snippetOptions: {
+      ignorePaths: 'faulkner/**',
+    },
   })
 
   return {

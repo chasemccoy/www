@@ -18,6 +18,15 @@ const countWords = (string) => {
   return string.split(' ').filter(String).length
 }
 
+const debounce = (callback, wait) => {
+  let timeout
+  return (...args) => {
+    const context = this
+    clearTimeout(timeout)
+    timeout = setTimeout(() => callback.apply(context, args), wait)
+  }
+}
+
 const getDirectory = async () => {
   try {
     const directoryHandleOrUndefined = await get('directory')
@@ -135,7 +144,7 @@ const initApp = () => {
     keyboardHandler: 'ace/keyboard/vscode',
   })
 
-  App.editor.session.on('change', async (delta) => {
+  App.editor.session.on('change', async () => {
     if (App.currentFile && App.editor.getValue() !== App.currentFile.contents) {
       App.saveButton.hidden = false
       App.editorState = 'dirty'
@@ -144,6 +153,20 @@ const initApp = () => {
       App.editorState = ''
     }
   })
+
+  App.editor.session.on(
+    'change',
+    debounce(async () => {
+      if (
+        App.currentFile &&
+        App.editor.getValue() !== App.currentFile.contents
+      ) {
+        await writeFile(App.currentFile, App.editor.getValue())
+        App.editorState = ''
+        App.saveButton.hidden = true
+      }
+    }, 300)
+  )
 
   App.pickerButton.onclick = async () => {
     await getDirectory()
