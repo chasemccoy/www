@@ -1,5 +1,6 @@
 import { get, set } from 'https://unpkg.com/idb-keyval@5.0.2/dist/esm/index.js'
 import { DateTime } from 'https://unpkg.com/luxon@3.2.0/build/es6/luxon.js'
+import slugify from 'https://unpkg.com/@sindresorhus/slugify@2.1.1?module'
 
 // Assumptions:
 // - Will only show posts that have a title & date
@@ -76,12 +77,29 @@ const writeFile = async (fileHandle, contents) => {
   await writable.close()
 }
 
+const createNewFile = async (name, contents) => {
+  const options = {
+    suggestedName: name + '.md',
+    types: [
+      {
+        description: 'Markdown files',
+        accept: {
+          'text/markdown': ['.md'],
+        },
+      },
+    ],
+  }
+  const handle = await window.showSaveFilePicker(options)
+  await writeFile(handle, contents)
+  return handle
+}
+
 const initApp = () => {
   App.pickerButton = document.getElementById('pick-directory')
   App.fileList = document.getElementById('file-list')
   App.draftsList = document.getElementById('drafts-list')
-  // App.editor = document.getElementById('editor')
   App.saveButton = document.getElementById('save')
+  App.viewPostButton = document.getElementById('view-post')
   App.createDialog = document.getElementById('create-dialog')
   App.createButton = document.getElementById('create-button')
 
@@ -130,6 +148,7 @@ const initApp = () => {
       if (entry.kind === 'file' && entry.name.endsWith('.md')) {
         const data = await getDataForFile(entry)
         Object.assign(entry, data)
+        entry.slug = entry.name.replace('.md', '')
         if (data.title && !filesToFilter.includes(data.title)) {
           App.files.push(entry)
         }
@@ -137,6 +156,7 @@ const initApp = () => {
         const fileEntry = await entry.getFileHandle('index.md')
         const data = await getDataForFile(fileEntry)
         Object.assign(fileEntry, data)
+        fileEntry.slug = entry.name
         if (data.title && !filesToFilter.includes(data.title)) {
           App.files.push(fileEntry)
         }
@@ -155,32 +175,34 @@ const initApp = () => {
       App.createDialog.showModal()
     }
 
-    App.createDialog.onclose = ({ target: dialog }) => {
+    App.createDialog.onclose = async ({ target: dialog }) => {
       if (dialog.returnValue === 'confirm') {
         const formData = new FormData(dialog.querySelector('form'))
-        console.info('Dialog form data', Object.fromEntries(formData.entries()))
+        const { title } = Object.fromEntries(formData.entries())
 
-        if (formData.title) {
-          // slugify title
-          // generate frontmatter with date
-          // create file
+        if (title) {
+          const slug = slugify(title)
+          const frontmatter = [
+            '---',
+            `title: ${title}`,
+            `date: ${DateTime.now().toISODate()}`,
+            'hidden: true',
+            '---',
+            '',
+            '',
+          ].join('\n')
+
+          const file = await createNewFile(slug, frontmatter)
+          const data = await getDataForFile(file)
+          Object.assign(file, data)
+          file.slug = file.name.replace('.md', '')
+          App.files.push(file)
+          await populateFiles()
         }
 
         dialog.querySelector('form')?.reset()
       }
     }
-
-    // App.createDialog.addEventListener('click', (event) => {
-    //   const rect = App.createDialog.getBoundingClientRect()
-    //   if (
-    //     event.clientY < rect.top ||
-    //     event.clientY > rect.bottom ||
-    //     event.clientX < rect.left ||
-    //     event.clientX > rect.right
-    //   ) {
-    //     App.createDialog.close()
-    //   }
-    // })
 
     App.files = App.files.sort((a, b) =>
       a.title.toLowerCase().localeCompare(b.title.toLowerCase())
@@ -205,23 +227,24 @@ const populateFiles = async () => {
     const li = document.createElement('li')
     const button = document.createElement('button')
 
+    const onClick = () => {
+      App.editor.session.setValue(file.contents)
+      App.editorState = ''
+      App.saveButton.hidden = true
+      App.currentFile = file
+      clearActiveNavItems()
+      button.dataset.active = true
+      App.viewPostButton.hidden = false
+      App.viewPostButton.href = `${file.date.toFormat('/yyyy/MM/')}${file.slug}`
+    }
+
     button.onclick = () => {
       if (App.editorState === 'dirty') {
         if (confirm('You have unsaved changes.')) {
-          App.editor.session.setValue(file.contents)
-          App.editorState = ''
-          App.saveButton.hidden = true
-          App.currentFile = file
-          clearActiveNavItems()
-          button.dataset.active = true
+          onClick()
         }
       } else {
-        App.editor.session.setValue(file.contents)
-        App.editorState = ''
-        App.saveButton.hidden = true
-        App.currentFile = file
-        clearActiveNavItems()
-        button.dataset.active = true
+        onClick()
       }
     }
 
