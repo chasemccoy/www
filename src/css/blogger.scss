@@ -8,6 +8,7 @@ body {
   height: 100%;
   font-family: var(--font-system);
   background: var(--color-body-background);
+  color: var(--color-text);
 }
 
 button {
@@ -15,6 +16,7 @@ button {
   all: unset;
   display: block;
   cursor: pointer;
+  color: var(--color-text);
 }
 
 main {
@@ -71,7 +73,7 @@ header {
   overflow: auto;
 
   .sidebar {
-    flex-basis: 25vw;
+    flex-basis: 24vw;
     overflow: auto;
     display: flex;
     flex-direction: column;
@@ -99,9 +101,7 @@ header {
     display: block;
     width: 100%;
     height: 100%;
-    font-family: var(--font-code);
-    font-size: 0.9rem;
-    line-height: 1.5;
+    line-height: 1.45;
   }
 }
 
@@ -119,6 +119,12 @@ header {
     line-height: 1.2;
     padding: 4px 0.5rem;
     color: var(--color-caption);
+    display: flex;
+    justify-content: space-between;
+
+    span {
+      white-space: nowrap;
+    }
   }
 
   button:hover,
@@ -140,5 +146,9 @@ header {
 
   .ace_content {
     padding-left: 8px;
+  }
+
+  &.ace-github {
+    color: hsl(43, 10%, 20%);
   }
 }

@@ -1,8 +1,14 @@
 import { get, set } from 'https://unpkg.com/idb-keyval@5.0.2/dist/esm/index.js'
+import { DateTime } from 'https://unpkg.com/luxon@3.2.0/build/es6/luxon.js'
 
 // Assumptions:
-// - Will only show posts that have a title
+// - Will only show posts that have a title & date
 const App = {}
+
+const filesToFilter = [
+  'Default constraint behaviors using Swift protocols',
+  'Gatsby schema customization is pretty cool',
+]
 
 const getDirectory = async () => {
   try {
@@ -42,20 +48,25 @@ const getDataForFile = async (fileHandle) => {
   const contents = await file.text()
   const titleRegex = /title: (.*)/
   const hiddenRegex = /hidden: true/
-  const match = contents.match(titleRegex)
+  const dateRegex = /date: (.*)/
+  const matchTitle = contents.match(titleRegex)
+  const matchDate = contents.match(dateRegex)
   const draft = hiddenRegex.test(contents)
-  if (match) {
-    const title = match[1]
+  if (matchTitle && matchDate) {
+    const title = matchTitle[1]
+    const date = DateTime.fromISO(matchDate[1])
+
     return {
       title,
+      date,
       contents,
       draft,
     }
-  } else {
-    return {
-      contents,
-      draft,
-    }
+  }
+
+  return {
+    contents,
+    draft,
   }
 }
 
@@ -104,16 +115,6 @@ const initApp = () => {
     }
   })
 
-  // App.editor.oninput = (e) => {
-  //   if (App.editor.value !== App.currentFile.contents) {
-  //     App.saveButton.hidden = false
-  //     App.editorState = 'dirty'
-  //   } else {
-  //     App.saveButton.hidden = true
-  //     App.editorState = ''
-  //   }
-  // }
-
   App.pickerButton.onclick = async () => {
     await getDirectory()
     const success = await verifyPermission(App.directory)
@@ -126,14 +127,14 @@ const initApp = () => {
       if (entry.kind === 'file' && entry.name.endsWith('.md')) {
         const data = await getDataForFile(entry)
         Object.assign(entry, data)
-        if (data.title) {
+        if (data.title && !filesToFilter.includes(data.title)) {
           App.files.push(entry)
         }
       } else if (entry.kind === 'directory') {
         const fileEntry = await entry.getFileHandle('index.md')
         const data = await getDataForFile(fileEntry)
         Object.assign(fileEntry, data)
-        if (data.title) {
+        if (data.title && !filesToFilter.includes(data.title)) {
           App.files.push(fileEntry)
         }
       }
@@ -190,14 +191,28 @@ const populateFiles = async () => {
       }
     }
 
+    const diffInDays = Math.round(
+      DateTime.now().diff(file.date, 'days').toObject().days
+    )
+
     button.innerText = file.title
     li.appendChild(button)
     if (file.draft) {
+      li.dataset.age = diffInDays
+      const span = document.createElement('span')
+      span.innerText = `${diffInDays}d`
+      button.appendChild(span)
       App.draftsList.appendChild(li)
     } else {
       App.fileList.appendChild(li)
     }
   }
+
+  const drafts = Array.from(App.draftsList.querySelectorAll('li[data-age]'))
+  const sortedDrafts = drafts.sort(
+    (a, b) => parseInt(b.dataset.age) - parseInt(a.dataset.age)
+  )
+  App.draftsList.append(...sortedDrafts)
 }
 
 document.addEventListener('DOMContentLoaded', () => {
