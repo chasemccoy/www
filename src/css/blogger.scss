@@ -164,9 +164,9 @@ dialog#create-dialog {
   color: var(--color-text);
   border: none;
   border-radius: 12px;
-
   flex-direction: column;
   gap: 1rem;
+  min-width: 30ch;
 
   &[open] {
     display: flex;
@@ -182,18 +182,38 @@ dialog#create-dialog {
       flex-direction: column;
       gap: 4px;
       font-weight: bold;
+      font-size: 0.9rem;
+    }
+
+    input,
+    textarea {
+      font-size: 1rem;
+      font-family: var(--font-system);
+      background: var(--color-offset);
+      color: var(--color-text);
+      box-shadow: none;
+      border-radius: 6px;
+      border: 1px solid var(--color-border);
+      padding: 4px 6px 6px;
+
+      &:focus {
+        outline: 1px solid var(--color-accent);
+      }
     }
   }
 
   h2 {
     line-height: 1;
+    font-family: var(--font-code);
+    font-size: 0.9rem;
+    font-weight: normal;
+    text-transform: uppercase;
   }
 
   footer {
     display: flex;
     gap: 0.5rem;
     justify-content: flex-end;
-    margin-top: 0.5rem;
   }
 
   button {
@@ -207,6 +227,10 @@ dialog#create-dialog {
     &:hover {
       background: var(--color-offset);
       font-style: italic;
+    }
+
+    &:focus {
+      outline: 1px solid var(--color-accent);
     }
   }
 }

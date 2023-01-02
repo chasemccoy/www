@@ -178,21 +178,21 @@ const initApp = () => {
     App.createDialog.onclose = async ({ target: dialog }) => {
       if (dialog.returnValue === 'confirm') {
         const formData = new FormData(dialog.querySelector('form'))
-        const { title } = Object.fromEntries(formData.entries())
+        const { title, note } = Object.fromEntries(formData.entries())
 
-        if (title) {
+        if (title && title !== '') {
           const slug = slugify(title)
-          const frontmatter = [
+          const contents = [
             '---',
             `title: ${title}`,
             `date: ${DateTime.now().toISODate()}`,
             'hidden: true',
             '---',
             '',
-            '',
+            note,
           ].join('\n')
 
-          const file = await createNewFile(slug, frontmatter)
+          const file = await createNewFile(slug, contents)
           const data = await getDataForFile(file)
           Object.assign(file, data)
           file.slug = file.name.replace('.md', '')
