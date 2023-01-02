@@ -11,6 +11,13 @@ const filesToFilter = [
   'Gatsby schema customization is pretty cool',
 ]
 
+const countWords = (string) => {
+  string = string.replace(/(^\s*)|(\s*$)/gi, '')
+  string = string.replace(/[ ]{2,}/gi, ' ')
+  string = string.replace(/\n /, '\n')
+  return string.split(' ').filter(String).length
+}
+
 const getDirectory = async () => {
   try {
     const directoryHandleOrUndefined = await get('directory')
@@ -56,12 +63,15 @@ const getDataForFile = async (fileHandle) => {
   if (matchTitle && matchDate) {
     const title = matchTitle[1]
     const date = DateTime.fromISO(matchDate[1])
+    const frontmatterRegex = /^---\n(.*\n)+---\n/
+    const wordCount = countWords(contents.replace(frontmatterRegex, '').trim())
 
     return {
       title,
       date,
       contents,
       draft,
+      wordCount,
     }
   }
 
@@ -257,7 +267,7 @@ const populateFiles = async () => {
     if (file.draft) {
       li.dataset.age = diffInDays
       const span = document.createElement('span')
-      span.innerText = `${diffInDays}d`
+      span.innerText = `${diffInDays}d, ${file.wordCount}w`
       button.appendChild(span)
       App.draftsList.appendChild(li)
     } else {
