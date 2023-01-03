@@ -127,9 +127,12 @@ header {
     color: var(--color-caption);
     display: flex;
     justify-content: space-between;
+    align-items: center;
 
     span {
       white-space: nowrap;
+      font-family: var(--font-code);
+      font-size: 0.8em;
     }
   }
 

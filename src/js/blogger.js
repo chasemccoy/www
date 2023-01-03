@@ -93,6 +93,7 @@ const getDataForFile = async (fileHandle) => {
 const writeFile = async (fileHandle, contents) => {
   const writable = await fileHandle.createWritable()
   await writable.write(contents)
+  fileHandle.contents = contents
   await writable.close()
 }
 
@@ -130,7 +131,7 @@ const initApp = () => {
   // https://github.com/ajaxorg/ace/wiki/Configuring-Ace
   App.editor.setOptions({
     fontFamily: 'JetBrains Mono',
-    fontSize: '0.9rem',
+    fontSize: '0.85rem',
     behavioursEnabled: true,
     enableAutoIndent: true,
     showLineNumbers: true,
@@ -139,7 +140,7 @@ const initApp = () => {
     showGutter: true,
     indentedSoftWrap: false,
     useWorker: false,
-    wrap: 64,
+    wrap: 68,
     tabSize: 2,
     keyboardHandler: 'ace/keyboard/vscode',
   })
@@ -307,6 +308,8 @@ const populateFiles = async () => {
 
 document.addEventListener('DOMContentLoaded', () => {
   initApp()
+  document.title = 'Faulkner'
+  App.draftsList.querySelector('li:first-child button')?.click()
 })
 
 window.onbeforeunload = function (e) {
