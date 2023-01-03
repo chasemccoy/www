@@ -232,6 +232,9 @@ const initApp = () => {
           file.slug = file.name.replace('.md', '')
           App.files.push(file)
           await populateFiles()
+          // if (App.editorState !== 'dirty') {
+          //   /* Select the newly created file in the sidebar */
+          // }
         }
 
         dialog.querySelector('form')?.reset()
@@ -242,7 +245,8 @@ const initApp = () => {
       a.title.toLowerCase().localeCompare(b.title.toLowerCase())
     )
 
-    populateFiles()
+    await populateFiles()
+    App.draftsList.querySelector('li:first-child button')?.click()
   }
 }
 
@@ -309,7 +313,6 @@ const populateFiles = async () => {
 document.addEventListener('DOMContentLoaded', () => {
   initApp()
   document.title = 'Faulkner'
-  App.draftsList.querySelector('li:first-child button')?.click()
 })
 
 window.onbeforeunload = function (e) {
