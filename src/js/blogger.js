@@ -241,6 +241,27 @@ const initApp = () => {
       }
     }
 
+    document.querySelector('textarea.ace_text-input')?.addEventListener(
+      'paste',
+      (event) => {
+        event.preventDefault()
+        event.stopPropagation()
+
+        const clipboardText = (
+          event.clipboardData || window.clipboardData
+        ).getData('text')
+        const currentSelection = App.editor.getSelectedText()
+
+        if (clipboardText.includes('http') && currentSelection !== '') {
+          const link = `[${currentSelection}](${clipboardText.trim()})`
+          App.editor.insert(link)
+        } else {
+          App.editor.insert(clipboardText)
+        }
+      },
+      true
+    )
+
     App.files = App.files.sort((a, b) =>
       a.title.toLowerCase().localeCompare(b.title.toLowerCase())
     )
@@ -248,6 +269,8 @@ const initApp = () => {
     await populateFiles()
     App.draftsList.querySelector('li:first-child button')?.click()
   }
+
+  App.pickerButton.click()
 }
 
 const clearActiveNavItems = () => {
