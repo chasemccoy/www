@@ -144,13 +144,19 @@ header {
 }
 
 #editor {
-  .ace_gutter {
-    background: var(--color-offset);
-    color: var(--color-caption);
+  @media (prefers-color-scheme: dark) {
+    filter: invert(90%);
   }
 
-  .ace_gutter-cell {
-    opacity: 0.5;
+  @media (prefers-color-scheme: light) {
+    .ace_gutter {
+      background: var(--color-offset);
+      color: var(--color-caption);
+    }
+
+    .ace_gutter-cell {
+      opacity: 0.5;
+    }
   }
 
   .ace_content {
