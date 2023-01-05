@@ -122,6 +122,7 @@ const initApp = () => {
   App.viewPostButton = document.getElementById('view-post')
   App.createDialog = document.getElementById('create-dialog')
   App.createButton = document.getElementById('create-button')
+  App.openInCodeButton = document.getElementById('open-vscode')
 
   App.editor = ace.edit('editor')
   App.editor.setTheme('ace/theme/github')
@@ -262,9 +263,7 @@ const initApp = () => {
       true
     )
 
-    App.files = App.files.sort((a, b) =>
-      a.title.toLowerCase().localeCompare(b.title.toLowerCase())
-    )
+    App.files = App.files.sort((a, b) => b.date.toMillis() - a.date.toMillis())
 
     await populateFiles()
     App.draftsList.querySelector('li:first-child button')?.click()
@@ -296,7 +295,12 @@ const populateFiles = async () => {
       clearActiveNavItems()
       button.dataset.active = true
       App.viewPostButton.hidden = false
+      App.openInCodeButton.hidden = false
       App.viewPostButton.href = `${file.date.toFormat('/yyyy/MM/')}${file.slug}`
+      const fileName = file.name.includes('index.md')
+        ? `${file.slug}/index.md`
+        : file.name
+      App.openInCodeButton.href = `vscode://file//Users/chase/Repositories/www/posts/${fileName}`
     }
 
     button.onclick = () => {
