@@ -51,7 +51,13 @@ header {
 
 .toolbar {
   display: flex;
-  gap: 0.25rem;
+  justify-content: space-between;
+  flex-grow: 1;
+
+  > div {
+    display: flex;
+    gap: 0.25rem;
+  }
 
   button,
   a {
