@@ -38,6 +38,7 @@ async function imageShortcode(src, alt, sizes) {
 module.exports = function (config) {
   config.addPassthroughCopy({ 'src/js': 'js' })
   config.addPassthroughCopy({ public: '/' })
+  config.setUseGitIgnore(false)
 
   // Add plugins
   config.addPlugin(pluginRSS)
@@ -136,7 +137,7 @@ module.exports = function (config) {
     },
     ui: false,
     ghostMode: false,
-    files: './_site/css/**/*.css',
+    files: './src/_includes/styles/**/*.css',
     snippetOptions: {
       ignorePaths: 'faulkner/**',
     },

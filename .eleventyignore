@@ -1,2 +1,4 @@
 README.md
 .netlify
+_site/
+node_modules/
