@@ -1,6 +1,6 @@
 ---
 title: Silos and pastures
-excerpt: The web doesn’t exist on our client devices, it exists on the  servers between us.
+excerpt: The web doesn’t exist on our client devices, it exists on the servers between us.
 image: image.png
 date: 2022-05-28
 hidden: true
