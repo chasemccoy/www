@@ -31,3 +31,4 @@ I'm not writing to impress or to inspire or to entertain or to teach. I'm not ev
 <book-mark url="http://www.43folders.com/2004/11/18/hack-your-way-out-of-writers-block"></book-mark>
 <book-mark url="http://www.43folders.com/2008/08/19/good-blogs"></book-mark>
 <book-mark url="https://guzey.com/personal/why-have-a-blog/"></book-mark>
+<book-mark url="https://www.cjchilvers.com/personal-publishing-principles/"></book-mark>
