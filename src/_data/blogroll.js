@@ -19,4 +19,5 @@ module.exports = [
   { name: 'Robin Sloan', url: 'https://www.robinsloan.com' },
   { name: 'Soroush Khanlou', url: 'http://khanlou.com' },
   { name: 'thesephist', url: 'https://thesephist.com' },
+  { name: 'Tom Critchlow', url: 'https://tomcritchlow.com' },
 ]
