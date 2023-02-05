@@ -25,6 +25,6 @@ My life and friends and relationships and career are all in there, wound up with
 
 In setting up and using this new computer for the first time, however, I've realized how much devices today are like shells. The real computers, the ones that store our data and perform tasks on our behalf, are behemoths sitting in data centers. Setting up a new computer today is mostly a task of signing into various web applications to access your data, not transferring data onto the machine itself.
 
-Our computers have become internet computers. And that might mean that the physical devices we own will trend towards nothingness—their goal is not longer to impress or inspire, but to be so small and light as to fall away entirely.
+Our computers have become internet computers. And that might mean that the physical devices we own will trend towards nothingness—their goal is no longer to impress or inspire, but to be so small and light as to fall away entirely.
 
 There's something about that which makes me feel a bit melancholy. It feels like the days of computing devices being objects with personality and conviviality are fading. The computer is no longer a centerpiece, it's an accessory, a thin client for some other machine or machines which are hidden away from us.
