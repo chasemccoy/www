@@ -20,6 +20,10 @@ Over the past year I've worked on three small web experiments that center around
 
 ## Broadsheet 
 
+Broadsheet was inspired by [the summer of Spring '83](https://www.robinsloan.com/lab/specifying-spring-83/#summer).
+
 <hr class='break' />
 
 ## Faulkner
+
+Faulkner (named after another writer from Mississippi) is powered by the web [file system access APIs](https://developer.mozilla.org/en-US/docs/Web/API/File_System_Access_API).
