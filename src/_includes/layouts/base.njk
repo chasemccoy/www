@@ -57,6 +57,7 @@
     {% if js %}
       <script src="/js/{{js}}.js" defer type="module"></script>
     {% endif %}
+    {{ head | safe }}
   </head>
   <body {% if templateClass %} class="{{ templateClass }}"{% endif %}>
     <main>
