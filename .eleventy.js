@@ -121,6 +121,10 @@ module.exports = function (config) {
 
   config.setLibrary('md', markdownLibrary)
 
+  config.setServerOptions({
+    port: 1995,
+  })
+
   return {
     templateFormats: ['md', 'njk', 'html'],
     markdownTemplateEngine: 'njk',
