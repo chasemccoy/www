@@ -4,9 +4,13 @@ date: 2023-02-04
 hidden: true
 ---
 
-The fall of Twitter has been likke writing on the wall for some time now, and I found myself frequently wondering what some other web might feel like. l
+The fall of Twitter has been likke writing on the wall for some time now, and I found myself frequently wondering what some other web might feel like.
 
-Imagine a web just for you. A web owned and operated by you, maintained with love and care and without relying on third party dependencies or third party platforms. 
+Imagine a web just for you. A web owned and operated by you, maintained with love and care and without relying on third party dependencies or third party platforms. A web that will never sunset or get acquired or sell your data. 
+
+It's funny how that web was the entire purpose of the whole thing, and yet so many of us rarely experience that it anymore. I wanted a web I could mold to my experiences and needs.
+
+So I asked myself what spaces I'd like to inhabit when I'm on the web. The magic of the web for me has always been about discovering new things, publishing independently, and trying to plot the unplottable. 
 
 ---
 
@@ -25,6 +29,10 @@ My hope is to construct a homestead on the web, tucked away amongst the streams.
 ## Microcosm
 
 It's easier to find a needle in a smaller haystack. Microcosm is my personal haystack.
+
+Discovering content during the early days of the internet was like exploring a new territory. There was a growing amount of content to see, but it was not very densely linked and thus harder to discover. The trails had not yet been plotted on the map.  
+
+Some explorers set out to solve that. Ontologists go to work exploring, classifying, and categorizing the web to not only help others find their way, but also to try to better understand the nature of the web itself.
 
 <hr class='break' />
 
