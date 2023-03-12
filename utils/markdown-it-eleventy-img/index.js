@@ -20,6 +20,11 @@ module.exports = function markdownItEleventyImg(
 
     const tokenAttributes = generateAttrsObject(token)
 
+    // Don't try to do special stuff with externally hosted images
+    if (tokenAttributes.src.startsWith('http')) {
+      return `<img src="${tokenAttributes.src}" />`
+    }
+
     const src = path.join(
       './',
       env.page.filePathStem.replace('index', ''),
