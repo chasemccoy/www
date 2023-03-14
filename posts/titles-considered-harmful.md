@@ -24,6 +24,8 @@ All of that was driven by the need to tinker and experiment with the web as a me
 
 Earlier this week I listened to Jason Kottke's recent appearance on John Gruber's podcast, The Talk Show, and was delighted to hear them discuss this very topic. Jason is one of the original innovators of the blog form, and I've been following his blog, kottke.org, since I was old enough to care about random shit on the internet. 
 
+Kottke.org turned *25 years old* this week, and Jason has been blogging online for even longer than that. And all along the way, he has experimented with the form of content on the web. He's not alone in that—many bloggers like him have helped to shape the form of the internet. The ones that cinfluenced me besides kottke.org are [Daring Fireball](TK), [Waxy.org](https://waxy.org), Jim Coudal and [Coudal Partners](http://www.coudal.com), [Shawn Blanc](TK), [Rands in Repose](https://randsinrepose.com/), and more that I'm certainly forgetting.
+
 TK coudal, daring fireball, kottke, waxy, shawn blanc, geek & mild, anil dash, marco arment, merlin mann
 
 
