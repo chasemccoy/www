@@ -1,7 +1,6 @@
 ---
 title: How blogs shaped the web
 date: 2023-03-15
-hidden: true
 ---
 
 I have a lot of nostalgia for the era of blogging that I grew up with during the first decade or so of the 2000s.
