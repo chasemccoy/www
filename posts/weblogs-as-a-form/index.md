@@ -12,11 +12,11 @@ As social media and smartphones became a part of our everyday lives, there was a
 
 Looking back, this is probably where my meta-fascination with the web came from. Understanding and analyzing the medium itself was always the most interesting use of that medium for me.
 
-Robin Sloan puts it well (as he does most things):
+Robin Sloan puts it well (as he is wont to do):
 
 > Back in the 2000s, a lot of blogs were about blogs, about blogging. If that sounds exhaustingly meta, well, yes — but it was also SUPER generative. When the thing can describe itself, when it becomes the natural place to discuss and debate itself, I&nbsp;am telling you: some flywheel gets spinning, and powerful things start to&nbsp;happen.
 >
-> <cite>Robin Sloan, [A year of new avenues](https://www.robinsloan.com/lab/new-avenues/#meta)</cite>
+> <cite>[Robin Sloan, A year of new avenues](https://www.robinsloan.com/lab/new-avenues/#meta)</cite>
 
 Design, programming, and writing all started for me because of the web. I can recall the progression from a plain text editor to the Tumblr theme editor to learning self-hosted WordPress and then working with Jekyll, so on and so forth.
 
@@ -42,7 +42,7 @@ They point out that many early sites didn't use titles for blog posts, a pattern
 
 This is an incredible example of the medium shaping the message, where the UI design of RSS readers heavily influenced the form of content being published. When optimizing for the web, those early bloggers and the social networks of today both arrived at the same conclusion—titles are unnecessary and add an undue burden to publishing content.
 
-Wen referring to the early bloggers at suck.com, Jason said something that I think describes this entire revolution pretty well.
+When referring to the early bloggers at suck.com, Jason said something that I think describes this entire revolution pretty well.
 
 > [...]there was in information to be gotten from not only what they linked to, but how they linked to it, which word they decided to make the hyperlink.
 > 
@@ -54,6 +54,10 @@ With linking out to other sites being such a core part of blogging, it's no surp
 
 Another similar example is URL slugs—the short string of text at the end of a web address identifying a single post. For many of my favorite bloggers, the URL slug is a small but subtle way to convey a message that may _or may not be_ the same as the message of the post itself. One other stylistic primitive unique to the web.
 
-There was a time when I considered blogging as a potential career, and in the process of exploring that I found my way to design and software.
+<hr class='break' />
 
-Write a blog, take great care of how it is presented, experiment with form as much as well as content.
+It's hard to communicate how grateful I feel for this era of experimentation on the web, and specifically for Jason Kottke's influence on me as a designer.  
+
+There was a time when I thought my career might be curved towards blogging full-time and running my own version of something like kottke.org. Through exploring that I found my way to what I really loved—design and software. My work continues to benefit from what I learned studying bloggers and publishers online. 
+
+Whether you care much about writing or not, I encourage you to have a blog. Write about what interests you, take great care of how you present it to the world, and you might be surprised where it takes you.
