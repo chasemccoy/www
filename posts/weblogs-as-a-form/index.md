@@ -16,7 +16,7 @@ Robin Sloan puts it well (as he does most things):
 
 > Back in the 2000s, a lot of blogs were about blogs, about blogging. If that sounds exhaustingly meta, well, yes — but it was also SUPER generative. When the thing can describe itself, when it becomes the natural place to discuss and debate itself, I&nbsp;am telling you: some flywheel gets spinning, and powerful things start to&nbsp;happen.
 >
-> <cite>[A year of new avenues](https://www.robinsloan.com/lab/new-avenues/#meta)</cite>
+> <cite>Robin Sloan, [A year of new avenues](https://www.robinsloan.com/lab/new-avenues/#meta)</cite>
 
 Design, programming, and writing all started for me because of the web. I can recall the progression from a plain text editor to the Tumblr theme editor to learning self-hosted WordPress and then working with Jekyll, so on and so forth.
 
