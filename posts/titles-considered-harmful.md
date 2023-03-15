@@ -24,7 +24,7 @@ All of that was driven by the need to tinker and experiment with the web as a me
 
 Earlier this week I listened to [Jason Kottke's recent appearance on John Gruber's podcast](https://daringfireball.net/thetalkshow/2023/03/11/ep-370) and was delighted to hear them discuss this very topic. ason is one of the original innovators of the blog form, and I've been following his blog, kottke.org, since I was old enough to care about random shit on the internet.
 
-Kottke.org turned *25 years old* this week, and Jason has been blogging online for even longer than that. And all along the way, he has experimented with the form of content on the web. He's not alone in that—many bloggers like him have helped to shape the form of the internet. The ones that cinfluenced me besides kottke.org are [Daring Fireball](https://daringfireball.net), [Waxy.org](https://waxy.org), Jim Coudal and [Coudal Partners](http://www.coudal.com), [Shawn Blanc](https://shawnblanc.net), [Rands in Repose](https://randsinrepose.com/), [Dave Winer](http://scripting.com/), and more that I'm certainly forgetting.
+[Kottke.org turned *25 years old* this week](https://kottke.org/23/03/kottke-is-25-years-old-today), and Jason has been publishing online for even longer than that. All along the way, he has experimented with the form of content on the web. He's not alone in that—many bloggers like him have helped to shape the form of the internet. The ones that cinfluenced me besides kottke.org are [Daring Fireball](https://daringfireball.net), [Waxy.org](https://waxy.org), Jim Coudal and [Coudal Partners](http://www.coudal.com), [Shawn Blanc](https://shawnblanc.net), [Rands in Repose](https://randsinrepose.com/), [Dave Winer](http://scripting.com/), and more that I'm certainly forgetting.
 
 Jason and John have an interesting conversation during the podcast (starting around 25 minutes in) about how the first few generations of bloggers on the web shaped the form of the web we know today. This largely stemmed from the material differences between print and digital mediums. 
 
@@ -45,6 +45,8 @@ Wen referring to the early bloggers at suck.com, Jason said something that I thi
 > <cite>[Jason Kottke on The Talk Show episode 370 (35:40)](https://daringfireball.net/thetalkshow/2023/03/11/ep-370)</cite>
 
 The hyperlink was like a new stylistic new primitive for the written word. For decades you could bold, italicize, underline, uppercase, footnote, etc. and all of a sudden something entirely new—the hyperlink.
+
+Another example here that I always think about—URL slugs. For many of my favorite bloggers, the URL slug is a small but subtle way to convey a message that may _or may not be_ the same as the message of the post itself. 
 
 There was a time when I considered blogging as a potential career, and in the process of exploring that I found my way to design and software.
 
