@@ -20,19 +20,23 @@ Robin Sloan puts it well (as he does most things):
 
 Design, programming, and writing all started for me because of the web. I can recall the progression from a plain text editor to the Tumblr theme editor to learning self-hosted WordPress and then working with Jekyll, so on and so forth.
 
-All of that was driven by the need to tinker and experiment with the web as a medium. How many ways could you design a simple weblog? What different formats were possible that no one had ever imagined before?
+All of that was driven by the need to tinker and experiment with the web's form. How many ways could you design a simple weblog? What different formats were possible that no one had ever imagined before?
 
 Earlier this week I listened to [Jason Kottke's recent appearance on John Gruber's podcast](https://daringfireball.net/thetalkshow/2023/03/11/ep-370) and was delighted to hear them discuss this very topic. Jason is one of the original innovators of the blog form, and I've been following his blog, kottke.org, since I was old enough to care about random shit on the internet.
 
 [Kottke.org turned _25 years old_ this week](https://kottke.org/23/03/kottke-is-25-years-old-today), and Jason has been publishing online for even longer than that. All along the way, he has experimented with the form of content on the web. He's not alone in that—many bloggers like him have helped to shape the form of the internet. The ones that influenced me besides kottke.org are [Daring Fireball](https://daringfireball.net), [Waxy.org](https://waxy.org), Jim Coudal and [Coudal Partners](http://www.coudal.com), [Shawn Blanc](https://shawnblanc.net), [Rands in Repose](https://randsinrepose.com/), [Dave Winer](http://scripting.com/), and more that I'm certainly forgetting.
 
+![](kottke.png "[A screenshot of kottke.org from October 12, 1999](https://web.archive.org/web/19991012050139/http://kottke.org/), and my personal favorite design of the site over the years")
+
 Jason and John have an interesting conversation during the podcast (starting around 25 minutes in) about how the first few generations of bloggers on the web shaped the form of the web we know today. This largely stemmed from the material differences between print and digital mediums.
 
-It's important to remind ourselves that the things we take for granted today on the web and in digital design had to be invented by someone. An example discussed in the podcast are early weblogs which broke content up into "issues" or changed the content of their homepage on certain days to feature a single post.
+It's important to remind ourselves that the things we take for granted today on the web and in digital design had to be invented by someone. Examples discussed in the podcast are early weblogs which broke content up into "issues", or ones that simply changed the content of their homepages entirely.
 
 It wasn't until later that the reverse-chronological, paginated scrolling list of entries was introduced and eventually became the de-facto presentation of content on the web. That standard lives on today in the feeds of sites like Twitter and Instagram, and it's fascinating to see that tradition fading away as more sites embrace algorithmic feeds.
 
-Another example Jason and John discuss is the idea of blog posts having titles attached.
+By the way, I'd be remiss here if I didn't mention Amy Hoy's amazing piece [How the blog broke the web](https://stackingthebricks.com/how-blogs-broke-the-web). Comparing the title of her piece with the title of this one, it's clear that not everyone sees this shift in form as a positive one, but she does a great job in outlining the history and the role that blogs played in shaping the form of the web. Her particular focus on early content management systems like Movable Type is fascinating.
+
+Another great example that Jason and John discuss on the podcast is the idea of titling blog posts.
 
 They point out that many early sites didn't use titles for blog posts, a pattern which resembles the future form of Tweets, Facebook posts, text messages, and more. But the rise of RSS readers, many of which made the assumption that entries have titles and design their UIs around them, forced many bloggers to add titles to their posts to work well in the environment so popular with their readers.
 
