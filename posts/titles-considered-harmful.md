@@ -1,6 +1,6 @@
 ---
 title: How bloggers shaped the web
-date: 2023-03-14
+date: 2023-03-15
 hidden: true
 ---
 
@@ -44,7 +44,7 @@ Wen referring to the early bloggers at suck.com, Jason said something that I thi
 >
 > <cite>[Jason Kottke on The Talk Show episode 370 (35:40)](https://daringfireball.net/thetalkshow/2023/03/11/ep-370)</cite>
 
-The hyperlink was like a new stylistic new primitive for the written word. For decades you could bold, italicize, underline, uppercase, footnote, etc. and all of a sudden something entirely new—the hyperlink.
+The hyperlink was like a new stylistic primitive for the written word. For decades you could bold, italicize, underline, uppercase, footnote, etc. and all of a sudden something entirely new—the hyperlink.
 
 Another example here that I always think about—URL slugs. For many of my favorite bloggers, the URL slug is a small but subtle way to convey a message that may _or may not be_ the same as the message of the post itself. 
 
