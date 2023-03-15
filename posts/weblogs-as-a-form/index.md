@@ -42,9 +42,11 @@ Another great example that Jason and John discuss on the podcast is the idea of 
 
 They point out that many early sites didn't use titles for blog posts, a pattern which resembles the future form of Tweets, Facebook posts, text messages, and more. But the rise of RSS readers, many of which made the assumption that entries have titles and design their UIs around that, forced many bloggers to add titles to their posts to work well in the environment so popular with their readers.
 
+Jason mentions that this was one of the driving factor for kottke.org to start adding titles to posts!
+
 This is an incredible example of the medium shaping the message, where the UI design of RSS readers heavily influenced the form of content being published. When optimizing for the web, those early bloggers and the social networks of today both arrived at the same conclusion—titles are unnecessary and add an undue burden to publishing content.
 
-This difference is the very reason why sending an email feels heavier than sending a tweet.
+This difference is the very reason why sending an email feels heavier than sending a tweet. Bloggers not using titles on their blog posts figured out tweeting long before Twitter did. 
 
 When referring to the early bloggers at suck.com, Jason said something that I think describes this entire revolution pretty well.
 
@@ -66,4 +68,4 @@ It's hard to communicate how grateful I feel for this era of experimentation on 
 
 There was a time when I thought my career might be curved towards blogging full-time and running my own version of something like kottke.org. Through exploring that I found my way to what I really loved—design and software. My work continues to benefit from what I learned studying bloggers and publishers online. 
 
-Whether you care much about writing or not, I encourage you to have a blog. Write about what interests you, take great care of how you present it to the world, and you might be surprised where it takes you.
+Whether you care much about writing or not, I encourage you to have a blog. Write about what interests you, take great care of how you present it to the world, and you might be surprised where it takes you. There are new forms around every corner.
