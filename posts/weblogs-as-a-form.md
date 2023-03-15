@@ -15,8 +15,8 @@ Looking back, this is probably where my meta-fascination with the web came from.
 Robin Sloan puts it well (as he does most things):
 
 > Back in the 2000s, a lot of blogs were about blogs, about blogging. If that sounds exhaustingly meta, well, yes — but it was also SUPER generative. When the thing can describe itself, when it becomes the natural place to discuss and debate itself, I&nbsp;am telling you: some flywheel gets spinning, and powerful things start to&nbsp;happen.
-
-<cite>[A year of new avenues](https://www.robinsloan.com/lab/new-avenues/#meta)</cite>
+>
+> <cite>[A year of new avenues](https://www.robinsloan.com/lab/new-avenues/#meta)</cite>
 
 Design, programming, and writing all started for me because of the web. I can recall the progression from a plain text editor to the Tumblr theme editor to learning self-hosted WordPress and then working with Jekyll, so on and so forth.
 
@@ -41,8 +41,8 @@ This is an incredible example of the medium shaping the message, where the UI de
 Wen referring to the early bloggers at suck.com, Jason said something that I think describes this entire revolution pretty well.
 
 > [...]there was in information to be gotten from not only what they linked to, but how they linked to it, which word they decided to make the hyperlink.
-
-<cite>[Jason Kottke on The Talk Show episode 370 (35:40)](https://daringfireball.net/thetalkshow/2023/03/11/ep-370)</cite>
+> 
+> <cite>[Jason Kottke on The Talk Show episode 370 (35:40)](https://daringfireball.net/thetalkshow/2023/03/11/ep-370)</cite>
 
 It's not often that you have an entirely new stylistic primitive added to your writing toolbox. For decades you could bold, italicize, underline, uppercase, footnote, etc. and all of a sudden something entirely new—the hyperlink.
 
