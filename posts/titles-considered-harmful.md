@@ -1,12 +1,12 @@
 ---
-title: Titles considered harmful
+title: How bloggers shaped the web
 date: 2023-03-14
 hidden: true
 ---
 
-I have a lot of nostalgia for the era of blogging I grew up within in the early 2000s. 
+I have a lot of nostalgia for the era of blogging that I grew up with during the first decade or so of the 2000s. 
 
-Of course there was a ton of great content about technology and internet culture, but more importantly to me it was a time of great commentary and thinking around the act of blogging and publishing itself. 
+Of course there was a ton of great content about technology and internet culture, but more importantly to me it was a time of great commentary and thinking around the form of blogging and publishing itself. 
 
 As social media and smartphones became a part of our everyday lives, there was a group of bloggers online rejecting those feeds and constructing their own forms. Before Twitter apps and podcast clients became the UI playgrounds of most designers, there was a great deal of innovation in how content could be self-published online. 
 
@@ -26,13 +26,19 @@ Earlier this week I listened to [Jason Kottke's recent appearance on John Gruber
 
 Kottke.org turned *25 years old* this week, and Jason has been blogging online for even longer than that. And all along the way, he has experimented with the form of content on the web. He's not alone in that—many bloggers like him have helped to shape the form of the internet. The ones that cinfluenced me besides kottke.org are [Daring Fireball](https://daringfireball.net), [Waxy.org](https://waxy.org), Jim Coudal and [Coudal Partners](http://www.coudal.com), [Shawn Blanc](https://shawnblanc.net), [Rands in Repose](https://randsinrepose.com/), [Dave Winer](http://scripting.com/), and more that I'm certainly forgetting.
 
-Jason and John have an interesting conversation during the podcast (starting around 25 minutes in) about how the first few generations of bloggers on the web experimented with the form and shaped how we all interact with the web today. This largely stemmed from the material differences between print and digital mediums. 
+Jason and John have an interesting conversation during the podcast (starting around 25 minutes in) about how the first few generations of bloggers on the web shaped the form of the web we know today. This largely stemmed from the material differences between print and digital mediums. 
 
 It's important to remind ourselves that the things we take for granted today on the web and in digital design had to be invented by someone. An example discussed in the podcast are early weblogs which broke content up into "issues" or changed the content of their homepage on certain days to feature a single post. 
 
 It wasn't until later that the reverse-chronological, paginated scrolling list of entries was introduced and eventually became the de-facto presentation of content on the web. That standard lives on today in the feeds of sites like Twitter and Instagram, and it's fascinating to see that tradition fading away as more sites embrace algorithmic feeds. 
 
-Jason summarized this effect well when referring to the early bloggers at suck.com:
+Another example Jason and John discuss is the idea of blog posts having titles attached.
+
+They point out that many early sites didn't use titles for blog posts, a pattern which resembles the future form of Tweets, Facebook posts, text messages, and more. But the rise of RSS readers, many of which made the assumption that entries have titles and design their UIs around them, forced many bloggers to add titles to their posts to work well in the environment so popular with their readers. 
+
+This is an incredible example of the medium shaping the message, where the UI design of RSS readers heavily influenced the form of content being published. When optimizing for the web, those early bloggers and the social networks of today both arrived at the same conclusion—titles are unnecessary and add an undue burden to publishing content. 
+
+Wen referring to the early bloggers at suck.com, Jason said something that I think describes this entire revolution pretty well.
 
 > [...]there was in information to be gotten from not only what they linked to, but how they linked to it, which word they decided to make the hyperlink.
 >
