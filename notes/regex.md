@@ -7,6 +7,8 @@ tags:
 
 <book-mark url='https://github.com/VerbalExpressions/JSVerbalExpressions'></book-mark>
 
+<book-mark url="https://blog.jim-nielsen.com/2019/batch-rename-dates"></book-mark>
+
 ### Get URLs from the src attribute of an HTML image tag
 
 ```js
