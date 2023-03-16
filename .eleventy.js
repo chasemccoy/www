@@ -11,7 +11,6 @@ const embedYouTube = require('eleventy-plugin-youtube-embed')
 const pluginRSS = require('@11ty/eleventy-plugin-rss')
 const pluginSyntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight')
 
-// const Log = require('./utils/log')
 const filters = require('./utils/filters')
 
 const mdRender = new markdownIt()
@@ -68,10 +67,6 @@ module.exports = function (config) {
     return filters.filterTagList([...tagSet])
   })
 
-  // config.addCollection('log', function () {
-  //   return Log.getEntries()
-  // })
-
   let markdownLibrary = markdownIt({
     html: true,
     breaks: true,
@@ -119,6 +114,7 @@ module.exports = function (config) {
       },
     })
 
+  markdownLibrary.linkify.set({ fuzzyLink: false })
   config.setLibrary('md', markdownLibrary)
 
   config.setServerOptions({
