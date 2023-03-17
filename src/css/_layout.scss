@@ -1,6 +1,5 @@
 :root {
   --layout-padding: 1rem;
-  --content-width: 68ch;
 
   @include small {
     --layout-padding: 1.5rem;
@@ -13,11 +12,12 @@ main {
 
   @include small {
     padding-block: 3rem;
-    padding-inline: 4rem var(--layout-padding);
+    // padding-inline: 4rem var(--layout-padding);
   }
 
   .wrapper {
     max-width: var(--content-width);
     padding-bottom: 48px;
+    margin: auto;
   }
 }
