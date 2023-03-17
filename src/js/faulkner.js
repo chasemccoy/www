@@ -297,7 +297,7 @@ const populateFiles = async () => {
       App.openInCodeButton.hidden = false
       App.viewPostButton.href = `http://localhost:1995${file.date.toFormat(
         '/yyyy/MM/'
-      )}${file.slug}`
+      )}${file.slug.slice(11)}`
       const fileName = file.name.includes('index.md')
         ? `${file.slug}/index.md`
         : file.name
