@@ -60,18 +60,16 @@ const verifyPermission = async (handle) => {
   return false
 }
 
-const getDataForFile = async (fileHandle) => {
+const getDataForFile = async (fileHandle, slug) => {
   const file = await fileHandle.getFile()
   const contents = await file.text()
   const titleRegex = /title: (.*)/
   const hiddenRegex = /hidden: true/
-  const dateRegex = /date: (.*)/
   const matchTitle = contents.match(titleRegex)
-  const matchDate = contents.match(dateRegex)
   const draft = hiddenRegex.test(contents)
-  if (matchTitle && matchDate) {
+  if (matchTitle) {
     const title = matchTitle[1]
-    const date = DateTime.fromISO(matchDate[1])
+    const date = DateTime.fromISO(slug.substring(0, 10))
     const frontmatterRegex = /^---\n(.*\n)+---\n/
     const wordCount = countWords(contents.replace(frontmatterRegex, '').trim())
 
@@ -81,12 +79,14 @@ const getDataForFile = async (fileHandle) => {
       contents,
       draft,
       wordCount,
+      slug,
     }
   }
 
   return {
     contents,
     draft,
+    slug,
   }
 }
 
@@ -99,7 +99,7 @@ const writeFile = async (fileHandle, contents) => {
 
 const createNewFile = async (name, contents) => {
   const options = {
-    suggestedName: name + '.md',
+    suggestedName: `${DateTime.now().toISODate()}-${name}.md`,
     types: [
       {
         description: 'Markdown files',
@@ -181,17 +181,17 @@ const initApp = () => {
 
     for await (const entry of App.directory.values()) {
       if (entry.kind === 'file' && entry.name.endsWith('.md')) {
-        const data = await getDataForFile(entry)
+        const slug = entry.name.replace('.md', '')
+        const data = await getDataForFile(entry, slug)
         Object.assign(entry, data)
-        entry.slug = entry.name.replace('.md', '')
         if (data.title && !filesToFilter.includes(data.title)) {
           App.files.push(entry)
         }
       } else if (entry.kind === 'directory') {
+        const slug = entry.name
         const fileEntry = await entry.getFileHandle('index.md')
-        const data = await getDataForFile(fileEntry)
+        const data = await getDataForFile(fileEntry, slug)
         Object.assign(fileEntry, data)
-        fileEntry.slug = entry.name
         if (data.title && !filesToFilter.includes(data.title)) {
           App.files.push(fileEntry)
         }
@@ -220,7 +220,6 @@ const initApp = () => {
           const contents = [
             '---',
             `title: ${title}`,
-            `date: ${DateTime.now().toISODate()}`,
             'hidden: true',
             '---',
             '',
@@ -298,7 +297,7 @@ const populateFiles = async () => {
       App.openInCodeButton.hidden = false
       App.viewPostButton.href = `http://localhost:1995${file.date.toFormat(
         '/yyyy/MM/'
-      )}${file.slug}`
+      )}${file.slug.slice(11)}`
       const fileName = file.name.includes('index.md')
         ? `${file.slug}/index.md`
         : file.name
