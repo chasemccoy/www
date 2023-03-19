@@ -8,7 +8,7 @@ Of course there was a ton of great content about technology and internet culture
 
 As social media and smartphones were weaving their ways into our lives, there was a group of bloggers constructing their own worlds. Before Twitter apps and podcast clients became the UI playgrounds of most designers, it was personal sites and weblogs that were pioneering the medium.
 
-Looking back, this is probably where my meta-fascination with the web came from. For me the most interesting part has always been the part analyzing and discusssing itself.
+Looking back, this is probably where my meta-fascination with the web came from. For me the most interesting part has always been the part analyzing and discussing itself.
 
 Robin Sloan puts it well (as he is wont to do):
 
