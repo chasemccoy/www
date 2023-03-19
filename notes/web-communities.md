@@ -7,7 +7,7 @@ It’s easy to fall into the trap of nostalgia when examining the "slow" web. Bu
 
 > Of course you liked the internet better then: there were fewer people on it, and they were all kinda like you. Of course you want to require people to run their own websites: that acts as a subtle throttle on who can participate. The things you complain about—centralization and templatization and, yes, corporatization—all follow naturally from the internet’s maturation, at last, into a truly public platform. The network you’re so nostalgic for? That was a private club. You can be forgiven for this. You were just a kid. You didn’t even realize you’d been invited.
 >
-> <cite>[Robin Sloan](https://www.robinsloan.com/notes/master-tapes/)</cite>
+> <cite>[Robin Sloan](http://archive.today/2020.03.09-160553/https://www.robinsloan.com/notes/master-tapes/)</cite>
 
 ## [Futureland.tv](https://futureland.tv) &rarr;
 
