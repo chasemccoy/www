@@ -7,7 +7,7 @@ templateClass: blog
 
 {% set years = collections.posts | filterHidden | groupByYear | keys | reverse %}
 
-{% set postsByYear = collections.posts | filterHidden | groupByYear%}
+{% set postsByYear = collections.posts | filterHidden | groupByYear %}
 
 <div class='breadcrumbs mb-12'>
   <a href='/' class='bold'>Chase M.</a>

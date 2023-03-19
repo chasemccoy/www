@@ -1,6 +1,3 @@
----
----
-
 **[Luke Jackson on the Formidable blog: Don't Build That App! →](https://formidable.com/blog/2019/no-build-step)**
 
 Luke shares how you can develop a React app today with no build step by taking advantage of the platform's latest features.
