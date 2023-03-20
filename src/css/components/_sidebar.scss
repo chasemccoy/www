@@ -1,0 +1,95 @@
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  font-size: 0.85rem;
+
+  h1 {
+    font-size: 1em;
+    font-weight: normal;
+  }
+
+  nav {
+    margin-top: 1rem;
+    color: var(--color-caption);
+    --link-color: var(--color-caption);
+
+    ul {
+      gap: 24px;
+      columns: 2;
+      width: fit-content;
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    a {
+      display: flex;
+      align-items: center;
+
+      > svg {
+        margin-right: 6px;
+      }
+    }
+  }
+
+  .blogroll {
+    ul {
+      columns: 2;
+      gap: 12px;
+      margin-top: 4px;
+    }
+
+    li {
+      margin: 0;
+    }
+
+    li:before {
+      content: none;
+    }
+
+    a {
+      display: block;
+      color: var(--color-caption);
+      -webkit-line-clamp: 1;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    a:hover {
+      color: var(--link-color);
+    }
+  }
+
+  bookmark-list {
+    display: block;
+
+    li:before {
+      content: '◆';
+      color: var(--color-border);
+    }
+
+    a {
+      display: block;
+      color: var(--color-caption);
+      -webkit-line-clamp: 1;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    a:hover {
+      color: var(--link-color);
+    }
+  }
+
+  .museo {
+    margin-top: 8px;
+  }
+}

@@ -22,7 +22,7 @@ article {
     position: relative;
     padding-left: 42px;
     padding-right: 12px;
-    font-size: 0.9rem;
+    font-size: 1rem;
 
     @include small {
       body:not(.note) & {
@@ -45,7 +45,7 @@ article {
       overflow: hidden;
       text-align: right;
       font-family: var(--font-code);
-      font-size: 0.9em;
+      font-size: 1em;
       line-height: 1.5;
       padding-right: 12px;
     }

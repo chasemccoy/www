@@ -4,18 +4,19 @@
   --root-font-size: 13px;
   --root-line-height: 1.5;
 
-  --content-width: 50ch;
-  --heading-scale: 0.85;
+  --content-width: 35rem;
+  --sidebar-width: 15rem;
+  --heading-scale: 0.9;
 
   --color-accent: hsl(23, 100%, 50%);
   --link-color: var(--color-accent);
   --link-hover: hsl(23, 100%, 40%);
-  --color-body-background: hsl(48, 100%, 97%);
+  --color-body-background: hsl(48, 20%, 97%);
   --color-text: hsl(43, 10%, 20%);
   --color-header: hsl(43, 10%, 25%);
   --color-border: hsl(48, 30%, 85%);
   --color-caption: hsl(48, 20%, 40%);
-  --color-offset: hsl(48, 60%, 94%);
+  --color-offset: hsl(48, 20%, 94%);
 
   --color-highlight: hsl(51, 100%, 84%);
   --color-highlight-dark: hsl(50, 100%, 67%);

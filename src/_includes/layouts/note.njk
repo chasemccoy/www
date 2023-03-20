@@ -3,27 +3,27 @@ layout: layouts/base.njk
 templateClass: note
 ---
 
-<div class='prose'>
-  <div class='breadcrumbs mb-12'>
-    <a href='/' class='bold'>Chase M.</a>
-    <a href='/notes'>Notes</a>
-  </div>
-
-  <h1 class='font-header color-accent'>
-    <a href="{{ url }}" class="unstyled">{{ title }}</a>
-  </h1>
-
-  {% if excerpt %}
-    <p class='lead color-caption'>{{excerpt}}</p>
-  {% endif %}
-
-  <section>
-    <article class="prose">
-      {{ content | safe }}
-    </article>
-
-    <table-of-contents hidden>
-      <h2>Table of Contents</h2>
-    </table-of-contents>
-  </section>
+{% slot 'header' %}
+<div class='breadcrumbs mb-12'>
+  <a href='/' class='bold'>Chase M.</a>
+  <a href='/notes'>Notes</a>
 </div>
+
+<h1 class='font-header color-accent'>
+  <a href="{{ url }}" class="unstyled">{{ title }}</a>
+</h1>
+
+{% if excerpt %}
+  <p class='lead color-caption'>{{excerpt}}</p>
+{% endif %}
+{% endslot %}
+
+<section class='prose'>
+  <table-of-contents hidden>
+    <h2>Table of Contents</h2>
+  </table-of-contents>
+
+  <article class="prose">
+    {{ content | safe }}
+  </article>
+</section>

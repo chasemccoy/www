@@ -6,18 +6,36 @@
   }
 }
 
-main {
+body {
   padding: var(--layout-padding);
   min-height: 100vh;
 
   @include small {
     padding-block: 3rem;
-    // padding-inline: 4rem var(--layout-padding);
   }
+}
 
-  .wrapper {
+body > header {
+  max-width: calc(var(--content-width) + var(--sidebar-width) + 64px);
+  margin: 0 auto 1rem;
+
+  > div {
     max-width: var(--content-width);
-    padding-bottom: 48px;
-    margin: auto;
   }
+}
+
+main {
+  padding-bottom: 48px;
+  margin: auto;
+  display: flex;
+  gap: 64px;
+  width: fit-content;
+}
+
+main > .content {
+  max-width: var(--content-width);
+}
+
+main > .sidebar {
+  width: var(--sidebar-width);
 }

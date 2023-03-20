@@ -1,0 +1,85 @@
+<div>
+  <h1>chasem.co is a weblog about exploring, building, & writing the web, written by Chase McCoy.</h1>
+
+  <nav>
+    <ul class='unstyled'>
+      <li>
+        <a href='/blog'>
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+          </svg>
+          Blog
+        </a>
+      </li>
+      <li>
+        <a href='/notes'>
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="4" width="20" height="5" rx="2"></rect>
+            <path d="M4 9v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9"></path>
+            <path d="M10 13h4"></path>
+          </svg>
+          Notes
+       </a>
+      </li>
+      <li>
+        <a href="mailto:hi@chasem.co">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M16 8v5a3 3 0 0 0 6 0v-1a10 10 0 1 0-3.92 7.94"></path>
+          </svg>
+          Email
+        </a>
+      </li>
+      <li>
+        <a href="https://chasem.co/feed.xml">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 11a9 9 0 0 1 9 9"></path>
+            <path d="M4 4a16 16 0 0 1 16 16"></path>
+            <circle cx="5" cy="19" r="1"></circle>
+          </svg>
+          RSS
+        </a>
+      </li>
+    </ul>
+  </nav>
+</div>
+
+<div class='bookmarks'>
+  <h2>Bookmarks</h2>
+  <p class='color-caption mb-4'>Saved links for your enjoyment, updated semi-regularly.</p>
+
+  <bookmark-list></bookmark-list>
+</div>
+
+<div class='blogroll'>
+  <h2>Blogroll</h2>
+  <ul>
+    {% for item in blogroll %}
+      <li>
+        <a href="{{item.url}}" target="_blank" class='unstyled' title="{{ item.name }}">{{item.name}}</a>
+      </li>
+    {% endfor %}
+  </ul>
+</div>
+
+<div class='museo'>
+  <div class='flow' style='--flow-spacing: 0.25em;'>
+    <a href="https://museo.app" target="_blank">{% include "museo-logo.njk" %}</a>
+    <p>
+      An open source web interface that helps you find free-to-use images from some of the world’s best museums and libraries:
+    </p>
+
+    <ul>
+      <li>
+        <a href="https://www.artic.edu/archival-collections/explore-the-collection">The Art Institute of Chicago</a>
+      </li>
+      <li>
+        <a href="https://www.rijksmuseum.nl/nl">The Rijksmuseum</a>
+      </li>
+      <li>
+        <a href="https://harvardartmuseums.org">The Harvard Art Museums</a>
+      </li>
+      <li class='color-caption'>And more...</li>
+    </ul>
+  </div>
+</div>

@@ -52,6 +52,11 @@ module.exports = function (config) {
   })
 
   config.addNunjucksAsyncShortcode('image', imageShortcode)
+  config.addPairedShortcode('slot', function (content, name) {
+    if (!name) throw new Error('Missing name for {% slot %} block!')
+    this.page[name] = content
+    return ''
+  })
 
   Object.keys(filters).forEach((filter) => {
     config.addFilter(filter, filters[filter])

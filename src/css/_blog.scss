@@ -1,25 +1,13 @@
-.blog .wrapper {
+.blog .content {
   display: flex;
   flex-direction: column;
   gap: 2.5rem;
-}
-
-.blog:not(.post) .wrapper {
-  max-width: calc(var(--content-width) * 1.05);
-}
-
-.blog section-header:not(:first-child) {
-  margin-top: 1.5rem;
 }
 
 .year {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-
-  &:first-of-type {
-    margin-top: -1em;
-  }
 
   h2 {
     font-size: 1.5rem;

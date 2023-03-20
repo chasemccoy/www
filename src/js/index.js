@@ -85,15 +85,21 @@ const populateBookmarks = async () => {
 
   const response = await fetch('https://api.chsmc.workers.dev/bookmarks')
   const bookmarks = await response.json()
+  const ul = document.createElement('ul')
 
-  bookmarks.slice(0, 20).forEach(({ url, title, description, image }) => {
+  bookmarks.slice(0, 10).forEach(({ url, title, description, image }) => {
     const a = document.createElement('a')
+    const li = document.createElement('li')
     a.href = url
     a.textContent = title || url
     a.target = '_blank'
     a.classList = 'unstyled'
-    bookmarksContainer.append(a)
+    a.title = title || url
+    li.append(a)
+    ul.append(li)
   })
+
+  bookmarksContainer.append(ul)
 }
 
 const populateTableOfContents = () => {

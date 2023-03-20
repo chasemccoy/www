@@ -3,28 +3,25 @@ layout: layouts/base.njk
 templateClass: blog post
 ---
 
-<article class="prose">
-  <div class='breadcrumbs mb-12'>
-    <a href='/' class='bold'>Chase M.</a>
-    <a href='/blog'>Blog</a>
-    <div>
-      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline">
-        <circle cx="12" cy="12" r="10"></circle>
-        <polyline points="12 6 12 12 16 14"></polyline>
-      </svg>
+{% slot 'header' %}
+<div class='breadcrumbs mb-12'>
+  <a href='/blog'>Blog</a>
+  <div>
+    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline">
+      <circle cx="12" cy="12" r="10"></circle>
+      <polyline points="12 6 12 12 16 14"></polyline>
+    </svg>
 
-      <time datetime="{{ page.date | htmlDateString }}">{{ page.date | readableDate }}</time>
-    </div>
+    <time datetime="{{ page.date | htmlDateString }}">{{ page.date | readableDate }}</time>
   </div>
+</div>
 
-  <h1 class='font-header'>
-    <a href="{{ url }}" class="unstyled">{{ title }}</a>
-  </h1>
+<h1 class='font-header'>
+  <a href="{{ url }}" class="unstyled">{{ title }}</a>
+</h1>
+{% endslot %}
 
-  {# {% if excerpt %}
-    <p class='lead color-caption'>{{excerpt}}</p>
-  {% endif %} #}
-
+<article class="prose">
   {{ content | safe }}
 </article>
 

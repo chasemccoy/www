@@ -9,10 +9,12 @@ templateClass: blog
 
 {% set postsByYear = collections.posts | filterHidden | groupByYear %}
 
+{% slot 'header' %}
 <div class='breadcrumbs mb-12'>
   <a href='/' class='bold'>Chase M.</a>
   <a href='/blog'>Blog</a>
 </div>
+{% endslot %}
 
 {% for year in years %}
   <div class='year'>
