@@ -1,21 +1,80 @@
----
-layout: layouts/page.njk
-permalink: '/'
-templateClass: home
+---js
+{
+  layout: 'layouts/page.njk',
+  templateClass: 'home',
+  pagination: {
+    data: 'collections.posts',
+    size: 10,
+    alias: 'posts',
+    reverse: true,
+    before: function(paginationData, fullData) {
+      return paginationData.filter(post => !post.data.hidden);
+    }
+  },
+  permalink: "/{% if pagination.pageNumber > 0 %}{{ pagination.pageNumber + 1 }}/{% endif %}index.html"
+}
 ---
 
-<div class='flow prose'>
-  {# <h1 class='intro color-accent'>
-    Chase McCoy explores, builds, & writes about the web ☺
-  </h1> #}
-
+{# <div class='flow prose'>
   <ul>
     <li>Hey! It’s me, Chase, from online. Welcome to my home on the web. I’d suggest reading my <a href="/blog">blog</a> or checking out my collection of <a href="/notes">public notes and research</a> to get started.</li>
     <li>I grew up in Mississippi, and now split my time between Chicago and the internet.</li>
-    {# <li>I’m from Mississippi, but I currently live in the <a href="https://en.wikipedia.org/wiki/Frank_Lloyd_Wright%E2%80%93Prairie_School_of_Architecture_Historic_District">Frank Lloyd Wright district</a> of Oak Park, Illinois, just outside of Chicago.</li> #}
     <li>I work remotely at <a href="https://stripe.com">Stripe</a> on the Design Systems team. We're building UI infrastructure to power a host of products, brands, and users. Previously, I led the team at <a href="https://sproutsocial.com">Sprout Social</a> working on the <a href="https://seeds.sproutsocial.com">Seeds design&nbsp;system</a>.</li>
     <li>My writing and research is focused on the meta-internet and the future of the web. I’m interested in how humans engage with web technologies to live, design, build, interact, publish, and play.</li>
     <li>I have an interest in human-scale software, and I see the web as a medium for personal creativity in addition to a public forum.</li>
     <li>While I mostly consider myself to be a designer, my educational background is in Computer Science, and I began my career as an iOS developer.</li>
   </ul>
-</div>
+</div> #}
+
+<section class='blog'>
+  {% for post in posts | filterHidden %}
+    <article class="prose">
+      <header>
+        {% if post.data.title %}
+          <h1 class='font-header'>
+            <a href="{{post.url}}" class='unstyled'>
+              {{ post.data.title }}
+            </a>
+          </h1>
+        {% endif %}
+
+        <div class='breadcrumbs'>
+          <div>
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+
+            <time datetime="{{ post.date | htmlDateString }}">{{ post.date | readableDate }}</time>
+          </div>
+        </div>
+        {# <time datetime="{{ post.date | htmlDateString }}">{{ post.date | shortDate }}</time> #}
+      </header>
+      {{ post.content | safe }}
+    </article>
+  {% endfor %}
+</section>
+
+{% set previousPage = pagination.href.previous %}
+{% set nextPage = pagination.href.next %}
+
+<nav class='pagination'>
+  <ul class='unstyled'>
+    {% if previousPage %}
+      <li class='previous'>
+        <a href="{{ previousPage }}" class='unstyled'>
+          Previous
+        </a>
+      </li>
+    {% endif %}
+
+    {% if nextPage %}
+      <li class='next'>
+        <a href="{{ nextPage }}" class='unstyled'>
+          Next
+        </a>
+      </a>
+    </li>
+  {% endif %}
+</ul>
+</nav>

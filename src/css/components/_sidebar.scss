@@ -4,20 +4,32 @@
   gap: 1.2rem;
   font-size: 0.85rem;
 
+  a {
+    color: var(--color-caption);
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: var(--link-color);
+  }
+
   h1 {
     font-size: 1em;
     font-weight: normal;
   }
 
+  h2 {
+    margin-bottom: 2px;
+  }
+
   nav {
     margin-top: 1rem;
-    color: var(--color-caption);
-    --link-color: var(--color-caption);
 
     ul {
       gap: 24px;
       columns: 2;
       width: fit-content;
+      margin-bottom: -8px;
     }
 
     li {
@@ -38,6 +50,13 @@
     }
   }
 
+  .social {
+    ul {
+      columns: 2;
+      gap: 12px;
+    }
+  }
+
   .blogroll {
     ul {
       columns: 2;
@@ -55,15 +74,10 @@
 
     a {
       display: block;
-      color: var(--color-caption);
       -webkit-line-clamp: 1;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
-    }
-
-    a:hover {
-      color: var(--link-color);
     }
   }
 
@@ -77,15 +91,10 @@
 
     a {
       display: block;
-      color: var(--color-caption);
       -webkit-line-clamp: 1;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
-    }
-
-    a:hover {
-      color: var(--link-color);
     }
   }
 

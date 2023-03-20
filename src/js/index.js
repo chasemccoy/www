@@ -123,6 +123,8 @@ const populateTableOfContents = () => {
     })
     tableOfContents.append(ul)
     tableOfContents.hidden = false
+  } else {
+    tableOfContents.remove()
   }
 }
 

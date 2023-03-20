@@ -5,7 +5,7 @@ templateClass: blog post
 
 {% slot 'header' %}
 <div class='breadcrumbs mb-12'>
-  <a href='/blog'>Blog</a>
+  <a href='/'>Blog</a>
   <div>
     <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline">
       <circle cx="12" cy="12" r="10"></circle>
@@ -29,10 +29,10 @@ templateClass: blog post
 
 {% set nextPost = collections.posts | filterHidden | getNextCollectionItem(page) %}
 
-<nav class='post-pagination'>
+<nav class='pagination'>
   <ul class='unstyled'>
     {% if previousPost %}
-      <li class='previous-post'>
+      <li class='previous'>
         <a href="{{ previousPost.url }}" class='unstyled'>
           <span class='label'>Previous</span>
           <span>{{ previousPost.data.title }}</span></a>
@@ -40,7 +40,7 @@ templateClass: blog post
     {% endif %}
 
     {% if nextPost %}
-      <li class='next-post'>
+      <li class='next'>
         <a href="{{ nextPost.url }}" class='unstyled'>
           <span class='label'>Next</span>
           <span>{{ nextPost.data.title }}</span>

@@ -72,4 +72,9 @@ module.exports = [
       'At times of change, the learners are the ones who will inherit the world, while the knowers will be beautifully prepared for a world which no longer exists.',
     metadata: 'Alistair Smith',
   },
+  {
+    content:
+      'It is not altogether a bad thing to have criminal ancestors. An arsonist grandfather may bequeath one a nose for smelling smoke.',
+    metadata: 'Ursula K. Le Guin',
+  },
 ]

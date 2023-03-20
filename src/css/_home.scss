@@ -1,0 +1,15 @@
+.home .blog {
+  display: flex;
+  flex-direction: column;
+  gap: 6rem;
+  margin-top: -0.5rem;
+
+  header {
+    display: grid;
+    gap: 0.75rem;
+  }
+}
+
+.home .pagination {
+  margin-top: 6rem;
+}
