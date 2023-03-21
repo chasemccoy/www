@@ -227,6 +227,7 @@ const initApp = () => {
           ].join('\n')
 
           const file = await createNewFile(slug, contents)
+          // TODO gotta pass the slug here
           const data = await getDataForFile(file)
           Object.assign(file, data)
           file.slug = file.name.replace('.md', '')
