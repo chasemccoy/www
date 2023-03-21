@@ -60,23 +60,36 @@
     {{ head | safe }}
   </head>
   <body {% if templateClass %} class="{{ templateClass }}"{% endif %}>
-    {% if page.header %}
-      <header class='prose' id='header'>
-        <div>
-          {{ page.header | safe }}
-        </div>
+    <div class='wrapper'>
+      <header>
+        <h1 class='site-header'>
+          <a href="/">chasem.co</a>
+        </h1>
+        <aside class='sidebar mobile'>
+          {% set mobile = true %}
+          {% include "sidebar.njk" %}
+        </aside>
       </header>
-    {% endif %}
 
-    <main>
-      <div class="content">
-        {{ content | safe }}
-      </div>
+      <main>
+        {% if page.header %}
+          <header class='prose' id='header'>
+            {{ page.header | safe }}
+          </header>
+        {% endif %}
 
-      <aside class='sidebar'>
-        {% include "sidebar.njk" %}
-      </aside>
-    </main>
+        <div>
+          <div class="content">
+            {{ content | safe }}
+          </div>
+
+          <aside class='sidebar desktop'>
+            {% set mobile = false %}
+            {% include "sidebar.njk" %}
+          </aside>
+        </div>
+      </main>
+    </div>
 
     {% if env.environment == "production" %}
       <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "407d31bfa5ac4cbcbdb57cf6ea314fe6"}'></script>

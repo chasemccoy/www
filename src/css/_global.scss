@@ -10,6 +10,30 @@ body {
   color: var(--color-text);
 }
 
+h1.site-header {
+  font-size: 0.9rem;
+  background-color: var(--color-accent);
+  width: fit-content;
+  border-radius: 4px;
+  transition: background 0.2s;
+  margin-bottom: 0.5rem;
+
+  @include small {
+    margin-bottom: 2rem;
+  }
+
+  &:hover {
+    background-color: var(--link-hover);
+  }
+
+  a {
+    color: var(--color-body-background);
+    text-decoration: none;
+    display: inline-block;
+    padding: 4px 6px;
+  }
+}
+
 h1,
 h2,
 h3,

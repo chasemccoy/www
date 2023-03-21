@@ -5,7 +5,7 @@
   <nav>
     <ul class='unstyled'>
       <li>
-        <a href='/blog'>
+        <a href='/'>
           <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
           </svg>
@@ -13,7 +13,7 @@
         </a>
       </li>
       <li>
-        <a href='/notes'>
+        <a href='/notes' {% if page.url.includes('notes') %} aria-current="page"{% endif %}>
           <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <rect x="2" y="4" width="20" height="5" rx="2"></rect>
             <path d="M4 9v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9"></path>
@@ -45,74 +45,83 @@
   </nav>
 </div>
 
-<div>
-  <h2>Currently</h2>
-  <p>Working on design systems at <a href="https://stripe.com" target="_blank">Stripe</a>.</p>
-</div>
+{% if mobile %}
+  <details>
+    <div>
+    {% endif %}
 
-<div class='social'>
-  <h2>Elsewhere</h2>
-  <ul class='unstyled'>
-    <li>
-      <a href='https://chs.is/coding' target="_blank">GitHub</a>
-    </li>
-    <li>
-      <a href='https://chs.is/ig' target="_blank">Instagram</a>
-    </li>
-    <li>
-      <a href='https://chs.is/tooting' target="_blank">Mastodon</a>
-    </li>
-    <li>
-      <a href='https://chs.is/listening' target="_blank">Spotify</a>
-    </li>
-    <li>
-      <a href='https://chs.is/tweeting' target="_blank">Twitter</a>
-    </li>
-  </ul>
-</div>
+    <div>
+      <h2>Currently</h2>
+      <p>Working on design systems at <a href="https://stripe.com" target="_blank">Stripe</a>.</p>
+    </div>
 
-<div class='bookmarks'>
-  <h2>Linked list</h2>
-  <p class='color-caption mb-4'>Things that caught my eye on the web, frequently updated.</p>
+    <div class='social'>
+      <h2>Elsewhere</h2>
+      <ul class='unstyled'>
+        <li>
+          <a href='https://chs.is/coding' target="_blank">GitHub</a>
+        </li>
+        <li>
+          <a href='https://chs.is/ig' target="_blank">Instagram</a>
+        </li>
+        <li>
+          <a href='https://chs.is/tooting' target="_blank">Mastodon</a>
+        </li>
+        <li>
+          <a href='https://chs.is/listening' target="_blank">Spotify</a>
+        </li>
+        <li>
+          <a href='https://chs.is/tweeting' target="_blank">Twitter</a>
+        </li>
+      </ul>
+    </div>
 
-  <bookmark-list></bookmark-list>
-</div>
+    <div class='bookmarks'>
+      <h2>Linked list</h2>
+      <p class='color-caption mb-4'>Things that caught my eye on the web, frequently updated.</p>
 
-<div class='blogroll'>
-  <h2>Blogroll</h2>
-  <ul>
-    {% for item in blogroll %}
-      <li>
-        <a href="{{item.url}}" target="_blank" class='unstyled' title="{{ item.name }}">{{item.name}}</a>
-      </li>
-    {% endfor %}
-  </ul>
-</div>
+      <bookmark-list></bookmark-list>
+    </div>
 
-<div class='museo'>
-  <div class='flow' style='--flow-spacing: 0.25em;'>
-    <a href="https://museo.app" target="_blank">{% include "museo-logo.njk" %}</a>
-    <p>
+    <div class='blogroll'>
+      <h2>Blogroll</h2>
+      <ul>
+        {% for item in blogroll %}
+          <li>
+            <a href="{{item.url}}" target="_blank" class='unstyled' title="{{ item.name }}">{{item.name}}</a>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    <div class='museo'>
+      <div class='flow' style='--flow-spacing: 0.25em;'>
+        <a href="https://museo.app" target="_blank">{% include "museo-logo.njk" %}</a>
+        <p>
       An open source web interface that helps you find free-to-use images from some of the world’s best museums and libraries:
     </p>
 
-    <ul>
-      <li>
-        <a href="https://www.artic.edu/archival-collections/explore-the-collection">The Art Institute of Chicago</a>
-      </li>
-      <li>
-        <a href="https://www.rijksmuseum.nl/nl">The Rijksmuseum</a>
-      </li>
-      <li>
-        <a href="https://harvardartmuseums.org">The Harvard Art Museums</a>
-      </li>
-      <li class='color-caption'>And more...</li>
-    </ul>
-  </div>
-</div>
+        <ul>
+          <li>
+            <a href="https://www.artic.edu/archival-collections/explore-the-collection">The Art Institute of Chicago</a>
+          </li>
+          <li>
+            <a href="https://www.rijksmuseum.nl/nl">The Rijksmuseum</a>
+          </li>
+          <li>
+            <a href="https://harvardartmuseums.org">The Harvard Art Museums</a>
+          </li>
+          <li class='color-caption'>And more...</li>
+        </ul>
+      </div>
+    </div>
 
-<hr class='dashed'/>
+    <hr class='dashed'/>
 
-<p class='color-caption'>
+    <p class='color-caption'>
   Hand-crafted with hypertext and love since 2012.
 </p>
+    {% if mobile %}
+    </div>
+  </details>
+{% endif %}

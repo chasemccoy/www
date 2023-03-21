@@ -29,28 +29,34 @@
 <section class='blog'>
   {% for post in posts | filterHidden %}
     <article class="prose">
-      <header>
-        {% if post.data.title %}
+      {% if post.data.title %}
+        <header>
           <h1 class='font-header'>
             <a href="{{post.url}}" class='unstyled'>
               {{ post.data.title }}
             </a>
           </h1>
-        {% endif %}
 
-        <div class='breadcrumbs'>
-          <div>
-            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline">
-              <circle cx="12" cy="12" r="10"></circle>
-              <polyline points="12 6 12 12 16 14"></polyline>
-            </svg>
+          <div class='breadcrumbs'>
+            <div>
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
 
-            <time datetime="{{ post.date | htmlDateString }}">{{ post.date | readableDate }}</time>
+              <time datetime="{{ post.date | htmlDateString }}">{{ post.date | readableDate }}</time>
+            </div>
           </div>
-        </div>
-        {# <time datetime="{{ post.date | htmlDateString }}">{{ post.date | shortDate }}</time> #}
-      </header>
+        </header>
+      {% endif %}
+
       {{ post.content | safe }}
+
+      {% if not post.data.title %}
+        <a href="{{post.url}}" class='unstyled color-caption mt-8 block'>
+          <time datetime="{{ post.date | htmlDateString }}">{{ post.date | shortDate }}</time>
+        </a>
+      {% endif %}
     </article>
   {% endfor %}
 </section>
@@ -60,20 +66,20 @@
 
 <nav class='pagination'>
   <ul class='unstyled'>
-    {% if previousPage %}
-      <li class='previous'>
-        <a href="{{ previousPage }}" class='unstyled'>
-          Previous
-        </a>
-      </li>
-    {% endif %}
-
     {% if nextPage %}
-      <li class='next'>
+      <li class='previous'>
         <a href="{{ nextPage }}" class='unstyled'>
-          Next
+          Older
         </a>
       </a>
+    </li>
+  {% endif %}
+
+  {% if previousPage %}
+    <li class='next'>
+      <a href="{{ previousPage }}" class='unstyled'>
+          Newer
+        </a>
     </li>
   {% endif %}
 </ul>

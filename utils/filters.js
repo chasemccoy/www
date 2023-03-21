@@ -30,7 +30,7 @@ module.exports = {
     return Object.keys(object)
   },
   filterHidden: (items) => {
-    return items.filter((item) => item.data.hidden !== true && item.data.title)
+    return items.filter((item) => item.data.hidden !== true)
   },
   onlyHiddenPosts: (posts) => {
     return posts.filter((post) => post.data.hidden)

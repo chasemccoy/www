@@ -15,27 +15,43 @@ body {
   }
 }
 
-body > header {
+.wrapper {
   max-width: calc(var(--content-width) + var(--sidebar-width) + 64px);
-  margin: 0 auto 1rem;
+  margin: 0 auto;
+}
 
-  > div {
+main > div {
+  padding: 1rem 0 48px;
+  margin: auto;
+  display: flex;
+  gap: 64px;
+  width: 100%;
+}
+
+#header,
+main > .content {
+  max-width: 100%;
+
+  @include small {
     max-width: var(--content-width);
   }
 }
 
-main {
-  padding-bottom: 48px;
-  margin: auto;
+.sidebar.mobile {
   display: flex;
-  gap: 64px;
-  width: fit-content;
+  margin-bottom: 2rem;
+  max-width: 100%;
+
+  @include small {
+    display: none;
+  }
 }
 
-main > .content {
-  max-width: var(--content-width);
-}
+.sidebar.desktop {
+  display: none;
+  max-width: var(--sidebar-width);
 
-main > .sidebar {
-  width: var(--sidebar-width);
+  @include small {
+    display: flex;
+  }
 }
