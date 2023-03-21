@@ -12,6 +12,7 @@ module.exports = [
   { name: 'Kicks Condor', url: 'https://kickscondor.com' },
   { name: 'Maggie Appleton', url: 'https://maggieappleton.com/garden' },
   { name: 'Matt Ström', url: 'https://matthewstrom.com' },
+  { name: 'maya.land', url: 'https://maya.land' },
   { name: 'Mu-An Chiou', url: 'https://muan.co' },
   { name: 'Piper Haywood', url: 'https://piperhaywood.com' },
   { name: 'pketh', url: 'https://pketh.org' },
