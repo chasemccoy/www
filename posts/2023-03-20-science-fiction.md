@@ -27,7 +27,3 @@ The story's alright, but the last paragraph is something else. It captures so ma
 > As she sat there, lost in her work, she knew that she would never leave this place, this sacred space where the computers whispered secrets to those who knew how to listen. She would be here always, she thought, a part of this ancient tradition, a keeper of the flame of knowledge. And in that moment, she knew that she had found her true home.
 
 Here's to all those who know how to listen.
-
-
-
-

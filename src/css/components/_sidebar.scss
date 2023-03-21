@@ -37,10 +37,16 @@
     margin-top: 1rem;
 
     ul {
-      gap: 24px;
-      columns: 2;
-      width: fit-content;
       margin-bottom: -8px;
+      display: inline-flex;
+      gap: 1.5rem;
+
+      @include small {
+        display: block;
+        gap: 24px;
+        columns: 2;
+        width: fit-content;
+      }
     }
 
     li {
