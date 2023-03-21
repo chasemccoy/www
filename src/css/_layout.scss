@@ -29,7 +29,7 @@ main > div {
 }
 
 #header,
-main > .content {
+main .content {
   max-width: 100%;
 
   @include small {

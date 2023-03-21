@@ -77,9 +77,11 @@ class SectionHeader extends HTMLElement {
 }
 
 const populateBookmarks = async () => {
-  const bookmarksContainer = document.querySelector('bookmark-list')
+  const bookmarksContainer = Array.from(
+    document.querySelectorAll('bookmark-list')
+  )
 
-  if (!bookmarksContainer) {
+  if (!bookmarksContainer || bookmarksContainer.length === 0) {
     return
   }
 
@@ -99,7 +101,7 @@ const populateBookmarks = async () => {
     ul.append(li)
   })
 
-  bookmarksContainer.append(ul)
+  bookmarksContainer.forEach((container) => container.append(ul))
 }
 
 const populateTableOfContents = () => {
