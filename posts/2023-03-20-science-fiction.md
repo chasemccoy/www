@@ -20,7 +20,7 @@ The thought experiment, titled "Inverted computer culture", asks the reader to i
 
 What a dream. I encourage you to read the piece which is quite short. It struck me as being exemplary of the aforementioned double action of science fiction—both a vision of the future and a metaphor for the current moment. You can imagine how a fictional immune response to our current culture might drive us toward a world of computing and technology like the one imagined here.
 
-To push it a bit further, I prompted ChatGPT to write a story based on the thought experiment and threw the result into a gist. [You can read the story it came up with here.](https://gist.github.com/chasemccoy/a9238fe3a5944c6a8adb7df08ffded4f).
+To push it a bit further, I prompted ChatGPT to write a story based on the thought experiment and threw the result into a gist. [You can read the story it came up with here](https://gist.github.com/chasemccoy/a9238fe3a5944c6a8adb7df08ffded4f).
 
 The story's alright, but the last paragraph is something else. It captures so many of the feelings I have about computing and the web:
 
