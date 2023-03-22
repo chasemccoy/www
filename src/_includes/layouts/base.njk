@@ -65,7 +65,9 @@
         {{ content | safe }}
       </div>
     </main>
-    
-    <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "407d31bfa5ac4cbcbdb57cf6ea314fe6"}'></script><!-- End Cloudflare Web Analytics -->
+
+    {% if env.environment == "production" %}
+      <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "407d31bfa5ac4cbcbdb57cf6ea314fe6"}'></script>
+    {% endif %}
   </body>
 </html>
