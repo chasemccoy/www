@@ -2,6 +2,9 @@
   publish = "_site"
   command = "yarn build"
 
+[context.production]
+  environment = { ENVIRONMENT = "production" }
+
 [[headers]]
   for = "/fonts/*"
   [headers.values]
