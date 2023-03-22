@@ -117,6 +117,7 @@ blockquote {
       content: '“';
       margin-left: -0.7em;
       margin-right: 0.3em;
+      color: var(--color-accent);
     }
   }
 
@@ -124,8 +125,7 @@ blockquote {
     content: '';
     display: block;
     width: 100%;
-    background: var(--color-accent);
-    // opacity: 0.5;
+    background: var(--color-border);
     height: 2px;
     margin-bottom: 8px;
   }

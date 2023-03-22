@@ -1,8 +1,36 @@
+@mixin tiny {
+  @media (min-width: 550px) {
+    @content;
+  }
+}
+
+@mixin small {
+  @media (min-width: 700px) {
+    @content;
+  }
+}
+
+@mixin medium {
+  @media (min-width: 900px) {
+    @content;
+  }
+}
+
+@mixin large {
+  @media (min-width: 1200px) {
+    @content;
+  }
+}
+
 :root,
 ::after,
 ::before {
-  --root-font-size: 13px;
+  --root-font-size: 15px;
   --root-line-height: 1.5;
+
+  @include small {
+    --root-font-size: 13px;
+  }
 
   --content-width: 35rem;
   --sidebar-width: 15rem;
@@ -42,29 +70,5 @@
     --color-border: hsl(48, 40%, 18%);
     --color-caption: hsl(48, 8%, 48%);
     --color-offset: hsl(48, 30%, 9%);
-  }
-}
-
-@mixin tiny {
-  @media (min-width: 550px) {
-    @content;
-  }
-}
-
-@mixin small {
-  @media (min-width: 700px) {
-    @content;
-  }
-}
-
-@mixin medium {
-  @media (min-width: 900px) {
-    @content;
-  }
-}
-
-@mixin large {
-  @media (min-width: 1200px) {
-    @content;
   }
 }

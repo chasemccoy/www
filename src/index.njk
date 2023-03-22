@@ -52,7 +52,6 @@
 
       {% if not post.data.title %}
         <a href="{{post.url}}" class='unstyled color-caption block'>
-          <span>::</span>
           <time datetime="{{ post.date | htmlDateString }}">{{ post.date | shortDate }}</time>
         </a>
       {% endif %}
