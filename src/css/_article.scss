@@ -85,7 +85,7 @@ hr {
     height: auto;
 
     &:before {
-      content: '❦';
+      content: ':::';
       font-family: var(--font-header);
       color: var(--color-border);
       display: block;
@@ -93,6 +93,7 @@ hr {
       text-align: center;
       font-size: 3em;
       padding-bottom: 8px;
+      line-height: 1;
     }
   }
 }

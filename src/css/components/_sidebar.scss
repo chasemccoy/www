@@ -19,6 +19,10 @@
     appearance: none;
   }
 
+  summary::-webkit-details-marker {
+    display: none;
+  }
+
   details summary:before {
     content: '+ More';
   }
@@ -47,6 +51,11 @@
 
   h2 {
     margin-bottom: 2px;
+  }
+
+  li:before {
+    content: '◆';
+    color: var(--color-border);
   }
 
   nav {
@@ -116,11 +125,6 @@
 
   bookmark-list {
     display: block;
-
-    li:before {
-      content: '◆';
-      color: var(--color-border);
-    }
 
     a {
       display: block;

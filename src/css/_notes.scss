@@ -85,7 +85,6 @@
     max-width: none;
     width: calc(100% + var(--layout-padding) * 2);
     margin-left: calc(var(--layout-padding) * -1);
-    border-radius: 8px;
 
     @include small {
       padding: 0.75em;

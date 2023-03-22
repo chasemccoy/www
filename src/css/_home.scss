@@ -7,6 +7,11 @@
     display: grid;
     gap: 0.75rem;
   }
+
+  article > time {
+    display: block;
+    margin-bottom: -0.5rem;
+  }
 }
 
 .home .pagination {

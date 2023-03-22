@@ -51,9 +51,9 @@
       {% endif %}
 
       {% if not post.data.title %}
-        <a href="{{post.url}}" class='unstyled color-caption block'>
-          <time datetime="{{ post.date | htmlDateString }}">{{ post.date | shortDate }}</time>
-        </a>
+        <time datetime="{{ post.date | htmlDateString }}">
+          <a href="{{post.url}}" class='unstyled color-caption block'>{{ post.date | shortDate }}</a>
+        </time>
       {% endif %}
 
       {{ post.content | safe }}
