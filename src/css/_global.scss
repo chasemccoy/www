@@ -8,10 +8,10 @@ body {
   font-family: var(--font-body);
   min-height: 100vh;
   color: var(--color-text);
+  border-top: 4px solid var(--color-accent);
 }
 
 h1.site-header {
-  // font-size: 0.9rem;
   background-color: var(--color-accent);
   width: fit-content;
   border-radius: 4px;
