@@ -58,24 +58,6 @@ class Bookmark extends HTMLElement {
   }
 }
 
-class SectionHeader extends HTMLElement {
-  constructor() {
-    super()
-  }
-
-  connectedCallback() {
-    this.render()
-  }
-
-  render() {
-    this.innerHTML = `
-      <h2 class='section-header'>
-        <span>${this.innerHTML}</span>
-      </h2>
-    `
-  }
-}
-
 const populateBookmarks = async () => {
   const bookmarksContainer = Array.from(
     document.querySelectorAll('bookmark-list')
@@ -132,7 +114,6 @@ const populateTableOfContents = () => {
 
 document.addEventListener('DOMContentLoaded', () => {
   customElements.define('book-mark', Bookmark)
-  customElements.define('section-header', SectionHeader)
   populateBookmarks()
   populateTableOfContents()
 })
