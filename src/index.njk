@@ -28,7 +28,7 @@
 
 <section class='blog'>
   {% for post in posts | filterHidden %}
-    <article class="prose">
+    <article class="prose {{ 'long-form' if post.data.title }}">
       {% if post.data.title %}
         <header>
           <h1 class='font-header'>
@@ -57,12 +57,6 @@
       {% endif %}
 
       {{ post.content | safe }}
-
-      {# {% if not post.data.title %}
-        <a href="{{post.url}}" class='unstyled color-caption mt-8 block'>
-          <time datetime="{{ post.date | htmlDateString }}">{{ post.date | shortDate }}</time>
-        </a>
-      {% endif %} #}
     </article>
   {% endfor %}
 </section>
