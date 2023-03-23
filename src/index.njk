@@ -28,6 +28,10 @@
 
 <section class='blog'>
   {% for post in posts | filterHidden %}
+    {% if loop.index == 3 %}
+      {% include "archives.njk" %}
+    {% endif %}
+
     <article class="prose {{ 'long-form' if post.data.title }}">
       {% if post.data.title %}
         <header>

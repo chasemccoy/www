@@ -9,7 +9,7 @@ pagination:
 permalink: "{{ year }}/index.html"
 ---
 
-{% set posts = collections.postsByYear[year] %}
+{% set posts = collections.postsByYear[year] | reverse %}
 
 {% slot 'header' %}
 <div class='breadcrumbs mb-12'>
@@ -22,7 +22,7 @@ permalink: "{{ year }}/index.html"
 {% endslot %}
 
 <div class='flex flex-column gap-12' style='gap: 12px;'>
-  {% for post in posts | reverse %}
+  {% for post in posts %}
     <a href="{{post.url}}" class='unstyled block post-preview'>
       <div>
         {% if post.data.title %}

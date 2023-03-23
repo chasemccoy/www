@@ -1,7 +1,6 @@
 ---
 title: The gap problem
 excerpt: Exploring techniques and trade offs for creating reusable grid components using modern CSS best practices.
-featured: true
 ---
 
 Simple collections of items laid out in rows and columns is perhaps one of the most common UI patterns. Whether you're showing a literal grid of items, or building the layout of your site, grids are a fundamental element of design on the web (and you could say the same about print, too).
