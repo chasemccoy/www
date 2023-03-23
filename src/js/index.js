@@ -83,7 +83,9 @@ const populateBookmarks = async () => {
     ul.append(li)
   })
 
-  bookmarksContainer.forEach((container) => container.append(ul))
+  bookmarksContainer.forEach((container) => {
+    container.append(ul.cloneNode(true))
+  })
 }
 
 const populateTableOfContents = () => {

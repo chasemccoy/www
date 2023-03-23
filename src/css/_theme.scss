@@ -25,7 +25,7 @@
 :root,
 ::after,
 ::before {
-  --root-font-size: 15px;
+  --root-font-size: 14px;
   --root-line-height: 1.5;
 
   @include small {

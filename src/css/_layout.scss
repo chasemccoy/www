@@ -31,6 +31,7 @@ main > div {
 #header,
 main .content {
   max-width: 100%;
+  flex-grow: 1;
 
   @include small {
     max-width: var(--content-width);
