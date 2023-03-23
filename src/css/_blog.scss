@@ -1,34 +1,3 @@
-.blog .content {
-  display: flex;
-  flex-direction: column;
-  gap: 2.5rem;
-}
-
-.year {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-
-  h2 {
-    font-size: 1.5rem;
-  }
-
-  @include small {
-    flex-direction: row;
-    gap: 2rem;
-    margin-left: -0.25em;
-
-    h2 {
-      display: block;
-      min-width: 4ch;
-      text-align: right;
-      line-height: 1;
-      flex-shrink: 0;
-      transform: translateY(-3px);
-    }
-  }
-}
-
 .blog .post-preview {
   color: var(--color-text);
 

@@ -72,6 +72,13 @@ module.exports = function (config) {
     return filters.filterTagList([...tagSet])
   })
 
+  config.addCollection('postsByYear', function (collection) {
+    const posts = collection
+      .getFilteredByTag('posts')
+      .filter((p) => !!p.data.title)
+    return filters.groupByYear(filters.filterHidden(posts))
+  })
+
   let markdownLibrary = markdownIt({
     html: true,
     breaks: true,

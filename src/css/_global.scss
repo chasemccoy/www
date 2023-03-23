@@ -268,7 +268,7 @@ time {
 
 .pagination {
   border-top: 1px solid var(--color-border);
-  margin-inline: -8px;
+  margin: 3rem 0;
 
   ul {
     display: flex;
@@ -297,8 +297,9 @@ time {
     gap: 2px;
     flex-direction: column;
     color: var(--color-text);
-    padding: 12px 8px 8px;
+    padding: 12px 2px 8px;
     transition: background-color 0.2s;
+    height: 100%;
 
     &:hover {
       background-color: var(--color-offset);
@@ -307,7 +308,7 @@ time {
 
   span.label {
     @extend time;
-    font-size: 0.7rem;
+    font-size: 0.8rem;
     color: var(--color-caption);
   }
 }

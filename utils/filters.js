@@ -22,8 +22,6 @@ module.exports = {
     const keys = Object.keys(groups).reverse()
     const results = {}
     keys.forEach((key) => (results[key] = groups[key]))
-    // console.log(keys)
-    // console.log(Object.keys(results))
     return results
   },
   keys: (object) => {
