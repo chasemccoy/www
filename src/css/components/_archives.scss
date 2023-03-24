@@ -1,0 +1,34 @@
+.archives {
+  padding: 1.5rem 0;
+  border-top: 1px dashed var(--color-border);
+  border-bottom: 1px dashed var(--color-border);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+
+  h2 {
+    font-family: var(--font-header);
+    color: var(--color-accent);
+    font-size: 1.75rem;
+    margin: 0 0 0.25rem;
+    line-height: 1;
+  }
+
+  h3 {
+    @extend time;
+    color: var(--color-caption);
+    margin-bottom: 4px;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  .years li + li:before {
+    content: '/';
+    display: inline;
+    margin: 0;
+    float: none;
+    color: var(--color-border);
+  }
+}

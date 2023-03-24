@@ -15,6 +15,7 @@ const filters = require('./utils/filters')
 
 const mdRender = new markdownIt()
 
+// Image shortcode for .njk files
 async function imageShortcode(src, alt, sizes) {
   let metadata = await Image(src, {
     widths: [null],
@@ -52,6 +53,11 @@ module.exports = function (config) {
   })
 
   config.addNunjucksAsyncShortcode('image', imageShortcode)
+  config.addPairedShortcode('slot', function (content, name) {
+    if (!name) throw new Error('Missing name for {% slot %} block!')
+    this.page[name] = content
+    return ''
+  })
 
   Object.keys(filters).forEach((filter) => {
     config.addFilter(filter, filters[filter])
@@ -67,13 +73,26 @@ module.exports = function (config) {
     return filters.filterTagList([...tagSet])
   })
 
+  config.addCollection('postsByYear', function (collection) {
+    const posts = collection
+      .getFilteredByTag('posts')
+      .filter((p) => !!p.data.title)
+    return filters.groupByYear(filters.filterHidden(posts))
+  })
+
+  config.addCollection('featuredPosts', function (collection) {
+    const posts = collection
+      .getFilteredByTag('posts')
+      .filter((p) => !!p.data.title && p.data.featured)
+    return filters.filterHidden(posts).reverse()
+  })
+
   let markdownLibrary = markdownIt({
     html: true,
     breaks: true,
     linkify: true,
     typographer: true,
   })
-    .disable('code')
     .use(markdownItAnchor, {
       slugify: config.getFilter('slug'),
     })

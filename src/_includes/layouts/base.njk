@@ -17,11 +17,11 @@
 <!doctype html>
 <html lang="en">
   <!-- 
-  I know that I am not a category. 
-  I am not a thing - a noun. 
-  I seem to be a verb, an evolutionary process - an integral function of the universe.
+  How often have I lain 
+  beneath rain on a strange roof, 
+  thinking of home.
 
-  R. Buckminster Fuller
+  William Faulkner
 -->
   <head>
     <meta charset="utf-8">
@@ -32,7 +32,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <style>
-      @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Source+Serif+Pro:ital,wght@0,400;0,600;1,400;1,600&display=swap');
+      @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
       @font-face {
         font-family: 'Batmip';
@@ -60,11 +60,37 @@
     {{ head | safe }}
   </head>
   <body {% if templateClass %} class="{{ templateClass }}"{% endif %}>
-    <main>
-      <div class="wrapper">
-        {{ content | safe }}
-      </div>
-    </main>
+    <div class='wrapper'>
+      <header>
+        <h1 class='site-header'>
+          <a href="/">chasem.co</a>
+        </h1>
+
+        <aside class='sidebar mobile'>
+          {% set mobile = true %}
+          {% include "sidebar.njk" %}
+        </aside>
+      </header>
+
+      <main>
+        {% if page.header %}
+          <header class='prose' id='header'>
+            {{ page.header | safe }}
+          </header>
+        {% endif %}
+
+        <div>
+          <div class="content">
+            {{ content | safe }}
+          </div>
+
+          <aside class='sidebar desktop'>
+            {% set mobile = false %}
+            {% include "sidebar.njk" %}
+          </aside>
+        </div>
+      </main>
+    </div>
 
     {% if env.environment == "production" %}
       <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "407d31bfa5ac4cbcbdb57cf6ea314fe6"}'></script>

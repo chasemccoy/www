@@ -1,44 +1,3 @@
-:root,
-::after,
-::before {
-  --root-font-size: 17px;
-  --root-line-height: 1.45;
-
-  --color-accent: hsl(23, 100%, 50%);
-  --link-color: var(--color-accent);
-  --link-hover: hsl(23, 100%, 40%);
-  --color-body-background: hsl(48, 100%, 97%);
-  --color-text: hsl(43, 10%, 20%);
-  --color-header: hsl(43, 10%, 25%);
-  --color-border: hsl(48, 30%, 85%);
-  --color-caption: hsl(48, 20%, 40%);
-  --color-offset: hsl(48, 60%, 94%);
-
-  --color-highlight: hsl(51, 100%, 84%);
-  --color-highlight-dark: hsl(50, 100%, 67%);
-
-  --font-code: 'JetBrains Mono', ui-monospace, Menlo, Monaco, 'Cascadia Mono',
-    'Segoe UI Mono', 'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace',
-    'Source Code Pro', 'Fira Mono', 'Droid Sans Mono', 'Courier New', monospace;
-  --font-body: 'Source Serif Pro', Georgia, Times, Times New Roman, serif;
-  --font-header: 'Batmip', 'Source Serif Pro', Georgia, Times, Times New Roman,
-    serif;
-  --font-system: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-    'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-    'Segoe UI Symbol';
-
-  @media (prefers-color-scheme: dark) {
-    --color-accent: hsl(23, 100%, 52%);
-    --link-hover: hsl(23, 100%, 44%);
-    --color-body-background: hsl(48, 40%, 5%);
-    --color-text: hsl(43, 10%, 75%);
-    --color-header: var(--color-text);
-    --color-border: hsl(48, 40%, 18%);
-    --color-caption: hsl(48, 8%, 48%);
-    --color-offset: hsl(48, 30%, 9%);
-  }
-}
-
 @mixin tiny {
   @media (min-width: 550px) {
     @content;
@@ -60,5 +19,56 @@
 @mixin large {
   @media (min-width: 1200px) {
     @content;
+  }
+}
+
+:root,
+::after,
+::before {
+  --root-font-size: 14px;
+  --root-line-height: 1.5;
+
+  @include small {
+    --root-font-size: 13px;
+  }
+
+  --content-width: 35rem;
+  --sidebar-width: 15rem;
+  --heading-scale: 0.9;
+
+  --color-accent: hsl(23, 100%, 50%);
+  --link-color: var(--color-accent);
+  --link-hover: hsl(23, 100%, 40%);
+  --color-body-background: hsl(48, 60%, 98%);
+  --color-text: hsl(43, 10%, 20%);
+  --color-header: hsl(43, 10%, 25%);
+  --color-border: hsl(48, 30%, 85%);
+  --color-caption: hsl(48, 20%, 40%);
+  --color-offset: hsl(48, 50%, 95%);
+
+  --color-highlight: hsl(51, 100%, 84%);
+  --color-highlight-dark: hsl(50, 100%, 67%);
+
+  --font-code: 'JetBrains Mono', ui-monospace, Menlo, Monaco, 'Cascadia Mono',
+    'Segoe UI Mono', 'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace',
+    'Source Code Pro', 'Fira Mono', 'Droid Sans Mono', 'Courier New', monospace;
+  --font-body: Verdana, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+    'Segoe UI Symbol';
+  --font-header: 'Batmip', 'Source Serif Pro', Georgia, Times, Times New Roman,
+    serif;
+  --font-system: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+    'Segoe UI Symbol';
+
+  @media (prefers-color-scheme: dark) {
+    --color-accent: hsl(23, 100%, 52%);
+    --link-hover: hsl(23, 100%, 44%);
+    --color-body-background: hsl(48, 40%, 5%);
+    --color-text: hsl(43, 10%, 75%);
+    --color-header: var(--color-text);
+    --color-border: hsl(48, 40%, 18%);
+    --color-caption: hsl(48, 8%, 48%);
+    --color-offset: hsl(48, 30%, 9%);
   }
 }

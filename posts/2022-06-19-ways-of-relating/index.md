@@ -18,7 +18,7 @@ Robin touches on this in [his newsletter announcing Spring ‘83](https://www.ro
 >
 > <cite>[Specifying Spring '83](https://www.robinsloan.com/lab/specifying-spring-83)</cite>
 
-I hadn't thought about this much before, but subconciously I've always been aware of it on some level because when I read RSS I much prefer to jump out to a person's website rather than reading in the client. It feels more personal and imparts the voice of the author. Reading on the source website feels like stepping into someone's home for a chat, whereas reading in an RSS client feels more... clinical.
+I hadn't thought about this much before, but subconsciously I've always been aware of it on some level because when I read RSS I much prefer to jump out to a person's website rather than reading in the client. It feels more personal and imparts the voice of the author. Reading on the source website feels like stepping into someone's home for a chat, whereas reading in an RSS client feels more... clinical.
 
 It makes me dream of an RSS reader that could emulate the styles of the websites it's syndicating. I'm reminded of [a protocol-like idea from Kicks Condor called "whostyles"](https://www.kickscondor.com/whostyles) which is "a way of styling syndicated hypertext from other writers."
 

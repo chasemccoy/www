@@ -1,0 +1,145 @@
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  font-size: 0.85rem;
+
+  details > div {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    padding: 1rem 0 0;
+  }
+
+  summary {
+    font-family: var(--font-code);
+    color: var(--color-caption);
+    list-style: none;
+    background-image: none;
+    appearance: none;
+  }
+
+  summary::-webkit-details-marker {
+    display: none;
+  }
+
+  details summary:before {
+    content: '+ More';
+  }
+
+  details[open] summary:before {
+    content: '- Less';
+  }
+
+  a {
+    color: var(--color-caption);
+    text-decoration: none;
+  }
+
+  a[aria-current='page'] {
+    color: var(--color-accent);
+  }
+
+  a:hover {
+    color: var(--link-color);
+  }
+
+  h1 {
+    font-size: 1em;
+    font-weight: normal;
+  }
+
+  h2 {
+    margin-bottom: 2px;
+  }
+
+  li:before {
+    content: '◆';
+    color: var(--color-border);
+  }
+
+  nav {
+    margin-top: 1rem;
+
+    ul {
+      margin-bottom: -8px;
+      display: inline-flex;
+      gap: 1.5rem;
+
+      @include small {
+        display: block;
+        gap: 24px;
+        columns: 2;
+        width: fit-content;
+      }
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    a {
+      display: flex;
+      align-items: center;
+
+      > svg {
+        margin-right: 6px;
+      }
+    }
+  }
+
+  .social {
+    ul {
+      columns: 2;
+      gap: 12px;
+    }
+  }
+
+  .blogroll {
+    ul {
+      columns: 2;
+      gap: 12px;
+      margin-top: 4px;
+    }
+
+    li {
+      margin: 0;
+    }
+
+    li:before {
+      content: none;
+    }
+
+    a {
+      display: block;
+      -webkit-line-clamp: 1;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+
+  bookmark-list {
+    display: block;
+
+    a {
+      display: block;
+      -webkit-line-clamp: 1;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+
+  .museo {
+    margin-top: 8px;
+  }
+
+  .colophon a {
+    text-decoration: underline;
+  }
+}

@@ -1,8 +1,8 @@
 ---
 title: Building Sprout Social’s component library
 excerpt: How our team of three built a component library that designers and engineers love using.
-featured: true
 image: seeds.png
+featured: true
 ---
 
 <aside class='callout'>

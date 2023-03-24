@@ -22,15 +22,13 @@ module.exports = {
     const keys = Object.keys(groups).reverse()
     const results = {}
     keys.forEach((key) => (results[key] = groups[key]))
-    // console.log(keys)
-    // console.log(Object.keys(results))
     return results
   },
   keys: (object) => {
     return Object.keys(object)
   },
   filterHidden: (items) => {
-    return items.filter((item) => item.data.hidden !== true && item.data.title)
+    return items.filter((item) => item.data.hidden !== true)
   },
   onlyHiddenPosts: (posts) => {
     return posts.filter((post) => post.data.hidden)

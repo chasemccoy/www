@@ -16,6 +16,10 @@
   [plugins.inputs]
     output_path = "lighthouse.html"
     
+[[redirects]]
+  from = "/blog"
+  to = "/"
+
 # [[redirects]]
 #   from = "/books"
 #   to = "/notes/books"

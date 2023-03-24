@@ -58,41 +58,33 @@ class Bookmark extends HTMLElement {
   }
 }
 
-class SectionHeader extends HTMLElement {
-  constructor() {
-    super()
-  }
-
-  connectedCallback() {
-    this.render()
-  }
-
-  render() {
-    this.innerHTML = `
-      <h2 class='section-header'>
-        <span>${this.innerHTML}</span>
-      </h2>
-    `
-  }
-}
-
 const populateBookmarks = async () => {
-  const bookmarksContainer = document.querySelector('bookmark-list')
+  const bookmarksContainer = Array.from(
+    document.querySelectorAll('bookmark-list')
+  )
 
-  if (!bookmarksContainer) {
+  if (!bookmarksContainer || bookmarksContainer.length === 0) {
     return
   }
 
   const response = await fetch('https://api.chsmc.workers.dev/bookmarks')
   const bookmarks = await response.json()
+  const ul = document.createElement('ul')
 
-  bookmarks.slice(0, 20).forEach(({ url, title, description, image }) => {
+  bookmarks.slice(0, 10).forEach(({ url, title, description, image }) => {
     const a = document.createElement('a')
+    const li = document.createElement('li')
     a.href = url
     a.textContent = title || url
     a.target = '_blank'
     a.classList = 'unstyled'
-    bookmarksContainer.append(a)
+    a.title = title || url
+    li.append(a)
+    ul.append(li)
+  })
+
+  bookmarksContainer.forEach((container) => {
+    container.append(ul.cloneNode(true))
   })
 }
 
@@ -117,12 +109,13 @@ const populateTableOfContents = () => {
     })
     tableOfContents.append(ul)
     tableOfContents.hidden = false
+  } else {
+    tableOfContents.remove()
   }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
   customElements.define('book-mark', Bookmark)
-  customElements.define('section-header', SectionHeader)
   populateBookmarks()
   populateTableOfContents()
 })

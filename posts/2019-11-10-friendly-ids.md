@@ -28,4 +28,4 @@ const randomName = () => {
 
 Thanks to the folks at Glitch for making this awesome resource available to the community! Check out the repo on GitHub to learn more:
 
-<Bookmark url='https://github.com/FogCreek/friendly-words' />
+<book-mark url='https://github.com/FogCreek/friendly-words'></book-mark>
