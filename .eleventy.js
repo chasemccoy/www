@@ -15,6 +15,7 @@ const filters = require('./utils/filters')
 
 const mdRender = new markdownIt()
 
+// Image shortcode for .njk files
 async function imageShortcode(src, alt, sizes) {
   let metadata = await Image(src, {
     widths: [null],
@@ -92,7 +93,6 @@ module.exports = function (config) {
     linkify: true,
     typographer: true,
   })
-    .disable('code')
     .use(markdownItAnchor, {
       slugify: config.getFilter('slug'),
     })

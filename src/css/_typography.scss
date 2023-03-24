@@ -15,19 +15,19 @@
     margin-top: 0.4rem;
   }
 
+  /* Spacing between first and second paragraph in list items */
   & li > p + p {
-    /* Spacing between first and second paragraph in list items */
     margin-top: 0.25rem;
   }
 
+  /* Spacing between other paragraphs in list items */
   & li > p:not(:first-of-type) + p {
-    /* Spacing between other paragraphs in list items */
     margin-top: 0.75rem;
   }
 
+  /* More spacing between list items if they contain full paragraphs */
   & li + li > p:first-child {
-    /* More spacing between list items if they contain full paragraphs */
-    margin-top: 1rem;
+    margin-top: 0.75rem;
   }
 
   blockquote {
