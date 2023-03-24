@@ -9,6 +9,7 @@
 body {
   padding: var(--layout-padding);
   min-height: 100vh;
+  padding-block: 1.5rem;
 
   @include small {
     padding-block: 3rem;
