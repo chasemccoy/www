@@ -6,11 +6,6 @@ import slugify from 'https://unpkg.com/@sindresorhus/slugify@2.1.1?module'
 // - Will only show posts that have a title & date
 const App = {}
 
-const filesToFilter = [
-  'Default constraint behaviors using Swift protocols',
-  'Gatsby schema customization is pretty cool',
-]
-
 const countWords = (string) => {
   string = string.replace(/(^\s*)|(\s*$)/gi, '')
   string = string.replace(/[ ]{2,}/gi, ' ')
@@ -67,20 +62,23 @@ const getDataForFile = async (fileHandle, slug) => {
   const hiddenRegex = /hidden: true/
   const matchTitle = contents.match(titleRegex)
   const draft = hiddenRegex.test(contents)
-  if (matchTitle) {
-    const title = matchTitle[1]
-    const date = DateTime.fromISO(slug.substring(0, 10))
-    const frontmatterRegex = /^---\n(.*\n)+---\n/
-    const wordCount = countWords(contents.replace(frontmatterRegex, '').trim())
 
-    return {
-      title,
-      date,
-      contents,
-      draft,
-      wordCount,
-      slug,
-    }
+  let title = slug
+  if (matchTitle) {
+    title = matchTitle[1]
+  }
+
+  const date = DateTime.fromISO(slug.substring(0, 10))
+  const frontmatterRegex = /^---\r?\n([\s\S]*?)\r?\n---\r?\n/
+  const wordCount = countWords(contents.replace(frontmatterRegex, '').trim())
+
+  return {
+    title,
+    date,
+    contents,
+    draft,
+    wordCount,
+    slug,
   }
 
   return {
@@ -184,17 +182,13 @@ const initApp = () => {
         const slug = entry.name.replace('.md', '')
         const data = await getDataForFile(entry, slug)
         Object.assign(entry, data)
-        if (data.title && !filesToFilter.includes(data.title)) {
-          App.files.push(entry)
-        }
+        App.files.push(entry)
       } else if (entry.kind === 'directory') {
         const slug = entry.name
         const fileEntry = await entry.getFileHandle('index.md')
         const data = await getDataForFile(fileEntry, slug)
         Object.assign(fileEntry, data)
-        if (data.title && !filesToFilter.includes(data.title)) {
-          App.files.push(fileEntry)
-        }
+        App.files.push(fileEntry)
       }
     }
 

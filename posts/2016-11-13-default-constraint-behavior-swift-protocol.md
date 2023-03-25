@@ -1,6 +1,5 @@
 ---
 title: Default constraint behaviors using Swift protocols
-hidden: true
 ---
 
 When developing an iOS app, you often need to adjust constraints in order to make sure that the keyboard doesn’t obscure any of the elements on screen. This is a common problem that is an easy but annoying fix.
