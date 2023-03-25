@@ -1,7 +1,9 @@
 @import 'reset';
 @import 'theme';
-// @import 'typography';
-// @import 'article';
+
+:root {
+  --root-font-size: 16px;
+}
 
 html,
 body {

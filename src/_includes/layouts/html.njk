@@ -1,0 +1,69 @@
+{% set pageTitle = metadata.title %}
+
+{% if title %}
+  {% set pageTitle %}{{ title }} | {{ metadata.title }}{% endset %}
+{% endif %}
+
+{% if css %}
+  {% set styles %}
+  {% include "styles/" + css %}
+  {% endset %}
+{% else %}
+  {% set styles %}
+  {% include "styles/styles.css" %}
+  {% endset %}
+{% endif %}
+
+<!doctype html>
+<html lang="en">
+  <!-- 
+  How often have I lain 
+  beneath rain on a strange roof, 
+  thinking of home.
+
+  William Faulkner
+-->
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="{{ eleventy.generator }}">
+    <title>{{pageTitle}}</title>
+    <meta name="description" content="{{ description or metadata.description }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+      @font-face {
+        font-family: 'Batmip';
+        src: url("/fonts/batmip/Batmip-Fraktur.woff2") format('woff2'), url("/fonts/batmip/Batmip-Fraktur.woff") format('woff');
+        font-weight: 600;
+        font-style: normal;
+        font-display: block;
+      }
+    </style>
+    <style>
+      {{styles | cssmin | safe}}
+    </style>
+    <link rel="alternate" href="{{ metadata.feed.path }}" type="application/atom+xml" title="{{ metadata.title }}">
+    <link rel="alternate" href="{{ metadata.jsonfeed.path }}" type="application/json" title="{{ metadata.title }}">
+    <link rel="icon" href="/favicon.png" type="image/png">
+    <meta property="og:site_name" content="Chase McCoy">
+    <meta property="og:url" content="https://chasem.co/">
+    <meta property="og:title" content="{{ pageTitle }}">
+    <meta name="twitter:creator" content="@chase_mccoy">
+    <meta name="twitter:title" content="{{ pageTitle }}">
+    <script src="/js/index.js" defer></script>
+    {% if js %}
+      <script src="/js/{{js}}.js" defer type="module"></script>
+    {% endif %}
+    {{ head | safe }}
+  </head>
+  <body {% if templateClass %} class="{{ templateClass }}"{% endif %}>
+    {{ content | safe }}
+
+    {% if env.environment == "production" %}
+      <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "407d31bfa5ac4cbcbdb57cf6ea314fe6"}'></script>
+    {% endif %}
+  </body>
+</html>
