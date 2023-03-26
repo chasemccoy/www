@@ -10,4 +10,10 @@ tags:
 1. Make it obvious
 2. Make it attractive
 3. Make it easy
-4. Make it satisfying 
+4. Make it satisfying
+
+---
+
+Ethan Marcotte reminds us of the dangers of focusing exclusively on adoption:
+
+<book-mark url="https://ethanmarcotte.com/wrote/design-system-adoption"></book-mark>
