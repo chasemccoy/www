@@ -1,6 +1,14 @@
-import { get, set } from 'https://unpkg.com/idb-keyval@5.0.2/dist/esm/index.js'
-import { DateTime } from 'https://unpkg.com/luxon@3.2.0/build/es6/luxon.js'
-import slugify from 'https://unpkg.com/@sindresorhus/slugify@2.1.1?module'
+// import { get, set } from 'https://unpkg.com/idb-keyval@5.0.2/dist/esm/index.js'
+// import { DateTime } from 'https://unpkg.com/luxon@3.2.0/build/es6/luxon.js'
+// import slugify from 'https://unpkg.com/@sindresorhus/slugify@2.1.1?module'
+
+import { DateTime } from 'luxon'
+import { get, set } from 'idb-keyval'
+import slugify from 'slugify'
+import { EditorView } from '@codemirror/view'
+import { EditorState } from '@codemirror/state'
+import { markdown, markdownLanguage } from '@codemirror/lang-markdown'
+import { languages } from '@codemirror/language-data'
 
 // Assumptions:
 // - Will only show posts that have a title & date
@@ -13,26 +21,19 @@ const countWords = (string) => {
   return string.split(' ').filter(String).length
 }
 
-const debounce = (callback, wait) => {
-  let timeout
-  return (...args) => {
-    const context = this
-    clearTimeout(timeout)
-    timeout = setTimeout(() => callback.apply(context, args), wait)
-  }
-}
-
 const getDirectory = async () => {
   try {
-    const directoryHandleOrUndefined = await get('directory')
-    if (directoryHandleOrUndefined) {
-      App.directory = directoryHandleOrUndefined
-      return App.directory
-    }
+    // const directoryHandleOrUndefined = await get('directory')
+
+    // if (directoryHandleOrUndefined) {
+    //   App.directory = directoryHandleOrUndefined
+    //   return App.directory
+    // }
+
     const directoryHandle = await window.showDirectoryPicker({
       mode: 'readwrite',
     })
-    await set('directory', directoryHandle)
+    // await set('directory', directoryHandle)
     App.directory = directoryHandle
     return App.directory
   } catch (error) {
@@ -122,51 +123,85 @@ const initApp = () => {
   App.createButton = document.getElementById('create-button')
   App.openInCodeButton = document.getElementById('open-vscode')
 
-  App.editor = ace.edit('editor')
-  App.editor.setTheme('ace/theme/github')
-  App.editor.session.setMode('ace/mode/markdown')
+  let timer
+
+  const state = EditorState.create({
+    extensions: [
+      markdown({ base: markdownLanguage, codeLanguages: languages }),
+      EditorView.lineWrapping,
+      EditorView.updateListener.of((update) => {
+        if (update.docChanged) {
+          if (timer) clearTimeout(timer)
+          timer = setTimeout(async () => {
+            const contents = update.state.doc.toString()
+
+            if (App.currentFile && contents !== App.currentFile.contents) {
+              App.saveButton.hidden = false
+              App.editorState = 'dirty'
+              console.log('SAVING')
+              await writeFile(App.currentFile, contents)
+              App.editorState = ''
+              App.saveButton.hidden = true
+            } else {
+              App.saveButton.hidden = true
+              App.editorState = ''
+            }
+          }, 500)
+        }
+      }),
+    ],
+  })
+
+  App.editor = new EditorView({
+    state,
+    parent: document.getElementById('editor'),
+  })
+
+  // App.editor = ace.edit('editor')
+  // App.editor.setTheme('ace/theme/github')
+  // App.editor.session.setMode('ace/mode/markdown')
 
   // All options are listed here:
   // https://github.com/ajaxorg/ace/wiki/Configuring-Ace
-  App.editor.setOptions({
-    fontFamily: 'JetBrains Mono',
-    fontSize: '0.85rem',
-    behavioursEnabled: true,
-    enableAutoIndent: true,
-    showLineNumbers: true,
-    showPrintMargin: false,
-    showFoldWidgets: false,
-    showGutter: true,
-    indentedSoftWrap: false,
-    useWorker: false,
-    wrap: 68,
-    tabSize: 2,
-    keyboardHandler: 'ace/keyboard/vscode',
-  })
+  // App.editor.setOptions({
+  //   fontFamily: 'JetBrains Mono',
+  //   fontSize: '0.85rem',
+  //   behavioursEnabled: true,
+  //   enableAutoIndent: true,
+  //   showLineNumbers: true,
+  //   showPrintMargin: false,
+  //   showFoldWidgets: false,
+  //   showGutter: true,
+  //   indentedSoftWrap: false,
+  //   useWorker: false,
+  //   wrap: 68,
+  //   tabSize: 2,
+  //   keyboardHandler: 'ace/keyboard/vscode',
+  // })
 
-  App.editor.session.on('change', async () => {
-    if (App.currentFile && App.editor.getValue() !== App.currentFile.contents) {
-      App.saveButton.hidden = false
-      App.editorState = 'dirty'
-    } else {
-      App.saveButton.hidden = true
-      App.editorState = ''
-    }
-  })
+  // App.editor.session.on('change', async () => {
+  //   if (App.currentFile && App.editor.getValue() !== App.currentFile.contents) {
+  //     App.saveButton.hidden = false
+  //     App.editorState = 'dirty'
+  //   } else {
+  //     App.saveButton.hidden = true
+  //     App.editorState = ''
+  //   }
+  // })
 
-  App.editor.session.on(
-    'change',
-    debounce(async () => {
-      if (
-        App.currentFile &&
-        App.editor.getValue() !== App.currentFile.contents
-      ) {
-        await writeFile(App.currentFile, App.editor.getValue())
-        App.editorState = ''
-        App.saveButton.hidden = true
-      }
-    }, 300)
-  )
+  // App.editor.session.on(
+  //   'change',
+  //   debounce(async () => {
+  //     if (
+  //       App.currentFile &&
+  //       App.editor.getValue() !== App.currentFile.contents
+  //     ) {
+  //       await writeFile(App.currentFile, App.editor.getValue())
+  //       App.editorState = ''
+  //       App.saveButton.hidden = true
+  //     }
+  //   }, 300)
+  // )
 
   App.pickerButton.onclick = async () => {
     await getDirectory()
@@ -236,26 +271,26 @@ const initApp = () => {
       }
     }
 
-    document.querySelector('textarea.ace_text-input')?.addEventListener(
-      'paste',
-      (event) => {
-        event.preventDefault()
-        event.stopPropagation()
+    // document.querySelector('textarea.ace_text-input')?.addEventListener(
+    //   'paste',
+    //   (event) => {
+    //     event.preventDefault()
+    //     event.stopPropagation()
 
-        const clipboardText = (
-          event.clipboardData || window.clipboardData
-        ).getData('text')
-        const currentSelection = App.editor.getSelectedText()
+    //     const clipboardText = (
+    //       event.clipboardData || window.clipboardData
+    //     ).getData('text')
+    //     const currentSelection = App.editor.getSelectedText()
 
-        if (clipboardText.includes('http') && currentSelection !== '') {
-          const link = `[${currentSelection}](${clipboardText.trim()})`
-          App.editor.insert(link)
-        } else {
-          App.editor.insert(clipboardText)
-        }
-      },
-      true
-    )
+    //     if (clipboardText.includes('http') && currentSelection !== '') {
+    //       const link = `[${currentSelection}](${clipboardText.trim()})`
+    //       App.editor.insert(link)
+    //     } else {
+    //       App.editor.insert(clipboardText)
+    //     }
+    //   },
+    //   true
+    // )
 
     App.files = App.files.sort((a, b) => b.date.toMillis() - a.date.toMillis())
 
@@ -263,7 +298,7 @@ const initApp = () => {
     App.draftsList.querySelector('li:first-child button')?.click()
   }
 
-  App.pickerButton.click()
+  // App.pickerButton.click()
 }
 
 const clearActiveNavItems = () => {
@@ -282,8 +317,15 @@ const populateFiles = async () => {
     const button = document.createElement('button')
 
     const onClick = () => {
-      App.editor.session.setValue(file.contents)
+      // App.editor.session.setValue(file.contents)
       App.editorState = ''
+      App.editor.dispatch({
+        changes: {
+          from: 0,
+          to: App.editor.state.doc.length,
+          insert: file.contents,
+        },
+      })
       App.saveButton.hidden = true
       App.currentFile = file
       clearActiveNavItems()
