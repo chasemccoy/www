@@ -149,6 +149,29 @@ const initApp = () => {
           }, 500)
         }
       }),
+      EditorView.domEventHandlers({
+        paste: (event) => {
+          event.preventDefault()
+          event.stopPropagation()
+
+          const clipboardText = (
+            event.clipboardData || window.clipboardData
+          ).getData('text')
+          const currentSelection = App.editor.state.sliceDoc(
+            App.editor.state.selection.main.from,
+            App.editor.state.selection.main.to
+          )
+
+          if (clipboardText.includes('http') && currentSelection !== '') {
+            const link = `[${currentSelection}](${clipboardText.trim()})`
+            App.editor.dispatch(App.editor.state.replaceSelection(link))
+          } else {
+            App.editor.dispatch(
+              App.editor.state.replaceSelection(clipboardText)
+            )
+          }
+        },
+      }),
     ],
   })
 
