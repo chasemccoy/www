@@ -1,7 +1,3 @@
-// import { get, set } from 'https://unpkg.com/idb-keyval@5.0.2/dist/esm/index.js'
-// import { DateTime } from 'https://unpkg.com/luxon@3.2.0/build/es6/luxon.js'
-// import slugify from 'https://unpkg.com/@sindresorhus/slugify@2.1.1?module'
-
 import { DateTime } from 'luxon'
 import { get, set } from 'idb-keyval'
 import slugify from 'slugify'
@@ -9,6 +5,8 @@ import { EditorView } from '@codemirror/view'
 import { EditorState } from '@codemirror/state'
 import { markdown, markdownLanguage } from '@codemirror/lang-markdown'
 import { languages } from '@codemirror/language-data'
+import { syntaxTheme } from './syntax-highlighting'
+import { syntaxHighlighting } from '@codemirror/language'
 
 // Assumptions:
 // - Will only show posts that have a title & date
@@ -23,17 +21,17 @@ const countWords = (string) => {
 
 const getDirectory = async () => {
   try {
-    // const directoryHandleOrUndefined = await get('directory')
+    const directoryHandleOrUndefined = await get('directory')
 
-    // if (directoryHandleOrUndefined) {
-    //   App.directory = directoryHandleOrUndefined
-    //   return App.directory
-    // }
+    if (directoryHandleOrUndefined) {
+      App.directory = directoryHandleOrUndefined
+      return App.directory
+    }
 
     const directoryHandle = await window.showDirectoryPicker({
       mode: 'readwrite',
     })
-    // await set('directory', directoryHandle)
+    await set('directory', directoryHandle)
     App.directory = directoryHandle
     return App.directory
   } catch (error) {
@@ -128,7 +126,12 @@ const initApp = () => {
   const state = EditorState.create({
     extensions: [
       markdown({ base: markdownLanguage, codeLanguages: languages }),
+      syntaxHighlighting(syntaxTheme),
       EditorView.lineWrapping,
+      EditorView.contentAttributes.of({
+        spellcheck: 'true',
+        autocorrect: 'on',
+      }),
       EditorView.updateListener.of((update) => {
         if (update.docChanged) {
           if (timer) clearTimeout(timer)
