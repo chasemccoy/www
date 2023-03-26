@@ -9,8 +9,8 @@
     "debug": "DEBUG=* eleventy",
     "watch:css": "sass --watch src/css:src/_includes/styles",
     "build:css": "sass src/css:src/_includes/styles",
-    "watch:js": "./node_modules/.bin/esbuild src/js/faulkner.js --bundle --outfile=src/js//faulkner-bundle.js --watch",
-    "build:js": "./node_modules/.bin/esbuild src/js/faulkner.js --bundle --outfile=src/js//faulkner-bundle.js",
+    "watch:js": "./node_modules/.bin/esbuild src/js/faulkner.js --bundle --outfile=src/js//faulkner-bundle.js --watch --sourcemap",
+    "build:js": "./node_modules/.bin/esbuild src/js/faulkner.js --bundle --outfile=src/js//faulkner-bundle.js --minify",
     "clean": "rm -rf _site"
   },
   "repository": {
