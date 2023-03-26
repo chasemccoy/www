@@ -2,10 +2,10 @@
   "name": "@chasemccoy/www",
   "version": "2022",
   "scripts": {
-    "build": "ENVIRONMENT=production yarn clean && concurrently \"eleventy\" \"yarn build:css\"",
+    "build": "ENVIRONMENT=production yarn clean && concurrently \"yarn build:js\" \"eleventy\" \"yarn build:css\"",
     "watch": "eleventy --watch",
     "serve": "eleventy --serve",
-    "start": "concurrently \"eleventy --serve --quiet\" \"yarn watch:css\" \"yarn watch:js\"",
+    "start": "concurrently \"yarn watch:js\" \"eleventy --serve --quiet\" \"yarn watch:css\"",
     "debug": "DEBUG=* eleventy",
     "watch:css": "sass --watch src/css:src/_includes/styles",
     "build:css": "sass src/css:src/_includes/styles",

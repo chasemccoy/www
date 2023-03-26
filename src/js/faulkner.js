@@ -8,8 +8,6 @@ import { languages } from '@codemirror/language-data'
 import { syntaxTheme } from './syntax-highlighting'
 import { syntaxHighlighting } from '@codemirror/language'
 
-// Assumptions:
-// - Will only show posts that have a title & date
 const App = {}
 
 const countWords = (string) => {
@@ -183,52 +181,6 @@ const initApp = () => {
     parent: document.getElementById('editor'),
   })
 
-  // App.editor = ace.edit('editor')
-  // App.editor.setTheme('ace/theme/github')
-  // App.editor.session.setMode('ace/mode/markdown')
-
-  // All options are listed here:
-  // https://github.com/ajaxorg/ace/wiki/Configuring-Ace
-  // App.editor.setOptions({
-  //   fontFamily: 'JetBrains Mono',
-  //   fontSize: '0.85rem',
-  //   behavioursEnabled: true,
-  //   enableAutoIndent: true,
-  //   showLineNumbers: true,
-  //   showPrintMargin: false,
-  //   showFoldWidgets: false,
-  //   showGutter: true,
-  //   indentedSoftWrap: false,
-  //   useWorker: false,
-  //   wrap: 68,
-  //   tabSize: 2,
-  //   keyboardHandler: 'ace/keyboard/vscode',
-  // })
-
-  // App.editor.session.on('change', async () => {
-  //   if (App.currentFile && App.editor.getValue() !== App.currentFile.contents) {
-  //     App.saveButton.hidden = false
-  //     App.editorState = 'dirty'
-  //   } else {
-  //     App.saveButton.hidden = true
-  //     App.editorState = ''
-  //   }
-  // })
-
-  // App.editor.session.on(
-  //   'change',
-  //   debounce(async () => {
-  //     if (
-  //       App.currentFile &&
-  //       App.editor.getValue() !== App.currentFile.contents
-  //     ) {
-  //       await writeFile(App.currentFile, App.editor.getValue())
-  //       App.editorState = ''
-  //       App.saveButton.hidden = true
-  //     }
-  //   }, 300)
-  // )
-
   App.pickerButton.onclick = async () => {
     await getDirectory()
     const success = await verifyPermission(App.directory)
@@ -282,7 +234,7 @@ const initApp = () => {
           ].join('\n')
 
           const file = await createNewFile(slug, contents)
-          // TODO gotta pass the slug here
+          // TODO gotta pass the slug here *with the date*
           const data = await getDataForFile(file)
           Object.assign(file, data)
           file.slug = file.name.replace('.md', '')
@@ -296,27 +248,6 @@ const initApp = () => {
         dialog.querySelector('form')?.reset()
       }
     }
-
-    // document.querySelector('textarea.ace_text-input')?.addEventListener(
-    //   'paste',
-    //   (event) => {
-    //     event.preventDefault()
-    //     event.stopPropagation()
-
-    //     const clipboardText = (
-    //       event.clipboardData || window.clipboardData
-    //     ).getData('text')
-    //     const currentSelection = App.editor.getSelectedText()
-
-    //     if (clipboardText.includes('http') && currentSelection !== '') {
-    //       const link = `[${currentSelection}](${clipboardText.trim()})`
-    //       App.editor.insert(link)
-    //     } else {
-    //       App.editor.insert(clipboardText)
-    //     }
-    //   },
-    //   true
-    // )
 
     App.files = App.files.sort((a, b) => b.date.toMillis() - a.date.toMillis())
 
@@ -343,7 +274,6 @@ const populateFiles = async () => {
     const button = document.createElement('button')
 
     const onClick = () => {
-      // App.editor.session.setValue(file.contents)
       App.editorState = ''
       App.editor.dispatch({
         changes: {

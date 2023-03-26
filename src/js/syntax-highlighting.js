@@ -5,7 +5,7 @@ export const syntaxTheme = HighlightStyle.define([
   // ordered by lowest to highest precedence
   {
     tag: tags.atom,
-    color: 'var(--atom, #d19a66)',
+    color: 'var(--atom, hsl(48, 20%, 60%))',
   },
   {
     tag: tags.meta,
@@ -20,7 +20,7 @@ export const syntaxTheme = HighlightStyle.define([
   // name group
   {
     tag: tags.name,
-    color: 'var(--name, #d19a66)',
+    color: 'var(--name, hsl(48, 20%, 60%))',
   },
   {
     tag: tags.labelName,
@@ -28,7 +28,7 @@ export const syntaxTheme = HighlightStyle.define([
   },
   {
     tag: tags.propertyName,
-    color: 'var(--propertyName, var(--name, #96c0d8))',
+    color: 'var(--propertyName, var(--name, hsl(48, 20%, 60%)))',
   },
   {
     tag: tags.definition(tags.propertyName),
@@ -42,12 +42,12 @@ export const syntaxTheme = HighlightStyle.define([
   {
     tag: tags.definition(tags.variableName),
     color:
-      'var(--variableName-definition, var(--variableName, var(--name, #e5c07b)))',
+      'var(--variableName-definition, var(--variableName, var(--name, hsl(48, 20%, 60%))))',
   },
   {
     tag: tags.local(tags.variableName),
     color:
-      'var(--variableName-local, var(--variableName, var(--name, #d19a66)))',
+      'var(--variableName-local, var(--variableName, var(--name, hsl(48, 20%, 60%))))',
   },
   {
     tag: tags.special(tags.variableName),
@@ -57,45 +57,31 @@ export const syntaxTheme = HighlightStyle.define([
   // headings
   {
     tag: tags.heading,
-    // color: 'var(--heading, #e06c75)',
     fontWeight: 'bold',
   },
   {
     tag: tags.heading1,
-    // color: 'var(--heading1, var(--heading, #e06c75))',
-    // fontSize: '1.6em',
     fontWeight: 'bold',
   },
   {
     tag: tags.heading2,
-    // color: 'var(--heading2, var(--heading, #e06c75))',
     color: 'var(--heading2, var(--color-caption))',
-    opacity: '0.4',
-    // fontSize: '1.5em',
     fontWeight: 'bold',
   },
   {
     tag: tags.heading3,
-    // color: 'var(--heading3, var(--heading, #e06c75))',
-    // fontSize: '1.4em',
     fontWeight: 'bold',
   },
   {
     tag: tags.heading4,
-    // color: 'var(--heading4, var(--heading, #e06c75))',
-    // fontSize: '1.3em',
     fontWeight: 'bold',
   },
   {
     tag: tags.heading5,
-    // color: 'var(--heading5, var(--heading, #e06c75))',
-    // fontSize: '1.2em',
     fontWeight: 'bold',
   },
   {
     tag: tags.heading6,
-    // color: 'var(--heading6, var(--heading, #e06c75))',
-    // fontSize: '1.1em',
     fontWeight: 'bold',
   },
   // contextual tag types
@@ -105,11 +91,11 @@ export const syntaxTheme = HighlightStyle.define([
   },
   {
     tag: tags.number,
-    color: 'var(--number, #d19a66)',
+    color: 'var(--number, hsl(48, 20%, 60%))',
   },
   {
     tag: tags.operator,
-    color: 'var(--operator, #96c0d8)',
+    color: 'var(--operator, hsl(48, 20%, 60%))',
   },
   {
     tag: tags.punctuation,
@@ -145,7 +131,7 @@ export const syntaxTheme = HighlightStyle.define([
   // string group
   {
     tag: tags.string,
-    color: 'var(--string, #98c379)',
+    color: 'var(--string, hsl(48, 20%, 60%))',
   },
   {
     tag: tags.special(tags.string),
