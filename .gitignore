@@ -1,4 +1,4 @@
 _site/
 node_modules/
 src/_includes/styles
-src/js/faulker-bundle.js
+src/js/faulkner-bundle.js
