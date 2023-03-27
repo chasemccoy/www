@@ -162,6 +162,10 @@ header {
     font-size: 0.85rem;
     padding-top: 1rem;
     padding-left: 2rem;
+
+    @media (prefers-color-scheme: dark) {
+      caret-color: white;
+    }
   }
 
   .cm-editor.cm-focused {
