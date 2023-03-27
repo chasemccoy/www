@@ -1,12 +1,18 @@
 import { DateTime } from 'luxon'
 import { get, set } from 'idb-keyval'
 import slugify from 'slugify'
-import { EditorView } from '@codemirror/view'
-import { EditorState } from '@codemirror/state'
+import { EditorView, keymap } from '@codemirror/view'
+import {
+  EditorState,
+  Text,
+  EditorSelection,
+  Transaction,
+} from '@codemirror/state'
 import { markdown, markdownLanguage } from '@codemirror/lang-markdown'
 import { languages } from '@codemirror/language-data'
 import { syntaxTheme } from './syntax-highlighting'
 import { syntaxHighlighting } from '@codemirror/language'
+import { history, indentWithTab } from '@codemirror/commands'
 
 const App = {}
 
@@ -109,6 +115,114 @@ const createNewFile = async (name, contents) => {
   return handle
 }
 
+const insertBoldMarker = ({ state, dispatch }) => {
+  const changes = state.changeByRange((range) => {
+    const isBoldBefore = state.sliceDoc(range.from - 2, range.from) === '**'
+    const isBoldAfter = state.sliceDoc(range.to, range.to + 2) === '**'
+    const changes = []
+
+    changes.push(
+      isBoldBefore
+        ? {
+            from: range.from - 2,
+            to: range.from,
+            insert: Text.of(['']),
+          }
+        : {
+            from: range.from,
+            insert: Text.of(['**']),
+          }
+    )
+
+    changes.push(
+      isBoldAfter
+        ? {
+            from: range.to,
+            to: range.to + 2,
+            insert: Text.of(['']),
+          }
+        : {
+            from: range.to,
+            insert: Text.of(['**']),
+          }
+    )
+
+    const extendBefore = isBoldBefore ? -2 : 2
+    const extendAfter = isBoldAfter ? -2 : 2
+
+    return {
+      changes,
+      range: EditorSelection.range(
+        range.from + extendBefore,
+        range.to + extendAfter
+      ),
+    }
+  })
+
+  dispatch(
+    state.update(changes, {
+      scrollIntoView: true,
+      annotations: Transaction.userEvent.of('input'),
+    })
+  )
+
+  return true
+}
+
+const insertItalicMarker = ({ state, dispatch }) => {
+  const changes = state.changeByRange((range) => {
+    const isBoldBefore = state.sliceDoc(range.from - 1, range.from) === '_'
+    const isBoldAfter = state.sliceDoc(range.to, range.to + 1) === '_'
+    const changes = []
+
+    changes.push(
+      isBoldBefore
+        ? {
+            from: range.from - 1,
+            to: range.from,
+            insert: Text.of(['']),
+          }
+        : {
+            from: range.from,
+            insert: Text.of(['_']),
+          }
+    )
+
+    changes.push(
+      isBoldAfter
+        ? {
+            from: range.to,
+            to: range.to + 1,
+            insert: Text.of(['']),
+          }
+        : {
+            from: range.to,
+            insert: Text.of(['_']),
+          }
+    )
+
+    const extendBefore = isBoldBefore ? -1 : 1
+    const extendAfter = isBoldAfter ? -1 : 1
+
+    return {
+      changes,
+      range: EditorSelection.range(
+        range.from + extendBefore,
+        range.to + extendAfter
+      ),
+    }
+  })
+
+  dispatch(
+    state.update(changes, {
+      scrollIntoView: true,
+      annotations: Transaction.userEvent.of('input'),
+    })
+  )
+
+  return true
+}
+
 const initApp = () => {
   App.pickerButton = document.getElementById('pick-directory')
   App.fileList = document.getElementById('file-list')
@@ -124,7 +238,13 @@ const initApp = () => {
   const state = EditorState.create({
     extensions: [
       markdown({ base: markdownLanguage, codeLanguages: languages }),
+      history(),
       syntaxHighlighting(syntaxTheme),
+      keymap.of([
+        indentWithTab,
+        { key: 'Mod-b', run: insertBoldMarker },
+        { key: 'Mod-i', run: insertItalicMarker },
+      ]),
       EditorView.lineWrapping,
       EditorView.contentAttributes.of({
         spellcheck: 'true',
@@ -139,7 +259,6 @@ const initApp = () => {
             if (App.currentFile && contents !== App.currentFile.contents) {
               App.saveButton.hidden = false
               App.editorState = 'dirty'
-              console.log('SAVING')
               await writeFile(App.currentFile, contents)
               App.editorState = ''
               App.saveButton.hidden = true

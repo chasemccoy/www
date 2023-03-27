@@ -140,12 +140,12 @@ export const syntaxTheme = HighlightStyle.define([
   // emphasis types
   {
     tag: tags.emphasis,
-    color: 'var(--emphasis, inherit)',
+    // color: 'var(--emphasis, inherit)',
     fontStyle: 'italic',
   },
   {
     tag: tags.strong,
-    color: 'var(--strong, inherit)',
+    // color: 'var(--strong, inherit)',
     fontWeight: 'bold',
   },
 ])

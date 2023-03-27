@@ -29,6 +29,7 @@
     "@11ty/eleventy-img": "^3.0.0",
     "@11ty/eleventy-plugin-rss": "^1.2.0",
     "@11ty/eleventy-plugin-syntaxhighlight": "^4.2.0",
+    "@codemirror/commands": "^6.2.2",
     "@codemirror/lang-markdown": "^6.1.0",
     "@codemirror/language-data": "^6.1.0",
     "@codemirror/state": "^6.2.0",
