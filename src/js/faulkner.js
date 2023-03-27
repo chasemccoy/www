@@ -315,16 +315,24 @@ const initApp = () => {
 
     for await (const entry of App.directory.values()) {
       if (entry.kind === 'file' && entry.name.endsWith('.md')) {
-        const slug = entry.name.replace('.md', '')
-        const data = await getDataForFile(entry, slug)
-        Object.assign(entry, data)
-        App.files.push(entry)
+        try {
+          const slug = entry.name.replace('.md', '')
+          const data = await getDataForFile(entry, slug)
+          Object.assign(entry, data)
+          App.files.push(entry)
+        } catch (error) {
+          console.error(error)
+        }
       } else if (entry.kind === 'directory') {
-        const slug = entry.name
-        const fileEntry = await entry.getFileHandle('index.md')
-        const data = await getDataForFile(fileEntry, slug)
-        Object.assign(fileEntry, data)
-        App.files.push(fileEntry)
+        try {
+          const slug = entry.name
+          const fileEntry = await entry.getFileHandle('index.md')
+          const data = await getDataForFile(fileEntry, slug)
+          Object.assign(fileEntry, data)
+          App.files.push(fileEntry)
+        } catch (error) {
+          console.error(error)
+        }
       }
     }
 
