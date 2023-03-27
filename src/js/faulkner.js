@@ -12,7 +12,8 @@ import { markdown, markdownLanguage } from '@codemirror/lang-markdown'
 import { languages } from '@codemirror/language-data'
 import { syntaxTheme } from './syntax-highlighting'
 import { syntaxHighlighting } from '@codemirror/language'
-import { history, indentWithTab } from '@codemirror/commands'
+import { history, indentWithTab, historyKeymap } from '@codemirror/commands'
+import { closeBrackets, closeBracketsKeymap } from '@codemirror/autocomplete'
 
 const App = {}
 
@@ -242,9 +243,12 @@ const initApp = () => {
       syntaxHighlighting(syntaxTheme),
       keymap.of([
         indentWithTab,
+        ...historyKeymap,
+        ...closeBracketsKeymap,
         { key: 'Mod-b', run: insertBoldMarker },
         { key: 'Mod-i', run: insertItalicMarker },
       ]),
+      closeBrackets(),
       EditorView.lineWrapping,
       EditorView.contentAttributes.of({
         spellcheck: 'true',
