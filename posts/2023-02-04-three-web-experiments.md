@@ -3,11 +3,15 @@ title: Three small web experiments
 hidden: true
 ---
 
-The fall of Twitter has been likke writing on the wall for some time now, and I found myself frequently wondering what some other web might feel like.
+Sometime last summer the fall of Twitter was written on the wall, and I found myself wondering what some other home on the web might feel like. 
 
-Imagine a web just for you. A web owned and operated by you, maintained with love and care and without relying on third party dependencies or third party platforms. A web that will never sunset or get acquired or sell your data.
+Twitter had been my direct line to the web for many years, helping me find both a community and a career. Despite that, the effect its decline had on my creative energy was like getting rid of an unnecessary piece of furniture—all of a sudden there was a lot more space to work with.
 
-It's funny how that web was the entire purpose of the whole thing, and yet so many of us rarely experience that it anymore. I wanted a web I could mold to my experiences and needs.
+Inspired by Robin Sloan's experiments with Spring '83 I began to imagine a web just for me that served my interests and not the masses.
+
+This web would be owned and operated by me, maintained with love and care and without overly relying on third party dependencies or third party platforms. It would be a web that would never sunset or get acquired or sell my data. A web that I could shape and mold like clay. 
+
+It's funny how that web was the entire purpose of the whole thing, and yet so many of us rarely experience it anymore. 
 
 So I asked myself what spaces I'd like to inhabit when I'm on the web. The magic of the web for me has always been about discovering new things, publishing independently, and trying to plot the unplottable.
 
