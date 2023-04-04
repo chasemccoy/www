@@ -8,7 +8,22 @@ The process and challenges outlined here are fascinating in and of themself. Wik
 
 Let's take a moment to acknowledge that 15 years is quite a tenure for the design of one of the most consistently and highly visited sites on the web. I've often taken the Wikipedia interface for granted, not expected or even realizing it was capable of change. In a way the constant visual design has contributed to its encyclopedia-ish-ness, evoking a sense of trust, stability, and longevity. 
 
+Alex talks about this quality a bit:
 
+> Visual design can be used to evoke a feeling, or communicate a conceptual idea. But given that the interpretation of the design is personal/subjective, how do you communicate the idea of free, collaborative knowledge to a global audience, across a wide age range? Visual design can also be used to signify a specific brand, however for Wikipedia this signal is already established via the content itself (infoboxes, blue links, etc.).
+>
+> <cite>[Design notes on the 2023 Wikipedia redesign](Design notes on the 2023 Wikipedia redesign)</cite>
 
+One more thing struck me when reading this piece, which is the enormous pressure of rolling out a design change like this. Because of Wikipedia's democratic structure, the change had to go through an RFC process open to all users and editors. 
+
+Alex shares a frustration I've often felt when getting design feedback. 
+
+> As the comments/votes started coming in, I became frustrated at how unrepresentative of the general public the people voting were. It was a very small group of editors, potentially making a decision for billions of readers.
+
+As designers, we must always be conscious of who gets to be in the room to give feedback and who's voices get to be represented in the design process.
+
+---
+
+I encourage you to read the post and click through all of the prototypes that the team did to explore different design decisions. 
 
 
