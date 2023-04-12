@@ -14,7 +14,7 @@ Alex talks about this quality a bit:
 >
 > <cite>[Design notes on the 2023 Wikipedia redesign](Design notes on the 2023 Wikipedia redesign)</cite>
 
-One more thing struck me when reading this piece, which is the enormous pressure of rolling out a design change like this. Because of Wikipedia's democratic structure, the change had to go through an RFC process open to all users and editors. 
+This piece is a good reminder that design at scale is largely an effort in change management. 
 
 Alex shares a frustration I've often felt when getting design feedback. 
 
