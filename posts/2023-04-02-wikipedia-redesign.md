@@ -16,11 +16,15 @@ Alex talks about this quality a bit:
 
 This piece is a good reminder that design at scale is largely an effort in change management. 
 
+TODO more here
+
 Alex shares a frustration I've often felt when getting design feedback. 
 
 > As the comments/votes started coming in, I became frustrated at how unrepresentative of the general public the people voting were. It was a very small group of editors, potentially making a decision for billions of readers.
 
 As designers, we must always be conscious of who gets to be in the room to give feedback and who's voices get to be represented in the design process.
+
+TODO more here 
 
 ---
 
