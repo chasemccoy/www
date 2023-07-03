@@ -84,12 +84,6 @@ const getDataForFile = async (fileHandle, slug) => {
     wordCount,
     slug,
   }
-
-  return {
-    contents,
-    draft,
-    slug,
-  }
 }
 
 const writeFile = async (fileHandle, contents) => {
