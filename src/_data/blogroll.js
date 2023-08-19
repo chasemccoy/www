@@ -9,6 +9,7 @@ module.exports = [
   { name: 'Interconnected', url: 'https://interconnected.org/home' },
   { name: 'James Little', url: 'https://jameslittle.me' },
   { name: 'Jim Nielsen', url: 'https://blog.jim-nielsen.com' },
+  { name: 'Jonnie Hallman', url: 'https://destroytoday.com' },
   { name: 'Jules Forrest', url: 'https://julesforrest.com' },
   { name: 'Kicks Condor', url: 'https://kickscondor.com' },
   { name: 'Maggie Appleton', url: 'https://maggieappleton.com/garden' },
