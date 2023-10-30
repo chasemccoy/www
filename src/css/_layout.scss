@@ -29,6 +29,10 @@ main > div {
   width: 100%;
 }
 
+main > #header {
+  padding-top: 1rem;
+}
+
 #header,
 main .content {
   max-width: 100%;
