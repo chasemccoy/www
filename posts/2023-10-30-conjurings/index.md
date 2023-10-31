@@ -1,13 +1,12 @@
 ---
 title: Conjurings of the harvest moon
-hidden: true
 ---
 
 Autumn is my favorite time of the year. The trees outside my apartment here in Oak Park are shining gold, and the air is starting to feel crisp and cold. Sweater weather, if you will.
 
 ![A towering castle set against a blue sky and surrounded by trees with golden leaves.](autumn.jpg '[Hashimoto Okiie, Autumn at Himeji Castle, 1949](https://harvardartmuseums.org/collections/object/199224s)')
 
-Besides the weather and foliage, the best part of the season may just be its rituals. One of my favorites is an annual rewatching of _Over the Garden Wall_. TKTK
+Besides the weather and foliage, the best part of the season may just be its rituals. One of my favorites is an annual rewatching of Over the Garden Wall, which is the coziest, most endearing television series I've ever seen.
 
 If the show is to teach us anything, it's that things are not always what they seem.
 
@@ -21,7 +20,7 @@ A few of the show's scenes appear to take almost direct inspiration from some of
 
 ---
 
-I recently discovered that a new animated series on HBO Max, Scavenger's Reign, is based upon an animated short called which appeared online 4 years ago by Joe Bennett and Charles Huettner.
+I recently discovered that a new animated series on HBO Max, Scavenger's Reign, is based upon [an animated short](https://www.youtube.com/watch?v=1TRzemJbUsw) which appeared online 4 years ago by Joe Bennett and Charles Huettner.
 
 The short caught my attention when it originally released for being a beautiful and wholly original bit of science fiction. Sometimes the internet, like the world, is full of serendipity, and you might rediscover something familiar just like you might stumble into an old friend at a crowded place.
 
@@ -31,11 +30,9 @@ The first six episodes have already premiered, and I'm hooked already. The style
 
 I am such a sucker for any media that takes world building seriously, and the world of Scavenger's Reign is overflowing with details—flora, fauna, and environments as alien as you've ever seen. The ecology of Vesta Minor, the planet on which the show takes place, is just as much a character as the humans stranded there.
 
-TKTK ligne claire
-
 ---
 
-Since there seems to be an animation theme going here, I'll briefly mention how excited I am for the upcoming animated Scott Pilgrim series on Netflix, Scott Pilgrim Takes Off. I have a love for both the graphic novels and the 2010 film, whose cast will be returning to voice the characters in the new series.
+Since there seems to be an animation theme going here, I'll briefly mention how excited I am for the upcoming animated Scott Pilgrim series on Netflix: Scott Pilgrim Takes Off. I have a love for both the graphic novels and the 2010 film, whose cast will be returning to voice the characters in the new series.
 
 <hr class='break' />
 
@@ -63,7 +60,18 @@ While I was writing this up, Dr. Janega posted another banger just in time for H
 
 <hr class='break' />
 
-TKTK the browser is a printing press
+Robin Rendle recently shared [how he views the browser as a printing press](https://buttondown.email/robinrendle/archive/the-browser-is-a-printing-press):
+
+> So I’ve never seen myself as a designer or engineer or writer, but as a third thing. It’s sort of pompous and silly to call myself this word though, so I avoid it, but deep down it’s what I’m always thinking whenever someone asks what I do. But here, in this secret society of the newsletter, I will admit to you:
+>
+> 1. I’ve always seen the browser as a printing press.
+> 2. Because of that, I’ve always seen myself as a publisher first and then everything else second.
+>
+> <cite>[Robin Rendle, The Browser is a Printing Press](https://buttondown.email/robinrendle/archive/the-browser-is-a-printing-press/)</cite>
+
+I couldn't agree more. The power of the browser is not that it gave us the ability to write or create art or build programs, but that it allowed anyone to publish those things to the entire world.
+
+The application of the web—design, engineering, writing—are all interests of mine, but for me they're inevitably second to the printing press itself.
 
 ---
 
@@ -77,14 +85,16 @@ While I appreciate the convenience of ebooks and audio books, I have always pref
 
 To that end, I decided the place to start would be creating a database of all the books in my physical collection. I spent a few weeks inputting titles, authors, dates, ISBN numbers, page counts, and more metadata about the titles on my shelves. I still have a few boxes of books to go through and log, but most of my collection is now captured digitally.
 
-I decided to use Airtable for this job, partly because it has such an easy to use API. I wanted to display my collection in a way that was more pleasant to browse than a spreadsheet, so I built my own little frontend for my database.
+I decided to use Airtable for this job, partly because it has such an easy to use API. I wanted to display my collection in a way that was more pleasant to browse than a spreadsheet, so I built my own little frontend for the database.
 
 It's still very much a WIP, and not as performant as I'd like it to be just yet, but you can take a peek at [books.chasem.co](https://books.chasem.co)
 
 ![A screenshot of a website displaying Chase McCoy's collection of physical books in a grid layout.](books.png 'A website can be a bookshelf')
 
+Now I feel much more comfortable donating some of my books knowing that I'll always be able to look back over my collection.
+
 <hr class='break' />
 
-With reverence to the Great Pumpkin,
+I hope this season find you well. With reverence to the Great Pumpkin,
 
 Chase
