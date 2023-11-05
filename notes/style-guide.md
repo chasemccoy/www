@@ -58,3 +58,7 @@ This is wrong:
 > Render a simple, horizontal rule with the divider component.
 
 If you flipped these around to "horizontal, simple rule" it wouldn't carry the same meaning, so we know these aren't actually two interchangeable modifiers—"simple" describes the whole phrase "horizontal rule"—so we don't need a comma
+
+## Resources
+
+- [How to end on the internet](https://www.robinsloan.com/notes/how-to-end/)
