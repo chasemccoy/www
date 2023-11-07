@@ -21,11 +21,14 @@ templateClass: blog
     {% for post in postslist | reverse %}
       <a href="{{post.url}}" class='unstyled block post-preview'>
         <div>
-          {% if post.data.title %}
-            <h3 style='margin: 0;'>
-              <span>{{ post.data.title }}</span>&nbsp;<time datetime="{{ post.date | htmlDateString }}">{{ post.date | shortDate }}</time>
-            </h3>
-          {% endif %}
+          <h3 style='margin: 0;'>
+            {% if post.data.title %}
+              <span>{{ post.data.title }}</span>
+            {% else %}
+              <span>{{ post.page.fileSlug | titleize }}</span>
+            {% endif %}&nbsp;<time datetime="{{ post.date | htmlDateString }}">{{ post.date | shortDate }}</time>
+          </h3>
+
         </div>
       </a>
     {% endfor %}

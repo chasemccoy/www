@@ -69,4 +69,7 @@ module.exports = {
   cssmin: (code) => {
     return new CleanCSS({}).minify(code).styles
   },
+  titleize: (slug) => {
+    return capitalize(slug.replace('-', ' '))
+  },
 }
