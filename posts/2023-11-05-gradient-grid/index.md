@@ -20,6 +20,7 @@ In the spirit of blogging the things I want to remember:
     position: absolute;
     inset: 0;
     z-index: 1;
+    pointer-events: none;
     background: repeating-linear-gradient(
       to right,
       var(--c),
