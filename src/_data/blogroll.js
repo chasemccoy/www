@@ -1,6 +1,7 @@
 module.exports = [
   { name: 'Alexander Obenauer', url: 'https://alexanderobenauer.com' },
   { name: 'Amy Hupe', url: 'https://amyhupe.co.uk' },
+  { name: 'anhvn', url: 'https://anhvn.com' },
   { name: 'arcana dot computer', url: 'https://arcana.computer' },
   { name: 'Audacious Fox', url: 'https://audaciousfox.net' },
   { name: 'Chen Hui Jing', url: 'https://chenhuijing.com' },
