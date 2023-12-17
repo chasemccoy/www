@@ -60,14 +60,9 @@
     ul {
       margin-bottom: -8px;
       display: inline-flex;
-      gap: 1.5rem;
-
-      @include small {
-        display: block;
-        gap: 24px;
-        columns: 2;
-        width: fit-content;
-      }
+      column-gap: 24px;
+      row-gap: 4px;
+      flex-wrap: wrap;
     }
 
     li {
