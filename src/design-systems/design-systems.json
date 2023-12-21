@@ -1,0 +1,5 @@
+{
+  "permalink": "/design-systems/{{page.fileSlug}}/",
+  "layout": "layouts/design-systems.njk",
+  "date": "git Last Modified"
+}

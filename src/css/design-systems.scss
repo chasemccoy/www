@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:ital@0;1&display=swap');
+
+@import 'reset';
+
+@font-face {
+  font-family: 'Invert';
+  src: url('/fonts/invert/Invert.woff2') format('woff2-variations');
+  src: url('/fonts/invert/Invert.woff2') format('woff2') tech('variations');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --color-bg: #fff; // #e0e1e0;
+  --color-accent: #015cf0;
+  --color-text: black;
+  --color-caption: gray;
+}
+
+html {
+  font-size: 22px;
+}
+
+body {
+  background-color: var(--color-bg);
+  font-family: Crimson Pro;
+}
+
+header,
+main {
+  max-width: 700px;
+  margin-inline: auto;
+}
+
+header {
+  padding-block: 2rem;
+  display: flex;
+  align-items: flex-end;
+  gap: 3rem;
+}
+
+main {
+  padding-bottom: 2rem;
+}
+
+header .title {
+  // max-width: 10ch;
+  flex-shrink: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+h1 {
+  font-family: Invert;
+  font-size: 4.5rem;
+  font-variation-settings: 'wght' 0;
+  animation: out ease-in-out 0.25s forwards;
+  color: var(--color-accent);
+  line-height: 1;
+  text-decoration: underline;
+  // text-align: right;
+}
+
+h2 {
+  font-family: Invert;
+  font-variation-settings: 'wght' 0;
+  animation: out ease-in-out 0.25s forwards;
+
+  &:hover {
+    animation: in ease-in-out 0.25s forwards;
+  }
+}
+
+a {
+  color: var(--color-accent);
+}
+
+section.toc {
+  padding-top: 2rem;
+  columns: 2;
+  column-gap: 2rem;
+
+  h2 {
+    break-after: avoid;
+    font-size: 1rem;
+    margin-bottom: 0.25rem;
+  }
+
+  ul {
+    break-inside: avoid-column;
+    margin-bottom: 2rem;
+  }
+}
+
+header .title p {
+  font-size: 1.25rem;
+  font-style: italic;
+  text-wrap: pretty;
+  line-height: 1.3;
+}
+
+header .byline {
+  flex-grow: 1;
+  flex-shrink: 0;
+  font-size: 1rem;
+  color: var(--color-caption);
+  // padding-bottom: 1rem;
+}
+
+header:hover h1 {
+  animation: in ease-in-out 0.25s forwards;
+}
+
+@keyframes in {
+  0% {
+    font-variation-settings: 'wght' 0;
+  }
+  100% {
+    font-variation-settings: 'wght' 1000;
+  }
+}
+
+@keyframes out {
+  0% {
+    font-variation-settings: 'wght' 1000;
+  }
+  100% {
+    font-variation-settings: 'wght' 0;
+  }
+}
