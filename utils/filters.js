@@ -70,6 +70,6 @@ module.exports = {
     return new CleanCSS({}).minify(code).styles
   },
   titleize: (slug) => {
-    return capitalize(slug.replace('-', ' '))
+    return capitalize(slug.replaceAll('-', ' '))
   },
 }
