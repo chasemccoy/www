@@ -2,6 +2,8 @@
 
 {% if title %}
   {% set pageTitle %}{{ title }} | {{ metadata.title }}{% endset %}
+{% elif 'posts' in page.filePathStem %}
+  {% set pageTitle %}Note from {{page.date | readableDate}} | {{ metadata.title }}{% endset %}
 {% endif %}
 
 {% if css %}
