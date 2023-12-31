@@ -1,0 +1,231 @@
+@import 'reset';
+// @import 'theme';
+// @import 'typography';
+
+@font-face {
+  font-family: 'Berkeley Mono';
+  src: url('/fonts/berkeley-mono/BerkeleyMono-Regular.woff2') format('woff2'),
+    url('/fonts/berkeley-mono/BerkeleyMono-Regular.woff') format('woff');
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Berkeley Mono';
+  src: url('/fonts/berkeley-mono/BerkeleyMono-Bold.woff2') format('woff2'),
+    url('/fonts/berkeley-mono/BerkeleyMono-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nickel Gothic';
+  src: url('/fonts/nickel/NickelGothic-Condensed.woff2') format('woff2');
+  font-style: normal;
+  font-display: swap;
+}
+
+html,
+body {
+  font-size: 14px;
+  font-family: Berkeley Mono, monospace;
+}
+
+body {
+  min-height: 100vh;
+  padding: 1.5rem;
+  background-color: #eaeaea;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.1;
+}
+
+h1,
+h2 {
+  font-size: 3.75rem;
+  font-family: 'Warbler Deck v1.2';
+  font-weight: normal;
+  color: #0000ff;
+  font-style: italic;
+}
+
+.layout-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  > div {
+    max-width: 40rem;
+    align-items: flex-start;
+  }
+
+  span {
+    border: 2px solid #bbb;
+    border-radius: 9999rem;
+    font-size: 0.9rem;
+    padding: 2px 8px;
+    color: #666;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  p {
+    font-size: 1.2rem;
+    color: #666;
+  }
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+}
+
+portfolio-item {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  border-top: 1px solid #bbb;
+  padding-top: 0.75rem;
+
+  > portfolio-item-content {
+    display: flex;
+    gap: 8rem;
+    align-items: flex-start;
+
+    > div {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      flex-shrink: 0;
+    }
+  }
+
+  dl {
+    display: inline-grid;
+    grid-template-columns: repeat(auto-fit, minmax(0, max-content));
+    grid-template-rows: auto auto;
+    column-gap: 3rem;
+
+    dt {
+      grid-row-start: 1;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-size: 0.9rem;
+    }
+
+    dd {
+      grid-row-start: 2;
+    }
+  }
+
+  img {
+    max-width: 42rem;
+    // border-radius: 8px;
+
+    &.shadow {
+      filter: drop-shadow(0 12px 28px rgba(140, 149, 159, 0.3));
+    }
+  }
+}
+
+portfolio-item :is(p, ul) {
+  max-width: 30rem;
+}
+
+ul {
+  padding: 0;
+  list-style-type: none;
+
+  > li {
+    margin-left: 1.25em;
+  }
+
+  > li:before {
+    content: '◆';
+    margin-left: -1.25em;
+    margin-top: -1px;
+    float: left;
+    color: #0000ff;
+  }
+}
+
+image-gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  min-width: 0;
+}
+
+figure {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-width: 42rem;
+
+  &.horizontal {
+    gap: 1rem;
+    flex-direction: row;
+    align-items: flex-end;
+  }
+
+  img {
+    min-width: 0;
+    flex-shrink: 1;
+  }
+
+  figcaption {
+    font-size: 0.8rem;
+    color: gray;
+    min-width: 20ch;
+    max-width: 60ch;
+  }
+}
+
+/* COMPONENTS ----------------------------------- */
+
+focus-areas {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  ul {
+    columns: 2 auto;
+    column-gap: 4rem;
+  }
+}
+
+/* UTILITIES ------------------------------------ */
+
+.align-end {
+  align-self: flex-end;
+  text-align: right;
+}
+
+.row {
+  display: flex;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+}
