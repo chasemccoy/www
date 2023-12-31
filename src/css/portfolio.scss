@@ -2,6 +2,23 @@
 // @import 'theme';
 // @import 'typography';
 
+/* FONTS ---------------------------------------- */
+
+@font-face {
+  font-family: 'Geist';
+  src: url('/fonts/geist-sans/Geist-Regular.woff2') format('woff2');
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Geist';
+  src: url('/fonts/geist-sans/Geist-Bold.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+
 @font-face {
   font-family: 'Berkeley Mono';
   src: url('/fonts/berkeley-mono/BerkeleyMono-Regular.woff2') format('woff2'),
@@ -26,6 +43,15 @@
   font-display: swap;
 }
 
+/* THEME ---------------------------------------- */
+
+:root {
+  --text-column-width: 34rem;
+  --image-column-width: 42rem;
+}
+
+/* GLOBALS -------------------------------------- */
+
 html,
 body {
   font-size: 14px;
@@ -34,8 +60,8 @@ body {
 
 body {
   min-height: 100vh;
-  padding: 1.5rem;
-  background-color: #eaeaea;
+  padding: 1.5rem 4rem 4rem 1.5rem;
+  background-color: #efefef;
 }
 
 h1,
@@ -49,7 +75,13 @@ h6 {
   line-height: 1.1;
 }
 
-h1,
+h1 {
+  font-size: 4rem;
+  font-family: 'Warbler Deck v1.2';
+  font-weight: normal;
+  opacity: 0.4;
+}
+
 h2 {
   font-size: 3.75rem;
   font-family: 'Warbler Deck v1.2';
@@ -70,22 +102,22 @@ header {
   gap: 2rem;
 
   > div {
-    max-width: 40rem;
+    // max-width: 40rem;
     align-items: flex-start;
   }
 
-  span {
+  > div > span {
     border: 2px solid #bbb;
     border-radius: 9999rem;
     font-size: 0.9rem;
-    padding: 2px 8px;
+    padding: 2px 8px 1px;
     color: #666;
     margin-bottom: 0.5rem;
     text-transform: uppercase;
     letter-spacing: 0.5px;
   }
 
-  p {
+  > div p {
     font-size: 1.2rem;
     color: #666;
   }
@@ -138,17 +170,14 @@ portfolio-item {
   }
 
   img {
-    max-width: 42rem;
+    max-width: var(--image-column-width);
     // border-radius: 8px;
-
-    &.shadow {
-      filter: drop-shadow(0 12px 28px rgba(140, 149, 159, 0.3));
-    }
+    filter: drop-shadow(0 12px 28px rgba(140, 149, 159, 0.3));
   }
 }
 
 portfolio-item :is(p, ul) {
-  max-width: 30rem;
+  max-width: var(--text-column-width);
 }
 
 ul {
@@ -179,7 +208,7 @@ figure {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  max-width: 42rem;
+  max-width: var(--image-column-width);
 
   &.horizontal {
     gap: 1rem;
@@ -207,10 +236,15 @@ focus-areas {
   align-items: flex-start;
   flex-direction: column;
   gap: 0.5rem;
+  max-width: 65rem;
 
   ul {
     columns: 2 auto;
     column-gap: 4rem;
+  }
+
+  li {
+    margin-bottom: 1rem;
   }
 }
 
