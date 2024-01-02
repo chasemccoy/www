@@ -61,7 +61,7 @@ body {
 body {
   min-height: 100vh;
   padding: 1.5rem 4rem 4rem 1.5rem;
-  background-color: #efefef;
+  background-color: #eef1f0;
 }
 
 h1,
@@ -79,7 +79,8 @@ h1 {
   font-size: 4rem;
   font-family: 'Warbler Deck v1.2';
   font-weight: normal;
-  opacity: 0.4;
+  // opacity: 0.4;
+  color: #868e8b;
 }
 
 h2 {
@@ -89,6 +90,10 @@ h2 {
   color: #0000ff;
   font-style: italic;
 }
+
+// p:first-of-type {
+//   text-indent: 1.5rem;
+// }
 
 .layout-wrapper {
   display: flex;
@@ -107,11 +112,11 @@ header {
   }
 
   > div > span {
-    border: 2px solid #bbb;
+    border: 2px solid #0000ff;
     border-radius: 9999rem;
     font-size: 0.9rem;
     padding: 2px 8px 1px;
-    color: #666;
+    color: #0000ff;
     margin-bottom: 0.5rem;
     text-transform: uppercase;
     letter-spacing: 0.5px;
@@ -197,13 +202,6 @@ ul {
   }
 }
 
-image-gallery {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  min-width: 0;
-}
-
 figure {
   display: flex;
   flex-direction: column;
@@ -219,6 +217,11 @@ figure {
   img {
     min-width: 0;
     flex-shrink: 1;
+    // transition: transform 0.25s;
+    // &:hover {
+    //   transform: scale(1.25);
+    //   z-index: 1;
+    // }
   }
 
   figcaption {
@@ -246,6 +249,13 @@ focus-areas {
   li {
     margin-bottom: 1rem;
   }
+}
+
+image-gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  min-width: 0;
 }
 
 /* UTILITIES ------------------------------------ */
