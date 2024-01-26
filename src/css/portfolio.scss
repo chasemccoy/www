@@ -4,41 +4,51 @@
 
 /* FONTS ---------------------------------------- */
 
-@font-face {
-  font-family: 'Geist';
-  src: url('/fonts/geist-sans/Geist-Regular.woff2') format('woff2');
-  font-style: normal;
-  font-display: swap;
-}
+// @font-face {
+//   font-family: 'Geist';
+//   src: url('/fonts/geist-sans/Geist-Regular.woff2') format('woff2');
+//   font-style: normal;
+//   font-display: swap;
+// }
+
+// @font-face {
+//   font-family: 'Geist';
+//   src: url('/fonts/geist-sans/Geist-Bold.woff2') format('woff2');
+//   font-style: normal;
+//   font-weight: 700;
+//   font-display: swap;
+// }
+
+@import url('https://fonts.googleapis.com/css2?family=Caveat&display=swap');
+
+// @font-face {
+//   font-family: 'Berkeley Mono';
+//   src: url('/fonts/berkeley-mono/BerkeleyMono-Regular.woff2') format('woff2'),
+//     url('/fonts/berkeley-mono/BerkeleyMono-Regular.woff') format('woff');
+//   font-style: normal;
+//   font-display: swap;
+// }
+
+// @font-face {
+//   font-family: 'Berkeley Mono';
+//   src: url('/fonts/berkeley-mono/BerkeleyMono-Bold.woff2') format('woff2'),
+//     url('/fonts/berkeley-mono/BerkeleyMono-Bold.woff') format('woff');
+//   font-weight: 700;
+//   font-style: normal;
+//   font-display: swap;
+// }
 
 @font-face {
-  font-family: 'Geist';
-  src: url('/fonts/geist-sans/Geist-Bold.woff2') format('woff2');
-  font-style: normal;
+  font-family: 'Hex Franklin';
+  src: url('/fonts/hex-franklin/hex-franklin-0.2.woff2') format('woff2');
   font-weight: 700;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Berkeley Mono';
-  src: url('/fonts/berkeley-mono/BerkeleyMono-Regular.woff2') format('woff2'),
-    url('/fonts/berkeley-mono/BerkeleyMono-Regular.woff') format('woff');
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Berkeley Mono';
-  src: url('/fonts/berkeley-mono/BerkeleyMono-Bold.woff2') format('woff2'),
-    url('/fonts/berkeley-mono/BerkeleyMono-Bold.woff') format('woff');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Nickel Gothic';
-  src: url('/fonts/nickel/NickelGothic-Condensed.woff2') format('woff2');
+  font-family: 'Ivar Text';
+  src: url('/fonts/ivar-text/IvarText-Regular.woff2') format('woff2');
   font-style: normal;
   font-display: swap;
 }
@@ -46,22 +56,29 @@
 /* THEME ---------------------------------------- */
 
 :root {
-  --text-column-width: 34rem;
-  --image-column-width: 42rem;
+  // --text-column-width: 30rem;
+  --image-max-width: 30rem;
+
+  --color-accent: #327039;
+  --color-surface: #fafaf0;
+  --color-text: #1a1a18;
+  --color-caption: #9a9893;
 }
 
 /* GLOBALS -------------------------------------- */
 
 html,
 body {
-  font-size: 14px;
-  font-family: Berkeley Mono, monospace;
+  font-size: 16px;
+  line-height: 1.4;
+  font-family: Ivar Text, Berkeley Mono, monospace;
+  background-color: var(--color-surface);
+  color: var(--color-text);
 }
 
 body {
   min-height: 100vh;
-  padding: 1.5rem 4rem 4rem 1.5rem;
-  background-color: #eef1f0;
+  padding: 1.5rem 2rem 4rem 2rem;
 }
 
 h1,
@@ -77,18 +94,36 @@ h6 {
 
 h1 {
   font-size: 4rem;
-  font-family: 'Warbler Deck v1.2';
-  font-weight: normal;
-  // opacity: 0.4;
-  color: #868e8b;
+  font-size: clamp(2rem, 5vw + 1rem, 6rem);
+  font-family: Hex Franklin, 'Warbler Deck v1.2';
+  color: var(--color-accent);
+  text-wrap: balance;
+
+  a {
+    position: relative;
+    display: inline-block;
+    padding: 2px 4px;
+    margin-right: -4px;
+    background-color: #f6edd0;
+    border-radius: 20px;
+    text-decoration: none;
+  }
 }
 
 h2 {
-  font-size: 3.75rem;
-  font-family: 'Warbler Deck v1.2';
+  font-size: 3rem;
+  font-family: Hex Franklin, 'Warbler Deck v1.2';
   font-weight: normal;
-  color: #0000ff;
-  font-style: italic;
+  color: var(--color-accent);
+}
+
+h3 {
+  font-size: 1.5rem;
+  font-family: Hex Franklin, 'Warbler Deck v1.2';
+}
+
+a {
+  color: var(--color-accent);
 }
 
 // p:first-of-type {
@@ -96,30 +131,31 @@ h2 {
 // }
 
 .layout-wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 3rem;
+  // display: flex;
+  // flex-direction: column;
+  // gap: 6rem;
+  max-width: 68rem;
+  margin: 0 auto;
 }
 
 header {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
+  margin-bottom: 6rem;
 
   > div {
-    // max-width: 40rem;
     align-items: flex-start;
   }
 
   > div > span {
-    border: 2px solid #0000ff;
+    border: 2px solid #dd5c36;
     border-radius: 9999rem;
     font-size: 0.9rem;
     padding: 2px 8px 1px;
-    color: #0000ff;
+    color: var(--color-accent);
     margin-bottom: 0.5rem;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    color: white;
+    background-color: #dd5c36;
   }
 
   > div p {
@@ -131,7 +167,7 @@ header {
 main {
   display: flex;
   flex-direction: column;
-  gap: 5rem;
+  gap: 6rem;
 }
 
 portfolio-item {
@@ -139,20 +175,46 @@ portfolio-item {
   flex-direction: column;
   gap: 1rem;
 
-  border-top: 1px solid #bbb;
-  padding-top: 0.75rem;
+  // border-top: 1px solid #bbb;
+
+  // position: sticky;
+  // top: 0;
+  // background-color: var(--color-surface);
+  // max-height: 100vh;
+  // overflow: auto;
+
+  > portfolio-item-header {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    position: sticky;
+    top: var(--scroll-header-height, 0);
+    background-color: var(--color-surface);
+    padding-block: 0.75rem;
+    border-bottom: 3px solid var(--color-accent);
+  }
 
   > portfolio-item-content {
-    display: flex;
-    gap: 8rem;
-    align-items: flex-start;
+    columns: 2;
+    column-gap: 3rem;
 
-    > div {
-      display: flex;
-      flex-direction: column;
-      gap: 1.25rem;
-      flex-shrink: 0;
+    p {
+      text-align: justify;
+      hyphens: auto;
+      text-indent: 1.5em;
+
+      &:first-of-type {
+        text-indent: 0;
+      }
     }
+  }
+
+  h3 {
+    margin-top: 3rem;
+    margin-bottom: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 
   dl {
@@ -166,24 +228,27 @@ portfolio-item {
       font-weight: bold;
       text-transform: uppercase;
       letter-spacing: 0.5px;
-      font-size: 0.9rem;
+      font-size: 0.75rem;
+      color: var(--color-caption);
     }
 
     dd {
       grid-row-start: 2;
+      font-family: Caveat;
+      font-size: 1.4rem;
+      color: var(--color-accent);
+      color: #dd5c36;
     }
   }
 
   img {
-    max-width: var(--image-column-width);
-    // border-radius: 8px;
-    filter: drop-shadow(0 12px 28px rgba(140, 149, 159, 0.3));
+    max-width: var(--image-max-width);
   }
 }
 
-portfolio-item :is(p, ul) {
-  max-width: var(--text-column-width);
-}
+// portfolio-item :is(p, ul) {
+//   max-width: var(--text-column-width);
+// }
 
 ul {
   padding: 0;
@@ -198,7 +263,7 @@ ul {
     margin-left: -1.25em;
     margin-top: -1px;
     float: left;
-    color: #0000ff;
+    color: var(--color-accent);
   }
 }
 
@@ -208,27 +273,17 @@ figure {
   gap: 0.5rem;
   max-width: var(--image-column-width);
 
-  &.horizontal {
-    gap: 1rem;
-    flex-direction: row;
-    align-items: flex-end;
-  }
-
   img {
     min-width: 0;
     flex-shrink: 1;
-    // transition: transform 0.25s;
-    // &:hover {
-    //   transform: scale(1.25);
-    //   z-index: 1;
-    // }
   }
 
   figcaption {
-    font-size: 0.8rem;
+    font-size: 1.2rem;
     color: gray;
     min-width: 20ch;
     max-width: 60ch;
+    font-family: Caveat;
   }
 }
 
@@ -253,17 +308,74 @@ focus-areas {
 
 image-gallery {
   display: flex;
-  flex-direction: column;
+  align-items: flex-end;
   gap: 2rem;
   min-width: 0;
+  max-width: 100%;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  scroll-padding: 1.5rem;
+  padding: 1rem 1.5rem 1.5rem;
+  background-color: #efefe3;
+  border-radius: 16px;
+  border: 1px solid #dfdfd3;
+  position: relative;
+
+  &:after {
+    content: 'Scroll for more';
+    background-image: url('/images/portfolio/squiggle.svg');
+    display: flex;
+    align-items: center;
+    min-width: 205px;
+    height: 30px;
+    background-repeat: no-repeat;
+    background-size: 80px;
+    background-position: 100% 60%;
+    font-size: 1.4rem;
+    font-family: Caveat;
+    font-weight: normal;
+    color: var(--color-caption);
+    position: sticky;
+    right: 0px;
+    top: 0;
+    align-self: flex-start;
+  }
+
+  > figure {
+    margin-top: 2.5rem;
+    scroll-snap-align: start;
+
+    &:last-child {
+      // Make sure the pseudo element isn't occupying extra space
+      margin-right: -205px;
+    }
+  }
+}
+
+#scroll-header {
+  &.hidden {
+    opacity: 0;
+    transform: translateY(-100%);
+    visibility: hidden;
+  }
+
+  opacity: 1;
+  transform: none;
+  transition: transform 0.2s;
+  z-index: 1;
+
+  background-color: var(--color-accent);
+  color: white;
+  position: sticky;
+  top: 0;
+
+  font-size: 1.3rem;
+  padding: 0.25rem 0.7rem;
+  border-radius: 0 0 8px 8px;
+  font-family: Caveat;
 }
 
 /* UTILITIES ------------------------------------ */
-
-.align-end {
-  align-self: flex-end;
-  text-align: right;
-}
 
 .row {
   display: flex;

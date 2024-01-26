@@ -153,4 +153,8 @@
   p > br + book-mark {
     margin-top: 0;
   }
+
+  small {
+    color: var(--color-caption);
+  }
 }
