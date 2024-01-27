@@ -1,46 +1,21 @@
 @import 'reset';
-// @import 'theme';
-// @import 'typography';
 
 /* FONTS ---------------------------------------- */
 
-// @font-face {
-//   font-family: 'Geist';
-//   src: url('/fonts/geist-sans/Geist-Regular.woff2') format('woff2');
-//   font-style: normal;
-//   font-display: swap;
-// }
-
-// @font-face {
-//   font-family: 'Geist';
-//   src: url('/fonts/geist-sans/Geist-Bold.woff2') format('woff2');
-//   font-style: normal;
-//   font-weight: 700;
-//   font-display: swap;
-// }
-
 @import url('https://fonts.googleapis.com/css2?family=Caveat&display=swap');
 
-// @font-face {
-//   font-family: 'Berkeley Mono';
-//   src: url('/fonts/berkeley-mono/BerkeleyMono-Regular.woff2') format('woff2'),
-//     url('/fonts/berkeley-mono/BerkeleyMono-Regular.woff') format('woff');
-//   font-style: normal;
-//   font-display: swap;
-// }
-
-// @font-face {
-//   font-family: 'Berkeley Mono';
-//   src: url('/fonts/berkeley-mono/BerkeleyMono-Bold.woff2') format('woff2'),
-//     url('/fonts/berkeley-mono/BerkeleyMono-Bold.woff') format('woff');
-//   font-weight: 700;
-//   font-style: normal;
-//   font-display: swap;
-// }
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,700;1,8..60,400;1,8..60,700&display=swap');
 
 @font-face {
   font-family: 'Hex Franklin';
-  src: url('/fonts/hex-franklin/hex-franklin-0.2.woff2') format('woff2');
+  src: url('/fonts/hex-franklin/HEX_Franklin-Regular.woff2') format('woff2');
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Hex Franklin';
+  src: url('/fonts/hex-franklin/HEX_Franklin-Extrabold.woff2') format('woff2');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -61,24 +36,30 @@
 
   --color-accent: #327039;
   --color-surface: #fafaf0;
-  --color-text: #1a1a18;
-  --color-caption: #9a9893;
+  --color-text: #3f3e25;
+  --color-caption: #91917d;
+
+  --padding-layout-x: 1rem;
+
+  @media (min-width: 700px) {
+    --padding-layout-x: 2rem;
+  }
 }
 
 /* GLOBALS -------------------------------------- */
 
 html,
 body {
-  font-size: 16px;
-  line-height: 1.4;
-  font-family: Ivar Text, Berkeley Mono, monospace;
+  font-size: 17px;
+  line-height: 1.5;
+  font-family: 'Source Serif 4', Ivar Text, Berkeley Mono, monospace;
   background-color: var(--color-surface);
   color: var(--color-text);
 }
 
 body {
   min-height: 100vh;
-  padding: 0 2rem 4rem 2rem;
+  padding: 0 var(--padding-layout-x) 4rem var(--padding-layout-x);
 }
 
 h1,
@@ -94,7 +75,7 @@ h6 {
 
 h1 {
   font-size: 4rem;
-  font-size: clamp(2rem, 5vw + 1rem, 5rem);
+  font-size: clamp(2rem, 5vw + 1rem, 4rem);
   font-family: Hex Franklin, 'Warbler Deck v1.2';
   color: var(--color-accent);
   text-wrap: balance;
@@ -113,7 +94,6 @@ h1 {
 h2 {
   font-size: 2.75rem;
   font-family: Hex Franklin, 'Warbler Deck v1.2';
-  font-weight: normal;
   color: var(--color-accent);
 }
 
@@ -127,28 +107,31 @@ a {
 }
 
 .layout-wrapper {
-  max-width: 68rem;
+  max-width: 64rem;
   margin: 0 auto;
 }
 
 header {
   margin-bottom: 6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 
-  > div {
-    align-items: flex-start;
-  }
-
-  > div > span {
+  > span {
     color: var(--color-accent);
     font-size: 1.4rem;
     font-family: Caveat;
-    margin-bottom: 0.5rem;
     color: #dd5c36;
   }
 
-  > div p {
-    font-size: 1.2rem;
-    color: #666;
+  .contact {
+    font-family: Hex Franklin;
+    color: var(--color-caption);
+    font-size: 1.5rem;
+
+    a {
+      color: inherit;
+    }
   }
 }
 
@@ -161,7 +144,7 @@ main {
 portfolio-item {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 0.75rem;
 
   > portfolio-item-header {
     display: flex;
@@ -176,7 +159,7 @@ portfolio-item {
   }
 
   > portfolio-item-content {
-    columns: 2;
+    columns: 2 20em;
     column-gap: 3rem;
 
     p {
@@ -188,14 +171,31 @@ portfolio-item {
         text-indent: 0;
       }
     }
+
+    & + image-gallery {
+      margin-top: 0.75rem;
+    }
   }
 
   h3 {
     margin-top: 3rem;
     margin-bottom: 0;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
+    gap: 0.5rem;
+    font-family: Caveat;
+    font-weight: normal;
+    color: #dd5c36;
+    font-size: 2.5rem;
+
+    &:before {
+      content: 'Project';
+      font-size: 0.9rem;
+      // color: #dd5c36;
+      color: var(--color-caption);
+      font-family: Hex Franklin, Caveat;
+      font-weight: normal;
+    }
   }
 
   dl {
@@ -203,22 +203,25 @@ portfolio-item {
     grid-template-columns: repeat(auto-fit, minmax(0, max-content));
     grid-template-rows: auto auto;
     column-gap: 3rem;
+    position: relative;
+    top: 4px;
 
     dt {
       grid-row-start: 1;
-      font-weight: bold;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
+      // font-weight: bold;
+      // text-transform: uppercase;
+      // letter-spacing: 0.5px;
       font-size: 0.75rem;
       color: var(--color-caption);
+      font-family: Hex Franklin;
     }
 
     dd {
       grid-row-start: 2;
       font-family: Caveat;
-      font-size: 1.4rem;
-      color: var(--color-accent);
-      color: #dd5c36;
+      font-size: 1.25rem;
+      line-height: 1.2;
+      // color: var(--color-accent);
     }
   }
 }
@@ -243,26 +246,27 @@ ul {
 figure {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.75rem;
   max-width: var(--image-column-width);
 
   img {
-    max-width: 40rem;
-    max-height: 350px;
-    // transition: transform 0.2s;
-    // transform-origin: center;
+    max-width: 50rem;
+    max-height: 380px;
 
-    // &:hover {
-    //   transform: scale(1.1);
-    // }
+    &.shadow {
+      filter: drop-shadow(0px 5.507px 16.521px rgba(0, 0, 0, 0.08));
+    }
   }
 
   figcaption {
-    font-size: 1.2rem;
-    color: gray;
+    background-color: var(--color-surface);
+    padding: 4px;
+    margin: -4px;
+    font-size: 0.75rem;
+    color: var(--color-caption);
     min-width: 20ch;
     max-width: 60ch;
-    font-family: Caveat;
+    font-family: Hex Franklin;
   }
 }
 
@@ -290,21 +294,23 @@ image-gallery {
   align-items: center;
   gap: 4rem;
   min-width: 0;
-  max-width: 100%;
   overflow-x: scroll;
   overflow-y: hidden;
   // scroll-snap-type: x mandatory;
   // scroll-padding: 1.5rem;
-  padding: 0.5rem 1.5rem 1.5rem;
-  // background-color: #efefe3;
-  // background-color: white;
-  border-radius: 16px;
-  // border: 1px solid #dfdfd3;
-  border: 1px solid #cfcfbd;
-
+  padding: 0.5rem 3rem 1.5rem;
+  max-width: calc(100% + (var(--padding-layout-x) * 2) + 2px);
+  margin-inline: calc((var(--padding-layout-x) * -1) - 1px);
+  border: 1px solid #dcdcd0;
   background-image: radial-gradient(#cfcfbd 1px, transparent 0);
   background-position: -20px;
   background-size: 20px 20px;
+
+  @media (min-width: 700px) {
+    margin-inline: 0;
+    border-radius: 16px;
+    max-width: 100%;
+  }
 
   &:after {
     content: 'Scroll for more';
@@ -327,12 +333,12 @@ image-gallery {
   }
 
   > figure {
-    margin-top: 3rem;
+    margin-top: 2.5rem;
     // scroll-snap-align: start;
 
     &:last-child {
       // Make sure the pseudo element isn't occupying extra space
-      margin-right: -205px;
+      margin-right: calc(-205px - 2.5rem);
     }
   }
 }
@@ -340,7 +346,7 @@ image-gallery {
 #scroll-header {
   &.hidden {
     // opacity: 0;
-    transform: translateY(-100%);
+    transform: translateY(calc(-100% - 1px));
   }
 
   // opacity: 1;
@@ -351,23 +357,26 @@ image-gallery {
   color: var(--color-surface);
   position: sticky;
   top: 0;
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   padding: 0.25rem 0.7rem;
   border-radius: 0 0 12px 12px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  font-family: Hex Franklin;
 
   h1 {
-    font-size: 1.3rem;
+    // font-size: 1.3rem;
+    font-size: 1em;
     color: var(--color-surface);
-    font-family: Caveat;
+    // font-family: Caveat;
     font-weight: normal;
   }
 
   a {
     color: var(--color-surface);
     text-decoration: none;
+    font-family: Hex Franklin;
   }
 }
 
@@ -380,4 +389,16 @@ image-gallery {
 .column {
   display: flex;
   flex-direction: column;
+}
+
+.handwriting {
+  font-size: 1.3rem;
+  color: #dd5c36;
+  font-family: Caveat;
+  font-weight: normal;
+
+  a {
+    color: inherit;
+    text-decoration-thickness: 2px;
+  }
 }
