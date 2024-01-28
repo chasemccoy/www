@@ -59,7 +59,10 @@ body {
   font-family: 'Source Serif 4', Ivar Text, Berkeley Mono, monospace;
   background-color: var(--color-surface);
   color: var(--color-text);
-  overflow-x: hidden;
+  overflow-x: clip;
+  background-image: url('https://www.transparenttextures.com/patterns/natural-paper.png');
+  background-repeat: repeat;
+  background-size: 300px;
 }
 
 body {
@@ -161,28 +164,24 @@ portfolio-item {
     background-color: var(--color-surface);
     padding-block: calc(0.75rem + 4px) 0.75rem;
     border-bottom: 3px solid var(--color-accent-primary);
-    z-index: 1;
-
-    // width: calc(100% + (2 * var(--padding-layout-x)));
-    // margin-inline: calc(var(--padding-layout-x) * -1);
-    // padding-inline: var(--padding-layout-x);
+    z-index: 10;
 
     &:before {
       content: '';
       background-color: var(--color-surface);
       position: absolute;
       bottom: 0;
-      height: 200%;
+      height: calc(100% + var(--scroll-header-height));
       width: 200vw;
       left: -100%;
       z-index: -1;
+      // background-image: url('https://www.transparenttextures.com/patterns/otis-redding.png');
+      // background-repeat: repeat;
+      // background-size: 100px;
+      background-image: url('https://www.transparenttextures.com/patterns/natural-paper.png');
+      background-repeat: repeat;
+      background-size: 300px;
     }
-
-    // @include desktop {
-    //   width: 100%;
-    //   margin-inline: 0;
-    //   padding-inline: 0;
-    // }
   }
 
   > portfolio-item-content {
@@ -274,6 +273,7 @@ figure {
   img {
     max-width: 50rem;
     max-height: 300px;
+    z-index: 1;
 
     @include desktop {
       max-width: 50rem;
@@ -328,10 +328,10 @@ image-gallery {
     background-image: url('/images/portfolio/squiggle.svg');
     display: flex;
     align-items: center;
-    min-width: 200px;
+    min-width: 180px;
     height: 20px;
     background-repeat: no-repeat;
-    background-size: 80px;
+    background-size: 60px;
     background-position: 100% 60%;
     font-size: 1.25rem;
     font-family: Caveat;
@@ -348,7 +348,7 @@ image-gallery {
 
     &:last-child {
       // Make sure the pseudo element isn't occupying extra space
-      margin-right: calc(-200px - 2rem);
+      margin-right: calc(-180px - 2rem);
     }
   }
 }

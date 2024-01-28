@@ -19,10 +19,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!currentEntry) return
 
     if (currentEntry.isIntersecting) {
-      console.log('moved onscreen')
       App.scrollHeader.classList.add('hidden')
     } else {
-      console.log('moved offscreen')
       App.scrollHeader.classList.remove('hidden')
     }
 
