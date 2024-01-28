@@ -1,5 +1,14 @@
 const App = {}
 
+const isOverflown = ({
+  clientWidth,
+  clientHeight,
+  scrollWidth,
+  scrollHeight,
+}) => {
+  return scrollHeight > clientHeight || scrollWidth > clientWidth
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   App.fixedHeader = document.getElementById('fixed-header')
   App.scrollHeader = document.getElementById('scroll-header')
@@ -27,5 +36,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   App.observer.observe(App.fixedHeader)
 
-  console.log(App)
+  const imageGalleries = document.querySelectorAll('image-gallery')
+  imageGalleries.forEach((element) => {
+    if (!isOverflown(element)) {
+      element.classList.add('no-overflow')
+    }
+  })
 })
