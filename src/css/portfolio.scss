@@ -100,9 +100,13 @@ h1 {
 }
 
 h2 {
-  font-size: 2.75rem;
+  font-size: 2rem;
   font-family: Hex Franklin, 'Warbler Deck v1.2';
   color: var(--color-accent-primary);
+
+  @include desktop {
+    font-size: 2.75rem;
+  }
 }
 
 h3 {
@@ -117,6 +121,7 @@ a {
 .layout-wrapper {
   max-width: 64rem;
   margin: 0 auto;
+  overflow: clip;
 }
 
 header {
@@ -157,7 +162,7 @@ portfolio-item {
 
   > portfolio-item-header {
     display: flex;
-    align-items: end;
+    align-items: center;
     justify-content: space-between;
     position: sticky;
     top: calc(var(--scroll-header-height, 0) - 4px);
@@ -228,8 +233,8 @@ portfolio-item {
     grid-template-columns: repeat(auto-fit, minmax(0, max-content));
     grid-template-rows: auto auto;
     column-gap: 3rem;
-    position: relative;
-    top: 4px;
+    // position: relative;
+    // top: 4px;
 
     dt {
       grid-row-start: 1;
@@ -355,11 +360,9 @@ image-gallery {
 
 #scroll-header {
   &.hidden {
-    // opacity: 0;
     transform: translateY(calc(-100% - 1px));
   }
 
-  // opacity: 1;
   transform: translateY(0);
   transition: transform 0.2s;
   z-index: 100;
