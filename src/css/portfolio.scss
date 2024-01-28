@@ -83,7 +83,7 @@ h6 {
 
 h1 {
   font-size: 4rem;
-  font-size: clamp(2rem, 5vw + 1rem, 4rem);
+  font-size: clamp(2.75rem, 5vw + 1rem, 4rem);
   font-family: Hex Franklin, 'Warbler Deck v1.2';
   color: var(--color-accent-primary);
   text-wrap: balance;
@@ -162,14 +162,21 @@ portfolio-item {
 
   > portfolio-item-header {
     display: flex;
-    align-items: center;
+
+    flex-direction: column;
     justify-content: space-between;
+    gap: 0.5rem;
     position: sticky;
     top: calc(var(--scroll-header-height, 0) - 4px);
     background-color: var(--color-surface);
     padding-block: calc(0.75rem + 4px) 0.75rem;
     border-bottom: 3px solid var(--color-accent-primary);
     z-index: 10;
+
+    @include desktop {
+      flex-direction: row;
+      align-items: center;
+    }
 
     &:before {
       content: '';
@@ -233,8 +240,6 @@ portfolio-item {
     grid-template-columns: repeat(auto-fit, minmax(0, max-content));
     grid-template-rows: auto auto;
     column-gap: 3rem;
-    // position: relative;
-    // top: 4px;
 
     dt {
       grid-row-start: 1;
@@ -372,7 +377,7 @@ image-gallery {
   top: 0;
   font-size: 0.75rem;
   padding: 0.25rem 0.7rem;
-  border-radius: 0 0 12px 12px;
+  border-radius: 0 0 6px 6px;
   display: flex;
   align-items: center;
   justify-content: space-between;
