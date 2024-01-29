@@ -54,7 +54,7 @@
 
 html,
 body {
-  font-size: 17px;
+  font-size: 16px;
   line-height: 1.5;
   font-family: 'Source Serif 4', Ivar Text, Berkeley Mono, monospace;
   background-color: var(--color-surface);
@@ -63,6 +63,10 @@ body {
   background-image: url('https://www.transparenttextures.com/patterns/natural-paper.png');
   background-repeat: repeat;
   background-size: 300px;
+
+  @include desktop {
+    font-size: 17px;
+  }
 }
 
 body {
@@ -93,6 +97,7 @@ h1 {
     display: inline-block;
     padding: 4px 8px;
     margin-right: -4px;
+    margin-left: -8px;
     background-color: #f6edd0;
     border-radius: 2vw;
     text-decoration: none;
@@ -338,7 +343,7 @@ image-gallery {
     background-image: url('/images/portfolio/squiggle.svg');
     display: flex;
     align-items: center;
-    min-width: 180px;
+    min-width: 10.5rem;
     height: 20px;
     background-repeat: no-repeat;
     background-size: 60px;
@@ -358,7 +363,7 @@ image-gallery {
 
     &:last-child {
       // Make sure the pseudo element isn't occupying extra space
-      margin-right: calc(-180px - 2rem);
+      margin-right: calc(-10.5rem - 2rem);
     }
   }
 }
