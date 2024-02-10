@@ -103,7 +103,7 @@ h1 {
     margin-right: -4px;
     margin-left: -8px;
     background-color: #f6edd0;
-    border-radius: 2vw;
+    border-radius: clamp(12px, 2vw, 20px);
     text-decoration: none;
   }
 }
@@ -149,8 +149,8 @@ header {
   .contact {
     font-family: Hex Franklin;
     color: var(--color-caption);
-    font-size: 1.4rem;
-    max-width: 45rem;
+    font-size: 1.3rem;
+    max-width: 43rem;
 
     a {
       color: inherit;
@@ -306,8 +306,8 @@ figure {
 
   figcaption {
     background-color: var(--color-surface);
-    padding: 4px;
-    margin: -4px;
+    padding: 2px;
+    margin: -2px;
     font-size: 0.75rem;
     color: var(--color-caption);
     min-width: 20ch;

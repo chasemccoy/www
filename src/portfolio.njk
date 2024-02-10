@@ -16,16 +16,13 @@ js: portfolio
 
   <header id='fixed-header'>
     <span>Portfolio, 2024</span>
-    {# <h1>
-      <a href="">Chase McCoy</a> is a product designer and engineer solving patterns of problems.
-    </h1> #}
 
     <h1>
-      <a href="">Chase McCoy</a> is a designer and developer specializing in creator tools and design systems.
+      <a href="/">Chase McCoy</a> is a product designer and developer solving patterns of problems.
     </h1>
 
     <div class='contact'>
-      <span>I specialize in design systems, tools for creators, and something else. Get in touch at <a href="">hi@chasem.co</a>
+      <span>Specializing in design systems, creator tools, documentation, and more. <a href="">Say hello</a> and let's collaborate.
       </span>
     </div>
 
@@ -72,11 +69,11 @@ js: portfolio
       </portfolio-item-header>
 
       <portfolio-item-content>
-        <p>I've spent my 3 years at Stripe as design lead working on a UI Platform for the entire company. The design system we've built combines interoperability with customization, and powers both 1st and 3rd party surfaces and brands.</p>
+        <p>I joined the Design Systems team at Stripe as a product designer in 2020 at an inflection point for Sail, the current design system. Sail was built and optimized for the Stripe Dashboard, but it was not able to support many of the company's increasingly diverse products and surfaces.</p>
 
-        <p>I've spent my 3 years at Stripe as design lead working on a UI Platform for the entire company. The design system we've built combines interoperability with customization, and powers both 1st and 3rd party surfaces and brands.</p>
-
-        <p>I've spent my 3 years at Stripe as design lead working on a UI Platform for the entire company. The design system we've built combines interoperability with customization, and powers both 1st and 3rd party surfaces and brands.</p>
+        <p>I became the lead designer for the next generation of Sail, which the team set out to build from scratch in a way that could serve <i>all of Stripe</i> and grow with the company over the next decade. 
+        
+        The new system is designed to enable interoperable UIs that can be endlessly customized to support a variety of brands and products. Today, our system powers dozens of both 1st and 3rd party surfaces across web and mobile native.</p>
       </portfolio-item-content>
 
       <h3>North-star vision for data tables</h3>
@@ -132,31 +129,70 @@ js: portfolio
         <p>In varius tortor sed orci vehicula dictum. Nulla facilisi. Maecenas quis volutpat ex. Suspendisse odio dolor, sagittis blandit maximus nec, consequat quis dolor. Sed vestibulum nunc sed erat convallis molestie. Nam hendrerit ornare augue, pretium hendrerit leo. Nunc tristique ipsum ut semper rutrum. Aliquam id purus lorem. Integer at risus vehicula, euismod massa et, placerat leo. Donec faucibus odio et enim blandit, sit amet vestibulum erat dictum. Nullam dapibus mauris iaculis arcu rutrum, sed ullamcorper nibh posuere.</p>
       </portfolio-item-content>
 
-      <image-gallery>
+      <image-gallery style="align-items: flex-end;">
         <figure>
           <img src="/images/portfolio/stripe/token-tags.png" alt=""/>
+          <figcaption>Supporting expressive theming meant having hundreds of color tokens. Tokens referenced in our documentation could be clicked to reveal additional information.</figcaption>
         </figure>
 
         <figure>
-          <img src="/images/portfolio/stripe/form-field-tokens.png" alt="" style='max-height: 250px;'/>
-        </figure>
-
-        <figure>
-          <img src="/images/portfolio/stripe/token-tree.png" alt=""/>
-        </figure>
-
-        <figure>
-          <img src="/images/portfolio/stripe/aliases.png" alt=""/>
-        </figure>
-
-        <figure>
-          <img src="/images/portfolio/stripe/dark-ui.png" alt=""/>
+          <img src="/images/portfolio/stripe/form-field-tokens.png" alt=""/>
+          <figcaption>An example of how color tokens map to a component, each acting as a hook for potential customization.</figcaption>
         </figure>
 
         <figure>
           <img src="/images/portfolio/stripe/button-tree.png" alt=""/>
+          {# <figcaption>Font,</figcaption> #}
+        </figure>
+
+        <figure>
+          <img src="/images/portfolio/stripe/token-tree.png" alt=""/>
+          <figcaption>Designing the token system involved mapping out all the ways in which tokens could be constructed using a strict naming scheme and optional modifiers.</figcaption>
+        </figure>
+
+        {# <figure>
+          <img src="/images/portfolio/stripe/aliases.png" alt=""/>
+        </figure> #}
+
+        <figure>
+          <img src="/images/portfolio/stripe/dark-ui.png" alt=""/>
+          <figcaption>Tokens allowed for end-user theming of the design system and for us to build some out of the box themes such as dark mode.</figcaption>
         </figure>
       </image-gallery>
+
+      <h3>Contribution model</h3>
+
+      <portfolio-item-content>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin facilisis laoreet justo sit amet malesuada. Aenean suscipit laoreet gravida. Mauris cursus vehicula odio nec feugiat. Nunc fringilla nec mi in volutpat. Curabitur cursus dui vel diam mollis porttitor.</p>
+
+        <p>Quisque hendrerit justo arcu, at laoreet nunc molestie ac. Fusce a consectetur quam. Integer imperdiet metus sed dolor imperdiet sodales.</p>
+
+        <p>In varius tortor sed orci vehicula dictum. Nulla facilisi. Maecenas quis volutpat ex. Suspendisse odio dolor, sagittis blandit maximus nec, consequat quis dolor. Sed vestibulum nunc sed erat convallis molestie. Nam hendrerit ornare augue, pretium hendrerit leo. Nunc tristique ipsum ut semper rutrum. Aliquam id purus lorem. Integer at risus vehicula, euismod massa et, placerat leo. Donec faucibus odio et enim blandit, sit amet vestibulum erat dictum. Nullam dapibus mauris iaculis arcu rutrum, sed ullamcorper nibh posuere.</p>
+      </portfolio-item-content>
+
+      <image-gallery>
+
+        <figure>
+          <img src="/images/portfolio/stripe/contribute.png" alt="" class='shadow'/>
+          <figcaption>Some text here</figcaption>
+        </figure>
+
+        <figure>
+          <img src="/images/portfolio/stripe/process-diagram.png" alt="" class='shadow'/>
+          <figcaption>Some text here</figcaption>
+        </figure>
+
+        <figure>
+          <img src="/images/portfolio/stripe/add-component.png" alt="" class='shadow'/>
+          <figcaption>Some text here</figcaption>
+        </figure>
+
+        <figure>
+          <img src="/images/portfolio/stripe/design-process.png" alt="" class='shadow'/>
+          <figcaption>Some text here</figcaption>
+        </figure>
+      </image-gallery>
+
     </portfolio-item>
 
     <portfolio-item>
@@ -173,12 +209,45 @@ js: portfolio
       </portfolio-item-header>
 
       <portfolio-item-content>
-        <p>I've spent my 3 years at Stripe as design lead working on a UI Platform for the entire company. The design system we've built combines interoperability with customization, and powers both 1st and 3rd party surfaces and brands.</p>
+        <p>TODO</p>
 
-        <p>I've spent my 3 years at Stripe as design lead working on a UI Platform for the entire company. The design system we've built combines interoperability with customization, and powers both 1st and 3rd party surfaces and brands.</p>
+        {# <p>I've spent my 3 years at Stripe as design lead working on a UI Platform for the entire company. The design system we've built combines interoperability with customization, and powers both 1st and 3rd party surfaces and brands.</p>
 
-        <p>I've spent my 3 years at Stripe as design lead working on a UI Platform for the entire company. The design system we've built combines interoperability with customization, and powers both 1st and 3rd party surfaces and brands.</p>
+        <p>I've spent my 3 years at Stripe as design lead working on a UI Platform for the entire company. The design system we've built combines interoperability with customization, and powers both 1st and 3rd party surfaces and brands.</p> #}
       </portfolio-item-content>
+
+      <h3>Seeds</h3>
+      <image-gallery>
+        <figure>
+          <img src="/images/portfolio/sprout/seeds-resources.png" alt="" class='shadow'/>
+          <figcaption>Some text here</figcaption>
+        </figure>
+
+        <figure>
+          <img src="/images/portfolio/sprout/seeds-writing.png" alt="" class='shadow'/>
+          <figcaption>Some text here</figcaption>
+        </figure>
+
+        <figure>
+          <img src="/images/portfolio/sprout/seeds-components.png" alt="" class='shadow'/>
+          <figcaption>Some text here</figcaption>
+        </figure>
+
+        <figure>
+          <img src="/images/portfolio/sprout/health-card.png" alt="" class='shadow'/>
+          <figcaption>Some text here</figcaption>
+        </figure>
+
+        <figure>
+          <img src="/images/portfolio/sprout/contribution-process.png" alt=""/>
+          <figcaption>Some text here</figcaption>
+        </figure>
+
+        <figure>
+          <img src="/images/portfolio/sprout/confirmation.png" alt="" class='shadow'/>
+          <figcaption>Some text here</figcaption>
+        </figure>
+      </image-gallery>
 
       <h3>Redesigning the Sprout Social app</h3>
 
@@ -210,39 +279,6 @@ js: portfolio
 
         <figure>
           <img src="/images/portfolio/sprout/message-components.png" alt="" class='shadow'/>
-          <figcaption>Some text here</figcaption>
-        </figure>
-      </image-gallery>
-
-      <h3>Seeds</h3>
-      <image-gallery>
-        <figure>
-          <img src="/images/portfolio/sprout/seeds-resources.png" alt="" class='shadow'/>
-          <figcaption>Some text here</figcaption>
-        </figure>
-
-        <figure>
-          <img src="/images/portfolio/sprout/seeds-writing.png" alt="" class='shadow'/>
-          <figcaption>Some text here</figcaption>
-        </figure>
-
-        <figure>
-          <img src="/images/portfolio/sprout/seeds-components.png" alt="" class='shadow'/>
-          <figcaption>Some text here</figcaption>
-        </figure>
-
-        <figure>
-          <img src="/images/portfolio/sprout/health-card.png" alt="" class='shadow'/>
-          <figcaption>Some text here</figcaption>
-        </figure>
-
-        <figure>
-          <img src="/images/portfolio/sprout/contribution-process.png" alt=""/>
-          <figcaption>Some text here</figcaption>
-        </figure>
-
-        <figure>
-          <img src="/images/portfolio/sprout/confirmation.png" alt="" class='shadow'/>
           <figcaption>Some text here</figcaption>
         </figure>
       </image-gallery>
