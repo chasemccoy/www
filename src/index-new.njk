@@ -17,12 +17,12 @@
 
 <section class='blog'>
   {% for post in posts | filterHidden %}
-    {% if loop.index == 3 %}
+    {# {% if loop.index == 3 %}
       {% include "archives.njk" %}
-    {% endif %}
+    {% endif %} #}
 
-    <article class="prose {{ 'long-form' if post.data.title }}">
-      {% if post.type == 'post' %}
+    {% if post.type == 'post' %}
+      <article class="prose {{ 'long-form' if post.data.title }}">
         {% if post.data.title %}
           <header>
             <h1 class='font-header'>
@@ -51,19 +51,46 @@
         {% endif %}
 
         {{ post.content | safe }}
-      {% elif post.type == 'highlight' %}
-        <blockquote>
-          {% renderTemplate "njk,md",
-          post %}
-          {{ text }}
-          {% endrenderTemplate %}
-          <cite>
-            <a href="{{post.source.url}}" target="_blank">{{post.source.title}} by {{post.source.author}}</a>
-          </cite>
-        </blockquote>
-        <br/>
+      </article>
+
+    {% elif post.type == 'highlight' %}
+      {# If we aren't the first or last item #}
+      {% if true %}
+        {# If we are the first in a sequence of dupes #}
+        {% if posts[loop.index0 + 1].source.title == post.source.title and posts[loop.index0 - 1].source.title != post.source.title %}
+          {% set inSequence = true %}
+          <article class='prose highlight'>
+            <h1>Highlights from <a href="{{post.source.url}}" target="_blank">{{post.source.title}} by {{post.source.author}}</a>
+            </h1>
+          {% endif %}
+        {% endif %}
+
+        {% if not inSequence %}
+          <article class='prose highlight'>
+            <h1>Highlight from <a href="{{post.source.url}}" target="_blank">{{post.source.title}} by {{post.source.author}}</a>
+            </h1>
+          {% endif %}
+
+          <blockquote class='unstyled'>
+            {% renderTemplate "njk,md",
+            post %}
+            {{ text }}
+            {% endrenderTemplate %}
+          </blockquote>
+
+          {% if not inSequence %}
+          </article>
+        {% endif %}
+
+        {# If we aren't the first or last item #}
+        {% if posts[loop.index0 + 1] and posts[loop.index0 - 1] %}
+          {# If we are the last in a sequence of dupes #}
+          {% if posts[loop.index0 + 1].source.title != post.source.title and posts[loop.index0 - 1].source.title == post.source.title %}
+            {% set inSequence = false %}
+          </article>
+        {% endif %}
       {% endif %}
-    </article>
+    {% endif %}
   {% endfor %}
 </section>
 
