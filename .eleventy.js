@@ -2,6 +2,7 @@ const fs = require('fs')
 const path = require('path')
 
 const Image = require('@11ty/eleventy-img')
+const { EleventyRenderPlugin } = require('@11ty/eleventy')
 const markdownIt = require('markdown-it')
 const markdownItAnchor = require('markdown-it-anchor')
 const markdownItEleventyImg = require('./utils/markdown-it-eleventy-img')
@@ -42,6 +43,7 @@ module.exports = function (config) {
 
   // Add plugins
   config.addPlugin(pluginRSS)
+  config.addPlugin(EleventyRenderPlugin)
   config.addPlugin(pluginSyntaxHighlight)
   config.addPlugin(embedTwitter, {
     doNotTrack: true,
@@ -85,6 +87,24 @@ module.exports = function (config) {
       .getFilteredByTag('posts')
       .filter((p) => !!p.data.title && p.data.featured)
     return filters.filterHidden(posts).reverse()
+  })
+
+  config.addCollection('feed', function (collection) {
+    const highlights = collection.items[0].data.highlights.map((highlight) => {
+      highlight.type = 'highlight'
+      return highlight
+    })
+
+    const posts = filters
+      .filterHidden(collection.getFilteredByTag('posts'))
+      .map((post) => {
+        post.type = 'post'
+        return post
+      })
+
+    return [...highlights, ...posts].sort(function (a, b) {
+      return new Date(a.date) - new Date(b.date)
+    })
   })
 
   let markdownLibrary = markdownIt({

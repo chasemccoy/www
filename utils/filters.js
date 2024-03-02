@@ -1,6 +1,7 @@
 const { groupBy, getDateComponents, capitalize } = require('./index')
 const { DateTime } = require('luxon')
 const CleanCSS = require('clean-css')
+const util = require('util')
 
 const filterTagList = (tags) => {
   return (tags || []).filter(
@@ -28,7 +29,9 @@ module.exports = {
     return Object.keys(object)
   },
   filterHidden: (items) => {
-    return items.filter((item) => item.data.hidden !== true)
+    return items.filter((item) =>
+      item.data ? item.data.hidden !== true : true
+    )
   },
   onlyHiddenPosts: (posts) => {
     return posts.filter((post) => post.data.hidden)
@@ -71,5 +74,8 @@ module.exports = {
   },
   titleize: (slug) => {
     return capitalize(slug.replaceAll('-', ' '))
+  },
+  dump: (obj) => {
+    return util.inspect(obj, { maxArrayLength: Infinity })
   },
 }
