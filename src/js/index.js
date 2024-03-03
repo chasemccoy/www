@@ -114,8 +114,40 @@ const populateTableOfContents = () => {
   }
 }
 
+function randomInt(min, max) {
+  return Math.floor(Math.random() * (max - min + 1) + min)
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   customElements.define('book-mark', Bookmark)
   populateBookmarks()
   populateTableOfContents()
+
+  const divs = document.querySelectorAll('.creature > div')
+  const elements = Array.from(divs)
+  const hiddenElements = []
+
+  function step() {
+    hiddenElements.forEach((e) => {
+      if (Math.random() < 0.7) {
+        e.style.opacity = 1
+      }
+    })
+
+    const n = randomInt(1, 10)
+    const itemsToHide = Array.from(Array(n).keys())
+
+    itemsToHide.forEach((i) => {
+      const index = randomInt(0, elements.length - 1)
+      const item = elements[index]
+      item.style.opacity = 0
+      hiddenElements.push(item)
+    })
+
+    setTimeout(() => {
+      requestAnimationFrame(step)
+    }, 1000 / 0.7)
+  }
+
+  window.requestAnimationFrame(step)
 })

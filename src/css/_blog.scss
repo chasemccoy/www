@@ -8,7 +8,7 @@
   }
 
   article.highlight + article.highlight {
-    margin-top: 2rem;
+    margin-top: 3rem;
   }
 
   header {
@@ -21,7 +21,8 @@
     margin-bottom: -0.5rem;
   }
 
-  article.long-form + article.long-form {
+  article.long-form + article.long-form,
+  article.long-form + article.highlight {
     margin-top: 3rem;
   }
 
@@ -34,28 +35,74 @@
   }
 
   article.highlight {
-    background-color: var(--color-offset);
-    padding: 1rem;
-    // margin: 0 -1rem;
+    // background-color: var(--color-offset);
+    // border: 1px dashed var(--color-border);
+    // padding: 12px;
+    // margin: 0 -12px;
+    font-size: 0.9rem;
     border-radius: 8px;
+    color: var(--color-caption);
 
-    h1 {
+    cite {
       font-size: 1em;
-      line-height: 1.4;
-      margin-bottom: 1rem;
+      font-style: normal;
+      margin-bottom: 6px;
+      margin-left: -18px;
+      color: var(--color-caption);
+      opacity: 0.8;
+      display: flex;
+      align-items: flex-start;
+      gap: 6px;
+      font-size: 0.9rem;
+      font-family: var(--font-code);
+      transition: opacity 0.25s;
+
+      svg {
+        position: relative;
+        top: 2px;
+        flex-shrink: 0;
+      }
+    }
+
+    &:hover cite {
+      opacity: 1;
     }
 
     blockquote {
       margin: 0;
-      // background-color: white;
-      // padding: 1rem;
-      // border-radius: 6px;
+      color: var(--color-caption);
     }
 
     blockquote + blockquote {
       margin-top: 1rem;
       padding-top: 1rem;
       border-top: 1px solid var(--color-border);
+    }
+
+    a {
+      --color-accent: var(--color-caption);
+      --link-color: var(--color-caption);
+      --link-hover: var(--color-caption);
+    }
+
+    aside {
+      color: var(--color-caption);
+      margin: 12px 0;
+      position: relative;
+
+      span {
+        background-color: var(--color-chat-bubble);
+        border-radius: 14px;
+        padding: 6px 12px;
+        display: block;
+        width: fit-content;
+      }
+
+      svg {
+        position: absolute;
+        left: -5.5px;
+        bottom: 0.246px;
+      }
     }
   }
 }

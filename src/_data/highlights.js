@@ -5,7 +5,7 @@ module.exports = async function () {
 
   try {
     return EleventyFetch(url, {
-      duration: '1d',
+      duration: '6h',
       type: 'json',
     })
   } catch (error) {
