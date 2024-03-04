@@ -53,7 +53,7 @@
       font-size: 1em;
       font-style: normal;
       margin-bottom: 6px;
-      margin-left: -18px;
+
       color: var(--color-caption);
       opacity: 0.8;
       display: flex;
@@ -62,6 +62,10 @@
       font-size: 0.9rem;
       font-family: var(--font-code);
       transition: opacity 0.25s;
+
+      @include small {
+        margin-left: -18px;
+      }
 
       svg {
         position: relative;
@@ -113,6 +117,15 @@
         position: absolute;
         left: -5.5px;
         bottom: 0.246px;
+      }
+    }
+
+    blockquote,
+    aside {
+      margin-left: 18px;
+
+      @include small {
+        margin-left: 0;
       }
     }
   }
