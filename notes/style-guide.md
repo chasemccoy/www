@@ -16,8 +16,7 @@ tags:
 - **Bulleted lists**
   - Introduce a bulleted list with a colon. For example, _There are a number of things to keep in mind when writing a style guide:_ ... Capitalize the first letter of the first word of each bulleted item. Bulleted items must be parallel in construction. End bulleted sentences with periods (not semicolons or commas), and do not punctuate the end of fragments.
 - If ‘however’ is used to separate clauses, then it needs to be preceded with a semicolon: “I planned to get work done before the concert; however, I didn’t have time.”
-- **Books:** Titles go in quotes, with principle words capitalized.
-- _Blogs and publications_ should be italicized
+- Titles of books, periodicals, movies, etc. in plain text rather than italics.
 
 ## Common words and phrases
 
