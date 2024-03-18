@@ -23,7 +23,7 @@ With these 4 talismans in hand I was able to perform the ritual of resurrection:
 
 ![TODO](start.png)
 
-This must be the internet equivalent of what breaking open an ancient, hidden tomb must feel like.
+An experienced gamer might find this process mundane, but to me it feels like the internet equivalent of breaking open an ancient, hidden tomb. I could only imagine what treasures may lie within.
 
 I haven't been able to connect and use my PS5 controller, but luckily PCXS2 takes care of mapping the controls to keyboard input. Combined with the game's simple control scheme, I haven't had any any trouble playing on my laptop. 
 
