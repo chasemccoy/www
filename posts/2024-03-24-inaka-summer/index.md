@@ -1,6 +1,5 @@
 ---
 title: Boku no Natsuyasumi
-hidden: true
 ---
 
 Several months ago, in [an issue of Spencer Chang's newsletter](https://spencerchang.substack.com/p/ti-09-the-internet-is-one-big-video), I&nbsp;discovered [the 6 hour video review of a game called Boku no Natsuyasumi](https://www.youtube.com/watch?v=779coR-XPTw) by Tim Rogers (known as Action Button). 
@@ -21,7 +20,7 @@ Armed with the patch file, I needed 3 more items to complete my quest: a PS2 emu
 
 Luckily, the emulator is easy to come by. I downloaded [the excellent PCSX2](https://pcsx2.net), which is an open source PS2 emulator that works quite well on my MacBook Air. 
 
-Unfortunately, for Legal Reasons™ I cannot provide a link to the PS2 BIOS or the the game itself, but needless to say that a cursory Google search should turn up the files you need without too much trouble.
+Unfortunately, for Legal Reasons™ I cannot provide a link to the PS2 BIOS or the the game itself, but a cursory Google search should turn up the files you need without too much trouble.
 
 With these 4 talismans in hand I was able to perform the necessary ritual of resurrection: apply the English patch to the game, boot up the PS2 emulator, load the game. 
 
@@ -31,7 +30,7 @@ After a few clicks... paydirt.
 
 An experienced gamer might find this process mundane, but to me it feels like the internet equivalent of breaking open an ancient, hidden tomb. At this point I could only imagine what treasures may lie within.
 
-It's become clear to me, from my time playing this iteration of the game and from Tim's review of the original, that these games are undoubtedly works of art. They also happen to be an example of the billions of bytes of lost media that are just waiting to be rediscovered by someone who will appreciate them. 
+What I discovered is undoubtedly a work of art, made clear by my time playing this iteration and from Tim's review of the original. The games also happen to be an example of the billions of bytes of lost media that are just waiting to be rediscovered by someone who will appreciate them. 
 
 Here is a game, published 22 years ago, that has managed to evoke feelings of nostalgia and wistfulness in me today, in 2024. This must be the closest thing to time travel I'll ever experience. 
 
@@ -69,7 +68,7 @@ In comparison, the only thing you'll get for collecting all of the bugs or catch
 
 Discovering and playing Bokunatsu (and watching Tim's 6 hour magnum opus of a review) has given me a deep appreciation for the timelessness of art and media. 
 
-A game from 24 years ago, deeply steeped in a culture that isn't my own, has managed to create in me a sense of warm nostalgia. Its soundscapes reminded me of home perhaps more than any sound I've heard in the past two decades. 
+A game from 24 years ago, deeply steeped in a culture that isn't my own, has managed to create in me a sense of warm nostalgia. Its soundscapes remind me of home, but also make me long for a place I've never been. 
 
 It's also worth appreciating the meta aspect of the journey I went on to discover and experience this game, all because of a link in a newsletter. This is why the web is so special, and it's what an AI will never do: unearth a lost gem.
 
