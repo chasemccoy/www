@@ -2,7 +2,7 @@
 title: The moon trees of Mississippi
 ---
 
-Many of my online acquaintances know that I live in Chicago, but I suspect they might not know that I'm from a small university town in Mississippi named Starkville. 
+Many of my online acquaintances know that I live in Chicago, but I suspect they might not know that I'm from a small university town in Mississippi called Starkville. 
 
 Starkville is home to Mississippi State University, where I attended college and studied Computer Science. In 2017 I graduated and moved to Chicago to start my career. 
 
