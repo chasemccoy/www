@@ -19,9 +19,7 @@ eleventyExcludeFromCollections: true
 	{%- for post in collections.posts | reverse | filterHidden %}
 		{% set absolutePostUrl %}{{ post.url | absoluteUrl(metadata.url) }}{% endset %}
 		<entry>
-			{% if post.data.title %}
-				<title>{{ post.data.title }}</title>
-			{% endif %}
+			<title>{{ post.data.title }}</title>
 			<link href="{{ absolutePostUrl }}"/>
 			<updated>{{ post.date | dateForXMLFeed }}</updated>
 			<id>{{ absolutePostUrl }}</id>
