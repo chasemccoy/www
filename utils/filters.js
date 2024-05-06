@@ -78,4 +78,9 @@ module.exports = {
   dump: (obj) => {
     return util.inspect(obj, { maxArrayLength: Infinity })
   },
+  dateForXMLFeed: (date) => {
+    const d = DateTime.fromJSDate(date)
+
+    return `${d.weekdayShort}, ${d.day} ${d.monthShort} ${d.year} 12:00:00 CST`
+  },
 }

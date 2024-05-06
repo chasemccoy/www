@@ -8,10 +8,6 @@
     "path": "/feed.xml",
     "id": "https://chasem.co/"
   },
-  "jsonfeed": {
-    "path": "/feed.json",
-    "url": "https://chasem.co/feed.json"
-  },
   "author": {
     "name": "Chase McCoy",
     "email": "hi@chasem.co",

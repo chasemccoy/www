@@ -41,6 +41,10 @@ module.exports = function (config) {
   config.addPassthroughCopy({ public: '/' })
   config.setUseGitIgnore(false)
 
+  Object.keys(filters).forEach((filter) => {
+    config.addFilter(filter, filters[filter])
+  })
+
   // Add plugins
   config.addPlugin(pluginRSS)
   config.addPlugin(EleventyRenderPlugin)
@@ -59,10 +63,6 @@ module.exports = function (config) {
     if (!name) throw new Error('Missing name for {% slot %} block!')
     this.page[name] = content
     return ''
-  })
-
-  Object.keys(filters).forEach((filter) => {
-    config.addFilter(filter, filters[filter])
   })
 
   // Create an array of all tags
