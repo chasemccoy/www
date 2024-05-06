@@ -79,8 +79,13 @@ module.exports = {
     return util.inspect(obj, { maxArrayLength: Infinity })
   },
   dateForXMLFeed: (date) => {
-    const d = DateTime.fromJSDate(date)
+    return DateTime.fromJSDate(date, { zone: 'cst' })
+    let s = dateObj.toISOString()
 
-    return `${d.weekdayShort}, ${d.day} ${d.monthShort} ${d.year} 12:00:00 CST`
+    // remove milliseconds
+    let split = s.split('.')
+    split.pop()
+
+    return split.join('') + 'Z'
   },
 }
