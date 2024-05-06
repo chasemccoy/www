@@ -79,6 +79,9 @@ module.exports = {
     return util.inspect(obj, { maxArrayLength: Infinity })
   },
   dateForXMLFeed: (date) => {
-    return DateTime.fromJSDate(date, { zone: 'cst' }).toISO()
+    return (
+      DateTime.fromJSDate(date, { zone: 'utc' }).toISODate() +
+      'T12:00:00.000-05:00'
+    )
   },
 }
