@@ -7,7 +7,7 @@ There are two new features coming to CSS that will make it much easier to furthe
 1. Animating to and from `display: none;` for the sake of enter/exit animations.
 2. Animating to and from the intrinsic size of an element (such as `height: auto;`).
 
-Traditionally, animating something into our out of the screen (as opposed to just hiding it visually) required JavaScript to remove the element from the page after waiting for the animation or transition to complete. No longer!
+Traditionally, animating something into or out of the screen (as opposed to just hiding it visually) required JavaScript to remove the element from the page after waiting for the animation or transition to complete. No longer!
 
 When these new features land in browsers, you'll be able to animate to `display: none` like any other property using a keyframe animation:
 
