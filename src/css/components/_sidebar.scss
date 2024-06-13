@@ -59,10 +59,15 @@
 
     ul {
       margin-bottom: -8px;
-      display: inline-flex;
+      display: flex;
+      flex-wrap: wrap;
       column-gap: 24px;
       row-gap: 4px;
-      flex-wrap: wrap;
+
+      @include small {
+        display: grid;
+        grid-template-columns: auto 1fr;
+      }
     }
 
     li {
