@@ -36,6 +36,6 @@ Slap that class onto your grid container and presto, you've got some rails in pl
 
 ![A screenshot of a webpage showing a 12 column grid.](grid.png 'repeating-linear-gradient invokes strange powers')
 
-Once again I'm left marvelling at the humble power of CSS, and feeling grateful that we live during times when such an expressive yet simple visual language is spoken so ubiquitously.
+Once again I'm left marveling at the humble power of CSS, and feeling grateful that we live during times when such an expressive yet simple visual language is spoken so ubiquitously.
 
 [Check out the demo on Codepen](https://codepen.io/chasemccoy/pen/KKJNLBM).
