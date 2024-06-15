@@ -51,4 +51,4 @@ Yuan has some great examples of how this can be combined with functions in CSS l
 In terms of representing natural systems in CSS, this reminds me of how often I've wanted to be able to generate and use random numbers in CSS _at runtime_. To my delight, [it looks like that's in the works](https://drafts.csswg.org/css-values-5/#randomness).
 
 <link rel="stylesheet" href="https://stephen.band/scribe/build/scribe-music/module.css" />
-<script type="module" src="https://stephen.band/scribe/build/scribe-music/module.js"></script>
+<script type="module" src="https://stephen.band/scribe/build/scribe-music/module.js" async></script>
