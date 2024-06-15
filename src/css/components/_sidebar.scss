@@ -138,4 +138,30 @@
   .colophon a {
     text-decoration: underline;
   }
+
+  now-playing {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    margin-top: 4px;
+    color: var(--color-caption);
+
+    .image-container {
+      position: relative;
+      top: 3px;
+      overflow: clip;
+      min-width: 32px;
+      width: 32px;
+      height: 32px;
+      border-radius: 4px;
+
+      &:after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        box-shadow: inset 0 0 0 1px rgba(0 0 0 / 0.1);
+        border-radius: 4px;
+      }
+    }
+  }
 }

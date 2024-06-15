@@ -88,6 +88,37 @@ const populateBookmarks = async () => {
   })
 }
 
+const populateNowPlaying = async () => {
+  const musicContainer = Array.from(document.querySelectorAll('now-playing'))
+
+  if (!musicContainer || musicContainer.length === 0) {
+    return
+  }
+
+  const response = await fetch('https://api.chsmc.workers.dev/music')
+  const data = await response.json()
+  const { recentTracks } = data
+
+  if (!recentTracks || recentTracks.length === 0) {
+    return
+  }
+
+  const { name, artist, image } = recentTracks[0]
+  const span = document.createElement('span')
+  const img = document.createElement('img')
+  const imgContainer = document.createElement('div')
+  span.textContent = `${name} by ${artist}`
+  img.src = image
+  img.alt = ''
+  imgContainer.className = 'image-container'
+  imgContainer.append(img)
+
+  musicContainer.forEach((container) => {
+    container.append(imgContainer.cloneNode(true))
+    container.append(span.cloneNode(true))
+  })
+}
+
 const populateTableOfContents = () => {
   const tableOfContents = document.querySelector('table-of-contents')
 
@@ -122,6 +153,7 @@ document.addEventListener('DOMContentLoaded', () => {
   customElements.define('book-mark', Bookmark)
   populateBookmarks()
   populateTableOfContents()
+  populateNowPlaying()
 
   const divs = document.querySelectorAll('.creature > div')
   const elements = Array.from(divs)
