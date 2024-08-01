@@ -25,8 +25,8 @@
   "license": "MIT",
   "homepage": "https://github.com/chasemccoy/www",
   "dependencies": {
-    "@11ty/eleventy": "^2.0.1",
-    "@11ty/eleventy-fetch": "^4.0.0",
+    "@11ty/eleventy": "^3.0.0-beta.1",
+    "@11ty/eleventy-fetch": "^4.0.1",
     "@11ty/eleventy-img": "^3.1.8",
     "@11ty/eleventy-plugin-rss": "^1.2.0",
     "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.0",
@@ -45,12 +45,12 @@
     "luxon": "^3.4.4",
     "markdown-it": "^13.0.2",
     "markdown-it-anchor": "^8.6.7",
-    "sass": "^1.71.1",
+    "sass": "^1.77.8",
     "slugify": "^1.6.6"
   },
   "devDependencies": {
     "@netlify/plugin-lighthouse": "^6.0.0",
     "concurrently": "^8.2.2",
-    "esbuild": "^0.20.1"
+    "esbuild": "^0.23.0"
   }
 }

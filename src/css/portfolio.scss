@@ -373,10 +373,6 @@ image-gallery {
 }
 
 #scroll-header {
-  &.hidden {
-    transform: translateY(calc(-100% - 1px));
-  }
-
   transform: translateY(0);
   transition: transform 0.2s;
   z-index: 100;
@@ -391,6 +387,10 @@ image-gallery {
   align-items: center;
   justify-content: space-between;
   font-family: Hex Franklin;
+
+  &.hidden {
+    transform: translateY(calc(-100% - 1px));
+  }
 
   h1 {
     // font-size: 1.3rem;

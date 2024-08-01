@@ -2,7 +2,6 @@ const fs = require('fs')
 const path = require('path')
 
 const Image = require('@11ty/eleventy-img')
-const { EleventyRenderPlugin } = require('@11ty/eleventy')
 const markdownIt = require('markdown-it')
 const markdownItAnchor = require('markdown-it-anchor')
 const markdownItEleventyImg = require('./utils/markdown-it-eleventy-img')
@@ -36,7 +35,8 @@ async function imageShortcode(src, alt, sizes) {
   })
 }
 
-module.exports = function (config) {
+module.exports = async function (config) {
+  const { EleventyRenderPlugin } = await import('@11ty/eleventy')
   config.addPassthroughCopy({ 'src/js': 'js' })
   config.addPassthroughCopy({ public: '/' })
   config.setUseGitIgnore(false)

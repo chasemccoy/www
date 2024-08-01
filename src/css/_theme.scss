@@ -28,10 +28,6 @@
   --root-font-size: 14px;
   --root-line-height: 1.5;
 
-  @include small {
-    --root-font-size: 13px;
-  }
-
   --content-width: 35rem;
   --sidebar-width: 15rem;
   --heading-scale: 0.9;
@@ -72,5 +68,9 @@
     --color-caption: hsl(48, 8%, 48%);
     --color-offset: hsl(48, 30%, 9%);
     --color-chat-bubble: hsl(48, 30%, 11%);
+  }
+
+  @include small {
+    --root-font-size: 13px;
   }
 }
