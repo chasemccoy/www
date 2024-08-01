@@ -52,5 +52,9 @@
     "@netlify/plugin-lighthouse": "^6.0.0",
     "concurrently": "^8.2.2",
     "esbuild": "^0.23.0"
+  },
+  "resolutions": {
+    "string-width": "4.2.3",
+    "wrap-ansi": "^7.0.0"
   }
 }
