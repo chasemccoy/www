@@ -2,9 +2,9 @@
   display: flex;
   flex-direction: column;
 
-  article:not(.highlight):first-child {
-    margin-top: -0.5rem;
-  }
+  // article:not(.highlight):first-child {
+  //   margin-top: -0.5rem;
+  // }
 
   article + article {
     margin-top: 5rem;
