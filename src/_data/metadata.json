@@ -1,16 +1,16 @@
 {
   "title": "Chase McCoy",
-  "url": "https://chasem.co/",
+  "url": "https://chsmc.org/",
   "language": "en",
   "description": "Chase McCoy explores, builds, & writes about the web.",
   "feed": {
     "subtitle": "Chase McCoy explores, builds, & writes about the web",
     "path": "/feed.xml",
-    "id": "https://chasem.co/"
+    "id": "https://chsmc.org/"
   },
   "author": {
     "name": "Chase McCoy",
     "email": "hi@chasem.co",
-    "url": "https://chasem.co"
+    "url": "https://chsmc.org"
   }
 }
