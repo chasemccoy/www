@@ -2,9 +2,11 @@
 title: chsmc.org
 ---
 
-Programming note: the domain for this website has changed! chasem.co is out, and **[chsmc.org](/)** is in. All existing links and feeds should redirect automatically, but please let me know if you see otherwise. 
+Programming note: the domain for this website has changed! chasem.co is out, and **[chsmc.org](/)** is in. 
 
-Why the change? A few things:
+All existing links and feeds should redirect automatically, because [good URIs don't change](https://www.w3.org/Provider/Style/URI), but please let me know if you see otherwise. 
+
+Why the switch? A few things:
 
 - Pronouncing my email address (@chasem.co) always resulted in spelling it out anyway, and "do you mean .com?" was a frequent response.
 - `chsmc` is increasingly the handle I'm using online whenever `chase` is not available (so, most of the time).
