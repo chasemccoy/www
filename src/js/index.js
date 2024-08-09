@@ -172,8 +172,10 @@ document.addEventListener('DOMContentLoaded', () => {
     itemsToHide.forEach((i) => {
       const index = randomInt(0, elements.length - 1)
       const item = elements[index]
-      item.style.opacity = 0
-      hiddenElements.push(item)
+      if (item) {
+        item.style.opacity = 0
+        hiddenElements.push(item)
+      }
     })
 
     setTimeout(() => {
