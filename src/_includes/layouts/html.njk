@@ -63,9 +63,5 @@
   </head>
   <body {% if templateClass %} class="{{ templateClass }}"{% endif %}>
     {{ content | safe }}
-
-    {% if env.environment == "production" %}
-      <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "407d31bfa5ac4cbcbdb57cf6ea314fe6"}'></script>
-    {% endif %}
   </body>
 </html>
