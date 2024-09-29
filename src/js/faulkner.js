@@ -436,12 +436,14 @@ const populateFiles = async () => {
       DateTime.now().diff(file.date, 'days').toObject().days
     )
 
-    button.innerText = file.title
+    const title = document.createElement('span')
+    title.innerText = file.title
+    button.appendChild(title)
     li.appendChild(button)
     if (file.draft) {
       li.dataset.age = diffInDays
       const span = document.createElement('span')
-      span.innerText = `${diffInDays}d, ${file.wordCount}w`
+      span.innerText = `${diffInDays}d`
       button.appendChild(span)
       App.draftsList.appendChild(li)
     } else {
@@ -451,7 +453,7 @@ const populateFiles = async () => {
 
   const drafts = Array.from(App.draftsList.querySelectorAll('li[data-age]'))
   const sortedDrafts = drafts.sort(
-    (a, b) => parseInt(b.dataset.age) - parseInt(a.dataset.age)
+    (a, b) => parseInt(a.dataset.age) - parseInt(b.dataset.age)
   )
   App.draftsList.append(...sortedDrafts)
 }

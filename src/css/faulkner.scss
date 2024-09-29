@@ -9,13 +9,14 @@ html,
 body {
   height: 100%;
   font-family: var(--font-system);
-  background: var(--color-body-background);
+  background: var(--color-offset);
   color: var(--color-text);
 }
 
 body {
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 button {
@@ -26,25 +27,19 @@ button {
   color: var(--color-text);
 }
 
-main {
-  height: 100vh;
-}
-
-.wrapper {
+header,
+.workspace {
+  max-width: 80ch;
   width: 100%;
-  height: 100vh;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
 }
 
 header {
-  padding: 0.5rem;
-  border-bottom: 1px solid var(--color-border);
+  padding-block: 0.75rem;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 0.75rem;
-  min-height: 46px;
+  padding-left: 16px;
 
   h1 {
     font-family: var(--font-code);
@@ -59,7 +54,6 @@ header {
 .toolbar {
   display: flex;
   justify-content: space-between;
-  flex-grow: 1;
 
   > div {
     display: flex;
@@ -90,30 +84,35 @@ header {
   display: flex;
   height: 100%;
   overflow: auto;
+  gap: 0.25rem;
 
   .sidebar {
-    flex-basis: 24vw;
+    flex-basis: 20vw;
     overflow: auto;
     display: flex;
     flex-direction: column;
     gap: 1.25rem;
-    border-right: 1px solid var(--color-border);
-    font-size: 0.85rem;
-    padding-block: 0.75rem;
+    font-size: 0.8rem;
+    padding-bottom: 0.75rem;
+    padding-inline: 16px;
 
     h2 {
-      padding-inline: 0.5rem;
       font-family: var(--font-code);
-      font-size: 0.9rem;
+      font-size: 0.8rem;
       font-weight: normal;
       text-transform: uppercase;
       padding-bottom: 4px;
       color: var(--color-caption);
+      position: sticky;
+      top: 0;
+      background-color: var(--color-offset);
+      z-index: 1;
     }
   }
 
   .editor-area {
     flex-grow: 1;
+    padding-bottom: 1rem;
   }
 }
 
@@ -129,13 +128,22 @@ header {
   button {
     width: 100%;
     line-height: 1.2;
-    padding: 4px 0.5rem;
+    padding: 4px 0;
     color: var(--color-caption);
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 1rem;
+    min-width: 0;
 
-    span {
+    span:first-child {
+      -webkit-line-clamp: 1;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    span:last-child:not(:first-child) {
       white-space: nowrap;
       font-family: var(--font-code);
       font-size: 0.8em;
@@ -147,6 +155,20 @@ header {
     background: var(--color-offset);
     color: var(--color-text);
   }
+
+  button[data-active] {
+    position: relative;
+
+    &:before {
+      content: '';
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background-color: var(--color-accent);
+      left: -12px;
+    }
+  }
 }
 
 #editor {
@@ -155,13 +177,15 @@ header {
   height: 100%;
   line-height: 1.5;
   overflow: scroll;
+  background-color: var(--color-body-background);
+  border-radius: 16px;
 
   .cm-content {
     max-width: 58ch;
     font-family: 'Verdana';
     font-size: 0.85rem;
-    padding-top: 1rem;
-    padding-left: 2rem;
+    padding-top: 1.5rem;
+    padding-left: 1.5rem;
     padding-bottom: 4rem;
 
     @media (prefers-color-scheme: dark) {
