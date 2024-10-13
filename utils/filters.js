@@ -49,7 +49,7 @@ module.exports = {
     )
   },
   shortDate: (dateObj) => {
-    return DateTime.fromJSDate(dateObj, { zone: 'utc' }).toFormat('LLL d')
+    return DateTime.fromJSDate(dateObj, { zone: 'utc' }).toFormat('LLLL d')
   },
   // https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#valid-date-string
   htmlDateString: (dateObj) => {

@@ -8,19 +8,6 @@
 .archives {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
-
-  h2 {
-    font-family: var(--font-header);
-    font-size: 2.25rem;
-    margin: 0;
-  }
-
-  h3 {
-    @extend time;
-    color: var(--color-caption);
-    margin-bottom: 4px;
-  }
 
   a {
     text-decoration: none;

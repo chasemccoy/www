@@ -1,7 +1,6 @@
 ---
 title: Measuring the health of a design system
 excerpt: Design systems are like community gardens, and understanding their health is key to success. Here's how the team at Sprout Social does it.
-featured: true
 image: content-health.webp
 ---
 
