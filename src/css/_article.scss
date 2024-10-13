@@ -69,7 +69,6 @@ hr {
 
     &:before {
       content: '§';
-      font-family: var(--font-header);
       color: var(--color-border);
       display: block;
       width: 100%;
@@ -123,7 +122,6 @@ code {
 
 .image-caption,
 figcaption {
-  text-align: right;
   color: var(--color-caption);
   --link-color: var(--color-caption);
   --color-accent: var(--color-caption);

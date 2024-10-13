@@ -9,6 +9,8 @@ const filterTagList = (tags) => {
   )
 }
 
+const cleanCSS = new CleanCSS({})
+
 module.exports = {
   filterTagList,
   capitalize: (string) => {
@@ -71,7 +73,7 @@ module.exports = {
   },
   cssmin: (code) => {
     return process.env.ENVIRONMENT === 'production'
-      ? new CleanCSS({}).minify(code).styles
+      ? new cleanCSS.minify(code).styles
       : code
   },
   titleize: (slug) => {

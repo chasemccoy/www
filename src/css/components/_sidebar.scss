@@ -3,7 +3,10 @@
   flex-direction: column;
   gap: 1.2rem;
   font-size: 0.85rem;
-  padding-bottom: 2rem;
+
+  @include small {
+    padding-bottom: 2rem;
+  }
 
   h2 {
     margin-bottom: 2px;
