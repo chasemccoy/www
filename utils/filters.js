@@ -70,7 +70,9 @@ module.exports = {
     return array.slice(0, n)
   },
   cssmin: (code) => {
-    return new CleanCSS({}).minify(code).styles
+    return process.env.ENVIRONMENT === 'production'
+      ? new CleanCSS({}).minify(code).styles
+      : code
   },
   titleize: (slug) => {
     return capitalize(slug.replaceAll('-', ' '))
