@@ -8,6 +8,8 @@
 
 .prose {
   font-family: var(--font-serif);
+  font-optical-sizing: auto;
+  font-weight: normal;
   font-size: 1.2rem;
 
   & > * + * {
