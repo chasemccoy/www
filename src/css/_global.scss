@@ -6,50 +6,44 @@ html {
 
 body {
   font-family: var(--font-body);
-  min-height: 100vh;
   color: var(--color-text);
+  font-weight: 500;
+  background-color: var(--color-offset);
+
+  font-variant-ligatures: no-contextual;
+  -moz-font-feature-settings: 'calt' 0;
+  -webkit-font-feature-settings: 'calt' 0;
+  font-feature-settings: 'calt' 0;
+}
+
+.wrapper > header {
   border-top: 4px solid var(--color-accent);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+
+  > div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  body:not(.post) & time {
+    display: none;
+  }
 }
 
 h1.site-header a {
+  font-size: 1.2rem;
   width: fit-content;
-  margin-bottom: 0.5rem;
-  font-family: var(--font-code);
+  font-weight: normal;
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 8px;
   text-decoration: none;
 
-  @include small {
-    margin-bottom: 2rem;
-  }
-
   span {
-    color: var(--color-body-background);
-    padding: 2px 6px;
-    background-color: var(--color-accent);
-    // border-radius: 4px;
-    transition: background 0.2s;
-    min-height: 24px;
-  }
-
-  &:hover span {
-    background-color: var(--link-hover);
-  }
-
-  .creature {
-    --cell-size: 6px;
-    display: grid;
-    grid-template-columns: repeat(4, var(--cell-size));
-    // border-radius: 4px;
-    overflow: hidden;
-  }
-
-  .creature > div {
-    width: var(--cell-size);
-    height: var(--cell-size);
-    background: var(--color-accent);
-    transition: opacity 0.4s;
+    color: var(--color-text);
   }
 }
 
@@ -71,7 +65,7 @@ a {
   --link-underline-color: var(--color-accent);
   color: var(--link-color);
   text-decoration: underline;
-  transition: color 0.2s;
+  transition: all 0.2s;
   text-decoration-thickness: var(--text-decoration-thickness, 0.75px);
   text-decoration-color: var(--link-underline-color);
   text-underline-offset: var(--text-decoration-offset, 0.1em);
@@ -144,7 +138,7 @@ blockquote:not(.unstyled) {
     display: block;
     width: 100%;
     background: var(--color-border);
-    height: 2px;
+    height: 0.5px;
     margin-bottom: 8px;
   }
 
@@ -250,10 +244,9 @@ ol {
 }
 
 time {
-  font-family: var(--font-code);
-  font-size: 0.9rem;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--color-caption);
 }
 
 .breadcrumbs {
@@ -285,8 +278,9 @@ time {
 }
 
 .pagination {
-  border-top: 1px solid var(--color-border);
-  margin: 3rem 0;
+  border-top: 4px solid var(--color-offset);
+  margin: 3rem 0 0;
+  margin-inline: calc(-1 * var(--layout-padding));
 
   ul {
     display: flex;
@@ -306,7 +300,7 @@ time {
   @include small {
     .previous + .next {
       text-align: right;
-      border-left: 1px solid var(--color-border);
+      border-left: 4px solid var(--color-offset);
     }
   }
 
@@ -315,7 +309,7 @@ time {
     gap: 2px;
     flex-direction: column;
     color: var(--color-text);
-    padding: 12px 2px 8px;
+    padding: 1rem var(--layout-padding);
     transition: background-color 0.2s;
     height: 100%;
 
@@ -326,7 +320,6 @@ time {
 
   span.label {
     @extend time;
-    font-size: 0.8rem;
     color: var(--color-caption);
   }
 }
