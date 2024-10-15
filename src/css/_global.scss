@@ -122,21 +122,24 @@ code a {
 
 blockquote:not(.unstyled) {
   font-size: 1.1em;
-  line-height: 1.4;
+  line-height: 1.45;
   color: var(--color-caption);
+  padding-left: 1em;
 
   @include small {
-    & > p:first-of-type:before {
-      content: '“';
-      font-size: 1.4em;
-      line-height: 0;
-      margin-left: -0.7em;
-      margin-right: 0.3em;
-      color: var(--color-accent);
-      display: inline-block;
-      position: relative;
-      top: 6px;
-    }
+    padding-left: 0;
+  }
+
+  & > p:first-of-type:before {
+    content: '“';
+    font-size: 1.4em;
+    line-height: 0;
+    margin-left: -0.7em;
+    margin-right: 0.3em;
+    color: var(--color-accent);
+    display: inline-block;
+    position: relative;
+    top: 6px;
   }
 
   &:before {
@@ -146,6 +149,14 @@ blockquote:not(.unstyled) {
     background: var(--color-border);
     height: 0.5px;
     margin-bottom: 8px;
+
+    width: calc(100% + 1em);
+    margin-left: -1em;
+
+    @include small {
+      width: 100%;
+      margin-left: 0;
+    }
   }
 
   cite {
@@ -251,7 +262,7 @@ ol {
 
 time {
   font-family: var(--font-body);
-  font-size: 1rem;
+  font-size: 0.95rem;
   color: var(--color-caption);
 }
 
