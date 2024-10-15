@@ -16,6 +16,12 @@ body {
   font-feature-settings: 'calt' 0;
 }
 
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 .wrapper > header {
   border-top: 4px solid var(--color-accent);
   display: flex;
@@ -26,6 +32,10 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
+  }
+
+  &:hover h1 svg {
+    animation: spin 5s linear infinite;
   }
 
   body:not(.post) & time {
