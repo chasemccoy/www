@@ -1,6 +1,5 @@
 const { groupBy, getDateComponents, capitalize } = require('./index')
 const { DateTime } = require('luxon')
-const CleanCSS = require('clean-css')
 const util = require('util')
 
 const filterTagList = (tags) => {
@@ -8,8 +7,6 @@ const filterTagList = (tags) => {
     (tag) => !['all', 'nav', 'post', 'posts', 'notes'].includes(tag)
   )
 }
-
-const cleanCSS = new CleanCSS({})
 
 module.exports = {
   filterTagList,
@@ -70,11 +67,6 @@ module.exports = {
     }
 
     return array.slice(0, n)
-  },
-  cssmin: (code) => {
-    return process.env.ENVIRONMENT === 'production'
-      ? new cleanCSS.minify(code).styles
-      : code
   },
   titleize: (slug) => {
     return capitalize(slug.replaceAll('-', ' '))

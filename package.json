@@ -37,7 +37,6 @@
     "@codemirror/state": "6.4.1",
     "@codemirror/view": "6.34.1",
     "@lezer/highlight": "1.2.1",
-    "clean-css": "5.3.3",
     "eleventy-plugin-embed-twitter": "1.4.0",
     "eleventy-plugin-youtube-embed": "1.10.2",
     "fs-extra": "11.2.0",
