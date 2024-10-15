@@ -39,8 +39,12 @@ body {
 }
 
 .wrapper > header {
-  padding-block: 3rem;
+  padding-block: 2rem 3rem;
   grid-column: content;
+
+  @include small {
+    padding-block: 3rem;
+  }
 }
 
 .wrapper > :is(header, main) {

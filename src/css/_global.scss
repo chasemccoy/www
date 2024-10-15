@@ -22,6 +22,12 @@ body {
   }
 }
 
+@keyframes load {
+  to {
+    transform: rotate(90deg);
+  }
+}
+
 .wrapper > header {
   border-top: 4px solid var(--color-accent);
   display: flex;
@@ -51,6 +57,10 @@ h1.site-header a {
   align-items: center;
   gap: 8px;
   text-decoration: none;
+
+  svg {
+    animation: load 1s;
+  }
 
   span {
     color: var(--color-text);
