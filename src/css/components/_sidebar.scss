@@ -4,6 +4,14 @@
   gap: 1.2rem;
   font-size: 0.85rem;
 
+  @include small {
+    padding-bottom: 2rem;
+  }
+
+  h2 {
+    margin-bottom: 2px;
+  }
+
   details > div {
     display: flex;
     flex-direction: column;
@@ -62,7 +70,7 @@
       display: flex;
       flex-wrap: wrap;
       column-gap: 24px;
-      row-gap: 4px;
+      row-gap: 2px;
 
       @include small {
         display: grid;
@@ -90,8 +98,10 @@
 
   .social {
     ul {
-      columns: 2;
-      gap: 12px;
+      column-gap: 24px;
+      row-gap: 2px;
+      display: grid;
+      grid-template-columns: auto 1fr;
     }
   }
 
@@ -164,5 +174,14 @@
         border-radius: inherit;
       }
     }
+  }
+
+  .years li + li:not(:last-child):after,
+  .years li:first-child:after {
+    content: '/';
+    display: inline;
+    margin: 0;
+    float: none;
+    color: var(--color-border);
   }
 }

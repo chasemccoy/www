@@ -3,22 +3,13 @@ layout: layouts/base.njk
 templateClass: blog post
 ---
 
-{% slot 'header' %}
-<div class='breadcrumbs mb-12'>
-  <div>
-    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline">
-      <circle cx="12" cy="12" r="10"></circle>
-      <polyline points="12 6 12 12 16 14"></polyline>
-    </svg>
-
-    <time datetime="{{ page.date | htmlDateString }}">{{ page.date | readableDate }}</time>
-  </div>
-</div>
-
-<h1 class='font-header'>
-  <a href="{{ url }}" class="unstyled">{{ title }}</a>
-</h1>
-{% endslot %}
+{% if title %}
+  {% slot 'header' %}
+  <h1 class='font-header'>
+    <a href="{{ url }}" class="unstyled">{{ title }}</a>
+  </h1>
+  {% endslot %}
+{% endif %}
 
 <article class="prose">
   {{ content | safe }}
@@ -34,7 +25,10 @@ templateClass: blog post
       <li class='previous'>
         <a href="{{ previousPost.url }}" class='unstyled'>
           <span class='label'>Previous</span>
-          <span>{{ previousPost.data.title }}</span></a>
+          {% if previousPost.data.title %}
+            <span>{{ previousPost.data.title }}</span>
+          {% endif %}
+        </a>
       </li>
     {% endif %}
 
@@ -42,7 +36,9 @@ templateClass: blog post
       <li class='next'>
         <a href="{{ nextPost.url }}" class='unstyled'>
           <span class='label'>Next</span>
-          <span>{{ nextPost.data.title }}</span>
+          {% if nextPost.data.title %}
+            <span>{{ nextPost.data.title }}</span>
+          {% endif %}
         </a>
       {% endif %}
     </li>

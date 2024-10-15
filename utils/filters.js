@@ -9,6 +9,8 @@ const filterTagList = (tags) => {
   )
 }
 
+const cleanCSS = new CleanCSS({})
+
 module.exports = {
   filterTagList,
   capitalize: (string) => {
@@ -49,7 +51,7 @@ module.exports = {
     )
   },
   shortDate: (dateObj) => {
-    return DateTime.fromJSDate(dateObj, { zone: 'utc' }).toFormat('LLL d')
+    return DateTime.fromJSDate(dateObj, { zone: 'utc' }).toFormat('LLLL d')
   },
   // https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#valid-date-string
   htmlDateString: (dateObj) => {
@@ -70,7 +72,9 @@ module.exports = {
     return array.slice(0, n)
   },
   cssmin: (code) => {
-    return new CleanCSS({}).minify(code).styles
+    return process.env.ENVIRONMENT === 'production'
+      ? new cleanCSS.minify(code).styles
+      : code
   },
   titleize: (slug) => {
     return capitalize(slug.replaceAll('-', ' '))

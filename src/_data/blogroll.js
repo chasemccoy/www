@@ -14,7 +14,6 @@ module.exports = [
   { name: 'Jules Forrest', url: 'https://julesforrest.com' },
   { name: 'Kicks Condor', url: 'https://kickscondor.com' },
   { name: 'Maggie Appleton', url: 'https://maggieappleton.com/garden' },
-  { name: 'Matt Ström', url: 'https://matthewstrom.com' },
   { name: 'maya.land', url: 'https://maya.land' },
   { name: 'Mu-An Chiou', url: 'https://muan.co' },
   { name: 'Piper Haywood', url: 'https://piperhaywood.com' },

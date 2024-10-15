@@ -2,35 +2,58 @@
   --layout-padding: 1rem;
 
   @include small {
-    --layout-padding: 1.5rem;
+    --layout-padding: 3.5rem;
+  }
+
+  @include medium {
+    --layout-padding: 5rem;
   }
 }
 
 body {
-  padding: var(--layout-padding);
   min-height: 100vh;
-  padding-block: 1.5rem;
+}
+
+.wrapper {
+  --gap: 1.5rem;
+  width: fit-content;
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: [content-start sidebar-start] minmax(0, 1fr) [sidebar-end content-end];
+  column-gap: var(--gap);
+
+  @include small {
+    grid-template-columns:
+      [content-start] minmax(
+        0,
+        calc(var(--content-width) + 2 * var(--layout-padding))
+      )
+      [content-end sidebar-start] minmax(0, var(--sidebar-width))
+      [sidebar-end];
+  }
+
+  @include medium {
+    --gap: 2.5rem;
+  }
+}
+
+.wrapper > header {
+  padding-block: 2rem 3rem;
+  grid-column: content;
 
   @include small {
     padding-block: 3rem;
   }
 }
 
-.wrapper {
-  max-width: calc(var(--content-width) + var(--sidebar-width) + 64px);
-  margin: 0 auto;
+.wrapper > :is(header, main) {
+  padding-inline: var(--layout-padding);
+  background-color: var(--color-body-background);
 }
 
-main > div {
-  padding: 1rem 0 48px;
-  margin: auto;
-  display: flex;
-  gap: 64px;
-  width: 100%;
-}
-
-main > #header {
-  padding-top: 1rem;
+main > header + .content {
+  padding: 1rem 0 0;
 }
 
 #header,
@@ -43,9 +66,22 @@ main .content {
   }
 }
 
+main {
+  grid-column: content;
+}
+
+.sidebar {
+  grid-column: sidebar;
+  padding-right: var(--gap);
+}
+
+.content,
+.sidebar {
+  min-width: 0;
+}
+
 .sidebar.mobile {
   display: flex;
-  margin-bottom: 2rem;
   max-width: 100%;
 
   @include small {
