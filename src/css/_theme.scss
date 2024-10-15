@@ -27,7 +27,7 @@
 :root,
 ::after,
 ::before {
-  --root-font-size: 14px;
+  --root-font-size: 13px;
   --root-line-height: 1.5;
 
   --content-width: 40rem;
@@ -70,9 +70,5 @@
     --color-caption: hsl(48, 8%, 48%);
     --color-offset: hsl(48, 30%, 9%);
     --color-chat-bubble: hsl(48, 30%, 11%);
-  }
-
-  @include small {
-    --root-font-size: 13px;
   }
 }
