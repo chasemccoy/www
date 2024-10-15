@@ -325,10 +325,12 @@ time {
     display: flex;
     gap: 2px;
     flex-direction: column;
+    justify-content: center;
     color: var(--color-text);
     padding: 1rem var(--layout-padding);
     transition: background-color 0.2s;
     height: 100%;
+    min-height: 56px;
 
     &:hover {
       background-color: var(--color-offset);

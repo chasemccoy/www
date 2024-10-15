@@ -25,7 +25,10 @@ templateClass: blog post
       <li class='previous'>
         <a href="{{ previousPost.url }}" class='unstyled'>
           <span class='label'>Previous</span>
-          <span>{{ previousPost.data.title }}</span></a>
+          {% if previousPost.data.title %}
+            <span>{{ previousPost.data.title }}</span>
+          {% endif %}
+        </a>
       </li>
     {% endif %}
 
@@ -33,7 +36,9 @@ templateClass: blog post
       <li class='next'>
         <a href="{{ nextPost.url }}" class='unstyled'>
           <span class='label'>Next</span>
-          <span>{{ nextPost.data.title }}</span>
+          {% if nextPost.data.title %}
+            <span>{{ nextPost.data.title }}</span>
+          {% endif %}
         </a>
       {% endif %}
     </li>
