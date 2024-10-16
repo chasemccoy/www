@@ -1,14 +1,13 @@
 html {
   overflow-y: scroll;
   line-height: var(--root-line-height);
-  background: var(--color-body-background);
+  background-color: var(--color-offset);
 }
 
 body {
   font-family: var(--font-body);
   color: var(--color-text);
   font-weight: 500;
-  background-color: var(--color-offset);
 
   font-variant-ligatures: no-contextual;
   -moz-font-feature-settings: 'calt' 0;
