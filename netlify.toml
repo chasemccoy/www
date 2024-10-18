@@ -20,6 +20,10 @@
   from = "/blog"
   to = "/"
 
+[[redirects]]
+  from = "/thoughts"
+  to = "/"
+
 # [[redirects]]
 #   from = "/books"
 #   to = "/notes/books"
