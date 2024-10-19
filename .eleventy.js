@@ -76,9 +76,7 @@ module.exports = async function (config) {
   })
 
   config.addCollection('postsByYear', function (collection) {
-    const posts = collection
-      .getFilteredByTag('posts')
-      .filter((p) => !!p.data.title)
+    const posts = collection.getFilteredByTag('posts')
     return filters.groupByYear(filters.filterHidden(posts))
   })
 
