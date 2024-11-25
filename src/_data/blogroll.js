@@ -3,7 +3,7 @@ module.exports = [
   { name: 'Amy Hupe', url: 'https://amyhupe.co.uk' },
   { name: 'anhvn', url: 'https://anhvn.com' },
   { name: 'arcana dot computer', url: 'https://arcana.computer' },
-  { name: 'Audacious Fox', url: 'https://audaciousfox.net' },
+  { name: 'Audacious Fox', url: 'https://audacious.blog' },
   { name: 'Chen Hui Jing', url: 'https://chenhuijing.com' },
   { name: 'Chris Coyier', url: 'https://chriscoyier.net' },
   { name: 'Frank Chimero', url: 'https://frankchimero.com' },
