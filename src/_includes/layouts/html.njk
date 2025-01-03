@@ -47,10 +47,14 @@
       {{styles | safe}}
     </style>
 
+    <link rel="canonical" href="https://chsmc.org{{page.url}}"/>
     <link rel="alternate" href="{{ metadata.feed.path }}" type="application/atom+xml" title="{{ metadata.title }}">
+
     <link rel="icon" href="/favicon.png" type="image/png">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="canonical" href="https://chsmc.org{{page.url}}"/>
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="white"/>
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#120A08"/>
+
     <meta property="og:site_name" content="Chase McCoy">
     <meta property="og:url" content="https://chsmc.org{{page.url}}">
     <meta property="og:title" content="{{ pageTitle }}">
@@ -58,6 +62,7 @@
     <meta name="twitter:creator" content="@chase_mccoy">
     <meta name="twitter:title" content="{{ pageTitle }}">
     <meta property="fediverse:creator" content="@chsmc@mastodon.social"/>
+
     <script src="/js/index.js" defer></script>
     {% if js %}
       <script src="/js/{{js}}.js" defer type="module"></script>
