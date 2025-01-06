@@ -51,6 +51,7 @@ const getDirectory = async () => {
 }
 
 const verifyPermission = async (handle) => {
+  if (!handle) return false
   const options = { mode: 'readwrite' }
 
   // Check if permission was already granted. If so, return true.
