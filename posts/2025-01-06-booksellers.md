@@ -2,7 +2,7 @@
 title: Regarding books and their sellers
 ---
 
-Happy new year! I've returned from holiday travels and am settling back into work for 2025. Here are three, quick, bookish recommendations from links that have crossed my desk recently.
+Happy New Year! I've returned from holiday travels and am settling back into work for 2025. Here are three, quick, bookish recommendations from links that have crossed my desk recently.
 
 First, a newsletter: Katie Clapham's [Receipt from the Bookshop](https://katieclapham.substack.com) is a new favorite of mine. 
 
