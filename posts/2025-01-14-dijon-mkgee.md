@@ -1,0 +1,3 @@
+One of my favorite albums from last year was Mk.gee's [Two Star and the Dream Police](https://mkgee.bandcamp.com/album/two-star-the-dream-police-2), so I was delighted to recently discover this collaboration between Mk.gee and another artist I like called Dijon. If the electricity of their creative partnership in this video doesn't get you excited, I don't know what will.
+
+https://www.youtube.com/watch?v=FEkOYs6aWIg

@@ -54,7 +54,6 @@ module.exports = async function (config) {
   })
   config.addPlugin(embedYouTube, {
     lite: true,
-    modestBranding: true,
     recommendSelfOnly: true,
   })
 
