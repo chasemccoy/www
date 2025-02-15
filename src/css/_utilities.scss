@@ -72,17 +72,6 @@
   flex-direction: column;
 }
 
-// .grid {
-//   --gap: 1rem;
-//   --item-min-size: 200px;
-//   display: grid;
-//   grid-gap: var(--gap);
-//   grid-template-columns: repeat(
-//     auto-fill,
-//     minmax(min(var(--item-min-size), 100%), 1fr)
-//   );
-// }
-
 .line-clamp {
   --lines: 2;
   overflow: hidden;
@@ -94,4 +83,8 @@
 
 .lead {
   font-size: 1.1em;
+}
+
+.pixelated {
+  image-rendering: pixelated;
 }

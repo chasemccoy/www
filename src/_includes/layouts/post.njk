@@ -15,6 +15,19 @@ templateClass: blog post
   {{ content | safe }}
 </article>
 
+
+{% if title %}
+  {% set postTitle %}{{ title }}{% endset %}
+{% elif 'posts' in page.filePathStem %}
+  {% set postTitle %}Note from {{page.date | readableDate}}{% endset %}
+{% endif %}
+
+{% set emailReplySubject = ["Re: ", postTitle] | join %}
+
+<a href="mailto:hi@chsmc.org?subject={{ emailReplySubject | urlencode }}" class='reply-badge'>
+  <img src="/images/reply-via-email.gif" alt="Reply via email" class='pixelated' />
+</a>
+
 {% set previousPost = collections.posts | filterHidden | getPreviousCollectionItem(page) %}
 
 {% set nextPost = collections.posts | filterHidden | getNextCollectionItem(page) %}
