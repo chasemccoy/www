@@ -25,7 +25,7 @@ templateClass: blog post
 {% set emailReplySubject = ["Re: ", postTitle] | join %}
 
 <a href="mailto:hi@chsmc.org?subject={{ emailReplySubject | urlencode }}" class='reply-badge'>
-  <img src="/images/reply-via-email.gif" alt="Reply via email" class='pixelated' />
+  <img src="/images/reply-via-email.gif" alt="Reply via email" class='pixelated invert-for-light-mode' />
 </a>
 
 {% set previousPost = collections.posts | filterHidden | getPreviousCollectionItem(page) %}

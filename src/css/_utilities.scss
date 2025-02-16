@@ -88,3 +88,9 @@
 .pixelated {
   image-rendering: pixelated;
 }
+
+.invert-for-light-mode {
+  @media (prefers-color-scheme: light) {
+    filter: invert(1);
+  }
+}
