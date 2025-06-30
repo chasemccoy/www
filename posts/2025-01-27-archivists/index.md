@@ -1,5 +1,6 @@
 ---
 title: We could all be archivists
+featured: true
 ---
 
 Contrary to oft-repeated wisdom, the internet isn't written in ink. Physical ink on paper is often a far better method for carrying data forward into the future. Manuscripts that are hundreds and even thousands of years old are still with us, and still being discovered every day. Will the same be true of our own data a hundred years from now? 
