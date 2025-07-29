@@ -1,6 +1,6 @@
 {
   "name": "@chasemccoy/www",
-  "version": "2022",
+  "version": "2024",
   "scripts": {
     "build": "ENVIRONMENT=production yarn clean && concurrently \"yarn build:js\" \"eleventy\" \"yarn build:css\"",
     "watch": "eleventy --watch",
@@ -36,7 +36,9 @@
     "@codemirror/language-data": "6.5.1",
     "@codemirror/state": "6.4.1",
     "@codemirror/view": "6.34.1",
+    "@date-fns/utc": "^2.1.0",
     "@lezer/highlight": "1.2.1",
+    "date-fns": "^4.1.0",
     "eleventy-plugin-embed-twitter": "1.4.0",
     "eleventy-plugin-youtube-embed": "1.10.2",
     "fs-extra": "11.2.0",

@@ -1,6 +1,7 @@
 const { groupBy, getDateComponents, capitalize } = require('./index')
-const { DateTime } = require('luxon')
 const util = require('util')
+const { format, formatISO } = require('date-fns')
+const { utc } = require('@date-fns/utc')
 
 const filterTagList = (tags) => {
   return (tags || []).filter(
@@ -43,19 +44,17 @@ module.exports = {
     })
   },
   readableDate: (dateObj) => {
-    return DateTime.fromJSDate(dateObj, { zone: 'utc' }).toFormat(
-      'LLLL d, yyyy'
-    )
+    return format(dateObj, 'LLLL d, yyyy', { in: utc })
   },
   shortDate: (dateObj) => {
-    return DateTime.fromJSDate(dateObj, { zone: 'utc' }).toFormat('LLLL d')
+    return format(dateObj, 'LLLL d', { in: utc })
   },
   // https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#valid-date-string
   htmlDateString: (dateObj) => {
-    return DateTime.fromJSDate(dateObj, { zone: 'utc' }).toFormat('yyyy-LL-dd')
+    return format(dateObj, 'yyyy-LL-dd', { in: utc })
   },
   dateToPermalink: (dateObj) => {
-    return DateTime.fromJSDate(dateObj, { zone: 'utc' }).toFormat('yyyy/LL')
+    return format(dateObj, 'yyyy/LL', { in: utc })
   },
   // Get the first `n` elements of a collection.
   head: (array, n) => {
@@ -75,9 +74,6 @@ module.exports = {
     return util.inspect(obj, { maxArrayLength: Infinity })
   },
   dateForXMLFeed: (date) => {
-    return (
-      DateTime.fromJSDate(date, { zone: 'utc' }).toISODate() +
-      'T12:00:00.000-05:00'
-    )
+    return formatISO(date, { representation: 'date' }) + 'T12:00:00.000-05:00'
   },
 }

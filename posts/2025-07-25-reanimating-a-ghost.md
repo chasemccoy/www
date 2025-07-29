@@ -22,7 +22,7 @@ Not to mention the piece is made up of 65,000 lines of code and over 4,500 files
 
 > The restoration of *Brandon* focused on migrating Java applets and outdated HTML to modern technologies. Java applets were replaced with GIFs, JavaScript, and new HTML, while nonfunctional HTML elements were replaced with CSS or resuscitated with JavaScript.
 
-Don't miss [the two part interview](https://www.guggenheim.org/articles/checklist/how-the-guggenheim-and-nyu-are-conserving-computer-based-art-part-1) with the conservators behind the project.(And please, if I am ever rendered unconscious, do not resuscitate me with JavaScript.)
+Don't miss [the two part interview](https://www.guggenheim.org/articles/checklist/how-the-guggenheim-and-nyu-are-conserving-computer-based-art-part-1) with the conservators behind the project. (And please, if I am ever rendered unconscious, do not resuscitate me with JavaScript.)
 
 In the physical world conservation is tactile, direct: a kind of respectful negotiation with entropy. In the digital realm it’s more like detective work, piecing together lost fragments of code, emulating vanished environments, and making decisions about what constitutes authenticity.
 
