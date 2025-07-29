@@ -1,4 +1,4 @@
-const remove = (excludeValue = "") => ({
+export const remove = (excludeValue = "") => ({
   from(source = {}) {
     if(!source[excludeValue]) return source;
 
@@ -8,7 +8,3 @@ const remove = (excludeValue = "") => ({
     }, {});
   }
 });
-
-module.exports = {
-  remove
-}

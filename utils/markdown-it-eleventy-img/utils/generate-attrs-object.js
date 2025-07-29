@@ -1,4 +1,4 @@
-module.exports = token => {
+export default token => {
   const tokenAttributes = token.attrs.reduce((acc, current) => {
     acc[current[0]] = current[1];
     return acc;

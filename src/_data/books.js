@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   recents: [
     {
       title: 'Laziness Does Not Exist',

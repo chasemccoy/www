@@ -1,4 +1,4 @@
-module.exports = (target) => {
+export default (target) => {
   Object.keys(target).forEach(property => {
     switch(property) {
       case "alt":

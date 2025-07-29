@@ -1,4 +1,4 @@
-module.exports = [
+export default [
   { name: 'Alexander Obenauer', url: 'https://alexanderobenauer.com' },
   { name: 'Amy Hupe', url: 'https://amyhupe.co.uk' },
   { name: 'anhvn', url: 'https://anhvn.com' },

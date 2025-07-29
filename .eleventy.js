@@ -1,17 +1,14 @@
-const fs = require('fs')
-const path = require('path')
-
-const Image = require('@11ty/eleventy-img')
-const markdownIt = require('markdown-it')
-const markdownItAnchor = require('markdown-it-anchor')
-const markdownItEleventyImg = require('./utils/markdown-it-eleventy-img')
-const embedTwitter = require('eleventy-plugin-embed-twitter')
-const embedYouTube = require('eleventy-plugin-youtube-embed')
-
-const pluginRSS = require('@11ty/eleventy-plugin-rss')
-const pluginSyntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight')
-
-const filters = require('./utils/filters')
+import path from 'path'
+import Image from '@11ty/eleventy-img'
+import markdownIt from 'markdown-it'
+import markdownItAnchor from 'markdown-it-anchor'
+import markdownItEleventyImg from './utils/markdown-it-eleventy-img/index.js'
+import embedTwitter from 'eleventy-plugin-embed-twitter'
+import embedYouTube from 'eleventy-plugin-youtube-embed'
+import pluginRSS from '@11ty/eleventy-plugin-rss'
+import pluginSyntaxHighlight from '@11ty/eleventy-plugin-syntaxhighlight'
+import filters from './utils/filters.js'
+import { RenderPlugin } from "@11ty/eleventy"
 
 const mdRender = new markdownIt()
 
@@ -35,8 +32,7 @@ async function imageShortcode(src, alt, sizes) {
   })
 }
 
-module.exports = async function (config) {
-  const { EleventyRenderPlugin } = await import('@11ty/eleventy')
+export default async function (config) {
   config.addPassthroughCopy({ 'src/js': 'js' })
   config.addPassthroughCopy({ public: '/' })
   config.setUseGitIgnore(false)
@@ -47,7 +43,7 @@ module.exports = async function (config) {
 
   // Add plugins
   config.addPlugin(pluginRSS)
-  config.addPlugin(EleventyRenderPlugin)
+  config.addPlugin(RenderPlugin)
   config.addPlugin(pluginSyntaxHighlight)
   config.addPlugin(embedTwitter, {
     doNotTrack: true,
@@ -58,6 +54,7 @@ module.exports = async function (config) {
   })
 
   config.addNunjucksAsyncShortcode('image', imageShortcode)
+
   config.addPairedShortcode('slot', function (content, name) {
     if (!name) throw new Error('Missing name for {% slot %} block!')
     this.page[name] = content

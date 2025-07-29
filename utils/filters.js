@@ -1,7 +1,7 @@
-const { groupBy, getDateComponents, capitalize } = require('./index')
-const util = require('util')
-const { format, formatISO } = require('date-fns')
-const { utc } = require('@date-fns/utc')
+import { groupBy, getDateComponents, capitalize } from './index.js'
+import util from 'util'
+import { format, formatISO } from 'date-fns'
+import { utc } from '@date-fns/utc'
 
 const filterTagList = (tags) => {
   return (tags || []).filter(
@@ -9,7 +9,7 @@ const filterTagList = (tags) => {
   )
 }
 
-module.exports = {
+const filters = {
   filterTagList,
   capitalize: (string) => {
     return capitalize(string)
@@ -77,3 +77,5 @@ module.exports = {
     return formatISO(date, { representation: 'date' }) + 'T12:00:00.000-05:00'
   },
 }
+
+export default filters

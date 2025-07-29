@@ -1,11 +1,11 @@
-const EleventyFetch = require('@11ty/eleventy-fetch')
+import EleventyFetch from '@11ty/eleventy-fetch'
 
-module.exports = async function () {
+export default async function() {
   let url = 'https://api.chsmc.workers.dev/highlights-feed'
 
   try {
     return EleventyFetch(url, {
-      duration: '6h',
+      duration: '6h', 
       type: 'json',
     })
   } catch (error) {

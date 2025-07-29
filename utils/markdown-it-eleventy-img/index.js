@@ -1,11 +1,11 @@
-const path = require('path')
-const Image = require('@11ty/eleventy-img')
-const logWarningFor = require('./utils/warnings')
-const { remove } = require('./utils/remove-key-from')
-const generateAttrsObject = require('./utils/generate-attrs-object')
-const { typeObjectError, typeFunctionError } = require('./utils/errors')
+import path from 'path'
+import Image from '@11ty/eleventy-img'
+import logWarningFor from './utils/warnings.js'
+import { remove } from './utils/remove-key-from.js'
+import generateAttrsObject from './utils/generate-attrs-object.js'
+import { typeObjectError, typeFunctionError } from './utils/errors.js'
 
-module.exports = function markdownItEleventyImg(
+export default function markdownItEleventyImg(
   md,
   { imgOptions = {}, globalAttributes = {}, renderImage } = {}
 ) {

@@ -1,6 +1,7 @@
 {
   "name": "@chasemccoy/www",
   "version": "2024",
+  "type": "module",
   "scripts": {
     "build": "ENVIRONMENT=production yarn clean && concurrently \"eleventy\" \"yarn build:css\"",
     "watch": "eleventy --watch",
