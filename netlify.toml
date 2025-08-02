@@ -23,11 +23,3 @@
 [[redirects]]
   from = "/thoughts"
   to = "/"
-
-# [[redirects]]
-#   from = "/books"
-#   to = "/notes/books"
-
-# [[redirects]]
-#   from = "/quotes"
-#   to = "/notes/quotes"
