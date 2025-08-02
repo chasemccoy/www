@@ -1,5 +1,6 @@
 {
   "layout": "layouts/note.njk",
+  "#permalink": "/notes/{{page.fileSlug}}/",
   "permalink": false,
   "tags": ["notes"],
   "date": "git Last Modified"
