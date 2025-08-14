@@ -69,7 +69,12 @@
     {% endif %}
     {{ head | safe }}
   </head>
+  
   <body {% if templateClass %} class="{{ templateClass }}"{% endif %}>
     {{ content | safe }}
+
+    <!-- Cloudflare Web Analytics -->
+    <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "488e6debfbc64509bd4b00dde784e24f"}'></script>
+    <!-- End Cloudflare Web Analytics -->
   </body>
 </html>
