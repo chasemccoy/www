@@ -16,10 +16,20 @@ body {
   min-height: 100vh;
 }
 
+.sky {
+  height: 100vh;
+  background: var(--sky);
+  position: sticky;
+  top: -50vh;
+  z-index: -1;
+}
+
 .wrapper {
   --gap: 1.5rem;
   width: fit-content;
   margin: 0 auto;
+  margin-top: -95vh;
+  row-gap: 250px;
 
   display: grid;
   grid-template-columns: [content-start sidebar-start] minmax(0, 1fr) [sidebar-end content-end];
@@ -51,7 +61,7 @@ body {
 
 .wrapper > :is(header, main) {
   padding-inline: var(--layout-padding);
-  background-color: var(--color-body-background);
+  // background-color: var(--color-body-background);
 }
 
 main > header + .content {
@@ -80,6 +90,7 @@ main {
 .content,
 .sidebar {
   min-width: 0;
+  mix-blend-mode: multiply;
 }
 
 .sidebar.mobile {

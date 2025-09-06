@@ -3,7 +3,9 @@
 html {
   overflow-y: scroll;
   line-height: var(--root-line-height);
-  background-color: var(--color-offset);
+  background-color: var(--color-body-background);
+  // background-color: var(--color-offset);
+  // background: var(--sky);
 }
 
 body {
@@ -30,7 +32,7 @@ body {
 }
 
 .wrapper > header {
-  border-top: 4px solid var(--color-accent);
+  // border-top: 4px solid var(--color-accent);
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
@@ -58,6 +60,8 @@ h1.site-header a {
   align-items: center;
   gap: 8px;
   text-decoration: none;
+  // box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  filter: drop-shadow(0 1px 2px rgb(0 0 0 / 0.15));
 
   svg {
     animation: load 1s;
@@ -65,6 +69,7 @@ h1.site-header a {
 
   span {
     color: var(--color-text);
+    color: white;
   }
 }
 

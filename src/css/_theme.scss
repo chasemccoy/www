@@ -32,10 +32,10 @@
   --sidebar-width: 19rem;
   --heading-scale: 0.9;
 
-  --color-accent: hsl(23, 100%, 50%);
+  --color-accent: hsl(209, 82%, 56%);
   --link-color: var(--color-accent);
-  --link-hover: hsl(23, 100%, 40%);
-  --color-body-background: #fff;
+  --link-hover: hsl(209, 88%, 36%);
+  --color-body-background: white;
   --color-text: hsl(43, 2%, 20%);
   --color-header: hsl(43, 5%, 25%);
   --color-border: hsl(48, 10%, 85%);
@@ -45,6 +45,46 @@
 
   --color-highlight: hsl(51, 100%, 84%);
   --color-highlight-dark: hsl(50, 100%, 67%);
+
+  --sky: linear-gradient(
+    to bottom,
+    rgb(123, 169, 213) 0%,
+    rgb(123, 170, 214) 2%,
+    rgb(124, 170, 214) 4%,
+    rgb(125, 171, 214) 6%,
+    rgb(126, 172, 215) 8%,
+    rgb(127, 173, 215) 10%,
+    rgb(128, 174, 216) 12%,
+    rgb(129, 175, 216) 14%,
+    rgb(131, 176, 217) 16%,
+    rgb(132, 177, 217) 18%,
+    rgb(134, 179, 218) 20%,
+    rgb(135, 180, 218) 22%,
+    rgb(137, 182, 219) 24%,
+    rgb(139, 183, 220) 26%,
+    rgb(142, 185, 220) 28%,
+    rgb(144, 187, 221) 30%,
+    rgb(147, 189, 222) 32%,
+    rgb(255, 255, 255) 95%,
+    rgb(255, 255, 255) 100%
+  );
+
+  // --sky: linear-gradient(
+  //   to bottom,
+  //   hsl(181deg 93% 78%) 0%,
+  //   hsl(181deg 93% 80%) 8%,
+  //   hsl(181deg 93% 81%) 17%,
+  //   hsl(181deg 93% 83%) 25%,
+  //   hsl(181deg 93% 85%) 33%,
+  //   hsl(181deg 93% 87%) 42%,
+  //   hsl(181deg 93% 89%) 50%,
+  //   hsl(181deg 93% 91%) 58%,
+  //   hsl(181deg 93% 93%) 67%,
+  //   hsl(181deg 93% 94%) 75%,
+  //   hsl(181deg 93% 96%) 83%,
+  //   hsl(181deg 93% 98%) 92%,
+  //   hsl(0deg 0% 100%) 100%
+  // );
 
   --font-code: 'JetBrains Mono', ui-monospace, Menlo, Monaco, 'Cascadia Mono',
     'Segoe UI Mono', 'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace',
@@ -58,15 +98,15 @@
     'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
     'Segoe UI Symbol';
 
-  @media (prefers-color-scheme: dark) {
-    --color-accent: hsl(23, 100%, 52%);
-    --link-hover: hsl(23, 100%, 44%);
-    --color-body-background: hsl(48, 40%, 5%);
-    --color-text: hsl(43, 10%, 75%);
-    --color-header: var(--color-text);
-    --color-border: hsl(48, 40%, 18%);
-    --color-caption: hsl(48, 8%, 48%);
-    --color-offset: hsl(48, 30%, 9%);
-    --color-chat-bubble: hsl(48, 30%, 11%);
-  }
+  // @media (prefers-color-scheme: dark) {
+  //   --color-accent: hsl(23, 100%, 52%);
+  //   --link-hover: hsl(23, 100%, 44%);
+  //   --color-body-background: hsl(48, 40%, 5%);
+  //   --color-text: hsl(43, 10%, 75%);
+  //   --color-header: var(--color-text);
+  //   --color-border: hsl(48, 40%, 18%);
+  //   --color-caption: hsl(48, 8%, 48%);
+  //   --color-offset: hsl(48, 30%, 9%);
+  //   --color-chat-bubble: hsl(48, 30%, 11%);
+  // }
 }
