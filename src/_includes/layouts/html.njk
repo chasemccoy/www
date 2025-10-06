@@ -1,7 +1,7 @@
 {% set pageTitle = metadata.title %}
 
 {% if title %}
-  {% set pageTitle %}{{ title }} | {{ metadata.title }}{% endset %}
+  {% set pageTitle %}{{ title | safe }} | {{ metadata.title | safe }}{% endset %}
 {% elif 'posts' in page.filePathStem %}
   {% set pageTitle %}Note from {{page.date | readableDate}} | {{ metadata.title }}{% endset %}
 {% endif %}
