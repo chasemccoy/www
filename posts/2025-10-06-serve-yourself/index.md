@@ -16,6 +16,8 @@ Why is it so hard to scale _down_ on the web? What if there were a better middle
 
 Imagine: a computer you own, connected to a private cloud, accessible anywhere (for free!), running software on your behalf. All of this is easier than it sounds to setup and maintain if you use the right tools. In this piece I want to share how I've set this up for myself using a spare Mac mini. 
 
+![](garden.jpg "[CHIP magazine, April 1982](https://archive.org/details/chip-1982-04/page/172/mode/2up)")
+
 What is a cloud computer good for? Lots of things! Here are just a few examples:
 
 - Run your own software and host your own web apps.
