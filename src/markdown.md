@@ -1,7 +1,7 @@
 ---
 title: Markdown
 permalink: /markdown/
-layout: layouts/post.njk
+layout: layouts/post.jsx
 ---
 
 <p class="lead color-caption">

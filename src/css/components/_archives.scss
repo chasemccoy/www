@@ -21,8 +21,7 @@
   .years li + li:before {
     content: '/';
     display: inline;
-    margin: 0;
-    float: none;
+    margin-inline: 2px;
     color: var(--color-border);
   }
 }

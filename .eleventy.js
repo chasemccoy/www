@@ -1,3 +1,4 @@
+import "tsx/esm"
 import path from 'path'
 import Image from '@11ty/eleventy-img'
 import markdownIt from 'markdown-it'
@@ -9,10 +10,12 @@ import pluginRSS from '@11ty/eleventy-plugin-rss'
 import pluginSyntaxHighlight from '@11ty/eleventy-plugin-syntaxhighlight'
 import filters from './utils/filters.js'
 import { RenderPlugin } from "@11ty/eleventy"
+import { jsxToString } from 'jsx-async-runtime'
 
 const mdRender = new markdownIt()
 
-// Image shortcode for .njk files
+const slots = {};
+
 async function imageShortcode(src, alt, sizes) {
   let metadata = await Image(src, {
     widths: [null],
@@ -32,7 +35,7 @@ async function imageShortcode(src, alt, sizes) {
   })
 }
 
-export default async function (config) {
+export default function (config) {
   config.addPassthroughCopy({ 'src/js': 'js' })
   config.addPassthroughCopy({ public: '/' })
   config.setUseGitIgnore(false)
@@ -41,7 +44,6 @@ export default async function (config) {
     config.addFilter(filter, filters[filter])
   })
 
-  // Add plugins
   config.addPlugin(pluginRSS)
   config.addPlugin(RenderPlugin)
   config.addPlugin(pluginSyntaxHighlight)
@@ -53,15 +55,36 @@ export default async function (config) {
     recommendSelfOnly: true,
   })
 
+  config.addTemplateFormats("jsx");
+  config.addExtension(["jsx"], {
+		key: "11ty.js",
+		compile: function () {
+			return async function (data) {
+				const content = await this.defaultRenderer(data);
+        const result = await jsxToString(content)
+        return result
+			};
+		},
+	});
+
   config.addNunjucksAsyncShortcode('image', imageShortcode)
 
-  config.addPairedShortcode('slot', function (content, name) {
-    if (!name) throw new Error('Missing name for {% slot %} block!')
-    this.page[name] = content
-    return ''
+	config.addGlobalData('eleventyComputed.slots', function() {
+		return data => {
+			const key = data.page.url;
+			slots[key] = slots[key] || {};
+			return slots[key];
+		}
+	});
+
+  config.addPairedShortcode('slot', function (content, name, url) {
+    if (!name) throw new Error('Missing name for {% slot %} block!');
+    if (!this.page.url || !content) return
+    
+		slots[url || this.page.url][name] = content;
+		return '';
   })
 
-  // Create an array of all tags
   config.addCollection('tagList', function (collection) {
     let tagSet = new Set()
     collection.getAll().forEach((item) => {
@@ -155,7 +178,7 @@ export default async function (config) {
   })
 
   return {
-    templateFormats: ['md', 'njk', 'html'],
+    templateFormats: ['md', 'njk', 'html', 'jsx'],
     markdownTemplateEngine: 'njk',
     htmlTemplateEngine: 'njk',
     dir: {

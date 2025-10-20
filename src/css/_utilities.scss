@@ -1,8 +1,4 @@
 @each $space in 0, 1, 2, 4, 6, 8, 12, 16, 20, 24, 32, 40, 48 {
-  .mt-#{$space} {
-    margin-top: #{$space}px !important;
-  }
-
   .mb-#{$space} {
     margin-bottom: #{$space}px !important;
   }
@@ -22,10 +18,6 @@
 
 .smaller {
   font-size: smaller;
-}
-
-.larger {
-  font-size: larger;
 }
 
 .normal {

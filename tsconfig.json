@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "jsxImportSource": "jsx-async-runtime",
+		"allowJs": true,
+    "module": "preserve",
+    "noEmit": true,
+  }
+}

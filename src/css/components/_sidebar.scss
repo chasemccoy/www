@@ -176,9 +176,7 @@
   .years li + li:not(:last-child):after,
   .years li:first-child:after {
     content: '/';
-    display: inline;
-    margin: 0;
-    float: none;
     color: var(--color-border);
+    margin-inline: 2px;
   }
 }
