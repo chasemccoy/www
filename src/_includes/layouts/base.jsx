@@ -1,4 +1,3 @@
-import Sidebar from '../sidebar.jsx'
 
 export const data = {
   layout: 'layouts/html.jsx',
@@ -30,9 +29,9 @@ export default async function ({
           <time dateTime={this.htmlDateString(page.date)}>{this.readableDate(page.date)}</time>
         </div>
 
-        <aside class='sidebar mobile'>
+        {/* <aside class='sidebar mobile'>
           <Sidebar mobile collections={collections} blogroll={blogroll} />
-        </aside>
+        </aside> */}
       </header>
 
       <main>
@@ -47,9 +46,9 @@ export default async function ({
         </div>
       </main>
 
-      <aside class='sidebar desktop'>
+      {/* <aside class='sidebar desktop'>
         <Sidebar collections={collections} blogroll={blogroll} />
-      </aside>
+      </aside> */}
     </div>
   )
 }

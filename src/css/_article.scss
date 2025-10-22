@@ -5,11 +5,11 @@ article {
     margin-top: 0;
   }
 
-  img {
-    max-width: none;
-    width: calc(100% + var(--layout-padding) * 2);
-    margin-left: calc(var(--layout-padding) * -1);
-  }
+  // img {
+  //   max-width: none;
+  //   width: calc(100% + var(--layout-padding) * 2);
+  //   margin-left: calc(var(--layout-padding) * -1);
+  // }
 
   pre {
     position: relative;

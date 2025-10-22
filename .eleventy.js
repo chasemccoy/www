@@ -119,7 +119,7 @@ export default function (config) {
         return post
       })
 
-    return [...highlights, ...posts].sort(function (a, b) {
+    return [...posts].sort(function (a, b) {
       return new Date(a.date) - new Date(b.date)
     })
   })

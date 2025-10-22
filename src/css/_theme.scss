@@ -25,16 +25,16 @@
 :root,
 ::after,
 ::before {
-  --root-font-size: 13px;
-  --root-line-height: 1.5;
+  --root-font-size: 17.5px;
+  --root-line-height: 1.6;
 
-  --content-width: 41rem;
+  --content-width: 36rem;
   --sidebar-width: 19rem;
-  --heading-scale: 0.9;
+  --heading-scale: 1;
 
-  --color-accent: hsl(23, 100%, 50%);
+  --color-accent: hsl(196, 100%, 50%);
   --link-color: var(--color-accent);
-  --link-hover: hsl(23, 100%, 40%);
+  --link-hover: hsl(196, 100%, 40%);
   --color-body-background: #fff;
   --color-text: hsl(43, 2%, 20%);
   --color-header: hsl(43, 5%, 25%);
@@ -49,24 +49,27 @@
   --font-code: 'JetBrains Mono', ui-monospace, Menlo, Monaco, 'Cascadia Mono',
     'Segoe UI Mono', 'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace',
     'Source Code Pro', 'Fira Mono', 'Droid Sans Mono', 'Courier New', monospace;
-  --font-body: Brunswick Grotesque, Verdana, -apple-system, BlinkMacSystemFont,
+  --font-body: Whitney, Brunswick Grotesque, Verdana, -apple-system, BlinkMacSystemFont,
     'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji',
     'Segoe UI Emoji', 'Segoe UI Symbol';
-  --font-serif: 'Source Serif 4', Georgia, Times, Times New Roman, serif;
-  --font-header: var(--font-body);
+  --font-serif: 'Sentinel', 'Source Serif 4', Georgia, Times, Times New Roman, serif;
+  --font-header: var(--font-serif);
   --font-system: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
     'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
     'Segoe UI Symbol';
 
   @media (prefers-color-scheme: dark) {
-    --color-accent: hsl(23, 100%, 52%);
-    --link-hover: hsl(23, 100%, 44%);
-    --color-body-background: hsl(48, 40%, 5%);
-    --color-text: hsl(43, 10%, 75%);
+    --color-accent: hsl(196, 100%, 52%);
+    --link-hover: hsl(196, 100%, 44%);
+    --color-body-background: hsl(196, 40%, 5%);
+    --color-text: hsl(196, 10%, 75%);
     --color-header: var(--color-text);
-    --color-border: hsl(48, 40%, 18%);
-    --color-caption: hsl(48, 8%, 48%);
-    --color-offset: hsl(48, 30%, 9%);
-    --color-chat-bubble: hsl(48, 30%, 11%);
+    --color-border: hsl(196, 40%, 18%);
+    --color-caption: hsl(196, 8%, 48%);
+    --color-offset: hsl(196, 30%, 9%);
+    --color-chat-bubble: hsl(196, 30%, 11%);
+
+    --color-highlight: hsl(51, 100%, 65%);
+    --color-highlight-dark: hsl(50, 100%, 45%);
   }
 }

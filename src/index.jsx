@@ -5,12 +5,14 @@ export const data = {
   templateClass: 'home',
   pagination: {
     data: 'collections.feed',
-    size: 40,
+    size: 30,
     alias: 'posts',
     reverse: true,
   },
   permalink: function (data) {
-    return `/${data.pagination.pageNumber > 0 ? data.pagination.pageNumber + 1 + '/' : ''}index.html`
+    return `/${
+      data.pagination.pageNumber > 0 ? data.pagination.pageNumber + 1 + '/' : ''
+    }index.html`
   },
 }
 
@@ -24,32 +26,48 @@ function BlogPost({ post }) {
   const isShortForm = wordCount < 500
 
   return (
-    <article class={`prose ${data.title ? 'long-form' : ''}`}>
-      {title ? (
+    <article
+      class={{
+        prose: true,
+        'long-form': !!data.title,
+        BlogPost: true,
+        'BlogPost--isShortForm': isShortForm,
+      }}
+    >
+      {!isShortForm && title && (
         <header>
-          <div class='breadcrumbs'>
-            <div>
-              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline">
-                <circle cx="12" cy="12" r="10"></circle>
-                <polyline points="12 6 12 12 16 14"></polyline>
-              </svg>
-              <time dateTime={htmlDateString(date)}>{readableDate(date)}</time>
-            </div>
-          </div>
-
           <h1 class='font-header'>
             <a href={url} class='unstyled'>
               {title}
             </a>
           </h1>
         </header>
-      ) : (
+      )}
+
+      {isShortForm && title && (
+        <h1 class='font-header'>
+          <a href={url} class='unstyled'>
+            {title}
+          </a>
+        </h1>
+      )}
+
+      {!title && (
         <time dateTime={htmlDateString(date)}>
-          <a href={url} class='unstyled color-caption block'>{shortDate(date)}</a>
+          <a href={url}>{shortDate(date)}</a>
         </time>
       )}
-      
+
       {{ html: content }}
+
+      {!isShortForm ||
+        (isShortForm && title && (
+          <div>
+            <time dateTime={htmlDateString(date)}>
+              <a href={url}>{readableDate(date)}</a>
+            </time>
+          </div>
+        ))}
     </article>
   )
 }
@@ -59,27 +77,43 @@ function Highlight({ post, includeCite, content }) {
     <article class='highlight'>
       {includeCite && (
         <cite>
-          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+          <svg
+            xmlns='http://www.w3.org/2000/svg'
+            width='12'
+            height='12'
+            viewBox='0 0 24 24'
+            fill='none'
+            stroke='currentColor'
+            stroke-width='2'
+            stroke-linecap='round'
+            stroke-linejoin='round'
+          >
+            <path d='M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z'></path>
           </svg>
           <span>
             {post.source?.url ? (
-              <>From <a href={post.source.url} target="_blank">{post.source.title}</a> by {post.source.author}:</>
+              <>
+                From{' '}
+                <a href={post.source.url} target='_blank'>
+                  {post.source.title}
+                </a>{' '}
+                by {post.source.author}:
+              </>
             ) : (
-              <>From {post.source?.title} by {post.source?.author}:</>
+              <>
+                From {post.source?.title} by {post.source?.author}:
+              </>
             )}
           </span>
         </cite>
       )}
-      
-      <blockquote class='unstyled'>
-        {{ html: content }}
-      </blockquote>
+
+      <blockquote class='unstyled'>{{ html: content }}</blockquote>
 
       {post.note && (
         <aside>
-          <svg width="13" height="14" fill="var(--color-chat-bubble)">
-            <path d="M6 .246c-.175 5.992-1.539 8.89-5.5 13.5 6.117.073 9.128-.306 12.5-3L6 .246Z"></path>
+          <svg width='13' height='14' fill='var(--color-chat-bubble)'>
+            <path d='M6 .246c-.175 5.992-1.539 8.89-5.5 13.5 6.117.073 9.128-.306 12.5-3L6 .246Z'></path>
           </svg>
           <span>{post.note}</span>
         </aside>
@@ -115,10 +149,14 @@ function Pagination({ pagination }) {
 export default function ({ posts = [], pagination, page }) {
   const shouldShowCite = (post, index, posts) => {
     // Check if we're the first in a sequence of duplicates
-    const isFirstInSequence = posts[index + 1]?.source?.title === post.source?.title && posts[index - 1]?.source?.title !== post.source?.title
-    
+    const isFirstInSequence =
+      posts[index + 1]?.source?.title === post.source?.title &&
+      posts[index - 1]?.source?.title !== post.source?.title
+
     // Check if we're in a sequence (either first, middle, or last)
-    const isInSequence = posts[index - 1]?.source?.title === post.source?.title || posts[index + 1]?.source?.title === post.source?.title
+    const isInSequence =
+      posts[index - 1]?.source?.title === post.source?.title ||
+      posts[index + 1]?.source?.title === post.source?.title
 
     // Show cite element if we're first in sequence OR not in a sequence at all
     return isFirstInSequence || !isInSequence
@@ -126,14 +164,20 @@ export default function ({ posts = [], pagination, page }) {
 
   return (
     <>
-      <section class='blog'>
+      <section class='BlogIndex'>
         {posts.map((post, index) => {
           if (post.type === 'post') {
             return <BlogPost post={post} />
           } else if (post.type === 'highlight') {
-            const renderedContent = this.renderTemplate(post.text, "njk,md")
+            const renderedContent = this.renderTemplate(post.text, 'njk,md')
 
-            return <Highlight post={post} content={renderedContent} includeCite={shouldShowCite(post, index, posts)} />
+            return (
+              <Highlight
+                post={post}
+                content={renderedContent}
+                includeCite={shouldShowCite(post, index, posts)}
+              />
+            )
           }
           return null
         })}
