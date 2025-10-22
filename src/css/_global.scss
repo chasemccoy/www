@@ -139,8 +139,13 @@ code a {
 }
 
 blockquote:not(.unstyled) {
+  font-family: var(--font-serif);
+  // font-style: italic;
   color: var(--color-caption);
   padding-left: 1em;
+  font-size: 1.2rem;
+  line-height: 1.4;
+  text-wrap: pretty;
 
   @include small {
     padding-left: 0;
