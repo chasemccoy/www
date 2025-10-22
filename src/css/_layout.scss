@@ -3,13 +3,13 @@
 :root {
   --layout-padding: 1rem;
 
-  @include small {
-    --layout-padding: 3.5rem;
-  }
+  // @include small {
+  //   --layout-padding: 3.5rem;
+  // }
 
-  @include medium {
-    --layout-padding: 5rem;
-  }
+  // @include medium {
+  //   --layout-padding: 5rem;
+  // }
 }
 
 body {
@@ -35,37 +35,9 @@ body {
       [sidebar-end];
   }
 
-  @include medium {
-    --gap: 2.5rem;
-  }
-}
-
-.wrapper > header {
-  padding-block: 2rem 3rem;
-  grid-column: content;
-
-  @include small {
-    padding-block: 3rem;
-  }
-}
-
-.wrapper > :is(header, main) {
-  padding-inline: var(--layout-padding);
-  background-color: var(--color-body-background);
-}
-
-main > header + .content {
-  padding: 1rem 0 0;
-}
-
-#header,
-main .content {
-  max-width: 100%;
-  flex-grow: 1;
-
-  @include small {
-    max-width: var(--content-width);
-  }
+  // @include medium {
+  //   --gap: 2.5rem;
+  // }
 }
 
 main {
@@ -74,13 +46,13 @@ main {
 
 .sidebar {
   grid-column: sidebar;
-  padding-right: var(--gap);
+  // padding-right: var(--gap);
 }
 
-.content,
-.sidebar {
-  min-width: 0;
-}
+// .content,
+// .sidebar {
+//   min-width: 0;
+// }
 
 .sidebar.mobile {
   display: flex;

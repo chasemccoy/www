@@ -46,6 +46,70 @@ export default async function ({
             @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap');
 
             @font-face {
+              font-family: Sentinel;
+              font-display: swap;
+              font-style: normal;
+              font-weight: normal;
+              src: url(/fonts/sentinel/Sentinel-Book.woff2) format("woff2");
+            }
+
+            @font-face {
+              font-family: Sentinel;
+              font-display: swap;
+              font-style: italic;
+              font-weight: normal;
+              src: url(/fonts/sentinel/Sentinel-BookItalic.woff2) format("woff2");
+            }
+
+             @font-face {
+              font-family: Sentinel;
+              font-display: swap;
+              font-style: normal;
+              font-weight: bold;
+              src: url(/fonts/sentinel/Sentinel-Bold.woff2) format("woff2");
+            }
+
+            @font-face {
+              font-family: Sentinel;
+              font-display: swap;
+              font-style: italic;
+              font-weight: bold;
+              src: url(/fonts/sentinel/Sentinel-BoldItalic.woff2) format("woff2");
+            }
+
+            @font-face {
+              font-family: 'Whitney';
+              src: url("/fonts/whitney/WhitneySSm-Book.woff2") format('woff2');
+              font-weight: normal;
+              font-style: normal;
+              font-display: swap;
+            }
+
+            @font-face {
+              font-family: 'Whitney';
+              src: url("/fonts/whitney/WhitneySSm-BookItalic.woff2") format('woff2');
+              font-weight: normal;
+              font-style: italic;
+              font-display: swap;
+            }
+
+            @font-face {
+              font-family: 'Whitney';
+              src: url("/fonts/whitney/WhitneySSm-Bold.woff2") format('woff2');
+              font-weight: bold;
+              font-style: normal;
+              font-display: swap;
+            }
+
+            @font-face {
+              font-family: 'Whitney';
+              src: url("/fonts/whitney/WhitneySSm-BoldItalic.woff2") format('woff2');
+              font-weight: bold;
+              font-style: italic;
+              font-display: swap;
+            }
+
+            @font-face {
               font-family: 'Brunswick Grotesque';
               src: url("/fonts/brunswick-grotesque/BrunswickGrotesque-Regular.woff2") format('woff2');
               font-weight: normal;

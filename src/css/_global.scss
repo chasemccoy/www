@@ -3,7 +3,7 @@
 html {
   overflow-y: scroll;
   line-height: var(--root-line-height);
-  background-color: var(--color-offset);
+  background-color: var(--color-body-background);
 }
 
 body {
@@ -11,10 +11,17 @@ body {
   color: var(--color-text);
   font-weight: 500;
 
-  font-variant-ligatures: no-contextual;
-  -moz-font-feature-settings: 'calt' 0;
-  -webkit-font-feature-settings: 'calt' 0;
-  font-feature-settings: 'calt' 0;
+  // Whiteney features
+  // ss11: Non-descending uppercase "Q"
+  // ss08: Double-storey lowercase italic "g"
+  // ss09: Double-storey lowercase italic "a"
+  font-feature-settings: "ss11", "ss08", "ss09";
+
+  // Brunswick Grotesque features
+  // font-variant-ligatures: no-contextual;
+  // -moz-font-feature-settings: 'calt' 0;
+  // -webkit-font-feature-settings: 'calt' 0;
+  // font-feature-settings: 'calt' 0;
 }
 
 @keyframes spin {
@@ -132,8 +139,6 @@ code a {
 }
 
 blockquote:not(.unstyled) {
-  font-size: 1.1em;
-  line-height: 1.45;
   color: var(--color-caption);
   padding-left: 1em;
 
@@ -172,8 +177,8 @@ blockquote:not(.unstyled) {
 
   cite {
     display: block;
-    font-size: 0.9rem;
-    margin-top: -0.5rem;
+    font-size: 0.8rem;
+    margin-top: -0.5em;
     font-family: var(--font-code);
     color: var(--color-caption);
     --link-color: var(--color-caption);
@@ -272,37 +277,9 @@ ol {
 }
 
 time {
-  font-family: var(--font-body);
-  font-size: 0.95rem;
+  // font-family: var(--font-body);
+  // font-size: 0.95rem;
   color: var(--color-caption);
-}
-
-.breadcrumbs {
-  display: flex;
-  align-items: center;
-  @extend time;
-  color: var(--color-caption);
-  --link-color: var(--color-caption);
-
-  > * + *:before {
-    content: '/';
-    margin-inline: 6px;
-    color: var(--color-border);
-  }
-
-  a {
-    text-decoration: none;
-  }
-
-  > div,
-  > a {
-    display: flex;
-    align-items: center;
-
-    > svg {
-      margin-right: 6px;
-    }
-  }
 }
 
 .pagination {
