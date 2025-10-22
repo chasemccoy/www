@@ -54,7 +54,7 @@ function BlogPost({ post }) {
   )
 }
 
-function Highlight({ post, includeCite }) {
+function Highlight({ post, includeCite, content }) {
   return (
     <article class='highlight'>
       {includeCite && (
@@ -73,7 +73,7 @@ function Highlight({ post, includeCite }) {
       )}
       
       <blockquote class='unstyled'>
-        {{ html: post.text }}
+        {{ html: content }}
       </blockquote>
 
       {post.note && (
@@ -131,7 +131,9 @@ export default function ({ posts = [], pagination, page }) {
           if (post.type === 'post') {
             return <BlogPost post={post} />
           } else if (post.type === 'highlight') {
-            return <Highlight post={post} includeCite={shouldShowCite(post, index, posts)} />
+            const renderedContent = this.renderTemplate(post.text, "njk,md")
+
+            return <Highlight post={post} content={renderedContent} includeCite={shouldShowCite(post, index, posts)} />
           }
           return null
         })}
