@@ -60,14 +60,13 @@ function BlogPost({ post }) {
 
       {{ html: content }}
 
-      {!isShortForm ||
-        (isShortForm && title && (
-          <div>
-            <time dateTime={htmlDateString(date)}>
-              <a href={url}>{readableDate(date)}</a>
-            </time>
-          </div>
-        ))}
+      {title && (
+        <div>
+          <time dateTime={htmlDateString(date)}>
+            <a href={url}>{readableDate(date)}</a>
+          </time>
+        </div>
+      )}
     </article>
   )
 }
