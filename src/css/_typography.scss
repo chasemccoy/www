@@ -34,7 +34,7 @@
   }
 
   blockquote {
-    margin: calc(var(--flow-spacing) * 1.5) 0;
+    margin: calc(var(--flow-spacing) * 1) 0;
   }
 
   :where(blockquote > * + *) {
@@ -59,7 +59,7 @@
 
   :where(h1, h2, h3, h4, h5, h6) {
     margin-top: 1.5em;
-    line-height: 1.2;
+    line-height: 1.15;
     font-family: var(--font-header);
   }
 

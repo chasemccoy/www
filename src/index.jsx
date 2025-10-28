@@ -5,7 +5,7 @@ export const data = {
   templateClass: 'home',
   pagination: {
     data: 'collections.feed',
-    size: 30,
+    size: 20,
     alias: 'posts',
     reverse: true,
   },
@@ -24,6 +24,14 @@ function BlogPost({ post }) {
 
   const wordCount = rawInput.split(' ').length
   const isShortForm = wordCount < 500
+  const shouldTruncate = title && wordCount > 1200
+
+  const paragraphs = content.match(/<p>.*?<\/p>/gs) || []
+  let excerpt = null;
+
+  if (paragraphs) {
+    excerpt = paragraphs.slice(0, 3).join('\n');
+  }
 
   return (
     <article
@@ -32,9 +40,10 @@ function BlogPost({ post }) {
         'long-form': !!data.title,
         BlogPost: true,
         'BlogPost--isShortForm': isShortForm,
+        'BlogPost--isTruncated': shouldTruncate,
       }}
     >
-      {!isShortForm && title && (
+      {(!isShortForm && title) && (
         <header>
           <h1 class='font-header'>
             <a href={url} class='unstyled'>
@@ -58,9 +67,13 @@ function BlogPost({ post }) {
         </time>
       )}
 
-      {{ html: content }}
+      {{ html: shouldTruncate ? excerpt : content }}
 
-      {title && (
+      {shouldTruncate && (
+        <a class='BlogPost--readMoreButton' href={url}>Read more</a>
+      )}
+
+      {(title && !shouldTruncate) && (
         <div>
           <time dateTime={htmlDateString(date)}>
             <a href={url}>{readableDate(date)}</a>

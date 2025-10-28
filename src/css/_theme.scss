@@ -25,26 +25,52 @@
 :root,
 ::after,
 ::before {
-  --root-font-size: 17.5px;
+  --root-font-size: 16px;
   --root-line-height: 1.6;
 
-  --content-width: 36rem;
+  --content-width: 38rem;
   --sidebar-width: 19rem;
   --heading-scale: 1;
+  --text-decoration-thickness: 2px;
 
   --color-accent: hsl(196, 100%, 50%);
+  --color-accent-subdued: hsl(196, 90%, 95%);
   --link-color: var(--color-accent);
   --link-hover: hsl(196, 100%, 40%);
   --color-body-background: #fff;
-  --color-text: hsl(43, 2%, 20%);
-  --color-header: hsl(43, 5%, 25%);
-  --color-border: hsl(48, 10%, 85%);
-  --color-caption: hsl(48, 5%, 40%);
-  --color-offset: hsl(48, 10%, 97%);
-  --color-chat-bubble: hsl(48, 5%, 95%);
+  --color-text: hsl(196, 2%, 20%);
+  --color-header: hsl(196, 5%, 25%);
+  --color-border: hsl(196, 10%, 85%);
+  --color-caption: hsl(196, 5%, 50%);
+  --color-offset: hsl(196, 10%, 97%);
+  --color-chat-bubble: hsl(196, 5%, 95%);
 
   --color-highlight: hsl(51, 100%, 84%);
   --color-highlight-dark: hsl(50, 100%, 67%);
+
+  --sky: linear-gradient(
+    to bottom,
+    rgb(123, 169, 213) 0%,
+    rgb(123, 170, 214) 2%,
+    rgb(124, 170, 214) 4%,
+    rgb(125, 171, 214) 6%,
+    rgb(126, 172, 215) 8%,
+    rgb(127, 173, 215) 10%,
+    rgb(128, 174, 216) 12%,
+    rgb(129, 175, 216) 14%,
+    rgb(131, 176, 217) 16%,
+    rgb(132, 177, 217) 18%,
+    rgb(134, 179, 218) 20%,
+    rgb(135, 180, 218) 22%,
+    rgb(137, 182, 219) 24%,
+    rgb(139, 183, 220) 26%,
+    rgb(142, 185, 220) 28%,
+    rgb(144, 187, 221) 30%,
+    rgb(147, 189, 222) 32%,
+    rgb(255, 255, 255) 95%,
+    rgb(255, 255, 255) 100%
+  );
+
 
   --font-code: 'JetBrains Mono', ui-monospace, Menlo, Monaco, 'Cascadia Mono',
     'Segoe UI Mono', 'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace',
