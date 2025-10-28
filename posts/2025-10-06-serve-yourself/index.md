@@ -71,7 +71,7 @@ It's worth noting that as a side effect of making your Mac remotely accessible w
 
 Once these settings are configured you should be able to connect to and control your Mac server from another Mac, which is helpful if you choose not to keep a monitor and keyboard connected to your server. 
 
-To remote in to your server, open Finder on another Mac and press Command–K to “Connect to Server.” Enter `vnc://` followed by the Mac mini’s local name or IP (e.g., vnc://macmini.local or vnc://192.168.1.42) and choose “Share Screen.” If you’ve set automatic login, it’ll drop you straight into the desktop; otherwise, sign in with your user credentials. 
+To remote in to your server, open Finder on another Mac and press Command–K to “Connect to Server.” Enter `vnc://` followed by the Mac mini’s local name or IP (e.g., `vnc://macmini.local` or `vnc://192.168.1.42`) and choose “Share Screen.” If you’ve set automatic login, it’ll drop you straight into the desktop; otherwise, sign in with your user credentials. 
 
 This works for connecting to your Mac over your home's local network, but what about accessing it remotely when you're away from home? Next we'll setup a tool that will take care of that for us. 
 
