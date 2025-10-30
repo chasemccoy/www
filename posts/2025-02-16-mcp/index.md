@@ -1,3 +1,7 @@
+--- 
+title: The Model Context Protocol
+---
+
 I really enjoyed [this writeup from Matt Webb](https://interconnected.org/home/2025/02/11/mcp) about extending AIs using Anthropic's proposed [Model Context Protocol](https://modelcontextprotocol.io). In its own words, MCP is "an open protocol that standardizes how applications provide context to LLMs". 
 
 Back in 2023 [I wrote a bit about an early attempt at something similar by OpenAI](https://chsmc.org/2023/03/eyes-and-ears) and was pretty excited about the potential. MCP takes things to another level by making it an open protocol. Anyone can host an MCP server, or create a custom client that works with any language model. 
