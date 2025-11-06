@@ -1,6 +1,5 @@
 ---
 title: Ambient internet
-featured: true
 ---
 
 The recent fad of the metaverse is all about digitizing the physical world and moving our shared experiences (even more so) onto the internet.

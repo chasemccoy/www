@@ -1,5 +1,6 @@
 ---
-title: Building a private & personal cloud computer 
+title: Building a private & personal cloud computer
+featured: true
 ---
 
 An irony of the personal computing revolution is that, while everyone has a supercomputer in their pocket, a majority of our actual computing has moved to machines in the cloud that we neither own or control.
