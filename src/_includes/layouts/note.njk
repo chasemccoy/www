@@ -3,16 +3,6 @@ layout: layouts/base.jsx
 templateClass: note
 ---
 
-{% slot 'header' %}
-<h1 class='font-header color-accent'>
-  <a href="{{ url }}" class="unstyled">{{ title }}</a>
-</h1>
-
-{% if excerpt %}
-  <p class='lead color-caption'>{{excerpt}}</p>
-{% endif %}
-{% endslot %}
-
 <section class='prose'>
   <table-of-contents hidden>
     <h2>Table of Contents</h2>

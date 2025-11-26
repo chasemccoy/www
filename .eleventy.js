@@ -14,8 +14,6 @@ import { jsxToString } from 'jsx-async-runtime'
 
 const mdRender = new markdownIt()
 
-const slots = {};
-
 async function imageShortcode(src, alt, sizes) {
   let metadata = await Image(src, {
     widths: [null],
@@ -68,22 +66,6 @@ export default function (config) {
 	});
 
   config.addNunjucksAsyncShortcode('image', imageShortcode)
-
-	config.addGlobalData('eleventyComputed.slots', function() {
-		return data => {
-			const key = data.page.url;
-			slots[key] = slots[key] || {};
-			return slots[key];
-		}
-	});
-
-  config.addPairedShortcode('slot', function (content, name, url) {
-    if (!name) throw new Error('Missing name for {% slot %} block!');
-    if (!this.page.url || !content) return
-    
-		slots[url || this.page.url][name] = content;
-		return '';
-  })
 
   config.addCollection('tagList', function (collection) {
     let tagSet = new Set()

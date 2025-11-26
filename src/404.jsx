@@ -7,14 +7,11 @@ export const data = {
 }
 
 export default async function ({ collections }) {
-  const header = (
-    <h1>404</h1>
-  )
-
-  this.slot(header, 'header')
 
   return (
     <>
+      <h1>404</h1>
+
       <p>Sorry! That page doesn't seem to exist. Broken URLs aren't cool, so please <a href="mailto:hi@chsmc.org">let me know how you got here</a>. And in the mean time, you might enjoy browsing the archives below.</p>
 
       <br/>

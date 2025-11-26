@@ -1,4 +1,5 @@
 import filters from "../../../utils/filters.js"
+import BlogPost from "../blog-post.jsx"
 
 export const data = {
   layout: 'layouts/base.jsx',
@@ -69,15 +70,19 @@ export default function ({ content, title, url, page, collections }) {
     <PostHeader title={title} url={url} />
   ) : null
 
-  if (header) {
-    this.slot(header, 'header', page.url)
+  const post = {
+    data: {
+      title: title,
+    },
+    url: url,
+    content: content,
+    rawInput: page.rawInput,
+    date: page.date,
   }
 
   return (
     <>
-      <article class="prose">
-        {{ html: content }}
-      </article>
+      <BlogPost post={post} truncate={false} />
 
       {postTitle && <ReplyBadge postTitle={postTitle} />}
 

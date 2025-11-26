@@ -6,14 +6,14 @@ export const data = {
 export default async function ({
   page,
   content,
-  slots,
   collections,
   blogroll,
   mobile,
 }) {
   return (
     <>
-      <div class='sky'></div>
+      <div class="sky"></div>
+
       <div class='wrapper'>
         <header>
           <div>
@@ -47,12 +47,6 @@ export default async function ({
         </header>
 
         <main>
-          {slots.header && (
-            <header class='prose' id='header'>
-              {slots.header}
-            </header>
-          )}
-
           <div class='content'>{{ html: content }}</div>
         </main>
 

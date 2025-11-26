@@ -6,6 +6,11 @@ export const data = {
     size: 1,
     alias: 'year'
   },
+  eleventyComputed: {
+    title: function (data) {
+      return `${data.year}`
+    }
+  },
   permalink: function (data) {
     return `${data.year}/index.html`
   },
@@ -14,20 +19,18 @@ export const data = {
 export default function ({ year, collections, page }) {
   const posts = collections.postsByYear[year]?.reverse() || []
 
-  const header = <>
-    <div class='breadcrumbs mb-12'>
-      <span>Archives</span>
-    </div>
-
-    <h1 class='font-header color-accent mb-16'>
-      {year}
-    </h1>
-  </>
-
-  this.slot(header, 'header', page.url)
-
   return (
     <>
+      <header class='prose' id='header'>
+        <div class='breadcrumbs mb-12'>
+          <span>Archives</span>
+        </div>
+
+        <h1 class='font-header color-accent mb-16'>
+          {year}
+        </h1>
+      </header>
+
       <div class='flex flex-column' style={{ gap: '12px' }}>
         {posts.filter((post) => post.data?.title).map((post, index) => {
           return (
