@@ -108,14 +108,6 @@ export default async function ({
               font-style: italic;
               font-display: swap;
             }
-
-            @font-face {
-              font-family: 'Brunswick Grotesque';
-              src: url("/fonts/brunswick-grotesque/BrunswickGrotesque-Regular.woff2") format('woff2');
-              font-weight: normal;
-              font-style: normal;
-              font-display: swap;
-            }
           ` }}
           </style>
           

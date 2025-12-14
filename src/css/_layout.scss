@@ -21,7 +21,7 @@ body {
   width: fit-content;
   grid-column: content;
   display: grid;
-  row-gap: 100px;
+  row-gap: 80px;
   width: 100%;
 }
 
@@ -33,16 +33,17 @@ body {
     calc(var(--content-width) + 2 * var(--layout-padding))
   ) [sidebar-end content-end];
   column-gap: var(--gap);
-  padding: var(--layout-padding);
+  // padding: var(--layout-padding);
   
   @include small {
     grid-template-columns:
-      minmax(0, 8vw)
+      minmax(0, 10vw)
       [content-start] minmax(
         0,
         calc(var(--content-width) + 2 * var(--layout-padding))
       )
-      [content-end];
+      [content-end]
+      1fr;
   }
 }
 

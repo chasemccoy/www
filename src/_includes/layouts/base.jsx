@@ -12,33 +12,38 @@ export default async function ({
 }) {
   return (
     <>
-      <div class="sky"></div>
+      {/* <div class="sky"></div> */}
 
       <div class='wrapper'>
         <header>
+          <canvas id="c"></canvas>
+
           <div>
             <h1 class='site-header'>
               <a href='/'>
-                <svg
-                  width='22'
-                  height='22'
-                  viewBox='0 0 24 24'
-                  fill='none'
-                  xmlns='http://www.w3.org/2000/svg'
-                >
-                  <path
-                    d='M3.54389 8.69554L4.65031 8.69316L3.91737 7.86432C2.85817 6.66654 2.90169 4.8349 4.04782 3.68877C5.23758 2.49902 7.16557 2.49743 8.35728 3.68399L9.14132 4.46466L9.20913 3.36032C9.30711 1.76439 10.6331 0.5 12.2539 0.5C13.9364 0.5 15.3008 1.86205 15.3046 3.54363L15.307 4.64979L16.1357 3.9171C17.3335 2.85811 19.165 2.9017 20.3111 4.04776C21.5008 5.2375 21.5024 7.16547 20.3159 8.35718L19.5352 9.14126L20.6396 9.20902C22.2356 9.30696 23.5 10.6329 23.5 12.2538C23.5 13.9364 22.1378 15.3008 20.4561 15.3045L19.3496 15.3068L20.0826 16.1357C21.1418 17.3335 21.0983 19.1651 19.9522 20.3113C18.7624 21.501 16.8344 21.5026 15.6427 20.316L14.8587 19.5354L14.7909 20.6397C14.6929 22.2356 13.3669 23.5 11.7461 23.5C10.0636 23.5 8.69921 22.138 8.69544 20.4564L8.69296 19.3502L7.86426 20.0829C6.66648 21.1419 4.83499 21.0983 3.68894 19.9522C2.49919 18.7625 2.49759 16.8345 3.68412 15.6428L4.46479 14.8587L3.36042 14.791C1.76445 14.693 0.5 13.3671 0.5 11.7462C0.5 10.0636 1.86219 8.69917 3.54389 8.69554Z'
-                    fill='var(--color-accent)'
-                  />
-                </svg>
-
-                <span>chsmc.org</span>
+                chsmc.org
               </a>
             </h1>
 
-            <time dateTime={this.htmlDateString(page.date)}>
-              {this.readableDate(page.date)}
-            </time>
+            <p>
+              <span>
+                Software Engineer, Musician, and Artist in Residence at <a href='https://www.the-lab.org'>The Lab</a> in Bristol, UK. 
+              </span>
+            </p>
+
+            <nav>
+              <ul class='unstyled inline'>
+                <li>
+                  <a href='/about'>About</a>
+                </li>
+                <li>
+                  <a href='/projects'>Projects</a>
+                </li>
+                <li>
+                  <a href='/contact'>Contact</a>
+                </li>
+              </ul>
+            </nav>
           </div>
 
           {/* <aside class='sidebar mobile'>

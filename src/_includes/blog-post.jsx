@@ -7,14 +7,14 @@ export default function BlogPost({ post, truncate = true }) {
   const { title } = data
 
   const wordCount = rawInput.split(' ').length
-  const isShortForm = wordCount < 500
+  const isShortForm = wordCount < 600
   const shouldTruncate = truncate && title && wordCount > 1200
 
   const paragraphs = content.match(/<p>.*?<\/p>/gs) || []
   let excerpt = null;
 
   if (paragraphs) {
-    excerpt = paragraphs.slice(0, 3).join('\n');
+    excerpt = paragraphs.slice(0, 5).join('\n');
   }
 
   return (
@@ -27,17 +27,7 @@ export default function BlogPost({ post, truncate = true }) {
         'BlogPost--isTruncated': shouldTruncate,
       }}
     >
-      {(!isShortForm && title) && (
-        <header>
-          <h1 class='font-header'>
-            <a href={url} class='unstyled'>
-              {title}
-            </a>
-          </h1>
-        </header>
-      )}
-
-      {isShortForm && title && (
+      {title && (
         <h1 class='font-header'>
           <a href={url} class='unstyled'>
             {title}
