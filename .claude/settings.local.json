@@ -1,7 +1,9 @@
 {
   "permissions": {
     "allow": [
-      "Bash(head:*)"
+      "Bash(head:*)",
+      "Bash(yarn build:css:*)",
+      "Bash(yarn build:*)"
     ]
   }
 }
