@@ -2,3 +2,5 @@ README.md
 .netlify
 _site/
 node_modules/
+CLAUDE.md
+.claude
