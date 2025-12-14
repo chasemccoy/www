@@ -13,7 +13,7 @@ Up until this week, saving money with Simple was pretty good. Their [goals featu
 
 This worked pretty well. The main annoyances I had with this were that every month I had to manually refill the goals with the correct amount (after first emptying the leftovers into savings), and I had to manually set transactions to spend from certain goals.
 
-Lucky for me, the Simple team addressed these exact frustrations this week with the [launch of two features called **Funding Schedules** and **Auto-Spend**](https://www.simple.com/company/goals-just-got-a-whole-lot-smarter).
+Lucky for me, the Simple team addressed these exact frustrations this week with the [launch of two features called **Funding Schedules** and **Auto-Spend**](https://web.archive.org/web/20180903184705/https://www.simple.com/company/goals-just-got-a-whole-lot-smarter).
 
 Funding Schedules allow you to automatically move money into goals on certain dates/frequencies.
 
@@ -35,5 +35,3 @@ Next, you choose which categories go along with which goal. My "Groceries/Food" 
 Now, my personal finance is completely automated. I can set my budget and forget it (aside from the occasional incorrect categorization, which is easy enough to fix). If you use an envelope-style budget, you know that the worst part is maintaining your system manually. With these new features I no longer have to do that, which encourages me to stick to my budget instead of ignoring it because it's a pain to manage.
 
 With these new features, I can't recommend Simple enough. They had a period of moving very slowly with new features, but lately they have been knocking out of the park with shared accounts, paper checks, and these new goal features.
-
-[Sign up for an account with this link (it's free) and we will both get $20](https://simple.com/friends/CXG5MKP).
