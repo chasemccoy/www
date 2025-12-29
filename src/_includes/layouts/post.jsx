@@ -17,7 +17,7 @@ function PostHeader({ title, url }) {
 
 function ReplyBadge({ postTitle }) {
   const emailReplySubject = `Re: ${postTitle}`
-  
+
   return (
     <a href={`mailto:hi@chsmc.org?subject=${encodeURIComponent(emailReplySubject)}`} class='reply-badge'>
       <img src="/images/reply-via-email.gif" alt="Reply via email" class='pixelated invert-for-light-mode' />
@@ -27,12 +27,12 @@ function ReplyBadge({ postTitle }) {
 
 function PostNavigation({ previousPost, nextPost }) {
   return (
-    <nav class='pagination'>
+    <nav class='Pagination'>
       <ul class='unstyled'>
         {previousPost && (
-          <li class='previous'>
+          <li class='Pagination__previous'>
             <a href={previousPost.url} class='unstyled'>
-              <span class='label'>Previous</span>
+              <span class='Pagination__label'>Previous</span>
               {previousPost.data.title && (
                 <span>{previousPost.data.title}</span>
               )}
@@ -41,9 +41,9 @@ function PostNavigation({ previousPost, nextPost }) {
         )}
 
         {nextPost && (
-          <li class='next'>
+          <li class='Pagination__next'>
             <a href={nextPost.url} class='unstyled'>
-              <span class='label'>Next</span>
+              <span class='Pagination__label'>Next</span>
               {nextPost.data.title && (
                 <span>{nextPost.data.title}</span>
               )}
@@ -57,11 +57,11 @@ function PostNavigation({ previousPost, nextPost }) {
 
 export default function ({ content, title, url, page, collections }) {
   const postTitle = title || (page.filePathStem.includes('posts') ? `Note from ${readableDate(page.date)}` : '')
-  
-  const previousPost = collections.posts?.find(post => 
+
+  const previousPost = collections.posts?.find(post =>
     post.date < page.date && !post.data.hidden
   )
-  const nextPost = collections.posts?.find(post => 
+  const nextPost = collections.posts?.find(post =>
     post.date > page.date && !post.data.hidden
   )
 
@@ -75,7 +75,7 @@ export default function ({ content, title, url, page, collections }) {
 
   return (
     <>
-      <article class="prose">
+      <article class="Article prose">
         {{ html: content }}
       </article>
 

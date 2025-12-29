@@ -24,10 +24,10 @@ function BlogPost({ post }) {
   const isShortForm = wordCount < 500
 
   return (
-    <article class={`prose ${data.title ? 'long-form' : ''}`}>
+    <article class={`prose ${data.title ? 'Blog__article--longForm' : ''}`}>
       {title ? (
         <header>
-          <div class='breadcrumbs'>
+          <div class='Breadcrumbs'>
             <div>
               <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline">
                 <circle cx="12" cy="12" r="10"></circle>
@@ -48,7 +48,7 @@ function BlogPost({ post }) {
           <a href={url} class='unstyled color-caption block'>{shortDate(date)}</a>
         </time>
       )}
-      
+
       {{ html: content }}
     </article>
   )
@@ -56,7 +56,7 @@ function BlogPost({ post }) {
 
 function Highlight({ post, includeCite, content }) {
   return (
-    <article class='highlight'>
+    <article class='Blog__article--highlight'>
       {includeCite && (
         <cite>
           <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -71,7 +71,7 @@ function Highlight({ post, includeCite, content }) {
           </span>
         </cite>
       )}
-      
+
       <blockquote class='unstyled'>
         {{ html: content }}
       </blockquote>
@@ -90,10 +90,10 @@ function Highlight({ post, includeCite, content }) {
 
 function Pagination({ pagination }) {
   return (
-    <nav class='pagination'>
+    <nav class='Pagination'>
       <ul class='unstyled'>
         {pagination.href?.next && (
-          <li class='previous'>
+          <li class='Pagination__previous'>
             <a href={pagination.href.next} class='unstyled'>
               Older
             </a>
@@ -101,7 +101,7 @@ function Pagination({ pagination }) {
         )}
 
         {pagination.href?.previous && (
-          <li class='next'>
+          <li class='Pagination__next'>
             <a href={pagination.href.previous} class='unstyled'>
               Newer
             </a>
@@ -116,7 +116,7 @@ export default function ({ posts = [], pagination, page }) {
   const shouldShowCite = (post, index, posts) => {
     // Check if we're the first in a sequence of duplicates
     const isFirstInSequence = posts[index + 1]?.source?.title === post.source?.title && posts[index - 1]?.source?.title !== post.source?.title
-    
+
     // Check if we're in a sequence (either first, middle, or last)
     const isInSequence = posts[index - 1]?.source?.title === post.source?.title || posts[index + 1]?.source?.title === post.source?.title
 
@@ -126,7 +126,7 @@ export default function ({ posts = [], pagination, page }) {
 
   return (
     <>
-      <section class='blog'>
+      <section class='Blog Blog--featured'>
         {posts.map((post, index) => {
           if (post.type === 'post') {
             return <BlogPost post={post} />

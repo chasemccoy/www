@@ -4,7 +4,7 @@ export const data = {
   title: 'Backstage',
   layout: 'layouts/page.jsx',
   permalink: '/backstage/',
-  templateClass: 'blog',
+  templateClass: 'Blog',
 }
 
 const { htmlDateString, shortDate } = filters
@@ -21,7 +21,7 @@ export default function ({ collections }) {
 
   return (
     <div class='prose'>
-      <div class='breadcrumbs mb-12'>
+      <div class='Breadcrumbs mb-12'>
         <a href='/' class='bold'>Home</a>
       </div>
 
@@ -33,7 +33,7 @@ export default function ({ collections }) {
 
       <div class='flex flex-column' style={{ gap: '1em' }}>
         {postslist.reverse().map(post => (
-          <a href={post.url} class='unstyled block post-preview'>
+          <a href={post.url} class='unstyled block Blog__postPreview'>
             <div>
               <h3 style={{ margin: 0 }}>
                 <span>

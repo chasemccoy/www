@@ -1,11 +1,20 @@
 @use 'reset';
 @use 'theme' as *;
-@use 'typography';
-@use 'layout';
-@use 'article';
-@use 'global';
-// @use 'notes';
-@use 'utilities';
-@use 'prism';
+
+// Base styles
+@use 'base/elements';
+@use 'base/typography';
+
+// Layout
+@use 'layout/Wrapper';
+@use 'layout/Content';
+@use 'layout/Sidebar';
+
+// Components
 @use 'components/index';
-@use 'blog';
+
+// Utilities
+@use 'utilities';
+
+// Syntax highlighting
+@use 'prism';

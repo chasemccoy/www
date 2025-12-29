@@ -1,6 +1,6 @@
 export const data = {
   layout: 'layouts/page.jsx',
-  templateClass: 'blog archive',
+  templateClass: 'Blog Blog--archive',
   pagination: {
     data: 'collections.postsByYear',
     size: 1,
@@ -15,7 +15,7 @@ export default function ({ year, collections, page }) {
   const posts = collections.postsByYear[year]?.reverse() || []
 
   const header = <>
-    <div class='breadcrumbs mb-12'>
+    <div class='Breadcrumbs mb-12'>
       <span>Archives</span>
     </div>
 
@@ -31,7 +31,7 @@ export default function ({ year, collections, page }) {
       <div class='flex flex-column' style={{ gap: '12px' }}>
         {posts.filter((post) => post.data?.title).map((post, index) => {
           return (
-            <a href={post.url} class='unstyled block post-preview'>
+            <a href={post.url} class='unstyled block Blog__postPreview'>
               <h3>
                 <span>{post.data.title}</span>&nbsp;<time dateTime={this.htmlDateString(post.date)}>{this.shortDate(post.date)}</time>
               </h3>
@@ -40,7 +40,7 @@ export default function ({ year, collections, page }) {
         })}
       </div>
 
-      <div class='flex flex-column notes' style={{ gap: '64px' }}>
+      <div class='flex flex-column Blog__notes' style={{ gap: '64px' }}>
         {posts.filter((post) => !post.data?.title).map((post, index) => {
           return (
             <article class='prose'>

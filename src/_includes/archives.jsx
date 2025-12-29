@@ -3,8 +3,8 @@ export default function ({ postsByYear, featuredPosts }) {
   const years = Object.keys(postsByYear || {}).reverse()
 
   return (
-    <div class='archives'>
-      <div>
+    <div class='Archives'>
+      <div class='Archives__featured'>
         <h3>Featured</h3>
         <ul class='featured'>
           {featuredPosts?.map(post => (
@@ -17,7 +17,7 @@ export default function ({ postsByYear, featuredPosts }) {
 
       <div>
         <h3>By year</h3>
-        <ul class='years unstyled inline'>
+        <ul class='Archives__years unstyled inline'>
           {years.map(year => (
             <li>
               <a href={`/${year}`}>{year}</a>

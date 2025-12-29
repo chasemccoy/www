@@ -20,7 +20,7 @@ export default function ({ mobile = false, collections, blogroll }) {
   );
 
   const socialSection = (
-    <div class='social'>
+    <div class='Sidebar__social'>
       <h2>Elsewhere</h2>
       <ul class='unstyled'>
         <li>
@@ -46,7 +46,7 @@ export default function ({ mobile = false, collections, blogroll }) {
   );
 
   const nowPlayingSection = (
-    <div class='now-playing'>
+    <div class='Sidebar__nowPlaying'>
       <h2>Now playing</h2>
       <now-playing></now-playing>
     </div>
@@ -55,10 +55,10 @@ export default function ({ mobile = false, collections, blogroll }) {
   const years = Object.keys(collections.postsByYear || {}).reverse();
 
   const archivesSection = (
-    <div class='years'>
+    <div class='Sidebar__years'>
       <h2>Archives</h2>
-      
-      <ul class='years unstyled inline'>
+
+      <ul class='Sidebar__years unstyled inline'>
         {years.map(year => (
           <li>
             <a href={`/${year}`}>{year}</a>
@@ -69,7 +69,7 @@ export default function ({ mobile = false, collections, blogroll }) {
   );
 
   const bookmarksSection = (
-    <div class='bookmarks'>
+    <div class='Sidebar__bookmarks'>
       <h2>Linked list</h2>
       <p class='color-caption mb-4'>Things that caught my eye on the web, updated sporadically.</p>
       <bookmark-list></bookmark-list>
@@ -77,7 +77,7 @@ export default function ({ mobile = false, collections, blogroll }) {
   );
 
   const blogrollSection = (
-    <div class='blogroll'>
+    <div class='Sidebar__blogroll'>
       <h2>Blogroll</h2>
       <ul>
         {blogroll?.map(item => (
@@ -90,13 +90,13 @@ export default function ({ mobile = false, collections, blogroll }) {
   );
 
   const colophonSection = (
-    <p class='colophon color-caption'>
+    <p class='Sidebar__colophon color-caption'>
       Typeset in <a href="https://fonts.adobe.com/fonts/source-serif">Source Serif</a> and <a href="https://www.dennisgrauel.com/brunswick-grotesque.html">Brunswick Grotesque</a>. Built with <a href="https://www.11ty.dev">Eleventy</a> and hosted on <a href="https://www.netlify.com">Netlify</a>. Thanks for stopping by ♥
     </p>
   );
 
   const mainNav = (
-    <nav>
+    <nav class='Sidebar__nav'>
       <ul class='unstyled'>
         <li>
           <a href="mailto:hi@chsmc.org">
@@ -172,12 +172,12 @@ export default function ({ mobile = false, collections, blogroll }) {
   return (
     <>
       <p>A weblog by Chase McCoy about exploring and building the world wide web.</p>
-      
+
       {mainNav}
-      
+
       {mobile ? (
-        <details>
-          <summary></summary>
+        <details class='Sidebar__details'>
+          <summary class='Sidebar__summary'></summary>
           <div>
             {mainContent}
           </div>

@@ -1,11 +1,4 @@
-.blog .archives {
-  padding: 1.5rem 0;
-  border-top: 1px dashed var(--color-border);
-  border-bottom: 1px dashed var(--color-border);
-  margin: 3rem 0;
-}
-
-.archives {
+.Archives {
   display: flex;
   flex-direction: column;
   gap: 2rem;
@@ -17,11 +10,20 @@
   h3 {
     margin-bottom: 0.25rem;
   }
+}
 
-  .years li + li:before {
+.Archives__years {
+  li + li:before {
     content: '/';
     display: inline;
     margin-inline: 2px;
     color: var(--color-border);
   }
+}
+
+.Blog .Archives {
+  padding: 1.5rem 0;
+  border-top: 1px dashed var(--color-border);
+  border-bottom: 1px dashed var(--color-border);
+  margin: 3rem 0;
 }

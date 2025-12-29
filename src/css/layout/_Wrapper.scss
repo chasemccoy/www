@@ -1,4 +1,4 @@
-@use 'theme' as *;
+@use '../theme' as *;
 
 :root {
   --layout-padding: 1rem;
@@ -12,11 +12,7 @@
   }
 }
 
-body {
-  min-height: 100vh;
-}
-
-.wrapper {
+.Wrapper {
   --gap: 1.5rem;
   width: fit-content;
   margin: 0 auto;
@@ -40,62 +36,43 @@ body {
   }
 }
 
-.wrapper > header {
+.Wrapper__header {
   padding-block: 2rem 3rem;
   grid-column: content;
+  border-top: 4px solid var(--color-accent);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
 
   @include small {
     padding-block: 3rem;
   }
-}
 
-.wrapper > :is(header, main) {
-  padding-inline: var(--layout-padding);
-  background-color: var(--color-body-background);
-}
-
-main > header + .content {
-  padding: 1rem 0 0;
-}
-
-#header,
-main .content {
-  max-width: 100%;
-  flex-grow: 1;
-
-  @include small {
-    max-width: var(--content-width);
+  > div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
-}
 
-main {
-  grid-column: content;
-}
+  &:hover h1 svg {
+    animation: spin 5s linear infinite;
+  }
 
-.sidebar {
-  grid-column: sidebar;
-  padding-right: var(--gap);
-}
-
-.content,
-.sidebar {
-  min-width: 0;
-}
-
-.sidebar.mobile {
-  display: flex;
-  max-width: 100%;
-
-  @include small {
+  body:not(.post) & time {
     display: none;
   }
 }
 
-.sidebar.desktop {
-  display: none;
-  max-width: var(--sidebar-width);
+.Wrapper__header,
+.Wrapper__main {
+  padding-inline: var(--layout-padding);
+  background-color: var(--color-body-background);
+}
 
-  @include small {
-    display: flex;
+.Wrapper__main {
+  grid-column: content;
+
+  > header + .Content {
+    padding: 1rem 0 0;
   }
 }
