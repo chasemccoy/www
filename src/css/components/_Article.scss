@@ -1,6 +1,6 @@
-@use 'theme' as *;
+@use '../theme' as *;
 
-article {
+.Article {
   h2:first-child {
     margin-top: 0;
   }
@@ -35,6 +35,14 @@ article {
       padding-right: 12px;
     }
   }
+}
+
+.Article--highlight {
+  // Highlighted article variant
+}
+
+.Article--longForm {
+  // Long-form article variant
 }
 
 hr {

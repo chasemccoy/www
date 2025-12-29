@@ -1,10 +1,7 @@
+@use '../theme' as *;
+
 :root {
   --flow-spacing: 1.1rem;
-}
-
-:is(h1, h2, h3, h4, h5, h6) {
-  font-size: 1em;
-  text-wrap: balance;
 }
 
 .prose {
@@ -21,17 +18,17 @@
     margin-top: 0.4rem;
   }
 
-  /* Spacing between first and second paragraph in list items */
+  // Spacing between first and second paragraph in list items
   & li > p + p {
     margin-top: 0.25rem;
   }
 
-  /* Spacing between other paragraphs in list items */
+  // Spacing between other paragraphs in list items
   & li > p:not(:first-of-type) + p {
     margin-top: 0.75rem;
   }
 
-  /* More spacing between list items if they contain full paragraphs */
+  // More spacing between list items if they contain full paragraphs
   & li + li > p:first-child {
     margin-top: 0.75rem;
   }
@@ -176,5 +173,132 @@
 
   small {
     color: var(--color-caption);
+  }
+}
+
+// Blockquote styles (global, used in multiple contexts)
+blockquote:not(.unstyled) {
+  font-size: 1.1em;
+  line-height: 1.45;
+  color: var(--color-caption);
+  padding-left: 1em;
+
+  @include small {
+    padding-left: 0;
+  }
+
+  & > p:first-of-type:before {
+    content: '“';
+    font-size: 1.4em;
+    line-height: 0;
+    margin-left: -0.7em;
+    margin-right: 0.3em;
+    color: var(--color-accent);
+    display: inline-block;
+    position: relative;
+    top: 6px;
+  }
+
+  &:before {
+    content: '';
+    display: block;
+    width: 100%;
+    background: var(--color-border);
+    height: 0.5px;
+    margin-bottom: 8px;
+    width: calc(100% + 1em);
+    margin-left: -1em;
+
+    @include small {
+      width: 100%;
+      margin-left: 0;
+    }
+  }
+
+  cite {
+    display: block;
+    font-size: 0.9rem;
+    margin-top: -0.5rem;
+    font-family: var(--font-code);
+    color: var(--color-caption);
+    --link-color: var(--color-caption);
+
+    a {
+      text-decoration: none;
+    }
+  }
+
+  cite:before {
+    content: '↑ ';
+  }
+}
+
+ul {
+  padding: 0;
+  list-style-type: none;
+
+  > li {
+    margin-left: 1.25em;
+  }
+
+  > li:before {
+    content: '⁕';
+    margin-left: -1.25em;
+    margin-top: -1px;
+    float: left;
+    color: var(--color-accent);
+  }
+}
+
+ul.inline {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+
+  li {
+    display: inline-block;
+    margin-bottom: 0;
+  }
+
+  li:first-child {
+    margin-left: 0;
+  }
+
+  li:before {
+    display: none;
+  }
+}
+
+ul:where(.unstyled) {
+  margin: 0;
+  padding: 0;
+
+  li {
+    margin: 0;
+  }
+
+  li:before {
+    display: none;
+  }
+}
+
+ol {
+  padding: 0;
+  list-style: none;
+  --offset: 1.5em;
+
+  > li {
+    margin-left: var(--offset);
+    counter-increment: ol-counter;
+    position: relative;
+  }
+
+  > li:before {
+    content: counter(ol-counter) '. ';
+    font-feature-settings: 'tnum';
+    padding-right: 0.5em;
+    position: absolute;
+    left: calc(-1 * var(--offset));
   }
 }

@@ -78,17 +78,75 @@ Custom collections in `.eleventy.js`:
 
 ### Styling
 
-Sass files in `src/css/` compiled to `src/_includes/styles/`:
-- `styles.scss` - Main entry (imports all partials)
-- `_global.scss` - Base styles, CSS custom properties
-- `_theme.scss` - Theme variables
-- `_typography.scss` - Type styles
-- `_layout.scss` - Layout utilities
-- `_blog.scss` - Blog-specific styles
-- `_article.scss` - Article content styles
-- `components/*.scss` - Component styles
+Sass files in `src/css/` compiled to `src/_includes/styles/`. Uses **BEM-Lite** naming convention.
 
-Compiled CSS is included via `html.jsx` layout which renders from `src/_includes/styles/`.
+**File structure:**
+```
+src/css/
+├── styles.scss           # Main entry point
+├── _reset.scss           # CSS reset
+├── _theme.scss           # Design tokens/variables
+├── _utilities.scss       # Utility classes
+├── _prism.scss           # Syntax highlighting
+├── base/
+│   ├── _elements.scss    # Global element defaults (html, body, a, etc.)
+│   └── _typography.scss  # .prose utility for Markdown content
+├── layout/
+│   ├── _Wrapper.scss     # Page wrapper grid
+│   ├── _Content.scss     # Main content area
+│   └── _Sidebar.scss     # Sidebar component
+└── components/
+    ├── _Article.scss     # Article/post content
+    ├── _Blog.scss        # Blog feed and pagination
+    ├── _SiteHeader.scss  # Site header and breadcrumbs
+    ├── _Callout.scss     # Callout boxes
+    ├── _Bookmark.scss    # book-mark custom element
+    └── _Archives.scss    # Archives listing
+```
+
+**BEM-Lite naming convention:**
+- **Blocks**: UpperCamelCase (`.Wrapper`, `.Sidebar`, `.Blog`)
+- **Elements**: `Block__element` with camelCase (`.Sidebar__nav`, `.Blog__postPreview`)
+- **Modifiers**: `Block--modifier` with camelCase (`.Sidebar--mobile`, `.Blog--featured`)
+
+**Allowed nesting:**
+```scss
+.Sidebar__link {
+  // Pseudo-selectors OK
+  &:hover { }
+  &[aria-current="page"] { }
+}
+
+.Article {
+  // HTML elements OK for Markdown content
+  h1, h2, h3 { }
+  p { }
+  pre { }
+}
+```
+
+**Key classes:**
+- `.Wrapper` - Main page grid container
+- `.Wrapper__header` - Page header with site title
+- `.Wrapper__main` - Main content wrapper
+- `.Sidebar` / `.Sidebar--mobile` / `.Sidebar--desktop` - Sidebar variants
+- `.Content` - Main content area
+- `.Blog` / `.Blog--featured` / `.Blog--archive` - Blog feed variants
+- `.Article` - Article content wrapper
+- `.Pagination` - Post/page navigation
+- `.Breadcrumbs` - Breadcrumb navigation
+- `.SiteHeader` - Site title/logo
+- `.prose` - Typography utility for Markdown content (not a BEM block)
+
+**Utilities (no prefix):**
+- `.mb-{0,1,2,4,6,8,12,16,20,24,32,40,48}` - Margin-bottom
+- `.flex`, `.flex-column` - Flexbox
+- `.font-header`, `.serif`, `.sans`, `.mono` - Font families
+- `.color-accent`, `.color-caption` - Text colors
+- `.unstyled` - Reset links/lists
+- `.prose` - Markdown typography container
+
+Compiled CSS included via `html.jsx` layout from `src/_includes/styles/`.
 
 ### Filters
 
@@ -124,6 +182,57 @@ Generates responsive images with webp/jpg formats.
 - `public/` - Copied to site root (fonts, favicon, etc.)
 - `src/js/` - Copied to `/js` in output
 - Post images processed through markdown-it plugin to `_site/img/`
+
+## Template Patterns
+
+**Page layout structure (base.jsx):**
+```jsx
+<div class='Wrapper'>
+  <header class='Wrapper__header'>
+    <h1 class='SiteHeader'>...</h1>
+    <aside class='Sidebar Sidebar--mobile'>...</aside>
+  </header>
+  <main class='Wrapper__main'>
+    <div class='Content'>...</div>
+  </main>
+  <aside class='Sidebar Sidebar--desktop'>...</aside>
+</div>
+```
+
+**Blog post (post.jsx):**
+```jsx
+<article class='Article prose'>
+  {content}
+</article>
+<nav class='Pagination'>
+  <ul class='unstyled'>
+    <li class='Pagination__previous'>...</li>
+    <li class='Pagination__next'>...</li>
+  </ul>
+</nav>
+```
+
+**Blog feed (index.jsx):**
+```jsx
+<section class='Blog Blog--featured'>
+  <article class='prose Blog__article--longForm'>...</article>
+  <article class='Blog__article--highlight'>...</article>
+</section>
+```
+
+**Sidebar elements:**
+```jsx
+<div class='Sidebar__social'>...</div>
+<div class='Sidebar__blogroll'>...</div>
+<div class='Sidebar__years'>...</div>
+<nav class='Sidebar__nav'>...</nav>
+```
+
+**Common patterns:**
+- Combine BEM classes with utilities: `class='Blog__postPreview unstyled block'`
+- Use `.prose` for any Markdown-rendered content
+- Breadcrumbs: `<div class='Breadcrumbs'>...</div>`
+- Modifiers stack with base: `class='Sidebar Sidebar--mobile'`
 
 ## Important Notes
 
