@@ -41,7 +41,7 @@ First, the backgrounds. Bokunatsu makes use of a fixed perspective, where the ca
 
 There's a narrative purpose to the backgrounds as well, signaling the time of day as they change throughout between different paintings for day, afternoon, and night.
 
-The backgrounds were done by artists at an animation studio called Kusanagi. [Here are the backgrounds they made for Bokunatsu 2](https://www.kusanagi.co.jp/art/detail.php?id=%E3%81%BC%E3%81%8F%E3%81%AE%E3%81%AA%E3%81%A4%E3%82%84%E3%81%99%E3%81%BF2&img=4&category=game), but I heartily encourage you to browse through all of the art on their site.
+The backgrounds were done by artists at an animation studio called Kusanagi. [Here are the backgrounds they made for Bokunatsu 2](https://www.kusanagi.co.jp/art/detail/111/?category=game), but I heartily encourage you to browse through all of the art on their site.
 
 Kazuo Oga is a famous background painter and the person responsible for many of the backgrounds in your favorite Miyazaki films. [Animation Obsessive had this to say about him](https://animationobsessive.substack.com/p/what-kazuo-oga-thinks-about-when):
 
