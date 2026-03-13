@@ -56,9 +56,9 @@ const highlights = defineCollection({
     readwise_url: z.string().optional(),
     source: z.object({
       id: z.number().optional(),
-      title: z.string().optional(),
-      author: z.string().optional(),
-      url: z.string().optional(),
+      title: z.string().nullable().optional(),
+      author: z.string().nullable().optional(),
+      url: z.string().nullable().optional(),
       image: z.string().nullable().optional(),
       tags: z.array(z.string()).nullable().optional(),
       note: z.string().nullable().optional(),
