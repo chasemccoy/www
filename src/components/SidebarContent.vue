@@ -78,3 +78,96 @@ defineProps<{
     Typeset in <a href="https://fonts.adobe.com/fonts/source-serif">Source Serif</a> and <a href="https://www.dennisgrauel.com/brunswick-grotesque.html">Brunswick Grotesque</a>. Built with <a href="https://astro.build">Astro</a> and hosted on <a href="https://www.netlify.com">Netlify</a>. Thanks for stopping by ♥
   </p>
 </template>
+
+<style scoped lang="scss">
+.Sidebar__social {
+  ul {
+    column-gap: 24px;
+    row-gap: 2px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+  }
+}
+
+.Sidebar__blogroll {
+  ul {
+    columns: 2;
+    gap: 12px;
+    margin-top: 4px;
+  }
+
+  li {
+    margin: 0;
+  }
+
+  li:before {
+    content: none;
+  }
+
+  a {
+    display: block;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+.Sidebar__bookmarks {
+  :deep(bookmark-list) {
+    display: block;
+
+    a {
+      display: block;
+      -webkit-line-clamp: 1;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+}
+
+.Sidebar__colophon {
+  a {
+    text-decoration: underline;
+  }
+}
+
+.Sidebar__nowPlaying {
+  :deep(now-playing) {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    margin-top: 4px;
+    margin-bottom: 3px;
+    color: var(--color-caption);
+
+    .image-container {
+      position: relative;
+      top: 3px;
+      overflow: clip;
+      min-width: 32px;
+      width: 32px;
+      height: 32px;
+      border-radius: 4px;
+
+      &:after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        box-shadow: inset 0 0 0 1px rgba(0 0 0 / 0.1);
+        border-radius: inherit;
+      }
+    }
+  }
+}
+
+.Sidebar__years {
+  li + li:not(:last-child):after,
+  li:first-child:after {
+    content: '/';
+    color: var(--color-border);
+    margin-inline: 2px;
+  }
+}
+</style>

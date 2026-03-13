@@ -33,3 +33,28 @@ const years = Object.keys(props.postsByYear).sort().reverse();
     </div>
   </div>
 </template>
+
+<style scoped lang="scss">
+.Archives {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  a {
+    text-decoration: none;
+  }
+
+  h3 {
+    margin-bottom: 0.25rem;
+  }
+}
+
+.Archives__years {
+  li + li:before {
+    content: '/';
+    display: inline;
+    margin-inline: 2px;
+    color: var(--color-border);
+  }
+}
+</style>

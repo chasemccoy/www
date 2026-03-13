@@ -99,3 +99,60 @@ const years = Object.keys(props.postsByYear).sort().reverse();
     :blogroll="blogroll"
   />
 </template>
+
+<style scoped lang="scss">
+@use '../styles/theme' as *;
+
+.Sidebar__nav {
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 24px;
+    row-gap: 8px;
+
+    @include small {
+      display: grid;
+      grid-template-columns: auto 1fr;
+    }
+  }
+
+  a {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+
+    > svg {
+      margin-right: 6px;
+    }
+  }
+}
+
+.Sidebar__details {
+  > div {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    padding: 1rem 0 0;
+  }
+}
+
+.Sidebar__summary {
+  font-family: var(--font-code);
+  color: var(--color-caption);
+  list-style: none;
+  background-image: none;
+  appearance: none;
+
+  &::-webkit-details-marker {
+    display: none;
+  }
+
+  &:before {
+    content: '+ More';
+  }
+
+  details[open] &:before {
+    content: '- Less';
+  }
+}
+</style>

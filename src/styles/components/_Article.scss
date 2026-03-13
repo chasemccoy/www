@@ -37,14 +37,6 @@
   }
 }
 
-.Article--highlight {
-  // Highlighted article variant
-}
-
-.Article--longForm {
-  // Long-form article variant
-}
-
 hr {
   background: var(--color-border);
   height: 1px;
@@ -147,9 +139,4 @@ figcaption {
 
 .twitter-tweet + * {
   margin-top: 1.5em;
-}
-
-.reply-badge {
-  display: block;
-  margin-top: 2rem;
 }

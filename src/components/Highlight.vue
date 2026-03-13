@@ -39,3 +39,86 @@ defineProps<{
     </aside>
   </article>
 </template>
+
+<style scoped lang="scss">
+@use '../styles/theme' as *;
+
+.Blog__article--highlight {
+  font-size: 0.9rem;
+  border-radius: 8px;
+  color: var(--color-caption);
+
+  cite {
+    font-size: 1em;
+    font-style: normal;
+    margin-bottom: 6px;
+    color: var(--color-caption);
+    display: flex;
+    align-items: flex-start;
+    gap: 6px;
+    font-size: 0.9rem;
+    font-family: var(--font-code);
+
+    @include small {
+      margin-left: -18px;
+    }
+
+    svg {
+      position: relative;
+      top: 2.25px;
+      flex-shrink: 0;
+    }
+  }
+
+  blockquote {
+    margin: 0;
+    color: var(--color-caption);
+  }
+
+  blockquote + blockquote,
+  aside + blockquote {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px dashed var(--color-border);
+  }
+
+  a {
+    --color-accent: var(--color-caption);
+    --link-color: var(--color-caption);
+    --link-hover: var(--color-caption);
+  }
+
+  :deep(img) {
+    display: none;
+  }
+
+  aside {
+    color: var(--color-caption);
+    margin: 12px 0 0;
+    position: relative;
+
+    span {
+      background-color: var(--color-chat-bubble);
+      border-radius: 14px;
+      padding: 6px 12px;
+      display: block;
+      width: fit-content;
+    }
+
+    svg {
+      position: absolute;
+      left: -5.5px;
+      bottom: 0.246px;
+    }
+  }
+
+  blockquote,
+  aside {
+    margin-left: 18px;
+
+    @include small {
+      margin-left: 0;
+    }
+  }
+}
+</style>
