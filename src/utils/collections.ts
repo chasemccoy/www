@@ -64,15 +64,18 @@ export async function getBlogroll() {
   return entries.map(entry => entry.data);
 }
 
-export async function getFeed() {
-  const posts = await getVisiblePosts();
-  const postsWithType = posts.map(p => ({ ...p, type: 'post' as const }));
-
-  const highlightEntries = await getCollection('highlights');
-  const highlights = highlightEntries.map(h => ({
+export async function getHighlights() {
+  const entries = await getCollection('highlights', () => true);
+  return entries.map(h => ({
     ...h.data,
     type: 'highlight' as const,
   }));
+}
+
+export async function getFeed() {
+  const posts = await getVisiblePosts();
+  const postsWithType = posts.map(p => ({ ...p, type: 'post' as const }));
+  const highlights = await getHighlights();
 
   return [...highlights, ...postsWithType].sort(
     (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()

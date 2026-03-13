@@ -41,8 +41,8 @@ const highlights = defineCollection({
       if (!response.ok) return [];
       const data = await response.json();
       return (data as any[]).map((item: any, index: number) => ({
-        id: String(item.id ?? index),
         ...item,
+        id: String(item.id ?? index),
       }));
     } catch {
       return [];
@@ -50,12 +50,18 @@ const highlights = defineCollection({
   },
   schema: z.object({
     text: z.string(),
-    note: z.string().optional(),
+    note: z.string().nullable().optional(),
     date: z.coerce.date(),
+    tags: z.any().optional(),
+    readwise_url: z.string().optional(),
     source: z.object({
+      id: z.number().optional(),
       title: z.string().optional(),
       author: z.string().optional(),
       url: z.string().optional(),
+      image: z.string().nullable().optional(),
+      tags: z.array(z.string()).nullable().optional(),
+      note: z.string().nullable().optional(),
     }).optional(),
   }),
 });
