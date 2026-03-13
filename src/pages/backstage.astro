@@ -1,8 +1,9 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import BlogPostPreview from '../components/BlogPostPreview.vue';
 import blogroll from '../data/blogroll';
 import { getPosts, getFeaturedPosts, getPostsByYear } from '../utils/collections';
-import { htmlDateString, shortDate, titleize } from '../utils/filters';
+import { titleize } from '../utils/filters';
 
 const allPosts = await getPosts();
 const hiddenPosts = allPosts.filter(p => p.data.hidden).reverse();
@@ -29,13 +30,11 @@ const postsByYear = await getPostsByYear();
 
     <div class="flex flex-column" style="gap: 1em;">
       {hiddenPosts.map(post => (
-        <a href={post.permalink} class="unstyled block Blog__postPreview">
-          <div>
-            <h3 style="margin: 0;">
-              <span>{post.data.title || titleize(post.id.split('/').pop() || post.id)}</span>&nbsp;<time datetime={htmlDateString(post.date!)}>{shortDate(post.date!)}</time>
-            </h3>
-          </div>
-        </a>
+        <BlogPostPreview
+          title={post.data.title || titleize(post.id.split('/').pop() || post.id)}
+          date={post.date!}
+          permalink={post.permalink}
+        />
       ))}
     </div>
   </div>

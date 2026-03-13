@@ -1,6 +1,8 @@
 ---
 import BaseLayout from './BaseLayout.astro';
-import { readableDate, htmlDateString, getDateFromPostId, getPermalinkFromPost, filterHidden } from '../utils/filters';
+import ReplyBadge from '../components/ReplyBadge.vue';
+import PostNavigation from '../components/PostNavigation.vue';
+import { readableDate, getDateFromPostId, getPermalinkFromPost } from '../utils/filters';
 import { getCollection } from 'astro:content';
 import blogroll from '../data/blogroll';
 
@@ -32,8 +34,6 @@ const currentIndex = visiblePosts.findIndex(p => p.id === postId);
 const previousPost = currentIndex > 0 ? visiblePosts[currentIndex - 1] : null;
 const nextPost = currentIndex < visiblePosts.length - 1 ? visiblePosts[currentIndex + 1] : null;
 
-const emailReplySubject = `Re: ${postTitle}`;
-
 let headerHtml = '';
 if (title) {
   const permalink = getPermalinkFromPost({ id: postId });
@@ -53,33 +53,7 @@ if (title) {
     <slot />
   </article>
 
-  <a href={`mailto:hi@chsmc.org?subject=${encodeURIComponent(emailReplySubject)}`} class="reply-badge">
-    <img src="/images/reply-via-email.gif" alt="Reply via email" class="pixelated invert-for-light-mode" />
-  </a>
+  <ReplyBadge postTitle={postTitle} />
 
-  <nav class="Pagination">
-    <ul class="unstyled">
-      {previousPost && (
-        <li class="Pagination__previous">
-          <a href={previousPost.permalink} class="unstyled">
-            <span class="Pagination__label">Previous</span>
-            {previousPost.data.title && (
-              <span>{previousPost.data.title}</span>
-            )}
-          </a>
-        </li>
-      )}
-
-      {nextPost && (
-        <li class="Pagination__next">
-          <a href={nextPost.permalink} class="unstyled">
-            <span class="Pagination__label">Next</span>
-            {nextPost.data.title && (
-              <span>{nextPost.data.title}</span>
-            )}
-          </a>
-        </li>
-      )}
-    </ul>
-  </nav>
+  <PostNavigation previousPost={previousPost} nextPost={nextPost} />
 </BaseLayout>

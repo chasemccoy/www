@@ -1,5 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Highlight from '../components/Highlight.vue';
+import Pagination from '../components/Pagination.vue';
 import blogroll from '../data/blogroll';
 import { getFeed, getFeaturedPosts, getPostsByYear } from '../utils/collections';
 import { htmlDateString, readableDate, shortDate } from '../utils/filters';
@@ -12,7 +14,6 @@ export async function getStaticPaths() {
   const totalPages = Math.ceil(reversedFeed.length / PAGE_SIZE);
 
   const paths = [];
-  // Pages 2, 3, 4, etc. (page 1 is handled by index.astro)
   for (let i = 2; i <= totalPages; i++) {
     paths.push({
       params: { page: String(i) },
@@ -70,53 +71,21 @@ function shouldShowCite(post: any, index: number, posts: any[]) {
           </article>
         );
       } else if (post.type === 'highlight') {
-        const includeCite = shouldShowCite(post, index, posts);
         return (
-          <article class="Blog__article--highlight">
-            {includeCite && (
-              <cite>
-                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
-                </svg>
-                <span>
-                  {post.source?.url ? (
-                    <>From <a href={post.source.url} target="_blank">{post.source.title}</a> by {post.source.author}:</>
-                  ) : (
-                    <>From {post.source?.title} by {post.source?.author}:</>
-                  )}
-                </span>
-              </cite>
-            )}
-            <blockquote class="unstyled">
-              <Fragment set:html={post.text} />
-            </blockquote>
-            {post.note && (
-              <aside>
-                <svg width="13" height="14" fill="var(--color-chat-bubble)">
-                  <path d="M6 .246c-.175 5.992-1.539 8.89-5.5 13.5 6.117.073 9.128-.306 12.5-3L6 .246Z"></path>
-                </svg>
-                <span>{post.note}</span>
-              </aside>
-            )}
-          </article>
+          <Highlight
+            text={post.text}
+            note={post.note}
+            source={post.source}
+            includeCite={shouldShowCite(post, index, posts)}
+          />
         );
       }
       return null;
     })}
   </section>
 
-  <nav class="Pagination">
-    <ul class="unstyled">
-      {hasNextPage && (
-        <li class="Pagination__previous">
-          <a href={`/${pageNumber + 1}/`} class="unstyled">Older</a>
-        </li>
-      )}
-      {hasPrevPage && (
-        <li class="Pagination__next">
-          <a href={pageNumber === 2 ? '/' : `/${pageNumber - 1}/`} class="unstyled">Newer</a>
-        </li>
-      )}
-    </ul>
-  </nav>
+  <Pagination
+    olderHref={hasNextPage ? `/${pageNumber + 1}/` : undefined}
+    newerHref={hasPrevPage ? (pageNumber === 2 ? '/' : `/${pageNumber - 1}/`) : undefined}
+  />
 </BaseLayout>

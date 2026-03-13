@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import BlogPostPreview from '../../components/BlogPostPreview.vue';
 import blogroll from '../../data/blogroll';
 import { getPostsByYear, getFeaturedPosts } from '../../utils/collections';
 import { htmlDateString, shortDate } from '../../utils/filters';
@@ -35,11 +36,11 @@ const headerHtml = `
 >
   <div class="flex flex-column" style="gap: 12px;">
     {titledPosts.map((post: any) => (
-      <a href={post.permalink} class="unstyled block Blog__postPreview">
-        <h3>
-          <span>{post.data.title}</span>&nbsp;<time datetime={htmlDateString(post.date)}>{shortDate(post.date)}</time>
-        </h3>
-      </a>
+      <BlogPostPreview
+        title={post.data.title}
+        date={post.date}
+        permalink={post.permalink}
+      />
     ))}
   </div>
 

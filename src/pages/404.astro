@@ -1,11 +1,11 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Archives from '../components/Archives.vue';
 import blogroll from '../data/blogroll';
 import { getFeaturedPosts, getPostsByYear } from '../utils/collections';
 
 const featuredPosts = await getFeaturedPosts();
 const postsByYear = await getPostsByYear();
-const years = Object.keys(postsByYear).sort().reverse();
 
 const headerHtml = '<h1>404</h1>';
 ---
@@ -21,28 +21,6 @@ const headerHtml = '<h1>404</h1>';
   <br />
 
   <div style="margin: 1rem 0 0;">
-    <div class="Archives">
-      <div class="Archives__featured">
-        <h3>Featured</h3>
-        <ul class="featured">
-          {featuredPosts.map(post => (
-            <li>
-              <a href={post.permalink}>{post.data.title}</a>
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      <div>
-        <h3>By year</h3>
-        <ul class="Archives__years unstyled inline">
-          {years.map(year => (
-            <li>
-              <a href={`/${year}`}>{year}</a>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </div>
+    <Archives featuredPosts={featuredPosts} postsByYear={postsByYear} />
   </div>
 </BaseLayout>
