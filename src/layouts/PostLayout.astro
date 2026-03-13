@@ -4,7 +4,7 @@ import ReplyBadge from '../components/ReplyBadge.vue';
 import PostNavigation from '../components/PostNavigation.vue';
 import { readableDate, getDateFromPostId, getPermalinkFromPost } from '../utils/filters';
 import { getCollection } from 'astro:content';
-import blogroll from '../data/blogroll';
+import { getBlogroll } from '../utils/collections';
 
 interface Props {
   title?: string;
@@ -16,6 +16,7 @@ interface Props {
 
 const { title, date, postId, featuredPosts = [], postsByYear = {} } = Astro.props;
 
+const blogroll = await getBlogroll();
 const postTitle = title || `Note from ${readableDate(date)}`;
 
 // Get all posts for prev/next navigation

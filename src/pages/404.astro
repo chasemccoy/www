@@ -1,9 +1,9 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Archives from '../components/Archives.vue';
-import blogroll from '../data/blogroll';
-import { getFeaturedPosts, getPostsByYear } from '../utils/collections';
+import { getFeaturedPosts, getPostsByYear, getBlogroll } from '../utils/collections';
 
+const blogroll = await getBlogroll();
 const featuredPosts = await getFeaturedPosts();
 const postsByYear = await getPostsByYear();
 

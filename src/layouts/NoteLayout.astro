@@ -1,6 +1,6 @@
 ---
 import BaseLayout from './BaseLayout.astro';
-import blogroll from '../data/blogroll';
+import { getBlogroll } from '../utils/collections';
 
 interface Props {
   title: string;
@@ -11,6 +11,7 @@ interface Props {
 }
 
 const { title, excerpt, url, featuredPosts = [], postsByYear = {} } = Astro.props;
+const blogroll = await getBlogroll();
 
 let headerHtml = `<h1 class="font-header color-accent"><a href="${url}" class="unstyled">${title}</a></h1>`;
 if (excerpt) {

@@ -1,6 +1,6 @@
 ---
 import BaseLayout from './BaseLayout.astro';
-import blogroll from '../data/blogroll';
+import { getBlogroll } from '../utils/collections';
 
 interface Props {
   title?: string;
@@ -13,6 +13,7 @@ interface Props {
 }
 
 const { title, description, templateClass, js, header, featuredPosts = [], postsByYear = {} } = Astro.props;
+const blogroll = await getBlogroll();
 ---
 <BaseLayout
   title={title}

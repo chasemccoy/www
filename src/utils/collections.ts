@@ -1,5 +1,5 @@
 import { getCollection } from 'astro:content';
-import { filterHidden, filterTagList, groupByYear, getDateFromPostId, getPermalinkFromPost } from './filters';
+import { filterTagList, getDateFromPostId, getPermalinkFromPost } from './filters';
 
 export async function getPosts() {
   const posts = await getCollection('posts');
@@ -59,19 +59,20 @@ export async function getTagList() {
   return filterTagList([...tagSet]);
 }
 
+export async function getBlogroll() {
+  const entries = await getCollection('blogroll');
+  return entries.map(entry => entry.data);
+}
+
 export async function getFeed() {
   const posts = await getVisiblePosts();
   const postsWithType = posts.map(p => ({ ...p, type: 'post' as const }));
 
-  // Try to fetch highlights, but don't fail if unavailable
-  let highlights: any[] = [];
-  try {
-    const { fetchHighlights } = await import('../data/highlights');
-    const raw = await fetchHighlights();
-    highlights = (raw || []).map((h: any) => ({ ...h, type: 'highlight' as const }));
-  } catch {
-    highlights = [];
-  }
+  const highlightEntries = await getCollection('highlights');
+  const highlights = highlightEntries.map(h => ({
+    ...h.data,
+    type: 'highlight' as const,
+  }));
 
   return [...highlights, ...postsWithType].sort(
     (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()

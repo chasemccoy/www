@@ -1,9 +1,9 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import blogroll from '../../data/blogroll';
-import { getVisibleNotes, getTagList, getFeaturedPosts, getPostsByYear } from '../../utils/collections';
+import { getVisibleNotes, getTagList, getFeaturedPosts, getPostsByYear, getBlogroll } from '../../utils/collections';
 import { filterTagList } from '../../utils/filters';
 
+const blogroll = await getBlogroll();
 const notes = await getVisibleNotes();
 const tagList = await getTagList();
 const featuredPosts = await getFeaturedPosts();

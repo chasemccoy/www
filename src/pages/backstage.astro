@@ -1,10 +1,10 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import BlogPostPreview from '../components/BlogPostPreview.vue';
-import blogroll from '../data/blogroll';
-import { getPosts, getFeaturedPosts, getPostsByYear } from '../utils/collections';
+import { getPosts, getFeaturedPosts, getPostsByYear, getBlogroll } from '../utils/collections';
 import { titleize } from '../utils/filters';
 
+const blogroll = await getBlogroll();
 const allPosts = await getPosts();
 const hiddenPosts = allPosts.filter(p => p.data.hidden).reverse();
 const featuredPosts = await getFeaturedPosts();

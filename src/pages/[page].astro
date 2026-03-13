@@ -2,8 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Highlight from '../components/Highlight.vue';
 import Pagination from '../components/Pagination.vue';
-import blogroll from '../data/blogroll';
-import { getFeed, getFeaturedPosts, getPostsByYear } from '../utils/collections';
+import { getFeed, getFeaturedPosts, getPostsByYear, getBlogroll } from '../utils/collections';
 import { htmlDateString, readableDate, shortDate } from '../utils/filters';
 import { render } from 'astro:content';
 
@@ -28,6 +27,7 @@ export async function getStaticPaths() {
 }
 
 const { posts, pageNumber, totalPages } = Astro.props;
+const blogroll = await getBlogroll();
 const featuredPosts = await getFeaturedPosts();
 const postsByYear = await getPostsByYear();
 
