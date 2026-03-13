@@ -1,0 +1,59 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import blogroll from '../../data/blogroll';
+import { getPostsByYear, getFeaturedPosts } from '../../utils/collections';
+import { htmlDateString, shortDate } from '../../utils/filters';
+import { render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const postsByYear = await getPostsByYear();
+  return Object.keys(postsByYear).map(year => ({
+    params: { year },
+    props: { year, posts: postsByYear[year] },
+  }));
+}
+
+const { year, posts } = Astro.props;
+const featuredPosts = await getFeaturedPosts();
+const postsByYear = await getPostsByYear();
+
+const reversedPosts = [...posts].reverse();
+const titledPosts = reversedPosts.filter((p: any) => p.data?.title);
+const untitledPosts = reversedPosts.filter((p: any) => !p.data?.title);
+
+const headerHtml = `
+  <div class="Breadcrumbs mb-12"><span>Archives</span></div>
+  <h1 class="font-header color-accent mb-16">${year}</h1>
+`;
+---
+<BaseLayout
+  templateClass="Blog Blog--archive"
+  header={headerHtml}
+  featuredPosts={featuredPosts}
+  postsByYear={postsByYear}
+  blogroll={blogroll}
+>
+  <div class="flex flex-column" style="gap: 12px;">
+    {titledPosts.map((post: any) => (
+      <a href={post.permalink} class="unstyled block Blog__postPreview">
+        <h3>
+          <span>{post.data.title}</span>&nbsp;<time datetime={htmlDateString(post.date)}>{shortDate(post.date)}</time>
+        </h3>
+      </a>
+    ))}
+  </div>
+
+  <div class="flex flex-column Blog__notes" style="gap: 64px;">
+    {untitledPosts.map(async (post: any) => {
+      const { Content } = await render(post);
+      return (
+        <article class="prose">
+          <time datetime={htmlDateString(post.date)}>
+            <a href={post.permalink} class="unstyled color-caption block">{shortDate(post.date)}</a>
+          </time>
+          <Content />
+        </article>
+      );
+    })}
+  </div>
+</BaseLayout>

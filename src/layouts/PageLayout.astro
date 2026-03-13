@@ -1,0 +1,28 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import blogroll from '../data/blogroll';
+
+interface Props {
+  title?: string;
+  description?: string;
+  templateClass?: string;
+  js?: string;
+  header?: string;
+  featuredPosts?: any[];
+  postsByYear?: Record<string, any[]>;
+}
+
+const { title, description, templateClass, js, header, featuredPosts = [], postsByYear = {} } = Astro.props;
+---
+<BaseLayout
+  title={title}
+  description={description}
+  templateClass={templateClass}
+  js={js}
+  header={header}
+  featuredPosts={featuredPosts}
+  postsByYear={postsByYear}
+  blogroll={blogroll}
+>
+  <slot />
+</BaseLayout>

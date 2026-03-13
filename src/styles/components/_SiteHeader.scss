@@ -1,0 +1,48 @@
+.SiteHeader {
+  a {
+    font-size: 1.2rem;
+    width: fit-content;
+    font-weight: normal;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+
+    svg {
+      animation: load 1s;
+    }
+
+    span {
+      color: var(--color-text);
+    }
+  }
+}
+
+.Breadcrumbs {
+  display: flex;
+  align-items: center;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--color-caption);
+  --link-color: var(--color-caption);
+
+  > * + *:before {
+    content: '/';
+    margin-inline: 6px;
+    color: var(--color-border);
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  > div,
+  > a {
+    display: flex;
+    align-items: center;
+
+    > svg {
+      margin-right: 6px;
+    }
+  }
+}

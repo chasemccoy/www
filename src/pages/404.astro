@@ -1,0 +1,48 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import blogroll from '../data/blogroll';
+import { getFeaturedPosts, getPostsByYear } from '../utils/collections';
+
+const featuredPosts = await getFeaturedPosts();
+const postsByYear = await getPostsByYear();
+const years = Object.keys(postsByYear).sort().reverse();
+
+const headerHtml = '<h1>404</h1>';
+---
+<BaseLayout
+  templateClass="note"
+  header={headerHtml}
+  featuredPosts={featuredPosts}
+  postsByYear={postsByYear}
+  blogroll={blogroll}
+>
+  <p>Sorry! That page doesn't seem to exist. Broken URLs aren't cool, so please <a href="mailto:hi@chsmc.org">let me know how you got here</a>. And in the mean time, you might enjoy browsing the archives below.</p>
+
+  <br />
+
+  <div style="margin: 1rem 0 0;">
+    <div class="Archives">
+      <div class="Archives__featured">
+        <h3>Featured</h3>
+        <ul class="featured">
+          {featuredPosts.map(post => (
+            <li>
+              <a href={post.permalink}>{post.data.title}</a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div>
+        <h3>By year</h3>
+        <ul class="Archives__years unstyled inline">
+          {years.map(year => (
+            <li>
+              <a href={`/${year}`}>{year}</a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </div>
+</BaseLayout>

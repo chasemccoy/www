@@ -1,0 +1,27 @@
+---
+import NoteLayout from '../../layouts/NoteLayout.astro';
+import { getCollection, render } from 'astro:content';
+import { getFeaturedPosts, getPostsByYear } from '../../utils/collections';
+
+export async function getStaticPaths() {
+  const notes = await getCollection('notes');
+  return notes.map(note => ({
+    params: { slug: note.id.replace(/\/index$/, '') },
+    props: { note },
+  }));
+}
+
+const { note } = Astro.props;
+const { Content } = await render(note);
+const featuredPosts = await getFeaturedPosts();
+const postsByYear = await getPostsByYear();
+---
+<NoteLayout
+  title={note.data.title || note.id}
+  excerpt={note.data.excerpt}
+  url={`/notes/${note.id.replace(/\/index$/, '')}/`}
+  featuredPosts={featuredPosts}
+  postsByYear={postsByYear}
+>
+  <Content />
+</NoteLayout>

@@ -1,0 +1,20 @@
+@use '../theme' as *;
+
+.Content {
+  max-width: 100%;
+  flex-grow: 1;
+  min-width: 0;
+
+  @include small {
+    max-width: var(--content-width);
+  }
+}
+
+#header {
+  max-width: 100%;
+  flex-grow: 1;
+
+  @include small {
+    max-width: var(--content-width);
+  }
+}

@@ -1,0 +1,62 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import blogroll from '../../data/blogroll';
+import { getVisibleNotes, getTagList, getFeaturedPosts, getPostsByYear } from '../../utils/collections';
+import { filterTagList } from '../../utils/filters';
+
+const notes = await getVisibleNotes();
+const tagList = await getTagList();
+const featuredPosts = await getFeaturedPosts();
+const postsByYear = await getPostsByYear();
+
+const sortedNotes = [...notes].sort((a, b) =>
+  (a.data.title || '').localeCompare(b.data.title || '')
+);
+
+const notesWithNoTags = notes.filter(n => filterTagList(n.data.tags || []).length === 0);
+---
+<BaseLayout
+  title="Notes"
+  templateClass="notes"
+  js="filter-container"
+  featuredPosts={featuredPosts}
+  postsByYear={postsByYear}
+  blogroll={blogroll}
+>
+  <p class="lead">
+    Welcome to my <a href="/notes/digital-gardens" class="italic">digital garden</a>, a collection of evergreen resources and knowledge gathered in the field.
+  </p>
+
+  <filter-container oninit delimiter="," filter-mode="all">
+    <form aria-label="Filter by tag">
+      <input type="radio" name="tag" value="" data-filter-key="tags" id="all" checked />
+      <label for="all">all&nbsp;{notes.length}</label>
+
+      <input type="radio" name="tag" value="misc" data-filter-key="tags" id="misc" />
+      <label for="misc">#misc&nbsp;{notesWithNoTags.length}</label>
+
+      {tagList.sort().map(tag => {
+        const count = notes.filter(n => (n.data.tags || []).includes(tag)).length;
+        return (
+          <>
+            <input type="radio" name="tag" value={tag} data-filter-key="tags" id={tag} />
+            <label for={tag}>#{tag}&nbsp;{count}</label>
+          </>
+        );
+      })}
+    </form>
+
+    <section class="note-list">
+      {sortedNotes.map(note => {
+        const tags = filterTagList(note.data.tags || []);
+        const filterTags = tags.length === 0 ? 'misc' : tags.join(',');
+        return (
+          <a href={`/notes/${note.id.replace(/\/index$/, '')}/`} class="note-tile unstyled" data-filter-tags={filterTags}>
+            <h3>{note.data.title}</h3>
+            <p>{note.data.excerpt}</p>
+          </a>
+        );
+      })}
+    </section>
+  </filter-container>
+</BaseLayout>

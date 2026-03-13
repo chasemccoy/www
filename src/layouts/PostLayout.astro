@@ -1,0 +1,85 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import { readableDate, htmlDateString, getDateFromPostId, getPermalinkFromPost, filterHidden } from '../utils/filters';
+import { getCollection } from 'astro:content';
+import blogroll from '../data/blogroll';
+
+interface Props {
+  title?: string;
+  date: Date | string;
+  postId: string;
+  featuredPosts?: any[];
+  postsByYear?: Record<string, any[]>;
+}
+
+const { title, date, postId, featuredPosts = [], postsByYear = {} } = Astro.props;
+
+const postTitle = title || `Note from ${readableDate(date)}`;
+
+// Get all posts for prev/next navigation
+const allPosts = await getCollection('posts');
+const visiblePosts = allPosts
+  .filter(p => !p.data.hidden)
+  .map(p => ({
+    ...p,
+    postDate: getDateFromPostId(p.id),
+    permalink: getPermalinkFromPost(p),
+  }))
+  .filter(p => p.postDate)
+  .sort((a, b) => a.postDate!.getTime() - b.postDate!.getTime());
+
+const currentIndex = visiblePosts.findIndex(p => p.id === postId);
+const previousPost = currentIndex > 0 ? visiblePosts[currentIndex - 1] : null;
+const nextPost = currentIndex < visiblePosts.length - 1 ? visiblePosts[currentIndex + 1] : null;
+
+const emailReplySubject = `Re: ${postTitle}`;
+
+let headerHtml = '';
+if (title) {
+  const permalink = getPermalinkFromPost({ id: postId });
+  headerHtml = `<h1 class="font-header"><a href="${permalink}" class="unstyled">${title}</a></h1>`;
+}
+---
+<BaseLayout
+  title={title}
+  templateClass="blog post"
+  date={date}
+  header={headerHtml}
+  featuredPosts={featuredPosts}
+  postsByYear={postsByYear}
+  blogroll={blogroll}
+>
+  <article class="Article prose">
+    <slot />
+  </article>
+
+  <a href={`mailto:hi@chsmc.org?subject=${encodeURIComponent(emailReplySubject)}`} class="reply-badge">
+    <img src="/images/reply-via-email.gif" alt="Reply via email" class="pixelated invert-for-light-mode" />
+  </a>
+
+  <nav class="Pagination">
+    <ul class="unstyled">
+      {previousPost && (
+        <li class="Pagination__previous">
+          <a href={previousPost.permalink} class="unstyled">
+            <span class="Pagination__label">Previous</span>
+            {previousPost.data.title && (
+              <span>{previousPost.data.title}</span>
+            )}
+          </a>
+        </li>
+      )}
+
+      {nextPost && (
+        <li class="Pagination__next">
+          <a href={nextPost.permalink} class="unstyled">
+            <span class="Pagination__label">Next</span>
+            {nextPost.data.title && (
+              <span>{nextPost.data.title}</span>
+            )}
+          </a>
+        </li>
+      )}
+    </ul>
+  </nav>
+</BaseLayout>

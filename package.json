@@ -3,14 +3,11 @@
   "version": "2024",
   "type": "module",
   "scripts": {
-    "build": "ENVIRONMENT=production yarn clean && concurrently \"eleventy\" \"yarn build:css\"",
-    "watch": "eleventy --watch",
-    "serve": "eleventy --serve",
-    "start": "concurrently \"eleventy --serve --quiet\" \"yarn watch:css\"",
-    "debug": "DEBUG=* eleventy",
-    "watch:css": "sass --watch src/css:src/_includes/styles",
-    "build:css": "sass src/css:src/_includes/styles",
-    "clean": "rm -rf _site"
+    "dev": "astro dev --port 1995",
+    "start": "astro dev --port 1995",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
   },
   "repository": {
     "type": "git",
@@ -24,24 +21,14 @@
   "license": "MIT",
   "homepage": "https://github.com/chasemccoy/www",
   "dependencies": {
-    "@11ty/eleventy": "3.1.2",
-    "@11ty/eleventy-fetch": "5.1.0",
-    "@11ty/eleventy-img": "6.0.4",
-    "@11ty/eleventy-plugin-rss": "2.0.4",
-    "@11ty/eleventy-plugin-syntaxhighlight": "5.0.2",
+    "@astrojs/rss": "^4.0.0",
+    "@astrojs/vue": "^5.0.0",
     "@date-fns/utc": "^2.1.1",
+    "astro": "^5.9.5",
     "date-fns": "^4.1.0",
-    "eleventy-plugin-embed-twitter": "1.4.2",
-    "eleventy-plugin-youtube-embed": "1.10.2",
-    "jsx-async-runtime": "^2.0.0",
-    "markdown-it": "14.1.0",
-    "markdown-it-anchor": "9.2.0",
-    "sass": "1.97.1",
-    "slugify": "1.6.6",
-    "tsx": "^4.20.6"
-  },
-  "devDependencies": {
-    "@netlify/plugin-lighthouse": "6.0.1",
-    "concurrently": "9.2.0"
+    "rehype-autolink-headings": "^7.1.0",
+    "rehype-slug": "^6.0.0",
+    "sass": "^1.97.1",
+    "vue": "^3.5.0"
   }
 }

@@ -1,0 +1,37 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import blogroll from '../data/blogroll';
+
+interface Props {
+  title: string;
+  excerpt?: string;
+  url: string;
+  featuredPosts?: any[];
+  postsByYear?: Record<string, any[]>;
+}
+
+const { title, excerpt, url, featuredPosts = [], postsByYear = {} } = Astro.props;
+
+let headerHtml = `<h1 class="font-header color-accent"><a href="${url}" class="unstyled">${title}</a></h1>`;
+if (excerpt) {
+  headerHtml += `<p class="lead color-caption">${excerpt}</p>`;
+}
+---
+<BaseLayout
+  title={title}
+  templateClass="note"
+  header={headerHtml}
+  featuredPosts={featuredPosts}
+  postsByYear={postsByYear}
+  blogroll={blogroll}
+>
+  <section class="prose">
+    <table-of-contents hidden>
+      <h2>Table of Contents</h2>
+    </table-of-contents>
+
+    <article class="prose">
+      <slot />
+    </article>
+  </section>
+</BaseLayout>
