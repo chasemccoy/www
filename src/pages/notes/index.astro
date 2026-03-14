@@ -1,13 +1,13 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { getVisibleNotes, getTagList, getFeaturedPosts, getPostsByYear, getBlogroll } from '../../utils/collections';
+import { getVisibleNotes, getTagList, getFeaturedPosts, getYears, getBlogroll } from '../../utils/collections';
 import { filterTagList } from '../../utils/filters';
 
 const blogroll = await getBlogroll();
 const notes = await getVisibleNotes();
 const tagList = await getTagList();
 const featuredPosts = await getFeaturedPosts();
-const postsByYear = await getPostsByYear();
+const years = await getYears();
 
 const sortedNotes = [...notes].sort((a, b) =>
   (a.data.title || '').localeCompare(b.data.title || '')
@@ -20,7 +20,7 @@ const notesWithNoTags = notes.filter(n => filterTagList(n.data.tags || []).lengt
   templateClass="notes"
   js="filter-container"
   featuredPosts={featuredPosts}
-  postsByYear={postsByYear}
+  years={years}
   blogroll={blogroll}
 >
   <p class="lead">

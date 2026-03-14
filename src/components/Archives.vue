@@ -6,10 +6,8 @@ interface FeaturedPost {
 
 const props = defineProps<{
   featuredPosts: FeaturedPost[];
-  postsByYear: Record<string, any[]>;
+  years: string[];
 }>();
-
-const years = Object.keys(props.postsByYear).sort().reverse();
 </script>
 
 <template>

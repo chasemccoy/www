@@ -11,11 +11,11 @@ interface Props {
   js?: string;
   header?: string;
   featuredPosts?: any[];
-  postsByYear?: Record<string, any[]>;
+  years?: string[];
   blogroll?: any[];
 }
 
-const { title, description, templateClass = 'note', date, js, header, featuredPosts = [], postsByYear = {}, blogroll = [] } = Astro.props;
+const { title, description, templateClass = 'note', date, js, header, featuredPosts = [], years = [], blogroll = [] } = Astro.props;
 const pageDate = date ? new Date(date) : new Date();
 ---
 <HtmlLayout title={title} description={description} templateClass={templateClass} date={date} js={js}>
@@ -34,7 +34,7 @@ const pageDate = date ? new Date(date) : new Date();
       </div>
 
       <aside class="Sidebar Sidebar--mobile">
-        <Sidebar mobile={true} featuredPosts={featuredPosts} postsByYear={postsByYear} blogroll={blogroll} />
+        <Sidebar mobile={true} featuredPosts={featuredPosts} years={years} blogroll={blogroll} />
       </aside>
     </header>
 
@@ -51,7 +51,7 @@ const pageDate = date ? new Date(date) : new Date();
     </main>
 
     <aside class="Sidebar Sidebar--desktop">
-      <Sidebar mobile={false} featuredPosts={featuredPosts} postsByYear={postsByYear} blogroll={blogroll} />
+      <Sidebar mobile={false} featuredPosts={featuredPosts} years={years} blogroll={blogroll} />
     </aside>
   </div>
 </HtmlLayout>

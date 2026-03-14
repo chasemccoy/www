@@ -1,7 +1,7 @@
 ---
 import NoteLayout from '../../layouts/NoteLayout.astro';
 import { getCollection, render } from 'astro:content';
-import { getFeaturedPosts, getPostsByYear } from '../../utils/collections';
+import { getFeaturedPosts, getYears } from '../../utils/collections';
 
 export async function getStaticPaths() {
   const notes = await getCollection('notes');
@@ -14,14 +14,14 @@ export async function getStaticPaths() {
 const { note } = Astro.props;
 const { Content } = await render(note);
 const featuredPosts = await getFeaturedPosts();
-const postsByYear = await getPostsByYear();
+const years = await getYears();
 ---
 <NoteLayout
   title={note.data.title || note.id}
   excerpt={note.data.excerpt}
   url={`/notes/${note.id.replace(/\/index$/, '')}/`}
   featuredPosts={featuredPosts}
-  postsByYear={postsByYear}
+  years={years}
 >
   <Content />
 </NoteLayout>

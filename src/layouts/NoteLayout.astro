@@ -7,10 +7,10 @@ interface Props {
   excerpt?: string;
   url: string;
   featuredPosts?: any[];
-  postsByYear?: Record<string, any[]>;
+  years?: string[];
 }
 
-const { title, excerpt, url, featuredPosts = [], postsByYear = {} } = Astro.props;
+const { title, excerpt, url, featuredPosts = [], years = [] } = Astro.props;
 const blogroll = await getBlogroll();
 
 let headerHtml = `<h1 class="font-header color-accent"><a href="${url}" class="unstyled">${title}</a></h1>`;
@@ -23,7 +23,7 @@ if (excerpt) {
   templateClass="note"
   header={headerHtml}
   featuredPosts={featuredPosts}
-  postsByYear={postsByYear}
+  years={years}
   blogroll={blogroll}
 >
   <section class="prose">

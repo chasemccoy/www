@@ -39,6 +39,15 @@ export async function getPostsByYear() {
   return results;
 }
 
+export async function getYears() {
+  const posts = await getVisiblePosts();
+  const yearSet = new Set<string>();
+  for (const post of posts) {
+    yearSet.add(post.date!.getUTCFullYear().toString());
+  }
+  return [...yearSet].sort().reverse();
+}
+
 export async function getNotes() {
   const notes = await getCollection('notes');
   return notes;

@@ -9,10 +9,10 @@ interface Props {
   js?: string;
   header?: string;
   featuredPosts?: any[];
-  postsByYear?: Record<string, any[]>;
+  years?: string[];
 }
 
-const { title, description, templateClass, js, header, featuredPosts = [], postsByYear = {} } = Astro.props;
+const { title, description, templateClass, js, header, featuredPosts = [], years = [] } = Astro.props;
 const blogroll = await getBlogroll();
 ---
 <BaseLayout
@@ -22,7 +22,7 @@ const blogroll = await getBlogroll();
   js={js}
   header={header}
   featuredPosts={featuredPosts}
-  postsByYear={postsByYear}
+  years={years}
   blogroll={blogroll}
 >
   <slot />

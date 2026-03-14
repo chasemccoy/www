@@ -3,14 +3,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import BlogPost from '../components/BlogPost.vue';
 import Highlight from '../components/Highlight.vue';
 import Pagination from '../components/Pagination.vue';
-import { getFeed, getFeaturedPosts, getPostsByYear, getBlogroll } from '../utils/collections';
+import { getFeed, getFeaturedPosts, getYears, getBlogroll } from '../utils/collections';
 import { htmlDateString, readableDate, shortDate } from '../utils/filters';
 import { render } from 'astro:content';
 
 const blogroll = await getBlogroll();
 const feed = await getFeed();
 const featuredPosts = await getFeaturedPosts();
-const postsByYear = await getPostsByYear();
+const years = await getYears();
 
 const PAGE_SIZE = 40;
 const reversedFeed = [...feed].reverse();
@@ -24,7 +24,7 @@ function shouldShowCite(post: any, index: number, posts: any[]) {
   return isFirstInSequence || !isInSequence;
 }
 ---
-<BaseLayout templateClass="home" featuredPosts={featuredPosts} postsByYear={postsByYear} blogroll={blogroll}>
+<BaseLayout templateClass="home" featuredPosts={featuredPosts} years={years} blogroll={blogroll}>
   <section class="Blog Blog--featured">
     {posts.map(async (post, index) => {
       if (post.type === 'post') {

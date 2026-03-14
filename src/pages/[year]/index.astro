@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import BlogPostPreview from '../../components/BlogPostPreview.vue';
-import { getPostsByYear, getFeaturedPosts, getBlogroll } from '../../utils/collections';
+import { getPostsByYear, getFeaturedPosts, getYears, getBlogroll } from '../../utils/collections';
 import { htmlDateString, shortDate } from '../../utils/filters';
 import { render } from 'astro:content';
 
@@ -16,7 +16,7 @@ export async function getStaticPaths() {
 const { year, posts } = Astro.props;
 const blogroll = await getBlogroll();
 const featuredPosts = await getFeaturedPosts();
-const postsByYear = await getPostsByYear();
+const years = await getYears();
 
 const reversedPosts = [...posts].reverse();
 const titledPosts = reversedPosts.filter((p: any) => p.data?.title);
@@ -31,7 +31,7 @@ const headerHtml = `
   templateClass="Blog Blog--archive"
   header={headerHtml}
   featuredPosts={featuredPosts}
-  postsByYear={postsByYear}
+  years={years}
   blogroll={blogroll}
 >
   <div class="flex flex-column" style="gap: 12px;">

@@ -14,16 +14,14 @@ interface BlogrollItem {
 const props = withDefaults(defineProps<{
   mobile?: boolean;
   featuredPosts?: FeaturedPost[];
-  postsByYear?: Record<string, any[]>;
+  years?: string[];
   blogroll?: BlogrollItem[];
 }>(), {
   mobile: false,
   featuredPosts: () => [],
-  postsByYear: () => ({}),
+  years: () => [],
   blogroll: () => [],
 });
-
-const years = Object.keys(props.postsByYear).sort().reverse();
 </script>
 
 <template>

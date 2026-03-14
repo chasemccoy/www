@@ -1,11 +1,11 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Archives from '../components/Archives.vue';
-import { getFeaturedPosts, getPostsByYear, getBlogroll } from '../utils/collections';
+import { getFeaturedPosts, getYears, getBlogroll } from '../utils/collections';
 
 const blogroll = await getBlogroll();
 const featuredPosts = await getFeaturedPosts();
-const postsByYear = await getPostsByYear();
+const years = await getYears();
 
 const headerHtml = '<h1>404</h1>';
 ---
@@ -13,7 +13,7 @@ const headerHtml = '<h1>404</h1>';
   templateClass="note"
   header={headerHtml}
   featuredPosts={featuredPosts}
-  postsByYear={postsByYear}
+  years={years}
   blogroll={blogroll}
 >
   <p>Sorry! That page doesn't seem to exist. Broken URLs aren't cool, so please <a href="mailto:hi@chsmc.org">let me know how you got here</a>. And in the mean time, you might enjoy browsing the archives below.</p>
@@ -21,6 +21,6 @@ const headerHtml = '<h1>404</h1>';
   <br />
 
   <div style="margin: 1rem 0 0;">
-    <Archives featuredPosts={featuredPosts} postsByYear={postsByYear} />
+    <Archives featuredPosts={featuredPosts} years={years} />
   </div>
 </BaseLayout>

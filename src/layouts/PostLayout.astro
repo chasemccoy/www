@@ -11,10 +11,10 @@ interface Props {
   date: Date | string;
   postId: string;
   featuredPosts?: any[];
-  postsByYear?: Record<string, any[]>;
+  years?: string[];
 }
 
-const { title, date, postId, featuredPosts = [], postsByYear = {} } = Astro.props;
+const { title, date, postId, featuredPosts = [], years = [] } = Astro.props;
 
 const blogroll = await getBlogroll();
 const postTitle = title || `Note from ${readableDate(date)}`;
@@ -47,7 +47,7 @@ if (title) {
   date={date}
   header={headerHtml}
   featuredPosts={featuredPosts}
-  postsByYear={postsByYear}
+  years={years}
   blogroll={blogroll}
 >
   <article class="Article prose">
