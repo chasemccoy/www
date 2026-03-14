@@ -14,13 +14,14 @@ interface Props {
 
 const { title, description, templateClass, js, header, featuredPosts = [], years = [] } = Astro.props;
 const blogroll = await getBlogroll();
+const headerHtml = header || (title ? `<h1 class="font-header">${title}</h1>` : undefined);
 ---
 <BaseLayout
   title={title}
   description={description}
   templateClass={templateClass}
   js={js}
-  header={header}
+  header={headerHtml}
   featuredPosts={featuredPosts}
   years={years}
   blogroll={blogroll}
