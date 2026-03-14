@@ -25,5 +25,7 @@ const blogroll = await getBlogroll();
   years={years}
   blogroll={blogroll}
 >
-  <slot />
+  <article class="Article prose">
+    <slot />
+  </article>
 </BaseLayout>
