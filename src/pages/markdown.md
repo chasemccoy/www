@@ -1,7 +1,6 @@
 ---
 title: Markdown
-permalink: /markdown/
-layout: layouts/post.jsx
+layout: ../layouts/PageLayout.astro
 ---
 
 <p class="lead color-caption">
