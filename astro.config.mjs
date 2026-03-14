@@ -5,7 +5,15 @@ import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 
 export default defineConfig({
   site: 'https://chsmc.org',
-  integrations: [vue()],
+  integrations: [
+    vue({
+      template: {
+        compilerOptions: {
+          isCustomElement: (tag) => tag.includes('-'),
+        },
+      },
+    }),
+  ],
   server: {
     port: 1995,
   },
