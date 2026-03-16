@@ -49,14 +49,13 @@ defineProps<{
   color: var(--color-caption);
 
   cite {
-    font-size: 1em;
+    font-size: 0.9rem;
     font-style: normal;
     margin-bottom: 6px;
     color: var(--color-caption);
     display: flex;
     align-items: flex-start;
     gap: 6px;
-    font-size: 0.9rem;
     font-family: var(--font-code);
 
     @include small {
