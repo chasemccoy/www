@@ -2,7 +2,6 @@
 import PostLayout from '../layouts/PostLayout.astro';
 import { getCollection, render } from 'astro:content';
 import { getDateFromPostId, getSlugFromPostId } from '../utils/filters';
-import { getFeaturedPosts, getYears } from '../utils/collections';
 
 export async function getStaticPaths() {
   const posts = await getCollection('posts');
@@ -26,15 +25,11 @@ export async function getStaticPaths() {
 
 const { post, date } = Astro.props;
 const { Content } = await render(post);
-const featuredPosts = await getFeaturedPosts();
-const years = await getYears();
 ---
 <PostLayout
   title={post.data.title}
   date={date}
   postId={post.id}
-  featuredPosts={featuredPosts}
-  years={years}
 >
   <Content />
 </PostLayout>

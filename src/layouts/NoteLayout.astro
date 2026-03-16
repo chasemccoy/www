@@ -1,17 +1,13 @@
 ---
 import BaseLayout from './BaseLayout.astro';
-import { getBlogroll } from '../utils/collections';
 
 interface Props {
   title: string;
   excerpt?: string;
   url: string;
-  featuredPosts?: any[];
-  years?: string[];
 }
 
-const { title, excerpt, url, featuredPosts = [], years = [] } = Astro.props;
-const blogroll = await getBlogroll();
+const { title, excerpt, url } = Astro.props;
 
 let headerHtml = `<h1 class="font-header color-accent"><a href="${url}" class="unstyled">${title}</a></h1>`;
 if (excerpt) {
@@ -22,9 +18,6 @@ if (excerpt) {
   title={title}
   templateClass="note"
   header={headerHtml}
-  featuredPosts={featuredPosts}
-  years={years}
-  blogroll={blogroll}
 >
   <section class="prose">
     <table-of-contents hidden>

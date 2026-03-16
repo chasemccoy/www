@@ -2,6 +2,7 @@
 import HtmlLayout from './HtmlLayout.astro';
 import Sidebar from '../components/Sidebar.vue';
 import { htmlDateString, readableDate } from '../utils/filters';
+import { getFeaturedPosts, getYears, getBlogroll } from '../utils/collections';
 
 interface Props {
   title?: string;
@@ -10,12 +11,12 @@ interface Props {
   date?: Date | string;
   js?: string;
   header?: string;
-  featuredPosts?: any[];
-  years?: string[];
-  blogroll?: any[];
 }
 
-const { title, description, templateClass = 'note', date, js, header, featuredPosts = [], years = [], blogroll = [] } = Astro.props;
+const { title, description, templateClass = 'note', date, js, header } = Astro.props;
+const featuredPosts = await getFeaturedPosts();
+const years = await getYears();
+const blogroll = await getBlogroll();
 const pageDate = date ? new Date(date) : new Date();
 ---
 <HtmlLayout title={title} description={description} templateClass={templateClass} date={date} js={js}>

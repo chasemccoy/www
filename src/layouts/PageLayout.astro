@@ -1,6 +1,5 @@
 ---
 import BaseLayout from './BaseLayout.astro';
-import { getBlogroll } from '../utils/collections';
 
 interface Props {
   title?: string;
@@ -8,12 +7,9 @@ interface Props {
   templateClass?: string;
   js?: string;
   header?: string;
-  featuredPosts?: any[];
-  years?: string[];
 }
 
-const { title, description, templateClass, js, header, featuredPosts = [], years = [] } = Astro.props;
-const blogroll = await getBlogroll();
+const { title, description, templateClass, js, header } = Astro.props;
 const headerHtml = header || (title ? `<h1 class="font-header">${title}</h1>` : undefined);
 ---
 <BaseLayout
@@ -22,9 +18,6 @@ const headerHtml = header || (title ? `<h1 class="font-header">${title}</h1>` : 
   templateClass={templateClass}
   js={js}
   header={headerHtml}
-  featuredPosts={featuredPosts}
-  years={years}
-  blogroll={blogroll}
 >
   <article class="Article prose">
     <slot />

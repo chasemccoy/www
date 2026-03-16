@@ -1,21 +1,15 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import BlogPostPreview from '../components/BlogPostPreview.vue';
-import { getPosts, getFeaturedPosts, getYears, getBlogroll } from '../utils/collections';
+import { getPosts } from '../utils/collections';
 import { titleize } from '../utils/filters';
 
-const blogroll = await getBlogroll();
 const allPosts = await getPosts();
 const hiddenPosts = allPosts.filter(p => p.data.hidden).reverse();
-const featuredPosts = await getFeaturedPosts();
-const years = await getYears();
 ---
 <BaseLayout
   title="Backstage"
   templateClass="Blog"
-  featuredPosts={featuredPosts}
-  years={years}
-  blogroll={blogroll}
 >
   <div class="prose">
     <div class="Breadcrumbs mb-12">
