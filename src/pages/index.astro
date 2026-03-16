@@ -27,7 +27,7 @@ function shouldShowCite(post: any, index: number, posts: any[]) {
       if (post.type === 'post') {
         const { Content } = await render(post);
         return (
-          <article class={`prose ${post.data.title ? 'Blog__article--longForm' : ''}`}>
+          <article class={`Article prose ${post.data.title ? 'Blog__article--longForm' : ''}`}>
             {post.data.title ? (
               <header>
                 <div class="Breadcrumbs">
