@@ -10,8 +10,6 @@ const posts = defineCollection({
     featured: z.boolean().optional(),
     hidden: z.boolean().optional(),
     tags: z.array(z.string()).optional().default([]),
-    layout: z.string().optional(),
-    permalink: z.string().optional(),
   }),
 });
 
@@ -20,9 +18,8 @@ const notes = defineCollection({
   schema: z.object({
     title: z.string().optional(),
     excerpt: z.string().nullable().optional(),
+    hidden: z.boolean().optional(),
     tags: z.array(z.string()).optional().default([]),
-    layout: z.string().optional(),
-    permalink: z.string().optional(),
   }),
 });
 

@@ -11,24 +11,14 @@ export function capitalize(string: string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-export function groupByYear(items: any[]) {
-  const groups: Record<string, any[]> = {};
-  for (const item of items) {
-    const date = new Date(item.data?.date || item.date);
-    const year = date.getUTCFullYear().toString();
-    if (!groups[year]) groups[year] = [];
-    groups[year].push(item);
-  }
-  const keys = Object.keys(groups).sort().reverse();
-  const results: Record<string, any[]> = {};
-  keys.forEach((key) => (results[key] = groups[key]));
-  return results;
-}
-
-export function filterHidden(items: any[]) {
-  return items.filter((item) =>
-    item.data ? item.data.hidden !== true : true
-  );
+export function shouldShowCite(post: any, index: number, posts: any[]) {
+  const isFirstInSequence =
+    posts[index + 1]?.source?.title === post.source?.title &&
+    posts[index - 1]?.source?.title !== post.source?.title;
+  const isInSequence =
+    posts[index - 1]?.source?.title === post.source?.title ||
+    posts[index + 1]?.source?.title === post.source?.title;
+  return isFirstInSequence || !isInSequence;
 }
 
 export function readableDate(dateObj: Date | string) {

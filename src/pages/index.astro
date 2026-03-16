@@ -1,10 +1,9 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import BlogPost from '../components/BlogPost.vue';
 import Highlight from '../components/Highlight.vue';
 import Pagination from '../components/Pagination.vue';
 import { getFeed } from '../utils/collections';
-import { htmlDateString, readableDate, shortDate } from '../utils/filters';
+import { htmlDateString, readableDate, shortDate, shouldShowCite } from '../utils/filters';
 import { render } from 'astro:content';
 
 const feed = await getFeed();
@@ -14,12 +13,6 @@ const reversedFeed = [...feed].reverse();
 const posts = reversedFeed.slice(0, PAGE_SIZE);
 const totalPages = Math.ceil(reversedFeed.length / PAGE_SIZE);
 const hasNextPage = totalPages > 1;
-
-function shouldShowCite(post: any, index: number, posts: any[]) {
-  const isFirstInSequence = posts[index + 1]?.source?.title === post.source?.title && posts[index - 1]?.source?.title !== post.source?.title;
-  const isInSequence = posts[index - 1]?.source?.title === post.source?.title || posts[index + 1]?.source?.title === post.source?.title;
-  return isFirstInSequence || !isInSequence;
-}
 ---
 <BaseLayout templateClass="home">
   <section class="Blog Blog--featured">
