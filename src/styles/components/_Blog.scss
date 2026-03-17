@@ -18,10 +18,6 @@
     margin-top: 5rem;
   }
 
-  .Blog__article--highlight + .Blog__article--highlight {
-    margin-top: 3rem;
-  }
-
   header {
     display: grid;
     gap: 0.75rem;
@@ -32,12 +28,11 @@
     margin-bottom: -0.5rem;
   }
 
-  .Blog__article--longForm + .Blog__article--longForm,
-  .Blog__article--longForm + .Blog__article--highlight {
+  .Blog__article--longForm + .Blog__article--longForm {
     margin-top: 5rem;
   }
 
-  article:not(.Blog__article--highlight):after {
+  article:after {
     content: ':::';
     color: var(--color-border);
     margin-top: 1rem;

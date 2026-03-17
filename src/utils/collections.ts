@@ -1,11 +1,6 @@
-import { getCollection, type CollectionEntry } from 'astro:content';
+import { getCollection } from 'astro:content';
 import { filterTagList } from './filters';
-
-type HighlightData = CollectionEntry<'highlights'>['data'];
-
-function toHighlightFeedItem(highlight: HighlightData): HighlightData & { type: 'highlight' } {
-  return { ...highlight, type: 'highlight' };
-}
+import type { PostLink } from '../types';
 
 export async function getPosts() {
   const posts = await getCollection('posts');
@@ -29,10 +24,14 @@ export async function getVisiblePosts() {
   return posts.filter(p => !p.data.hidden);
 }
 
-export async function getFeaturedPosts() {
+export async function getFeaturedPosts(): Promise<PostLink[]> {
   const posts = await getVisiblePosts();
   return posts
     .filter(p => p.data.title && p.data.featured)
+    .map<PostLink>(p => ({
+      permalink: p.permalink,
+      title: p.data.title,
+    }))
     .reverse();
 }
 
@@ -83,17 +82,10 @@ export async function getBlogroll() {
   return entries.map(entry => entry.data);
 }
 
-export async function getHighlights() {
-  const entries = await getCollection('highlights', () => true);
-  return entries.map(h => toHighlightFeedItem(h.data));
-}
-
 export async function getFeed() {
   const posts = await getVisiblePosts();
-  const postsWithType = posts.map(toPostFeedItem);
-  const highlights = await getHighlights();
-
-  return [...highlights, ...postsWithType].sort(
-    (a, b) => a.date.getTime() - b.date.getTime()
-  );
+  // Latest posts first
+  return posts
+    .map(toPostFeedItem)
+    .sort((a, b) => b.date.getTime() - a.date.getTime());
 }

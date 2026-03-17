@@ -1,60 +1,46 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Highlight from '../components/Highlight.vue';
 import Pagination from '../components/Pagination.vue';
 import { getFeed } from '../utils/collections';
-import { htmlDateString, readableDate, shortDate, shouldShowCite } from '../utils/filters';
+import { htmlDateString, readableDate, shortDate } from '../utils/filters';
 import { render } from 'astro:content';
 
 const feed = await getFeed();
 
 const PAGE_SIZE = 40;
-const reversedFeed = [...feed].reverse();
-const posts = reversedFeed.slice(0, PAGE_SIZE);
-const totalPages = Math.ceil(reversedFeed.length / PAGE_SIZE);
+const posts = feed.slice(0, PAGE_SIZE);
+const totalPages = Math.ceil(feed.length / PAGE_SIZE);
 const hasNextPage = totalPages > 1;
 ---
 <BaseLayout templateClass="home">
   <section class="Blog Blog--featured">
-    {posts.map(async (post, index) => {
-      if (post.type === 'post') {
-        const { Content } = await render(post);
-        return (
-          <article class={`Article prose ${post.data.title ? 'Blog__article--longForm' : ''}`}>
-            {post.data.title ? (
-              <header>
-                <div class="Breadcrumbs">
-                  <div>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline">
-                      <circle cx="12" cy="12" r="10"></circle>
-                      <polyline points="12 6 12 12 16 14"></polyline>
-                    </svg>
-                    <time datetime={htmlDateString(post.date!)}>{readableDate(post.date!)}</time>
-                  </div>
+    {posts.map(async post => {
+      const { Content } = await render(post);
+      return (
+        <article class={`Article prose ${post.data.title ? 'Blog__article--longForm' : ''}`}>
+          {post.data.title ? (
+            <header>
+              <div class="Breadcrumbs">
+                <div>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12 6 12 12 16 14"></polyline>
+                  </svg>
+                  <time datetime={htmlDateString(post.date)}>{readableDate(post.date)}</time>
                 </div>
-                <h1 class="font-header">
-                  <a href={post.permalink} class="unstyled">{post.data.title}</a>
-                </h1>
-              </header>
-            ) : (
-              <time datetime={htmlDateString(post.date!)}>
-                <a href={post.permalink} class="unstyled color-caption block">{shortDate(post.date!)}</a>
-              </time>
-            )}
-            <Content />
-          </article>
-        );
-      } else if (post.type === 'highlight') {
-        return (
-          <Highlight
-            text={post.text}
-            note={post.note}
-            source={post.source}
-            includeCite={shouldShowCite(post, index, posts)}
-          />
-        );
-      }
-      return null;
+              </div>
+              <h1 class="font-header">
+                <a href={post.permalink} class="unstyled">{post.data.title}</a>
+              </h1>
+            </header>
+          ) : (
+            <time datetime={htmlDateString(post.date)}>
+              <a href={post.permalink} class="unstyled color-caption block">{shortDate(post.date)}</a>
+            </time>
+          )}
+          <Content />
+        </article>
+      );
     })}
   </section>
 

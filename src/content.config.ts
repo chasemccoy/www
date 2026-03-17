@@ -25,23 +25,35 @@ function getPermalinkFromPostId(id: string): string {
 }
 
 const posts = defineCollection({
-  loader: async () => {
-    const paths = await fg('**/*.md', { cwd: './posts' });
-    return Promise.all(
-      paths.map(async path => {
+  loader: {
+    name: 'posts-loader',
+    load: async ({ store, renderMarkdown, parseData, config }) => {
+      const paths = await fg('**/*.md', { cwd: './posts' });
+      store.clear();
+
+      for (const path of paths) {
         const id = path.replace(/\.md$/, '');
-        const source = await readFile(`./posts/${path}`, 'utf8');
+        const fileURL = new URL(`./posts/${path}`, config.root);
+        const source = await readFile(fileURL, 'utf8');
         const parsed = matter(source);
 
-        return {
+        const data = await parseData({
           id,
+          data: {
+            ...parsed.data,
+            date: getRequiredDateFromPostId(id),
+            permalink: getPermalinkFromPostId(id),
+          },
+        });
+
+        store.set({
+          id,
+          data,
           body: parsed.content,
-          ...parsed.data,
-          date: getRequiredDateFromPostId(id),
-          permalink: getPermalinkFromPostId(id),
-        };
-      })
-    );
+          rendered: await renderMarkdown(parsed.content),
+        });
+      }
+    },
   },
   schema: z.object({
     title: z.string().optional(),
@@ -73,36 +85,4 @@ const blogroll = defineCollection({
   }),
 });
 
-const highlights = defineCollection({
-  loader: async () => {
-    try {
-      const response = await fetch('https://api.chsmc.workers.dev/highlights-feed');
-      if (!response.ok) return [];
-      const data: Record<string, unknown>[] = await response.json();
-      return data.map((item, index) => ({
-        ...item,
-        id: String(item.id ?? index),
-      }));
-    } catch {
-      return [];
-    }
-  },
-  schema: z.object({
-    text: z.string(),
-    note: z.string().nullable().optional(),
-    date: z.coerce.date(),
-    tags: z.array(z.string()).nullable().optional(),
-    readwise_url: z.string().optional(),
-    source: z.object({
-      id: z.number().optional(),
-      title: z.string().nullable().optional(),
-      author: z.string().nullable().optional(),
-      url: z.string().nullable().optional(),
-      image: z.string().nullable().optional(),
-      tags: z.array(z.string()).nullable().optional(),
-      note: z.string().nullable().optional(),
-    }).optional(),
-  }),
-});
-
-export const collections = { posts, notes, blogroll, highlights };
+export const collections = { posts, notes, blogroll };
