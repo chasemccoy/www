@@ -1,13 +1,13 @@
 <script setup lang="ts">
 interface Source {
-  title?: string;
-  author?: string;
-  url?: string;
+  title?: string | null;
+  author?: string | null;
+  url?: string | null;
 }
 
 defineProps<{
   text: string;
-  note?: string;
+  note?: string | null;
   source?: Source;
   includeCite: boolean;
 }>();

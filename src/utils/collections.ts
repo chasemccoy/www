@@ -1,16 +1,27 @@
-import { getCollection } from 'astro:content';
-import { filterTagList, getDateFromPostId, getPermalinkFromPost } from './filters';
+import { getCollection, type CollectionEntry } from 'astro:content';
+import { filterTagList } from './filters';
+
+type HighlightData = CollectionEntry<'highlights'>['data'];
+
+function toHighlightFeedItem(highlight: HighlightData): HighlightData & { type: 'highlight' } {
+  return { ...highlight, type: 'highlight' };
+}
 
 export async function getPosts() {
   const posts = await getCollection('posts');
   return posts
     .map(post => ({
       ...post,
-      date: getDateFromPostId(post.id),
-      permalink: getPermalinkFromPost(post),
+      date: post.data.date,
+      permalink: post.data.permalink,
     }))
-    .filter(p => p.date)
-    .sort((a, b) => a.date!.getTime() - b.date!.getTime());
+    .sort((a, b) => a.date.getTime() - b.date.getTime());
+}
+
+type PostWithDate = Awaited<ReturnType<typeof getPosts>>[number];
+
+function toPostFeedItem(post: PostWithDate): PostWithDate & { type: 'post' } {
+  return { ...post, type: 'post' };
 }
 
 export async function getVisiblePosts() {
@@ -27,23 +38,22 @@ export async function getFeaturedPosts() {
 
 export async function getPostsByYear() {
   const posts = await getVisiblePosts();
-  const groups: Record<string, any[]> = {};
+  const groups: Record<string, PostWithDate[]> = {};
   for (const post of posts) {
-    const year = post.date!.getUTCFullYear().toString();
-    if (!groups[year]) groups[year] = [];
+    const year = post.date.getUTCFullYear().toString();
+    groups[year] ??= [];
     groups[year].push(post);
   }
-  const keys = Object.keys(groups).sort().reverse();
-  const results: Record<string, any[]> = {};
-  keys.forEach(key => (results[key] = groups[key]));
-  return results;
+  return Object.fromEntries(
+    Object.entries(groups).sort(([a], [b]) => b.localeCompare(a))
+  );
 }
 
 export async function getYears() {
   const posts = await getVisiblePosts();
   const yearSet = new Set<string>();
   for (const post of posts) {
-    yearSet.add(post.date!.getUTCFullYear().toString());
+    yearSet.add(post.date.getUTCFullYear().toString());
   }
   return [...yearSet].sort().reverse();
 }
@@ -75,18 +85,15 @@ export async function getBlogroll() {
 
 export async function getHighlights() {
   const entries = await getCollection('highlights', () => true);
-  return entries.map(h => ({
-    ...h.data,
-    type: 'highlight' as const,
-  }));
+  return entries.map(h => toHighlightFeedItem(h.data));
 }
 
 export async function getFeed() {
   const posts = await getVisiblePosts();
-  const postsWithType = posts.map(p => ({ ...p, type: 'post' as const }));
+  const postsWithType = posts.map(toPostFeedItem);
   const highlights = await getHighlights();
 
   return [...highlights, ...postsWithType].sort(
-    (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
+    (a, b) => a.date.getTime() - b.date.getTime()
   );
 }

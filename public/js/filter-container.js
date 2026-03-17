@@ -330,7 +330,7 @@ class FilterContainer extends HTMLElement {
   getUrlSearchValue() {
     let s = window.location.search
     if (s.startsWith('?')) {
-      return s.substr(1)
+      return s.substring(1)
     }
     return s
   }

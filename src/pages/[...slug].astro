@@ -1,15 +1,14 @@
 ---
 import PostLayout from '../layouts/PostLayout.astro';
 import { getCollection, render } from 'astro:content';
-import { getDateFromPostId, getSlugFromPostId } from '../utils/filters';
+import { getSlugFromPostId } from '../utils/filters';
 
 export async function getStaticPaths() {
   const posts = await getCollection('posts');
   const paths = [];
 
   for (const post of posts) {
-    const date = getDateFromPostId(post.id);
-    if (!date) continue;
+    const date = post.data.date;
 
     const year = date.getUTCFullYear();
     const month = String(date.getUTCMonth() + 1).padStart(2, '0');
@@ -27,7 +26,7 @@ const { post, date } = Astro.props;
 const { Content } = await render(post);
 ---
 <PostLayout
-  title={post.data.title}
+  title={post.data.title ?? undefined}
   date={date}
   postId={post.id}
 >

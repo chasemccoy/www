@@ -1,11 +1,8 @@
 <script setup lang="ts">
-interface FeaturedPost {
-  permalink: string;
-  data: { title: string };
-}
+import type { PostLink } from '../types';
 
 const props = defineProps<{
-  featuredPosts: FeaturedPost[];
+  featuredPosts: PostLink[];
   years: string[];
 }>();
 </script>
@@ -16,7 +13,7 @@ const props = defineProps<{
       <h3>Featured</h3>
       <ul class="featured">
         <li v-for="post in featuredPosts" :key="post.permalink">
-          <a :href="post.permalink">{{ post.data.title }}</a>
+          <a :href="post.permalink">{{ post.title }}</a>
         </li>
       </ul>
     </div>

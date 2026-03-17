@@ -1,19 +1,10 @@
 <script setup lang="ts">
 import SidebarContent from './SidebarContent.vue';
-
-interface FeaturedPost {
-  permalink: string;
-  data: { title: string };
-}
-
-interface BlogrollItem {
-  name: string;
-  url: string;
-}
+import type { PostLink, BlogrollItem } from '../types';
 
 const props = withDefaults(defineProps<{
   mobile?: boolean;
-  featuredPosts?: FeaturedPost[];
+  featuredPosts?: PostLink[];
   years?: string[];
   blogroll?: BlogrollItem[];
 }>(), {

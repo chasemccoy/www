@@ -1,16 +1,8 @@
 <script setup lang="ts">
-interface FeaturedPost {
-  permalink: string;
-  data: { title: string };
-}
-
-interface BlogrollItem {
-  name: string;
-  url: string;
-}
+import type { PostLink, BlogrollItem } from '../types';
 
 defineProps<{
-  featuredPosts: FeaturedPost[];
+  featuredPosts: PostLink[];
   years: string[];
   blogroll: BlogrollItem[];
 }>();
@@ -26,7 +18,7 @@ defineProps<{
     <h2>Featured</h2>
     <ul class="featured">
       <li v-for="post in featuredPosts" :key="post.permalink">
-        <a :href="post.permalink">{{ post.data.title }}</a>
+        <a :href="post.permalink">{{ post.title }}</a>
       </li>
     </ul>
   </div>

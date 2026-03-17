@@ -15,7 +15,7 @@ const { Content } = await render(note);
 ---
 <NoteLayout
   title={note.data.title || note.id}
-  excerpt={note.data.excerpt}
+  excerpt={note.data.excerpt ?? undefined}
   url={`/notes/${note.id.replace(/\/index$/, '')}/`}
 >
   <Content />

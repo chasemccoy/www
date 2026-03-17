@@ -1,7 +1,7 @@
 ---
 import BaseLayout from './BaseLayout.astro';
 
-interface Props {
+interface LayoutProps {
   title?: string;
   description?: string;
   templateClass?: string;
@@ -9,7 +9,11 @@ interface Props {
   header?: string;
 }
 
-// When used via markdown `layout:` frontmatter, props are nested under `frontmatter`
+interface Props extends LayoutProps {
+  // When used via markdown `layout:` frontmatter, props are nested under `frontmatter`
+  frontmatter?: LayoutProps;
+}
+
 const props = { ...Astro.props.frontmatter, ...Astro.props };
 const { title, description, templateClass, js, header } = props;
 const headerHtml = header || (title ? `<h1 class="font-header">${title}</h1>` : undefined);

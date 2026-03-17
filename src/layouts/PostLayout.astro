@@ -2,8 +2,9 @@
 import BaseLayout from './BaseLayout.astro';
 import ReplyBadge from '../components/ReplyBadge.vue';
 import PostNavigation from '../components/PostNavigation.vue';
-import { readableDate, getDateFromPostId, getPermalinkFromPost } from '../utils/filters';
+import { readableDate } from '../utils/filters';
 import { getCollection } from 'astro:content';
+import type { PostLink } from '../types';
 interface Props {
   title?: string;
   date: Date | string;
@@ -15,23 +16,29 @@ const postTitle = title || `Note from ${readableDate(date)}`;
 
 // Get all posts for prev/next navigation
 const allPosts = await getCollection('posts');
-const visiblePosts = allPosts
+const orderedPosts = allPosts
   .filter(p => !p.data.hidden)
-  .map(p => ({
-    ...p,
-    postDate: getDateFromPostId(p.id),
-    permalink: getPermalinkFromPost(p),
-  }))
-  .filter(p => p.postDate)
-  .sort((a, b) => a.postDate!.getTime() - b.postDate!.getTime());
+  .sort((a, b) => a.data.date.getTime() - b.data.date.getTime());
 
-const currentIndex = visiblePosts.findIndex(p => p.id === postId);
-const previousPost = currentIndex > 0 ? visiblePosts[currentIndex - 1] : null;
-const nextPost = currentIndex < visiblePosts.length - 1 ? visiblePosts[currentIndex + 1] : null;
+const currentIndex = orderedPosts.findIndex(p => p.id === postId);
+
+const toPostLink = (post: (typeof orderedPosts)[number] | null | undefined): PostLink | null =>
+  post
+    ? {
+        permalink: post.data.permalink,
+        title: post.data.title,
+      }
+    : null;
+
+const previousPost = toPostLink(currentIndex > 0 ? orderedPosts[currentIndex - 1] : null);
+const nextPost = toPostLink(
+  currentIndex >= 0 && currentIndex < orderedPosts.length - 1 ? orderedPosts[currentIndex + 1] : null
+);
 
 let headerHtml = '';
 if (title) {
-  const permalink = getPermalinkFromPost({ id: postId });
+  const currentPost = orderedPosts.find(p => p.id === postId);
+  const permalink = currentPost?.data.permalink ?? '#';
   headerHtml = `<h1 class="font-header"><a href="${permalink}" class="unstyled">${title}</a></h1>`;
 }
 ---

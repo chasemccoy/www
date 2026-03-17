@@ -4,20 +4,27 @@ import BlogPostPreview from '../../components/BlogPostPreview.vue';
 import { getPostsByYear } from '../../utils/collections';
 import { htmlDateString, shortDate } from '../../utils/filters';
 import { render } from 'astro:content';
+import type { InferGetStaticPropsType } from 'astro';
 
-export async function getStaticPaths() {
+export const getStaticPaths = async () => {
   const postsByYear = await getPostsByYear();
   return Object.keys(postsByYear).map(year => ({
     params: { year },
     props: { year, posts: postsByYear[year] },
   }));
-}
+};
 
-const { year, posts } = Astro.props;
+type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+type YearPost = NonNullable<Props['posts']>[number];
+
+const { year, posts = [] } = Astro.props;
 
 const reversedPosts = [...posts].reverse();
-const titledPosts = reversedPosts.filter((p: any) => p.data?.title);
-const untitledPosts = reversedPosts.filter((p: any) => !p.data?.title);
+const titledPosts = reversedPosts.filter(
+  (post): post is YearPost & { data: YearPost['data'] & { title: string } } =>
+    Boolean(post.data?.title)
+);
+const untitledPosts = reversedPosts.filter(post => !post.data?.title);
 
 const headerHtml = `
   <div class="Breadcrumbs mb-12"><span>Archives</span></div>
@@ -29,7 +36,7 @@ const headerHtml = `
   header={headerHtml}
 >
   <div class="flex flex-column" style="gap: 12px;">
-    {titledPosts.map((post: any) => (
+    {titledPosts.map(post => (
       <BlogPostPreview
         title={post.data.title}
         date={post.date}
@@ -39,7 +46,7 @@ const headerHtml = `
   </div>
 
   <div class="flex flex-column Blog__notes" style="gap: 64px;">
-    {untitledPosts.map(async (post: any) => {
+    {untitledPosts.map(async post => {
       const { Content } = await render(post);
       return (
         <article class="prose">

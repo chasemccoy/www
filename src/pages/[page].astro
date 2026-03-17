@@ -23,8 +23,9 @@ export async function getStaticPaths() {
       },
     });
   }
+
   return paths;
-}
+};
 
 const { posts, pageNumber, totalPages } = Astro.props;
 
@@ -33,7 +34,7 @@ const hasPrevPage = pageNumber > 1;
 ---
 <BaseLayout templateClass="home">
   <section class="Blog Blog--featured">
-    {posts.map(async (post: any, index: number) => {
+    {posts.map(async (post, index) => {
       if (post.type === 'post') {
         const { Content } = await render(post);
         return (
