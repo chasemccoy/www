@@ -10,21 +10,21 @@ Personal website and blog built with **Astro 5.x**, **Vue 3** components, **Sass
 
 **Start development server:**
 ```bash
-npm run dev
+pnpm dev
 # or
-npm start
+pnpm start
 # Runs Astro dev server on port 1995
 ```
 
 **Build for production:**
 ```bash
-npm run build
+pnpm build
 # Runs Astro static site build
 ```
 
 **Preview production build:**
 ```bash
-npm run preview
+pnpm preview
 ```
 
 ## Architecture

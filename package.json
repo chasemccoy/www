@@ -6,7 +6,7 @@
     "dev": "astro dev --port 1995",
     "start": "astro dev --port 1995",
     "typecheck": "astro check && vue-tsc --noEmit",
-    "build": "yarn typecheck && astro build",
+    "build": "pnpm typecheck && astro build",
     "preview": "astro preview",
     "astro": "astro"
   },
