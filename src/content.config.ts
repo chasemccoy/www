@@ -1,4 +1,5 @@
-import { defineCollection, z } from 'astro:content';
+import { defineCollection } from 'astro:content';
+import { z } from 'astro/zod';
 import { glob, file } from 'astro/loaders';
 import fg from 'fast-glob';
 import matter from 'gray-matter';
