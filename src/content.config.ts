@@ -1,6 +1,6 @@
 import { defineCollection } from 'astro:content';
 import { z } from 'astro/zod';
-import { glob, file } from 'astro/loaders';
+import { file } from 'astro/loaders';
 import fg from 'fast-glob';
 import matter from 'gray-matter';
 import { readFile } from 'fs/promises';
@@ -75,16 +75,6 @@ const posts = defineCollection({
   }),
 });
 
-const notes = defineCollection({
-  loader: glob({ pattern: '**/*.md', base: './notes' }),
-  schema: z.object({
-    title: z.string().optional(),
-    excerpt: z.string().nullable().optional(),
-    hidden: z.boolean().optional(),
-    tags: z.array(z.string()).optional().default([]),
-  }),
-});
-
 const blogroll = defineCollection({
   loader: file('src/data/blogroll.json'),
   schema: z.object({
@@ -93,4 +83,4 @@ const blogroll = defineCollection({
   }),
 });
 
-export const collections = { posts, notes, blogroll };
+export const collections = { posts, blogroll };

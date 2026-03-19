@@ -1,12 +1,6 @@
 import { format, formatISO } from 'date-fns';
 import { utc } from '@date-fns/utc';
 
-export function filterTagList(tags: string[] = []) {
-  return tags.filter(
-    (tag) => !['all', 'nav', 'post', 'posts', 'notes'].includes(tag)
-  );
-}
-
 export function capitalize(string: string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }

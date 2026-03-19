@@ -9,17 +9,16 @@ interface Props {
   description?: string;
   templateClass?: string;
   date?: Date | string;
-  js?: string;
   header?: string;
 }
 
-const { title, description, templateClass = 'note', date, js, header } = Astro.props;
+const { title, description, templateClass = 'note', date, header } = Astro.props;
 const featuredPosts = await getFeaturedPosts();
 const years = await getYears();
 const blogroll = await getBlogroll();
 const pageDate = date ? new Date(date) : new Date();
 ---
-<HtmlLayout title={title} description={description} templateClass={templateClass} date={date} js={js}>
+<HtmlLayout title={title} description={description} templateClass={templateClass} date={date}>
   <div class="Wrapper">
     <header class="Wrapper__header">
       <div>

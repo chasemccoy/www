@@ -119,32 +119,6 @@ const populateNowPlaying = async () => {
   })
 }
 
-const populateTableOfContents = () => {
-  const tableOfContents = document.querySelector('table-of-contents')
-
-  if (!tableOfContents) {
-    return
-  }
-
-  const headings = Array.from(document.querySelectorAll('article h2'))
-  if (headings && headings.length > 0) {
-    const ul = document.createElement('ul')
-    headings.forEach((heading) => {
-      const a = document.createElement('a')
-      const li = document.createElement('li')
-      a.href = '#' + heading.id
-      a.textContent = heading.textContent
-      a.classList = 'unstyled'
-      li.append(a)
-      ul.append(li)
-    })
-    tableOfContents.append(ul)
-    tableOfContents.hidden = false
-  } else {
-    tableOfContents.remove()
-  }
-}
-
 function randomInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min)
 }
@@ -152,7 +126,6 @@ function randomInt(min, max) {
 document.addEventListener('DOMContentLoaded', () => {
   customElements.define('book-mark', Bookmark)
   populateBookmarks()
-  populateTableOfContents()
   populateNowPlaying()
 
   const divs = document.querySelectorAll('.creature > div')

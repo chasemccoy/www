@@ -8,10 +8,9 @@ interface Props {
   description?: string;
   templateClass?: string;
   date?: Date | string;
-  js?: string;
 }
 
-const { title, description, templateClass, date, js } = Astro.props;
+const { title, description, templateClass, date } = Astro.props;
 const pageUrl = Astro.url.pathname;
 
 let pageTitle = metadata.title;
@@ -69,7 +68,6 @@ const canonicalUrl = `${metadata.url}${pageUrl}`;
     <meta property="fediverse:creator" content="@chsmc@mastodon.social" />
 
     <script src="/js/index.js" defer is:inline></script>
-    {js && <script src={`/js/${js}.js`} defer is:inline type="module"></script>}
   </head>
 
   <body class={templateClass || undefined}>

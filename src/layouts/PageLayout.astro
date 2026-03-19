@@ -5,7 +5,6 @@ interface LayoutProps {
   title?: string;
   description?: string;
   templateClass?: string;
-  js?: string;
   header?: string;
 }
 
@@ -15,14 +14,13 @@ interface Props extends LayoutProps {
 }
 
 const props = { ...Astro.props.frontmatter, ...Astro.props };
-const { title, description, templateClass, js, header } = props;
+const { title, description, templateClass, header } = props;
 const headerHtml = header || (title ? `<h1 class="font-header">${title}</h1>` : undefined);
 ---
 <BaseLayout
   title={title}
   description={description}
   templateClass={templateClass}
-  js={js}
   header={headerHtml}
 >
   <article class="Article prose">

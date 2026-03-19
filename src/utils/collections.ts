@@ -1,5 +1,4 @@
 import { getCollection } from 'astro:content';
-import { filterTagList } from './filters';
 import type { PostLink } from '../types';
 
 export async function getPosts() {
@@ -55,26 +54,6 @@ export async function getYears() {
     yearSet.add(post.date.getUTCFullYear().toString());
   }
   return [...yearSet].sort().reverse();
-}
-
-export async function getNotes() {
-  const notes = await getCollection('notes');
-  return notes;
-}
-
-export async function getVisibleNotes() {
-  const notes = await getNotes();
-  return notes.filter(n => !n.data.hidden);
-}
-
-export async function getTagList() {
-  const posts = await getCollection('posts');
-  const notes = await getCollection('notes');
-  const tagSet = new Set<string>();
-  [...posts, ...notes].forEach(item => {
-    (item.data.tags || []).forEach((tag: string) => tagSet.add(tag));
-  });
-  return filterTagList([...tagSet]);
 }
 
 export async function getBlogroll() {
