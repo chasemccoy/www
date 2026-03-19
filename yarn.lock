@@ -53,13 +53,13 @@
     vscode-html-languageservice "^5.6.2"
     vscode-uri "^3.1.0"
 
-"@astrojs/markdown-remark@7.0.0":
-  version "7.0.0"
-  resolved "https://registry.yarnpkg.com/@astrojs/markdown-remark/-/markdown-remark-7.0.0.tgz#d8e1cc99238ade9fb578318dd8f4796e43e3c667"
-  integrity sha512-jTAXHPy45L7o1ljH4jYV+ShtOHtyQUa1mGp3a5fJp1soX8lInuTJQ6ihmldHzVM4Q7QptU4SzIDIcKbBJO7sXQ==
+"@astrojs/markdown-remark@7.0.1":
+  version "7.0.1"
+  resolved "https://registry.yarnpkg.com/@astrojs/markdown-remark/-/markdown-remark-7.0.1.tgz#a974131d1a8eed31d6162cac0e97d6d88ef19e59"
+  integrity sha512-zAfLJmn07u9SlDNNHTpjv0RT4F8D4k54NR7ReRas8CO4OeGoqSvOuKwqCFg2/cqN3wHwdWlK/7Yv/lMXlhVIaw==
   dependencies:
     "@astrojs/internal-helpers" "0.8.0"
-    "@astrojs/prism" "4.0.0"
+    "@astrojs/prism" "4.0.1"
     github-slugger "^2.0.0"
     hast-util-from-html "^2.0.3"
     hast-util-to-text "^4.0.2"
@@ -79,10 +79,10 @@
     unist-util-visit-parents "^6.0.2"
     vfile "^6.0.3"
 
-"@astrojs/prism@4.0.0":
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/@astrojs/prism/-/prism-4.0.0.tgz#c4d38943d197074bf2f7224bcc309bdffee82e68"
-  integrity sha512-NndtNPpxaGinRpRytljGBvYHpTOwHycSZ/c+lQi5cHvkqqrHKWdkPEhImlODBNmbuB+vyQUNUDXyjzt66CihJg==
+"@astrojs/prism@4.0.1":
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/@astrojs/prism/-/prism-4.0.1.tgz#a78653c1c0fa82f39f29da7c44452f32d22fb507"
+  integrity sha512-nksZQVjlferuWzhPsBpQ1JE5XuKAf1id1/9Hj4a9KG4+ofrlzxUUwX4YGQF/SuDiuiGKEnzopGOt38F3AnVWsQ==
   dependencies:
     prismjs "^1.30.0"
 
@@ -1492,14 +1492,14 @@ array-iterate@^2.0.0:
   resolved "https://registry.npmjs.org/array-iterate/-/array-iterate-2.0.1.tgz"
   integrity sha512-I1jXZMjAgCMmxT4qxXfPXa6SthSoE8h6gkSI9BGGNv8mP8G/v0blc+qFnZu6K42vTOiuME596QaLO0TP3Lk0xg==
 
-astro@^6.0.5:
-  version "6.0.5"
-  resolved "https://registry.yarnpkg.com/astro/-/astro-6.0.5.tgz#5be4e7515376df33a1e00b411df18ec81e1419d0"
-  integrity sha512-JnLCwaoCaRXIHuIB8yNztJrd7M3hXrHUMAoQmeXtEBKxRu/738REhaCZ1lapjrS9HlpHsWTu3JUXTERB/0PA7g==
+astro@^6.0.7:
+  version "6.0.7"
+  resolved "https://registry.yarnpkg.com/astro/-/astro-6.0.7.tgz#c17e28af6ff19de232064285b3e139c441b441f6"
+  integrity sha512-tCUrtQI+2Dk13xTM07JYrvk16T4ekWqSXh0/dVCunne816ZV+RCs1tomSoTHZi3DJdoaTnLJmkH+uxCC3b1KWw==
   dependencies:
     "@astrojs/compiler" "^3.0.0"
     "@astrojs/internal-helpers" "0.8.0"
-    "@astrojs/markdown-remark" "7.0.0"
+    "@astrojs/markdown-remark" "7.0.1"
     "@astrojs/telemetry" "3.3.0"
     "@capsizecss/unpack" "^4.0.0"
     "@clack/prompts" "^1.0.1"

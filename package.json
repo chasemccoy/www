@@ -26,7 +26,7 @@
     "@astrojs/rss": "^4.0.17",
     "@astrojs/vue": "^6.0.1",
     "@date-fns/utc": "^2.1.1",
-    "astro": "^6.0.5",
+    "astro": "^6.0.7",
     "date-fns": "^4.1.0",
     "fast-glob": "^3.3.3",
     "gray-matter": "^4.0.3",

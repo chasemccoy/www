@@ -52,29 +52,12 @@ const posts = defineCollection({
 
         const rendered = await renderMarkdown(parsed.content, { fileURL });
 
-        // Workaround: renderMarkdown returns image paths as `localImagePaths`
-        // and `remoteImagePaths`, but Astro's runtime (renderEntry) checks for
-        // a combined `imagePaths` field to decide whether to resolve
-        // __ASTRO_IMAGE_ placeholders. The built-in glob() loader handles this
-        // via getRenderFunction, but custom loaders using renderMarkdown must
-        // combine these manually and pass them as both metadata.imagePaths
-        // (for runtime resolution) and assetImports (for Vite registration).
-        // See: https://github.com/withastro/astro/pull/15968
-        const imagePaths = [
-          ...((rendered?.metadata?.localImagePaths as string[]) ?? []),
-          ...((rendered?.metadata?.remoteImagePaths as string[]) ?? []),
-        ];
-
-        if (imagePaths.length > 0) {
-          rendered.metadata = { ...rendered.metadata, imagePaths };
-        }
-
         store.set({
           id,
           data,
           filePath: `posts/${path}`,
           rendered,
-          assetImports: imagePaths.length > 0 ? imagePaths : undefined,
+          assetImports: rendered?.metadata?.imagePaths,
         });
       }
     },
