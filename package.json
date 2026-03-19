@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "astro dev --port 1995",
     "start": "astro dev --port 1995",
-    "build": "astro check && astro build",
+    "typecheck": "astro check && vue-tsc --noEmit",
+    "build": "yarn typecheck && astro build",
     "preview": "astro preview",
     "astro": "astro"
   },
@@ -22,10 +23,10 @@
   "homepage": "https://github.com/chasemccoy/www",
   "dependencies": {
     "@astrojs/check": "^0.9.8",
-    "@astrojs/rss": "^4.0.0",
-    "@astrojs/vue": "^5.0.0",
+    "@astrojs/rss": "^4.0.17",
+    "@astrojs/vue": "^6.0.1",
     "@date-fns/utc": "^2.1.1",
-    "astro": "^5.9.5",
+    "astro": "^6.0.5",
     "date-fns": "^4.1.0",
     "fast-glob": "^3.3.3",
     "gray-matter": "^4.0.3",
@@ -35,6 +36,7 @@
     "vue": "^3.5.0"
   },
   "devDependencies": {
-    "@types/node": "^25.5.0"
+    "@types/node": "^25.5.0",
+    "vue-tsc": "^3.2.6"
   }
 }

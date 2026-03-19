@@ -4,6 +4,6 @@ export interface PostLink {
 }
 
 export interface BlogrollItem {
-  name?: string;
-  url?: string;
+  name: string;
+  url: string;
 }

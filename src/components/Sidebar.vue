@@ -2,17 +2,17 @@
 import SidebarContent from './SidebarContent.vue';
 import type { PostLink, BlogrollItem } from '../types';
 
-const props = withDefaults(defineProps<{
+const {
+  mobile = false,
+  featuredPosts = [],
+  years = [],
+  blogroll = [],
+} = defineProps<{
   mobile?: boolean;
   featuredPosts?: PostLink[];
   years?: string[];
   blogroll?: BlogrollItem[];
-}>(), {
-  mobile: false,
-  featuredPosts: () => [],
-  years: () => [],
-  blogroll: () => [],
-});
+}>();
 </script>
 
 <template>
