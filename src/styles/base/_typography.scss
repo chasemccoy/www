@@ -163,14 +163,6 @@
     padding-right: 0;
   }
 
-  :where(h1, h2, h3, h4, h5, h6) + p > book-mark {
-    margin-top: 1.25rem;
-  }
-
-  p > br + book-mark {
-    margin-top: 0;
-  }
-
   small {
     color: var(--color-caption);
   }
