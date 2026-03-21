@@ -9,7 +9,7 @@
     "build": "pnpm typecheck && astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "test": "vitest run"
+    "test": "vp test run"
   },
   "repository": {
     "type": "git",
@@ -44,7 +44,15 @@
     "rehype-parse": "^9.0.1",
     "rehype-stringify": "^10.0.1",
     "unified": "^11.0.5",
-    "vitest": "^4.1.0",
-    "vue-tsc": "^3.2.6"
+    "vitest": "npm:@voidzero-dev/vite-plus-test@latest",
+    "vue-tsc": "^3.2.6",
+    "vite-plus": "latest"
+  },
+  "packageManager": "pnpm@10.32.1",
+  "pnpm": {
+    "overrides": {
+      "vite": "npm:@voidzero-dev/vite-plus-core@latest",
+      "vitest": "npm:@voidzero-dev/vite-plus-test@latest"
+    }
   }
 }
