@@ -1,4 +1,4 @@
-import { describe, it, expect } from "vitest";
+import { it, expect } from "vitest";
 import rehypeStringify from "rehype-stringify";
 import { unified } from "unified";
 import rehypeParse from "rehype-parse";
