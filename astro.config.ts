@@ -1,15 +1,15 @@
-import { defineConfig } from 'astro/config';
-import vue from '@astrojs/vue';
-import rehypeSlug from 'rehype-slug';
-import rehypeFigure from './src/plugins/rehype-figure.js';
+import { defineConfig } from "astro/config";
+import vue from "@astrojs/vue";
+import rehypeSlug from "rehype-slug";
+import rehypeFigure from "./src/plugins/rehype-figure.js";
 
 export default defineConfig({
-  site: 'https://chsmc.org',
+  site: "https://chsmc.org",
   integrations: [
     vue({
       template: {
         compilerOptions: {
-          isCustomElement: (tag) => tag.includes('-'),
+          isCustomElement: (tag) => tag.includes("-"),
         },
       },
     }),
@@ -21,17 +21,14 @@ export default defineConfig({
     enabled: false,
   },
   markdown: {
-    syntaxHighlight: 'prism',
+    syntaxHighlight: "prism",
     remarkPlugins: [],
-    rehypePlugins: [
-      rehypeSlug,
-      rehypeFigure,
-    ],
+    rehypePlugins: [rehypeSlug, rehypeFigure],
     remarkRehype: {
       allowDangerousHtml: true,
     },
   },
   experimental: {
     contentIntellisense: true,
-  }
+  },
 });

@@ -1,5 +1,9 @@
 [
-  { "id": "alexander-obenauer", "name": "Alexander Obenauer", "url": "https://alexanderobenauer.com" },
+  {
+    "id": "alexander-obenauer",
+    "name": "Alexander Obenauer",
+    "url": "https://alexanderobenauer.com"
+  },
   { "id": "amy-hupe", "name": "Amy Hupe", "url": "https://amyhupe.co.uk" },
   { "id": "anhvn", "name": "anhvn", "url": "https://anhvn.com" },
   { "id": "audacious-fox", "name": "Audacious Fox", "url": "https://audacious.blog" },
@@ -13,7 +17,11 @@
   { "id": "jules-forrest", "name": "Jules Forrest", "url": "https://julesforrest.com" },
   { "id": "justin-duke", "name": "Justin Duke", "url": "https://jmduke.com" },
   { "id": "kicks-condor", "name": "Kicks Condor", "url": "https://kickscondor.com" },
-  { "id": "maggie-appleton", "name": "Maggie Appleton", "url": "https://maggieappleton.com/garden" },
+  {
+    "id": "maggie-appleton",
+    "name": "Maggie Appleton",
+    "url": "https://maggieappleton.com/garden"
+  },
   { "id": "maya-land", "name": "maya.land", "url": "https://maya.land" },
   { "id": "mu-an-chiou", "name": "Mu-An Chiou", "url": "https://muan.co" },
   { "id": "piper-haywood", "name": "Piper Haywood", "url": "https://piperhaywood.com" },

@@ -14,17 +14,17 @@ You can use `useReducer` to simulate the old `this.setState({})` API of class co
 const reducer = (state, newState) => ({
   ...state,
   ...newState,
-})
+});
 
 const Example = () => {
-  const [state, setState] = useReducer(reducer, initialState)
+  const [state, setState] = useReducer(reducer, initialState);
 
   setState({
-    thisKey: 'will be merged into state',
-  })
+    thisKey: "will be merged into state",
+  });
 
-  return <div />
-}
+  return <div />;
+};
 ```
 
 This ideas was stolen from this article:
@@ -46,44 +46,44 @@ I really like [this idea of wrapping up common queries in a Gatsby site into cus
 In JavaScript, you can use the `textContent` property of a node to get the text representation of the node and all of its descendent nodes. This isn't possible with a tree of React components, but you can fake it using a ref:
 
 ```js
-const node = useRef(null)
-const [textContent, setTextContent] = useState(null)
+const node = useRef(null);
+const [textContent, setTextContent] = useState(null);
 
 useEffect(() => {
-  setTextContent(node.current.textContent)
-}, [node])
+  setTextContent(node.current.textContent);
+}, [node]);
 
 return (
   <div ref={node}>
-    This is text with a <a href='/'>link inside it</a>.
+    This is text with a <a href="/">link inside it</a>.
   </div>
-)
+);
 ```
 
 In the code above, `textContent` is equal to the string `This is text with a link inside it.` This pattern could be very easily wrapped up into a custom hook:
 
 ```js
 const useTextContent = (initial) => {
-  const [textContent, setTextContent] = useState(initial)
+  const [textContent, setTextContent] = useState(initial);
 
   const ref = useCallback((node) => {
     if (node !== null) {
-      setTextContent(node.textContent)
+      setTextContent(node.textContent);
     }
-  }, [])
+  }, []);
 
-  ref.current = textContent
-  return ref
-}
+  ref.current = textContent;
+  return ref;
+};
 
-const textContainer = useTextContent(null)
+const textContainer = useTextContent(null);
 
 return (
   <div>
     <SomeComponent ref={textContainer}>
-      This is text with a <a href='/'>link inside it</a>.
+      This is text with a <a href="/">link inside it</a>.
     </SomeComponent>
     {textContainer.current}
   </div>
-)
+);
 ```

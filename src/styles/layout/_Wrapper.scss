@@ -1,4 +1,4 @@
-@use '../theme' as *;
+@use "../theme" as *;
 
 :root {
   --layout-padding: 1rem;
@@ -23,10 +23,7 @@
 
   @include small {
     grid-template-columns:
-      [content-start] minmax(
-        0,
-        calc(var(--content-width) + 2 * var(--layout-padding))
-      )
+      [content-start] minmax(0, calc(var(--content-width) + 2 * var(--layout-padding)))
       [content-end sidebar-start] minmax(0, var(--sidebar-width))
       [sidebar-end];
   }

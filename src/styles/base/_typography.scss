@@ -1,4 +1,4 @@
-@use '../theme' as *;
+@use "../theme" as *;
 
 :root {
   --flow-spacing: 1.1rem;
@@ -146,7 +146,7 @@
   th {
     text-align: left;
     border-bottom: 1px solid hsla(0, 0%, 0%, 0.12);
-    font-feature-settings: 'tnum';
+    font-feature-settings: "tnum";
     padding-left: 1rem;
     padding-right: 1rem;
     padding-top: 0.75rem;
@@ -180,7 +180,7 @@ blockquote:not(.unstyled) {
   }
 
   & > p:first-of-type:before {
-    content: '“';
+    content: "“";
     font-size: 1.4em;
     line-height: 0;
     margin-left: -0.7em;
@@ -192,7 +192,7 @@ blockquote:not(.unstyled) {
   }
 
   &:before {
-    content: '';
+    content: "";
     display: block;
     width: 100%;
     background: var(--color-border);
@@ -221,7 +221,7 @@ blockquote:not(.unstyled) {
   }
 
   cite:before {
-    content: '↑ ';
+    content: "↑ ";
   }
 }
 
@@ -234,7 +234,7 @@ ul {
   }
 
   > li:before {
-    content: '⁕';
+    content: "⁕";
     margin-left: -1.25em;
     margin-top: -1px;
     float: left;
@@ -287,8 +287,8 @@ ol {
   }
 
   > li:before {
-    content: counter(ol-counter) '. ';
-    font-feature-settings: 'tnum';
+    content: counter(ol-counter) ". ";
+    font-feature-settings: "tnum";
     padding-right: 0.5em;
     position: absolute;
     left: calc(-1 * var(--offset));

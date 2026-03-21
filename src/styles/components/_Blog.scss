@@ -1,4 +1,4 @@
-@use '../theme' as *;
+@use "../theme" as *;
 
 .Blog {
   display: flex;
@@ -33,7 +33,7 @@
   }
 
   article:after {
-    content: ':::';
+    content: ":::";
     color: var(--color-border);
     margin-top: 1rem;
     font-size: 1.2rem;

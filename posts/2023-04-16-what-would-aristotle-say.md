@@ -6,6 +6,6 @@ In the new book _[Make Something Wonderful: Steve Jobs in His Own Words](https:/
 
 For all the work we've put into creating ways to capture our lives digitally, it doesn't feel like the ritual of passing that information down to future generations is considered much.
 
-I wonder if this might be a common use case for conversational AIs in the future. You can imagine a ChatGPT trained on the works of Aristotle, waiting to answer new and novel questions. Like Steve says, we won't always get the right answer, but maybe we will.  
+I wonder if this might be a common use case for conversational AIs in the future. You can imagine a ChatGPT trained on the works of Aristotle, waiting to answer new and novel questions. Like Steve says, we won't always get the right answer, but maybe we will.
 
-The digital book is lovely and full of wisdom—definitely a recommended read. 
+The digital book is lovely and full of wisdom—definitely a recommended read.

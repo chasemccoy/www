@@ -1,27 +1,27 @@
 {
   "name": "@chasemccoy/www",
   "version": "2024",
-  "type": "module",
-  "scripts": {
-    "dev": "astro dev --port 1995",
-    "start": "astro dev --port 1995",
-    "typecheck": "astro check && vue-tsc --noEmit",
-    "build": "pnpm typecheck && astro build",
-    "preview": "astro preview",
-    "astro": "astro",
-    "test": "vp test run"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/chasemccoy/www.git"
-  },
+  "homepage": "https://github.com/chasemccoy/www",
+  "license": "MIT",
   "author": {
     "name": "Chase McCoy",
     "email": "hi@chsmc.org",
     "url": "https://chsmc.org"
   },
-  "license": "MIT",
-  "homepage": "https://github.com/chasemccoy/www",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/chasemccoy/www.git"
+  },
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev --port 1995",
+    "start": "astro dev --port 1995",
+    "check": "vp check --fix && astro check && vue-tsc --noEmit",
+    "build": "pnpm check && astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "test": "vp test run"
+  },
   "dependencies": {
     "@astrojs/check": "^0.9.8",
     "@astrojs/rss": "^4.0.17",
@@ -34,7 +34,6 @@
     "hast-util-from-html": "^2.0.3",
     "marked": "^17.0.4",
     "rehype-slug": "^6.0.0",
-    "sass": "^1.97.1",
     "typescript": "^5.9.3",
     "unist-util-visit": "^5.1.0",
     "vue": "^3.5.0"
@@ -44,9 +43,9 @@
     "rehype-parse": "^9.0.1",
     "rehype-stringify": "^10.0.1",
     "unified": "^11.0.5",
+    "vite-plus": "latest",
     "vitest": "npm:@voidzero-dev/vite-plus-test@latest",
-    "vue-tsc": "^3.2.6",
-    "vite-plus": "latest"
+    "vue-tsc": "^3.2.6"
   },
   "packageManager": "pnpm@10.32.1",
   "pnpm": {

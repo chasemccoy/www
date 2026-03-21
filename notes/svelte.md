@@ -18,7 +18,7 @@ Just look at it:
 
 ```html
 <script>
-  const name = 'world'
+  const name = "world";
 </script>
 
 <style>
@@ -42,18 +42,17 @@ That's where the "plainness" ends though. Reactivity in Svelte is... weird. For 
 
 ```html
 <script>
-  const foo = 1
-  $: reactiveValue = foo * 2
+  const foo = 1;
+  $: reactiveValue = foo * 2;
 </script>
 
-<button on:click={() => count += 1}
+<button on:click="{()" ="">count += 1}</button>
 ```
 
 Without that `$:`, the `reactiveValue` variable won't update whenever `foo` changes. If you wanna make multiple statements reactive, you can wrap them like this:
 
 ```html
-$: { console.log(`the count is ${count}`); alert(`I SAID THE COUNT IS
-${count}`); }
+$: { console.log(`the count is ${count}`); alert(`I SAID THE COUNT IS ${count}`); }
 ```
 
 Other examples of weird (maybe not weird, but... unexpected?) syntax includes blocks within the HTML itself:
@@ -98,7 +97,7 @@ Instead of assigning values and updating state based on events, you can just do 
 
 ```html
 <script>
-  let name = 'world'
+  let name = "world";
 </script>
 
 <input bind:value="{name}" />

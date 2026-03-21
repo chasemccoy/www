@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { PostLink, BlogrollItem } from '../types';
+import type { PostLink, BlogrollItem } from "../types";
 
 defineProps<{
   featuredPosts: PostLink[];
@@ -11,7 +11,10 @@ defineProps<{
 <template>
   <div>
     <h2>About the editor</h2>
-    <p>Chase is a professional designer and amateur human currently working as a design engineer at <a href="https://era.app" target="_blank">Era</a>.</p>
+    <p>
+      Chase is a professional designer and amateur human currently working as a design engineer at
+      <a href="https://era.app" target="_blank">Era</a>.
+    </p>
   </div>
 
   <div>
@@ -67,7 +70,10 @@ defineProps<{
   <hr class="dashed" />
 
   <p class="Sidebar__colophon color-caption">
-    Typeset in <a href="https://fonts.adobe.com/fonts/source-serif">Source Serif</a> and <a href="https://www.dennisgrauel.com/brunswick-grotesque.html">Brunswick Grotesque</a>. Built with <a href="https://astro.build">Astro</a> and hosted on <a href="https://www.netlify.com">Netlify</a>. Thanks for stopping by ♥
+    Typeset in <a href="https://fonts.adobe.com/fonts/source-serif">Source Serif</a> and
+    <a href="https://www.dennisgrauel.com/brunswick-grotesque.html">Brunswick Grotesque</a>. Built
+    with <a href="https://astro.build">Astro</a> and hosted on
+    <a href="https://www.netlify.com">Netlify</a>. Thanks for stopping by ♥
   </p>
 </template>
 
@@ -144,7 +150,7 @@ defineProps<{
       border-radius: 4px;
 
       &:after {
-        content: '';
+        content: "";
         position: absolute;
         inset: 0;
         box-shadow: inset 0 0 0 1px rgba(0 0 0 / 0.1);
@@ -157,7 +163,7 @@ defineProps<{
 .Sidebar__years {
   li + li:not(:last-child):after,
   li:first-child:after {
-    content: '/';
+    content: "/";
     color: var(--color-border);
     margin-inline: 2px;
   }

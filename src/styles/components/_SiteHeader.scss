@@ -27,7 +27,7 @@
   --link-color: var(--color-caption);
 
   > * + *:before {
-    content: '/';
+    content: "/";
     margin-inline: 6px;
     color: var(--color-border);
   }

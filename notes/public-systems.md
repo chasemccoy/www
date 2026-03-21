@@ -5,7 +5,7 @@ tags:
   - design
 ---
 
-## Ariane 
+## Ariane
 
 <book-mark url='https://ariane.maze.co/latest/foundations/app-layout/sizing.html'></book-mark>
 

@@ -38,7 +38,7 @@ We ran a brainstorm with some of our users where we asked them to think about wh
 - **Usage information.** This theme is essentially “how often and where is this component or pattern used in our product(s)?” Frustratingly, this metric is one of the most difficult for our team to measure (as I am sure is true for many system teams).
 - **Known issues and planned enhancements.** Our design system team has a clear sense of where the system is lacking, and what work is currently ongoing or planned. Our users, however, wanted more insight into that information.
 
-![A screenshot of the results of our brainstorm with the team.](miro.png 'A screenshot of the results of our brainstorm with the team.')
+![A screenshot of the results of our brainstorm with the team.](miro.png "A screenshot of the results of our brainstorm with the team.")
 
 We then took these themes and broke out every discrete piece of relevant information that could be tracked and surfaced, based on the type of content in our system. Unfortunately, we had to filter out any vital signs that were not currently possible for us to track. Most of these were related to when and where in our products a certain component/pattern is used—although this didn’t make it into our v1 solution, we have plans for how we could track and surface this in future iterations.
 
@@ -118,13 +118,13 @@ While the status label serves the purpose of quickly indicating health to our us
 
 Scorecards open up as a modal on the page when the user clicks the status label. The contents of a scorecard depends on what is applicable for the page it represents, but all scorecards show the status label, a description of what that status indicates, the published and last modified dates for that content, and a call to action that serves to drive contribution to the system.
 
-![An example of a scorecard for a “withering” page.](withering-modal.png 'An example of a scorecard for a “withering” page.')
+![An example of a scorecard for a “withering” page.](withering-modal.png "An example of a scorecard for a “withering” page.")
 
 ![Screenshots of a variety of content scorecards.](cards.png)
 
 For pages representing patterns or components that should have mobile or UI kit counterparts, we display that along with links directly to those resources if they exist. If something is missing, we intentionally display that as an indicator that there is work to be done.
 
-![Intentionally showing missing items prompts users to contribute.](cards2.png 'Intentionally showing missing items prompts users to contribute.')
+![Intentionally showing missing items prompts users to contribute.](cards2.png "Intentionally showing missing items prompts users to contribute.")
 
 For issues and planned enhancements, we decided to allow the content to be free-form (versus the other vital signs that are displayed the same way across every scorecard). This meant that we could craft the content to best serve the context of that page’s specific health issues. This example shows the scorecard for our form documentation, which is dormant, and directs users to alternate documentation that will better serve them:
 
@@ -140,7 +140,7 @@ While not the original goal of the project, having collected so much data for ou
 
 One of the first things that we built after shipping this project was an internal dashboard for the team to see the health of our system from a bird’s eye view. This page lets us see every page in our system, its status, and its publish date at a glance. It also shows us the total counts for healthy, withering, and dormant pages in our system.
 
-![A screenshot showing our internal content health dashboard.](health-dashboard.png 'A screenshot showing our internal content health dashboard.')
+![A screenshot showing our internal content health dashboard.](health-dashboard.png "A screenshot showing our internal content health dashboard.")
 
 This dashboard gives us an effective “snapshot” of our system’s health at any point in time. Our plan is to monitor and record these numbers over time, with the hope that our system’s health trends up, and giving us a concrete success metric to drive towards.
 

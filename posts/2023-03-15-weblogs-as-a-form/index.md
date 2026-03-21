@@ -25,7 +25,7 @@ Earlier this week I listened to [Jason Kottke's recent appearance on John Gruber
 
 [Kottke.org turned _25 years old_ this week](https://kottke.org/23/03/kottke-is-25-years-old-today), and Jason has been publishing online for even longer than that. All along the way, he has experimented with the form of content on the web. He's not alone in that—many bloggers like him have helped to mold the internet into what it is today. The ones that influenced me besides kottke.org are [Daring Fireball](https://daringfireball.net), [Waxy.org](https://waxy.org), Jim Coudal and [Coudal Partners](http://www.coudal.com), [Shawn Blanc](https://shawnblanc.net), [Rands in Repose](https://randsinrepose.com/), [Dave Winer](http://scripting.com/), and more that I'm certainly forgetting.
 
-![](kottke.png '[A screenshot of kottke.org from October 12, 1999](https://web.archive.org/web/19991012050139/http://kottke.org/), and my personal favorite design of the site over the years')
+![](kottke.png "[A screenshot of kottke.org from October 12, 1999](https://web.archive.org/web/19991012050139/http://kottke.org/), and my personal favorite design of the site over the years")
 
 Jason and John have an interesting conversation during the podcast (starting around 25 minutes in) about how the first few generations of bloggers on the web defined its shape. Moving from print to digital mediums afforded a labyrinth of new avenues to explore.
 

@@ -20,10 +20,7 @@ Some form of this technique is what I have landed on for grid components in my p
 However, it _is_ 2020 and we do have CSS grid in our tool belt now. [Andy Bell has an article explaining the technique for doing this with grid](https://hankchizljaw.com/wrote/create-a-responsive-grid-layout-with-no-media-queries-using-css-grid). The secret sauce is in this line:
 
 ```css
-grid-template-columns: repeat(
-  auto-fill,
-  minmax(var(--auto-grid-min-size), 1fr)
-);
+grid-template-columns: repeat(auto-fill, minmax(var(--auto-grid-min-size), 1fr));
 ```
 
 With this technique, instead of using breakpoints to specify the screen size where your items should stack, you specify the minimum size an element should be before it stacks. I like this because it encourages developers to think about responsive design in terms of _behaviors_ instead of screen sizes.

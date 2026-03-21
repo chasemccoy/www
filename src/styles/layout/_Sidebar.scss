@@ -1,4 +1,4 @@
-@use '../theme' as *;
+@use "../theme" as *;
 
 .Sidebar {
   display: flex;
@@ -24,13 +24,13 @@
       color: var(--link-color);
     }
 
-    &[aria-current='page'] {
+    &[aria-current="page"] {
       color: var(--color-accent);
     }
   }
 
   li:before {
-    content: '◆';
+    content: "◆";
     color: var(--color-border);
   }
 }

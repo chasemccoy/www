@@ -46,17 +46,18 @@
   --color-highlight: hsl(51, 100%, 84%);
   --color-highlight-dark: hsl(50, 100%, 67%);
 
-  --font-code: 'JetBrains Mono', ui-monospace, Menlo, Monaco, 'Cascadia Mono',
-    'Segoe UI Mono', 'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace',
-    'Source Code Pro', 'Fira Mono', 'Droid Sans Mono', 'Courier New', monospace;
-  --font-body: Brunswick Grotesque, Verdana, -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji',
-    'Segoe UI Emoji', 'Segoe UI Symbol';
-  --font-serif: 'Source Serif 4', Georgia, Times, Times New Roman, serif;
+  --font-code:
+    "JetBrains Mono", ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono", "Roboto Mono",
+    "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro", "Fira Mono", "Droid Sans Mono",
+    "Courier New", monospace;
+  --font-body:
+    Brunswick Grotesque, Verdana, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  --font-serif: "Source Serif 4", Georgia, Times, Times New Roman, serif;
   --font-header: var(--font-body);
-  --font-system: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-    'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-    'Segoe UI Symbol';
+  --font-system:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 
   @media (prefers-color-scheme: dark) {
     --color-accent: hsl(23, 100%, 52%);

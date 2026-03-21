@@ -45,7 +45,7 @@ As I was writing this the folks at The Iconfactory released [WorldWideWeb](https
 
 > The Mac and Web have a long history together. From the very beginning, Mac OS X included the ability to run an Apache web server by clicking a Start button:
 >
-> ![Sharing preferences in Mac OS X 10.0](image.png 'Sharing preferences in Mac OS X 10.0. Courtesy 512pixels.net')
+> ![Sharing preferences in Mac OS X 10.0](image.png "Sharing preferences in Mac OS X 10.0. Courtesy 512pixels.net")
 
 <hr class='break' />
 

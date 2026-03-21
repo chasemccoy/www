@@ -1,9 +1,5 @@
 {
   "permissions": {
-    "allow": [
-      "Bash(head:*)",
-      "Bash(pnpm build:css:*)",
-      "Bash(pnpm build:*)"
-    ]
+    "allow": ["Bash(head:*)", "Bash(pnpm build:css:*)", "Bash(pnpm build:*)"]
   }
 }

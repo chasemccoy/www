@@ -1,10 +1,10 @@
-import { getCollection } from 'astro:content';
-import type { PostLink } from '../types';
+import { getCollection } from "astro:content";
+import type { PostLink } from "../types";
 
 export async function getPosts() {
-  const posts = await getCollection('posts');
+  const posts = await getCollection("posts");
   return posts
-    .map(post => ({
+    .map((post) => ({
       ...post,
       date: post.data.date,
       permalink: post.data.permalink,
@@ -14,20 +14,20 @@ export async function getPosts() {
 
 type PostWithDate = Awaited<ReturnType<typeof getPosts>>[number];
 
-function toPostFeedItem(post: PostWithDate): PostWithDate & { type: 'post' } {
-  return { ...post, type: 'post' };
+function toPostFeedItem(post: PostWithDate): PostWithDate & { type: "post" } {
+  return { ...post, type: "post" };
 }
 
 export async function getVisiblePosts() {
   const posts = await getPosts();
-  return posts.filter(p => !p.data.hidden);
+  return posts.filter((p) => !p.data.hidden);
 }
 
 export async function getFeaturedPosts(): Promise<PostLink[]> {
   const posts = await getVisiblePosts();
   return posts
-    .filter(p => p.data.title && p.data.featured)
-    .map<PostLink>(p => ({
+    .filter((p) => p.data.title && p.data.featured)
+    .map<PostLink>((p) => ({
       permalink: p.permalink,
       title: p.data.title,
     }))
@@ -42,9 +42,7 @@ export async function getPostsByYear() {
     groups[year] ??= [];
     groups[year].push(post);
   }
-  return Object.fromEntries(
-    Object.entries(groups).sort(([a], [b]) => b.localeCompare(a))
-  );
+  return Object.fromEntries(Object.entries(groups).sort(([a], [b]) => b.localeCompare(a)));
 }
 
 export async function getYears() {
@@ -57,14 +55,12 @@ export async function getYears() {
 }
 
 export async function getBlogroll() {
-  const entries = await getCollection('blogroll');
-  return entries.map(entry => entry.data);
+  const entries = await getCollection("blogroll");
+  return entries.map((entry) => entry.data);
 }
 
 export async function getFeed() {
   const posts = await getVisiblePosts();
   // Latest posts first
-  return posts
-    .map(toPostFeedItem)
-    .sort((a, b) => b.date.getTime() - a.date.getTime());
+  return posts.map(toPostFeedItem).sort((a, b) => b.date.getTime() - a.date.getTime());
 }

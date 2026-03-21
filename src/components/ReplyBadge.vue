@@ -9,7 +9,11 @@ const mailtoHref = `mailto:hi@chsmc.org?subject=${encodeURIComponent(emailReplyS
 
 <template>
   <a :href="mailtoHref" class="reply-badge">
-    <img src="/images/reply-via-email.gif" alt="Reply via email" class="pixelated invert-for-light-mode" />
+    <img
+      src="/images/reply-via-email.gif"
+      alt="Reply via email"
+      class="pixelated invert-for-light-mode"
+    />
   </a>
 </template>
 

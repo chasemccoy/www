@@ -2,7 +2,7 @@ I really enjoyed Kyle Chayka's [latest piece for The New Yorker](https://www.new
 
 > My phone camera roll looks different now. There are fewer repeats or slight variations on the same image, taken in a burst. The compositions are less static or symmetrical, and the colors are funkier. I have a Halide snapshot of some leaves casting shadows on a tree’s trunk, which occupies most of the frame. Whereas the Apple phone app tends to turn every color warm, this one is very blue and cool, and the background behind the tree is dim rather than eye-burningly brightened. But I prefer the photo that way: the visual qualities of the specific scene are still there to be appreciated. It doesn’t, and shouldn’t, look like everything else.
 
-I've been using Process Zero the past few weeks as my main shooting mode, and I couldn't agree more. I don't see myself going back to the iPhone's default image processing. 
+I've been using Process Zero the past few weeks as my main shooting mode, and I couldn't agree more. I don't see myself going back to the iPhone's default image processing.
 
 It occurs to me that Process Zero is popular for the same reason as Instagram's original filters—imperfections imbue a kind of personality that _feels_ more human. AI-perfected pixels feel cold and lifeless because they optimize and average away the details, leaving photos without any distinct "vibe."
 

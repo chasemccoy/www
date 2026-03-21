@@ -6,11 +6,11 @@ A good day on the web is one where you stumble across a website that makes you g
 
 [Digital Divinity](https://restofworld.org/series/digital-divinity) is a really neat project documenting the ways in which new technologies are being incorporated into religious practices. Each entry is accompanied by a lovely illustration from an artist named [Glenn Harvey](https://glenn-harvey.com).
 
-Those illustrations are hiding a secret though, one that is only revealed on specific devices under specific conditions. 
+Those illustrations are hiding a secret though, one that is only revealed on specific devices under specific conditions.
 
-You might be aware of a visual effect related to HDR videos if you've ever scrolled Instagram on your iPhone—the pixels displaying the HDR content display in full brightness, while the rest of the screen is slightly dimmed. 
+You might be aware of a visual effect related to HDR videos if you've ever scrolled Instagram on your iPhone—the pixels displaying the HDR content display in full brightness, while the rest of the screen is slightly dimmed.
 
-The effect can be disorienting and strange, especially for content that is pure white, which appears as some kind of _ultrawhite_. It makes other white areas of the screen look pale and pallid. 
+The effect can be disorienting and strange, especially for content that is pure white, which appears as some kind of _ultrawhite_. It makes other white areas of the screen look pale and pallid.
 
 The illustrations for Digital Divinity make use of this effect in a brilliant (literally) way by masking a pure white, HDR video such that parts of the illustration glow with an ethereal brightness. For devices that support displaying HDR content brighter than the rest of the screen, the effect is stunning.
 

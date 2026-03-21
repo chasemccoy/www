@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { PostLink } from '../types';
+import type { PostLink } from "../types";
 
 const props = defineProps<{
   featuredPosts: PostLink[];
@@ -46,7 +46,7 @@ const props = defineProps<{
 
 .Archives__years {
   li + li:before {
-    content: '/';
+    content: "/";
     display: inline;
     margin-inline: 2px;
     color: var(--color-border);

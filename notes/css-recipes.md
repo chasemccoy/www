@@ -26,7 +26,7 @@ Instead of trying to get the styling right for IE 11, just add custom styles for
 
 ```css
 @supports (-webkit-appearance: none) {
-  input[type='checkbox'] {
+  input[type="checkbox"] {
     /* style up your checkbox for browsers that can handle it */
   }
 }
@@ -90,7 +90,7 @@ const autoGrid = (minColumnWidth = 250, gap = 0) => css`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(${minColumnWidth}px, 1fr));
   grid-gap: ${gap};
-`
+`;
 ```
 
 Also [detailed here by Andy Bell](https://hankchizljaw.com/wrote/create-a-responsive-grid-layout-with-no-media-queries-using-css-grid).

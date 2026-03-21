@@ -1,4 +1,4 @@
-@use '../theme' as *;
+@use "../theme" as *;
 
 html {
   overflow-y: scroll;
@@ -13,9 +13,9 @@ body {
   min-height: 100vh;
 
   font-variant-ligatures: no-contextual;
-  -moz-font-feature-settings: 'calt' 0;
-  -webkit-font-feature-settings: 'calt' 0;
-  font-feature-settings: 'calt' 0;
+  -moz-font-feature-settings: "calt" 0;
+  -webkit-font-feature-settings: "calt" 0;
+  font-feature-settings: "calt" 0;
 }
 
 :is(h1, h2, h3, h4, h5, h6) {

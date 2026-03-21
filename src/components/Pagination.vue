@@ -19,7 +19,7 @@ defineProps<{
 </template>
 
 <style scoped lang="scss">
-@use '../styles/theme' as *;
+@use "../styles/theme" as *;
 
 .Pagination {
   border-top: 4px solid var(--color-offset);

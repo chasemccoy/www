@@ -8,30 +8,30 @@ tags:
 ## Date formatting
 
 ```js
-const date = new Date()
+const date = new Date();
 
 const months = [
-  'January',
-  'February',
-  'March',
-  'April',
-  'May',
-  'June',
-  'July',
-  'August',
-  'September',
-  'October',
-  'November',
-  'December',
-]
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
 
-const month = months[date.getMonth()]
-const day = date.getDate()
-const year = date.getFullYear()
+const month = months[date.getMonth()];
+const day = date.getDate();
+const year = date.getFullYear();
 
 // January 1, 2021
-return `${month} ${day}, ${year}`
+return `${month} ${day}, ${year}`;
 
 // 1/1/2021
-return `${date.getMonth() + 1}/${day}/${year}`
+return `${date.getMonth() + 1}/${day}/${year}`;
 ```

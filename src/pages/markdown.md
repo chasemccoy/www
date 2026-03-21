@@ -28,14 +28,13 @@ It adds a new `prose` class that you can slap on any block of vanilla HTML conte
 <article class="prose">
   <h1>Garlic bread with cheese: What the science tells us</h1>
   <p>
-    For years parents have espoused the health benefits of eating garlic bread
-    with cheese to their children, with the food earning such an iconic status
-    in our culture that kids will often dress up as warm, cheesy loaf for
-    Halloween.
+    For years parents have espoused the health benefits of eating garlic bread with cheese to their
+    children, with the food earning such an iconic status in our culture that kids will often dress
+    up as warm, cheesy loaf for Halloween.
   </p>
   <p>
-    But a recent study shows that the celebrated appetizer may be linked to a
-    series of rabies cases springing up around the country.
+    But a recent study shows that the celebrated appetizer may be linked to a series of rabies cases
+    springing up around the country.
   </p>
   <!-- ... -->
 </article>
@@ -122,7 +121,7 @@ module.exports = {
   },
   variants: {},
   plugins: [],
-}
+};
 ```
 
 Hopefully that looks good enough to you.
@@ -149,14 +148,12 @@ The most annoying thing about lists in Markdown is that `<li>` elements aren't g
 - **For example, here's another nested list.**
 
   But this time with a second paragraph.
-
   - These list items won't have `<p>` tags
   - Because they are only one line each
 
 - **But in this second top-level list item, they will.**
 
   This is especially annoying because of the spacing on this paragraph.
-
   - As you can see here, because I've added a second line, this list item now has a `<p>` tag.
 
     This is the second line I'm talking about by the way.

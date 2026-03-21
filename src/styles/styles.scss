@@ -1,20 +1,20 @@
-@use 'reset';
-@use 'theme' as *;
+@use "reset";
+@use "theme" as *;
 
 // Base styles
-@use 'base/elements';
-@use 'base/typography';
+@use "base/elements";
+@use "base/typography";
 
 // Layout
-@use 'layout/Wrapper';
-@use 'layout/Content';
-@use 'layout/Sidebar';
+@use "layout/Wrapper";
+@use "layout/Content";
+@use "layout/Sidebar";
 
 // Components
-@use 'components/index';
+@use "components/index";
 
 // Utilities
-@use 'utilities';
+@use "utilities";
 
 // Syntax highlighting
-@use 'prism';
+@use "prism";

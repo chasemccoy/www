@@ -16,14 +16,14 @@ I got to digging, and it turns out that [Glitch has opened source their word lis
 Once I had that, it was super simple to wire up a function to return a string generated from these word sets:
 
 ```js
-import words from 'friendly-words'
+import words from "friendly-words";
 
 const randomName = () => {
-  const { predicates, objects } = words
-  const predicate = predicates[Math.floor(Math.random() * predicates.length)]
-  const object = objects[Math.floor(Math.random() * objects.length)]
-  return `${predicate}-${object}`
-}
+  const { predicates, objects } = words;
+  const predicate = predicates[Math.floor(Math.random() * predicates.length)];
+  const object = objects[Math.floor(Math.random() * objects.length)];
+  return `${predicate}-${object}`;
+};
 ```
 
 Thanks to the folks at Glitch for making this awesome resource available to the community! Check out the repo on GitHub to learn more:

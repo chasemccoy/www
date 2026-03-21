@@ -1,6 +1,6 @@
-Here's a thing I never would have imagined possible: [an LLM embedded into a font](https://fuglede.github.io/llama.ttf). 
+Here's a thing I never would have imagined possible: [an LLM embedded into a font](https://fuglede.github.io/llama.ttf).
 
-Many applications (including Chrome and Firefox) use a font rendering engine called HarfBuzz, and HarfBuzz recently added support for running arbitrary WebAssemply code in order to "shape" the pixels that are drawn onscreen when rendering a font. 
+Many applications (including Chrome and Firefox) use a font rendering engine called HarfBuzz, and HarfBuzz recently added support for running arbitrary WebAssemply code in order to "shape" the pixels that are drawn onscreen when rendering a font.
 
 You can see the font, llama.ttf, in action in [this video](https://www.youtube.com/watch?v=Q4bOyYctgFI&t=508s).
 

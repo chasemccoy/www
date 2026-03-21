@@ -16,7 +16,7 @@ In the spirit of blogging the things I want to remember:
   position: relative;
 
   &:before {
-    content: '';
+    content: "";
     position: absolute;
     inset: 0;
     z-index: 1;
@@ -34,7 +34,7 @@ In the spirit of blogging the things I want to remember:
 
 Slap that class onto your grid container and presto, you've got some rails in place to keep everything lined up nice and neat.
 
-![A screenshot of a webpage showing a 12 column grid.](grid.png 'repeating-linear-gradient invokes strange powers')
+![A screenshot of a webpage showing a 12 column grid.](grid.png "repeating-linear-gradient invokes strange powers")
 
 Once again I'm left marveling at the humble power of CSS, and feeling grateful that we live during times when such an expressive yet simple visual language is spoken so ubiquitously.
 
