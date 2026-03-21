@@ -1,6 +1,7 @@
 import { defineConfig } from 'astro/config';
 import vue from '@astrojs/vue';
 import rehypeSlug from 'rehype-slug';
+import rehypeFigure from './src/plugins/rehype-figure.js';
 
 export default defineConfig({
   site: 'https://chsmc.org',
@@ -24,12 +25,13 @@ export default defineConfig({
     remarkPlugins: [],
     rehypePlugins: [
       rehypeSlug,
+      rehypeFigure,
     ],
     remarkRehype: {
       allowDangerousHtml: true,
     },
   },
-  build: {
-    format: 'directory',
-  },
+  experimental: {
+    contentIntellisense: true,
+  }
 });
