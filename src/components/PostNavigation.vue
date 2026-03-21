@@ -2,8 +2,8 @@
 import type { PostLink } from "../types";
 
 defineProps<{
-  previousPost?: PostLink | null;
-  nextPost?: PostLink | null;
+  previousPost?: PostLink;
+  nextPost?: PostLink;
 }>();
 </script>
 

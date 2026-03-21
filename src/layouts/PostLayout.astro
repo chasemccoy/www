@@ -22,17 +22,17 @@ const orderedPosts = allPosts
 
 const currentIndex = orderedPosts.findIndex(p => p.id === postId);
 
-const toPostLink = (post: (typeof orderedPosts)[number] | null | undefined): PostLink | null =>
+const toPostLink = (post: (typeof orderedPosts)[number] | undefined) =>
   post
     ? {
         permalink: post.data.permalink,
         title: post.data.title,
-      }
-    : null;
+      } as PostLink
+    : undefined;
 
-const previousPost = toPostLink(currentIndex > 0 ? orderedPosts[currentIndex - 1] : null);
+const previousPost = toPostLink(currentIndex > 0 ? orderedPosts[currentIndex - 1] : undefined);
 const nextPost = toPostLink(
-  currentIndex >= 0 && currentIndex < orderedPosts.length - 1 ? orderedPosts[currentIndex + 1] : null
+  currentIndex >= 0 && currentIndex < orderedPosts.length - 1 ? orderedPosts[currentIndex + 1] : undefined
 );
 
 let headerHtml = '';

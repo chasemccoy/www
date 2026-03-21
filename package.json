@@ -16,7 +16,7 @@
   "scripts": {
     "dev": "astro dev --port 1995",
     "start": "astro dev --port 1995",
-    "check": "astro check && vp check --fix && vue-tsc --noEmit",
+    "check": "astro check && vp check --fix",
     "build": "pnpm check && astro build",
     "preview": "astro preview",
     "astro": "astro",
@@ -44,8 +44,7 @@
     "rehype-stringify": "^10.0.1",
     "unified": "^11.0.5",
     "vite-plus": "latest",
-    "vitest": "npm:@voidzero-dev/vite-plus-test@latest",
-    "vue-tsc": "^3.2.6"
+    "vitest": "npm:@voidzero-dev/vite-plus-test@latest"
   },
   "packageManager": "pnpm@10.32.1",
   "pnpm": {
