@@ -16,7 +16,7 @@
   "scripts": {
     "dev": "astro dev --port 1995",
     "start": "astro dev --port 1995",
-    "check": "vp check --fix && astro check && vue-tsc --noEmit",
+    "check": "astro check && vue-tsc --noEmit",
     "build": "pnpm check && astro build",
     "preview": "astro preview",
     "astro": "astro",
