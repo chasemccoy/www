@@ -2,6 +2,7 @@ import { defineConfig } from "astro/config";
 import vue from "@astrojs/vue";
 import rehypeSlug from "rehype-slug";
 import rehypeFigure from "./src/plugins/rehype-figure.js";
+import rehypeYouTube from "./src/plugins/rehype-youtube.js";
 
 export default defineConfig({
   site: "https://chsmc.org",
@@ -23,7 +24,7 @@ export default defineConfig({
   markdown: {
     syntaxHighlight: "prism",
     remarkPlugins: [],
-    rehypePlugins: [rehypeSlug, rehypeFigure],
+    rehypePlugins: [rehypeSlug, rehypeFigure, rehypeYouTube],
     remarkRehype: {
       allowDangerousHtml: true,
     },

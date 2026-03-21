@@ -1,5 +1,6 @@
 ---
 import '../styles/styles.scss';
+import 'lite-youtube-embed/src/lite-yt-embed.css';
 import metadata from '../data/metadata.json';
 import { readableDate } from '../utils/filters';
 
@@ -68,10 +69,12 @@ const canonicalUrl = `${metadata.url}${pageUrl}`;
     <meta property="fediverse:creator" content="@chsmc@mastodon.social" />
 
     <script src="/js/index.js" defer is:inline></script>
+    <script>import 'lite-youtube-embed/src/lite-yt-embed.js';</script>
   </head>
 
   <body class={templateClass || undefined}>
     <slot />
+    
     <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "488e6debfbc64509bd4b00dde784e24f"}' is:inline></script>
   </body>
 </html>
