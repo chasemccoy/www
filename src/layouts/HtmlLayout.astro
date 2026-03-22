@@ -2,7 +2,7 @@
 import '../styles/styles.scss';
 import 'lite-youtube-embed/src/lite-yt-embed.css';
 import metadata from '../data/metadata.json';
-import { readableDate } from '../utils/filters';
+import { getPageTitle } from '../utils';
 
 interface Props {
   title?: string;
@@ -14,13 +14,7 @@ interface Props {
 const { title, description, templateClass, date } = Astro.props;
 const pageUrl = Astro.url.pathname;
 
-let pageTitle = metadata.title;
-if (title) {
-  pageTitle = `${title} | ${metadata.title}`;
-} else if (date && pageUrl.match(/\/\d{4}\/\d{2}\//)) {
-  pageTitle = `Note from ${readableDate(date)} | ${metadata.title}`;
-}
-
+const pageTitle = getPageTitle(metadata.title, { title, date, pageUrl });
 const desc = description || metadata.description;
 const canonicalUrl = `${metadata.url}${pageUrl}`;
 ---

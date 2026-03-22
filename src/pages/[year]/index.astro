@@ -1,8 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import BlogPostPreview from '../../components/BlogPostPreview.vue';
-import { getPostsByYear } from '../../utils/collections';
-import { htmlDateString, shortDate } from '../../utils/filters';
+import { getPostsByYear, htmlDateString, shortDate } from '../../utils';
 import { render } from 'astro:content';
 import type { InferGetStaticPropsType } from 'astro';
 

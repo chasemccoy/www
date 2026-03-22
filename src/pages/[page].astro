@@ -1,8 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Pagination from '../components/Pagination.vue';
-import { getFeed } from '../utils/collections';
-import { htmlDateString, readableDate, shortDate } from '../utils/filters';
+import { getFeed, htmlDateString, readableDate, shortDate } from '../utils';
 import { render } from 'astro:content';
 
 export async function getStaticPaths() {

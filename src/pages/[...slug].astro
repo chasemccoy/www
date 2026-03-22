@@ -1,7 +1,7 @@
 ---
 import PostLayout from '../layouts/PostLayout.astro';
 import { getCollection, render } from 'astro:content';
-import { getSlugFromPostId } from '../utils/filters';
+import { getSlugFromPostId } from '../utils';
 
 export async function getStaticPaths() {
   const posts = await getCollection('posts');

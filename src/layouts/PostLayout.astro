@@ -2,9 +2,9 @@
 import BaseLayout from './BaseLayout.astro';
 import ReplyBadge from '../components/ReplyBadge.vue';
 import PostNavigation from '../components/PostNavigation.vue';
-import { readableDate } from '../utils/filters';
+import { getAdjacentPosts, getPostDisplayTitle } from '../utils';
 import { getCollection } from 'astro:content';
-import type { PostLink } from '../types';
+
 interface Props {
   title?: string;
   date: Date | string;
@@ -12,32 +12,14 @@ interface Props {
 }
 
 const { title, date, postId } = Astro.props;
-const postTitle = title || `Note from ${readableDate(date)}`;
+const postTitle = getPostDisplayTitle({ title, date });
 
-// Get all posts for prev/next navigation
 const allPosts = await getCollection('posts');
-const orderedPosts = allPosts
-  .filter(p => !p.data.hidden)
-  .sort((a, b) => a.data.date.getTime() - b.data.date.getTime());
-
-const currentIndex = orderedPosts.findIndex(p => p.id === postId);
-
-const toPostLink = (post: (typeof orderedPosts)[number] | undefined) =>
-  post
-    ? {
-        permalink: post.data.permalink,
-        title: post.data.title,
-      } as PostLink
-    : undefined;
-
-const previousPost = toPostLink(currentIndex > 0 ? orderedPosts[currentIndex - 1] : undefined);
-const nextPost = toPostLink(
-  currentIndex >= 0 && currentIndex < orderedPosts.length - 1 ? orderedPosts[currentIndex + 1] : undefined
-);
+const { previous: previousPost, next: nextPost } = getAdjacentPosts(allPosts, postId);
 
 let headerHtml = '';
 if (title) {
-  const currentPost = orderedPosts.find(p => p.id === postId);
+  const currentPost = allPosts.find(p => p.id === postId);
   const permalink = currentPost?.data.permalink ?? '#';
   headerHtml = `<h1 class="font-header"><a href="${permalink}" class="unstyled">${title}</a></h1>`;
 }

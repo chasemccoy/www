@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { htmlDateString, shortDate } from "../utils/filters";
+import { htmlDateString, shortDate } from "../utils";
 
 defineProps<{
   title: string;

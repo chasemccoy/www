@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Archives from '../components/Archives.vue';
-import { getFeaturedPosts, getYears } from '../utils/collections';
+import { getFeaturedPosts, getYears } from '../utils';
 
 const featuredPosts = await getFeaturedPosts();
 const years = await getYears();

@@ -2,6 +2,7 @@ import rss from "@astrojs/rss";
 import { getCollection, render } from "astro:content";
 import { experimental_AstroContainer as AstroContainer } from "astro/container";
 import metadata from "../data/metadata.json";
+import { getPostDisplayTitle } from "../utils";
 
 export async function GET() {
   const posts = await getCollection("posts");
@@ -21,7 +22,7 @@ export async function GET() {
       const { Content } = await render(post);
       const content = await container.renderToString(Content);
       return {
-        title: post.data.title || `Note from ${post.date.toISOString().split("T")[0]}`,
+        title: getPostDisplayTitle({ title: post.data.title, date: post.date }),
         pubDate: post.date,
         link: post.permalink,
         content,

@@ -1,8 +1,7 @@
 ---
 import HtmlLayout from './HtmlLayout.astro';
 import Sidebar from '../components/Sidebar.vue';
-import { htmlDateString, readableDate } from '../utils/filters';
-import { getFeaturedPosts, getYears, getBlogroll } from '../utils/collections';
+import { htmlDateString, readableDate, getFeaturedPosts, getYears, getBlogroll } from '../utils';
 
 interface Props {
   title?: string;
