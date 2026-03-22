@@ -4,29 +4,7 @@ import { file } from "astro/loaders";
 import fg from "fast-glob";
 import matter from "gray-matter";
 import { readFile } from "fs/promises";
-
-function getRequiredDateFromPostId(id: string): Date {
-  const match = id.match(/^(\d{4}-\d{2}-\d{2})/);
-  if (!match) {
-    throw new Error(`Invalid post id, expected YYYY-MM-DD prefix: ${id}`);
-  }
-  return new Date(`${match[1]}T00:00:00.000Z`);
-}
-
-function getSlugFromPostId(id: string): string {
-  return id
-    .replace(/^\d{4}-\d{2}-\d{2}-/, "")
-    .replace(/\/index$/, "")
-    .replace(/\/.*$/, "");
-}
-
-function getPermalinkFromPostId(id: string): string {
-  const date = getRequiredDateFromPostId(id);
-  const year = date.getUTCFullYear();
-  const month = String(date.getUTCMonth() + 1).padStart(2, "0");
-  const slug = getSlugFromPostId(id);
-  return `/${year}/${month}/${slug}/`;
-}
+import { resolvePostDate, getPermalinkFromPostId } from "./utils/index.js";
 
 const posts = defineCollection({
   loader: {
@@ -42,13 +20,11 @@ const posts = defineCollection({
         const source = await readFile(fileURL, "utf8");
         const parsed = matter(source);
 
-        const frontmatterDate = parsed.data.date ? new Date(parsed.data.date) : undefined;
-
         const data = await parseData({
           id,
           data: {
             ...parsed.data,
-            date: frontmatterDate ?? getRequiredDateFromPostId(id),
+            date: resolvePostDate(id, parsed.data.date),
             permalink: getPermalinkFromPostId(id),
           },
         });

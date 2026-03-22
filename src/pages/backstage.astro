@@ -25,8 +25,8 @@ const hiddenPosts = allPosts.filter(p => p.data.hidden).reverse();
       {hiddenPosts.map(post => (
         <BlogPostPreview
           title={post.data.title || titleize(post.id.split('/').pop() || post.id)}
-          date={post.date}
-          permalink={post.permalink}
+          date={post.data.date}
+          permalink={post.data.permalink}
         />
       ))}
     </div>

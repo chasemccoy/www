@@ -1,30 +1,22 @@
 import rss from "@astrojs/rss";
-import { getCollection, render } from "astro:content";
+import { render } from "astro:content";
 import { experimental_AstroContainer as AstroContainer } from "astro/container";
 import metadata from "../data/metadata.json";
-import { getPostDisplayTitle } from "../utils";
+import { getFeed, getPostDisplayTitle } from "../utils";
 
 export async function GET() {
-  const posts = await getCollection("posts");
-  const visiblePosts = posts
-    .filter((p) => !p.data.hidden)
-    .map((p) => ({
-      ...p,
-      date: p.data.date,
-      permalink: p.data.permalink,
-    }))
-    .sort((a, b) => b.date.getTime() - a.date.getTime());
+  const posts = await getFeed();
 
   const container = await AstroContainer.create();
 
   const items = await Promise.all(
-    visiblePosts.map(async (post) => {
+    posts.map(async (post) => {
       const { Content } = await render(post);
       const content = await container.renderToString(Content);
       return {
-        title: getPostDisplayTitle({ title: post.data.title, date: post.date }),
-        pubDate: post.date,
-        link: post.permalink,
+        title: getPostDisplayTitle({ title: post.data.title, date: post.data.date }),
+        pubDate: post.data.date,
+        link: post.data.permalink,
         content,
       };
     }),

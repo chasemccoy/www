@@ -43,16 +43,16 @@ const hasPrevPage = pageNumber > 1;
                     <circle cx="12" cy="12" r="10"></circle>
                     <polyline points="12 6 12 12 16 14"></polyline>
                   </svg>
-                  <time datetime={htmlDateString(post.date)}>{readableDate(post.date)}</time>
+                  <time datetime={htmlDateString(post.data.date)}>{readableDate(post.data.date)}</time>
                 </div>
               </div>
               <h1 class="font-header">
-                <a href={post.permalink} class="unstyled">{post.data.title}</a>
+                <a href={post.data.permalink} class="unstyled">{post.data.title}</a>
               </h1>
             </header>
           ) : (
-            <time datetime={htmlDateString(post.date)}>
-              <a href={post.permalink} class="unstyled color-caption block">{shortDate(post.date)}</a>
+            <time datetime={htmlDateString(post.data.date)}>
+              <a href={post.data.permalink} class="unstyled color-caption block">{shortDate(post.data.date)}</a>
             </time>
           )}
           <Content />

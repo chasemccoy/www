@@ -1,33 +1,21 @@
 ---
 import PostLayout from '../layouts/PostLayout.astro';
 import { getCollection, render } from 'astro:content';
-import { getSlugFromPostId } from '../utils';
 
 export async function getStaticPaths() {
   const posts = await getCollection('posts');
-  const paths = [];
-
-  for (const post of posts) {
-    const date = post.data.date;
-
-    const year = date.getUTCFullYear();
-    const month = String(date.getUTCMonth() + 1).padStart(2, '0');
-    const slug = getSlugFromPostId(post.id);
-
-    paths.push({
-      params: { slug: `${year}/${month}/${slug}` },
-      props: { post, date },
-    });
-  }
-  return paths;
+  return posts.map(post => ({
+    params: { slug: post.data.permalink.slice(1, -1) },
+    props: { post },
+  }));
 }
 
-const { post, date } = Astro.props;
+const { post } = Astro.props;
 const { Content } = await render(post);
 ---
 <PostLayout
   title={post.data.title ?? undefined}
-  date={date}
+  date={post.data.date}
   postId={post.id}
 >
   <Content />

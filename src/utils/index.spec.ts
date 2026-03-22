@@ -1,6 +1,14 @@
 import { describe, it, expect } from "vitest";
 import type { CollectionEntry } from "astro:content";
-import { getAdjacentPosts, getPageTitle, getPostDisplayTitle } from "./index.js";
+import {
+  getAdjacentPosts,
+  getDateFromPostId,
+  getPageTitle,
+  getPermalinkFromPostId,
+  getPostDisplayTitle,
+  getSlugFromPostId,
+  resolvePostDate,
+} from "./index.js";
 
 function makePost(
   id: string,
@@ -165,6 +173,95 @@ describe("getPageTitle", () => {
     });
 
     expect(result).toBe("Chase McCoy");
+  });
+});
+
+describe("getDateFromPostId", () => {
+  it("extracts the date from a flat post id", () => {
+    const result = getDateFromPostId("2024-01-15-my-post");
+
+    expect(result).toEqual(new Date("2024-01-15T00:00:00.000Z"));
+  });
+
+  it("extracts the date from a directory-style post id", () => {
+    const result = getDateFromPostId("2024-06-17-no-reservations/index");
+
+    expect(result).toEqual(new Date("2024-06-17T00:00:00.000Z"));
+  });
+
+  it("returns a UTC midnight date", () => {
+    const result = getDateFromPostId("2023-12-25-christmas");
+
+    expect(result.getUTCHours()).toBe(0);
+    expect(result.getUTCMinutes()).toBe(0);
+    expect(result.getUTCSeconds()).toBe(0);
+  });
+
+  it("throws for an id without a date prefix", () => {
+    expect(() => getDateFromPostId("no-date-here")).toThrow(
+      "Invalid post id, expected YYYY-MM-DD prefix: no-date-here",
+    );
+  });
+});
+
+describe("resolvePostDate", () => {
+  it("uses the filename date when no frontmatter date is provided", () => {
+    const result = resolvePostDate("2024-03-15-my-post");
+
+    expect(result).toEqual(new Date("2024-03-15T00:00:00.000Z"));
+  });
+
+  it("uses the filename date when frontmatter date is undefined", () => {
+    const result = resolvePostDate("2024-03-15-my-post", undefined);
+
+    expect(result).toEqual(new Date("2024-03-15T00:00:00.000Z"));
+  });
+
+  it("overrides with a frontmatter Date object", () => {
+    const frontmatter = new Date("2025-01-01T12:00:00.000Z");
+    const result = resolvePostDate("2024-03-15-my-post", frontmatter);
+
+    expect(result).toEqual(frontmatter);
+  });
+
+  it("overrides with a frontmatter date string", () => {
+    const result = resolvePostDate("2024-08-08-orbit-css", "2024-08-08T15:21:00-05:00");
+
+    expect(result).toEqual(new Date("2024-08-08T15:21:00-05:00"));
+  });
+});
+
+describe("getSlugFromPostId", () => {
+  it("strips the date prefix from a flat post id", () => {
+    expect(getSlugFromPostId("2024-01-15-my-post")).toBe("my-post");
+  });
+
+  it("strips the date prefix and /index from a directory-style post id", () => {
+    expect(getSlugFromPostId("2024-01-15-my-post/index")).toBe("my-post");
+  });
+
+  it("strips the date prefix and nested paths from a directory-style post id", () => {
+    expect(getSlugFromPostId("2024-01-15-my-post/images/photo")).toBe("my-post");
+  });
+});
+
+describe("getPermalinkFromPostId", () => {
+  it("builds a permalink from a flat post id", () => {
+    expect(getPermalinkFromPostId("2024-01-15-my-post")).toBe("/2024/01/my-post/");
+  });
+
+  it("builds a permalink from a directory-style post id", () => {
+    expect(getPermalinkFromPostId("2024-06-17-no-reservations/index")).toBe(
+      "/2024/06/no-reservations/",
+    );
+  });
+
+  it("zero-pads single-digit months", () => {
+    expect(getPermalinkFromPostId("2024-03-01-spring")).toBe("/2024/03/spring/");
+  });
+
+  it("handles double-digit months", () => {
+    expect(getPermalinkFromPostId("2024-12-25-christmas")).toBe("/2024/12/christmas/");
   });
 });
 

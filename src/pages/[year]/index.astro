@@ -38,8 +38,8 @@ const headerHtml = `
     {titledPosts.map(post => (
       <BlogPostPreview
         title={post.data.title}
-        date={post.date}
-        permalink={post.permalink}
+        date={post.data.date}
+        permalink={post.data.permalink}
       />
     ))}
   </div>
@@ -49,8 +49,8 @@ const headerHtml = `
       const { Content } = await render(post);
       return (
         <article class="prose">
-          <time datetime={htmlDateString(post.date)}>
-            <a href={post.permalink} class="unstyled color-caption block">{shortDate(post.date)}</a>
+          <time datetime={htmlDateString(post.data.date)}>
+            <a href={post.data.permalink} class="unstyled color-caption block">{shortDate(post.data.date)}</a>
           </time>
           
           <Content />

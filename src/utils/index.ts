@@ -41,6 +41,30 @@ export function getSlugFromPostId(id: string): string {
     .replace(/\/.*$/, "");
 }
 
+export function getDateFromPostId(id: string) {
+  const match = id.match(/^(\d{4}-\d{2}-\d{2})/);
+  if (!match?.[1]) {
+    throw new Error(`Invalid post id, expected YYYY-MM-DD prefix: ${id}`);
+  }
+  return new Date(`${match[1]}T00:00:00.000Z`);
+}
+
+export function resolvePostDate(id: string, frontmatterDate?: Date | string) {
+  if (frontmatterDate) {
+    return new Date(frontmatterDate);
+  }
+
+  return getDateFromPostId(id);
+}
+
+export function getPermalinkFromPostId(id: string): string {
+  const date = getDateFromPostId(id);
+  const year = date.getUTCFullYear();
+  const month = String(date.getUTCMonth() + 1).padStart(2, "0");
+  const slug = getSlugFromPostId(id);
+  return `/${year}/${month}/${slug}/`;
+}
+
 export function getPostDisplayTitle(post: { title?: string; date: Date | string }): string {
   return post.title || `Note from ${readableDate(post.date)}`;
 }
@@ -55,10 +79,7 @@ export function shouldShowCite(post: any, index: number, posts: any[]) {
   return isFirstInSequence || !isInSequence;
 }
 
-export function getAdjacentPosts(
-  posts: CollectionEntry<"posts">[],
-  currentId: string,
-) {
+export function getAdjacentPosts(posts: CollectionEntry<"posts">[], currentId: string) {
   const ordered = posts
     .filter((p) => !p.data.hidden)
     .sort((a, b) => a.data.date.getTime() - b.data.date.getTime());
@@ -97,13 +118,7 @@ export function getPageTitle(
 
 export async function getPosts() {
   const posts = await getCollection("posts");
-  return posts
-    .map((post) => ({
-      ...post,
-      date: post.data.date,
-      permalink: post.data.permalink,
-    }))
-    .sort((a, b) => a.date.getTime() - b.date.getTime());
+  return posts.sort((a, b) => a.data.date.getTime() - b.data.date.getTime());
 }
 
 export async function getVisiblePosts() {
@@ -117,7 +132,7 @@ export async function getFeaturedPosts(): Promise<PostLink[]> {
   return posts
     .filter((p) => p.data.title && p.data.featured)
     .map<PostLink>((p) => ({
-      permalink: p.permalink,
+      permalink: p.data.permalink,
       title: p.data.title,
     }))
     .reverse();
@@ -128,23 +143,12 @@ export async function getPostsByYear() {
   const groups: Record<string, typeof posts> = {};
 
   for (const post of posts) {
-    const year = post.date.getUTCFullYear().toString();
+    const year = post.data.date.getUTCFullYear().toString();
     groups[year] ??= [];
     groups[year].push(post);
   }
 
   return Object.fromEntries(Object.entries(groups).sort(([a], [b]) => b.localeCompare(a)));
-}
-
-export async function getYears() {
-  const posts = await getVisiblePosts();
-  const yearSet = new Set<string>();
-
-  for (const post of posts) {
-    yearSet.add(post.date.getUTCFullYear().toString());
-  }
-
-  return [...yearSet].sort().reverse();
 }
 
 export async function getBlogroll() {
@@ -156,5 +160,5 @@ export async function getFeed() {
   const posts = await getVisiblePosts();
 
   // Latest posts first
-  return posts.sort((a, b) => b.date.getTime() - a.date.getTime());
+  return posts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 }

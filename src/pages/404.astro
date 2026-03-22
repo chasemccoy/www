@@ -1,10 +1,10 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Archives from '../components/Archives.vue';
-import { getFeaturedPosts, getYears } from '../utils';
+import { getFeaturedPosts, getPostsByYear } from '../utils';
 
 const featuredPosts = await getFeaturedPosts();
-const years = await getYears();
+const years = Object.keys(await getPostsByYear());
 
 const headerHtml = '<h1>404</h1>';
 ---
