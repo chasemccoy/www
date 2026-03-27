@@ -1,34 +1,45 @@
-@use "../theme" as *;
+<script setup lang="ts">
+const { variant = "default" } = defineProps<{
+  variant?: "default" | "archive";
+}>();
+</script>
 
+<template>
+  <section :class="['Blog', variant && `Blog--${variant}`]">
+    <slot />
+  </section>
+</template>
+
+<style scoped lang="scss">
 .Blog {
   display: flex;
   flex-direction: column;
 
-  h3 {
+  :deep(h3) {
     margin-bottom: 0.25rem;
   }
 }
 
-.Blog--featured {
-  article + article {
+.Blog--default {
+  :deep(article + article) {
     margin-top: 5rem;
   }
 
-  header {
+  :deep(header) {
     display: grid;
     gap: 0.75rem;
   }
 
-  article > time {
+  :deep(article > time) {
     display: block;
     margin-bottom: -0.5rem;
   }
 
-  .Blog__article--longForm + .Blog__article--longForm {
+  :deep(.Blog__article--longForm + .Blog__article--longForm) {
     margin-top: 5rem;
   }
 
-  article:after {
+  :deep(article:after) {
     content: ":::";
     color: var(--color-border);
     margin-top: 1rem;
@@ -38,7 +49,7 @@
 }
 
 .Blog--archive {
-  .Blog__notes {
+  :deep(.Blog__notes) {
     border-top: 1px solid var(--color-border);
     margin-top: 40px;
     padding-top: 40px;
@@ -49,7 +60,4 @@
     }
   }
 }
-
-.Blog--featured + .Pagination {
-  margin-top: 6rem;
-}
+</style>

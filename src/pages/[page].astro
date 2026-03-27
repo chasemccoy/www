@@ -1,20 +1,22 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Article from '../components/Article.vue';
+import BlogFeed from '../components/BlogFeed.vue';
+import Breadcrumbs from '../components/Breadcrumbs.vue';
 import Pagination from '../components/Pagination.vue';
-import { getFeed, htmlDateString, readableDate, shortDate } from '../utils';
+import { getFeed, FEED_PAGE_SIZE, htmlDateString, readableDate, shortDate } from '../utils';
 import { render } from 'astro:content';
 
 export async function getStaticPaths() {
   const feed = await getFeed();
-  const PAGE_SIZE = 40;
-  const totalPages = Math.ceil(feed.length / PAGE_SIZE);
+  const totalPages = Math.ceil(feed.length / FEED_PAGE_SIZE);
 
   const paths = [];
   for (let i = 2; i <= totalPages; i++) {
     paths.push({
       params: { page: String(i) },
       props: {
-        posts: feed.slice((i - 1) * PAGE_SIZE, i * PAGE_SIZE),
+        posts: feed.slice((i - 1) * FEED_PAGE_SIZE, i * FEED_PAGE_SIZE),
         pageNumber: i,
         totalPages,
       },
@@ -30,14 +32,14 @@ const hasNextPage = pageNumber < totalPages;
 const hasPrevPage = pageNumber > 1;
 ---
 <BaseLayout templateClass="home">
-  <section class="Blog Blog--featured">
+  <BlogFeed>
     {posts.map(async post => {
       const { Content } = await render(post);
       return (
-        <article class={`Article prose ${post.data.title ? 'Blog__article--longForm' : ''}`}>
+        <Article class={post.data.title ? 'Blog__article--longForm' : ''}>
           {post.data.title ? (
             <header>
-              <div class="Breadcrumbs">
+              <Breadcrumbs>
                 <div>
                   <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline">
                     <circle cx="12" cy="12" r="10"></circle>
@@ -45,7 +47,7 @@ const hasPrevPage = pageNumber > 1;
                   </svg>
                   <time datetime={htmlDateString(post.data.date)}>{readableDate(post.data.date)}</time>
                 </div>
-              </div>
+              </Breadcrumbs>
               <h1 class="font-header">
                 <a href={post.data.permalink} class="unstyled">{post.data.title}</a>
               </h1>
@@ -56,13 +58,16 @@ const hasPrevPage = pageNumber > 1;
             </time>
           )}
           <Content />
-        </article>
+        </Article>
       );
     })}
-  </section>
+  </BlogFeed>
 
   <Pagination
-    olderHref={hasNextPage ? `/${pageNumber + 1}/` : undefined}
-    newerHref={hasPrevPage ? (pageNumber === 2 ? '/' : `/${pageNumber - 1}/`) : undefined}
+    previousHref={hasNextPage ? `/${pageNumber + 1}/` : undefined}
+    previousTitle="Older"
+    nextHref={hasPrevPage ? (pageNumber === 2 ? '/' : `/${pageNumber - 1}/`) : undefined}
+    nextTitle="Newer"
+    style="margin-top: 6rem;"
   />
 </BaseLayout>

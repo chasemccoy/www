@@ -6,7 +6,7 @@ image: content-health.webp
 
 ![Seeds content health launch animation](content-health.gif)
 
-<aside class='callout'>
+<aside class='Callout'>
 
 <b>Note!</b> This article was [originally published on the Sprout Social design blog](https://medium.com/sprout-social-design/design-system-health-3004551060f0#0cc5).
 

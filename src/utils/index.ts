@@ -156,6 +156,8 @@ export async function getBlogroll() {
   return entries.map((entry) => entry.data);
 }
 
+export const FEED_PAGE_SIZE = 25;
+
 export async function getFeed() {
   const posts = await getVisiblePosts();
 

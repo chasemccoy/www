@@ -4,14 +4,12 @@
 // Base styles
 @use "base/elements";
 @use "base/typography";
+@use "base/Callout";
 
 // Layout
 @use "layout/Wrapper";
 @use "layout/Content";
 @use "layout/Sidebar";
-
-// Components
-@use "components/index";
 
 // Utilities
 @use "utilities";

@@ -1,7 +1,8 @@
 ---
 import BaseLayout from './BaseLayout.astro';
+import Article from '../components/Article.vue';
 import ReplyBadge from '../components/ReplyBadge.vue';
-import PostNavigation from '../components/PostNavigation.vue';
+import Pagination from '../components/Pagination.vue';
 import { getAdjacentPosts, getPostDisplayTitle } from '../utils';
 import { getCollection } from 'astro:content';
 
@@ -30,11 +31,18 @@ if (title) {
   date={date}
   header={headerHtml}
 >
-  <article class="Article prose">
+  <Article>
     <slot />
-  </article>
+  </Article>
 
   <ReplyBadge postTitle={postTitle} />
 
-  <PostNavigation previousPost={previousPost} nextPost={nextPost} />
+  <Pagination
+    previousHref={previousPost?.permalink}
+    previousLabel="Previous"
+    previousTitle={previousPost?.title}
+    nextHref={nextPost?.permalink}
+    nextLabel="Next"
+    nextTitle={nextPost?.title}
+  />
 </BaseLayout>

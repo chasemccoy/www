@@ -1,12 +1,7 @@
 ---
 import BaseLayout from './BaseLayout.astro';
-
-interface LayoutProps {
-  title?: string;
-  description?: string;
-  templateClass?: string;
-  header?: string;
-}
+import Article from '../components/Article.vue';
+import type { LayoutProps } from '../types';
 
 interface Props extends LayoutProps {
   // When used via markdown `layout:` frontmatter, props are nested under `frontmatter`
@@ -23,7 +18,7 @@ const headerHtml = header || (title ? `<h1 class="font-header">${title}</h1>` : 
   templateClass={templateClass}
   header={headerHtml}
 >
-  <article class="Article prose">
+  <Article>
     <slot />
-  </article>
+  </Article>
 </BaseLayout>

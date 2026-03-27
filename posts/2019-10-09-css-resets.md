@@ -65,9 +65,3 @@ CSS Remedy is a bit different than other resets:
 So many web developers have struggled with the quirks of CSS and wished we could do something about it, so it's cool to see browser developers weigh on on how they might solve some of those problems.
 
 I really encourage you to dig through the CSS Remedy code yourself. It's all beuatifully commented and documented. It's also very cool to read through the issues and pull requests on GitHub to see how best practices evolve as folks weigh in with their use cases.
-
-<aside class='callout'>
-
-[I'll continue thinking and writing about CSS Resets over in the notes section if you'd like to follow along.](/notes/css-resets)
-
-</aside>

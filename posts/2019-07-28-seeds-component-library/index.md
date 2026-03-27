@@ -4,13 +4,13 @@ excerpt: How our team of three built a component library that designers and engi
 image: seeds.png
 ---
 
-<aside class='callout'>
+<aside class='Callout'>
 
 <b>Note!</b> This article was [originally published on the Styled Component's blog](https://medium.com/styled-components/how-to-build-a-great-component-library-a40d974a412d). Big thanks to [Max Stoiber](https://twitter.com/mxstbr) for letting me share my work with the Styled Components readers.
 
 </aside>
 
-Sprout Social’s design system, [Seeds](https://seeds.sproutsocial.com), has done a lot of growing up since it launched in October of last year. When we launched, our system was home to four categories of guidelines and principles: Brand, Visual, Writing, and Product. A healthy showing, for sure, but something was suspiciously missing  —  components.
+Sprout Social’s design system, [Seeds](https://seeds.sproutsocial.com), has done a lot of growing up since it launched in October of last year. When we launched, our system was home to four categories of guidelines and principles: Brand, Visual, Writing, and Product. A healthy showing, for sure, but something was suspiciously missing —components.
 
 Sprout has had a React component library longer than it’s had a design system. We call ours Racine (after the avenue in Chicago where Sprout was once headquartered), and it has long been the source of truth for component patterns in our web app.
 

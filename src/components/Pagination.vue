@@ -1,18 +1,28 @@
 <script setup lang="ts">
 defineProps<{
-  olderHref?: string;
-  newerHref?: string;
+  previousHref?: string;
+  nextHref?: string;
+  previousLabel?: string;
+  nextLabel?: string;
+  previousTitle?: string;
+  nextTitle?: string;
 }>();
 </script>
 
 <template>
   <nav class="Pagination">
     <ul class="unstyled">
-      <li v-if="olderHref" class="Pagination__previous">
-        <a :href="olderHref" class="unstyled">Older</a>
+      <li v-if="previousHref" class="Pagination__previous">
+        <a :href="previousHref" class="unstyled">
+          <span v-if="previousLabel" class="Pagination__label">{{ previousLabel }}</span>
+          <span v-if="previousTitle">{{ previousTitle }}</span>
+        </a>
       </li>
-      <li v-if="newerHref" class="Pagination__next">
-        <a :href="newerHref" class="unstyled">Newer</a>
+      <li v-if="nextHref" class="Pagination__next">
+        <a :href="nextHref" class="unstyled">
+          <span v-if="nextLabel" class="Pagination__label">{{ nextLabel }}</span>
+          <span v-if="nextTitle">{{ nextTitle }}</span>
+        </a>
       </li>
     </ul>
   </nav>
@@ -63,5 +73,11 @@ defineProps<{
       background-color: var(--color-offset);
     }
   }
+}
+
+.Pagination__label {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--color-caption);
 }
 </style>

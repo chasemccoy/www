@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.vue';
 import BlogPostPreview from '../components/BlogPostPreview.vue';
 import { getPosts, titleize } from '../utils';
 
@@ -11,9 +12,9 @@ const hiddenPosts = allPosts.filter(p => p.data.hidden).reverse();
   templateClass="Blog"
 >
   <div class="prose">
-    <div class="Breadcrumbs mb-12">
+    <Breadcrumbs class="mb-12">
       <a href="/" class="bold">Home</a>
-    </div>
+    </Breadcrumbs>
 
     <h1 class="font-header">
       <a href="/backstage" class="unstyled">Backstage</a>
