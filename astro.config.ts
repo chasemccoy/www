@@ -3,6 +3,7 @@ import vue from "@astrojs/vue";
 import rehypeSlug from "rehype-slug";
 import rehypeFigure from "./src/plugins/rehype-figure.js";
 import rehypeYouTube from "./src/plugins/rehype-youtube.js";
+import rehypeTwitter from "./src/plugins/rehype-twitter.js";
 
 export default defineConfig({
   site: "https://chsmc.org",
@@ -24,7 +25,7 @@ export default defineConfig({
   markdown: {
     syntaxHighlight: "prism",
     remarkPlugins: [],
-    rehypePlugins: [rehypeSlug, rehypeFigure, rehypeYouTube],
+    rehypePlugins: [rehypeSlug, rehypeFigure, rehypeYouTube, rehypeTwitter],
     remarkRehype: {
       allowDangerousHtml: true,
     },

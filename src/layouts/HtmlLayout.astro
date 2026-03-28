@@ -69,6 +69,7 @@ const canonicalUrl = `${metadata.url}${pageUrl}`;
   <body class={templateClass || undefined}>
     <slot />
     
+    <script async src="https://platform.twitter.com/widgets.js" is:inline></script>
     <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "488e6debfbc64509bd4b00dde784e24f"}' is:inline></script>
   </body>
 </html>

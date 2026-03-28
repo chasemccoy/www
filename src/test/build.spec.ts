@@ -65,6 +65,11 @@ describe.skipIf(!hasDist)("index page", () => {
     expect(html).toContain('href="/feed.xml"');
     expect(html).toContain('type="application/atom+xml"');
   });
+
+  it("includes the Twitter widgets script", () => {
+    const html = readDist("index.html");
+    expect(html).toContain("https://platform.twitter.com/widgets.js");
+  });
 });
 
 describe.skipIf(!hasDist)("404 page", () => {
