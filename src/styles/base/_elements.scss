@@ -181,7 +181,20 @@ figcaption {
   --color-accent: var(--color-caption);
 }
 
-.twitter-tweet {
+blockquote.twitter-tweet {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--color-caption);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 12px;
+
+  a {
+    word-break: break-all;
+  }
+}
+
+.twitter-tweet:not(blockquote) {
   margin-bottom: 0 !important;
 }
 

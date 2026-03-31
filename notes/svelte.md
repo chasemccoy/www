@@ -57,8 +57,6 @@ $: { console.log(`the count is ${count}`); alert(`I SAID THE COUNT IS ${count}`)
 
 Other examples of weird (maybe not weird, but... unexpected?) syntax includes blocks within the HTML itself:
 
-{% raw %}
-
 ```html
 {#if user.loggedIn}
 <button on:click="{toggle}">Log out</button>
@@ -66,8 +64,6 @@ Other examples of weird (maybe not weird, but... unexpected?) syntax includes bl
 <button on:click="{toggle}">Log in</button>
 {/if}
 ```
-
-{% endraw %}
 
 This bit from the Svelte docs makes it easier to understand:
 

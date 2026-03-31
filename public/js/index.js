@@ -15,7 +15,7 @@ const populateBookmarks = async () => {
     a.href = url;
     a.textContent = title || url;
     a.target = "_blank";
-    a.classList = "unstyled";
+    a.classList.add("unstyled");
     a.title = title || url;
     li.append(a);
     ul.append(li);

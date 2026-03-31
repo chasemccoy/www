@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Personal website and blog built with **Astro 5.x**, **Vue 3** components, **Sass** for styling, and deployed to Netlify. The site includes blog posts, notes, and a personal feed combining posts with reading highlights from Readwise.
+Personal website and blog built with **Astro 6.x**, **Vue 3** components, **Sass** for styling, and deployed to Netlify.
 
 ## Development Commands
 
@@ -41,20 +41,18 @@ Uses **Astro** (`.astro`) for layouts and pages, and **Vue 3 SFCs** (`.vue`) for
 - `HtmlLayout.astro` — Root HTML shell (head, meta tags, fonts, scripts)
 - `BaseLayout.astro` — Page chrome (Wrapper grid, Sidebar, header slot)
 - `PostLayout.astro` — Blog post pages (renders post nav, reply badge)
-- `NoteLayout.astro` — Note/wiki pages (renders TOC + article)
 - `PageLayout.astro` — Generic pages; supports both `.astro` imports and markdown `layout:` frontmatter
 
 **Main pages** (`src/pages/`):
 
-- `index.astro` — Homepage feed (first 40 items)
+- `index.astro` — Homepage feed (first 25 items)
 - `[page].astro` — Paginated feed (pages 2+)
 - `[...slug].astro` — Individual blog posts, routed as `/{year}/{month}/{slug}/`
 - `[year]/index.astro` — Year archive pages
-- `notes/index.astro` — Notes index with tag filter
-- `notes/[slug].astro` — Individual note pages
 - `404.astro` — Error page
 - `backstage.astro` — Hidden drafts listing
 - `feed.xml.ts` — RSS feed endpoint
+- `markdown.md` — Markdown style reference page
 
 ### Content Organization
 
@@ -66,12 +64,6 @@ All content lives in root-level directories, loaded via Astro content collection
 - Frontmatter: `title` (optional), `excerpt`, `image`, `featured`, `hidden`
 - Routes: `/{year}/{month}/{slug}/`
 
-**Notes** (`notes/*.md` or `notes/slug/index.md`):
-
-- Simpler content, no date convention
-- Frontmatter: `title`, `excerpt`, `tags`, `hidden`
-- Routes: `/notes/{slug}/`
-
 ### Data Layer
 
 `src/data/` contains static data:
@@ -81,28 +73,25 @@ All content lives in root-level directories, loaded via Astro content collection
 - `quotes.ts` — Quote collection
 - `blogroll.json` — Links to other sites (loaded as content collection)
 
-`src/content.config.ts` — Defines all content collections: `posts`, `notes`, `blogroll`, `highlights`.
+`src/content.config.ts` — Defines content collections: `posts` (custom loader using `fast-glob` + `gray-matter`) and `blogroll` (JSON file loader).
 
-`src/utils/collections.ts` — Async helpers wrapping `getCollection()`:
-
-- `getPosts()` / `getVisiblePosts()` / `getFeaturedPosts()` — Posts with computed `date` and `permalink` fields
-- `getPostsByYear()` / `getYears()` — Archive helpers
-- `getNotes()` / `getVisibleNotes()` — Notes helpers
-- `getBlogroll()` / `getHighlights()` / `getFeed()` — Feed composition
-
-`src/utils/filters.ts` — Pure utility functions:
+`src/utils/index.ts` — All utility and collection helper functions:
 
 - `readableDate`, `shortDate`, `htmlDateString`, `dateForXMLFeed` — Date formatting (UTC, via `date-fns`)
-- `getDateFromPostId`, `getSlugFromPostId`, `getPermalinkFromPost` — URL/slug computation from post IDs
-- `filterTagList` — Exclude system tags (`all`, `nav`, `post`, `posts`, `notes`)
-- `shouldShowCite` — Feed highlight citation grouping logic
+- `getDateFromPostId`, `getSlugFromPostId`, `getPermalinkFromPostId` — URL/slug computation from post IDs
+- `resolvePostDate` — Uses frontmatter date if present, otherwise derives from post ID
+- `getPostDisplayTitle`, `getPageTitle` — Title generation helpers
+- `getAdjacentPosts` — Previous/next post navigation
 - `titleize`, `capitalize` — String helpers
+- `getPosts()` / `getVisiblePosts()` / `getFeaturedPosts()` — Post collection helpers
+- `getPostsByYear()` — Archive grouping
+- `getBlogroll()` / `getFeed()` — Feed composition
 
 ### Collections
 
-The `highlights` collection is loaded dynamically at build time from a Cloudflare Worker API (`https://api.chsmc.workers.dev/highlights-feed`). If the fetch fails, it returns an empty array.
+The `posts` collection uses a custom loader in `content.config.ts` that reads markdown files from `posts/`, parses frontmatter with `gray-matter`, and computes `date` and `permalink` from the filename.
 
-The `feed` combines `getVisiblePosts()` + `getHighlights()` sorted by date, used for the homepage and paginated feed.
+The `feed` is `getVisiblePosts()` sorted newest-first, used for the homepage and paginated feed.
 
 ### Styling
 
@@ -119,19 +108,15 @@ src/styles/
 ├── _prism.scss           # Syntax highlighting
 ├── base/
 │   ├── _elements.scss    # Global element defaults
-│   └── _typography.scss  # .prose utility for Markdown content
-├── layout/
-│   ├── _Wrapper.scss
-│   ├── _Content.scss
-│   └── _Sidebar.scss
-└── components/
-    ├── _Article.scss
-    ├── _Blog.scss
-    ├── _SiteHeader.scss
-    ├── _Callout.scss
-    ├── _Bookmark.scss
-    └── _Archives.scss
+│   ├── _typography.scss  # .prose utility for Markdown content
+│   └── _Callout.scss     # Callout component styles
+└── layout/
+    ├── _Wrapper.scss
+    ├── _Content.scss
+    └── _Sidebar.scss
 ```
+
+Component-specific styles (Article, Blog, SiteHeader, BlogPostPreview, Pagination, Archives, etc.) live in Vue SFCs as `<style scoped lang="scss">` blocks.
 
 Vue SFCs use `<style scoped lang="scss">` with `@use '../styles/theme' as *` for design token access.
 
@@ -167,10 +152,12 @@ Vue SFCs use `<style scoped lang="scss">` with `@use '../styles/theme' as *` for
 All Vue components are presentational (no client-side reactivity needed; rendered server-side during build):
 
 - `Sidebar.vue` + `SidebarContent.vue` — Site sidebar (mobile uses `<details>` toggle)
-- `Highlight.vue` — Readwise highlight card with citation logic
+- `SiteHeader.vue` — Site title/logo SVG
+- `BlogFeed.vue` — Blog post feed list with variant styles
 - `BlogPostPreview.vue` — Post preview link with title + date
+- `Article.vue` — Article content wrapper
+- `Breadcrumbs.vue` — Breadcrumb navigation
 - `Pagination.vue` — Older/newer page nav for the feed
-- `PostNavigation.vue` — Previous/next post nav for individual posts
 - `ReplyBadge.vue` — "Reply via email" badge on post pages
 - `Archives.vue` — Featured posts + year list (used on 404 page)
 
@@ -179,14 +166,14 @@ All Vue components are presentational (no client-side reactivity needed; rendere
 Posts are routed by parsing the filename convention in `getStaticPaths`:
 
 - File: `posts/2024-01-15-my-post.md` → URL: `/2024/01/my-post/`
-- The `getDateFromPostId` and `getSlugFromPostId` helpers in `filters.ts` handle this parsing
+- The `getDateFromPostId`, `getSlugFromPostId`, and `getPermalinkFromPostId` helpers in `src/utils/index.ts` handle this parsing
 
 ### Important Notes
 
 - Server runs on port 1995
 - Posts with `hidden: true` are excluded from main collections but still built (accessible via `/backstage`)
-- Notes with `hidden: true` are excluded from the notes index
 - Date handling uses `date-fns` with UTC timezone via `@date-fns/utc`
-- Custom elements (e.g. `<now-playing>`, `<bookmark-list>`, `<filter-container>`) are excluded from Vue's component resolution via `isCustomElement: (tag) => tag.includes('-')` in `astro.config.mjs`
+- Custom elements (e.g. `<now-playing>`, `<bookmark-list>`, `<lite-youtube>`) are excluded from Vue's component resolution via `isCustomElement: (tag) => tag.includes('-')` in `astro.config.ts`
 - Output format: directory-based (`/foo/` not `/foo.html`)
 - The `BaseLayout` fetches sidebar data (`featuredPosts`, `years`, `blogroll`) internally — pages do not need to pass these as props
+- Rehype plugins in `src/plugins/`: `rehype-figure` (image titles → `<figure>`), `rehype-twitter` (Twitter links → embed blockquotes), `rehype-youtube` (YouTube links → `<lite-youtube>` elements)

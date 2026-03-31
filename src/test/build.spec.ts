@@ -63,7 +63,7 @@ describe.skipIf(!hasDist)("index page", () => {
   it("includes the RSS feed link", () => {
     const html = readDist("index.html");
     expect(html).toContain('href="/feed.xml"');
-    expect(html).toContain('type="application/atom+xml"');
+    expect(html).toContain('type="application/rss+xml"');
   });
 
   it("includes the Twitter widgets script", () => {

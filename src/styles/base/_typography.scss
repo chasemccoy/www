@@ -204,7 +204,7 @@
 }
 
 // Blockquote styles (global, used in multiple contexts)
-blockquote:not(.unstyled) {
+blockquote:not(.unstyled, .twitter-tweet) {
   font-size: 1.1em;
   line-height: 1.45;
   color: var(--color-caption);

@@ -4,17 +4,20 @@ import { file } from "astro/loaders";
 import fg from "fast-glob";
 import matter from "gray-matter";
 import { readFile } from "fs/promises";
+import { fileURLToPath } from "url";
+import { relative } from "path";
 import { resolvePostDate, getPermalinkFromPostId } from "./utils/index.js";
 
 const posts = defineCollection({
   loader: {
     name: "posts-loader",
     // oxlint-disable-next-line typescript/unbound-method
-    load: async ({ store, renderMarkdown, parseData, config }) => {
+    load: async ({ store, renderMarkdown, parseData, config, watcher }) => {
+      const postsDir = fileURLToPath(new URL("./posts", config.root));
       const paths = await fg("**/*.md", { cwd: "./posts" });
       store.clear();
 
-      for (const path of paths) {
+      async function loadPost(path: string) {
         const id = path.replace(/\.md$/, "");
         const fileURL = new URL(`./posts/${path}`, config.root);
         const source = await readFile(fileURL, "utf8");
@@ -39,6 +42,34 @@ const posts = defineCollection({
           assetImports: rendered?.metadata?.imagePaths,
         });
       }
+
+      for (const path of paths) {
+        await loadPost(path);
+      }
+
+      if (!watcher) return;
+
+      watcher.add(postsDir);
+
+      function getRelativePath(absPath: string) {
+        const rel = relative(postsDir, absPath);
+        return rel.startsWith("..") ? null : rel;
+      }
+
+      async function onChange(changedPath: string) {
+        const rel = getRelativePath(changedPath);
+        if (!rel || !rel.endsWith(".md")) return;
+        await loadPost(rel);
+      }
+
+      watcher.on("change", onChange);
+      watcher.on("add", onChange);
+      watcher.on("unlink", (deletedPath: string) => {
+        const rel = getRelativePath(deletedPath);
+        if (!rel || !rel.endsWith(".md")) return;
+        const id = rel.replace(/\.md$/, "");
+        store.delete(id);
+      });
     },
   },
   schema: z.object({
