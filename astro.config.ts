@@ -19,6 +19,9 @@ export default defineConfig({
   server: {
     port: 1995,
   },
+  build: {
+    inlineStylesheets: 'always',
+  },
   devToolbar: {
     enabled: false,
   },
