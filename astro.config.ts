@@ -20,7 +20,7 @@ export default defineConfig({
     port: 1995,
   },
   build: {
-    inlineStylesheets: 'always',
+    inlineStylesheets: "always",
   },
   devToolbar: {
     enabled: false,

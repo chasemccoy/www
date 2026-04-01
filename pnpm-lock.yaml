@@ -5,8 +5,8 @@ settings:
   excludeLinksFromLockfile: false
 
 overrides:
-  vite: npm:@voidzero-dev/vite-plus-core@latest
-  vitest: npm:@voidzero-dev/vite-plus-test@latest
+  vite: npm:@voidzero-dev/vite-plus-core@0.1.13
+  vitest: npm:@voidzero-dev/vite-plus-test@0.1.13
 
 importers:
 
@@ -16,17 +16,17 @@ importers:
         specifier: ^0.9.8
         version: 0.9.8(prettier@3.8.1)(typescript@5.9.3)
       '@astrojs/rss':
-        specifier: ^4.0.17
-        version: 4.0.17
+        specifier: ^4.0.18
+        version: 4.0.18
       '@astrojs/vue':
         specifier: ^6.0.1
-        version: 6.0.1(@types/node@25.5.0)(astro@6.0.7(@types/node@25.5.0)(rollup@4.59.0)(sass@1.98.0)(typescript@5.9.3)(yaml@2.8.2))(esbuild@0.27.4)(sass@1.98.0)(typescript@5.9.3)(vue@3.5.30(typescript@5.9.3))(yaml@2.8.2)
+        version: 6.0.1(@types/node@25.5.0)(astro@6.1.2(@types/node@25.5.0)(rollup@4.59.0)(sass@1.98.0)(typescript@5.9.3)(yaml@2.8.2))(esbuild@0.27.4)(sass@1.98.0)(typescript@5.9.3)(vue@3.5.30(typescript@5.9.3))(yaml@2.8.2)
       '@date-fns/utc':
         specifier: ^2.1.1
         version: 2.1.1
       astro:
-        specifier: ^6.0.7
-        version: 6.0.7(@types/node@25.5.0)(rollup@4.59.0)(sass@1.98.0)(typescript@5.9.3)(yaml@2.8.2)
+        specifier: ^6.1.2
+        version: 6.1.2(@types/node@25.5.0)(rollup@4.59.0)(sass@1.98.0)(typescript@5.9.3)(yaml@2.8.2)
       date-fns:
         specifier: ^4.1.0
         version: 4.1.0
@@ -43,8 +43,8 @@ importers:
         specifier: ^0.3.4
         version: 0.3.4
       marked:
-        specifier: ^17.0.4
-        version: 17.0.4
+        specifier: ^17.0.5
+        version: 17.0.5
       rehype-slug:
         specifier: ^6.0.0
         version: 6.0.0
@@ -74,10 +74,10 @@ importers:
         specifier: ^11.0.5
         version: 11.0.5
       vite-plus:
-        specifier: latest
+        specifier: 0.1.13
         version: 0.1.13(@types/node@25.5.0)(esbuild@0.27.4)(sass@1.98.0)(typescript@5.9.3)(vite@7.3.1(@types/node@25.5.0)(lightningcss@1.32.0)(sass@1.98.0)(yaml@2.8.2))(yaml@2.8.2)
       vitest:
-        specifier: npm:@voidzero-dev/vite-plus-test@latest
+        specifier: npm:@voidzero-dev/vite-plus-test@0.1.13
         version: '@voidzero-dev/vite-plus-test@0.1.13(@types/node@25.5.0)(esbuild@0.27.4)(sass@1.98.0)(typescript@5.9.3)(vite@7.3.1(@types/node@25.5.0)(lightningcss@1.32.0)(sass@1.98.0)(yaml@2.8.2))(yaml@2.8.2)'
 
 packages:
@@ -109,15 +109,15 @@ packages:
       prettier-plugin-astro:
         optional: true
 
-  '@astrojs/markdown-remark@7.0.1':
-    resolution: {integrity: sha512-zAfLJmn07u9SlDNNHTpjv0RT4F8D4k54NR7ReRas8CO4OeGoqSvOuKwqCFg2/cqN3wHwdWlK/7Yv/lMXlhVIaw==}
+  '@astrojs/markdown-remark@7.1.0':
+    resolution: {integrity: sha512-P+HnCsu2js3BoTc8kFmu+E9gOcFeMdPris75g+Zl4sY8+bBRbSQV6xzcBDbZ27eE7yBGEGQoqjpChx+KJYIPYQ==}
 
   '@astrojs/prism@4.0.1':
     resolution: {integrity: sha512-nksZQVjlferuWzhPsBpQ1JE5XuKAf1id1/9Hj4a9KG4+ofrlzxUUwX4YGQF/SuDiuiGKEnzopGOt38F3AnVWsQ==}
     engines: {node: '>=22.12.0'}
 
-  '@astrojs/rss@4.0.17':
-    resolution: {integrity: sha512-eV+wdMbeVKC9+sPaV0LN8JL1LGo9YAh3GKl4Ou4nzMNLmXM/aswYpSGxVEAuHilgBZ6/++/Pv08ICmuOqX107w==}
+  '@astrojs/rss@4.0.18':
+    resolution: {integrity: sha512-wc5DwKlbTEdgVAWnHy8krFTeQ42t1v/DJqeq5HtulYK3FYHE4krtRGjoyhS3eXXgfdV6Raoz2RU3wrMTFAitRg==}
 
   '@astrojs/telemetry@3.3.0':
     resolution: {integrity: sha512-UFBgfeldP06qu6khs/yY+q1cDAaArM2/7AEIqQ9Cuvf7B1hNLq0xDrZkct+QoIGyjq56y8IaE2I3CTvG99mlhQ==}
@@ -1521,8 +1521,8 @@ packages:
     resolution: {integrity: sha512-Izi8RQcffqCeNVgFigKli1ssklIbpHnCYc6AknXGYoB6grJqyeby7jv12JUQgmTAnIDnbck1uxksT4dzN3PWBA==}
     engines: {node: '>=12'}
 
-  astro@6.0.7:
-    resolution: {integrity: sha512-tCUrtQI+2Dk13xTM07JYrvk16T4ekWqSXh0/dVCunne816ZV+RCs1tomSoTHZi3DJdoaTnLJmkH+uxCC3b1KWw==}
+  astro@6.1.2:
+    resolution: {integrity: sha512-r3iIvmB6JvQxsdJLvapybKKq7Bojd1iQK6CCx5P55eRnXJIyUpHx/1UB/GdMm+em/lwaCUasxHCmIO0lCLV2uA==}
     engines: {node: '>=22.12.0', npm: '>=9.6.5', pnpm: '>=7.1.0'}
     hasBin: true
 
@@ -1798,8 +1798,8 @@ packages:
   fast-xml-builder@1.1.4:
     resolution: {integrity: sha512-f2jhpN4Eccy0/Uz9csxh3Nu6q4ErKxf0XIsasomfOihuSUa3/xw6w8dnOtCDgEItQFJG8KyXPzQXzcODDrrbOg==}
 
-  fast-xml-parser@5.4.1:
-    resolution: {integrity: sha512-BQ30U1mKkvXQXXkAGcuyUA/GA26oEB7NzOtsxCDtyu62sjGw5QraKFhx2Em3WQNjPw9PG6MQ9yuIIgkSDfGu5A==}
+  fast-xml-parser@5.5.9:
+    resolution: {integrity: sha512-jldvxr1MC6rtiZKgrFnDSvT8xuH+eJqxqOBThUVjYrxssYTo1avZLGql5l0a0BAERR01CadYzZ83kVEkbyDg+g==}
     hasBin: true
 
   fastq@1.20.1:
@@ -2088,8 +2088,8 @@ packages:
   markdown-table@3.0.4:
     resolution: {integrity: sha512-wiYz4+JrLyb/DqW2hkFJxP7Vd7JuTDm77fvbM8VfEQdmSMqcImWeeRbHwZjBjIFki/VaMK2BhFi7oUUZeM5bqw==}
 
-  marked@17.0.4:
-    resolution: {integrity: sha512-NOmVMM+KAokHMvjWmC5N/ZOvgmSWuqJB8FoYI019j4ogb/PeRMKoKIjReZ2w3376kkA8dSJIP8uD993Kxc0iRQ==}
+  marked@17.0.5:
+    resolution: {integrity: sha512-6hLvc0/JEbRjRgzI6wnT2P1XuM1/RrrDEX0kPt0N7jGm1133g6X7DlxFasUIx+72aKAr904GTxhSLDrd5DIlZg==}
     engines: {node: '>= 20'}
     hasBin: true
 
@@ -2333,8 +2333,8 @@ packages:
   path-browserify@1.0.1:
     resolution: {integrity: sha512-b7uo2UCUOYZcnF/3ID0lulOJi/bafxa1xPe7ZPsammBSpjSWQkjNxlt635YGS2MiR9GjvuXCtz2emr3jbsz98g==}
 
-  path-expression-matcher@1.1.3:
-    resolution: {integrity: sha512-qdVgY8KXmVdJZRSS1JdEPOKPdTiEK/pi0RkcT2sw1RhXxohdujUlJFPuS1TSkevZ9vzd3ZlL7ULl1MHGTApKzQ==}
+  path-expression-matcher@1.2.0:
+    resolution: {integrity: sha512-DwmPWeFn+tq7TiyJ2CxezCAirXjFxvaiD03npak3cRjlP9+OjTmSy1EpIrEbh+l6JgUundniloMLDQ/6VTdhLQ==}
     engines: {node: '>=14.0.0'}
 
   path-key@3.1.1:
@@ -2558,8 +2558,8 @@ packages:
     resolution: {integrity: sha512-uCC2VHvQRYu+lMh4My/sFNmF2klFymLX1wHJeXnbEJERpV/ZsVuonzerjfrGpIGF7LBVa1O7i9kjiWvJiFck8g==}
     engines: {node: '>=0.10.0'}
 
-  strnum@2.2.1:
-    resolution: {integrity: sha512-BwRvNd5/QoAtyW1na1y1LsJGQNvRlkde6Q/ipqqEaivoMdV+B1OMOTVdwR+N/cwVUcIt9PYyHmV8HyexCZSupg==}
+  strnum@2.2.2:
+    resolution: {integrity: sha512-DnR90I+jtXNSTXWdwrEy9FakW7UX+qUZg28gj5fk2vxxl7uS/3bpI4fjFYVmdK9etptYBPNkpahuQnEwhwECqA==}
 
   svgo@4.0.1:
     resolution: {integrity: sha512-XDpWUOPC6FEibaLzjfe0ucaV0YrOjYotGJO1WpF0Zd+n6ZGEQUsSugaoLq9QkEZtAfQIxT42UChcssDVPP3+/w==}
@@ -3060,7 +3060,7 @@ snapshots:
     transitivePeerDependencies:
       - typescript
 
-  '@astrojs/markdown-remark@7.0.1':
+  '@astrojs/markdown-remark@7.1.0':
     dependencies:
       '@astrojs/internal-helpers': 0.8.0
       '@astrojs/prism': 4.0.1
@@ -3075,6 +3075,7 @@ snapshots:
       remark-parse: 11.0.0
       remark-rehype: 11.1.2
       remark-smartypants: 3.0.2
+      retext-smartypants: 6.2.0
       shiki: 4.0.2
       smol-toml: 1.6.0
       unified: 11.0.5
@@ -3089,9 +3090,9 @@ snapshots:
     dependencies:
       prismjs: 1.30.0
 
-  '@astrojs/rss@4.0.17':
+  '@astrojs/rss@4.0.18':
     dependencies:
-      fast-xml-parser: 5.4.1
+      fast-xml-parser: 5.5.9
       piccolore: 0.1.3
       zod: 4.3.6
 
@@ -3107,12 +3108,12 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@astrojs/vue@6.0.1(@types/node@25.5.0)(astro@6.0.7(@types/node@25.5.0)(rollup@4.59.0)(sass@1.98.0)(typescript@5.9.3)(yaml@2.8.2))(esbuild@0.27.4)(sass@1.98.0)(typescript@5.9.3)(vue@3.5.30(typescript@5.9.3))(yaml@2.8.2)':
+  '@astrojs/vue@6.0.1(@types/node@25.5.0)(astro@6.1.2(@types/node@25.5.0)(rollup@4.59.0)(sass@1.98.0)(typescript@5.9.3)(yaml@2.8.2))(esbuild@0.27.4)(sass@1.98.0)(typescript@5.9.3)(vue@3.5.30(typescript@5.9.3))(yaml@2.8.2)':
     dependencies:
       '@vitejs/plugin-vue': 6.0.5(@voidzero-dev/vite-plus-core@0.1.13(@types/node@25.5.0)(esbuild@0.27.4)(sass@1.98.0)(typescript@5.9.3)(yaml@2.8.2))(vue@3.5.30(typescript@5.9.3))
       '@vitejs/plugin-vue-jsx': 5.1.5(@voidzero-dev/vite-plus-core@0.1.13(@types/node@25.5.0)(esbuild@0.27.4)(sass@1.98.0)(typescript@5.9.3)(yaml@2.8.2))(vue@3.5.30(typescript@5.9.3))
       '@vue/compiler-sfc': 3.5.30
-      astro: 6.0.7(@types/node@25.5.0)(rollup@4.59.0)(sass@1.98.0)(typescript@5.9.3)(yaml@2.8.2)
+      astro: 6.1.2(@types/node@25.5.0)(rollup@4.59.0)(sass@1.98.0)(typescript@5.9.3)(yaml@2.8.2)
       vite: '@voidzero-dev/vite-plus-core@0.1.13(@types/node@25.5.0)(esbuild@0.27.4)(sass@1.98.0)(typescript@5.9.3)(yaml@2.8.2)'
       vite-plugin-vue-devtools: 8.1.0(@voidzero-dev/vite-plus-core@0.1.13(@types/node@25.5.0)(esbuild@0.27.4)(sass@1.98.0)(typescript@5.9.3)(yaml@2.8.2))(vue@3.5.30(typescript@5.9.3))
       vue: 3.5.30(typescript@5.9.3)
@@ -4249,11 +4250,11 @@ snapshots:
 
   assertion-error@2.0.1: {}
 
-  astro@6.0.7(@types/node@25.5.0)(rollup@4.59.0)(sass@1.98.0)(typescript@5.9.3)(yaml@2.8.2):
+  astro@6.1.2(@types/node@25.5.0)(rollup@4.59.0)(sass@1.98.0)(typescript@5.9.3)(yaml@2.8.2):
     dependencies:
       '@astrojs/compiler': 3.0.1
       '@astrojs/internal-helpers': 0.8.0
-      '@astrojs/markdown-remark': 7.0.1
+      '@astrojs/markdown-remark': 7.1.0
       '@astrojs/telemetry': 3.3.0
       '@capsizecss/unpack': 4.0.0
       '@clack/prompts': 1.1.0
@@ -4595,12 +4596,13 @@ snapshots:
 
   fast-xml-builder@1.1.4:
     dependencies:
-      path-expression-matcher: 1.1.3
+      path-expression-matcher: 1.2.0
 
-  fast-xml-parser@5.4.1:
+  fast-xml-parser@5.5.9:
     dependencies:
       fast-xml-builder: 1.1.4
-      strnum: 2.2.1
+      path-expression-matcher: 1.2.0
+      strnum: 2.2.2
 
   fastq@1.20.1:
     dependencies:
@@ -4888,7 +4890,7 @@ snapshots:
 
   markdown-table@3.0.4: {}
 
-  marked@17.0.4: {}
+  marked@17.0.5: {}
 
   mdast-util-definitions@6.0.0:
     dependencies:
@@ -5350,7 +5352,7 @@ snapshots:
 
   path-browserify@1.0.1: {}
 
-  path-expression-matcher@1.1.3: {}
+  path-expression-matcher@1.2.0: {}
 
   path-key@3.1.1: {}
 
@@ -5652,7 +5654,7 @@ snapshots:
 
   strip-bom-string@1.0.0: {}
 
-  strnum@2.2.1: {}
+  strnum@2.2.2: {}
 
   svgo@4.0.1:
     dependencies:
