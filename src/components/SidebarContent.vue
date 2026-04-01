@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import type { PostLink, BlogrollItem } from "../types";
+import NowPlaying from "./NowPlaying.vue";
+import LinkedList from "./LinkedList.vue";
 
 defineProps<{
   featuredPosts: PostLink[];
@@ -40,7 +42,7 @@ defineProps<{
 
   <div class="Sidebar__nowPlaying">
     <h2>Now playing</h2>
-    <now-playing></now-playing>
+    <NowPlaying />
   </div>
 
   <div class="Sidebar__years">
@@ -55,7 +57,7 @@ defineProps<{
   <div class="Sidebar__bookmarks">
     <h2>Linked list</h2>
     <p class="color-caption mb-4">Things that caught my eye on the web, updated sporadically.</p>
-    <bookmark-list></bookmark-list>
+    <LinkedList />
   </div>
 
   <div class="Sidebar__blogroll">
@@ -111,52 +113,9 @@ defineProps<{
   }
 }
 
-.Sidebar__bookmarks {
-  :deep(bookmark-list) {
-    display: block;
-
-    a {
-      display: block;
-      -webkit-line-clamp: 1;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
-  }
-}
-
 .Sidebar__colophon {
   a {
     text-decoration: underline;
-  }
-}
-
-.Sidebar__nowPlaying {
-  :deep(now-playing) {
-    display: flex;
-    align-items: flex-start;
-    gap: 8px;
-    margin-top: 4px;
-    margin-bottom: 3px;
-    color: var(--color-caption);
-
-    .image-container {
-      position: relative;
-      top: 3px;
-      overflow: clip;
-      min-width: 32px;
-      width: 32px;
-      height: 32px;
-      border-radius: 4px;
-
-      &:after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        box-shadow: inset 0 0 0 1px rgba(0 0 0 / 0.1);
-        border-radius: inherit;
-      }
-    }
   }
 }
 

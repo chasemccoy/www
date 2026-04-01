@@ -24,7 +24,7 @@ const pageDate = date ? new Date(date) : new Date();
       </div>
 
       <aside class="Sidebar Sidebar--mobile">
-        <Sidebar mobile={true} featuredPosts={featuredPosts} years={years} blogroll={blogroll} />
+        <Sidebar client:media="(max-width: 699px)" mobile={true} featuredPosts={featuredPosts} years={years} blogroll={blogroll} />
       </aside>
     </header>
 
@@ -41,7 +41,7 @@ const pageDate = date ? new Date(date) : new Date();
     </main>
 
     <aside class="Sidebar Sidebar--desktop">
-      <Sidebar mobile={false} featuredPosts={featuredPosts} years={years} blogroll={blogroll} />
+      <Sidebar client:load mobile={false} featuredPosts={featuredPosts} years={years} blogroll={blogroll} />
     </aside>
   </div>
 </HtmlLayout>
