@@ -201,3 +201,33 @@ Phew, with any luck we have styled the headings above this text and they look pr
 Let's add a closing paragraph here so things end with a decently sized block of text. I can't explain why I want things to end that way but I have to assume it's because I think things will look weird or unbalanced if there is a heading too close to the end of the document.
 
 What I've written here is probably long enough, but adding this final sentence can't hurt.
+
+## Embeds and custom features
+
+The site supports a few custom content transforms via rehype plugins. A bare YouTube link on its own line becomes an embedded player:
+
+https://www.youtube.com/watch?v=F1sJW6nTP6E
+
+Similarly, a bare Twitter/X link on its own line becomes an embedded tweet:
+
+https://twitter.com/chase_mccoy/status/1360317636995874824
+
+## Figures
+
+Images with a title attribute are automatically wrapped in a `<figure>` with a `<figcaption>`. The caption supports inline markdown like **bold**, _italic_, and [links](https://example.com):
+
+![](https://images.unsplash.com/photo-1556740758-90de374c12ad?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80 "Contrary to popular belief, [Lorem Ipsum](https://example.com) is not _simply_ random text.")
+
+## Callouts
+
+<div class="Callout">
+
+This is a callout. It can contain **bold text**, _italics_, [links](https://example.com), and any other inline formatting. It's useful for drawing attention to important information.
+
+It can also contain multiple paragraphs.
+
+</div>
+
+## Inline elements
+
+Here is a sampling of other inline HTML elements that can appear in content: the `<small>` element for <small>fine print and side comments</small>, the `<mark>` element for <mark>highlighted or relevant text</mark>, and the `<kbd>` element for keyboard shortcuts like <kbd>⌘</kbd> + <kbd>S</kbd>.
