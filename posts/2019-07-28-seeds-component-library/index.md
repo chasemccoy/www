@@ -4,13 +4,13 @@ excerpt: How our team of three built a component library that designers and engi
 image: seeds.png
 ---
 
-<aside class='callout'>
+<aside class='Callout'>
 
 <b>Note!</b> This article was [originally published on the Styled Component's blog](https://medium.com/styled-components/how-to-build-a-great-component-library-a40d974a412d). Big thanks to [Max Stoiber](https://twitter.com/mxstbr) for letting me share my work with the Styled Components readers.
 
 </aside>
 
-Sprout Social’s design system, [Seeds](https://seeds.sproutsocial.com), has done a lot of growing up since it launched in October of last year. When we launched, our system was home to four categories of guidelines and principles: Brand, Visual, Writing, and Product. A healthy showing, for sure, but something was suspiciously missing  —  components.
+Sprout Social’s design system, [Seeds](https://seeds.sproutsocial.com), has done a lot of growing up since it launched in October of last year. When we launched, our system was home to four categories of guidelines and principles: Brand, Visual, Writing, and Product. A healthy showing, for sure, but something was suspiciously missing —components.
 
 Sprout has had a React component library longer than it’s had a design system. We call ours Racine (after the avenue in Chicago where Sprout was once headquartered), and it has long been the source of truth for component patterns in our web app.
 
@@ -33,7 +33,7 @@ The design systems team at Sprout Social is relatively small. Our team of 3 (inc
 
 Today, Racine lives on as our component library. But no longer does it try to do the job of development tool and documentation site. [The documentation now lives in our design system](https://seeds.sproutsocial.com/components/), and our component library is just a tool for building, testing, and using components in web projects at Sprout.
 
-![Our component library now lives right inside our design system, at seeds.sproutsocial.com/components](seeds.png 'Our component library now lives right inside our design system, at seeds.sproutsocial.com/components')
+![Our component library now lives right inside our design system, at seeds.sproutsocial.com/components](seeds.png "Our component library now lives right inside our design system, at seeds.sproutsocial.com/components")
 
 We learned over time that **when the experience of building a component is intertwined with the experience of documenting it, the latter tends to suffer**. We had many developers who would build and ship new components in our library for themselves without documenting them for others.
 
@@ -74,11 +74,11 @@ MDX even allows us to customize how native Markdown elements are rendered. For i
 ````md
 ```jsx live
 <Box
-  display='flex'
-  alignItems='center'
-  justifyContent='center'
-  bg='neutral.100'
-  color='neutral.1000'
+  display="flex"
+  alignItems="center"
+  justifyContent="center"
+  bg="neutral.100"
+  color="neutral.1000"
   p={600}
 >
   This content will be centered within the box.
@@ -88,7 +88,7 @@ MDX even allows us to customize how native Markdown elements are rendered. For i
 
 and we can output an interactive, editable code block in our design system that looks like this:
 
-![Example of an interactive code block from Seeds](code-sandbox.png 'Example of an interactive code block from Seeds')
+![Example of an interactive code block from Seeds](code-sandbox.png "Example of an interactive code block from Seeds")
 
 Imagine how difficult it would have been before MDX to achieve something like this without the author of the documentation having to hand-write HTML or React.
 
@@ -97,13 +97,13 @@ MDX not only allows you to import any React components, but also allows you to s
 For instance, to embed a video from YouTube, authors can just use the shortcode without having to import anything:
 
 ```jsx
-<Youtube id='abc123' />
+<Youtube id="abc123" />
 ```
 
 For our component documentation, I made a shortcode that renders the table of component properties for any component in our library:
 
 ```jsx
-<PropTable component='Button' />
+<PropTable component="Button" />
 ```
 
 Good tools don’t make a design system, and they won’t increase engagement with your system if you aren’t focused on solving people problems. But great tools can lower the barrier of entry to contribution, and they can make the chore of maintaining a system much less tedious (which gives us more time to focus on people).
@@ -128,7 +128,7 @@ At the core of our design system are our design tokens — the atomic values tha
 
 We offer our design tokens in a variety of formats (Sass variables, JavaScript constants, etc.), and we reference them all over our design system. Instead of just referring to our tokens by name when we are writing content for our system, we created what we call **Token Tags** (patent pending):
 
-![This Token Tag is for the 700 shade of our purple color palette.](token-tag.png 'This Token Tag is for the 700 shade of our purple color palette.')
+![This Token Tag is for the 700 shade of our purple color palette.](token-tag.png "This Token Tag is for the 700 shade of our purple color palette.")
 
 That’s an example of a color token tag, which gives the reader an immediate visual reference to the actual color (instead of just a cryptic Purple 700). When the reader hovers over the tag, they can see the hex value for the color, and clicking the tag will copy the hex value to their clipboard:
 
@@ -142,7 +142,7 @@ Another great example where breaking out of the usual format allowed us to deliv
 
 We have a complex typographic scale that differs between our product and our brand and marketing materials. Instead of listing this out in a table, we built an interactive tool that takes inspiration from the websites of our favorite font foundries:
 
-![Type some text, pick your options, and then copy the tokens for Sass, JavaScript, and CSS.](type-tool.png 'Type some text, pick your options, and then copy the tokens for Sass, JavaScript, and CSS.')
+![Type some text, pick your options, and then copy the tokens for Sass, JavaScript, and CSS.](type-tool.png "Type some text, pick your options, and then copy the tokens for Sass, JavaScript, and CSS.")
 
 Users can paste in the copy they would like to typeset, and then select whether it’s being used in our product or in a visual project (brand and marketing materials). Then, they’re presented with all of the valid values and combinations of values. And, of course, they can copy the design token for whatever environment you’re working in.
 

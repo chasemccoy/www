@@ -16,22 +16,22 @@ Details can be used to build accessible dialogs and dropdown menus. In this exam
 ## Details menu
 
 ```js
-<details class='details-reset'>
+<details class="details-reset">
   <summary>Robots</summary>
   <details-menu>
     <ul>
       <li>
-        <button type='button' role='menuitem'>
+        <button type="button" role="menuitem">
           Hubot
         </button>
       </li>
       <li>
-        <button type='button' role='menuitem'>
+        <button type="button" role="menuitem">
           Bender
         </button>
       </li>
       <li>
-        <button type='button' role='menuitem'>
+        <button type="button" role="menuitem">
           BB-8
         </button>
       </li>
@@ -41,24 +41,24 @@ Details can be used to build accessible dialogs and dropdown menus. In this exam
 ```
 
 ```js
-<details class='details-reset'>
+<details class="details-reset">
   <summary>
     Preferred robot: <span data-menu-button>None</span>
   </summary>
   <details-menu>
     <ul>
       <li>
-        <button type='button' role='menuitem' data-menu-button-text>
+        <button type="button" role="menuitem" data-menu-button-text>
           Hubot
         </button>
       </li>
       <li>
-        <button type='button' role='menuitem' data-menu-button-text>
+        <button type="button" role="menuitem" data-menu-button-text>
           Bender
         </button>
       </li>
       <li>
-        <button type='button' role='menuitem' data-menu-button-text>
+        <button type="button" role="menuitem" data-menu-button-text>
           BB-8
         </button>
       </li>
@@ -91,7 +91,7 @@ Here's the CSS to make this work:
 }
 
 .details-with-dialog[open] > summary:before {
-  content: ' ';
+  content: " ";
   background: rgba(0, 0, 0, 0.3);
   display: block;
   position: fixed;
@@ -115,11 +115,11 @@ details-dialog {
 ```
 
 ```js
-<details class='details-reset details-with-dialog'>
+<details class="details-reset details-with-dialog">
   <summary>Open dialog</summary>
   <details-dialog>
     <p>But you can click anywhere to dismiss without JS.</p>
-    <button data-close-dialog type='button' autofocus>
+    <button data-close-dialog type="button" autofocus>
       Close button only works with JS
     </button>
   </details-dialog>

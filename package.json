@@ -1,47 +1,58 @@
 {
   "name": "@chasemccoy/www",
   "version": "2024",
-  "type": "module",
-  "scripts": {
-    "build": "ENVIRONMENT=production yarn clean && concurrently \"eleventy\" \"yarn build:css\"",
-    "watch": "eleventy --watch",
-    "serve": "eleventy --serve",
-    "start": "concurrently \"eleventy --serve --quiet\" \"yarn watch:css\"",
-    "debug": "DEBUG=* eleventy",
-    "watch:css": "sass --watch src/css:src/_includes/styles",
-    "build:css": "sass src/css:src/_includes/styles",
-    "clean": "rm -rf _site"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/chasemccoy/www.git"
-  },
+  "homepage": "https://github.com/chasemccoy/www",
+  "license": "MIT",
   "author": {
     "name": "Chase McCoy",
     "email": "hi@chsmc.org",
     "url": "https://chsmc.org"
   },
-  "license": "MIT",
-  "homepage": "https://github.com/chasemccoy/www",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/chasemccoy/www.git"
+  },
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev --port 1995",
+    "start": "astro dev --port 1995",
+    "check": "astro check && vp check --fix",
+    "build": "pnpm check && astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "test": "vp test run"
+  },
   "dependencies": {
-    "@11ty/eleventy": "3.1.2",
-    "@11ty/eleventy-fetch": "5.1.0",
-    "@11ty/eleventy-img": "6.0.4",
-    "@11ty/eleventy-plugin-rss": "2.0.4",
-    "@11ty/eleventy-plugin-syntaxhighlight": "5.0.2",
+    "@astrojs/check": "^0.9.8",
+    "@astrojs/rss": "^4.0.18",
+    "@astrojs/vue": "^6.0.1",
     "@date-fns/utc": "^2.1.1",
+    "astro": "^6.1.2",
     "date-fns": "^4.1.0",
-    "eleventy-plugin-embed-twitter": "1.4.2",
-    "eleventy-plugin-youtube-embed": "1.10.2",
-    "jsx-async-runtime": "^2.0.0",
-    "markdown-it": "14.1.0",
-    "markdown-it-anchor": "9.2.0",
-    "sass": "1.97.1",
-    "slugify": "1.6.6",
-    "tsx": "^4.20.6"
+    "fast-glob": "^3.3.3",
+    "gray-matter": "^4.0.3",
+    "hast-util-from-html": "^2.0.3",
+    "lite-youtube-embed": "^0.3.4",
+    "marked": "^17.0.5",
+    "rehype-slug": "^6.0.0",
+    "typescript": "^5.9.3",
+    "unist-util-visit": "^5.1.0",
+    "vue": "^3.5.0"
   },
   "devDependencies": {
-    "@netlify/plugin-lighthouse": "6.0.1",
-    "concurrently": "9.2.0"
+    "@types/hast": "^3.0.4",
+    "@types/node": "^25.5.0",
+    "rehype-parse": "^9.0.1",
+    "rehype-stringify": "^10.0.1",
+    "unified": "^11.0.5",
+    "vite-plus": "latest",
+    "vitest": "npm:@voidzero-dev/vite-plus-test@0.1.13"
+  },
+  "packageManager": "pnpm@10.32.1",
+  "pnpm": {
+    "overrides": {
+      "vite": "npm:@voidzero-dev/vite-plus-core@0.1.13",
+      "vitest": "npm:@voidzero-dev/vite-plus-test@0.1.13"
+    }
   }
 }

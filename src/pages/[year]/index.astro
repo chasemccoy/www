@@ -1,0 +1,62 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import BlogFeed from '../../components/BlogFeed.vue';
+import Breadcrumbs from '../../components/Breadcrumbs.vue';
+import BlogPostPreview from '../../components/BlogPostPreview.vue';
+import { getPostsByYear, htmlDateString, shortDate } from '../../utils';
+import { render } from 'astro:content';
+import type { InferGetStaticPropsType } from 'astro';
+
+export const getStaticPaths = async () => {
+  const postsByYear = await getPostsByYear();
+  return Object.keys(postsByYear).map(year => ({
+    params: { year },
+    props: { year, posts: postsByYear[year] },
+  }));
+};
+
+type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+type YearPost = NonNullable<Props['posts']>[number];
+
+const { year, posts = [] } = Astro.props;
+
+const reversedPosts = [...posts].reverse();
+const titledPosts = reversedPosts.filter(
+  (post): post is YearPost & { data: YearPost['data'] & { title: string } } =>
+    Boolean(post.data?.title)
+);
+const untitledPosts = reversedPosts.filter(post => !post.data?.title);
+
+---
+<BaseLayout>
+  <BlogFeed variant="archive">
+    <div class="prose mb-16">
+      <Breadcrumbs class="mb-12"><span>Archives</span></Breadcrumbs>
+      <h1 class="font-header color-accent">{year}</h1>
+    </div>
+    <div class="flex flex-column" style="gap: 12px;">
+      {titledPosts.map(post => (
+        <BlogPostPreview
+          title={post.data.title}
+          date={post.data.date}
+          permalink={post.data.permalink}
+        />
+      ))}
+    </div>
+
+    <div class="flex flex-column Blog__notes" style="gap: 64px;">
+      {untitledPosts.map(async post => {
+        const { Content } = await render(post);
+        return (
+          <article class="prose">
+            <time datetime={htmlDateString(post.data.date)}>
+              <a href={post.data.permalink} class="unstyled color-caption block">{shortDate(post.data.date)}</a>
+            </time>
+            
+            <Content />
+          </article>
+        );
+      })}
+    </div>
+  </BlogFeed>
+</BaseLayout>

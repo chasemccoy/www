@@ -1,0 +1,48 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Article from '../components/Article.vue';
+import ReplyBadge from '../components/ReplyBadge.vue';
+import Pagination from '../components/Pagination.vue';
+import { getAdjacentPosts, getPostDisplayTitle } from '../utils';
+import { getCollection } from 'astro:content';
+
+interface Props {
+  title?: string;
+  date: Date | string;
+  postId: string;
+}
+
+const { title, date, postId } = Astro.props;
+const postTitle = getPostDisplayTitle({ title, date });
+
+const allPosts = await getCollection('posts');
+const { previous: previousPost, next: nextPost } = getAdjacentPosts(allPosts, postId);
+
+let headerHtml = '';
+if (title) {
+  const currentPost = allPosts.find(p => p.id === postId);
+  const permalink = currentPost?.data.permalink ?? '#';
+  headerHtml = `<h1 class="font-header"><a href="${permalink}" class="unstyled">${title}</a></h1>`;
+}
+---
+<BaseLayout
+  title={title}
+  templateClass="blog post"
+  date={date}
+  header={headerHtml}
+>
+  <Article>
+    <slot />
+  </Article>
+
+  <ReplyBadge postTitle={postTitle} />
+
+  <Pagination
+    previousHref={previousPost?.permalink}
+    previousLabel="Previous"
+    previousTitle={previousPost?.title}
+    nextHref={nextPost?.permalink}
+    nextLabel="Next"
+    nextTitle={nextPost?.title}
+  />
+</BaseLayout>

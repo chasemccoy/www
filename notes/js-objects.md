@@ -9,8 +9,8 @@ tags:
 
 ```js
 const obj = {
-  ...(condition && { prop: value })
-}
+  ...(condition && { prop: value }),
+};
 ```
 
 ## Default values
@@ -28,10 +28,10 @@ color: {
 Instead, do this:
 
 ```js
-color: Object.assign('gray', {
-  light: 'lightGray',
-  dark: 'darkGray'
-})
+color: Object.assign("gray", {
+  light: "lightGray",
+  dark: "darkGray",
+});
 ```
 
 Now you can access the default value with `color` instead of `color.default`. [Thanks to Max Stoiber for this tip](https://twitter.com/mxstbr/status/998975061636866048).
@@ -42,13 +42,13 @@ Now you can access the default value with `color` instead of `color.default`. [T
 
 ```js
 const getFirstLast = (array) => {
-  const { 0: first, length: len, [len - 1]: last } = array
+  const { 0: first, length: len, [len - 1]: last } = array;
 
-  return { first, last }
-}
+  return { first, last };
+};
 
-getFirstLast('apple')
+getFirstLast("apple");
 // {first: "a", last: "e"}
-getFirstLast([1, 2, 3, 4, 5, 6])
+getFirstLast([1, 2, 3, 4, 5, 6]);
 // {first: 1, last: 6}
 ```

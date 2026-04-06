@@ -6,9 +6,9 @@ Paul has always been my favorite Beatle.
 
 I was in junior high school when I got hooked—during that time there's a good chance that if you found me listening to music on my iPod nano, it was The Beatles.
 
-Perhaps it was Paul's youthfulness and humor that made him approachable to me at that age in a way that John wasn't. Paul was someone you might have known in real life, but John and George seemed otherworldly. 
+Perhaps it was Paul's youthfulness and humor that made him approachable to me at that age in a way that John wasn't. Paul was someone you might have known in real life, but John and George seemed otherworldly.
 
-That otherworldliness is a part of why John in particular is regarded as the driving creative genius of the group. 
+That otherworldliness is a part of why John in particular is regarded as the driving creative genius of the group.
 
 But this has never sat right with my love for Paul, so I was delighted to discover Ian Leslie's [64 Reasons To Celebrate Paul McCartney](https://www.ian-leslie.com/p/64-reasons-to-celebrate-paul-mccartney) which makes a very strong case for the boyish Beatle.
 
@@ -18,7 +18,7 @@ It's a long list full of excellent reasons to rethink your choice of favorite Be
 
 I think this is the one that sums up the whole thing, and is what a large part of makes Paul appealing. His work offers me reassurance that inspiration can and does come from the most unassuming of places.
 
-The need to find or manufacture deeper meaning in our work by tracing its inspirations can be paralyzing—Paul is a good reminder for me to not ignore ideas sparked from humble circumstances. 
+The need to find or manufacture deeper meaning in our work by tracing its inspirations can be paralyzing—Paul is a good reminder for me to not ignore ideas sparked from humble circumstances.
 
 It's clear that being a "poet of the mundane" extends beyond creative work and into the way we choose to live our lives:
 

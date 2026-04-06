@@ -12,11 +12,11 @@ tags:
 For the longest time, if you wanted to use the shadow DOM (and thus scoped CSS styles) you needed JavaScript:
 
 ```js
-const host = document.getElementById('host')
-const opts = { mode: 'open' }
-const shadowRoot = host.attachShadow(opts)
-const html = '<h1>Hello Shadow DOM</h1>'
-shadowRoot.innerHTML = html
+const host = document.getElementById("host");
+const opts = { mode: "open" };
+const shadowRoot = host.attachShadow(opts);
+const html = "<h1>Hello Shadow DOM</h1>";
+shadowRoot.innerHTML = html;
 ```
 
 But with [declarative shadow DOM](https://developer.chrome.com/en/blog/new-in-chrome-90/#declarative), you can do all of this without JS:

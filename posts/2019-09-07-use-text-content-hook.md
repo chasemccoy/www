@@ -15,17 +15,17 @@ This property can be useful in a lot of scenarios, but it only works on DOM node
 
 ```js
 const useTextContent = (initial) => {
-  const [textContent, setTextContent] = useState(initial)
+  const [textContent, setTextContent] = useState(initial);
 
   const ref = useCallback((node) => {
     if (node !== null) {
-      setTextContent(node.textContent)
+      setTextContent(node.textContent);
     }
-  }, [])
+  }, []);
 
-  ref.current = textContent
-  return ref
-}
+  ref.current = textContent;
+  return ref;
+};
 ```
 
 In the code above, we define what's called [a "callback ref"](https://reactjs.org/docs/hooks-faq.html?source=post_page-----eb7c15198780----------------------#how-can-i-measure-a-dom-node) in React. This function will get called whenever the ref gets attached to the node, or when the ref value changes.
@@ -45,7 +45,7 @@ return (
 )
 ```
 
-<aside class='callout mb-16'>
+<aside class='Callout mb-16'>
 
 You can see this hook in action in [this example I've created on CodePen](https://codepen.io/chasemccoy/pen/WNeXLQW).
 
@@ -54,7 +54,7 @@ You can see this hook in action in [this example I've created on CodePen](https:
 One of my favorite uses for this hook is to ensure that React components have accessible title attributes without requiring the consumer of the component to pass an explicit value for the title. For instance, imagine a Card component:
 
 ```js
-<Card title={someReactNode} href='/details' />
+<Card title={someReactNode} href="/details" />
 ```
 
 that renders this structure:
@@ -69,19 +69,16 @@ that renders this structure:
 The contents of the anchor tag here isn't enough to be fully accessible (view more of what?), but we could fix that by using the `textContent` of the card title:
 
 ```js
-const textContainer = useTextContent(null)
+const textContainer = useTextContent(null);
 
 return (
   <div>
     <h3 ref={textContainer}>{props.title}</h3>
-    <a
-      href={props.href}
-      title={`View more info about ${textContainer.current}`}
-    >
+    <a href={props.href} title={`View more info about ${textContainer.current}`}>
       View more
     </a>
   </div>
-)
+);
 ```
 
 Now, users relying on a screen reader get an alternate title that describes _what_ they will be viewing more of if they choose to follow this link. And even better, the consumers of the component don't have to worry about passing a string specifically for this purpose.

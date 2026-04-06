@@ -1,0 +1,56 @@
+@use "../theme" as *;
+
+.Sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  font-size: 0.85rem;
+  grid-column: sidebar;
+  min-width: 0;
+
+  @include small {
+    padding-bottom: 2rem;
+  }
+
+  h2 {
+    margin-bottom: 2px;
+  }
+
+  a {
+    color: var(--color-caption);
+    text-decoration: none;
+
+    &:hover {
+      color: var(--link-color);
+    }
+
+    &[aria-current="page"] {
+      color: var(--color-accent);
+    }
+  }
+
+  li:before {
+    content: "◆";
+    color: var(--color-border);
+  }
+}
+
+.Sidebar--mobile {
+  display: flex;
+  max-width: 100%;
+  padding-right: var(--gap);
+
+  @include small {
+    display: none;
+  }
+}
+
+.Sidebar--desktop {
+  display: none;
+  max-width: var(--sidebar-width);
+  padding-right: var(--gap);
+
+  @include small {
+    display: flex;
+  }
+}

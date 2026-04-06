@@ -1,0 +1,47 @@
+---
+import HtmlLayout from './HtmlLayout.astro';
+import SiteHeader from '../components/SiteHeader.vue';
+import Sidebar from '../components/Sidebar.vue';
+import { htmlDateString, readableDate, getFeaturedPosts, getPostsByYear, getBlogroll } from '../utils';
+import type { LayoutProps } from '../types';
+
+interface Props extends LayoutProps {
+  date?: Date | string;
+}
+
+const { title, description, templateClass = 'note', date, header } = Astro.props;
+const featuredPosts = await getFeaturedPosts();
+const years = Object.keys(await getPostsByYear()).reverse();
+const blogroll = await getBlogroll();
+const pageDate = date ? new Date(date) : new Date();
+---
+<HtmlLayout title={title} description={description} templateClass={templateClass} date={date}>
+  <div class="Wrapper">
+    <header class="Wrapper__header">
+      <div>
+        <SiteHeader />
+        <time datetime={htmlDateString(pageDate)}>{readableDate(pageDate)}</time>
+      </div>
+
+      <aside class="Sidebar Sidebar--mobile">
+        <Sidebar client:media="(max-width: 699px)" mobile={true} featuredPosts={featuredPosts} years={years} blogroll={blogroll} />
+      </aside>
+    </header>
+
+    <main class="Wrapper__main">
+      {header && (
+        <header class="prose" id="header">
+          <Fragment set:html={header} />
+        </header>
+      )}
+
+      <div class="Content">
+        <slot />
+      </div>
+    </main>
+
+    <aside class="Sidebar Sidebar--desktop">
+      <Sidebar client:load mobile={false} featuredPosts={featuredPosts} years={years} blogroll={blogroll} />
+    </aside>
+  </div>
+</HtmlLayout>

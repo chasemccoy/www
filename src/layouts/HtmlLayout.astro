@@ -1,0 +1,74 @@
+---
+import '../styles/styles.scss';
+import 'lite-youtube-embed/src/lite-yt-embed.css';
+import metadata from '../data/metadata.json';
+import { getPageTitle } from '../utils';
+
+interface Props {
+  title?: string;
+  description?: string;
+  templateClass?: string;
+  date?: Date | string;
+}
+
+const { title, description, templateClass, date } = Astro.props;
+const pageUrl = Astro.url.pathname;
+
+const pageTitle = getPageTitle(metadata.title, { title, date, pageUrl });
+const desc = description || metadata.description;
+const canonicalUrl = `${metadata.url}${pageUrl}`;
+---
+<!DOCTYPE html>
+<html lang="en">
+<!--
+  Take no thought of the harvest,
+  but only of proper sowing.
+
+  T. S. Eliot
+-->
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{pageTitle}</title>
+    <meta name="description" content={desc} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap');
+
+      @font-face {
+        font-family: 'Brunswick Grotesque';
+        src: url("/fonts/brunswick-grotesque/BrunswickGrotesque-Regular.woff2") format('woff2');
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+      }
+    </style>
+
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="alternate" href={metadata.feed.path} type="application/rss+xml" title={metadata.title} />
+
+    <link rel="icon" href="/favicon.png" type="image/png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="white" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="hsl(48, 40%, 5%)" />
+
+    <meta property="og:site_name" content="Chase McCoy" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={desc} />
+    <meta name="twitter:creator" content="@chase_mccoy" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta property="fediverse:creator" content="@chsmc@mastodon.social" />
+
+    <script>import 'lite-youtube-embed/src/lite-yt-embed.js';</script>
+  </head>
+
+  <body class={templateClass || undefined}>
+    <slot />
+    
+    <script async src="https://platform.twitter.com/widgets.js" is:inline></script>
+    <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "488e6debfbc64509bd4b00dde784e24f"}' is:inline></script>
+  </body>
+</html>

@@ -1,0 +1,35 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.vue';
+import BlogPostPreview from '../components/BlogPostPreview.vue';
+import { getPosts, titleize } from '../utils';
+
+const allPosts = await getPosts();
+const hiddenPosts = allPosts.filter(p => p.data.hidden).reverse();
+---
+<BaseLayout
+  title="Backstage"
+  templateClass="Blog"
+>
+  <div class="prose">
+    <Breadcrumbs class="mb-12">
+      <a href="/" class="bold">Home</a>
+    </Breadcrumbs>
+
+    <h1 class="font-header">
+      <a href="/backstage" class="unstyled">Backstage</a>
+    </h1>
+
+    <h2>Drafts</h2>
+
+    <div class="flex flex-column" style="gap: 1em;">
+      {hiddenPosts.map(post => (
+        <BlogPostPreview
+          title={post.data.title || titleize(post.id.split('/').pop() || post.id)}
+          date={post.data.date}
+          permalink={post.data.permalink}
+        />
+      ))}
+    </div>
+  </div>
+</BaseLayout>

@@ -14,7 +14,7 @@ Personal websites are the digital homesteads for many. Those sites live somewher
 
 Like the Little Printer, I wish that my web server could exist in my home as a physical object that could be touched, observed, and interacted with.
 
-![](portal.gif '[[source](https://www.are.na/block/1011928)]')
+![](portal.gif "[[source](https://www.are.na/block/1011928)]")
 
 Hosting a web server yourself is surprisingly difficult today given the advances we've made in consumer technology over the last few decades. Hosting content on someone else's server has become as simple as dragging and dropping a folder onto your web browser. There are countless business that will happily rent out online space to for very cheap (or even free, with the hopes that eventually you'll upgrade and give them money).
 

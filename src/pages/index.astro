@@ -1,0 +1,50 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Article from '../components/Article.vue';
+import BlogFeed from '../components/BlogFeed.vue';
+import Breadcrumbs from '../components/Breadcrumbs.vue';
+import Pagination from '../components/Pagination.vue';
+import { getFeed, FEED_PAGE_SIZE, htmlDateString, readableDate, shortDate } from '../utils';
+import { render } from 'astro:content';
+
+const feed = await getFeed();
+
+const pageNumber = 1;
+const posts = feed.slice(0, FEED_PAGE_SIZE);
+const totalPages = Math.ceil(feed.length / FEED_PAGE_SIZE);
+const hasNextPage = pageNumber < totalPages;
+---
+<BaseLayout templateClass="home">
+  <BlogFeed>
+    {posts.map(async post => {
+      const { Content } = await render(post);
+      return (
+        <Article class={post.data.title ? 'Blog__article--longForm' : ''}>
+          {post.data.title ? (
+            <header>
+              <Breadcrumbs>
+                <div>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12 6 12 12 16 14"></polyline>
+                  </svg>
+                  <time datetime={htmlDateString(post.data.date)}>{readableDate(post.data.date)}</time>
+                </div>
+              </Breadcrumbs>
+              <h1 class="font-header">
+                <a href={post.data.permalink} class="unstyled">{post.data.title}</a>
+              </h1>
+            </header>
+          ) : (
+            <time datetime={htmlDateString(post.data.date)}>
+              <a href={post.data.permalink} class="unstyled color-caption block">{shortDate(post.data.date)}</a>
+            </time>
+          )}
+          <Content />
+        </Article>
+      );
+    })}
+  </BlogFeed>
+
+  <Pagination previousHref={hasNextPage ? `/${pageNumber + 1}/` : undefined} previousTitle="Older" style="margin-top: 6rem;" />
+</BaseLayout>

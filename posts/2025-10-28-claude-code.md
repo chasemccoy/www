@@ -1,5 +1,5 @@
 ---
-title: Claude Code as general purpose agent 
+title: Claude Code as general purpose agent
 ---
 
 The more I use Claude Code, the more I find it useful and interesting for tasks beyond the one for which it is named. [Simon Willison agrees](https://simonwillison.net/2025/Oct/16/claude-skills/#claude-as-a-general-agent):
@@ -11,4 +11,3 @@ On one hand it's surprising that this sort of tool is taking the form of a comma
 I often think of the web as the world's great distribution mechanism (along with the post office), but it lacks the ability to interface with anything outside the browser. This is largely by design and in most cases a helpful feature! But it certainly limits the power of any general purpose agent distributed as a web app.
 
 Native apps have capabilities beyond the browser, but are harder to build and distribute across platforms. That said, I'm excited to see AI companies invest in more general purpose computing agents via native OS integrations. [OpenAI's recent acquisition of Sky](https://openai.com/index/openai-acquires-software-applications-incorporated) is certainly something to keep an eye on.
-

@@ -1,9 +1,10 @@
 {
+  "extends": "astro/tsconfigs/strictest",
+  "include": [".astro/types.d.ts", "**/*"],
+  "exclude": ["dist"],
   "compilerOptions": {
-    "jsx": "react-jsx",
-    "jsxImportSource": "jsx-async-runtime",
-		"allowJs": true,
-    "module": "preserve",
-    "noEmit": true,
+    "verbatimModuleSyntax": true,
+    "exactOptionalPropertyTypes": false,
+    "types": ["node"]
   }
 }

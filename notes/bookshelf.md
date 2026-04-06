@@ -1,7 +1,7 @@
 ---
 title: Bookshelf
 excerpt: A few excellent reads that have shaped who I am, how I work, or how I think about the world around me.
-layout: 'layouts/page.jsx'
+layout: "layouts/page.jsx"
 templateClass: bookshelf
 templateEngineOverride: njk
 hidden: true

@@ -15,7 +15,7 @@ I like Orbit because it has a homepage that is heavily geared towards the folks 
 
 Right after the quick links is a section listing your bookmarks, which is my other favorite thing about this system.
 
-![Orbit's homepage](screenshot-1.png 'Orbit does a great job of making its homepage truly useful.')
+![Orbit's homepage](screenshot-1.png "Orbit does a great job of making its homepage truly useful.")
 
 ### Bookmarks
 

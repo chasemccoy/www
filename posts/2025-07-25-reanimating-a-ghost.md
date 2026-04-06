@@ -1,5 +1,5 @@
 ---
-title: Reanimating a ghost  
+title: Reanimating a ghost
 ---
 
 Mary Oliver once said that "attention is the beginning of devotion." I want to highlight a few examples of this in practice that have recently crossed my desk.
@@ -33,4 +33,3 @@ In both cases the act of restoration is, at heart, an act of care. A refusal to 
 And perhaps, as our lives become more entangled with the digital, we'll find ourselves needing new ways to honor not just the objects we can touch but the experiences, stories, and communities that flicker across our screens. I personally feel very grateful that there are organizations and individuals taking on this sort of work.
 
 Both of these examples remind us that conservation is less about freezing the past than about paying attention to it, and keeping it in conversation with the present. In that dialogue we might discover new forms of devotion: ways to care, to remember, and to imagine what else might be possible.
-

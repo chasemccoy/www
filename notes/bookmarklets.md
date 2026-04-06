@@ -13,18 +13,18 @@ This is a little function you can call to copy text to the clipboard from within
 
 ```js
 function copy(text) {
-  var node = document.createElement('textarea')
-  var selection = document.getSelection()
+  var node = document.createElement("textarea");
+  var selection = document.getSelection();
 
-  node.textContent = text
-  document.body.appendChild(node)
+  node.textContent = text;
+  document.body.appendChild(node);
 
-  selection.removeAllRanges()
-  node.select()
-  document.execCommand('copy')
+  selection.removeAllRanges();
+  node.select();
+  document.execCommand("copy");
 
-  selection.removeAllRanges()
-  document.body.removeChild(node)
+  selection.removeAllRanges();
+  document.body.removeChild(node);
 }
 ```
 

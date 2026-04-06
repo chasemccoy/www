@@ -4,7 +4,7 @@ title: Conjurings of the harvest moon
 
 Autumn is my favorite time of the year. The trees outside my apartment here in Oak Park are shining gold, and the air is starting to feel crisp and cold. Sweater weather, if you will.
 
-![A towering castle set against a blue sky and surrounded by trees with golden leaves.](autumn.jpg '[Hashimoto Okiie, Autumn at Himeji Castle, 1949](https://harvardartmuseums.org/collections/object/199224s)')
+![A towering castle set against a blue sky and surrounded by trees with golden leaves.](autumn.jpg "[Hashimoto Okiie, Autumn at Himeji Castle, 1949](https://harvardartmuseums.org/collections/object/199224s)")
 
 Besides the weather and foliage, the best part of the season may just be its rituals. One of my favorites is an annual rewatching of Over the Garden Wall, which is the coziest, most endearing television series I've ever seen.
 
@@ -14,7 +14,7 @@ If the show is to teach us anything, it's that things are not always what they s
 
 I'd be remiss if I didn't link to [this wonderful exploration of vintage postcards](https://weirdchristmas.com/2017/10/03/over-the-garden-wall-and-vintage-postcards) that share a vibe with OtGW from the blog Weird Christmas (which is written by, get this, Craig Kringle). The entire site is dedicated to vintage Victorian Christmas cards, which Craig collects and shares online.
 
-![A vintage postcard showing figures with pumpkins instead of heads sitting around in a field. A sign in the center of the frame reads "Heaven and how to get there".](postcard.png '[Weird Christmas](https://weirdchristmas.com/2017/10/03/over-the-garden-wall-and-vintage-postcards)')
+![A vintage postcard showing figures with pumpkins instead of heads sitting around in a field. A sign in the center of the frame reads "Heaven and how to get there".](postcard.png "[Weird Christmas](https://weirdchristmas.com/2017/10/03/over-the-garden-wall-and-vintage-postcards)")
 
 A few of the show's scenes appear to take almost direct inspiration from some of the postcards in Craig's collection. There is truly nothing new under the sun.
 
@@ -89,7 +89,7 @@ I decided to use Airtable for this job, partly because it has such an easy to us
 
 It's still very much a WIP, and not as performant as I'd like it to be just yet, but you can take a peek at [books.chasem.co](https://books.chasem.co)
 
-![A screenshot of a website displaying Chase McCoy's collection of physical books in a grid layout.](books.png 'A website can be a bookshelf')
+![A screenshot of a website displaying Chase McCoy's collection of physical books in a grid layout.](books.png "A website can be a bookshelf")
 
 Now I feel much more comfortable donating some of my books knowing that I'll always be able to look back over my collection.
 

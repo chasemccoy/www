@@ -35,8 +35,7 @@ Example of this for a password field:
   <label for="password">
     <span class="field-label">Password</span>
     <span class="field-hint"
-      >Must contain 8+ characters with at least 1 number and 1 uppercase
-      letter.</span
+      >Must contain 8+ characters with at least 1 number and 1 uppercase letter.</span
     >
   </label>
   <input type="password" id="password" name="password" />

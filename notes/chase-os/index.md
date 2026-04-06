@@ -1,6 +1,6 @@
 ---
 title: ChaseOS
-excerpt: '[🚧 WIP] My personal operating systems.'
+excerpt: "[🚧 WIP] My personal operating systems."
 class: chase-os
 hidden: true
 ---
