@@ -35,6 +35,7 @@
     "lite-youtube-embed": "^0.3.4",
     "marked": "^17.0.5",
     "rehype-slug": "^6.0.0",
+    "sharp": "^0.34.5",
     "typescript": "^5.9.3",
     "unist-util-visit": "^5.1.0",
     "vue": "^3.5.0"
