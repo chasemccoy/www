@@ -14,8 +14,8 @@ defineProps<{
   <div>
     <h2>About the editor</h2>
     <p>
-      Chase is a professional designer and amateur human currently working as a design engineer at
-      <a href="https://era.app" target="_blank">Era</a>.
+      Chase is a design engineer and blogger currently working on design systems for Claude at
+      <a href="https://anthropic.com" target="_blank">Anthropic</a>.
     </p>
   </div>
 
