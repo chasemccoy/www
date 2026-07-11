@@ -30,6 +30,19 @@ pnpm build
 pnpm preview
 ```
 
+**Test, type-check, lint, and format:**
+
+```bash
+pnpm test          # Vitest (unit tests for utils + rehype plugins)
+pnpm check         # astro check (types) + oxlint + oxfmt --check
+pnpm lint          # oxlint over src + astro.config.ts
+pnpm lint:fix      # oxlint --fix
+pnpm format        # oxfmt, writes in place
+pnpm format:check  # oxfmt verify (no writes)
+```
+
+`pnpm build` runs `pnpm check` first, so the Netlify deploy gates on types, lint (correctness errors), and formatting. Tooling: **Vitest** for tests, **oxlint** + **oxfmt** (Oxc) for lint/format. Lint and format are scoped to `src` + `astro.config.ts`; blog posts in `posts/` and tooling files (e.g. `pnpm-workspace.yaml`) are intentionally excluded.
+
 ## Architecture
 
 ### Template System

@@ -1,4 +1,5 @@
 import { defineConfig } from "astro/config";
+import { unified } from "@astrojs/markdown-remark";
 import vue from "@astrojs/vue";
 import rehypeSlug from "rehype-slug";
 import rehypeFigure from "./src/plugins/rehype-figure.js";
@@ -27,11 +28,12 @@ export default defineConfig({
   },
   markdown: {
     syntaxHighlight: "prism",
-    remarkPlugins: [],
-    rehypePlugins: [rehypeSlug, rehypeFigure, rehypeYouTube, rehypeTwitter],
-    remarkRehype: {
-      allowDangerousHtml: true,
-    },
+    processor: unified({
+      rehypePlugins: [rehypeSlug, rehypeFigure, rehypeYouTube, rehypeTwitter],
+      remarkRehype: {
+        allowDangerousHtml: true,
+      },
+    }),
   },
   experimental: {
     contentIntellisense: true,
