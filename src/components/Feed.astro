@@ -1,0 +1,31 @@
+---
+import BlogFeed from './BlogFeed.vue';
+import BlogPost from './BlogPost.vue';
+import { shouldTruncatePost } from '../utils';
+import { render } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  posts: CollectionEntry<'posts'>[];
+}
+
+const { posts } = Astro.props;
+---
+<BlogFeed>
+  {posts.map(async post => {
+    const isTruncated = shouldTruncatePost(post);
+    // Only render the full markdown component when it will actually be
+    // shown — truncated posts use the prebuilt excerpt instead.
+    const Content = isTruncated ? null : (await render(post)).Content;
+    return (
+      <BlogPost
+        title={post.data.title}
+        date={post.data.date}
+        permalink={post.data.permalink}
+        isTruncated={isTruncated}
+      >
+        {Content ? <Content /> : <Fragment set:html={post.data.renderedExcerpt} />}
+      </BlogPost>
+    );
+  })}
+</BlogFeed>

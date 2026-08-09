@@ -156,7 +156,15 @@ export async function getBlogroll() {
   return entries.map((entry) => entry.data);
 }
 
-export const FEED_PAGE_SIZE = 25;
+export const FEED_PAGE_SIZE = 20;
+
+// Long titled posts render as an excerpt with a "read more" in the feed.
+// (The excerpt itself is built in content.config.ts.)
+export const TRUNCATE_WORD_COUNT = 1200;
+
+export function shouldTruncatePost(post: CollectionEntry<"posts">): boolean {
+  return !!post.data.title && post.data.wordCount > TRUNCATE_WORD_COUNT;
+}
 
 export async function getFeed() {
   const posts = await getVisiblePosts();

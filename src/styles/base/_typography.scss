@@ -205,47 +205,62 @@
 
 // Blockquote styles (global, used in multiple contexts)
 blockquote:not(.unstyled, .twitter-tweet) {
-  font-size: 1.1em;
-  line-height: 1.45;
-  color: var(--color-caption);
-  padding-left: 1em;
+  text-wrap: pretty;
+  border: 0.5px solid var(--color-border);
+  border-radius: 12px;
+  // padding: 20px;
+  font-size: 0.9rem;
+  // line-height: 1.7;
+  // margin-inline: -8px;
+  background-color: var(--color-body-background);
+  background-clip: padding-box;
+  position: relative;
 
-  @include small {
-    padding-left: 0;
-  }
+  --left-margin: 28px;
 
-  & > p:first-of-type:before {
-    content: "“";
-    font-size: 1.4em;
-    line-height: 0;
-    margin-left: -0.7em;
-    margin-right: 0.3em;
-    color: var(--color-accent);
-    display: inline-block;
-    position: relative;
-    top: 6px;
-  }
+  background-image:
+    linear-gradient(
+      90deg,
+      transparent calc(var(--left-margin) - 1px),
+      var(--color-paper-margin-rule) calc(var(--left-margin) - 1px) var(--left-margin),
+      transparent var(--left-margin) calc(var(--left-margin) + 4px),
+      var(--color-paper-margin-rule) calc(var(--left-margin) + 4px) calc(var(--left-margin) + 5px),
+      transparent calc(var(--left-margin) + 5px)
+    ),
+    linear-gradient(var(--color-paper-line-rule) 0.5px, transparent 0.5px);
+  background-size: 100% 2em;
+  background-position:
+    0 0,
+    0 1.25em;
+  padding-block: 1.25em;
+  padding-left: 2.75rem;
+  padding-right: 1rem;
+  line-height: 2;
 
-  &:before {
-    content: "";
-    display: block;
-    width: 100%;
-    background: var(--color-border);
-    height: 0.5px;
-    margin-bottom: 8px;
-    width: calc(100% + 1em);
-    margin-left: -1em;
+  box-shadow: var(--shadow-small), var(--shadow-highlight);
+  // box-shadow: inset 0px 2px 0px white;
 
-    @include small {
-      width: 100%;
-      margin-left: 0;
-    }
+  // &:before {
+  //   content: "“";
+  //   font-size: 6rem;
+  //   position: absolute;
+  //   top: 2px;
+  //   left: 8px;
+  //   line-height: 1;
+  //   z-index: 1;
+  //   color: var(--color-accent);
+  //   mix-blend-mode: multiply;
+  //   opacity: 0.25;
+  // }
+
+  & > p:has(cite) {
+    margin: 0;
+    line-height: 2;
   }
 
   cite {
-    display: block;
-    font-size: 0.9rem;
-    margin-top: -0.5rem;
+    display: inline-block;
+    font-size: 0.8em;
     font-family: var(--font-code);
     color: var(--color-caption);
     --link-color: var(--color-caption);
@@ -257,6 +272,10 @@ blockquote:not(.unstyled, .twitter-tweet) {
 
   cite:before {
     content: "↑ ";
+  }
+
+  @media (prefers-color-scheme: dark) {
+    background-color: var(--color-offset);
   }
 }
 

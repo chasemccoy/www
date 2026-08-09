@@ -23,16 +23,21 @@ const posts = defineCollection({
         const source = await readFile(fileURL, "utf8");
         const parsed = matter(source);
 
+        const rendered = await renderMarkdown(parsed.content, { fileURL });
+        const wordCount = parsed.content.split(/\s+/).length;
+        const paragraphs = (rendered?.html || "").match(/<p>.*?<\/p>/gs) || [];
+        const renderedExcerpt = paragraphs.slice(0, 5).join("\n");
+
         const data = await parseData({
           id,
           data: {
             ...parsed.data,
             date: resolvePostDate(id, parsed.data.date),
             permalink: getPermalinkFromPostId(id),
+            wordCount,
+            renderedExcerpt,
           },
         });
-
-        const rendered = await renderMarkdown(parsed.content, { fileURL });
 
         store.set({
           id,
@@ -81,6 +86,8 @@ const posts = defineCollection({
     tags: z.array(z.string()).optional().default([]),
     date: z.date(),
     permalink: z.string(),
+    wordCount: z.number(),
+    renderedExcerpt: z.string(),
   }),
 });
 

@@ -24,6 +24,8 @@ function makePost(
       hidden: options.hidden,
       title: options.title,
       tags: [],
+      wordCount: 0,
+      renderedExcerpt: "",
     },
   } as CollectionEntry<"posts">;
 }

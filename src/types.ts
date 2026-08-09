@@ -2,7 +2,6 @@ export interface LayoutProps {
   title?: string;
   description?: string;
   templateClass?: string;
-  header?: string;
 }
 
 export interface PostLink {

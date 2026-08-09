@@ -76,13 +76,3 @@
 .lead {
   font-size: 1.1em;
 }
-
-.pixelated {
-  image-rendering: pixelated;
-}
-
-.invert-for-light-mode {
-  @media (prefers-color-scheme: light) {
-    filter: invert(1);
-  }
-}

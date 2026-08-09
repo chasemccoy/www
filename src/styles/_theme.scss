@@ -46,6 +46,9 @@
   --color-highlight: hsl(51, 100%, 84%);
   --color-highlight-dark: hsl(50, 100%, 67%);
 
+  --color-paper-line-rule: oklch(88.87% 0.0312 295.75);
+  --color-paper-margin-rule: oklch(91.53% 0.0419 59.64);
+
   --font-code:
     "JetBrains Mono", ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono", "Roboto Mono",
     "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro", "Fira Mono", "Droid Sans Mono",
@@ -69,5 +72,8 @@
     --color-caption: hsl(48, 8%, 48%);
     --color-offset: hsl(48, 30%, 9%);
     --color-chat-bubble: hsl(48, 30%, 11%);
+
+    --color-paper-line-rule: oklch(33.87% 0.07 295.75);
+    --color-paper-margin-rule: oklch(31.53% 0.1 59.64);
   }
 }
