@@ -23,6 +23,7 @@ const { posts } = Astro.props;
         date={post.data.date}
         permalink={post.data.permalink}
         isTruncated={isTruncated}
+        isDraft={post.data.hidden}
       >
         {Content ? <Content /> : <Fragment set:html={post.data.renderedExcerpt} />}
       </BlogPost>

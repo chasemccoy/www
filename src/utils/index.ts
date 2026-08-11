@@ -116,6 +116,11 @@ export function getPageTitle(
 
 // Collection helpers
 
+// Drafts (`hidden: true` in frontmatter) are served by the dev server so they
+// can be previewed at their permalink and in the feed, but they are never
+// emitted by a production build — no page, no feed entry, no archive listing.
+export const SHOW_DRAFTS = import.meta.env.DEV;
+
 export async function getPosts() {
   const posts = await getCollection("posts");
   return posts.sort((a, b) => a.data.date.getTime() - b.data.date.getTime());
@@ -123,6 +128,7 @@ export async function getPosts() {
 
 export async function getVisiblePosts() {
   const posts = await getPosts();
+  if (SHOW_DRAFTS) return posts;
   return posts.filter((p) => !p.data.hidden);
 }
 

@@ -1,8 +1,14 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import Breadcrumbs from '../components/Breadcrumbs.vue';
-import BlogPostPreview from '../components/BlogPostPreview.vue';
-import { getPosts, titleize } from '../utils';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.vue';
+import BlogPostPreview from '../../components/BlogPostPreview.vue';
+import { getPosts, titleize, SHOW_DRAFTS } from '../../utils';
+
+export function getStaticPaths() {
+  // A rest param lets the route opt out of the build entirely: in production
+  // there are no paths, so /backstage/ is never emitted.
+  return SHOW_DRAFTS ? [{ params: { page: undefined } }] : [];
+}
 
 const allPosts = await getPosts();
 const hiddenPosts = allPosts.filter(p => p.data.hidden).reverse();

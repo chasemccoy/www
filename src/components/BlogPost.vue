@@ -6,11 +6,12 @@ defineProps<{
   date: Date | string;
   permalink: string;
   isTruncated?: boolean;
+  isDraft?: boolean;
 }>();
 </script>
 
 <template>
-  <article :class="['prose', 'BlogPost', { 'BlogPost--longForm': title, 'BlogPost--isTruncated': isTruncated }]">
+  <article :class="['prose', 'BlogPost', { 'BlogPost--longForm': title, 'BlogPost--isTruncated': isTruncated, 'BlogPost--draft': isDraft }]">
     <h1 v-if="title" class="font-header">
       <a :href="permalink" class="unstyled">{{ title }}</a>
     </h1>
@@ -50,6 +51,19 @@ defineProps<{
 
 .BlogPost time:first-child + :deep(p) {
   display: inline;
+}
+
+// Drafts only ever render on the dev server, so this label never ships.
+// A pseudo-element keeps it out of the DOM, leaving the `time:first-child`
+// rules above intact for untitled notes.
+.BlogPost--draft::before {
+  content: "Draft";
+  display: block;
+  margin-bottom: 0.5em;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-accent);
 }
 
 .BlogPost--isTruncated {

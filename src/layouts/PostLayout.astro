@@ -9,9 +9,10 @@ interface Props {
   title?: string;
   date: Date | string;
   postId: string;
+  isDraft?: boolean;
 }
 
-const { title, date, postId } = Astro.props;
+const { title, date, postId, isDraft } = Astro.props;
 
 const allPosts = await getCollection('posts');
 const { previous: previousPost, next: nextPost } = getAdjacentPosts(allPosts, postId);
@@ -23,7 +24,7 @@ const permalink = getPermalinkFromPostId(postId);
   templateClass="blog post"
   date={date}
 >
-  <BlogPost title={title} date={date} permalink={permalink}>
+  <BlogPost title={title} date={date} permalink={permalink} isDraft={isDraft}>
     <slot />
   </BlogPost>
 
