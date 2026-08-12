@@ -3,7 +3,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Feed from '../components/Feed.astro';
 import Pagination from '../components/Pagination.vue';
 import { getFeed, FEED_PAGE_SIZE } from '../utils';
-import type { CollectionEntry } from 'astro:content';
 
 export async function getStaticPaths() {
   const feed = await getFeed();
@@ -22,12 +21,6 @@ export async function getStaticPaths() {
   }
 
   return paths;
-}
-
-interface Props {
-  posts: CollectionEntry<'posts'>[];
-  pageNumber: number;
-  totalPages: number;
 }
 
 const { posts, pageNumber, totalPages } = Astro.props;
