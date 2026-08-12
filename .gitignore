@@ -2,3 +2,6 @@ dist/
 node_modules/
 .cache
 .astro/
+
+# Design lab scratch pages (never committed)
+src/pages/design-lab/

@@ -33,6 +33,17 @@ defineProps<{
 </template>
 
 <style scoped lang="scss">
+// Feed spacing: adjacent posts space themselves (both siblings carry this
+// component's scope attribute, so the sibling selector works across
+// instances).
+.BlogPost + .BlogPost {
+  margin-top: calc(var(--flow-spacing) * 6);
+}
+
+.BlogPost--longForm + .BlogPost--longForm {
+  margin-top: 5rem;
+}
+
 .BlogPost h1 {
   border-bottom: 1px solid var(--color-border);
   padding-bottom: 0.75em;

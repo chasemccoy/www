@@ -4,7 +4,7 @@
   </div>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 .Breadcrumbs {
   display: flex;
   align-items: center;

@@ -1,0 +1,218 @@
+// The "gradient river" — the page-length gradient that the background wash,
+// link text, underlines, bullets, and other pinned elements all sample. This
+// file holds the whole CSS side of the system: the gradient stop tokens, the
+// anchoring mixins, and the full-page layers (wash, noise texture, viewport
+// vignette, footer fade). The JS side (stop tables, per-page phase, the
+// anchoring script) lives in src/utils/river.ts and the inline script in
+// src/layouts/HtmlLayout.astro; the anchoring script must pin every element
+// whose styles @include river-text or river-fill (or whose pseudo-element
+// does — vars inherit), so grep for the mixin names here when changing
+// either side.
+
+@use "sass:list";
+@use "sass:math";
+@use "sass:string";
+
+// Shared river anchoring: the page-phase gradient, sized and positioned by
+// the vars the anchoring script sets. $fallback-size is the pre-JS/no-JS
+// size: element-sized text uses a very tall gradient (showing only the top
+// sliver — effectively a flat swatch of the page's first stop), while the
+// page-spanning wash passes the --river-cycle approximation instead (its
+// percentages resolve against the document, which only works there).
+@mixin river-anchor($gradient: var(--gradient-river), $fallback-size: 100% 6000px) {
+  background-image: $gradient;
+  background-size: var(--river-size, #{$fallback-size});
+  background-position: var(--river-pos, 0 0);
+}
+
+// The river clipped to the element's glyphs (gradient text).
+@mixin river-text($gradient: var(--gradient-river)) {
+  @include river-anchor($gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  @supports (-webkit-background-clip: text) or (background-clip: text) {
+    color: transparent;
+  }
+}
+
+// Same page-anchored sampling, but painted across the element's whole box
+// instead of clipped to glyphs — for solid shapes (rules, swatches, empty
+// pseudo-element boxes, the wash). A small box effectively renders as a
+// solid patch of the river's color at its position. Set a background-color
+// first as the no-gradient fallback.
+@mixin river-fill($gradient: var(--gradient-river), $fallback-size: 100% 6000px) {
+  @include river-anchor($gradient, $fallback-size);
+}
+
+// A bottom-to-top fade built from an alpha table (first entry = bottom /
+// most opaque, last = top; stops spread evenly). With $river: true the fade
+// is tinted with --river-end via relative color syntax; otherwise it's
+// black, for use as a mask-image. Keeps the eased curves as data instead of
+// dozens of hand-transcribed stop lines.
+@function eased-fade($alphas, $river: false) {
+  $stops: ();
+  $last: list.length($alphas) - 1;
+  @for $i from 0 through $last {
+    $a: list.nth($alphas, $i + 1);
+    $pos: math.percentage(math.div($i, $last));
+    $color: string.unquote("rgb(0 0 0 / #{$a})");
+    @if $river {
+      $color: string.unquote("rgba(from var(--river-end) r g b / #{$a})");
+    }
+    $stops: list.append($stops, string.unquote("#{$color} #{$pos}"), comma);
+  }
+  @return linear-gradient(to top, $stops);
+}
+
+// The rule output below is emitted exactly once, from styles.scss, via
+// `@include river.styles` — so components and partials can @use this module
+// for the mixins above without duplicating any CSS.
+@mixin styles {
+  :root {
+    // The dark-mode palette, uniformly darkened for contrast on the light
+    // ground: same hue and chroma, minus --gradient-darken of OKLCH
+    // lightness. Tune the single dial to taste (bigger = darker).
+    --gradient-darken: 0.08;
+    --gradient-stop-1: oklch(from #f472b6 calc(l - var(--gradient-darken)) c h);
+    --gradient-stop-2: oklch(from #fb923c calc(l - var(--gradient-darken)) c h);
+    --gradient-stop-3: oklch(from #a3e635 calc(l - var(--gradient-darken) - 0.08) c h);
+    --gradient-stop-4: oklch(from #2dd4bf calc(l - var(--gradient-darken)) c h);
+    --gradient-stop-5: oklch(from #818cf8 calc(l - var(--gradient-darken)) c h);
+    --gradient-stop-6: oklch(from #c084fc calc(l - var(--gradient-darken)) c h);
+
+    @media (prefers-color-scheme: dark) {
+      --gradient-stop-1: #f472b6;
+      --gradient-stop-2: #fb923c;
+      --gradient-stop-3: #a3e635;
+      --gradient-stop-4: #2dd4bf;
+      --gradient-stop-5: #818cf8;
+      --gradient-stop-6: #c084fc;
+    }
+  }
+
+  // Full-page overlay layers behind the content: noise texture + gradient wash.
+  #texture,
+  #gradient {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-repeat: repeat;
+  }
+
+  #texture {
+    z-index: -1;
+    background-image: url("/images/noise.webp");
+    background-size: 200px;
+    opacity: 0.05;
+    mix-blend-mode: hard-light;
+
+    @media (prefers-color-scheme: dark) {
+      opacity: 0.02;
+    }
+  }
+
+  #gradient {
+    z-index: -2;
+    @include river-fill($fallback-size: 100% var(--river-cycle));
+    opacity: 0.02;
+
+    @media (prefers-color-scheme: dark) {
+      display: none;
+    }
+  }
+
+  // Viewport-bottom vignette that follows the river as you scroll. Coupled
+  // numbers to keep in mind when tuning: the strip is 40dvh tall with a
+  // -4dvh overhang, so its top edge sits 64dvh below the viewport top; the
+  // -60dvh base offset and the keyframe endpoints below are tuned around
+  // that (and the 160dvh keyframe fallback is 100dvh + 60dvh).
+  body::after {
+    content: "";
+    position: fixed;
+    bottom: -4dvh;
+    right: 0;
+    left: 0;
+    height: 40dvh;
+    pointer-events: none;
+    mix-blend-mode: multiply;
+
+    @include river-fill($fallback-size: 100% var(--river-cycle));
+    background-position: 0 -60dvh;
+    mask-image: eased-fade(
+      (
+        1,
+        0.81195,
+        0.6501,
+        0.512,
+        0.39541,
+        0.29825,
+        0.21857,
+        0.15452,
+        0.10433,
+        0.06631,
+        0.03879,
+        0.0201,
+        0.0086,
+        0.00259,
+        0.00033,
+        0
+      )
+    );
+    animation: river-viewport-follow linear both;
+    animation-timeline: scroll(root);
+
+    @media (prefers-color-scheme: dark) {
+      mix-blend-mode: normal;
+      opacity: 0.5;
+    }
+  }
+
+  @keyframes river-viewport-follow {
+    from {
+      background-position: 0 -60dvh;
+    }
+    to {
+      background-position: 0 calc(40dvh - var(--river-doc, 160dvh));
+    }
+  }
+
+  body > footer {
+    min-height: 25dvh;
+    background: var(--river-end);
+    position: relative;
+    margin-top: 60dvh;
+    color: var(--color-text-inverse);
+    z-index: -1;
+
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      top: -80dvh;
+      height: 80dvh;
+      z-index: -1;
+      background: eased-fade(
+        (
+          1,
+          0.9962,
+          0.98334,
+          0.95846,
+          0.91689,
+          0.85093,
+          0.74788,
+          0.59342,
+          0.40658,
+          0.25212,
+          0.14907,
+          0.08311,
+          0.04154,
+          0.01666,
+          0.0038,
+          0
+        ),
+        $river: true
+      );
+    }
+  }
+}

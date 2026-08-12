@@ -9,12 +9,11 @@ interface Props extends LayoutProps {
 }
 
 const props = { ...Astro.props.frontmatter, ...Astro.props };
-const { title, description, templateClass } = props;
+const { title, description } = props;
 ---
 <BaseLayout
   title={title}
   description={description}
-  templateClass={templateClass}
 >
   <Article>
     {title && <h1 class="font-header">{title}</h1>}

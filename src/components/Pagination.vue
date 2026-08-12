@@ -11,7 +11,7 @@ defineProps<{
 
 <template>
   <nav class="Pagination">
-    <ul class="unstyled">
+    <ul>
       <li v-if="previousHref" class="Pagination__previous">
         <a :href="previousHref" class="unstyled">
           <span v-if="previousLabel" class="Pagination__label">{{ previousLabel }}</span>

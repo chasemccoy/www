@@ -7,9 +7,9 @@ interface Props extends LayoutProps {
   date?: Date | string;
 }
 
-const { title, description, templateClass = 'note', date } = Astro.props;
+const { title, description, date } = Astro.props;
 ---
-<HtmlLayout title={title} description={description} templateClass={templateClass} date={date}>
+<HtmlLayout title={title} description={description} date={date}>
   <div class="Wrapper">
     <header class="Wrapper__header">
       <SiteHeader />

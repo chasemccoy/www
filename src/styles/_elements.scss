@@ -1,21 +1,17 @@
-@use "../theme" as *;
+@use "theme" as *;
+@use "river" as *;
 
 html {
   overflow-y: scroll;
   line-height: var(--root-line-height);
-  background-color: var(--color-offset);
+  background-color: var(--color-body-background);
 }
 
 body {
   font-family: var(--font-body);
   color: var(--color-text);
-  font-weight: 500;
   min-height: 100vh;
-
-  font-variant-ligatures: no-contextual;
-  -moz-font-feature-settings: "calt" 0;
-  -webkit-font-feature-settings: "calt" 0;
-  font-feature-settings: "calt" 0;
+  position: relative;
 }
 
 :is(h1, h2, h3, h4, h5, h6) {
@@ -30,29 +26,37 @@ body {
 }
 
 a {
-  --link-underline-color: var(--color-accent);
+  --link-underline-color: var(
+    --river-underline,
+    color-mix(in oklab, var(--color-text) 35%, transparent)
+  );
+
   color: var(--link-color);
+  @include river-text;
+
+  // Glyphs can overhang their advance width by a pixel or two (side
+  // bearings, antialiasing), and background-clip: text can't paint outside
+  // the box — so edge glyphs get shaved. Pad the paint area out and cancel
+  // it with negative margins so layout is unchanged.
+  padding-inline: 1.5px;
+  margin-inline: -1.5px;
   text-decoration: underline;
-  transition: all 0.2s;
-  text-decoration-thickness: var(--text-decoration-thickness, 0.75px);
+  transition:
+    text-decoration-color 0.2s,
+    text-underline-offset 0.2s;
+  text-decoration-thickness: var(--text-decoration-thickness, 1px);
   text-decoration-color: var(--link-underline-color);
-  text-underline-offset: var(--text-decoration-offset, 0.1em);
+  text-underline-offset: var(--text-decoration-offset, 0.15em);
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
 
   &:hover {
-    --link-underline-color: var(--link-hover);
-    color: var(--link-hover);
+    text-decoration-thickness: 1px;
+    text-underline-offset: var(--text-decoration-offset, 0.325em);
   }
 
   &.unstyled {
     text-decoration: none;
-  }
-
-  &.underlined {
-    text-decoration: underline;
-  }
-
-  &.no-hover:hover {
-    color: unset;
   }
 }
 
@@ -77,15 +81,20 @@ mark {
 
 time {
   font-family: var(--font-body);
-  font-size: 0.95rem;
   color: var(--color-caption);
 }
 
-iframe {
-  border-radius: 8px;
+// Bare lists are plain; the decorated versions (bullets, counters) are
+// opted into by .prose content — see _prose.scss.
+ul,
+ol {
+  padding: 0;
+  list-style: none;
+}
 
-  @include small {
-    border-radius: 0;
+iframe {
+  @include tiny {
+    border-radius: 8px;
   }
 }
 
@@ -102,35 +111,19 @@ hr {
     width: 100%;
   }
 
-  &.vertical {
-    background: none;
-    height: 64px;
-    position: relative;
-
-    &:after {
-      content: "";
-      position: absolute;
-      width: 2px;
-      height: 100%;
-      background: var(--color-border);
-      border-radius: 100px;
-    }
-  }
-
   &.break {
     background: none;
     height: auto;
 
     &:before {
-      content: "§";
+      content: "• • •";
       color: var(--color-border);
       display: block;
       width: 100%;
       text-align: center;
-      font-size: 2.5em;
-      padding-bottom: 8px;
+      font-size: 2em;
       line-height: 1;
-      transform: rotate(90deg);
+      @include river-text(var(--gradient-river-faint));
     }
   }
 }
@@ -141,12 +134,16 @@ pre {
   margin-left: calc(var(--layout-padding) * -1);
   padding: 0 var(--layout-padding);
   overflow: auto;
-  background: var(--color-offset) !important;
+  background: var(--color-body-background);
+  background-clip: padding-box;
+  border: 0.5px solid var(--color-border);
+  box-shadow: var(--shadow-small), var(--shadow-highlight);
+  display: flex;
 
   @include tiny {
     width: auto;
     margin: 0;
-    border-radius: 8px;
+    border-radius: 12px;
   }
 
   code {
@@ -155,16 +152,20 @@ pre {
     display: block;
     background-color: transparent;
   }
+
+  @media (prefers-color-scheme: dark) {
+    background: var(--color-offset);
+  }
 }
 
 *:not(pre) > code {
   color: var(--color-accent);
-  font-size: 0.95rem;
+  font-size: 0.85rem;
+  @include river-text;
 
   &:before,
   &:after {
     content: "`";
-    color: var(--color-accent);
   }
 }
 
@@ -200,16 +201,4 @@ blockquote.twitter-tweet {
 
 .twitter-tweet + * {
   margin-top: 1.5em;
-}
-
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes load {
-  to {
-    transform: rotate(90deg);
-  }
 }

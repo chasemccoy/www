@@ -3,23 +3,28 @@ import '../styles/styles.scss';
 import 'lite-youtube-embed/src/lite-yt-embed.css';
 import metadata from '../data/metadata.json';
 import { getPageTitle } from '../utils';
+import { riverInlineStyle } from '../utils/river';
 
 interface Props {
   title?: string;
   description?: string;
-  templateClass?: string;
   date?: Date | string;
 }
 
-const { title, description, templateClass, date } = Astro.props;
+const { title, description, date } = Astro.props;
 const pageUrl = Astro.url.pathname;
 
 const pageTitle = getPageTitle(metadata.title, { title, date, pageUrl });
 const desc = description || metadata.description;
 const canonicalUrl = `${metadata.url}${pageUrl}`;
+
+// The page's gradient-river vars (see src/utils/river.ts): each page's
+// gradient is phase-shifted to its own starting point at build time, so the
+// design works before (or without) JS.
+const riverStyle = riverInlineStyle(pageUrl);
 ---
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style={riverStyle}>
 <!--
   Take no thought of the harvest,
   but only of proper sowing.
@@ -38,9 +43,49 @@ const canonicalUrl = `${metadata.url}${pageUrl}`;
       @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap');
 
       @font-face {
-        font-family: 'Brunswick Grotesque';
-        src: url("/fonts/brunswick-grotesque/BrunswickGrotesque-Regular.woff2") format('woff2');
+        font-family: 'Untitled Sans';
+        src: url("/fonts/untitled-sans/UntitledSansWeb-Regular.woff2") format('woff2');
         font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: 'Untitled Sans';
+        src: url("/fonts/untitled-sans/UntitledSansWeb-Italic.woff2") format('woff2');
+        font-weight: normal;
+        font-style: italic;
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: 'Untitled Sans';
+        src: url("/fonts/untitled-sans/UntitledSansWeb-Bold.woff2") format('woff2');
+        font-weight: bold;
+        font-style: normal;
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: 'Untitled Sans';
+        src: url("/fonts/untitled-sans/UntitledSansWeb-BoldItalic.woff2") format('woff2');
+        font-weight: bold;
+        font-style: italic;
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: 'Sentinel';
+        src: url("/fonts/sentinel/Sentinel-Book.woff2") format('woff2');
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: 'Sentinel';
+        src: url("/fonts/sentinel/Sentinel-Bold.woff2") format('woff2');
+        font-weight: bold;
         font-style: normal;
         font-display: swap;
       }
@@ -51,8 +96,7 @@ const canonicalUrl = `${metadata.url}${pageUrl}`;
 
     <link rel="icon" href="/favicon.png" type="image/png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <meta name="theme-color" media="(prefers-color-scheme: light)" content="white" />
-    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="hsl(48, 40%, 5%)" />
+    <meta name="theme-color" content="white" />
 
     <meta property="og:site_name" content="Chase McCoy" />
     <meta property="og:url" content={canonicalUrl} />
@@ -63,10 +107,103 @@ const canonicalUrl = `${metadata.url}${pageUrl}`;
     <meta property="fediverse:creator" content="@chsmc@mastodon.social" />
 
     <script>import 'lite-youtube-embed/src/lite-yt-embed.js';</script>
+    <script>
+      import {
+        riverColorAt,
+        riverCycle,
+        riverFractionAt,
+        riverTables,
+        riverUnderlineCss,
+      } from '../utils/river';
+
+      // Layout signature of the last run: re-anchoring only matters when
+      // the document height or viewport width actually changed (mobile
+      // browsers fire resize constantly as the URL bar collapses, and the
+      // load-time run is a no-op when fonts came from cache).
+      let anchoredFor = '';
+
+      function anchorGradientText() {
+        const height = document.documentElement.scrollHeight;
+        const signature = `${height}x${window.innerWidth}`;
+        if (signature === anchoredFor) return;
+        anchoredFor = signature;
+        // The build rotated the rendered gradient by --river-frac (0 on the
+        // index, which gets the open ramp instead); sampling maps back into
+        // the matching unrotated stop table.
+        const frac =
+          parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--river-frac')) || 0;
+        const cycle = riverCycle(height, riverTables(frac).segments);
+        // The cycle size is per-page, not per-element: one write on the
+        // root inherits into every pinned element and pseudo-element.
+        document.documentElement.style.setProperty('--river-size', `100% ${cycle}px`);
+        // Document height for scroll-linked consumers (e.g. the viewport
+        // vignette in src/styles/_river.scss, which maps scroll progress to
+        // a position along the river).
+        document.documentElement.style.setProperty('--river-doc', `${height}px`);
+        // --river-end: the river's color at the very bottom of the page
+        // (e.g. for the footer fade). The open ramp must not wrap a
+        // full-cycle page back to position 0, so fraction-0 pages clamp
+        // instead of using the modulo mapping. (On loop pages the wrap is
+        // harmless — position 0 and 1 are the same seam color.)
+        const endAt = frac === 0 ? Math.min(height / cycle, 1) : riverFractionAt(height, cycle, frac);
+        document.documentElement.style.setProperty('--river-end', riverColorAt(frac, endAt));
+
+        // Everything gradient-pinned shares one mechanism: the anchoring is
+        // passed through inherited custom properties, which also reach the
+        // pseudo-elements (quote marks, bullets, hr dots) that inline
+        // styles can't. Measure everything first, then write, so the loop
+        // forces one reflow instead of one per element. All values written
+        // are scheme-independent (positions and var() expressions), so a
+        // color-scheme change needs no recompute — the CSS re-resolves.
+        // Must cover every element whose styles @include river-text or
+        // river-fill (or whose pseudo-element does — vars inherit): grep
+        // for the mixin names (defined in src/styles/_river.scss) when
+        // changing either side.
+        const pinned = document.querySelectorAll<HTMLElement>(
+          'a, :not(pre) > code, hr.break, ul > li, .prose > p:last-of-type'
+        );
+        const measured = [...pinned].map((el) => {
+          const rect = el.getBoundingClientRect();
+          return { el, y: rect.top + window.scrollY, height: rect.height };
+        });
+        for (const { el, y, height: elHeight } of measured) {
+          el.style.setProperty('--river-pos', `0 ${-Math.round(y)}px`);
+          if (el instanceof HTMLAnchorElement) {
+            // Underline: a color-mix expression sampling the gradient at
+            // the link's vertical center, lightened toward the page
+            // background (see riverUnderlineCss).
+            const at = riverFractionAt(y + elHeight / 2, cycle, frac);
+            el.style.setProperty('--river-underline', riverUnderlineCss(frac, at));
+          }
+        }
+      }
+
+      // Run pre-paint so the first frame is anchored, and again on load
+      // once webfonts and images have settled the layout.
+      anchorGradientText();
+      window.addEventListener('load', anchorGradientText);
+
+      let anchorTimer: ReturnType<typeof setTimeout>;
+      window.addEventListener('resize', () => {
+        clearTimeout(anchorTimer);
+        anchorTimer = setTimeout(() => requestAnimationFrame(anchorGradientText), 120);
+      });
+    </script>
   </head>
 
-  <body class={templateClass || undefined}>
+  <body>
+    <div id="gradient"></div>
+    <div id="texture"></div>
+    
     <slot />
+
+    <footer>
+      <div class="Wrapper">
+        <div class="Wrapper__main">
+          Hey there!
+        </div>
+      </div>
+    </footer>
     
     <script async src="https://platform.twitter.com/widgets.js" is:inline></script>
     <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "488e6debfbc64509bd4b00dde784e24f"}' is:inline></script>

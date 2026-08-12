@@ -34,14 +34,21 @@ const { posts, pageNumber, totalPages } = Astro.props;
 
 const hasNextPage = pageNumber < totalPages;
 ---
-<BaseLayout templateClass="home">
+<BaseLayout>
   <Feed posts={posts} />
 
-  <Pagination
-    previousHref={hasNextPage ? `/${pageNumber + 1}/` : undefined}
-    previousTitle="Older"
-    nextHref={pageNumber === 2 ? '/' : `/${pageNumber - 1}/`}
-    nextTitle="Newer"
-    style="margin-top: 6rem;"
-  />
+  <div class="FeedFooter">
+    <Pagination
+      previousHref={hasNextPage ? `/${pageNumber + 1}/` : undefined}
+      previousTitle="Older"
+      nextHref={pageNumber === 2 ? '/' : `/${pageNumber - 1}/`}
+      nextTitle="Newer"
+    />
+  </div>
 </BaseLayout>
+
+<style>
+  .FeedFooter {
+    margin-top: 6rem;
+  }
+</style>

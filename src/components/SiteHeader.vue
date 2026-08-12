@@ -6,7 +6,3 @@
   </h1>
 </template>
 
-<style scoped>
-.SiteHeader {
-}
-</style>

@@ -16,32 +16,22 @@
   }
 }
 
-@mixin large {
-  @media (min-width: 1200px) {
-    @content;
-  }
-}
-
-:root,
-::after,
-::before {
-  --root-font-size: 13px;
+:root {
+  --root-font-size: 17px;
   --root-line-height: 1.5;
 
-  --content-width: 41rem;
-  --sidebar-width: 19rem;
-  --heading-scale: 0.9;
+  --content-width: 880px;
+  --heading-scale: 1;
 
-  --color-accent: hsl(23, 100%, 50%);
+  --color-accent: hsl(206, 74.1%, 51.6%);
   --link-color: var(--color-accent);
-  --link-hover: hsl(23, 100%, 40%);
   --color-body-background: #fff;
   --color-text: hsl(43, 2%, 20%);
+  --color-text-inverse: #fff;
   --color-header: hsl(43, 5%, 25%);
   --color-border: hsl(48, 10%, 85%);
   --color-caption: hsl(48, 5%, 40%);
   --color-offset: hsl(48, 10%, 97%);
-  --color-chat-bubble: hsl(48, 5%, 95%);
 
   --color-highlight: hsl(51, 100%, 84%);
   --color-highlight-dark: hsl(50, 100%, 67%);
@@ -53,27 +43,33 @@
     "JetBrains Mono", ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono", "Roboto Mono",
     "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro", "Fira Mono", "Droid Sans Mono",
     "Courier New", monospace;
-  --font-body:
-    Brunswick Grotesque, Verdana, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  --font-serif: "Source Serif 4", Georgia, Times, Times New Roman, serif;
+  --font-body: Untitled Sans, GT America Trial, Verdana, var(--font-system);
+  --font-serif:
+    Georgia, Ivar Text, "Sentinel", "Source Serif 4", Georgia, Times, Times New Roman, serif;
   --font-header: var(--font-body);
   --font-system:
-    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif,
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial,
+    sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+
+  --shadow-highlight: inset 0px 0px 0px transparent;
+  --shadow-small:
+    0px 0px 1px rgba(3, 7, 18, 0), 0px 1px 3px rgba(3, 7, 18, 0.01),
+    0px 2px 7px rgba(3, 7, 18, 0.01), 0px 4px 12px rgba(3, 7, 18, 0.02),
+    0px 6px 19px rgba(3, 7, 18, 0.02);
 
   @media (prefers-color-scheme: dark) {
-    --color-accent: hsl(23, 100%, 52%);
-    --link-hover: hsl(23, 100%, 44%);
-    --color-body-background: hsl(48, 40%, 5%);
+    --color-accent: hsl(359, 97%, 69%);
+    --color-body-background: hsl(270, 30%, 5%);
     --color-text: hsl(43, 10%, 75%);
+    --color-text-inverse: hsl(43, 2%, 20%);
     --color-header: var(--color-text);
-    --color-border: hsl(48, 40%, 18%);
+    --color-border: hsla(270, 5%, 45%, 0.25);
     --color-caption: hsl(48, 8%, 48%);
-    --color-offset: hsl(48, 30%, 9%);
-    --color-chat-bubble: hsl(48, 30%, 11%);
+    --color-offset: hsla(270, 8%, 10%, 0.5);
 
     --color-paper-line-rule: oklch(33.87% 0.07 295.75);
     --color-paper-margin-rule: oklch(31.53% 0.1 59.64);
+
+    --shadow-highlight: inset 0px 1px 0px var(--color-border);
   }
 }

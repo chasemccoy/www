@@ -45,7 +45,7 @@ return (
 )
 ```
 
-<aside class='Callout mb-16'>
+<aside class='Callout'>
 
 You can see this hook in action in [this example I've created on CodePen](https://codepen.io/chasemccoy/pen/WNeXLQW).
 

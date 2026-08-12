@@ -1,7 +1,6 @@
 export interface LayoutProps {
   title?: string;
   description?: string;
-  templateClass?: string;
 }
 
 export interface PostLink {

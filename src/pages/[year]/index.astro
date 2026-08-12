@@ -29,12 +29,12 @@ const untitledPosts = reversedPosts.filter(post => !post.data?.title);
 
 ---
 <BaseLayout>
-  <BlogFeed variant="archive">
-    <div class="prose mb-16">
-      <Breadcrumbs class="mb-12"><span>Archives</span></Breadcrumbs>
+  <BlogFeed class="YearArchive">
+    <div class="prose YearArchive__intro">
+      <Breadcrumbs><span>Archives</span></Breadcrumbs>
       <h1 class="font-header color-accent">{year}</h1>
     </div>
-    <div class="flex flex-column" style="gap: 12px;">
+    <div class="YearArchive__titledPosts">
       {titledPosts.map(post => (
         <BlogPostPreview
           title={post.data.title}
@@ -44,7 +44,7 @@ const untitledPosts = reversedPosts.filter(post => !post.data?.title);
       ))}
     </div>
 
-    <div class="flex flex-column Blog__notes" style="gap: 64px;">
+    <div class="YearArchive__notes">
       {untitledPosts.map(async post => {
         const { Content } = await render(post);
         return (
@@ -52,7 +52,7 @@ const untitledPosts = reversedPosts.filter(post => !post.data?.title);
             <time datetime={htmlDateString(post.data.date)}>
               <a href={post.data.permalink} class="unstyled color-caption block">{shortDate(post.data.date)}</a>
             </time>
-            
+
             <Content />
           </article>
         );
@@ -60,3 +60,29 @@ const untitledPosts = reversedPosts.filter(post => !post.data?.title);
     </div>
   </BlogFeed>
 </BaseLayout>
+
+<style>
+  .YearArchive__intro {
+    margin-bottom: 16px;
+  }
+
+  .YearArchive__titledPosts {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .YearArchive__notes {
+    display: flex;
+    flex-direction: column;
+    gap: 64px;
+    border-top: 1px solid var(--color-border);
+    margin-top: 40px;
+    padding-top: 40px;
+    padding-block-end: 80px;
+  }
+
+  .YearArchive__notes:not(:has(*)) {
+    display: none;
+  }
+</style>

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { PostLink } from "../types";
 
-const props = defineProps<{
+defineProps<{
   featuredPosts: PostLink[];
   years: string[];
 }>();
@@ -11,7 +11,7 @@ const props = defineProps<{
   <div class="Archives">
     <div class="Archives__featured">
       <h3>Featured</h3>
-      <ul class="featured">
+      <ul>
         <li v-for="post in featuredPosts" :key="post.permalink">
           <a :href="post.permalink">{{ post.title }}</a>
         </li>
@@ -20,7 +20,7 @@ const props = defineProps<{
 
     <div>
       <h3>By year</h3>
-      <ul class="Archives__years unstyled inline">
+      <ul class="Archives__years">
         <li v-for="year in years" :key="year">
           <a :href="`/${year}`">{{ year }}</a>
         </li>
@@ -30,6 +30,8 @@ const props = defineProps<{
 </template>
 
 <style scoped lang="scss">
+@use "../styles/river" as *;
+
 .Archives {
   display: flex;
   flex-direction: column;
@@ -44,7 +46,28 @@ const props = defineProps<{
   }
 }
 
+.Archives__featured {
+  li {
+    margin-left: 1.5em;
+  }
+
+  li:before {
+    content: "⁕";
+    margin-left: -1.5em;
+    margin-top: -2.5px;
+    float: left;
+    color: var(--color-accent);
+    @include river-text;
+  }
+}
+
 .Archives__years {
+  line-height: 1;
+
+  li {
+    display: inline-block;
+  }
+
   li + li:before {
     content: "/";
     display: inline;

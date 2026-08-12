@@ -1,26 +1,24 @@
-@use "../theme" as *;
+@use "river" as *;
 
 :root {
-  --flow-spacing: 1.1rem;
+  --flow-spacing: 1.25rem;
+  --list-spacing: 0.75rem;
 }
 
 .prose {
-  font-family: var(--font-serif);
   font-optical-sizing: auto;
-  font-weight: normal;
-  font-size: 1.2rem;
 
   & > * + * {
     margin-top: var(--flow-spacing);
   }
 
   & li + li {
-    margin-top: 0.4rem;
+    margin-top: var(--list-spacing);
   }
 
   // Spacing between first and second paragraph in list items
   & li > p + p {
-    margin-top: 0.25rem;
+    margin-top: 0.5rem;
   }
 
   // Spacing between other paragraphs in list items
@@ -34,34 +32,39 @@
   }
 
   blockquote {
-    margin: 2rem 0 1.8rem;
+    margin: calc(var(--flow-spacing) * 1) 0;
   }
 
   :where(blockquote > * + *) {
     margin-top: var(--flow-spacing);
   }
 
-  a.button {
-    margin-block: 0.75rem 0;
+  a {
+    padding-block: 2px;
+
+    &:hover {
+      // First layer stays clipped to the glyphs (the gradient text); the
+      // second layer washes the whole box with a faint slice of the same
+      // gradient. Both share the page-anchoring background-size/position
+      // set per-link, so the tint hue always matches the link's text.
+      background-image: var(--gradient-river), var(--gradient-river-faint);
+      -webkit-background-clip: text, border-box;
+      background-clip: text, border-box;
+    }
   }
 
-  a.button:last-child {
-    margin-bottom: 0;
-  }
-
-  :where(h2 + *:not(:is(ol, ul))),
-  :where(h3 + *:not(:is(ol, ul))),
-  :where(h4 + *:not(:is(ol, ul))),
-  :where(h5 + *:not(:is(ol, ul))),
-  :where(h6 + *:not(:is(ol, ul))) {
+  :where(:is(h2, h3, h4, h5, h6) + *:not(:is(ol, ul))) {
     margin-top: 0.6em;
   }
 
   :where(h1, h2, h3, h4, h5, h6) {
     margin-top: 1.5em;
-    line-height: 1.2;
+    line-height: 1.15;
     font-family: var(--font-header);
-    font-weight: normal;
+  }
+
+  :where(header, h1) + p {
+    margin-top: calc(var(--flow-spacing) / 1.25);
   }
 
   :where(h4, h5, h6) {
@@ -72,9 +75,7 @@
   }
 
   h1 {
-    margin-top: 0;
-    font-size: calc(2.25rem * var(--heading-scale, 1));
-    line-height: 1.3;
+    font-size: calc(1.25rem * var(--heading-scale, 1));
   }
 
   h1 + .lead {
@@ -86,7 +87,7 @@
     font-size: calc(1.8rem * var(--heading-scale, 1));
   }
 
-  header + h2 {
+  :where(header) + h2 {
     margin-top: 0;
   }
 
@@ -111,25 +112,37 @@
     margin-top: 1.2em;
   }
 
+  & > p:last-of-type:after {
+    content: "\00a0";
+    font-size: 0;
+    padding: 0.35rem;
+    border-radius: 0.15rem;
+    margin-left: 0.3rem;
+    vertical-align: 0.35rem;
+    background-color: var(--color-accent);
+    @include river-fill;
+    opacity: 0.5;
+  }
+
   hr {
-    margin: 2rem 0;
+    margin: calc(var(--flow-spacing) * 1) 0;
   }
 
   p > img,
   figure {
-    margin-block: 2rem;
+    margin-block: 1.5rem;
   }
 
   .caption,
   figure > * + figcaption {
     font-family: var(--font-body);
     margin-top: 0.6rem;
-    font-size: 1rem;
+    font-size: 0.8rem;
   }
 
   li > ul,
   li > ol {
-    margin-top: 0.4rem;
+    margin-top: var(--list-spacing);
     margin-left: 0.3rem;
     padding-left: 0;
   }
@@ -145,7 +158,7 @@
   td,
   th {
     text-align: left;
-    border-bottom: 1px solid hsla(0, 0%, 0%, 0.12);
+    border-bottom: 1px solid var(--color-border);
     font-feature-settings: "tnum";
     padding-left: 1rem;
     padding-right: 1rem;
@@ -171,10 +184,10 @@
     position: relative;
     padding-left: 42px;
     padding-right: 12px;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
 
     &:before {
-      content: "1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 120 121 122 123 124 125 126 127 128 129 130 131 132 133 134 135 136 137 138 139 140 141 142 143 144 145 146 147 148 149 150 151 152 153 154 155 156 157 158 159 160 161 162 163 164 165 166 167 168 169 170 171 172 173 174 175 176 177 178 179 180 181 182 183 184 185 186 187 188 189 190 191 192 193 194 195 196 197 198 199 199 200";
+      content: "1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 120 121 122 123 124 125 126 127 128 129 130 131 132 133 134 135 136 137 138 139 140 141 142 143 144 145 146 147 148 149 150 151 152 153 154 155 156 157 158 159 160 161 162 163 164 165 166 167 168 169 170 171 172 173 174 175 176 177 178 179 180 181 182 183 184 185 186 187 188 189 190 191 192 193 194 195 196 197 198 199 200";
       width: 32px;
       position: absolute;
       top: 12px;
@@ -193,9 +206,7 @@
   }
 
   img {
-    max-width: none;
-    width: calc(100% + var(--layout-padding) * 2);
-    margin-left: calc(var(--layout-padding) * -1);
+    max-width: 100%;
   }
 
   & > * + .twitter-tweet {
@@ -208,10 +219,7 @@ blockquote:not(.unstyled, .twitter-tweet) {
   text-wrap: pretty;
   border: 0.5px solid var(--color-border);
   border-radius: 12px;
-  // padding: 20px;
   font-size: 0.9rem;
-  // line-height: 1.7;
-  // margin-inline: -8px;
   background-color: var(--color-body-background);
   background-clip: padding-box;
   position: relative;
@@ -238,20 +246,6 @@ blockquote:not(.unstyled, .twitter-tweet) {
   line-height: 2;
 
   box-shadow: var(--shadow-small), var(--shadow-highlight);
-  // box-shadow: inset 0px 2px 0px white;
-
-  // &:before {
-  //   content: "“";
-  //   font-size: 6rem;
-  //   position: absolute;
-  //   top: 2px;
-  //   left: 8px;
-  //   line-height: 1;
-  //   z-index: 1;
-  //   color: var(--color-accent);
-  //   mix-blend-mode: multiply;
-  //   opacity: 0.25;
-  // }
 
   & > p:has(cite) {
     margin: 0;
@@ -279,68 +273,33 @@ blockquote:not(.unstyled, .twitter-tweet) {
   }
 }
 
-ul {
-  padding: 0;
-  list-style-type: none;
-
-  > li {
-    margin-left: 1.25em;
+// Decorated lists, opted into by prose content — bare lists elsewhere stay
+// plain (see _elements.scss).
+.prose {
+  ul > li {
+    margin-left: 1.5em;
   }
 
-  > li:before {
+  ul > li:before {
     content: "⁕";
-    margin-left: -1.25em;
-    margin-top: -1px;
+    margin-left: -1.5em;
+    margin-top: -2.5px;
     float: left;
     color: var(--color-accent);
-  }
-}
-
-ul.inline {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  line-height: 1;
-
-  li {
-    display: inline-block;
-    margin-bottom: 0;
+    @include river-text;
   }
 
-  li:first-child {
-    margin-left: 0;
+  ol {
+    --offset: 1.5em;
   }
 
-  li:before {
-    display: none;
-  }
-}
-
-ul:where(.unstyled) {
-  margin: 0;
-  padding: 0;
-
-  li {
-    margin: 0;
-  }
-
-  li:before {
-    display: none;
-  }
-}
-
-ol {
-  padding: 0;
-  list-style: none;
-  --offset: 1.5em;
-
-  > li {
+  ol > li {
     margin-left: var(--offset);
     counter-increment: ol-counter;
     position: relative;
   }
 
-  > li:before {
+  ol > li:before {
     content: counter(ol-counter) ". ";
     font-feature-settings: "tnum";
     padding-right: 0.5em;

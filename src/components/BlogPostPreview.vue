@@ -9,7 +9,7 @@ defineProps<{
 </script>
 
 <template>
-  <a :href="permalink" class="unstyled block Blog__postPreview">
+  <a :href="permalink" class="unstyled block BlogPostPreview">
     <h3>
       <span>{{ title }}</span
       >&nbsp;<time :datetime="htmlDateString(date)">{{ shortDate(date) }}</time>
@@ -18,14 +18,16 @@ defineProps<{
 </template>
 
 <style scoped lang="scss">
-.Blog__postPreview {
-  color: var(--color-text);
-
-  &:hover {
-    color: var(--color-accent);
+.BlogPostPreview {
+  &:hover h3 span {
+    text-decoration: underline;
+    text-decoration-thickness: var(--text-decoration-thickness, 1px);
+    text-decoration-color: var(--link-underline-color);
+    text-underline-offset: var(--text-decoration-offset, 0.15em);
   }
 
   h3 {
+    margin-bottom: 0.25rem;
     white-space: nowrap;
     font-size: 1.15rem;
     line-height: 1.25;

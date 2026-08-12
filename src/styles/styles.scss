@@ -1,16 +1,24 @@
 @use "reset";
-@use "theme" as *;
+@use "theme";
+
+// The gradient river (mixins + rule output; see _river.scss)
+@use "river";
 
 // Base styles
-@use "base/elements";
-@use "base/typography";
-@use "base/Callout";
+@use "elements";
+@use "prose";
+@use "Callout";
 
 // Layout
-@use "layout/Wrapper";
+@use "Wrapper";
 
 // Utilities
 @use "utilities";
 
 // Syntax highlighting
 @use "prism";
+
+// The river's rule output (background layers, vignette, footer fade) lives
+// in a mixin so partials and components can @use the module for its mixins
+// without re-emitting CSS; it's emitted exactly once, here.
+@include river.styles;

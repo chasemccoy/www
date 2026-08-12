@@ -529,31 +529,4 @@ onBeforeUnmount(() => {
   height: 100%;
 }
 
-/* TEMP: time-of-day scrubber — remove with the slider in the template */
-.Sky__debug {
-  position: fixed;
-  bottom: 14px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 9999;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 8px 14px;
-  border-radius: 10px;
-  background: rgba(15, 22, 32, 0.78);
-  color: #fff;
-  font:
-    12px/1 system-ui,
-    sans-serif;
-
-  input {
-    width: 280px;
-  }
-
-  span {
-    min-width: 56px;
-    font-variant-numeric: tabular-nums;
-  }
-}
 </style>

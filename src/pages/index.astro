@@ -9,8 +9,16 @@ const feed = await getFeed();
 const posts = feed.slice(0, FEED_PAGE_SIZE);
 const hasNextPage = feed.length > FEED_PAGE_SIZE;
 ---
-<BaseLayout templateClass="home">
+<BaseLayout>
   <Feed posts={posts} />
 
-  <Pagination previousHref={hasNextPage ? '/2/' : undefined} previousTitle="Older" style="margin-top: 6rem;" />
+  <div class="FeedFooter">
+    <Pagination previousHref={hasNextPage ? '/2/' : undefined} previousTitle="Older" />
+  </div>
 </BaseLayout>
+
+<style>
+  .FeedFooter {
+    margin-top: 6rem;
+  }
+</style>

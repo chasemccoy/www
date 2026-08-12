@@ -5,18 +5,20 @@ import { getFeaturedPosts, getPostsByYear } from '../utils';
 
 const featuredPosts = await getFeaturedPosts();
 const years = Object.keys(await getPostsByYear());
-
-const headerHtml = '<h1>404</h1>';
 ---
-<BaseLayout
-  templateClass="note"
-  header={headerHtml}
->
-  <p>Sorry! That page doesn't seem to exist. Broken URLs aren't cool, so please <a href="mailto:hi@chsmc.org">let me know how you got here</a>. And in the mean time, you might enjoy browsing the archives below.</p>
+<BaseLayout title="404">
+  <div class="prose">
+    <h1>404</h1>
+    <p>Sorry! That page doesn't seem to exist. Broken URLs aren't cool, so please <a href="mailto:hi@chsmc.org">let me know how you got here</a>. And in the mean time, you might enjoy browsing the archives below.</p>
+  </div>
 
-  <br />
-
-  <div style="margin: 1rem 0 0;">
+  <div class="NotFound__archives">
     <Archives featuredPosts={featuredPosts} years={years} />
   </div>
 </BaseLayout>
+
+<style>
+  .NotFound__archives {
+    margin-top: 1rem;
+  }
+</style>
