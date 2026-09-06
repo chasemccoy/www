@@ -1,5 +1,7 @@
 ---
 title: Where it all began
+tags:
+  - life
 ---
 
 I remember the first time I saw a Mac in person. I was in middle school, but on the campus of the nearby college because my dad had a gig as a stand-in drummer for a local band.

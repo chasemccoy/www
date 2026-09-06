@@ -1,5 +1,8 @@
 ---
 title: A visual language for music and time
+tags:
+  - css
+  - music
 ---
 
 I've [remarked before](/2023/11/gradient-grid/#:~:text=Once%20again%20I%E2%80%99m%20left%20marveling%20at%20the%20humble%20power%20of%20CSS%2C%20and%20feeling%20grateful%20that%20we%20live%20during%20times%20when%20such%20an%20expressive%20yet%20simple%20visual%20language%20is%20spoken%20so%20ubiquitously.) on my gratefulness for CSS as the ubiquitous and expressive visual language of our times, a sort of design Esperanto (that is actually widely spoken).

@@ -1,5 +1,8 @@
 ---
 title: Eleventy and Lit, a match made in vanilla web dev heaven
+tags:
+  - web dev
+  - the web
 ---
 
 I started my career building iOS apps, and made my way back to the web out of excitement for tools that were emerging at the time around component-based design and development. I remember feeling that the idea of encapsulating markup, styles, and behavior was _so_ obvious, and I couldn’t believe at the time that there was no method for that built directly into the platform. If you wanted to build components for the web you needed to setup a complex toolchain and build process, which is very intimidating for beginners.

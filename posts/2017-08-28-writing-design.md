@@ -1,6 +1,9 @@
 ---
 title: Writing design
 excerpt: Thinking about design systems as vocabularies for shared languages.
+tags:
+  - design
+  - design systems
 ---
 
 Designers today spend far too much time drawing rectangles and dragging them around the screen. Even designers who don’t know this kind of do _know it_, I think. Perhaps there is a point in every designer’s career (there certainly was for me) when the idea of design becomes less about aesthetics and more about structure.

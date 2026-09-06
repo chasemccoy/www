@@ -1,6 +1,8 @@
 ---
 title: Creating a useTextContent hook
 excerpt: How to create a custom React hook that can read the text content of a tree of nodes.
+tags:
+  - web dev
 ---
 
 In JavaScript, you can use [the `textContent` property of a node](https://developer.mozilla.org/en/docs/Web/API/Node/textContent) to get the text representation of the node and all of its descendent nodes. For instance, if your node looked like this:

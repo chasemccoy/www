@@ -1,5 +1,9 @@
 ---
 title: The moon trees of Mississippi
+tags:
+  - life
+  - history
+  - science
 ---
 
 Many of my online acquaintances know that I live in Chicago, but I suspect they might not know that I'm from a small university town in Mississippi called Starkville.

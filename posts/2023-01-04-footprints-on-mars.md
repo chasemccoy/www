@@ -1,5 +1,8 @@
 ---
 title: Footprints in the Martian sand
+tags:
+  - politics
+  - science
 ---
 
 Since I was a kid the space program has been an object of my fascination, and even as an adult I've been captured by the heroics of NASA and other organizations launching probes and telescopes into the far reaches of space.

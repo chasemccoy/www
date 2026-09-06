@@ -1,5 +1,8 @@
 ---
 title: Ways of relating
+tags:
+  - hypermedia
+  - the web
 ---
 
 If you read any of my writing you know that Robin Sloan is one of my favorite internet thinkers. He's just published [a spec for a new web protocol](https://github.com/robinsloan/spring-83-spec/blob/main/draft-20220616.md) he's designed called Spring ‘83.

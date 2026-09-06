@@ -1,5 +1,7 @@
 ---
 title: The eyes and ears of AI
+tags:
+  - ai
 ---
 
 It's hard to keep up with the progress of AI. It seems as though every week there's a new breakthrough or advancement that seemingly changes the game. Each step forward brings both a sense of wonder and a feeling of dread.

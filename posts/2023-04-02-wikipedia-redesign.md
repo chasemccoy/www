@@ -1,5 +1,9 @@
 ---
 hidden: true
+tags:
+  - design
+  - interfaces
+  - the web
 ---
 
 My favorite read from this past weekend was [Alex Hollender's design notes on the 2023 redesign of Wikipedia](https://alexhollender.com/wikipedia-2023-redesign), which is a perfect example of how terrifying design can be when it means changing something that lots of humans use and rely on every day.

@@ -1,5 +1,8 @@
 ---
 title: chsmc.org
+tags:
+  - blogging
+  - the web
 ---
 
 Programming note: the domain for this website has changed! chasem.co is out, and **[chsmc.org](/)** is in.

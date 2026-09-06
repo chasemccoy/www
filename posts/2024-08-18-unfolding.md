@@ -1,5 +1,9 @@
 ---
 title: Between process and vision
+tags:
+  - design
+  - creativity
+  - work
 ---
 
 Throughout my career as a designer, I've experienced a recurring struggle with the concept of process.

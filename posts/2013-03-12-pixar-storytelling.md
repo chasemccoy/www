@@ -1,5 +1,8 @@
 ---
 title: Applying Pixar’s rules of storytelling to writing
+tags:
+  - writing
+  - creativity
 ---
 
 There has been a lot of talk about [this article](http://aerogrammestudio.com/2013/03/07/pixars-22-rules-of-storytelling/), which outlines Pixar's 22 rules of storytelling. They are all great tips, but a few of them in particular stand out as all-purpose rules that not only apply to animation, but also writing.

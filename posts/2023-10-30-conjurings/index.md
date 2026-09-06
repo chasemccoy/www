@@ -1,5 +1,8 @@
 ---
 title: Conjurings of the harvest moon
+tags:
+  - life
+  - culture
 ---
 
 Autumn is my favorite time of the year. The trees outside my apartment here in Oak Park are shining gold, and the air is starting to feel crisp and cold. Sweater weather, if you will.

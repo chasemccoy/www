@@ -1,6 +1,8 @@
 ---
 title: Orbit design system
 excerpt: Taking a look at a few interesting aspects of Kiwi.com's design system.
+tags:
+  - design systems
 ---
 
 [I really like what the team at Kiwi.com have done with their design system, Orbit.](https://orbit.kiwi) There's a few details that really stand out.

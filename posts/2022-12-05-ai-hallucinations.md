@@ -1,6 +1,10 @@
 ---
 title: Artificial hallucinations
 hidden: true
+tags:
+  - ai
+  - art
+  - creativity
 ---
 
 I've had many people ask me what I think about the rise of AI generated art/prose/design, and so far I have mostly hedged on my answer.

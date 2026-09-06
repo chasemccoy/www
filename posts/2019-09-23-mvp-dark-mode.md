@@ -1,6 +1,9 @@
 ---
 title: Minimum viable dark mode
 excerpt: How to create a quick and dirty dark mode for simple apps and websites using pure CSS.
+tags:
+  - css
+  - web dev
 ---
 
 When I recently redesigned this site, I removed the light/dark mode toggle that I had before. It was difficult to iterate on the new design quickly while supporting both light/dark mode and thinking about both when adding new features to my site was annoying.

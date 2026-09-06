@@ -1,5 +1,8 @@
 ---
 title: Every day is science fiction
+tags:
+  - science fiction
+  - writing
 ---
 
 Science fiction is one of my favorite genres because of its power to make the strange familiar and the familiar strange.

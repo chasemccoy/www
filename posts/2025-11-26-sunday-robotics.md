@@ -1,5 +1,8 @@
 ---
 title: Assorted thoughts on Sunday's home robot
+tags:
+  - ai
+  - design
 ---
 
 - [Sunday Robotics](https://www.sunday.ai) designed and developed their new robot, Memo, and the platform for training it in stealth over the past two years. No hype events, no prototypes being operated remotely by humans, no promises to change the world. Sunday seems happy to let the result of the work stand for itself: the company's first tweet was posted just this month! In an age of endless and often fraud-adjacent hype, quiet competence is a refreshing vibe.

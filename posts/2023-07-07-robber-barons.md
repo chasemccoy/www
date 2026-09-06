@@ -1,3 +1,10 @@
+---
+tags:
+  - social media
+  - capitalism
+  - the web
+---
+
 We're seeing a surge of platforms [self-sabotaging](https://www.reuters.com/technology/twitter-now-needs-users-sign-view-tweets-2023-06-30/) and [choosing to suddenly restrict access to their content](https://www.theverge.com/2023/6/5/23749188/reddit-subreddit-private-protest-api-changes-apollo-charges). These are all blatant attempts to trap users by digging a moat around the communities that they've created.
 
 I can think of 3 obvious reasons why this might all be happening now as opposed to any time over the past decade:

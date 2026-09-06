@@ -1,3 +1,9 @@
+---
+tags:
+  - css
+  - web dev
+---
+
 Wherever I can I prefer to work in the browser vs. tools like Figma. As the web platform grows (we seem to be in a sort of golden age at the moment) it becomes easier and easier to do my job with only the raw materials of the web.
 
 Recently I've been working on a project at the day job that requires the use of something akin to [layout grids in Figma](https://help.figma.com/hc/en-us/articles/360040450513-Create-layout-grids-with-grids-columns-and-rows). I was curious how difficult it would be to recreate this on the web.

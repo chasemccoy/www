@@ -1,6 +1,8 @@
 ---
 title: Network effects
 hidden: true
+tags:
+  - social media
 ---
 
 Title ideas

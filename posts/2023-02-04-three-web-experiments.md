@@ -1,6 +1,10 @@
 ---
 title: Three small web experiments
 hidden: true
+tags:
+  - the web
+  - communal computing
+  - blogging
 ---
 
 Sometime last summer the fall of Twitter was written on the wall, and I found myself wondering what some other home on the web might feel like.

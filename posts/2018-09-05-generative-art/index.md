@@ -2,6 +2,10 @@
 title: Making computers make art
 excerpt: An introduction, history, and resource for generative art and creative coding.
 image: circle-packed.png
+tags:
+  - art
+  - creativity
+  - software
 ---
 
 It seems as though everything I gravitate towards in life tends to be at an intersection of art and technology. I spend my days building tools for designers, and thinking about how we design things _for people_ but _with technology_.

@@ -3,6 +3,9 @@ title: Silos and pastures
 excerpt: The web doesn’t exist on our client devices, it exists on the servers between us.
 image: image.png
 hidden: true
+tags:
+  - software
+  - the web
 ---
 
 A few things have come across my desk recently that have prompted thoughts on the evolution of cloud computing and how the barriers between clients and servers are changing.

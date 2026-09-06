@@ -1,5 +1,8 @@
 ---
 title: Claude Code as general purpose agent
+tags:
+  - ai
+  - software
 ---
 
 The more I use Claude Code, the more I find it useful and interesting for tasks beyond the one for which it is named. [Simon Willison agrees](https://simonwillison.net/2025/Oct/16/claude-skills/#claude-as-a-general-agent):

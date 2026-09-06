@@ -1,5 +1,8 @@
 ---
 title: Antibuildings
+tags:
+  - art
+  - history
 ---
 
 We all have our own [antilibrary](https://en.wikipedia.org/wiki/Antilibrary), the books we buy with the best intentions of reading but never quite get around to. For architects, a similar concept might be the sketches and plans that never leave the drawing board: antibuildings?

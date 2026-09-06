@@ -1,6 +1,10 @@
 ---
 title: How blogs shaped the web
 featured: true
+tags:
+  - blogging
+  - history
+  - the web
 ---
 
 I have a lot of nostalgia for the era of blogging that I grew up with during the first decade or so of the 2000s.

@@ -1,5 +1,8 @@
 ---
 title: Regarding books and their sellers
+tags:
+  - books
+  - publishing
 ---
 
 Happy New Year! I've returned from holiday travels and am settling back into work for 2025. Here are three, quick, bookish recommendations from links that have crossed my desk recently.

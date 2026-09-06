@@ -3,6 +3,10 @@ title: Design systems as knowledge graphs
 excerpt: Imagining what design system documentation might look like if we approached the system as a knowledge graph rather than a product or tool.
 featured: true
 image: xanadu.png
+tags:
+  - design systems
+  - knowledge work
+  - hypermedia
 ---
 
 Lately I've been thinking a lot about design systems documentation, and more importantly how we scale knowledge and best practices across a large team. Looking at most system documentation (including for the design systems I've built), you'll see something that heavily resembles the documentation you might find for a standalone product or software library.

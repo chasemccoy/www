@@ -1,6 +1,9 @@
 ---
 title: Some prompted thoughts on design
 excerpt: InVision interviewed the design team at Sprout, and I wrote up some extended thoughts on their questions.
+tags:
+  - design
+  - work
 ---
 
 _Invision is writing a piece on the design team at Sprout Social, and they asked us to answer some questions about design and how we work at Sprout. I wanted to post my answers here as well since most of them probably won't make it into the finished piece._

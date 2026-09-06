@@ -1,5 +1,8 @@
 ---
 title: A most unusual brightness
+tags:
+  - the web
+  - culture
 ---
 
 A good day on the web is one where you stumble across a website that makes you go "woah??" and then "huh...?" followed by a wide grin. I have one of those websites to show you!

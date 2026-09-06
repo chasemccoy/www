@@ -1,6 +1,9 @@
 ---
 title: No Reservations
 excerpt: Memorializing Anthony Bourdain and all of the things we can learn from him.
+tags:
+  - media
+  - life
 ---
 
 I don't have the words to describe what we've lost in Anthony Bourdain. Instead, I thought I would share some things that I love about him. The first that comes to mind is his first visit to a Waffle House:

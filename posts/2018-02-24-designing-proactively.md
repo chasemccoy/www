@@ -1,6 +1,9 @@
 ---
 title: Designing proactively
 excerpt: Thinking about what it means to slow down and design for the future.
+tags:
+  - design
+  - work
 ---
 
 I’ve been thinking quite a bit about how to be proactive in the practice of design. It seems as if this is more relevant today than ever, with [the increasing responsibility of designers to make things that won’t harm people or their minds](https://medium.com/@monteiro/designs-lost-generation-ac7289549017).

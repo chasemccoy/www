@@ -1,6 +1,9 @@
 ---
 title: A space for ourselves
 image: saint-peter.webp
+tags:
+  - the web
+  - community
 ---
 
 Working on the internet in 2021 is really hard, and it’s getting harder.

@@ -1,6 +1,9 @@
 ---
 title: Personal finance perfection
 excerpt: How I manage money with my bank of choice (Simple) and their smart, automated features.
+tags:
+  - life
+  - design
 ---
 
 My bank of choice is [Simple](https://www.simple.com). They're online only, care about design, and make it easy to manage money by building saving & analysis tools on top of the bank itself (instead of a third party tool that connects to a bank).

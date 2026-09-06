@@ -1,5 +1,7 @@
 ---
 title: New magic for animations in CSS
+tags:
+  - css
 ---
 
 There are two new features coming to CSS that will make it much easier to further avoid JavaScript when implementing animations:

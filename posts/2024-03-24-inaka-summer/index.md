@@ -1,6 +1,9 @@
 ---
 title: Boku no Natsuyasumi
 featured: true
+tags:
+  - culture
+  - media
 ---
 
 Several months ago, in [an issue of Spencer Chang's newsletter](https://spencerchang.substack.com/p/ti-09-the-internet-is-one-big-video), I&nbsp;discovered [the 6 hour video review of a game called Boku no Natsuyasumi](https://www.youtube.com/watch?v=779coR-XPTw) by Tim Rogers (known as Action Button).

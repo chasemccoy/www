@@ -1,5 +1,8 @@
 ---
 title: In an attitude of defiance
+tags:
+  - art
+  - history
 ---
 
 I recently showed a few friends around Chicago, and as we passed by the Art Institute and the two lions guarding the entrance, I wondered if they had names like the lion sculptures outside the New York Public Library.

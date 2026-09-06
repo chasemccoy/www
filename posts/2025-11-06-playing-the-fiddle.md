@@ -1,5 +1,8 @@
 ---
 title: Playing the fiddle
+tags:
+  - ai
+  - knowledge work
 ---
 
 Something I'm noticing about AI, or at least this moment of AI agents and tools for building software, is the extreme amount of fiddling they invite. Fiddling here includes things like trying new models and tools, tweaking prompts, leveraging MCP servers vs. code tools, browsing plugins, installing skills, configuring hooks, setting up subagents, and the list goes on.

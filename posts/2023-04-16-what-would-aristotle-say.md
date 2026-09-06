@@ -1,3 +1,9 @@
+---
+tags:
+  - ai
+  - archival practices
+---
+
 In the new book _[Make Something Wonderful: Steve Jobs in His Own Words](https://book.stevejobsarchive.com)_, Steve talks about his love for books and also their shortcomings:
 
 > The problem was, you can’t ask Aristotle a question. And I think, as we look towards the next fifty to one hundred years, if we really can come up with these machines that can capture an underlying spirit, or an underlying set of principles, or an underlying way of looking at the world, then, when the next Aristotle comes around, maybe if he carries around one of these machines with him his whole life—his or her whole life—and types in all this stuff, then maybe someday, after this person’s dead and gone, we can ask this machine, “Hey, what would Aristotle have said? What about this?” And maybe we won’t get the right answer, but maybe we will. And that’s really exciting to me. And that’s one of the reasons I’m doing what I’m doing.

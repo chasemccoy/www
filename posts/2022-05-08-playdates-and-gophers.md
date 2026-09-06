@@ -1,5 +1,8 @@
 ---
 title: The ideas we leave behind
+tags:
+  - hypermedia
+  - history
 ---
 
 This week I finally received my [Playdate](https://play.date) from the folks over at Panic, and it's just as delightful as everyone knew it would be. The Playdate account on Twitter [recently tweeted](https://twitter.com/playdate/status/1520144706511904768):

@@ -2,6 +2,9 @@
 title: Building Sprout Social’s component library
 excerpt: How our team of three built a component library that designers and engineers love using.
 image: seeds.png
+tags:
+  - design systems
+  - web dev
 ---
 
 <aside class='Callout'>

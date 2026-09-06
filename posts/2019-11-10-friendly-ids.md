@@ -1,6 +1,8 @@
 ---
 title: Generating friendly, unique identifiers
 excerpt: Using the friendly-words package from Glitch to create human readable identifiers.
+tags:
+  - software
 ---
 
 In a recent project, I needed a way to create unique identifiers that met these criteria:

@@ -1,5 +1,9 @@
 ---
 title: Crayons, craft paper, and CSS
+tags:
+  - the web
+  - hypermedia
+  - creativity
 ---
 
 A few things came across my desk this week that inspired hope about the future of the web and hypermedia as a medium.

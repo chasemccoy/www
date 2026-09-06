@@ -1,6 +1,9 @@
 ---
 title: val town
 hidden: true
+tags:
+  - web dev
+  - communal computing
 ---
 
 When I was learning how to code, one of the most confusing aspects was "where do I put this code to make it go?"

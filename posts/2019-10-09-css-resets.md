@@ -1,6 +1,8 @@
 ---
 title: CSS resets
 excerpt: Examining a few different approaches to modern CSS resets across the web.
+tags:
+  - css
 ---
 
 The idea of CSS resets is fascinating to me. There's something about bringing order to a chaotic system that is really pleasing. And also fine-tuning all of the rules to work just right for a particular project or use case.

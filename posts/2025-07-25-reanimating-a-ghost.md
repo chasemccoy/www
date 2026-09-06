@@ -1,5 +1,8 @@
 ---
 title: Reanimating a ghost
+tags:
+  - attention
+  - art
 ---
 
 Mary Oliver once said that "attention is the beginning of devotion." I want to highlight a few examples of this in practice that have recently crossed my desk.

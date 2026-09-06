@@ -1,5 +1,7 @@
 ---
 title: Gatsby schema customization is pretty cool
+tags:
+  - web dev
 ---
 
 Today on their blog, Gatsby announced the release of [new schema customization APIs in version 2.2.0](https://www.gatsbyjs.org/blog/2019-03-18-releasing-new-schema-customization/).

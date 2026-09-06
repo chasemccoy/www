@@ -2,6 +2,9 @@
 title: Songs of summer
 excerpt: Alternate space history, koolaid factories, Japanese signage, computers for nature, and more.
 image: maru.png
+tags:
+  - music
+  - life
 ---
 
 This collection was produced during the [Small Season known as Rikka, the start of summer](https://smallseasons.guide):

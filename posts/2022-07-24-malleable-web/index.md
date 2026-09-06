@@ -1,5 +1,8 @@
 ---
 title: A malleable web
+tags:
+  - the web
+  - interfaces
 ---
 
 [The Browser Company of New York](https://thebrowser.company/) is building a web browser called Arc, and they recently shared a preview of [a new feature called "Boosts"](https://www.loom.com/share/55e80c00d4444579b5d0de49d9ffc650).

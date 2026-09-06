@@ -1,5 +1,8 @@
 ---
 title: The Model Context Protocol
+tags:
+  - ai
+  - software
 ---
 
 I really enjoyed [this writeup from Matt Webb](https://interconnected.org/home/2025/02/11/mcp) about extending AIs using Anthropic's proposed [Model Context Protocol](https://modelcontextprotocol.io). In its own words, MCP is "an open protocol that standardizes how applications provide context to LLMs".

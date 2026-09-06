@@ -1,5 +1,7 @@
 ---
 title: Poets of the mundane
+tags:
+  - music
 ---
 
 Paul has always been my favorite Beatle.

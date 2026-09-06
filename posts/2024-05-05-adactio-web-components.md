@@ -1,3 +1,9 @@
+---
+tags:
+  - web dev
+  - the web
+---
+
 I really appreciated [this write up from Jeremy Keith about his personal approach and best practices for HTML web components](https://adactio.com/journal/21078).
 
 Judging by the discourse, web components seem to be gaining in popularity lately, and I'm very here for it.
