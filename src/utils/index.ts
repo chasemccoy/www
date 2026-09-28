@@ -157,6 +157,44 @@ export async function getPostsByYear() {
   return Object.fromEntries(Object.entries(groups).sort(([a], [b]) => b.localeCompare(a)));
 }
 
+// Tags are lowercased display names with spaces ("design systems"); URLs
+// swap the spaces for hyphens.
+export function getTagSlug(tag: string) {
+  return tag.replaceAll(" ", "-");
+}
+
+export async function getPostsByTag() {
+  const posts = await getVisiblePosts();
+  const groups: Record<string, typeof posts> = {};
+
+  for (const post of posts) {
+    for (const tag of post.data.tags) {
+      groups[tag] ??= [];
+      groups[tag].push(post);
+    }
+  }
+
+  return Object.fromEntries(Object.entries(groups).sort(([a], [b]) => a.localeCompare(b)));
+}
+
+export async function getArchiveIndex() {
+  const [featuredPosts, byYear, byTag] = await Promise.all([
+    getFeaturedPosts(),
+    getPostsByYear(),
+    getPostsByTag(),
+  ]);
+
+  return {
+    featuredPosts,
+    years: Object.keys(byYear),
+    tags: Object.entries(byTag).map(([tag, posts]) => ({
+      title: tag,
+      permalink: `/tag/${getTagSlug(tag)}/`,
+      count: posts.length,
+    })),
+  };
+}
+
 export async function getBlogroll() {
   const entries = await getCollection("blogroll");
   return entries.map((entry) => entry.data);

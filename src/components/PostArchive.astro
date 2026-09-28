@@ -1,0 +1,80 @@
+---
+import BlogFeed from './BlogFeed.vue';
+import Breadcrumbs from './Breadcrumbs.vue';
+import BlogPost from './BlogPost.vue';
+import BlogPostPreview from './BlogPostPreview.vue';
+import { render } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+
+// Posts render in the order given.
+type Post = CollectionEntry<'posts'>;
+
+interface Props {
+  label: string;
+  title: string;
+  href: string;
+  posts: Post[];
+}
+
+const { label, title, href, posts } = Astro.props;
+
+const titledPosts = posts.filter(
+  (post): post is Post & { data: Post['data'] & { title: string } } =>
+    Boolean(post.data.title)
+);
+const untitledPosts = posts.filter(post => !post.data.title);
+---
+<BlogFeed class="PostArchive">
+  <div class="prose PostArchive__intro">
+    <Breadcrumbs><a href="/archive/" class="unstyled muted">{label}</a></Breadcrumbs>
+    <h1>
+      <a href={href} class="unstyled">{title}</a>
+    </h1>
+  </div>
+
+  <div class="PostArchive__titledPosts">
+    {titledPosts.map(post => (
+      <BlogPostPreview
+        title={post.data.title}
+        date={post.data.date}
+        permalink={post.data.permalink}
+      />
+    ))}
+  </div>
+
+  <div class="PostArchive__notes">
+    {untitledPosts.map(async post => {
+      const { Content } = await render(post);
+      return (
+        <BlogPost date={post.data.date} permalink={post.data.permalink}>
+          <Content />
+        </BlogPost>
+      );
+    })}
+  </div>
+</BlogFeed>
+
+<style>
+  .PostArchive__intro {
+    margin-bottom: 16px;
+  }
+
+  .PostArchive__titledPosts {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .PostArchive__notes {
+    /* Spacing between notes comes from BlogPost's own sibling margins,
+       same as the feed. */
+    border-top: 1px solid var(--color-border);
+    margin-top: 40px;
+    padding-top: 40px;
+    padding-block-end: 80px;
+  }
+
+  .PostArchive__notes:not(:has(*)) {
+    display: none;
+  }
+</style>

@@ -1,88 +1,23 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import BlogFeed from '../../components/BlogFeed.vue';
-import Breadcrumbs from '../../components/Breadcrumbs.vue';
-import BlogPostPreview from '../../components/BlogPostPreview.vue';
-import { getPostsByYear, htmlDateString, shortDate } from '../../utils';
-import { render } from 'astro:content';
-import type { InferGetStaticPropsType } from 'astro';
+import PostArchive from '../../components/PostArchive.astro';
+import { getPostsByYear } from '../../utils';
 
 export const getStaticPaths = async () => {
   const postsByYear = await getPostsByYear();
   return Object.keys(postsByYear).map(year => ({
     params: { year },
-    props: { year, posts: postsByYear[year] },
+    props: { year, posts: postsByYear[year] ?? [] },
   }));
 };
 
-type Props = InferGetStaticPropsType<typeof getStaticPaths>;
-type YearPost = NonNullable<Props['posts']>[number];
-
-const { year, posts = [] } = Astro.props;
-
-const reversedPosts = [...posts].reverse();
-const titledPosts = reversedPosts.filter(
-  (post): post is YearPost & { data: YearPost['data'] & { title: string } } =>
-    Boolean(post.data?.title)
-);
-const untitledPosts = reversedPosts.filter(post => !post.data?.title);
-
+const { year, posts } = Astro.props;
 ---
-<BaseLayout>
-  <BlogFeed class="YearArchive">
-    <div class="prose YearArchive__intro">
-      <Breadcrumbs><span>Archives</span></Breadcrumbs>
-      <h1 class="font-header color-accent">{year}</h1>
-    </div>
-    <div class="YearArchive__titledPosts">
-      {titledPosts.map(post => (
-        <BlogPostPreview
-          title={post.data.title}
-          date={post.data.date}
-          permalink={post.data.permalink}
-        />
-      ))}
-    </div>
-
-    <div class="YearArchive__notes">
-      {untitledPosts.map(async post => {
-        const { Content } = await render(post);
-        return (
-          <article class="prose">
-            <time datetime={htmlDateString(post.data.date)}>
-              <a href={post.data.permalink} class="unstyled color-caption block">{shortDate(post.data.date)}</a>
-            </time>
-
-            <Content />
-          </article>
-        );
-      })}
-    </div>
-  </BlogFeed>
+<BaseLayout title={year}>
+  <PostArchive
+    label="Archives"
+    title={year}
+    href={`/${year}/`}
+    posts={[...posts].reverse()}
+  />
 </BaseLayout>
-
-<style>
-  .YearArchive__intro {
-    margin-bottom: 16px;
-  }
-
-  .YearArchive__titledPosts {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-
-  .YearArchive__notes {
-    display: flex;
-    flex-direction: column;
-    gap: 64px;
-    border-top: 1px solid var(--color-border);
-    margin-top: 40px;
-    padding-top: 40px;
-    padding-block-end: 80px;
-  }
-
-  .YearArchive__notes:not(:has(*)) {
-    display: none;
-  }
-</style>

@@ -1,0 +1,23 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PostArchive from '../../components/PostArchive.astro';
+import { capitalize, getPostsByTag, getTagSlug } from '../../utils';
+
+export const getStaticPaths = async () => {
+  const postsByTag = await getPostsByTag();
+  return Object.entries(postsByTag).map(([tag, posts]) => ({
+    params: { tag: getTagSlug(tag) },
+    props: { tag, posts },
+  }));
+};
+
+const { tag, posts } = Astro.props;
+---
+<BaseLayout title={capitalize(tag)}>
+  <PostArchive
+    label="Tags"
+    title={capitalize(tag)}
+    href={`/tag/${getTagSlug(tag)}/`}
+    posts={[...posts].reverse()}
+  />
+</BaseLayout>
