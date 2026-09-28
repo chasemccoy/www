@@ -1,6 +1,5 @@
 import { defineCollection } from "astro:content";
 import { z } from "astro/zod";
-import { file } from "astro/loaders";
 import fg from "fast-glob";
 import matter from "gray-matter";
 import { readFile } from "fs/promises";
@@ -87,12 +86,4 @@ const posts = defineCollection({
   }),
 });
 
-const blogroll = defineCollection({
-  loader: file("src/data/blogroll.json"),
-  schema: z.object({
-    name: z.string(),
-    url: z.string(),
-  }),
-});
-
-export const collections = { posts, blogroll };
+export const collections = { posts };

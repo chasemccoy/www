@@ -1,10 +1,8 @@
-import { format, formatISO } from "date-fns";
+import { format } from "date-fns";
 import { utc } from "@date-fns/utc";
 import { getCollection } from "astro:content";
 import type { CollectionEntry } from "astro:content";
 import type { PostLink } from "../types";
-
-// String helpers
 
 export function capitalize(string: string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
@@ -13,8 +11,6 @@ export function capitalize(string: string) {
 export function titleize(slug: string) {
   return capitalize(slug.replaceAll("-", " "));
 }
-
-// Date formatting
 
 export function readableDate(dateObj: Date | string) {
   return format(new Date(dateObj), "LLLL d, yyyy", { in: utc });
@@ -42,12 +38,6 @@ function isThisYear(date: Date) {
 export function htmlDateString(dateObj: Date | string) {
   return format(new Date(dateObj), "yyyy-LL-dd", { in: utc });
 }
-
-export function dateForXMLFeed(date: Date | string) {
-  return formatISO(new Date(date), { representation: "date" }) + "T12:00:00.000-05:00";
-}
-
-// Post helpers
 
 export function getSlugFromPostId(id: string): string {
   return id
@@ -84,16 +74,6 @@ export function getPostDisplayTitle(post: { title?: string; date: Date | string 
   return post.title || `Note from ${readableDate(post.date)}`;
 }
 
-export function shouldShowCite(post: any, index: number, posts: any[]) {
-  const isFirstInSequence =
-    posts[index + 1]?.source?.title === post.source?.title &&
-    posts[index - 1]?.source?.title !== post.source?.title;
-  const isInSequence =
-    posts[index - 1]?.source?.title === post.source?.title ||
-    posts[index + 1]?.source?.title === post.source?.title;
-  return isFirstInSequence || !isInSequence;
-}
-
 export function getAdjacentPosts(posts: CollectionEntry<"posts">[], currentId: string) {
   const ordered = posts
     .filter((p) => !p.data.hidden)
@@ -128,8 +108,6 @@ export function getPageTitle(
 
   return siteTitle;
 }
-
-// Collection helpers
 
 // Drafts (`hidden: true` in frontmatter) are served by the dev server so they
 // can be previewed at their permalink and in the feed, but they are never
@@ -210,11 +188,6 @@ export async function getArchiveIndex() {
   };
 }
 
-export async function getBlogroll() {
-  const entries = await getCollection("blogroll");
-  return entries.map((entry) => entry.data);
-}
-
 export const FEED_PAGE_SIZE = 20;
 
 // Long titled posts are truncated in the feed: the whole post renders and
@@ -227,7 +200,5 @@ export function shouldTruncatePost(post: CollectionEntry<"posts">): boolean {
 
 export async function getFeed() {
   const posts = await getVisiblePosts();
-
-  // Latest posts first
   return posts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 }

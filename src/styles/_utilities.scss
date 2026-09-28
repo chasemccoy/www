@@ -1,19 +1,9 @@
-@each $color in accent, caption {
-  .color-#{$color} {
-    color: var(--color-#{$color});
-  }
+.color-caption {
+  color: var(--color-caption);
 }
 
 .bold {
   font-weight: bold;
-}
-
-.font-header {
-  font-family: var(--font-header);
-}
-
-.block {
-  display: block;
 }
 
 .lead {
