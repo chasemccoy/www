@@ -108,13 +108,13 @@ const riverStyle = riverInlineStyle(pageUrl);
 
     <script>import 'lite-youtube-embed/src/lite-yt-embed.js';</script>
     <script>
-      import {
-        riverColorAt,
-        riverCycle,
-        riverFractionAt,
-        riverTables,
-        riverUnderlineCss,
-      } from '../utils/river';
+      import { riverColorAt, riverCycle, riverFractionForPath, riverStops } from '../utils/river';
+
+      // The same stop table the build rendered this page's gradient from
+      // (both sides derive it from the path), so sampling works directly in
+      // page space.
+      const stops = riverStops(riverFractionForPath(location.pathname));
+      let cycle = 1;
 
       // Layout signature of the last run: re-anchoring only matters when
       // the document height or viewport width actually changed (mobile
@@ -122,17 +122,23 @@ const riverStyle = riverInlineStyle(pageUrl);
       // load-time run is a no-op when fonts came from cache).
       let anchoredFor = '';
 
+      // Pin one element to the river at document position y: its gradient
+      // offset, and for links the river's color at their vertical center
+      // (the underline tint; the CSS side mixes it toward the page).
+      function pin(el: HTMLElement, y: number, elHeight: number) {
+        el.style.setProperty('--river-pos', `0 ${-Math.round(y)}px`);
+        if (el instanceof HTMLAnchorElement) {
+          const center = y + elHeight / 2;
+          el.style.setProperty('--river-color', riverColorAt(stops, (center % cycle) / cycle));
+        }
+      }
+
       function anchorGradientText() {
         const height = document.documentElement.scrollHeight;
         const signature = `${height}x${window.innerWidth}`;
         if (signature === anchoredFor) return;
         anchoredFor = signature;
-        // The build rotated the rendered gradient by --river-frac (0 on the
-        // index, which gets the open ramp instead); sampling maps back into
-        // the matching unrotated stop table.
-        const frac =
-          parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--river-frac')) || 0;
-        const cycle = riverCycle(height, riverTables(frac).segments);
+        cycle = riverCycle(height, stops);
         // The cycle size is per-page, not per-element: one write on the
         // root inherits into every pinned element and pseudo-element.
         document.documentElement.style.setProperty('--river-size', `100% ${cycle}px`);
@@ -140,13 +146,6 @@ const riverStyle = riverInlineStyle(pageUrl);
         // vignette in src/styles/_river.scss, which maps scroll progress to
         // a position along the river).
         document.documentElement.style.setProperty('--river-doc', `${height}px`);
-        // --river-end: the river's color at the very bottom of the page
-        // (e.g. for the footer fade). The open ramp must not wrap a
-        // full-cycle page back to position 0, so fraction-0 pages clamp
-        // instead of using the modulo mapping. (On loop pages the wrap is
-        // harmless — position 0 and 1 are the same seam color.)
-        const endAt = frac === 0 ? Math.min(height / cycle, 1) : riverFractionAt(height, cycle, frac);
-        document.documentElement.style.setProperty('--river-end', riverColorAt(frac, endAt));
 
         // Everything gradient-pinned shares one mechanism: the anchoring is
         // passed through inherited custom properties, which also reach the
@@ -166,17 +165,31 @@ const riverStyle = riverInlineStyle(pageUrl);
           const rect = el.getBoundingClientRect();
           return { el, y: rect.top + window.scrollY, height: rect.height };
         });
-        for (const { el, y, height: elHeight } of measured) {
-          el.style.setProperty('--river-pos', `0 ${-Math.round(y)}px`);
-          if (el instanceof HTMLAnchorElement) {
-            // Underline: a color-mix expression sampling the gradient at
-            // the link's vertical center, lightened toward the page
-            // background (see riverUnderlineCss).
-            const at = riverFractionAt(y + elHeight / 2, cycle, frac);
-            el.style.setProperty('--river-underline', riverUnderlineCss(frac, at));
-          }
+        for (const { el, y, height: elHeight } of measured) pin(el, y, elHeight);
+      }
+
+      // The site-info box is sticky, so its links have no fixed document
+      // position: re-pin them wherever they currently sit as the page
+      // scrolls, so their river color follows the viewport like the
+      // vignette does. (Their pseudo-elements inherit the vars.)
+      const stickyLinks = document.querySelectorAll<HTMLElement>('.Wrapper__header a');
+      let following = false;
+      function followSticky() {
+        following = false;
+        for (const el of stickyLinks) {
+          const rect = el.getBoundingClientRect();
+          pin(el, rect.top + window.scrollY, rect.height);
         }
       }
+      window.addEventListener(
+        'scroll',
+        () => {
+          if (following) return;
+          following = true;
+          requestAnimationFrame(followSticky);
+        },
+        { passive: true }
+      );
 
       // Run pre-paint so the first frame is anchored, and again on load
       // once webfonts and images have settled the layout.
@@ -197,14 +210,6 @@ const riverStyle = riverInlineStyle(pageUrl);
     
     <slot />
 
-    <footer>
-      <div class="Wrapper">
-        <div class="Wrapper__main">
-          Hey there!
-        </div>
-      </div>
-    </footer>
-    
     <script async src="https://platform.twitter.com/widgets.js" is:inline></script>
     <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "488e6debfbc64509bd4b00dde784e24f"}' is:inline></script>
   </body>

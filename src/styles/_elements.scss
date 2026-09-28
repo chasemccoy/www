@@ -18,52 +18,66 @@ body {
   font-size: 1em;
   text-wrap: balance;
   color: var(--color-header);
-
-  &.unstyled {
-    font-size: 1rem;
-    line-height: var(--root-line-height);
-  }
 }
 
 a {
-  --link-underline-color: var(
-    --river-underline,
-    color-mix(in oklab, var(--color-text) 35%, transparent)
-  );
-
-  color: var(--link-color);
   @include river-text;
 
   // Glyphs can overhang their advance width by a pixel or two (side
   // bearings, antialiasing), and background-clip: text can't paint outside
   // the box — so edge glyphs get shaved. Pad the paint area out and cancel
-  // it with negative margins so layout is unchanged.
-  padding-inline: 1.5px;
+  // it with negative margins so layout is unchanged. The block padding gives
+  // the hover wash a little air above and below the glyphs.
+  padding: 2px 1.5px;
   margin-inline: -1.5px;
   text-decoration: underline;
   transition:
     text-decoration-color 0.2s,
     text-underline-offset 0.2s;
-  text-decoration-thickness: var(--text-decoration-thickness, 1px);
-  text-decoration-color: var(--link-underline-color);
-  text-underline-offset: var(--text-decoration-offset, 0.15em);
+  text-decoration-thickness: 1px;
+  // The underline: the river's color at the link (set per link by the
+  // anchoring script), lightened halfway toward the page so it stays subtle.
+  text-decoration-color: color-mix(
+    in srgb,
+    var(--river-color, var(--color-text)) 50%,
+    var(--color-body-background)
+  );
+  text-underline-offset: 0.15em;
   box-decoration-break: clone;
   -webkit-box-decoration-break: clone;
 
   &:hover {
-    text-decoration-thickness: 1px;
-    text-underline-offset: var(--text-decoration-offset, 0.325em);
+    text-underline-offset: 0.325em;
   }
 
-  &.unstyled {
-    text-decoration: none;
+  &:not(.unstyled, .muted):hover {
+    @include river-hover-wash;
   }
 }
 
-code a {
-  border: none;
-  box-shadow: none;
-  text-decoration: underline;
+// Every link is one of three kinds, and components pick with classes rather
+// than restyling links themselves:
+//   (default)   river text, tinted underline; on hover the offset slides
+//               and the box gets the faint river wash
+//   .unstyled   quiet: no underline at rest; the underline appears in place
+//               on hover, and no wash
+//   .muted      caption-colored text, no wash; combines with .unstyled
+// Markdown-generated links that can't take a class (captions, blockquote
+// cites) are listed alongside.
+a.unstyled,
+blockquote cite a {
+  text-decoration-line: none;
+
+  &:hover {
+    text-decoration-line: underline;
+    text-underline-offset: 0.15em;
+  }
+}
+
+a.muted,
+figcaption a,
+blockquote cite a {
+  color: var(--color-caption);
 }
 
 mark {
@@ -104,20 +118,12 @@ hr {
   border: none;
   margin: 0;
 
-  &.dashed {
-    background: none;
-    border-top: 1px dashed var(--color-border);
-    height: 1px;
-    width: 100%;
-  }
-
   &.break {
     background: none;
     height: auto;
 
     &:before {
       content: "• • •";
-      color: var(--color-border);
       display: block;
       width: 100%;
       text-align: center;
@@ -159,7 +165,6 @@ pre {
 }
 
 *:not(pre) > code {
-  color: var(--color-accent);
   font-size: 0.85rem;
   @include river-text;
 
@@ -175,11 +180,8 @@ code {
   box-decoration-break: clone;
 }
 
-.image-caption,
 figcaption {
   color: var(--color-caption);
-  --link-color: var(--color-caption);
-  --color-accent: var(--color-caption);
 }
 
 blockquote.twitter-tweet {
