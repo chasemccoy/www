@@ -2,32 +2,60 @@
 
 :root {
   --layout-padding: 1rem;
+  --column-width: calc(33em + 2 * var(--layout-padding));
 
   @include medium {
     --layout-padding: 2.5rem;
   }
+
+  @include large {
+    --layout-padding: 4rem;
+  }
 }
 
+// The min-height is what parks the sticky site-info box at the viewport
+// bottom on pages shorter than a screen.
 .Wrapper {
-  grid-column: content;
-  width: 100%;
-  margin: 0 auto;
-
   display: grid;
-  grid-template-columns: [content-start] minmax(0, 1fr) [content-end];
+  grid-template-columns: [content-start] minmax(0, var(--column-width)) [content-end];
+  grid-template-rows: auto 1fr;
+  grid-template-areas:
+    "header"
+    "main";
   row-gap: 64px;
-  max-width: var(--content-width);
+  min-height: 100dvh;
+
+  @include medium {
+    // The column yields a little before the box does, and the two gutters
+    // (column right, box left) are the spacing between them.
+    grid-template-columns:
+      [content-start] minmax(0, var(--column-width)) [content-end aside-start] minmax(12em, 1fr)
+      [aside-end];
+    grid-template-rows: 1fr;
+    grid-template-areas: "main aside";
+  }
 }
 
 .Wrapper__header {
-  grid-column: content;
+  grid-area: header;
   position: relative;
   padding-inline: var(--layout-padding);
+
+  @include medium {
+    grid-area: aside;
+    align-self: end;
+    justify-self: end;
+    position: sticky;
+    bottom: 1.5rem;
+    padding-inline: 1rem;
+  }
 }
 
 .Wrapper__main {
-  grid-column: content;
+  grid-area: main;
   padding-inline: var(--layout-padding);
-  // narrow, left-aligned reading column; header stays at full width
-  max-width: calc(36em + 2 * var(--layout-padding));
+
+  @include medium {
+    padding-block-start: var(--layout-padding);
+  }
 }

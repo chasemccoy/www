@@ -34,7 +34,6 @@ defineProps<{
 .Pagination {
   border-top: 4px solid var(--color-offset);
   margin: 3rem 0 0;
-  margin-inline: calc(-1 * var(--layout-padding));
 
   ul {
     display: flex;
@@ -64,13 +63,25 @@ defineProps<{
     flex-direction: column;
     justify-content: center;
     color: var(--color-text);
-    padding: 1rem var(--layout-padding);
+    padding-block: 1rem;
     transition: background-color 0.2s;
     height: 100%;
     min-height: 56px;
 
     &:hover {
       background-color: var(--color-offset);
+    }
+  }
+
+  // Bounded by the content column: text sits on the column edges, and the
+  // hover fill only gets breathing room on the inner side of each cell.
+  @include small {
+    .Pagination__previous a {
+      padding-right: 1rem;
+    }
+
+    .Pagination__next a {
+      padding-left: 1rem;
     }
   }
 }
