@@ -1,6 +1,5 @@
 ---
 import BaseLayout from './BaseLayout.astro';
-import Article from '../components/Article.vue';
 import type { LayoutProps } from '../types';
 
 interface Props extends LayoutProps {
@@ -15,9 +14,9 @@ const { title, description } = props;
   title={title}
   description={description}
 >
-  <Article>
-    {title && <h1 class="font-header">{title}</h1>}
-    
+  <article class="Article prose">
+    {title && <h1>{title}</h1>}
+
     <slot />
-  </Article>
+  </article>
 </BaseLayout>

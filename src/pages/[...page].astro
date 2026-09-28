@@ -1,0 +1,38 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Feed from '../components/Feed.astro';
+import Pagination from '../components/Pagination.vue';
+import { getFeed, FEED_PAGE_SIZE } from '../utils';
+import type { GetStaticPaths } from 'astro';
+
+// The feed: page 1 at `/`, then `/2/`, `/3/`, … (the rest param makes the
+// first page's path empty).
+export const getStaticPaths = (async ({ paginate }) => {
+  const feed = await getFeed();
+  return paginate(feed, { pageSize: FEED_PAGE_SIZE });
+}) satisfies GetStaticPaths;
+
+const { page } = Astro.props;
+
+// paginate() follows the trailingSlash setting ("ignore" → none); the rest
+// of the site links with trailing slashes, so match that.
+const withSlash = (url?: string) => url && (url.endsWith('/') ? url : `${url}/`);
+---
+<BaseLayout>
+  <Feed posts={page.data} />
+
+  <div class="FeedFooter">
+    <Pagination
+      previousHref={withSlash(page.url.next)}
+      previousTitle="Older"
+      nextHref={withSlash(page.url.prev)}
+      nextTitle="Newer"
+    />
+  </div>
+</BaseLayout>
+
+<style>
+  .FeedFooter {
+    margin-top: 6rem;
+  }
+</style>
