@@ -1,5 +1,5 @@
 ---
-title: Assorted thoughts on Sunday's home robot
+title: Assorted thoughts on Sunday’s home robot
 tags:
   - ai
   - design
