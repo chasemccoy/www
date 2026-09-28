@@ -9,44 +9,30 @@ defineProps<{
 </script>
 
 <template>
-  <a :href="permalink" class="unstyled block BlogPostPreview">
-    <h3>
-      <span>{{ title }}</span
-      >&nbsp;<time :datetime="htmlDateString(date)">{{ shortDate(date) }}</time>
-    </h3>
-  </a>
+  <h3 class="BlogPostPreview">
+    <a :href="permalink">{{ title }}</a
+    >&nbsp;<time :datetime="htmlDateString(date)"
+      ><a :href="permalink" class="unstyled muted">{{ shortDate(date) }}</a></time
+    >
+  </h3>
 </template>
 
 <style scoped lang="scss">
 .BlogPostPreview {
-  &:hover h3 span {
-    text-decoration: underline;
-    text-decoration-thickness: var(--text-decoration-thickness, 1px);
-    text-decoration-color: var(--link-underline-color);
-    text-underline-offset: var(--text-decoration-offset, 0.15em);
-  }
+  margin-bottom: 0.25rem;
+  // Nowrap on the heading with normal wrapping inside the title link: the
+  // title can break internally, but the date stays glued to its last word.
+  white-space: nowrap;
+  font-size: 1.15rem;
+  line-height: 1.25;
+  font-weight: normal;
 
-  h3 {
-    margin-bottom: 0.25rem;
-    white-space: nowrap;
-    font-size: 1.15rem;
-    line-height: 1.25;
-    color: inherit;
-    font-weight: normal;
-  }
-
-  h3 span {
+  & > a {
     white-space: normal;
   }
 
-  h3 time {
-    color: var(--color-caption);
-    font-family: var(--font-code);
-    font-weight: normal;
-    text-transform: none;
-    letter-spacing: 0px;
-    position: relative;
-    display: inline-block;
+  time {
+    font-size: 1rem;
     margin-left: 4px;
   }
 }

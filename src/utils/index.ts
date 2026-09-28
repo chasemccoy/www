@@ -24,6 +24,21 @@ export function shortDate(dateObj: Date | string) {
   return format(new Date(dateObj), "LLLL d", { in: utc });
 }
 
+export function metaDate(dateObj: Date | string) {
+  const date = new Date(dateObj);
+  return isThisYear(date) ? shortDate(date) : readableDate(date);
+}
+
+export function inlineDate(dateObj: Date | string) {
+  const date = new Date(dateObj);
+  return format(date, isThisYear(date) ? "MMM d" : "MMM d, yyyy", { in: utc });
+}
+
+// "This year" as of the build, which is when this runs.
+function isThisYear(date: Date) {
+  return date.getUTCFullYear() === new Date().getUTCFullYear();
+}
+
 export function htmlDateString(dateObj: Date | string) {
   return format(new Date(dateObj), "yyyy-LL-dd", { in: utc });
 }
@@ -202,8 +217,8 @@ export async function getBlogroll() {
 
 export const FEED_PAGE_SIZE = 20;
 
-// Long titled posts render as an excerpt with a "read more" in the feed.
-// (The excerpt itself is built in content.config.ts.)
+// Long titled posts are truncated in the feed: the whole post renders and
+// BlogPost.vue shows only its opening blocks (see .BlogPost__excerpt).
 export const TRUNCATE_WORD_COUNT = 1200;
 
 export function shouldTruncatePost(post: CollectionEntry<"posts">): boolean {

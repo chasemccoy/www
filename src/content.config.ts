@@ -25,8 +25,6 @@ const posts = defineCollection({
 
         const rendered = await renderMarkdown(parsed.content, { fileURL });
         const wordCount = parsed.content.split(/\s+/).length;
-        const paragraphs = (rendered?.html || "").match(/<p>.*?<\/p>/gs) || [];
-        const renderedExcerpt = paragraphs.slice(0, 5).join("\n");
 
         const data = await parseData({
           id,
@@ -35,7 +33,6 @@ const posts = defineCollection({
             date: resolvePostDate(id, parsed.data.date),
             permalink: getPermalinkFromPostId(id),
             wordCount,
-            renderedExcerpt,
           },
         });
 
@@ -87,7 +84,6 @@ const posts = defineCollection({
     date: z.date(),
     permalink: z.string(),
     wordCount: z.number(),
-    renderedExcerpt: z.string(),
   }),
 });
 

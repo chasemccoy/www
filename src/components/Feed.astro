@@ -13,19 +13,19 @@ const { posts } = Astro.props;
 ---
 <BlogFeed>
   {posts.map(async post => {
+    // Truncated posts render in full too; BlogPost shows only their opening.
     const isTruncated = shouldTruncatePost(post);
-    // Only render the full markdown component when it will actually be
-    // shown — truncated posts use the prebuilt excerpt instead.
-    const Content = isTruncated ? null : (await render(post)).Content;
+    const { Content } = await render(post);
     return (
       <BlogPost
         title={post.data.title}
         date={post.data.date}
         permalink={post.data.permalink}
         isTruncated={isTruncated}
+        inlineDate
         isDraft={post.data.hidden}
       >
-        {Content ? <Content /> : <Fragment set:html={post.data.renderedExcerpt} />}
+        <Content />
       </BlogPost>
     );
   })}
