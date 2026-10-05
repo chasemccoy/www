@@ -29,7 +29,7 @@ defineProps<{
 </template>
 
 <style scoped lang="scss">
-@use "../styles/theme" as *;
+@use "../styles/mixins" as *;
 
 .Pagination {
   border-top: 4px solid var(--color-offset);

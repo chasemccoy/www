@@ -2,10 +2,10 @@ import rss from "@astrojs/rss";
 import { render } from "astro:content";
 import { experimental_AstroContainer as AstroContainer } from "astro/container";
 import metadata from "../data/metadata.json";
-import { getFeed, getPostDisplayTitle } from "../utils";
+import { getPostDisplayTitle, getVisiblePosts } from "../utils";
 
 export async function GET() {
-  const posts = await getFeed();
+  const posts = await getVisiblePosts();
 
   const container = await AstroContainer.create();
 

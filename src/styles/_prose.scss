@@ -1,4 +1,4 @@
-@use "river" as *;
+@use "mixins" as *;
 
 :root {
   --flow-spacing: 1.25rem;
@@ -16,17 +16,14 @@
     margin-top: var(--list-spacing);
   }
 
-  // Spacing between first and second paragraph in list items
   & li > p + p {
     margin-top: 0.5rem;
   }
 
-  // Spacing between other paragraphs in list items
   & li > p:not(:first-of-type) + p {
     margin-top: 0.75rem;
   }
 
-  // More spacing between list items if they contain full paragraphs
   & li + li > p:first-child {
     margin-top: 0.75rem;
   }
@@ -37,20 +34,6 @@
 
   :where(blockquote > * + *) {
     margin-top: var(--flow-spacing);
-  }
-
-  a {
-    padding-block: 2px;
-
-    &:hover {
-      // First layer stays clipped to the glyphs (the gradient text); the
-      // second layer washes the whole box with a faint slice of the same
-      // gradient. Both share the page-anchoring background-size/position
-      // set per-link, so the tint hue always matches the link's text.
-      background-image: var(--gradient-river), var(--gradient-river-faint);
-      -webkit-background-clip: text, border-box;
-      background-clip: text, border-box;
-    }
   }
 
   :where(:is(h2, h3, h4, h5, h6) + *:not(:is(ol, ul))) {
@@ -214,7 +197,6 @@
   }
 }
 
-// Blockquote styles (global, used in multiple contexts)
 blockquote:not(.unstyled, .twitter-tweet) {
   text-wrap: pretty;
   border: 0.5px solid var(--color-border);
@@ -273,8 +255,6 @@ blockquote:not(.unstyled, .twitter-tweet) {
   }
 }
 
-// Decorated lists, opted into by prose content — bare lists elsewhere stay
-// plain (see _elements.scss).
 .prose {
   ul > li {
     margin-left: 1.5em;

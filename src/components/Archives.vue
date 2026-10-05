@@ -42,7 +42,7 @@ defineProps<{
 </template>
 
 <style scoped lang="scss">
-@use "../styles/theme" as *;
+@use "../styles/mixins" as *;
 
 .Archives {
   display: grid;
@@ -57,11 +57,7 @@ defineProps<{
   }
 
   dt {
-    font-family: var(--font-body);
-    font-size: 0.85rem;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 0.25px;
+    @include label;
   }
 
   dd + dt {
@@ -73,18 +69,13 @@ defineProps<{
   }
 }
 
-// This component owns its lists: undo .prose's bullets, indents and item
-// spacing so it renders the same inside a prose page (the 404) as anywhere.
-.Archives__stack > li,
-.Archives__years > li,
-.Archives__entries > li {
+// Undo .prose list decoration: this renders inside prose pages too.
+.Archives li {
   margin: 0;
-}
 
-.Archives__stack > li:before,
-.Archives__years > li:before,
-.Archives__entries > li:before {
-  content: none;
+  &::before {
+    content: none;
+  }
 }
 
 .Archives__stack > li + li {

@@ -1,0 +1,59 @@
+// Mixins only: this module must emit no CSS, since every component that
+// @uses it would get its own copy.
+
+@mixin tiny {
+  @media (min-width: 550px) {
+    @content;
+  }
+}
+
+@mixin small {
+  @media (min-width: 700px) {
+    @content;
+  }
+}
+
+@mixin medium {
+  @media (min-width: 900px) {
+    @content;
+  }
+}
+
+@mixin large {
+  @media (min-width: 1100px) {
+    @content;
+  }
+}
+
+// The small uppercase label: prose's tier-1 headings, the archive ledger.
+@mixin label {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.25px;
+}
+
+// Contract: the anchoring script in HtmlLayout.astro must pin every element
+// whose styles (or pseudo-elements) @include river-text or river-fill.
+
+// The 6000px fallback shows only the gradient's top sliver until the script
+// runs: a flat swatch of the page's first stop.
+@mixin river-fill($gradient: var(--gradient-river)) {
+  background-image: $gradient;
+  background-size: var(--river-size, 100% 6000px);
+  background-position: var(--river-pos, 0 0);
+}
+
+@mixin river-text($gradient: var(--gradient-river)) {
+  @include river-fill($gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@mixin river-hover-wash {
+  background-image: var(--gradient-river), var(--gradient-river-faint);
+  -webkit-background-clip: text, border-box;
+  background-clip: text, border-box;
+}

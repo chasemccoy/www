@@ -1,4 +1,4 @@
-@use "theme" as *;
+@use "mixins" as *;
 
 :root {
   --layout-padding: 1rem;
@@ -13,8 +13,7 @@
   }
 }
 
-// The min-height is what parks the sticky site-info box at the viewport
-// bottom on pages shorter than a screen.
+// The min-height parks the sticky box at the viewport bottom on short pages.
 .Wrapper {
   display: grid;
   grid-template-columns: [content-start] minmax(0, var(--column-width)) [content-end];
@@ -26,8 +25,6 @@
   min-height: 100dvh;
 
   @include medium {
-    // The column yields a little before the box does, and the two gutters
-    // (column right, box left) are the spacing between them.
     grid-template-columns:
       [content-start] minmax(0, var(--column-width)) [content-end aside-start] minmax(12em, 1fr)
       [aside-end];
@@ -46,7 +43,7 @@
     align-self: end;
     justify-self: end;
     position: sticky;
-    bottom: 1.5rem;
+    bottom: 1.1rem;
     padding-inline: 1rem;
   }
 }

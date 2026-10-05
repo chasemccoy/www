@@ -4,6 +4,8 @@ import { getCollection } from "astro:content";
 import type { CollectionEntry } from "astro:content";
 import type { PostLink } from "../types";
 
+type Post = CollectionEntry<"posts">;
+
 export function capitalize(string: string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
@@ -20,19 +22,20 @@ export function shortDate(dateObj: Date | string) {
   return format(new Date(dateObj), "LLLL d", { in: utc });
 }
 
-export function metaDate(dateObj: Date | string) {
-  const date = new Date(dateObj);
-  return isThisYear(date) ? shortDate(date) : readableDate(date);
+export function metaDate(date: Date | string) {
+  return dateWithYearIfPast(date, "LLLL d");
 }
 
-export function inlineDate(dateObj: Date | string) {
-  const date = new Date(dateObj);
-  return format(date, isThisYear(date) ? "MMM d" : "MMM d, yyyy", { in: utc });
+export function inlineDate(date: Date | string) {
+  return dateWithYearIfPast(date, "MMM d");
 }
 
-// "This year" as of the build, which is when this runs.
-function isThisYear(date: Date) {
-  return date.getUTCFullYear() === new Date().getUTCFullYear();
+// "This year" is as of the build: rebuild in January or old dates keep
+// omitting the year.
+function dateWithYearIfPast(dateObj: Date | string, pattern: string) {
+  const date = new Date(dateObj);
+  const isThisYear = date.getUTCFullYear() === new Date().getUTCFullYear();
+  return format(date, isThisYear ? pattern : `${pattern}, yyyy`, { in: utc });
 }
 
 export function htmlDateString(dateObj: Date | string) {
@@ -74,24 +77,24 @@ export function getPostDisplayTitle(post: { title?: string; date: Date | string 
   return post.title || `Note from ${readableDate(post.date)}`;
 }
 
-export function getAdjacentPosts(posts: CollectionEntry<"posts">[], currentId: string) {
+export function getAdjacentPosts(posts: Post[], currentId: string) {
   const ordered = posts
     .filter((p) => !p.data.hidden)
     .sort((a, b) => a.data.date.getTime() - b.data.date.getTime());
 
   const currentIndex = ordered.findIndex((p) => p.id === currentId);
-
-  const toPostLink = (post: CollectionEntry<"posts"> | undefined): PostLink | undefined =>
-    post ? { permalink: post.data.permalink, title: post.data.title } : undefined;
+  const previous = currentIndex > 0 ? ordered[currentIndex - 1] : undefined;
+  const next =
+    currentIndex >= 0 && currentIndex < ordered.length - 1 ? ordered[currentIndex + 1] : undefined;
 
   return {
-    previous: toPostLink(currentIndex > 0 ? ordered[currentIndex - 1] : undefined),
-    next: toPostLink(
-      currentIndex >= 0 && currentIndex < ordered.length - 1
-        ? ordered[currentIndex + 1]
-        : undefined,
-    ),
+    previous: previous && toPostLink(previous),
+    next: next && toPostLink(next),
   };
+}
+
+function toPostLink(post: Post): PostLink {
+  return { permalink: post.data.permalink, title: post.data.title };
 }
 
 export function getPageTitle(
@@ -103,20 +106,18 @@ export function getPageTitle(
   }
 
   if (options.date && options.pageUrl?.match(/\/\d{4}\/\d{2}\//)) {
-    return `Note from ${readableDate(options.date)} | ${siteTitle}`;
+    return `${getPostDisplayTitle({ date: options.date })} | ${siteTitle}`;
   }
 
   return siteTitle;
 }
 
-// Drafts (`hidden: true` in frontmatter) are served by the dev server so they
-// can be previewed at their permalink and in the feed, but they are never
-// emitted by a production build — no page, no feed entry, no archive listing.
 export const SHOW_DRAFTS = import.meta.env.DEV;
 
+// Newest first.
 export async function getPosts() {
   const posts = await getCollection("posts");
-  return posts.sort((a, b) => a.data.date.getTime() - b.data.date.getTime());
+  return posts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 }
 
 export async function getVisiblePosts() {
@@ -127,46 +128,28 @@ export async function getVisiblePosts() {
 
 export async function getFeaturedPosts(): Promise<PostLink[]> {
   const posts = await getVisiblePosts();
-
-  return posts
-    .filter((p) => p.data.title && p.data.featured)
-    .map<PostLink>((p) => ({
-      permalink: p.data.permalink,
-      title: p.data.title,
-    }))
-    .reverse();
+  return posts.filter((p) => p.data.title && p.data.featured).map(toPostLink);
 }
 
-export async function getPostsByYear() {
-  const posts = await getVisiblePosts();
-  const groups: Record<string, typeof posts> = {};
-
+function groupPosts(posts: Post[], keysOf: (post: Post) => string[]) {
+  const groups: Record<string, Post[]> = {};
   for (const post of posts) {
-    const year = post.data.date.getUTCFullYear().toString();
-    groups[year] ??= [];
-    groups[year].push(post);
+    for (const key of keysOf(post)) (groups[key] ??= []).push(post);
   }
-
-  return Object.fromEntries(Object.entries(groups).sort(([a], [b]) => b.localeCompare(a)));
+  return groups;
 }
 
-// Tags are lowercased display names with spaces ("design systems"); URLs
-// swap the spaces for hyphens.
+// Year keys are integer-like, so they always enumerate oldest first.
+export async function getPostsByYear() {
+  return groupPosts(await getVisiblePosts(), (p) => [String(p.data.date.getUTCFullYear())]);
+}
+
 export function getTagSlug(tag: string) {
   return tag.replaceAll(" ", "-");
 }
 
 export async function getPostsByTag() {
-  const posts = await getVisiblePosts();
-  const groups: Record<string, typeof posts> = {};
-
-  for (const post of posts) {
-    for (const tag of post.data.tags) {
-      groups[tag] ??= [];
-      groups[tag].push(post);
-    }
-  }
-
+  const groups = groupPosts(await getVisiblePosts(), (p) => p.data.tags);
   return Object.fromEntries(Object.entries(groups).sort(([a], [b]) => a.localeCompare(b)));
 }
 
@@ -190,15 +173,8 @@ export async function getArchiveIndex() {
 
 export const FEED_PAGE_SIZE = 20;
 
-// Long titled posts are truncated in the feed: the whole post renders and
-// BlogPost.vue shows only its opening blocks (see .BlogPost__excerpt).
 export const TRUNCATE_WORD_COUNT = 1200;
 
-export function shouldTruncatePost(post: CollectionEntry<"posts">): boolean {
+export function shouldTruncatePost(post: Post): boolean {
   return !!post.data.title && post.data.wordCount > TRUNCATE_WORD_COUNT;
-}
-
-export async function getFeed() {
-  const posts = await getVisiblePosts();
-  return posts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 }

@@ -4,7 +4,6 @@ import { render } from 'astro:content';
 import { getVisiblePosts } from '../utils';
 
 export async function getStaticPaths() {
-  // Drafts are routable in dev only — a production build emits no page for them.
   const posts = await getVisiblePosts();
   return posts.map(post => ({
     params: { slug: post.data.permalink.slice(1, -1) },

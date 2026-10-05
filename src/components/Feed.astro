@@ -13,15 +13,13 @@ const { posts } = Astro.props;
 ---
 <BlogFeed>
   {posts.map(async post => {
-    // Truncated posts render in full too; BlogPost shows only their opening.
-    const isTruncated = shouldTruncatePost(post);
     const { Content } = await render(post);
     return (
       <BlogPost
         title={post.data.title}
         date={post.data.date}
         permalink={post.data.permalink}
-        isTruncated={isTruncated}
+        isTruncated={shouldTruncatePost(post)}
         inlineDate
         isDraft={post.data.hidden}
       >

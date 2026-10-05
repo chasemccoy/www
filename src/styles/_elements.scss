@@ -1,5 +1,4 @@
-@use "theme" as *;
-@use "river" as *;
+@use "mixins" as *;
 
 html {
   overflow-y: scroll;
@@ -20,50 +19,45 @@ body {
   color: var(--color-header);
 }
 
+// Link kinds are chosen by class (default, .unstyled, .muted); components
+// never set text-decoration themselves, since the shorthand resets the
+// river underline color. Markdown links that can't take a class are listed
+// alongside the modifiers.
 a {
-  @include river-text;
-
-  // Glyphs can overhang their advance width by a pixel or two (side
-  // bearings, antialiasing), and background-clip: text can't paint outside
-  // the box — so edge glyphs get shaved. Pad the paint area out and cancel
-  // it with negative margins so layout is unchanged. The block padding gives
-  // the hover wash a little air above and below the glyphs.
-  padding: 2px 1.5px;
-  margin-inline: -1.5px;
   text-decoration: underline;
   transition:
     text-decoration-color 0.2s,
     text-underline-offset 0.2s;
   text-decoration-thickness: 1px;
-  // The underline: the river's color at the link (set per link by the
-  // anchoring script), lightened halfway toward the page so it stays subtle.
+  // --river-color is set per link by the anchoring script.
   text-decoration-color: color-mix(
     in srgb,
     var(--river-color, var(--color-text)) 50%,
     var(--color-body-background)
   );
   text-underline-offset: 0.15em;
-  box-decoration-break: clone;
-  -webkit-box-decoration-break: clone;
 
   &:hover {
     text-underline-offset: 0.325em;
   }
+}
 
-  &:not(.unstyled, .muted):hover {
+a:not(.muted, :where(figcaption, blockquote cite) a) {
+  @include river-text;
+
+  // background-clip: text can't paint past the box, so overhanging edge
+  // glyphs get shaved. Pad the paint area and cancel it with margins.
+  padding: 2px 1.5px;
+  margin-inline: -1.5px;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+
+  // :where keeps this low enough for a component's own a:hover to override.
+  &:where(:not(.unstyled)):hover {
     @include river-hover-wash;
   }
 }
 
-// Every link is one of three kinds, and components pick with classes rather
-// than restyling links themselves:
-//   (default)   river text, tinted underline; on hover the offset slides
-//               and the box gets the faint river wash
-//   .unstyled   quiet: no underline at rest; the underline appears in place
-//               on hover, and no wash
-//   .muted      caption-colored text, no wash; combines with .unstyled
-// Markdown-generated links that can't take a class (captions, blockquote
-// cites) are listed alongside.
 a.unstyled,
 blockquote cite a {
   text-decoration-line: none;
@@ -98,8 +92,6 @@ time {
   color: var(--color-caption);
 }
 
-// Bare lists are plain; the decorated versions (bullets, counters) are
-// opted into by .prose content — see _prose.scss.
 ul,
 ol {
   padding: 0;
@@ -129,7 +121,8 @@ hr {
       text-align: center;
       font-size: 2em;
       line-height: 1;
-      @include river-text(var(--gradient-river-faint));
+      @include river-text;
+      opacity: 0.35;
     }
   }
 }

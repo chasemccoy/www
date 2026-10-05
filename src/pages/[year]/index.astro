@@ -5,19 +5,14 @@ import { getPostsByYear } from '../../utils';
 
 export const getStaticPaths = async () => {
   const postsByYear = await getPostsByYear();
-  return Object.keys(postsByYear).map(year => ({
+  return Object.entries(postsByYear).map(([year, posts]) => ({
     params: { year },
-    props: { year, posts: postsByYear[year] ?? [] },
+    props: { year, posts },
   }));
 };
 
 const { year, posts } = Astro.props;
 ---
 <BaseLayout title={year}>
-  <PostArchive
-    label="Archives"
-    title={year}
-    href={`/${year}/`}
-    posts={[...posts].reverse()}
-  />
+  <PostArchive label="Archives" title={year} href={`/${year}/`} posts={posts} />
 </BaseLayout>

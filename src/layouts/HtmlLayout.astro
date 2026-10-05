@@ -17,14 +17,9 @@ const pageUrl = Astro.url.pathname;
 const pageTitle = getPageTitle(metadata.title, { title, date, pageUrl });
 const desc = description || metadata.description;
 const canonicalUrl = `${metadata.url}${pageUrl}`;
-
-// The page's gradient-river vars (see src/utils/river.ts): each page's
-// gradient is phase-shifted to its own starting point at build time, so the
-// design works before (or without) JS.
-const riverStyle = riverInlineStyle(pageUrl);
 ---
 <!DOCTYPE html>
-<html lang="en" style={riverStyle}>
+<html lang="en" style={riverInlineStyle(pageUrl)}>
 <!--
   Take no thought of the harvest,
   but only of proper sowing.
@@ -108,27 +103,25 @@ const riverStyle = riverInlineStyle(pageUrl);
 
     <script>import 'lite-youtube-embed/src/lite-yt-embed.js';</script>
     <script>
-      import { riverColorAt, riverCycle, riverFractionForPath, riverStops } from '../utils/river';
+      import { riverColorAt, riverCycle, riverStops } from '../utils/river';
 
-      // The same stop table the build rendered this page's gradient from
-      // (both sides derive it from the path), so sampling works directly in
-      // page space.
-      const stops = riverStops(riverFractionForPath(location.pathname));
+      // Must match the stops the build rendered: both derive them from the path.
+      const stops = riverStops(location.pathname);
       let cycle = 1;
 
-      // Layout signature of the last run: re-anchoring only matters when
-      // the document height or viewport width actually changed (mobile
-      // browsers fire resize constantly as the URL bar collapses, and the
-      // load-time run is a no-op when fonts came from cache).
+      // Mobile browsers fire resize constantly as the URL bar collapses, so
+      // only re-anchor when height or width actually changed.
       let anchoredFor = '';
 
-      // Pin one element to the river at document position y: its gradient
-      // offset, and for links the river's color at their vertical center
-      // (the underline tint; the CSS side mixes it toward the page).
-      function pin(el: HTMLElement, y: number, elHeight: number) {
+      function measure(el: HTMLElement) {
+        const rect = el.getBoundingClientRect();
+        return { el, y: rect.top + window.scrollY, height: rect.height };
+      }
+
+      function pin({ el, y, height }: ReturnType<typeof measure>) {
         el.style.setProperty('--river-pos', `0 ${-Math.round(y)}px`);
         if (el instanceof HTMLAnchorElement) {
-          const center = y + elHeight / 2;
+          const center = y + height / 2;
           el.style.setProperty('--river-color', riverColorAt(stops, (center % cycle) / cycle));
         }
       }
@@ -139,47 +132,25 @@ const riverStyle = riverInlineStyle(pageUrl);
         if (signature === anchoredFor) return;
         anchoredFor = signature;
         cycle = riverCycle(height, stops);
-        // The cycle size is per-page, not per-element: one write on the
-        // root inherits into every pinned element and pseudo-element.
         document.documentElement.style.setProperty('--river-size', `100% ${cycle}px`);
-        // Document height for scroll-linked consumers (e.g. the viewport
-        // vignette in src/styles/_river.scss, which maps scroll progress to
-        // a position along the river).
+        // Read by the vignette in _river.scss.
         document.documentElement.style.setProperty('--river-doc', `${height}px`);
 
-        // Everything gradient-pinned shares one mechanism: the anchoring is
-        // passed through inherited custom properties, which also reach the
-        // pseudo-elements (quote marks, bullets, hr dots) that inline
-        // styles can't. Measure everything first, then write, so the loop
-        // forces one reflow instead of one per element. All values written
-        // are scheme-independent (positions and var() expressions), so a
-        // color-scheme change needs no recompute — the CSS re-resolves.
-        // Must cover every element whose styles @include river-text or
-        // river-fill (or whose pseudo-element does — vars inherit): grep
-        // for the mixin names (defined in src/styles/_river.scss) when
-        // changing either side.
+        // Must cover every element whose styles (or pseudo-elements)
+        // @include river-text or river-fill. Measure all, then write all, so
+        // the loop forces one reflow.
         const pinned = document.querySelectorAll<HTMLElement>(
           'a, :not(pre) > code, hr.break, ul > li, .prose > p:last-of-type'
         );
-        const measured = [...pinned].map((el) => {
-          const rect = el.getBoundingClientRect();
-          return { el, y: rect.top + window.scrollY, height: rect.height };
-        });
-        for (const { el, y, height: elHeight } of measured) pin(el, y, elHeight);
+        [...pinned].map(measure).forEach(pin);
       }
 
-      // The site-info box is sticky, so its links have no fixed document
-      // position: re-pin them wherever they currently sit as the page
-      // scrolls, so their river color follows the viewport like the
-      // vignette does. (Their pseudo-elements inherit the vars.)
+      // The site-info box is sticky, so its links move through the river.
       const stickyLinks = document.querySelectorAll<HTMLElement>('.Wrapper__header a');
       let following = false;
       function followSticky() {
         following = false;
-        for (const el of stickyLinks) {
-          const rect = el.getBoundingClientRect();
-          pin(el, rect.top + window.scrollY, rect.height);
-        }
+        stickyLinks.forEach((el) => pin(measure(el)));
       }
       window.addEventListener(
         'scroll',
@@ -191,8 +162,7 @@ const riverStyle = riverInlineStyle(pageUrl);
         { passive: true }
       );
 
-      // Run pre-paint so the first frame is anchored, and again on load
-      // once webfonts and images have settled the layout.
+      // Again on load, once fonts and images have settled the layout.
       anchorGradientText();
       window.addEventListener('load', anchorGradientText);
 
