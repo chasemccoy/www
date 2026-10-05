@@ -1,18 +1,13 @@
 <script setup lang="ts">
-// Aliased: the import would shadow the `inlineDate` prop in the template.
-import { htmlDateString, inlineDate as formatInlineDate, metaDate } from "../utils";
+import { htmlDateString, inlineDate } from "../utils";
 
-const props = defineProps<{
+defineProps<{
   title?: string;
   date: Date | string;
   permalink: string;
   isTruncated?: boolean;
   isDraft?: boolean;
-  // Titled posts too, in place of the meta row. Untitled ones always do.
-  inlineDate?: boolean;
 }>();
-
-const showInlineDate = !props.title || props.inlineDate;
 </script>
 
 <template>
@@ -30,23 +25,17 @@ const showInlineDate = !props.title || props.inlineDate;
       <h1>
         <a :href="permalink" class="unstyled">{{ title }}</a>
       </h1>
-
-      <div v-if="!inlineDate" class="BlogPost__meta">
-        <time :datetime="htmlDateString(date)">
-          <a :href="permalink" class="unstyled muted">{{ metaDate(date) }}</a>
-        </time>
-      </div>
     </header>
 
     <div v-if="isTruncated" class="BlogPost__excerpt">
-      <time v-if="showInlineDate" class="BlogPost__date" :datetime="htmlDateString(date)">
-        <a :href="permalink" class="unstyled muted">{{ formatInlineDate(date) }}</a>
+      <time class="BlogPost__date" :datetime="htmlDateString(date)">
+        <a :href="permalink" class="unstyled muted">{{ inlineDate(date) }}</a>
       </time>
       <slot />
     </div>
     <template v-else>
-      <time v-if="showInlineDate" class="BlogPost__date" :datetime="htmlDateString(date)">
-        <a :href="permalink" class="unstyled muted">{{ formatInlineDate(date) }}</a>
+      <time class="BlogPost__date" :datetime="htmlDateString(date)">
+        <a :href="permalink" class="unstyled muted">{{ inlineDate(date) }}</a>
       </time>
       <slot />
     </template>
@@ -94,15 +83,6 @@ const showInlineDate = !props.title || props.inlineDate;
   a {
     color: var(--color-text);
   }
-}
-
-.BlogPost__meta {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 0.25em 0.5em;
-  margin-top: 0.75em;
-  font-size: 0.75rem;
 }
 
 // Runs into a first paragraph. Before anything else (a list, an image) it

@@ -22,10 +22,6 @@ export function shortDate(dateObj: Date | string) {
   return format(new Date(dateObj), "LLLL d", { in: utc });
 }
 
-export function metaDate(date: Date | string) {
-  return dateWithYearIfPast(date, "LLLL d");
-}
-
 export function inlineDate(date: Date | string) {
   return dateWithYearIfPast(date, "MMM d");
 }

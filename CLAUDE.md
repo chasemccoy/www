@@ -75,7 +75,7 @@ All content lives in root-level directories, loaded via Astro content collection
 
 `src/utils/index.ts` — All utility and collection helper functions:
 
-- `readableDate`, `shortDate`, `metaDate` (post-page header; year only when not the build's current year), `inlineDate` (short month, same year rule; the feed's inline dates), `htmlDateString` — Date formatting (UTC, via `date-fns`)
+- `readableDate`, `shortDate`, `inlineDate` (short month, year only when not the build's current year; the date that leads every post), `htmlDateString` — Date formatting (UTC, via `date-fns`)
 - `getDateFromPostId`, `getSlugFromPostId`, `getPermalinkFromPostId` — URL/slug computation from post IDs
 - `resolvePostDate` — Uses frontmatter date if present, otherwise derives from post ID
 - `getPostDisplayTitle`, `getPageTitle` — Title generation helpers

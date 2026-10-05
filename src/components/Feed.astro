@@ -20,7 +20,6 @@ const { posts } = Astro.props;
         date={post.data.date}
         permalink={post.data.permalink}
         isTruncated={shouldTruncatePost(post)}
-        inlineDate
         isDraft={post.data.hidden}
       >
         <Content />
