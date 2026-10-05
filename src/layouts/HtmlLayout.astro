@@ -148,25 +148,12 @@ const canonicalUrl = `${metadata.url}${pageUrl}`;
         [...pinned].map(measure).forEach(pin);
       }
 
-      // Experiment: iOS Safari tints its status bar and toolbar from fixed
-      // elements at the screen edges, so on touch phones the two .BarTint
-      // strips carry the river's color at the top and bottom of the screen.
-      const barTintQuery = matchMedia('(pointer: coarse) and (max-width: 899px)');
-      const barTints = document.querySelectorAll<HTMLElement>('.BarTint');
-      function tintBars() {
-        if (!barTintQuery.matches) return;
-        const colorAt = (y: number) => riverColorAt(stops, (((y % cycle) + cycle) % cycle) / cycle);
-        barTints[0]?.style.setProperty('--bar-tint', colorAt(window.scrollY));
-        barTints[1]?.style.setProperty('--bar-tint', colorAt(window.scrollY + window.innerHeight));
-      }
-
       // The site-info box is sticky, so its links move through the river.
       const stickyLinks = document.querySelectorAll<HTMLElement>('.Wrapper__header a');
       let following = false;
       function followSticky() {
         following = false;
         stickyLinks.forEach((el) => pin(measure(el)));
-        tintBars();
       }
       window.addEventListener(
         'scroll',
@@ -180,11 +167,7 @@ const canonicalUrl = `${metadata.url}${pageUrl}`;
 
       // Again on load, once fonts and images have settled the layout.
       anchorGradientText();
-      tintBars();
-      window.addEventListener('load', () => {
-        anchorGradientText();
-        tintBars();
-      });
+      window.addEventListener('load', anchorGradientText);
 
       let anchorTimer: ReturnType<typeof setTimeout>;
       window.addEventListener('resize', () => {
@@ -197,8 +180,6 @@ const canonicalUrl = `${metadata.url}${pageUrl}`;
   <body>
     <div id="gradient"></div>
     <div id="texture"></div>
-    <div class="BarTint BarTint--top" aria-hidden="true"></div>
-    <div class="BarTint BarTint--bottom" aria-hidden="true"></div>
     
     <slot />
 
