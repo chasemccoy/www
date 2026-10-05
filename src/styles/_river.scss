@@ -138,3 +138,42 @@ body::after {
     background-position: 0 calc(104dvh - var(--river-doc, 104dvh));
   }
 }
+
+// Experiment: iOS Safari won't draw fixed content under its bars, but it
+// tints them from the background-color of fixed elements at the screen
+// edges, even invisible ones. On touch phones these strips hand it the
+// river's color at each edge (set by the anchoring script).
+.BarTint {
+  display: none;
+}
+
+@media (pointer: coarse) and (max-width: 899px) {
+  .BarTint {
+    --bar-tint-strength: 70%;
+
+    display: block;
+    position: fixed;
+    left: 0;
+    right: 0;
+    height: 2px;
+    opacity: 0;
+    pointer-events: none;
+    background-color: color-mix(
+      in oklab,
+      var(--bar-tint, var(--color-body-background)) var(--bar-tint-strength),
+      var(--color-body-background)
+    );
+
+    @media (prefers-color-scheme: dark) {
+      --bar-tint-strength: 50%;
+    }
+  }
+
+  .BarTint--top {
+    top: 0;
+  }
+
+  .BarTint--bottom {
+    bottom: 0;
+  }
+}
