@@ -107,15 +107,10 @@ body::after {
     opacity: 0.5;
   }
 
-  // On touch phones the bottom of the screen sits under the browser's
-  // toolbar, where iOS Safari won't draw fixed content, so the strip flips
-  // to the top edge and fades downward.
+  // iOS Safari won't draw fixed content under its status bar or toolbar,
+  // so on touch phones either edge of the strip ends in a hard line.
   @media (pointer: coarse) and (max-width: 899px) {
-    top: -4dvh;
-    bottom: auto;
-    background-position: 0 4dvh;
-    mask-image: eased-fade($vignette-fade, to bottom);
-    animation-name: river-viewport-follow-top;
+    display: none;
   }
 }
 
@@ -125,16 +120,5 @@ body::after {
   }
   to {
     background-position: 0 calc(40dvh - var(--river-doc, 160dvh));
-  }
-}
-
-// The flipped strip's top edge sits 4dvh above the viewport, so it samples
-// the river from scrollY - 4dvh.
-@keyframes river-viewport-follow-top {
-  from {
-    background-position: 0 4dvh;
-  }
-  to {
-    background-position: 0 calc(104dvh - var(--river-doc, 104dvh));
   }
 }
