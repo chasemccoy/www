@@ -1,9 +1,52 @@
+// A sticky note on neutral paper (a raised surface in dark mode), held on by
+// a strip of washi tape that samples the river at the note's spot. The
+// anchoring script pins .Callout so the tape's --river-pos is set.
 .Callout {
-  padding: 12px 16px;
-  border-left: 4px solid var(--color-accent);
-  background: var(--color-offset);
+  position: relative;
+  max-width: 30em;
+  margin-inline: 0.75rem;
+  padding: 1.6em 1.5rem 1.3em;
+  font-size: 0.92rem;
+  background: color-mix(in oklab, var(--color-body-background), white 70%);
+  box-shadow:
+    0 0 0 0.5px var(--color-border),
+    0 10px 18px -12px rgba(3, 7, 18, 0.3);
+  rotate: -0.8deg;
 
-  p:last-child {
-    margin: 0;
+  &:nth-of-type(even) {
+    rotate: 0.6deg;
+  }
+
+  > p + p {
+    margin-top: 0.7em;
+  }
+
+  // The tape: translucent stripes over the river, with torn ends.
+  &::before {
+    content: "";
+    position: absolute;
+    top: -0.65rem;
+    left: 50%;
+    width: 6.5rem;
+    height: 1.35rem;
+    translate: -50% 0;
+    rotate: -2deg;
+    background-image:
+      repeating-linear-gradient(-45deg, rgb(255 255 255 / 0.3) 0 6px, transparent 6px 12px),
+      var(--gradient-river);
+    background-size: auto, var(--river-size, 100% 6000px);
+    background-position:
+      0 0,
+      var(--river-pos, 0 0);
+    opacity: 0.6;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 20' preserveAspectRatio='none'%3E%3Cpath d='M2 0 L98 0 L100 3 L97 6 L100 10 L97 14 L100 17 L98 20 L2 20 L0 17 L3 14 L0 10 L3 6 L0 3 Z'/%3E%3C/svg%3E")
+      center / 100% 100% no-repeat;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    background: color-mix(in oklab, var(--color-body-background), white 7%);
+    box-shadow:
+      0 0 0 0.5px var(--color-border),
+      0 12px 20px -12px rgba(0, 0, 0, 0.7);
   }
 }

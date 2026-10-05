@@ -141,7 +141,7 @@ const canonicalUrl = `${metadata.url}${pageUrl}`;
         // data-river-pin. Measure all, then write all, so the loop forces one
         // reflow.
         const pinned = document.querySelectorAll<HTMLElement>(
-          'a, :not(pre) > code, hr.break, ul > li, .prose > p:last-of-type, [data-river-pin]'
+          'a, :not(pre) > code, hr.break, ul > li, .prose > p:last-of-type, .Callout, [data-river-pin]'
         );
         [...pinned].map(measure).forEach(pin);
       }
