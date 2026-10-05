@@ -11,6 +11,10 @@ body {
   color: var(--color-text);
   min-height: 100vh;
   position: relative;
+  // With viewport-fit=cover, keep content clear of the notch, the status
+  // bar, and the home indicator. All zero on desktop.
+  padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom)
+    env(safe-area-inset-left);
 }
 
 :is(h1, h2, h3, h4, h5, h6) {

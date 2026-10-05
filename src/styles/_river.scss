@@ -67,52 +67,38 @@
 // Coupled numbers: the 40dvh strip with its -4dvh overhang tops out 64dvh
 // down the viewport; the -60dvh offset and keyframe endpoints are tuned
 // around that, and the 160dvh fallback is 100dvh + 60dvh.
-//
-// iOS Safari lays the page out under its floating address bar but ends the
-// fixed-position viewport above it, so the strip also runs a solid
-// --vignette-under past the bottom. The top edge doesn't move, so the
-// background positions and the fade are unchanged.
 body::after {
-  --vignette-under: 30dvh;
-
   content: "";
   position: fixed;
-  bottom: calc(-4dvh - var(--vignette-under));
+  bottom: -4dvh;
   right: 0;
   left: 0;
-  height: calc(40dvh + var(--vignette-under));
+  height: 40dvh;
   pointer-events: none;
   mix-blend-mode: multiply;
 
   @include river-fill;
   background-position: 0 -60dvh;
-  mask-size:
-    100% 40dvh,
-    100% var(--vignette-under);
-  mask-position: top, bottom;
-  mask-repeat: no-repeat;
-  mask-image:
-    eased-fade(
-      (
-        1,
-        0.81195,
-        0.6501,
-        0.512,
-        0.39541,
-        0.29825,
-        0.21857,
-        0.15452,
-        0.10433,
-        0.06631,
-        0.03879,
-        0.0201,
-        0.0086,
-        0.00259,
-        0.00033,
-        0
-      )
-    ),
-    linear-gradient(#000, #000);
+  mask-image: eased-fade(
+    (
+      1,
+      0.81195,
+      0.6501,
+      0.512,
+      0.39541,
+      0.29825,
+      0.21857,
+      0.15452,
+      0.10433,
+      0.06631,
+      0.03879,
+      0.0201,
+      0.0086,
+      0.00259,
+      0.00033,
+      0
+    )
+  );
   animation: river-viewport-follow linear both;
   animation-timeline: scroll(root);
 
