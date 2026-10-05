@@ -3,8 +3,8 @@
 @use "sass:string";
 @use "mixins" as *;
 
-// $alphas run bottom to top, spread evenly.
-@function eased-fade($alphas) {
+// $alphas run from the opaque edge outward, spread evenly.
+@function eased-fade($alphas, $direction: to top) {
   $stops: ();
   $last: list.length($alphas) - 1;
   @for $i from 0 through $last {
@@ -12,7 +12,7 @@
     $pos: math.percentage(math.div($i, $last));
     $stops: list.append($stops, string.unquote("rgb(0 0 0 / #{$a}) #{$pos}"), comma);
   }
-  @return linear-gradient(to top, $stops);
+  @return linear-gradient($direction, $stops);
 }
 
 :root {
@@ -64,6 +64,25 @@
   }
 }
 
+$vignette-fade: (
+  1,
+  0.81195,
+  0.6501,
+  0.512,
+  0.39541,
+  0.29825,
+  0.21857,
+  0.15452,
+  0.10433,
+  0.06631,
+  0.03879,
+  0.0201,
+  0.0086,
+  0.00259,
+  0.00033,
+  0
+);
+
 // Coupled numbers: the 40dvh strip with its -4dvh overhang tops out 64dvh
 // down the viewport; the -60dvh offset and keyframe endpoints are tuned
 // around that, and the 160dvh fallback is 100dvh + 60dvh.
@@ -79,32 +98,24 @@ body::after {
 
   @include river-fill;
   background-position: 0 -60dvh;
-  mask-image: eased-fade(
-    (
-      1,
-      0.81195,
-      0.6501,
-      0.512,
-      0.39541,
-      0.29825,
-      0.21857,
-      0.15452,
-      0.10433,
-      0.06631,
-      0.03879,
-      0.0201,
-      0.0086,
-      0.00259,
-      0.00033,
-      0
-    )
-  );
+  mask-image: eased-fade($vignette-fade);
   animation: river-viewport-follow linear both;
   animation-timeline: scroll(root);
 
   @media (prefers-color-scheme: dark) {
     mix-blend-mode: normal;
     opacity: 0.5;
+  }
+
+  // On touch phones the bottom of the screen sits under the browser's
+  // toolbar, where iOS Safari won't draw fixed content, so the strip flips
+  // to the top edge and fades downward.
+  @media (pointer: coarse) and (max-width: 899px) {
+    top: -4dvh;
+    bottom: auto;
+    background-position: 0 4dvh;
+    mask-image: eased-fade($vignette-fade, to bottom);
+    animation-name: river-viewport-follow-top;
   }
 }
 
@@ -114,5 +125,16 @@ body::after {
   }
   to {
     background-position: 0 calc(40dvh - var(--river-doc, 160dvh));
+  }
+}
+
+// The flipped strip's top edge sits 4dvh above the viewport, so it samples
+// the river from scrollY - 4dvh.
+@keyframes river-viewport-follow-top {
+  from {
+    background-position: 0 4dvh;
+  }
+  to {
+    background-position: 0 calc(104dvh - var(--river-doc, 104dvh));
   }
 }
