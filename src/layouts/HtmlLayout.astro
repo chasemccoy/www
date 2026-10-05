@@ -137,10 +137,11 @@ const canonicalUrl = `${metadata.url}${pageUrl}`;
         document.documentElement.style.setProperty('--river-doc', `${height}px`);
 
         // Must cover every element whose styles (or pseudo-elements)
-        // @include river-text or river-fill. Measure all, then write all, so
-        // the loop forces one reflow.
+        // @include river-text or river-fill; one-off elements opt in with
+        // data-river-pin. Measure all, then write all, so the loop forces one
+        // reflow.
         const pinned = document.querySelectorAll<HTMLElement>(
-          'a, :not(pre) > code, hr.break, ul > li, .prose > p:last-of-type'
+          'a, :not(pre) > code, hr.break, ul > li, .prose > p:last-of-type, [data-river-pin]'
         );
         [...pinned].map(measure).forEach(pin);
       }

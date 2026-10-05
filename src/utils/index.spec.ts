@@ -42,10 +42,12 @@ describe("getAdjacentPosts", () => {
     expect(result.previous).toEqual({
       permalink: posts[0]!.data.permalink,
       title: "First",
+      date: posts[0]!.data.date,
     });
     expect(result.next).toEqual({
       permalink: posts[2]!.data.permalink,
       title: "Third",
+      date: posts[2]!.data.date,
     });
   });
 
@@ -56,6 +58,7 @@ describe("getAdjacentPosts", () => {
     expect(result.next).toEqual({
       permalink: posts[1]!.data.permalink,
       title: "Second",
+      date: posts[1]!.data.date,
     });
   });
 
@@ -65,6 +68,7 @@ describe("getAdjacentPosts", () => {
     expect(result.previous).toEqual({
       permalink: posts[1]!.data.permalink,
       title: "Second",
+      date: posts[1]!.data.date,
     });
     expect(result.next).toBeUndefined();
   });
@@ -88,6 +92,7 @@ describe("getAdjacentPosts", () => {
     expect(result.next).toEqual({
       permalink: withHidden[2]!.data.permalink,
       title: "Third",
+      date: withHidden[2]!.data.date,
     });
   });
 
@@ -121,6 +126,7 @@ describe("getAdjacentPosts", () => {
     expect(result.next).toEqual({
       permalink: untitled[1]!.data.permalink,
       title: undefined,
+      date: untitled[1]!.data.date,
     });
   });
 });

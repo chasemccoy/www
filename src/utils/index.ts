@@ -94,7 +94,7 @@ export function getAdjacentPosts(posts: Post[], currentId: string) {
 }
 
 function toPostLink(post: Post): PostLink {
-  return { permalink: post.data.permalink, title: post.data.title };
+  return { permalink: post.data.permalink, title: post.data.title, date: post.data.date };
 }
 
 export function getPageTitle(

@@ -1,7 +1,7 @@
 ---
 import BaseLayout from './BaseLayout.astro';
 import BlogPost from '../components/BlogPost.vue';
-import Pagination from '../components/Pagination.vue';
+import PostPagination from '../components/PostPagination.vue';
 import { getAdjacentPosts } from '../utils';
 import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
@@ -14,7 +14,7 @@ const { post } = Astro.props;
 const { title, date, permalink, hidden } = post.data;
 
 const allPosts = await getCollection('posts');
-const { previous: previousPost, next: nextPost } = getAdjacentPosts(allPosts, post.id);
+const { previous, next } = getAdjacentPosts(allPosts, post.id);
 ---
 <BaseLayout
   title={title}
@@ -24,12 +24,5 @@ const { previous: previousPost, next: nextPost } = getAdjacentPosts(allPosts, po
     <slot />
   </BlogPost>
 
-  <Pagination
-    previousHref={previousPost?.permalink}
-    previousLabel="Previous"
-    previousTitle={previousPost?.title}
-    nextHref={nextPost?.permalink}
-    nextLabel="Next"
-    nextTitle={nextPost?.title}
-  />
+  <PostPagination previous={previous} next={next} />
 </BaseLayout>

@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Feed from '../components/Feed.astro';
-import Pagination from '../components/Pagination.vue';
+import FeedPagination from '../components/FeedPagination.vue';
 import { getVisiblePosts, FEED_PAGE_SIZE } from '../utils';
 import type { GetStaticPaths } from 'astro';
 
@@ -10,20 +10,12 @@ export const getStaticPaths = (async ({ paginate }) =>
   paginate(await getVisiblePosts(), { pageSize: FEED_PAGE_SIZE })) satisfies GetStaticPaths;
 
 const { page } = Astro.props;
-
-// paginate() omits the trailing slash the rest of the site uses.
-const withSlash = (url?: string) => url && (url.endsWith('/') ? url : `${url}/`);
 ---
 <BaseLayout>
   <Feed posts={page.data} />
 
   <div class="FeedFooter">
-    <Pagination
-      previousHref={withSlash(page.url.next)}
-      previousTitle="Older"
-      nextHref={withSlash(page.url.prev)}
-      nextTitle="Newer"
-    />
+    <FeedPagination current={page.currentPage} total={page.lastPage} />
   </div>
 </BaseLayout>
 

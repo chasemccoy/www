@@ -6,4 +6,5 @@ export interface LayoutProps {
 export interface PostLink {
   permalink: string;
   title?: string;
+  date: Date;
 }
