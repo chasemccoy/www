@@ -1,6 +1,5 @@
 <script setup lang="ts">
-// Aliased: the `inlineDate` prop shares the name, and in the template the
-// script-setup import would shadow it.
+// Aliased: the import would shadow the `inlineDate` prop in the template.
 import { htmlDateString, inlineDate as formatInlineDate, metaDate } from "../utils";
 
 const props = defineProps<{
@@ -9,8 +8,7 @@ const props = defineProps<{
   permalink: string;
   isTruncated?: boolean;
   isDraft?: boolean;
-  // Feed context: every post's date runs inline at the start of its first
-  // line (titled posts drop the header meta row). Off, only notes do.
+  // Titled posts too, in place of the meta row. Untitled ones always do.
   inlineDate?: boolean;
 }>();
 
@@ -62,9 +60,6 @@ const showInlineDate = !props.title || props.inlineDate;
 </template>
 
 <style scoped lang="scss">
-// Feed spacing: adjacent posts space themselves (both siblings carry this
-// component's scope attribute, so the sibling selector works across
-// instances).
 .BlogPost {
   --feed-gap: 2.75rem;
   --divider-height: 5px;
@@ -73,7 +68,6 @@ const showInlineDate = !props.title || props.inlineDate;
 .BlogPost + .BlogPost {
   margin-top: var(--feed-gap);
 
-  // The perforated divider.
   &::before {
     content: "";
     display: block;
@@ -84,8 +78,7 @@ const showInlineDate = !props.title || props.inlineDate;
   }
 }
 
-// A truncated post already ends in its own tear, so the post after it gets
-// no divider — but the same total distance, so the feed's rhythm holds.
+// Already ends in a tear: no divider, same total distance.
 .BlogPost--isTruncated + .BlogPost {
   margin-top: calc(var(--feed-gap) * 2 + var(--divider-height));
 
@@ -110,19 +103,18 @@ const showInlineDate = !props.title || props.inlineDate;
   gap: 0.25em 0.5em;
   margin-top: 0.75em;
   font-size: 0.75rem;
-  color: var(--color-caption);
 }
 
-// The inline date runs into the first paragraph. If the first block isn't a
-// paragraph, the date sits on its own line with no delimiter.
+// Runs into a first paragraph. Before anything else (a list, an image) it
+// keeps its own line, slash and all, so the block reads as what follows.
 .BlogPost__date {
   display: inline;
+  opacity: 0.65;
 
-  // The delimiter sits outside the link, in the link's resting color.
-  &:has(+ p)::after {
+  &::after {
     content: "/";
-    margin-inline: 0.5em;
-    color: var(--color-caption);
+    margin-inline: 0.5em 0.55em;
+    opacity: 0.5;
   }
 
   + :deep(p) {
@@ -130,16 +122,12 @@ const showInlineDate = !props.title || props.inlineDate;
   }
 }
 
-// Inline elements carry no vertical margin, so the header supplies the gap
-// to a titled post's first line itself.
+// The inline date can't carry a top margin, so the header supplies it.
 .BlogPost__header:has(+ .BlogPost__date) {
   margin-bottom: calc(var(--flow-spacing) / 1.25);
 }
 
-// Drafts only ever render on the dev server, so this label never ships.
-// A pseudo-element keeps it out of the DOM. It shares ::before with the
-// divider, so a draft in the dev feed shows the label instead of the
-// perforation — the extra class specificity is what makes it win.
+// Shares ::before with the divider; the doubled class makes the label win.
 .BlogPost.BlogPost--draft::before {
   content: "Draft";
   display: block;
@@ -150,11 +138,9 @@ const showInlineDate = !props.title || props.inlineDate;
   color: var(--color-accent);
 }
 
-// Truncated posts: the whole post is rendered, and this wrapper shows only
-// its first four blocks (dropping a heading if one lands last), fading out
-// into the tear. The mask is on the wrapper, not the article, so the tear
-// sits outside it at full opacity. Wrapping the slot takes its children out
-// of .prose's direct-child flow, so the rhythm is restated here.
+// The mask lives here, not on the article, so the tear stays opaque. The
+// wrapper takes children out of .prose's direct-child flow, so the rhythm
+// is restated.
 .BlogPost__excerpt {
   mask-image: linear-gradient(to bottom, black 0, black 55%, transparent 100%);
 
@@ -162,9 +148,9 @@ const showInlineDate = !props.title || props.inlineDate;
     margin-top: var(--flow-spacing);
   }
 
-  // Counts include the inline date as the wrapper's first child.
-  > :deep(:nth-child(n + 6)),
-  > :deep(:nth-child(5):is(h2, h3, h4)) {
+  // Three blocks, counting the inline date as the first child.
+  > :deep(:nth-child(n + 5)),
+  > :deep(:nth-child(4):is(h2, h3, h4)) {
     display: none;
   }
 }

@@ -12,12 +12,8 @@ export const getStaticPaths = async () => {
 };
 
 const { tag, posts } = Astro.props;
+const title = capitalize(tag);
 ---
-<BaseLayout title={capitalize(tag)}>
-  <PostArchive
-    label="Tags"
-    title={capitalize(tag)}
-    href={`/tag/${getTagSlug(tag)}/`}
-    posts={[...posts].reverse()}
-  />
+<BaseLayout title={title}>
+  <PostArchive title={title} posts={posts} />
 </BaseLayout>

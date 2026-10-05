@@ -11,20 +11,13 @@ defineProps<{
 <template>
   <h3 class="BlogPostPreview">
     <a :href="permalink">{{ title }}</a
-    >&nbsp;<time :datetime="htmlDateString(date)"
-      ><a :href="permalink" class="unstyled muted">{{ shortDate(date) }}</a></time
-    >
+    >&nbsp;<time :datetime="htmlDateString(date)">{{ shortDate(date) }}</time>
   </h3>
 </template>
 
 <style scoped lang="scss">
 .BlogPostPreview {
-  margin-bottom: 0.25rem;
-  // Nowrap on the heading with normal wrapping inside the title link: the
-  // title can break internally, but the date stays glued to its last word.
   white-space: nowrap;
-  font-size: 1.15rem;
-  line-height: 1.25;
   font-weight: normal;
 
   & > a {
