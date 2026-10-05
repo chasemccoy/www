@@ -91,7 +91,9 @@ const canonicalUrl = `${metadata.url}${pageUrl}`;
 
     <link rel="icon" href="/favicon.png" type="image/png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <meta name="theme-color" content="white" />
+    <!-- Browser chrome tint: --color-body-background in each scheme. -->
+    <meta name="theme-color" content="#fbfaf7" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0d0911" media="(prefers-color-scheme: dark)" />
 
     <meta property="og:site_name" content="Chase McCoy" />
     <meta property="og:url" content={canonicalUrl} />
