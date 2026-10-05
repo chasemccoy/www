@@ -28,9 +28,7 @@ const canonicalUrl = `${metadata.url}${pageUrl}`;
 -->
   <head>
     <meta charset="utf-8" />
-    <!-- viewport-fit=cover: iOS Safari otherwise ends the page, and fixed
-         layers like the river vignette, at the top of its toolbar. -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
     <title>{pageTitle}</title>
     <meta name="description" content={desc} />
