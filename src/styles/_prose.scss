@@ -1,5 +1,34 @@
 @use "mixins" as *;
 
+// Each tier sets every property so a promoted heading fully overrides tier
+// 1. Spacing is a var, not margin-top, so the low-specificity rhythm rules
+// below can still override it.
+@mixin heading-tier-1 {
+  @include label;
+  line-height: 1.5;
+  --heading-space: 3em;
+}
+
+@mixin heading-tier-2 {
+  font-family: var(--font-header);
+  font-size: 1.35rem;
+  font-weight: normal;
+  text-transform: none;
+  letter-spacing: 0;
+  line-height: 1.15;
+  --heading-space: 1.5em;
+}
+
+@mixin heading-tier-3 {
+  font-family: var(--font-header);
+  font-size: 1.6rem;
+  font-weight: normal;
+  text-transform: none;
+  letter-spacing: 0;
+  line-height: 1.15;
+  --heading-space: 1.5em;
+}
+
 :root {
   --flow-spacing: 1.25rem;
   --list-spacing: 0.75rem;
@@ -7,9 +36,15 @@
 
 .prose {
   font-optical-sizing: auto;
+  // Long bare URLs would otherwise push the page sideways.
+  overflow-wrap: break-word;
 
   & > * + * {
     margin-top: var(--flow-spacing);
+  }
+
+  & > :first-child {
+    margin-top: 0;
   }
 
   & li + li {
@@ -41,7 +76,7 @@
   }
 
   :where(h1, h2, h3, h4, h5, h6) {
-    margin-top: 1.5em;
+    margin-top: var(--heading-space, 1.5em);
     line-height: 1.15;
     font-family: var(--font-header);
   }
@@ -50,45 +85,32 @@
     margin-top: calc(var(--flow-spacing) / 1.25);
   }
 
-  :where(h4, h5, h6) {
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-weight: bold;
-    line-height: 1.5;
-  }
-
   h1 {
-    font-size: calc(1.25rem * var(--heading-scale, 1));
+    font-size: 1.5rem;
   }
 
   h1 + .lead {
     margin-top: 0.5em;
   }
 
-  h2 {
-    margin-top: 1.6em;
-    font-size: calc(1.8rem * var(--heading-scale, 1));
-  }
-
   :where(header) + h2 {
     margin-top: 0;
   }
 
-  h3 {
-    margin-top: 1.6em;
-    font-size: calc(1.4rem * var(--heading-scale, 1));
+  // Headings tier bottom-up by which levels the block uses: the deepest
+  // present is tier 1, and each level above it is promoted one rung.
+  :is(h2, h3, h4, h5, h6) {
+    @include heading-tier-1;
   }
 
-  h4 {
-    font-size: calc(1.1rem * var(--heading-scale, 1));
+  &:has(h3) h2,
+  &:has(h4) h2,
+  &:has(h4) h3 {
+    @include heading-tier-2;
   }
 
-  h5 {
-    font-size: calc(0.85rem * var(--heading-scale, 1));
-  }
-
-  h6 {
-    font-size: calc(0.75rem * var(--heading-scale, 1));
+  &:has(h3):has(h4) h2 {
+    @include heading-tier-3;
   }
 
   :where(h1, h2, h3, h4, h5, h6) + :where(h1, h2, h3, h4, h5, h6) {
@@ -98,11 +120,10 @@
   & > p:last-of-type:after {
     content: "\00a0";
     font-size: 0;
-    padding: 0.35rem;
+    padding: 0.325rem;
     border-radius: 0.15rem;
-    margin-left: 0.3rem;
+    margin-left: 0.4rem;
     vertical-align: 0.35rem;
-    background-color: var(--color-accent);
     @include river-fill;
     opacity: 0.5;
   }
@@ -195,9 +216,42 @@
   & > * + .twitter-tweet {
     margin-top: var(--flow-spacing) !important;
   }
+
+  ul > li {
+    margin-left: 1.5em;
+  }
+
+  ul > li:before {
+    content: "•";
+    font-size: 1.75em;
+    line-height: 1lh;
+    margin-left: -1.25ch;
+    margin-top: -2px;
+    float: left;
+    @include river-text;
+  }
+
+  ol {
+    --offset: 1.5em;
+  }
+
+  ol > li {
+    margin-left: var(--offset);
+    counter-increment: ol-counter;
+    position: relative;
+  }
+
+  ol > li:before {
+    content: counter(ol-counter) ". ";
+    font-feature-settings: "tnum";
+    padding-right: 0.5em;
+    position: absolute;
+    left: calc(-1 * var(--offset));
+  }
 }
 
 blockquote:not(.unstyled, .twitter-tweet) {
+  --paper-line-height: 1.9;
   text-wrap: pretty;
   border: 0.5px solid var(--color-border);
   border-radius: 12px;
@@ -218,32 +272,31 @@ blockquote:not(.unstyled, .twitter-tweet) {
       transparent calc(var(--left-margin) + 5px)
     ),
     linear-gradient(var(--color-paper-line-rule) 0.5px, transparent 0.5px);
-  background-size: 100% 2em;
+  background-size: 100% calc(var(--paper-line-height) * 1em);
   background-position:
     0 0,
     0 1.25em;
   padding-block: 1.25em;
   padding-left: 2.75rem;
   padding-right: 1rem;
-  line-height: 2;
+  line-height: var(--paper-line-height);
 
   box-shadow: var(--shadow-small), var(--shadow-highlight);
 
   & > p:has(cite) {
     margin: 0;
-    line-height: 2;
+    line-height: var(--paper-line-height);
   }
 
+  // Inline, not inline-block: an inline-block cite lays out its own lines at
+  // its smaller font-size and drifts off the ruling.
   cite {
-    display: inline-block;
+    display: inline;
     font-size: 0.8em;
+    // Optical: the mono face sits slightly low against the quote text.
+    vertical-align: 0.06em;
     font-family: var(--font-code);
     color: var(--color-caption);
-    --link-color: var(--color-caption);
-
-    a {
-      text-decoration: none;
-    }
   }
 
   cite:before {
@@ -252,38 +305,5 @@ blockquote:not(.unstyled, .twitter-tweet) {
 
   @media (prefers-color-scheme: dark) {
     background-color: var(--color-offset);
-  }
-}
-
-.prose {
-  ul > li {
-    margin-left: 1.5em;
-  }
-
-  ul > li:before {
-    content: "⁕";
-    margin-left: -1.5em;
-    margin-top: -2.5px;
-    float: left;
-    color: var(--color-accent);
-    @include river-text;
-  }
-
-  ol {
-    --offset: 1.5em;
-  }
-
-  ol > li {
-    margin-left: var(--offset);
-    counter-increment: ol-counter;
-    position: relative;
-  }
-
-  ol > li:before {
-    content: counter(ol-counter) ". ";
-    font-feature-settings: "tnum";
-    padding-right: 0.5em;
-    position: absolute;
-    left: calc(-1 * var(--offset));
   }
 }
