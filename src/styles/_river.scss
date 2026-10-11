@@ -34,16 +34,11 @@
   }
 }
 
-#texture,
-#gradient {
+#texture {
   position: absolute;
   inset: 0;
-  pointer-events: none;
-  background-repeat: repeat;
-}
-
-#texture {
   z-index: -1;
+  pointer-events: none;
   background-image: url("/images/noise.webp");
   background-size: 200px;
   opacity: 0.05;
@@ -51,16 +46,6 @@
 
   @media (prefers-color-scheme: dark) {
     opacity: 0.02;
-  }
-}
-
-#gradient {
-  z-index: -2;
-  @include river-fill;
-  opacity: 0.02;
-
-  @media (prefers-color-scheme: dark) {
-    display: none;
   }
 }
 

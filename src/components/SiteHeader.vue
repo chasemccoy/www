@@ -3,23 +3,27 @@ import metadata from "../data/metadata.json";
 </script>
 
 <template>
-  <header class="SiteHeader">
-    <h1>
-      <a href="/">chsmc.org</a>
-    </h1>
+  <header class="SiteHeader" data-river-pin>
+    <div class="SiteHeader__body">
+      <h1>
+        <a href="/">chsmc.org</a>
+      </h1>
 
-    <p>A weblog by Chase McCoy about exploring and building the world wide web.</p>
+      <p>A weblog by Chase McCoy about exploring and building the world wide web.</p>
 
-    <nav>
-      <ul class="SiteHeader__nav">
-        <li><a href="/archive/">Archive</a></li>
-        <li><a :href="`mailto:${metadata.author.email}`">Email</a></li>
-        <li><a :href="metadata.feed.path">RSS</a></li>
-        <li><a href="https://books.chsmc.org" target="_blank" rel="noopener">Library</a></li>
-        <li><a href="https://lab.chsmc.org" target="_blank" rel="noopener">Lab</a></li>
-        <li><a href="https://portfolio.chsmc.org" target="_blank" rel="noopener">Portfolio</a></li>
-      </ul>
-    </nav>
+      <nav>
+        <ul class="SiteHeader__nav">
+          <li><a href="/archive/">Archive</a></li>
+          <li><a :href="`mailto:${metadata.author.email}`">Email</a></li>
+          <li><a :href="metadata.feed.path">RSS</a></li>
+          <li><a href="https://books.chsmc.org" target="_blank" rel="noopener">Library</a></li>
+          <li><a href="https://lab.chsmc.org" target="_blank" rel="noopener">Lab</a></li>
+          <li>
+            <a href="https://portfolio.chsmc.org" target="_blank" rel="noopener">Portfolio</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
   </header>
 </template>
 
@@ -27,25 +31,34 @@ import metadata from "../data/metadata.json";
 @use "../styles/mixins" as *;
 
 .SiteHeader {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  max-width: 18em;
+  @include paper-note;
+  padding: 1.75em 1.5em 1.4em;
   color: var(--color-caption);
   text-wrap: pretty;
   font-size: 0.75rem;
   position: relative;
-  opacity: 0.75;
-  transition: opacity 0.15s ease-in-out;
+  rotate: 1deg;
+  container-type: inline-size;
 
-  // Muted at rest by a translucent caption color painted over the river
-  // text, which clears on hover. Plain color transitions only: animating a
-  // custom property into the gradient left underlines stuck mid-transition.
+  // Size containment would collapse the corner box's content-sized width.
+  @include medium {
+    max-width: 21em;
+    container-type: normal;
+  }
+
+  &::before {
+    @include washi-tape(4.875rem);
+  }
+
+  > * {
+    transition: opacity 0.15s ease-in-out;
+  }
+
   a {
-    color: color-mix(in srgb, var(--color-caption) 60%, transparent);
+    color: transparent;
     text-decoration-color: color-mix(
       in srgb,
-      color-mix(in oklch, var(--river-color, var(--color-text)) 40%, var(--color-caption)) 30%,
+      var(--river-color, var(--color-text)) 30%,
       var(--color-body-background)
     );
     transition:
@@ -59,16 +72,25 @@ import metadata from "../data/metadata.json";
     }
   }
 
-  &:hover {
-    opacity: 1;
+  // Dimmed at rest only where hovering can lift it. The contents fade, not
+  // the box, so the paper stays opaque; the links are muted by a translucent
+  // caption color painted over the river text. Plain color transitions
+  // only: animating a custom property into the gradient left underlines
+  // stuck mid-transition.
+  @media (hover: hover) {
+    &:not(:hover) {
+      > * {
+        opacity: 0.75;
+      }
 
-    a {
-      color: transparent;
-      text-decoration-color: color-mix(
-        in srgb,
-        var(--river-color, var(--color-text)) 30%,
-        var(--color-body-background)
-      );
+      a {
+        color: color-mix(in srgb, var(--color-caption) 60%, transparent);
+        text-decoration-color: color-mix(
+          in srgb,
+          color-mix(in oklch, var(--river-color, var(--color-text)) 40%, var(--color-caption)) 30%,
+          var(--color-body-background)
+        );
+      }
     }
   }
 
@@ -107,6 +129,40 @@ import metadata from "../data/metadata.json";
 
   a[href^="http"]:hover::after {
     opacity: 1;
+  }
+}
+
+.SiteHeader__body {
+  display: grid;
+  grid-template-areas:
+    "mark"
+    "bio"
+    "nav";
+  gap: 0.5rem;
+
+  h1 {
+    grid-area: mark;
+  }
+
+  p {
+    grid-area: bio;
+  }
+
+  nav {
+    grid-area: nav;
+  }
+
+  // Side by side only once the bio keeps a comfortable measure.
+  @container (min-width: 26rem) {
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas:
+      "mark nav"
+      "bio nav";
+    column-gap: 3em;
+
+    nav {
+      align-self: end;
+    }
   }
 }
 

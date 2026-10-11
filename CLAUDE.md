@@ -145,9 +145,9 @@ Conventions:
 
 ### The gradient river
 
-The site's central visual system: a page-length gradient that link text, underlines, list bullets, the background wash, and the viewport vignette all sample, so everything on a page shares one continuous color ramp.
+The site's central visual system: a page-length gradient that link text, underlines, list bullets, and the viewport vignette all sample, so everything on a page shares one continuous color ramp.
 
-- **CSS side**: `src/styles/_river.scss` — gradient stop tokens, the `eased-fade` function, and the full-page layers (`#gradient` wash, `#texture` noise, viewport vignette). The `river-fill` / `river-text` / `river-hover-wash` mixins live in `_mixins.scss`.
+- **CSS side**: `src/styles/_river.scss` — gradient stop tokens, the `eased-fade` function, and the full-page layers (`#texture` noise, viewport vignette). The `river-fill` / `river-text` / `river-hover-wash` mixins live in `_mixins.scss`.
 - **JS side**: `src/utils/river.ts` (the stop tables, the per-page phase from a path hash, pure helpers; runs at build time and in the client) plus the inline anchoring script in `HtmlLayout.astro`. Both sides derive the page's stop table from its path, so the script samples directly in page space. The build writes the page's `--gradient-river` (and `-faint`) inline on `<html>`; the script writes `--river-size` and `--river-doc` once on the root, then `--river-pos` per pinned element and `--river-color` (the underline tint) per link. The sticky site-info box's links are re-pinned on scroll.
 - **Contract**: the anchoring script's pinned-element selector list must cover every element whose styles `@include river-text` or `river-fill` — grep for the mixin names when changing either side. One-off elements opt in with a `data-river-pin` attribute instead of a new selector.
 

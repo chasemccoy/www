@@ -148,12 +148,15 @@ const canonicalUrl = `${metadata.url}${pageUrl}`;
         [...pinned].map(measure).forEach(pin);
       }
 
-      // The site-info box is sticky, so its links move through the river.
-      const stickyLinks = document.querySelectorAll<HTMLElement>('.Wrapper__header a');
+      // The site-info box is sticky, so its links and tape move through the
+      // river.
+      const stickyPinned = document.querySelectorAll<HTMLElement>(
+        '.Wrapper__header :is(a, [data-river-pin])'
+      );
       let following = false;
       function followSticky() {
         following = false;
-        stickyLinks.forEach((el) => pin(measure(el)));
+        stickyPinned.forEach((el) => pin(measure(el)));
       }
       window.addEventListener(
         'scroll',
@@ -178,7 +181,6 @@ const canonicalUrl = `${metadata.url}${pageUrl}`;
   </head>
 
   <body>
-    <div id="gradient"></div>
     <div id="texture"></div>
     
     <slot />

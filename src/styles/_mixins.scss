@@ -52,6 +52,45 @@
   color: transparent;
 }
 
+@mixin paper-note {
+  background: color-mix(in oklab, var(--color-body-background), white 70%);
+  box-shadow:
+    0 0 0 0.5px var(--color-border),
+    0 10px 18px -12px rgba(3, 7, 18, 0.3);
+
+  @media (prefers-color-scheme: dark) {
+    background: color-mix(in oklab, var(--color-body-background), white 7%);
+    box-shadow:
+      0 0 0 0.5px var(--color-border),
+      0 12px 20px -12px rgba(0, 0, 0, 0.7);
+  }
+}
+
+// Goes in a pseudo-element of a positioned element, and counts as
+// river-fill for the pinning contract.
+@mixin washi-tape($width: 6.5rem) {
+  content: "";
+  position: absolute;
+  top: -0.65rem;
+  left: 50%;
+  width: $width;
+  height: 1.35rem;
+  translate: -50% 0;
+  rotate: -2deg;
+  // Muted with a wash of the page color, not opacity, so it stays opaque.
+  background-image:
+    repeating-linear-gradient(-45deg, rgb(255 255 255 / 0.3) 0 6px, transparent 6px 12px),
+    linear-gradient(color-mix(in oklab, var(--color-body-background) 40%, transparent)),
+    var(--gradient-river);
+  background-size: auto, auto, var(--river-size, 100% 6000px);
+  background-position:
+    0 0,
+    0 0,
+    var(--river-pos, 0 0);
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 20' preserveAspectRatio='none'%3E%3Cpath d='M2 0 L98 0 L100 3 L97 6 L100 10 L97 14 L100 17 L98 20 L2 20 L0 17 L3 14 L0 10 L3 6 L0 3 Z'/%3E%3C/svg%3E")
+    center / 100% 100% no-repeat;
+}
+
 @mixin river-hover-wash {
   background-image: var(--gradient-river), var(--gradient-river-faint);
   -webkit-background-clip: text, border-box;
