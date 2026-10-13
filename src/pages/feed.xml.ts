@@ -24,7 +24,7 @@ export async function GET() {
 
   return rss({
     title: metadata.title,
-    description: metadata.feed.subtitle,
+    description: metadata.description,
     site: metadata.url,
     items,
     customData: `<language>${metadata.language}</language>`,

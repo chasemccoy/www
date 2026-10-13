@@ -77,11 +77,23 @@
   height: 1.35rem;
   translate: -50% 0;
   rotate: -2deg;
-  // Muted with a wash of the page color, not opacity, so it stays opaque.
+  --tape-stripe: rgb(255 255 255 / 0.3);
+  --tape-wash: color-mix(in oklab, var(--color-body-background) 40%, transparent);
+
+  // Muted with a wash, not opacity, so it stays opaque.
   background-image:
-    repeating-linear-gradient(-45deg, rgb(255 255 255 / 0.3) 0 6px, transparent 6px 12px),
-    linear-gradient(color-mix(in oklab, var(--color-body-background) 40%, transparent)),
-    var(--gradient-river);
+    repeating-linear-gradient(-45deg, var(--tape-stripe) 0 6px, transparent 6px 12px),
+    linear-gradient(var(--tape-wash)), var(--gradient-river);
+
+  // Softer on dark paper: washed toward the note's surface, fainter stripes.
+  @media (prefers-color-scheme: dark) {
+    --tape-stripe: rgb(255 255 255 / 0.12);
+    --tape-wash: color-mix(
+      in oklab,
+      color-mix(in oklab, var(--color-body-background), white 7%) 55%,
+      transparent
+    );
+  }
   background-size: auto, auto, var(--river-size, 100% 6000px);
   background-position:
     0 0,
