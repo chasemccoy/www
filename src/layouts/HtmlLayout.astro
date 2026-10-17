@@ -171,8 +171,8 @@ const canonicalUrl = `${metadata.url}${pageUrl}`;
         probe.style.color = riverColorAt(stops, step / FAVICON_STEPS);
         paint.fillStyle = getComputedStyle(probe).color;
         paint.fillRect(0, 0, 1, 1);
-        const [r, g, b] = paint.getImageData(0, 0, 1, 1).data;
-        const hex = `#${[r, g, b].map((c) => c.toString(16).padStart(2, '0')).join('')}`;
+        const rgb = paint.getImageData(0, 0, 1, 1).data.subarray(0, 3);
+        const hex = `#${Array.from(rgb, (c) => c.toString(16).padStart(2, '0')).join('')}`;
         const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" rx="8" fill="${hex}"/></svg>`;
         favicon.href = `data:image/svg+xml,${encodeURIComponent(svg)}`;
       }
