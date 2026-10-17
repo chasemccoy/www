@@ -135,7 +135,8 @@ function groupPosts(posts: Post[], keysOf: (post: Post) => string[]) {
   return groups;
 }
 
-// Year keys are integer-like, so they always enumerate oldest first.
+// Year keys are integer-like, so they always enumerate oldest first;
+// the archive index reverses them.
 export async function getPostsByYear() {
   return groupPosts(await getVisiblePosts(), (p) => [String(p.data.date.getUTCFullYear())]);
 }
@@ -158,7 +159,7 @@ export async function getArchiveIndex() {
 
   return {
     featuredPosts,
-    years: Object.keys(byYear),
+    years: Object.keys(byYear).toReversed(),
     tags: Object.entries(byTag).map(([tag, posts]) => ({
       title: tag,
       permalink: `/tag/${getTagSlug(tag)}/`,

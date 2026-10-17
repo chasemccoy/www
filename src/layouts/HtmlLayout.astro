@@ -90,6 +90,7 @@ const canonicalUrl = `${metadata.url}${pageUrl}`;
     <link rel="alternate" href={metadata.feed.path} type="application/rss+xml" title={metadata.title} />
 
     <link rel="icon" href="/favicon.png" type="image/png" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <!-- Browser chrome tint: --color-body-background in each scheme. -->
     <meta name="theme-color" content="#fbfaf7" media="(prefers-color-scheme: light)" />
@@ -146,7 +147,37 @@ const canonicalUrl = `${metadata.url}${pageUrl}`;
           'a, :not(pre) > code, hr.break, ul > li, .prose > p:last-of-type, .Callout, [data-river-pin]'
         );
         [...pinned].map(measure).forEach(pin);
+        tintFavicon(true);
       }
+
+      // The favicon is a river dot in the color at the middle of the screen.
+      // A favicon can't read the page's CSS variables, so the color is
+      // resolved to hex first, and the position is stepped so swaps stay
+      // infrequent. Without JS, favicon.svg shows the river's first stop.
+      const FAVICON_STEPS = 48;
+      const favicon = document.querySelector<HTMLLinkElement>('link[rel="icon"][type="image/svg+xml"]');
+      const probe = document.createElement('span');
+      probe.hidden = true;
+      document.body.append(probe);
+      const paint = document.createElement('canvas').getContext('2d', { willReadFrequently: true });
+      let faviconStep = -1;
+
+      function tintFavicon(force = false) {
+        if (!favicon || !paint) return;
+        const y = window.scrollY + window.innerHeight / 2;
+        const step = Math.round(((y % cycle) / cycle) * FAVICON_STEPS) % FAVICON_STEPS;
+        if (step === faviconStep && !force) return;
+        faviconStep = step;
+        probe.style.color = riverColorAt(stops, step / FAVICON_STEPS);
+        paint.fillStyle = getComputedStyle(probe).color;
+        paint.fillRect(0, 0, 1, 1);
+        const [r, g, b] = paint.getImageData(0, 0, 1, 1).data;
+        const hex = `#${[r, g, b].map((c) => c.toString(16).padStart(2, '0')).join('')}`;
+        const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" rx="8" fill="${hex}"/></svg>`;
+        favicon.href = `data:image/svg+xml,${encodeURIComponent(svg)}`;
+      }
+
+      matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => tintFavicon(true));
 
       // The site-info box is sticky, so its links and tape move through the
       // river.
@@ -157,6 +188,7 @@ const canonicalUrl = `${metadata.url}${pageUrl}`;
       function followSticky() {
         following = false;
         stickyPinned.forEach((el) => pin(measure(el)));
+        tintFavicon();
       }
       window.addEventListener(
         'scroll',
@@ -170,7 +202,11 @@ const canonicalUrl = `${metadata.url}${pageUrl}`;
 
       // Again on load, once fonts and images have settled the layout.
       anchorGradientText();
-      window.addEventListener('load', anchorGradientText);
+      window.addEventListener('load', () => {
+        anchorGradientText();
+        // The scroll position may have been restored by now.
+        tintFavicon();
+      });
 
       let anchorTimer: ReturnType<typeof setTimeout>;
       window.addEventListener('resize', () => {

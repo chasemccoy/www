@@ -78,8 +78,17 @@ defineProps<{
   }
 }
 
-.Archives__stack > li + li {
-  margin-top: 0.25rem;
+// Tight leading for titles that wrap; the padding keeps the row rhythm.
+.Archives__stack {
+  line-height: 1.25;
+
+  & > li {
+    padding-block: 0.15em;
+  }
+
+  & > li + li {
+    margin-top: 0.25rem;
+  }
 }
 
 .Archives__years {
@@ -92,9 +101,12 @@ defineProps<{
 .Archives__entries {
   columns: 2;
   column-gap: 2rem;
-  line-height: 1.7;
+  line-height: 1.25;
 
+  // Rows keep the old 1.7 rhythm through padding, so only a tag that wraps
+  // gets the tighter leading.
   & > li {
+    padding-block: 0.225em;
     display: flex;
     align-items: baseline;
     gap: 0.5em;
