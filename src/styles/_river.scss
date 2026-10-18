@@ -84,7 +84,12 @@ body::after {
   background-position: 0 -60dvh;
   mask-image: eased-fade($vignette-fade);
   animation: river-viewport-follow linear both;
-  animation-timeline: scroll(root);
+
+  // A rule of its own: the build's minifier folds a sibling animation-timeline
+  // into the animation shorthand, which browsers reject.
+  @supports (animation-timeline: scroll()) {
+    animation-timeline: scroll(root);
+  }
 
   @media (prefers-color-scheme: dark) {
     mix-blend-mode: normal;
