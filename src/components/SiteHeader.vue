@@ -9,7 +9,10 @@ import metadata from "../data/metadata.json";
         <a href="/">chsmc.org</a>
       </h1>
 
-      <p>A weblog by Chase McCoy about exploring and building the world wide web.</p>
+      <p>
+        Chase McCoy is a blogger and design engineer. He works at Anthropic on Claude and writes
+        here about the web and other creative technologies.
+      </p>
 
       <nav>
         <ul class="SiteHeader__nav">
@@ -55,7 +58,6 @@ import metadata from "../data/metadata.json";
   }
 
   a {
-    color: transparent;
     text-decoration-color: color-mix(
       in srgb,
       var(--river-color, var(--color-text)) 30%,
@@ -72,11 +74,9 @@ import metadata from "../data/metadata.json";
     }
   }
 
-  // Dimmed at rest only where hovering can lift it. The contents fade, not
-  // the box, so the paper stays opaque; the links are muted by a translucent
-  // caption color painted over the river text. Plain color transitions
-  // only: animating a custom property into the gradient left underlines
-  // stuck mid-transition.
+  // Only where hovering can lift it. The contents fade, not the box, so the
+  // paper stays opaque. Plain color transitions only: animating a custom
+  // property into the gradient left underlines stuck mid-transition.
   @media (hover: hover) {
     &:not(:hover) {
       > * {
@@ -134,34 +134,20 @@ import metadata from "../data/metadata.json";
 
 .SiteHeader__body {
   display: grid;
-  grid-template-areas:
-    "mark"
-    "bio"
-    "nav";
   gap: 0.5rem;
 
-  h1 {
-    grid-area: mark;
-  }
-
-  p {
-    grid-area: bio;
-  }
-
   nav {
-    grid-area: nav;
+    margin-top: 0.5rem;
   }
 
-  // Side by side only once the bio keeps a comfortable measure.
   @container (min-width: 26rem) {
     grid-template-columns: minmax(0, 1fr) auto;
-    grid-template-areas:
-      "mark nav"
-      "bio nav";
     column-gap: 3em;
 
     nav {
+      grid-area: 1 / 2 / 3;
       align-self: end;
+      margin-top: 0;
     }
   }
 }

@@ -150,10 +150,8 @@ const canonicalUrl = `${metadata.url}${pageUrl}`;
         tintFavicon(true);
       }
 
-      // The favicon is a river dot in the color at the middle of the screen.
       // A favicon can't read the page's CSS variables, so the color is
-      // resolved to hex first, and the position is stepped so swaps stay
-      // infrequent. Without JS, favicon.svg shows the river's first stop.
+      // resolved to hex first. Without JS, favicon.svg shows the first stop.
       const FAVICON_STEPS = 48;
       const favicon = document.querySelector<HTMLLinkElement>('link[rel="icon"][type="image/svg+xml"]');
       const probe = document.createElement('span');

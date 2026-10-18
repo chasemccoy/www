@@ -9,19 +9,9 @@
   --heading-space: 3em;
 }
 
-@mixin heading-tier-2 {
+@mixin heading-tier-display($size) {
   font-family: var(--font-header);
-  font-size: 1.35rem;
-  font-weight: normal;
-  text-transform: none;
-  letter-spacing: 0;
-  line-height: 1.15;
-  --heading-space: 1.5em;
-}
-
-@mixin heading-tier-3 {
-  font-family: var(--font-header);
-  font-size: 1.6rem;
+  font-size: $size;
   font-weight: normal;
   text-transform: none;
   letter-spacing: 0;
@@ -36,7 +26,6 @@
 
 .prose {
   font-optical-sizing: auto;
-  // Long bare URLs would otherwise push the page sideways.
   overflow-wrap: break-word;
 
   & > * + * {
@@ -63,8 +52,9 @@
     margin-top: 0.75rem;
   }
 
-  blockquote {
-    margin: calc(var(--flow-spacing) * 1) 0;
+  blockquote,
+  hr {
+    margin-block: var(--flow-spacing);
   }
 
   :where(blockquote > * + *) {
@@ -106,11 +96,11 @@
   &:has(h3) h2,
   &:has(h4) h2,
   &:has(h4) h3 {
-    @include heading-tier-2;
+    @include heading-tier-display(1.35rem);
   }
 
   &:has(h3):has(h4) h2 {
-    @include heading-tier-3;
+    @include heading-tier-display(1.6rem);
   }
 
   :where(h1, h2, h3, h4, h5, h6) + :where(h1, h2, h3, h4, h5, h6) {
@@ -126,10 +116,6 @@
     vertical-align: 0.35rem;
     @include river-fill;
     opacity: 0.5;
-  }
-
-  hr {
-    margin: calc(var(--flow-spacing) * 1) 0;
   }
 
   p > img,
@@ -148,15 +134,10 @@
   li > ol {
     margin-top: var(--list-spacing);
     margin-left: 0.3rem;
-    padding-left: 0;
   }
 
   table {
     width: 100%;
-  }
-
-  thead {
-    text-align: left;
   }
 
   td,
@@ -164,10 +145,7 @@
     text-align: left;
     border-bottom: 1px solid var(--color-border);
     font-feature-settings: "tnum";
-    padding-left: 1rem;
-    padding-right: 1rem;
-    padding-top: 0.75rem;
-    padding-bottom: calc(0.75rem - 1px);
+    padding: 0.75rem 1rem calc(0.75rem - 1px);
   }
 
   th:first-child,
@@ -203,14 +181,9 @@
       overflow: hidden;
       text-align: right;
       font-family: var(--font-code);
-      font-size: 1em;
       line-height: 1.5;
       padding-right: 12px;
     }
-  }
-
-  img {
-    max-width: 100%;
   }
 
   & > * + .twitter-tweet {
@@ -285,7 +258,6 @@ blockquote:not(.unstyled, .twitter-tweet) {
 
   & > p:has(cite) {
     margin: 0;
-    line-height: var(--paper-line-height);
   }
 
   // Inline, not inline-block: an inline-block cite lays out its own lines at

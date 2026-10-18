@@ -57,9 +57,7 @@ const href = (n: number) => (n === 1 ? "/" : `/${n}/`);
 }
 
 .FeedPagination__step {
-  font-size: 0.68rem;
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
+  @include eyebrow;
 }
 
 .FeedPagination__step--off {
@@ -95,7 +93,6 @@ const href = (n: number) => (n === 1 ? "/" : `/${n}/`);
     height: 5px;
     translate: -50% 0;
     border-radius: 50%;
-    background-color: var(--color-accent);
     @include river-fill;
   }
 }

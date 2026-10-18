@@ -32,6 +32,8 @@ const entries = [
 </template>
 
 <style scoped lang="scss">
+@use "../styles/mixins" as *;
+
 .PostPagination {
   display: flex;
   flex-direction: column;
@@ -56,9 +58,7 @@ const entries = [
 }
 
 .PostPagination__label {
-  font-size: 0.68rem;
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
+  @include eyebrow;
   color: var(--color-caption);
 }
 

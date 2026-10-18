@@ -78,7 +78,6 @@ defineProps<{
   }
 }
 
-// Tight leading for titles that wrap; the padding keeps the row rhythm.
 .Archives__stack {
   line-height: 1.25;
 

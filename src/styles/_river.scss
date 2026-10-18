@@ -3,7 +3,6 @@
 @use "sass:string";
 @use "mixins" as *;
 
-// $alphas run from the opaque edge outward, spread evenly.
 @function eased-fade($alphas, $direction: to top) {
   $stops: ();
   $last: list.length($alphas) - 1;

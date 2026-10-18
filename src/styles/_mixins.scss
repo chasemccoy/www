@@ -25,7 +25,6 @@
   }
 }
 
-// The small uppercase label: prose's tier-1 headings, the archive ledger.
 @mixin label {
   font-family: var(--font-body);
   font-size: 0.85rem;
@@ -39,6 +38,13 @@
 
 // The 6000px fallback shows only the gradient's top sliver until the script
 // runs: a flat swatch of the page's first stop.
+// Small uppercase kicker above a title or link: pagination labels.
+@mixin eyebrow {
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+}
+
 @mixin river-fill($gradient: var(--gradient-river)) {
   background-image: $gradient;
   background-size: var(--river-size, 100% 6000px);
@@ -85,7 +91,6 @@
     repeating-linear-gradient(-45deg, var(--tape-stripe) 0 6px, transparent 6px 12px),
     linear-gradient(var(--tape-wash)), var(--gradient-river);
 
-  // Softer on dark paper: washed toward the note's surface, fainter stripes.
   @media (prefers-color-scheme: dark) {
     --tape-stripe: rgb(255 255 255 / 0.12);
     --tape-wash: color-mix(

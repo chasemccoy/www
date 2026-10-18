@@ -1,11 +1,9 @@
 // Runs at build time and in the browser (HtmlLayout's script): keep it free
 // of astro:content and DOM imports.
 
-// Px per color transition, and the fewest transitions any page shows.
 const MIN_SEGMENT = 2000;
 const MIN_TRANSITIONS = 2;
 
-// `color` is the N in --gradient-stop-N.
 export interface RiverStop {
   at: number;
   color: number;
@@ -16,8 +14,6 @@ const OPEN_STOPS: RiverStop[] = [0, 0.22, 0.42, 0.62, 0.82, 1].map((at, i) => ({
   color: i + 1,
 }));
 
-// Ends where it starts, so a page can begin anywhere and overflow repeats
-// seamlessly.
 const LOOP_STOPS: RiverStop[] = [0, 1, 2, 3, 4, 5, 6].map((i) => ({
   at: i / 6,
   color: (i % 6) + 1,
@@ -47,7 +43,6 @@ export function riverStops(path: string): RiverStop[] {
   return LOOP_STOPS.map(({ at, color }) => ({ at, color: ((start + color - 1) % 6) + 1 }));
 }
 
-// Whole bands, so every page starts and ends exactly on a stop.
 function riverBands(height: number, segments: number): number {
   return Math.min(Math.max(Math.floor(height / MIN_SEGMENT), MIN_TRANSITIONS), segments);
 }

@@ -16,7 +16,7 @@
 // The min-height parks the sticky box at the viewport bottom on short pages.
 .Wrapper {
   display: grid;
-  grid-template-columns: [content-start] minmax(0, var(--column-width)) [content-end];
+  grid-template-columns: minmax(0, var(--column-width));
   grid-template-rows: auto 1fr;
   grid-template-areas:
     "header"
@@ -25,9 +25,7 @@
   min-height: 100dvh;
 
   @include medium {
-    grid-template-columns:
-      [content-start] minmax(0, var(--column-width)) [content-end aside-start] minmax(12em, 1fr)
-      [aside-end];
+    grid-template-columns: minmax(0, var(--column-width)) minmax(12em, 1fr);
     grid-template-rows: 1fr;
     grid-template-areas: "main aside";
   }

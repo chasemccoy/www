@@ -109,6 +109,7 @@ hr {
   height: 1px;
   border: none;
   margin: 0;
+  overflow: visible;
 
   &.break {
     background: none;
@@ -128,7 +129,6 @@ hr {
 }
 
 pre {
-  border-radius: 0;
   width: calc(100% + var(--layout-padding) * 2);
   margin-left: calc(var(--layout-padding) * -1);
   padding: 0 var(--layout-padding);
@@ -147,9 +147,7 @@ pre {
 
   code {
     padding: 12px 0;
-    border: none;
     display: block;
-    background-color: transparent;
   }
 
   @media (prefers-color-scheme: dark) {

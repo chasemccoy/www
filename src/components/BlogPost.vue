@@ -78,7 +78,6 @@ defineProps<{
 
 .BlogPost__header h1 {
   margin-top: 0;
-  font-weight: normal;
 
   a {
     color: var(--color-text);
