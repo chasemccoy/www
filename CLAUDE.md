@@ -145,7 +145,7 @@ Conventions:
 
 - `.Wrapper` / `.Wrapper__header` / `.Wrapper__main` — Page layout grid: a left-anchored reading column; from the `medium` breakpoint the header becomes a site-info box sticky in the lower-right corner, below it a header above the column
 - `.Blog` — Blog feed container
-- `.BlogPost` (+ `--isTruncated`, `--draft`) — A post in the feed or on its own page
+- `.BlogPost` (+ `--isTruncated`) — A post in the feed or on its own page
 - `.BlogPostPreview` — Title link + date
 - `.PostArchive` — Archive page body shared by year and tag pages
 - `.Article` — The generic-page content wrapper (rendered by `PageLayout`)

@@ -17,10 +17,11 @@ defineProps<{
       'BlogPost',
       {
         'BlogPost--isTruncated': isTruncated,
-        'BlogPost--draft': isDraft,
       },
     ]"
   >
+    <div v-if="isDraft" class="BlogPost__draft">Draft</div>
+
     <header v-if="title" class="BlogPost__header">
       <h1>
         <a :href="permalink" class="unstyled">{{ title }}</a>
@@ -106,15 +107,15 @@ defineProps<{
   margin-bottom: calc(var(--flow-spacing) / 1.25);
 }
 
-// Shares ::before with the divider; the doubled class makes the label win.
-.BlogPost.BlogPost--draft::before {
-  content: "Draft";
-  display: block;
-  margin-bottom: 0.5em;
+.BlogPost__draft {
   font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: var(--color-accent);
+
+  + * {
+    margin-top: 0.4rem;
+  }
 }
 
 // The mask lives here, not on the article, so the tear stays opaque. The
