@@ -9677,7 +9677,7 @@ hidden: true
 
 
 
-I find it comforting in times of change to look for the things that seem constant: to provide stabilty and to create an anchor while navigating the frontier. 
+I find it comforting, in these times of rapid change, to look for the things that remain constant: a sort of anchor point to which I may always return.
 
 And much is changing for those who make things with computers! If you have not yet [asked the machine for what you want](https://www.robinsloan.com/lab/ask-for-what-you-want) and marveled at the eagerness with which it will answer I really encourage you to take a couple of hours and explore. 
 
