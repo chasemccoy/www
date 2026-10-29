@@ -767,4 +767,6 @@ hidden: true
 
 
 
-Readwise has long been my read-it-later and book/article/essay-highlighter of choice, so I'm excited to see their new ebook app, [Readwise Books](https://readwise.io/books).
+Readwise has long been my read-it-later and book/article/essay-highlighter of choice, so I'm excited to see their new ebook app [Readwise Books](https://readwise.io/books).
+
+But they're not just making a great ebook reader, they're also trying to build an independent bookstore and alternative to Kindle for purchasing ebooks. All tied together with a Goodreads-esque social layer.
