@@ -9,3 +9,13 @@
 .lead {
   font-size: 1.1em;
 }
+
+// Read by screen readers but not shown, until it holds focus.
+.visually-hidden:not(:focus-within) {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}

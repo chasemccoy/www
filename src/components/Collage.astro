@@ -1,0 +1,41 @@
+---
+// The header collage. src/collage/ is the collage editor's export, pulled in with
+// `pnpm collage:pull`: the document, its renderer, the frame styles, and the images. This
+// component only resolves each image through astro:assets and hands the renderer the result, so
+// the collage is plain HTML and CSS by the time it ships.
+import type { ImageMetadata } from "astro";
+import { getImage } from "astro:assets";
+import doc from "../collage/collage.json";
+import { renderCollage } from "../collage/collage.js";
+import "../collage/collage.css";
+
+const WIDTHS = [480, 960, 1440, 1920];
+
+const files = import.meta.glob<ImageMetadata>("../collage/images/*", {
+  eager: true,
+  import: "default",
+});
+const byName = new Map(Object.entries(files).map(([file, meta]) => [file.split("/").pop(), meta]));
+
+const sources = new Map(
+  await Promise.all(
+    doc.images.map(async ({ file }) => {
+      const src = byName.get(file);
+      if (!src) throw new Error(`The collage uses ${file}, but it isn't in src/collage/images/.`);
+      const widths = [...new Set(WIDTHS.map((width) => Math.min(width, src.width)))];
+      const image = await getImage({ src, widths, format: "webp" });
+      const source = {
+        src: image.src,
+        srcset: image.srcSet.attribute,
+        width: src.width,
+        height: src.height,
+      };
+      return [file, source] as const;
+    }),
+  ),
+);
+
+const html = renderCollage(doc, { image: (item) => sources.get(item.image) });
+---
+
+<Fragment set:html={html} />

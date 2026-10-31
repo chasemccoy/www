@@ -13,47 +13,24 @@
   }
 }
 
-// The min-height parks the sticky box at the viewport bottom on short pages.
+// The header collage: left-anchored like the column, and capped so it doesn't
+// swallow wide screens. Tighter than the layout padding, which would leave too
+// wide a margin around it.
+.Masthead {
+  max-width: 90rem;
+  padding: 1rem 1rem 0;
+
+  @include medium {
+    padding: 1.5rem 1.5rem 0;
+  }
+}
+
+// A left-anchored reading column.
 .Wrapper {
   display: grid;
   grid-template-columns: minmax(0, var(--column-width));
-  grid-template-rows: auto 1fr;
-  grid-template-areas:
-    "header"
-    "main";
-  row-gap: 64px;
-  min-height: 100dvh;
-
-  @include medium {
-    grid-template-columns: minmax(0, var(--column-width)) minmax(12em, 1fr);
-    grid-template-rows: 1fr;
-    grid-template-areas: "main aside";
-  }
-}
-
-.Wrapper__header {
-  grid-area: header;
-  position: relative;
-  // Room for the site header's tape above the page's top edge.
-  padding-block-start: 1.5rem;
-  padding-inline: var(--layout-padding);
-
-  @include medium {
-    padding-block-start: 0;
-    grid-area: aside;
-    align-self: end;
-    justify-self: end;
-    position: sticky;
-    bottom: 1.5rem;
-    padding-inline: 1.75rem;
-  }
 }
 
 .Wrapper__main {
-  grid-area: main;
-  padding-inline: var(--layout-padding);
-
-  @include medium {
-    padding-block-start: var(--layout-padding);
-  }
+  padding: 2.5rem var(--layout-padding) 0;
 }

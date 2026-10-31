@@ -39,9 +39,10 @@ pnpm lint          # oxlint over src + astro.config.ts
 pnpm lint:fix      # oxlint --fix
 pnpm format        # oxfmt, writes in place
 pnpm format:check  # oxfmt verify (no writes)
+pnpm collage:pull  # Pull the header collage from the editor's export (default ~/Desktop/collage)
 ```
 
-`pnpm build` runs `pnpm check` first, so the Netlify deploy gates on types, lint (correctness errors), and formatting. Tooling: **Vitest** for tests, **oxlint** + **oxfmt** (Oxc) for lint/format. Lint and format are scoped to `src` + `astro.config.ts`; blog posts in `posts/` and tooling files (e.g. `pnpm-workspace.yaml`) are intentionally excluded.
+`pnpm build` runs `pnpm check` first, so the Netlify deploy gates on types, lint (correctness errors), and formatting. Tooling: **Vitest** for tests, **oxlint** + **oxfmt** (Oxc) for lint/format. Lint and format are scoped to `src` + `astro.config.ts`; blog posts in `posts/`, tooling files (e.g. `pnpm-workspace.yaml`), and the generated collage in `src/collage/` are intentionally excluded.
 
 ## Architecture
 
@@ -52,7 +53,7 @@ Uses **Astro** (`.astro`) for layouts and pages, and **Vue 3 SFCs** (`.vue`) for
 **Layouts** (`src/layouts/`):
 
 - `HtmlLayout.astro` — Root HTML shell: head, meta tags, fonts, the gradient-river background layers and anchoring script
-- `BaseLayout.astro` — Page chrome (Wrapper grid, SiteHeader, main content slot)
+- `BaseLayout.astro` — Page chrome (the collage Masthead with a visually hidden site title, then the Wrapper column around the main content slot)
 - `PostLayout.astro` — Blog post pages: takes the post entry, renders it as a `BlogPost` plus `PostPagination`
 - `PageLayout.astro` — Generic pages (the `.Article.prose` wrapper); supports both `.astro` imports and markdown `layout:` frontmatter
 
@@ -121,7 +122,7 @@ src/styles/
 ├── _elements.scss  # Global element defaults
 ├── _prose.scss     # The .prose typography system for Markdown content
 ├── _Callout.scss   # Callouts (`<aside class='Callout'>` in posts): a sticky note with river-sampled washi tape
-├── _Wrapper.scss   # Page layout: left-anchored column + the sticky site-info box
+├── _Wrapper.scss   # Page layout: the collage masthead + the left-anchored column
 ├── _utilities.scss # Small utility classes
 └── _prism.scss     # Syntax highlighting
 ```
@@ -138,21 +139,22 @@ Conventions:
 **BEM-lite naming convention:**
 
 - **Blocks**: UpperCamelCase (`.Wrapper`, `.Blog`, `.BlogPost`)
-- **Elements**: `Block__element` with camelCase (`.Wrapper__header`, `.Archives__inlineList`)
+- **Elements**: `Block__element` with camelCase (`.Wrapper__main`, `.Archives__inlineList`)
 - **Modifiers**: `Block--modifier` with camelCase (`.BlogPost--isTruncated`)
 
 **Key classes:**
 
-- `.Wrapper` / `.Wrapper__header` / `.Wrapper__main` — Page layout grid: a left-anchored reading column; from the `medium` breakpoint the header becomes a site-info box sticky in the lower-right corner, below it a header above the column
+- `.Masthead` — The header collage across the top of every page, capped at 90rem and left-anchored
+- `.Wrapper` / `.Wrapper__main` — Page layout: a left-anchored reading column below the masthead
 - `.Blog` — Blog feed container
 - `.BlogPost` (+ `--isTruncated`) — A post in the feed or on its own page
 - `.BlogPostPreview` — Title link + date
 - `.PostArchive` — Archive page body shared by year and tag pages
 - `.Article` — The generic-page content wrapper (rendered by `PageLayout`)
 - `.prose` — Typography system for Markdown content (required for list/heading/blockquote styling)
-- `.Breadcrumbs`, `.SiteHeader`, `.FeedPagination`, `.PostPagination`, `.Archives`, `.Callout`
+- `.Breadcrumbs`, `.FeedPagination`, `.PostPagination`, `.Archives`, `.Callout`
 
-**Utilities (no prefix):** `.color-caption`, `.bold`, `.lead`, `.unstyled` (opt-out for link underlines / blockquote chrome), and `.muted` (caption-colored link).
+**Utilities (no prefix):** `.color-caption`, `.bold`, `.lead`, `.visually-hidden` (screen readers only, shown when it holds focus), `.unstyled` (opt-out for link underlines / blockquote chrome), and `.muted` (caption-colored link).
 
 **Links** come in three kinds, chosen with classes rather than per-component link CSS (see the `a` rules in `_elements.scss`): the default river link (tinted underline, and on hover the offset slides and the box gets the faint river wash); `.unstyled` — quiet, no underline at rest, the river underline appears in place on hover, no wash; and `.muted` — plain caption-colored text with none of the river text treatment (no gradient background, clip, or wash), keeping only the tinted underline; combinable with `.unstyled`. Components never set `text-decoration` on links themselves (the shorthand resets the river underline color); markdown-generated links that can't take a class (captions, blockquote cites) are listed alongside the modifiers.
 
@@ -161,14 +163,25 @@ Conventions:
 The site's central visual system: a page-length gradient that link text, underlines, list bullets, and the viewport vignette all sample, so everything on a page shares one continuous color ramp.
 
 - **CSS side**: `src/styles/_river.scss` — gradient stop tokens, the `eased-fade` function, and the full-page layers (`#texture` noise, viewport vignette). The `river-fill` / `river-text` / `river-hover-wash` mixins live in `_mixins.scss`.
-- **JS side**: `src/utils/river.ts` (the stop tables, the per-page phase from a path hash, pure helpers; runs at build time and in the client) plus the inline anchoring script in `HtmlLayout.astro`. Both sides derive the page's stop table from its path, so the script samples directly in page space. The build writes the page's `--gradient-river` (and `-faint`) inline on `<html>`; the script writes `--river-size` and `--river-doc` once on the root, then `--river-pos` per pinned element and `--river-color` (the underline tint) per link. The sticky site-info box's links are re-pinned on scroll.
+- **JS side**: `src/utils/river.ts` (the stop tables, the per-page phase from a path hash, pure helpers; runs at build time and in the client) plus the inline anchoring script in `HtmlLayout.astro`. Both sides derive the page's stop table from its path, so the script samples directly in page space. The build writes the page's `--gradient-river` (and `-faint`) inline on `<html>`; the script writes `--river-size` and `--river-doc` once on the root, then `--river-pos` per pinned element and `--river-color` (the underline tint) per link. On scroll it only re-tints the favicon.
 - **Contract**: the anchoring script's pinned-element selector list must cover every element whose styles `@include river-text` or `river-fill` — grep for the mixin names when changing either side. One-off elements opt in with a `data-river-pin` attribute instead of a new selector.
+
+### The header collage
+
+The masthead is a collage made in a separate collage editor (an HTML tool that exports a folder), then pulled in with `pnpm collage:pull [folder]`. `src/collage/` is that export and is generated — don't edit it by hand; change the collage in the editor and pull again:
+
+- `collage.json` — The document: a CSS grid per breakpoint (Small/Medium/Large, switched by container queries on the collage's own width), and each item's placement, frame, and effects
+- `collage.js` — The renderer, shared with the editor: `renderCollage(doc, { image })` returns static HTML
+- `collage.css` — The grid and every frame (Mac and Safari windows, polaroids, stamps, sticky notes, …), as global `.Collage*` classes
+- `images/` — Only the images the collage uses. The pull scales down ones over 2400px and turns heavy PNGs into high-quality WebP (keeping transparency) to keep the repo small, rewriting `collage.json` to match
+
+`Collage.astro` resolves each image through `astro:assets` (WebP at a few widths, with `srcset`) and hands the renderer the result, so the collage ships as plain HTML and CSS with no client JS. Its typefaces load from Google Fonts in `HtmlLayout.astro`, in a second stylesheet link beside the site's own; browsers only download the ones a page renders. Renderer or frame changes come from re-exporting in the editor, which rewrites `collage.js` and `collage.css`.
 
 ### Components (Vue SFCs unless noted)
 
 All presentational, rendered server-side during build:
 
-- `SiteHeader.vue` — The site-info box: wordmark, blurb, and nav. Its river links are muted at rest by a translucent caption color over the gradient text, which clears when the box is hovered
+- `Collage.astro` — The header collage (see above): resolves the images, renders `src/collage/` to HTML
 - `Feed.astro` — Maps posts into `BlogPost`s inside a `BlogFeed`, flagging long posts for truncation
 - `BlogFeed.vue` — Feed section wrapper
 - `BlogPost.vue` — A full post (feed, post pages, and archive notes); owns the spacing and the perforated divider between adjacent posts
