@@ -230,6 +230,14 @@ export function renderItem(item, grid, image) {
   return `<div class="${cls}" data-id="${esc(item.id)}" style="${vars.join(';')}">${body}</div>`;
 }
 
+// The sticker border's last step (see .CollageItem--sticker in collage.css). CSS filters can't
+// sharpen alpha, so an SVG filter steepens the border's edge.
+const STICKER_EDGE =
+  '<svg class="Collage__defs" width="0" height="0" aria-hidden="true" focusable="false">' +
+  '<filter id="collage-sticker-edge" x="-50%" y="-50%" width="200%" height="200%" color-interpolation-filters="sRGB">' +
+  '<feComponentTransfer><feFuncA type="linear" slope="3" intercept="-1"/></feComponentTransfer>' +
+  '</filter></svg>';
+
 /**
  * @typedef {object} CollageImageSource
  * @property {string} [src]
@@ -255,5 +263,6 @@ export function renderCollage(doc, { image, className = '' } = {}) {
     .sort((a, b) => (a.z ?? 0) - (b.z ?? 0))
     .map((item) => renderItem(item, grid, image))
     .join('');
-  return `<div class="Collage${className ? ` ${esc(className)}` : ''}" style="${vars}"><div class="Collage__grid">${items}</div></div>`;
+  const defs = doc.items.some((item) => item.sticker) ? STICKER_EDGE : '';
+  return `<div class="Collage${className ? ` ${esc(className)}` : ''}" style="${vars}">${defs}<div class="Collage__grid">${items}</div></div>`;
 }

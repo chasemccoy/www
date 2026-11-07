@@ -97,10 +97,16 @@
 }
 
 /* Effects are filters, not box-shadows, so they follow an image's transparent edges, stamp
-   perforations, and window corners. The sticker outline is drawn first and the shadow falls
-   from the outlined shape. They go on the frame rather than the item so the two compose. */
+   perforations, and window corners. The sticker outline goes on the frame and the shadow on the
+   item, so the shadow falls from the outlined shape. Keep them on separate elements: each
+   drop-shadow in one filter list roughly doubles the cost of the ones before it, and resizing
+   the page redraws them every frame. */
+.CollageItem {
+  filter: var(--collage-shadow, );
+}
+
 .CollageItem > :first-child {
-  filter: var(--collage-sticker, ) var(--collage-shadow, );
+  filter: var(--collage-sticker, );
 }
 
 .CollageItem--shadow {
@@ -109,19 +115,22 @@
     drop-shadow(0 calc(10 * var(--px)) calc(12 * var(--px)) rgb(0 0 0 / 0.16));
 }
 
-/* A die-cut sticker border: each hard white drop-shadow unions an offset copy of the shape, so
-   eight passes grow it outward about 6 design px in every direction. */
+/* A die-cut sticker border: each hard white drop-shadow unions a diagonally offset copy of the
+   shape, so four passes grow it outward 6 design px (about 4 on the diagonals). The copies keep
+   the image's own edge, so a feathered cutout would get a feathered border: renderCollage's SVG
+   filter sharpens it last. */
 .CollageItem--sticker {
-  --sticker-step: calc(2 * var(--px));
+  --sticker-step: calc(3 * var(--px));
   --collage-sticker:
     drop-shadow(var(--sticker-step) var(--sticker-step) 0 #fff)
     drop-shadow(calc(-1 * var(--sticker-step)) var(--sticker-step) 0 #fff)
     drop-shadow(var(--sticker-step) calc(-1 * var(--sticker-step)) 0 #fff)
     drop-shadow(calc(-1 * var(--sticker-step)) calc(-1 * var(--sticker-step)) 0 #fff)
-    drop-shadow(var(--sticker-step) 0 0 #fff)
-    drop-shadow(calc(-1 * var(--sticker-step)) 0 0 #fff)
-    drop-shadow(0 var(--sticker-step) 0 #fff)
-    drop-shadow(0 calc(-1 * var(--sticker-step)) 0 #fff);
+    url(#collage-sticker-edge);
+}
+
+.Collage__defs {
+  position: absolute;
 }
 
 .CollageImage {
@@ -726,6 +735,7 @@
   position: relative;
 }
 
+.CollageItem:has(> .Selection),
 .CollageItem > .Selection {
   filter: none;
 }
