@@ -102,6 +102,8 @@ All content lives in root-level directories, loaded via Astro content collection
 
 `src/utils/river.ts` — Shared constants and pure helpers for the gradient river (see below).
 
+`src/utils/collage.ts` — The masthead's geometry for sizing the collage's images: widths to make and `sizes` (see "The header collage").
+
 ### Collections
 
 The `posts` collection uses a custom loader in `content.config.ts` that reads markdown files from `posts/`, parses frontmatter with `gray-matter`, computes `date` and `permalink` from the filename, and adds `wordCount`.
@@ -171,11 +173,11 @@ The site's central visual system: a page-length gradient that link text, underli
 The masthead is a collage made in a separate collage editor (an HTML tool that exports a folder), then pulled in with `pnpm collage:pull [folder]`. `src/collage/` is that export and is generated — don't edit it by hand; change the collage in the editor and pull again:
 
 - `collage.json` — The document: a CSS grid per breakpoint (Small/Medium/Large, switched by container queries on the collage's own width), and each item's placement, frame, and effects
-- `collage.js` — The renderer, shared with the editor: `renderCollage(doc, { image })` returns static HTML
-- `collage.css` — The grid and every frame (Mac and Safari windows, polaroids, stamps, sticky notes, …), as global `.Collage*` classes
-- `images/` — Only the images the collage uses. The pull scales down ones over 2400px and turns heavy PNGs into high-quality WebP (keeping transparency) to keep the repo small, rewriting `collage.json` to match
+- `collage.js` — The renderer, shared with the editor: `renderCollage(doc, { image })` returns static HTML, and `imageScale(item, grid, size)` says how wide an item's image is drawn at each layout size, as a fraction of the collage's width (from its grid span, frame chrome, frame scale, and fill/fit cropping)
+- `collage.css` — The grid and the frames this collage uses (Mac and Safari windows, polaroids, stamps, sticky notes, …), as global `.Collage*` classes; the editor leaves out frames the collage doesn't use
+- `images/` — Only the images the collage uses, scaled down by the pull to the widest they're ever drawn at the densest screen, with heavy PNGs turned into high-quality WebP (keeping transparency); `collage.json` is rewritten to match. The export keeps the originals, so each pull sizes them afresh
 
-`Collage.astro` resolves each image through `astro:assets` (WebP at a few widths, with `srcset`) and hands the renderer the result, so the collage ships as plain HTML and CSS with no client JS. Its typefaces load from Google Fonts in `HtmlLayout.astro`, in a second stylesheet link beside the site's own; browsers only download the ones a page renders. Renderer or frame changes come from re-exporting in the editor, which rewrites `collage.js` and `collage.css`.
+Images are sized for their spot in the collage. `src/utils/collage.ts` holds the masthead's geometry — how wide the collage is at each viewport width, mirroring `.Masthead`'s padding and 90rem cap in `_Wrapper.scss` (change them together, then pull again) — and turns an `imageScale` into the widths to make (each layout size at 1x and 2x, plus 3x on phones) and an exact `sizes` attribute. `Collage.astro` makes those widths as AVIF in a `<picture>` with a WebP fallback, loads the images shown at every size eagerly (the widest with `fetchpriority="high"`) and the rest lazily, so a size that hides an image never fetches it. The collage ships as plain HTML and CSS with no client JS. Its typefaces load from Google Fonts in `HtmlLayout.astro`, in a second stylesheet link beside the site's own; browsers only download the ones a page renders. Renderer or frame changes come from re-exporting in the editor, which rewrites `collage.js` and `collage.css`; the pull refuses an export from an editor older than `imageScale`.
 
 ### Components (Vue SFCs unless noted)
 

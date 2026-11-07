@@ -52,6 +52,45 @@ export function resolvePlacement(item, bp, grid) {
   return { x, y, w, h, hidden: !!src.hidden, auto: true };
 }
 
+// Frame chrome around the image in design pixels (a cell is 24): [left + right, top + bottom].
+const CHROME = {
+  window: (f) => [10, 26 + (f.toolbar ? 26 : 0)],
+  safari: (f) => [6, 22 + 31 + 15 + (f.bookmarks ? 20 : 0)],
+  polaroid: () => [32, 96],
+  stamp: (f) => (f.style === 'vintage' ? [36, 82] : f.style === 'modern' ? [18, 18] : f.style === 'airmail' ? [40, 56] : [20, 50]),
+  textedit: (f) => [30, 28 + (f.formatBar ? 28 : 0) + (f.ruler ? 22 : 0) + 22],
+};
+
+/** @returns {[number, number]} */
+export function frameChrome(item) {
+  const type = item.frame?.type || 'none';
+  return CHROME[type]?.({ ...FRAME_DEFAULTS[type], ...item.frame }) ?? [0, 0];
+}
+
+/**
+ * How wide an item's image is drawn at each layout size where it shows, as a fraction of the
+ * collage's width. Everything in a collage scales with its width, so this holds at any width.
+ * A covering image that gets cropped is drawn wider than its frame.
+ * @param {{ width: number, height: number }} size The image's pixel size.
+ * @returns {{ sm?: number, md?: number, lg?: number }}
+ */
+export function imageScale(item, grid, size) {
+  const [chromeX, chromeY] = frameChrome(item);
+  /** @type {{ sm?: number, md?: number, lg?: number }} */
+  const scales = {};
+  for (const bp of BREAKPOINTS) {
+    const p = resolvePlacement(item, bp, grid);
+    if (p.hidden) continue;
+    const cell = 1 / grid[bp].cols; // cells are square, so heights use the same unit
+    const px = (cell / 24) * effectsAt(item, bp).frameScale;
+    const w = Math.max(p.w * cell - chromeX * px, 0);
+    const h = Math.max(p.h * cell - chromeY * px, 0);
+    const fitted = (h * size.width) / size.height;
+    scales[bp] = item.fit === 'contain' ? Math.min(w, fitted) : Math.max(w, fitted);
+  }
+  return scales;
+}
+
 // Frame scale and rotation at a layout size. Large's are the item's own; Medium and Small can
 // override them in item.at, and a size without its own follows Large.
 export function effectsAt(item, bp) {
@@ -72,15 +111,21 @@ export function sizesFor(item, grid) {
 
 function renderImage(item, grid, image) {
   const img = (image && image(item)) || {};
+  const sizes = img.sizes || sizesFor(item, grid);
   const attrs = ['class="CollageImage"', `src="${esc(img.src)}"`, `alt="${esc(item.alt)}"`];
-  if (img.srcset) attrs.push(`srcset="${esc(img.srcset)}"`, `sizes="${esc(img.sizes || sizesFor(item, grid))}"`);
+  if (img.srcset) attrs.push(`srcset="${esc(img.srcset)}"`, `sizes="${esc(sizes)}"`);
   if (img.width && img.height) attrs.push(`width="${img.width}"`, `height="${img.height}"`);
-  attrs.push('loading="lazy"', 'decoding="async"');
+  attrs.push(`loading="${img.loading === 'eager' ? 'eager' : 'lazy'}"`, 'decoding="async"');
+  if (img.fetchpriority) attrs.push(`fetchpriority="${esc(img.fetchpriority)}"`);
   const style = [];
   if (item.fit && item.fit !== 'cover') style.push(`--fit:${item.fit}`);
   if (item.focus && (item.focus[0] !== 50 || item.focus[1] !== 50)) style.push(`--focus:${item.focus[0]}% ${item.focus[1]}%`);
   if (style.length) attrs.push(`style="${style.join(';')}"`);
-  return `<img ${attrs.join(' ')}>`;
+  const tag = `<img ${attrs.join(' ')}>`;
+  if (!img.sources?.length) return tag;
+  // Other formats (AVIF, say), which the browser takes over the <img>'s when it can.
+  const sources = img.sources.map((s) => `<source type="${esc(s.type)}" srcset="${esc(s.srcset)}" sizes="${esc(sizes)}">`).join('');
+  return `<picture class="CollagePicture">${sources}${tag}</picture>`;
 }
 
 function macWindow(f, img) {
@@ -186,7 +231,15 @@ export function renderItem(item, grid, image) {
 }
 
 /**
- * @typedef {{ src?: string, srcset?: string, sizes?: string, width?: number, height?: number }} CollageImageSource
+ * @typedef {object} CollageImageSource
+ * @property {string} [src]
+ * @property {string} [srcset]
+ * @property {string} [sizes]
+ * @property {number} [width]
+ * @property {number} [height]
+ * @property {{ type: string, srcset: string }[]} [sources] Other formats, offered in a <picture>.
+ * @property {'lazy' | 'eager'} [loading]
+ * @property {'high' | 'low' | 'auto'} [fetchpriority]
  */
 
 /**

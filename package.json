@@ -19,7 +19,7 @@
     "check": "astro check && vue-tsc --noEmit && pnpm lint && pnpm format:check",
     "build": "pnpm check && astro build",
     "preview": "astro preview",
-    "collage:pull": "node scripts/pull-collage.js",
+    "collage:pull": "node --disable-warning=ExperimentalWarning scripts/pull-collage.js",
     "astro": "astro",
     "lint": "oxlint src astro.config.ts",
     "lint:fix": "oxlint --fix src astro.config.ts",

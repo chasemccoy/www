@@ -17,88 +17,93 @@
   "images": [
     {
       "file": "pasted-1793052664991-0.webp",
-      "width": 1030,
-      "height": 615
+      "width": 723,
+      "height": 432
     },
     {
       "file": "pasted-1793234276562-0.png",
-      "width": 165,
-      "height": 154
+      "width": 133,
+      "height": 124
     },
     {
       "file": "pasted-1793229159886-0.webp",
-      "width": 1194,
-      "height": 1094
+      "width": 370,
+      "height": 339
     },
     {
       "file": "pasted-1793233641508-0.webp",
-      "width": 872,
-      "height": 1109
+      "width": 320,
+      "height": 407
     },
     {
       "file": "pasted-1792967949902-0.webp",
-      "width": 1366,
-      "height": 991
+      "width": 732,
+      "height": 531
     },
     {
       "file": "pasted-1793027949209-0.png",
-      "width": 684,
-      "height": 523
+      "width": 403,
+      "height": 308
     },
     {
       "file": "pasted-1792940366295-0.webp",
-      "width": 769,
-      "height": 729
+      "width": 326,
+      "height": 309
     },
     {
       "file": "pasted-1793233405472-0.png",
-      "width": 142,
-      "height": 171
+      "width": 124,
+      "height": 149
     },
     {
       "file": "pasted-1792889738989-0.webp",
-      "width": 1383,
-      "height": 1157
+      "width": 442,
+      "height": 370
     },
     {
       "file": "b0985d53-1e79-4b16-b9ee-5ba06a8126b2-1-105-c.jpg",
-      "width": 768,
-      "height": 1024
+      "width": 452,
+      "height": 603
     },
     {
       "file": "pasted-1792948963173-0.webp",
-      "width": 1465,
-      "height": 1116
+      "width": 567,
+      "height": 432
     },
     {
       "file": "pasted-1792895143597-0.webp",
-      "width": 744,
-      "height": 1686
+      "width": 245,
+      "height": 555
     },
     {
       "file": "pasted-1792897081539-0.webp",
-      "width": 477,
-      "height": 733
+      "width": 321,
+      "height": 493
     },
     {
       "file": "pasted-1792889782413-0.webp",
-      "width": 1498,
-      "height": 2316
+      "width": 409,
+      "height": 632
     },
     {
       "file": "pasted-1792893384803-0.webp",
-      "width": 662,
-      "height": 968
+      "width": 253,
+      "height": 370
     },
     {
       "file": "pasted-1792892643128-0.webp",
-      "width": 2400,
-      "height": 1700
+      "width": 696,
+      "height": 493
     },
     {
       "file": "pasted-1792965267127-0.png",
-      "width": 254,
-      "height": 230
+      "width": 247,
+      "height": 224
+    },
+    {
+      "file": "pasted-1793237813975-0.webp",
+      "width": 211,
+      "height": 247
     },
     {
       "file": "pasted-1793229342912-0.webp",
@@ -106,14 +111,24 @@
       "height": 499
     },
     {
+      "file": "pasted-1793234742632-0.png",
+      "width": 493,
+      "height": 129
+    },
+    {
       "file": "pasted-1792889677115-0.webp",
-      "width": 1722,
-      "height": 2400
+      "width": 655,
+      "height": 913
     },
     {
       "file": "pasted-1793066168696-0.webp",
-      "width": 720,
-      "height": 1204
+      "width": 1,
+      "height": 2
+    },
+    {
+      "file": "pasted-1793237601904-0.webp",
+      "width": 370,
+      "height": 197
     },
     {
       "file": "pasted-1793233416398-0.png",
@@ -122,48 +137,33 @@
     },
     {
       "file": "pasted-1792964968579-0.webp",
-      "width": 2048,
-      "height": 2048
+      "width": 639,
+      "height": 639
     },
     {
       "file": "pasted-1793233088262-0.webp",
-      "width": 395,
-      "height": 523
+      "width": 373,
+      "height": 494
     },
     {
       "file": "pasted-1792940814829-0.webp",
-      "width": 735,
-      "height": 1186
+      "width": 309,
+      "height": 499
     },
     {
       "file": "pasted-1793205565826-0.webp",
-      "width": 1230,
-      "height": 750
+      "width": 607,
+      "height": 370
     },
     {
       "file": "pasted-1793066414691-0.webp",
-      "width": 1844,
-      "height": 1330
+      "width": 684,
+      "height": 493
     },
     {
       "file": "pasted-1793233411819-0.png",
-      "width": 155,
-      "height": 143
-    },
-    {
-      "file": "pasted-1793234742632-0.png",
-      "width": 1171,
-      "height": 306
-    },
-    {
-      "file": "pasted-1793237601904-0.webp",
-      "width": 1252,
-      "height": 668
-    },
-    {
-      "file": "pasted-1793237813975-0.webp",
-      "width": 709,
-      "height": 829
+      "width": 134,
+      "height": 124
     }
   ],
   "items": [
@@ -192,6 +192,13 @@
           "x": 24,
           "y": 17,
           "w": 3,
+          "h": 3,
+          "hidden": true
+        },
+        "sm": {
+          "x": 17,
+          "y": 17,
+          "w": 2,
           "h": 3,
           "hidden": true
         }
@@ -278,6 +285,12 @@
           "y": 5,
           "w": 12,
           "h": 9
+        },
+        "sm": {
+          "x": 17,
+          "y": 7,
+          "w": 8,
+          "h": 6
         }
       },
       "frameScale": 0.5,
@@ -386,6 +399,12 @@
         "lg": {
           "x": 2,
           "y": 2,
+          "w": 5,
+          "h": 2
+        },
+        "sm": {
+          "x": 1,
+          "y": 1,
           "w": 5,
           "h": 2
         }
@@ -528,6 +547,13 @@
           "w": 5,
           "h": 4,
           "hidden": true
+        },
+        "sm": {
+          "x": 18,
+          "y": 19,
+          "w": 4,
+          "h": 4,
+          "hidden": true
         }
       },
       "sticker": false,
@@ -553,6 +579,13 @@
           "y": 16,
           "w": 5,
           "h": 8
+        },
+        "sm": {
+          "x": 19,
+          "y": 16,
+          "w": 4,
+          "h": 6,
+          "hidden": true
         }
       },
       "sticker": false,
@@ -581,6 +614,13 @@
         },
         "md": {
           "x": 19,
+          "y": 9,
+          "w": 3,
+          "h": 3,
+          "hidden": true
+        },
+        "sm": {
+          "x": 13,
           "y": 9,
           "w": 3,
           "h": 3,
@@ -620,6 +660,12 @@
           "x": 25,
           "y": 14,
           "w": 6,
+          "h": 4
+        },
+        "sm": {
+          "x": 17,
+          "y": 14,
+          "w": 5,
           "h": 4
         }
       },
@@ -670,6 +716,12 @@
           "y": 16,
           "w": 6,
           "h": 8
+        },
+        "sm": {
+          "x": 11,
+          "y": 16,
+          "w": 6,
+          "h": 8
         }
       },
       "image": "pasted-1792964968579-0.webp"
@@ -717,6 +769,12 @@
           "y": 13,
           "w": 11,
           "h": 7
+        },
+        "sm": {
+          "x": 6,
+          "y": 13,
+          "w": 10,
+          "h": 6
         }
       },
       "frameScale": 1.15
@@ -771,6 +829,12 @@
           "y": 19,
           "w": 6,
           "h": 5
+        },
+        "sm": {
+          "x": 8,
+          "y": 20,
+          "w": 5,
+          "h": 4
         }
       },
       "sticker": false,
@@ -848,6 +912,12 @@
           "y": 17,
           "w": 6,
           "h": 8
+        },
+        "sm": {
+          "x": 21,
+          "y": 18,
+          "w": 4,
+          "h": 6
         }
       },
       "sticker": true,
@@ -873,6 +943,13 @@
           "y": 3,
           "w": 2,
           "h": 2
+        },
+        "sm": {
+          "x": 21,
+          "y": 3,
+          "w": 1,
+          "h": 1,
+          "hidden": true
         }
       },
       "image": "pasted-1793233411819-0.png"
@@ -897,6 +974,13 @@
           "y": 22,
           "w": 2,
           "h": 3
+        },
+        "sm": {
+          "x": 3,
+          "y": 22,
+          "w": 1,
+          "h": 2,
+          "hidden": true
         }
       },
       "image": "pasted-1793233416398-0.png"
@@ -954,6 +1038,13 @@
           "w": 2,
           "h": 2,
           "hidden": true
+        },
+        "sm": {
+          "x": 16,
+          "y": 14,
+          "w": 1,
+          "h": 1,
+          "hidden": true
         }
       },
       "image": "pasted-1793234276562-0.png"
@@ -1002,6 +1093,12 @@
           "y": 16,
           "w": 11,
           "h": 8
+        },
+        "sm": {
+          "x": 13,
+          "y": 18,
+          "w": 8,
+          "h": 6
         }
       },
       "image": "pasted-1792892643128-0.webp"
@@ -1032,6 +1129,13 @@
           "y": 21,
           "w": 5,
           "h": 3
+        },
+        "sm": {
+          "x": 15,
+          "y": 21,
+          "w": 4,
+          "h": 2,
+          "hidden": true
         }
       },
       "image": "pasted-1793237601904-0.webp"
