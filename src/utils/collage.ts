@@ -2,8 +2,8 @@
 // Collage.astro and by scripts/pull-collage.js, which runs under plain Node: keep it free of
 // imports.
 //
-// Mirrors .Masthead in _Wrapper.scss: 1rem of padding a side, 1.5rem from the medium breakpoint,
-// and a 90rem cap, at the site's 17px rem. Change those and these together.
+// Mirrors .Page and .Masthead in _Wrapper.scss: 1rem of padding a side, 1.5rem from the medium
+// breakpoint, in a page capped at 1100px, at the site's 17px rem. Change those and these together.
 
 export type Breakpoint = "sm" | "md" | "lg";
 
@@ -15,11 +15,13 @@ const REM = 17;
 const MEDIUM = 900;
 const INSET_SMALL = 2 * 1 * REM;
 const INSET_MEDIUM = 2 * 1.5 * REM;
-const MAX_WIDTH = 90 * REM - INSET_MEDIUM;
 const SMALLEST_VIEWPORT = 320;
 
 // Where the collage's own layouts take over, by its width: BREAKPOINT_MIN in collage.js.
 export const COLLAGE_BREAKPOINTS = { md: 640, lg: 1024 };
+
+const PAGE_WIDTH = 1100;
+const MAX_WIDTH = PAGE_WIDTH - INSET_MEDIUM;
 
 // The collage widths each layout size covers on this site.
 export const COLLAGE_WIDTHS: Record<Breakpoint, [number, number]> = {
@@ -74,7 +76,7 @@ export function imageSizes(scale: ImageScale): string {
   const narrow = `(100vw - ${INSET_SMALL}px)`;
   const wide = `(100vw - ${INSET_MEDIUM}px)`;
   return [
-    `(min-width: ${MAX_WIDTH + INSET_MEDIUM}px) ${drawn("lg", `${MAX_WIDTH}px`)}`,
+    `(min-width: ${PAGE_WIDTH}px) ${drawn("lg", `${MAX_WIDTH}px`)}`,
     `(min-width: ${viewportFor(COLLAGE_BREAKPOINTS.lg)}px) ${drawn("lg", wide)}`,
     `(min-width: ${MEDIUM}px) ${drawn("md", wide)}`,
     `(min-width: ${viewportFor(COLLAGE_BREAKPOINTS.md)}px) ${drawn("md", narrow)}`,

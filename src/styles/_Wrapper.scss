@@ -13,11 +13,17 @@
   }
 }
 
-// The header collage: left-anchored like the column, and capped so it doesn't
-// swallow wide screens. Tighter than the layout padding, which would leave too
+// Everything on the page, centered. Keep it wide enough for the collage's Large
+// layout, which takes over at 1024px (BREAKPOINT_MIN in collage.js), inside the
+// masthead's padding.
+.Page {
+  max-width: 1100px;
+  margin-inline: auto;
+}
+
+// The header collage. Tighter than the layout padding, which would leave too
 // wide a margin around it.
 .Masthead {
-  max-width: 90rem;
   padding: 1rem 1rem 0;
 
   @include medium {

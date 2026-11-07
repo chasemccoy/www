@@ -10,14 +10,16 @@ interface Props extends LayoutProps {
 const { title, description, date } = Astro.props;
 ---
 <HtmlLayout title={title} description={description} date={date}>
-  <header class="Masthead">
-    <h1 class="visually-hidden"><a href="/">chsmc.org</a></h1>
-    <Collage />
-  </header>
+  <div class="Page">
+    <header class="Masthead">
+      <h1 class="visually-hidden"><a href="/">chsmc.org</a></h1>
+      <Collage />
+    </header>
 
-  <div class="Wrapper">
-    <main class="Wrapper__main">
-      <slot />
-    </main>
+    <div class="Wrapper">
+      <main class="Wrapper__main">
+        <slot />
+      </main>
+    </div>
   </div>
 </HtmlLayout>

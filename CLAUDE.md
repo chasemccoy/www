@@ -53,7 +53,7 @@ Uses **Astro** (`.astro`) for layouts and pages, and **Vue 3 SFCs** (`.vue`) for
 **Layouts** (`src/layouts/`):
 
 - `HtmlLayout.astro` — Root HTML shell: head, meta tags, fonts, the noise texture layer, and the gradient-river anchoring script
-- `BaseLayout.astro` — Page chrome (the collage Masthead with a visually hidden site title, then the Wrapper column around the main content slot)
+- `BaseLayout.astro` — Page chrome: a centered `.Page` holding the collage Masthead (with a visually hidden site title), then the Wrapper column around the main content slot
 - `PostLayout.astro` — Blog post pages: takes the post entry, renders it as a `BlogPost` plus `PostPagination`
 - `PageLayout.astro` — Generic pages (the `.Article.prose` wrapper); supports both `.astro` imports and markdown `layout:` frontmatter
 
@@ -124,7 +124,7 @@ src/styles/
 ├── _elements.scss  # Global element defaults
 ├── _prose.scss     # The .prose typography system for Markdown content
 ├── _Callout.scss   # Callouts (`<aside class='Callout'>` in posts): a sticky note with river-sampled washi tape
-├── _Wrapper.scss   # Page layout: the collage masthead + the left-anchored column
+├── _Wrapper.scss   # Page layout: the centered page, the collage masthead, and the left-anchored column
 ├── _utilities.scss # Small utility classes
 └── _prism.scss     # Syntax highlighting
 ```
@@ -146,7 +146,8 @@ Conventions:
 
 **Key classes:**
 
-- `.Masthead` — The header collage across the top of every page, capped at 90rem and left-anchored
+- `.Page` — Everything on the page, centered and capped at 1100px (keep it wide enough for the collage's 1024px Large layout plus the masthead padding)
+- `.Masthead` — The header collage across the top of every page
 - `.Wrapper` / `.Wrapper__main` — Page layout: a left-anchored reading column below the masthead
 - `.Blog` — Blog feed container
 - `.BlogPost` (+ `--isTruncated`) — A post in the feed or on its own page
@@ -177,7 +178,7 @@ The masthead is a collage made in a separate collage editor (an HTML tool that e
 - `collage.css` — The grid and the frames this collage uses (Mac and Safari windows, polaroids, stamps, sticky notes, …), as global `.Collage*` classes; the editor leaves out frames the collage doesn't use
 - `images/` — Only the images the collage uses, scaled down by the pull to the widest they're ever drawn at the densest screen, with heavy PNGs turned into high-quality WebP (keeping transparency); `collage.json` is rewritten to match. The export keeps the originals, so each pull sizes them afresh
 
-Images are sized for their spot in the collage. `src/utils/collage.ts` holds the masthead's geometry — how wide the collage is at each viewport width, mirroring `.Masthead`'s padding and 90rem cap in `_Wrapper.scss` (change them together, then pull again) — and turns an `imageScale` into the widths to make (each layout size at 1x and 2x, plus 3x on phones) and an exact `sizes` attribute. `Collage.astro` makes those widths as AVIF in a `<picture>` with a WebP fallback, loads the images shown at every size eagerly (the widest with `fetchpriority="high"`) and the rest lazily, so a size that hides an image never fetches it. The collage ships as plain HTML and CSS with no client JS. Its typefaces load from Google Fonts in `HtmlLayout.astro`, in a second stylesheet link beside the site's own; browsers only download the ones a page renders. Renderer or frame changes come from re-exporting in the editor, which rewrites `collage.js` and `collage.css`; the pull refuses an export from an editor older than `imageScale`.
+Images are sized for their spot in the collage. `src/utils/collage.ts` holds the masthead's geometry — how wide the collage is at each viewport width, mirroring `.Masthead`'s padding and `.Page`'s cap in `_Wrapper.scss` (change them together, then pull again) — and turns an `imageScale` into the widths to make (each layout size at 1x and 2x, plus 3x on phones) and an exact `sizes` attribute. `Collage.astro` makes those widths as AVIF in a `<picture>` with a WebP fallback, loads the images shown at every size eagerly (the widest with `fetchpriority="high"`) and the rest lazily, so a size that hides an image never fetches it. The collage ships as plain HTML and CSS with no client JS. Its typefaces load from Google Fonts in `HtmlLayout.astro`, in a second stylesheet link beside the site's own; browsers only download the ones a page renders. Renderer or frame changes come from re-exporting in the editor, which rewrites `collage.js` and `collage.css`; the pull refuses an export from an editor older than `imageScale`.
 
 ### Components (Vue SFCs unless noted)
 
