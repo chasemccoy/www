@@ -3,7 +3,7 @@
 // imports.
 //
 // Mirrors .Page and .Masthead in _Wrapper.scss: 1rem of padding a side, 1.5rem from the medium
-// breakpoint, in a page capped at 1100px, at the site's 17px rem. Change those and these together.
+// breakpoint, in a page capped at 1200px, at the site's 17px rem. Change those and these together.
 
 export type Breakpoint = "sm" | "md" | "lg";
 
@@ -20,7 +20,7 @@ const SMALLEST_VIEWPORT = 320;
 // Where the collage's own layouts take over, by its width: BREAKPOINT_MIN in collage.js.
 export const COLLAGE_BREAKPOINTS = { md: 640, lg: 1024 };
 
-const PAGE_WIDTH = 1100;
+const PAGE_WIDTH = 1200;
 const MAX_WIDTH = PAGE_WIDTH - INSET_MEDIUM;
 
 // The collage widths each layout size covers on this site.

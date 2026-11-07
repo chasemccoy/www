@@ -47,7 +47,7 @@ describe("imageSizes", () => {
   it("describes the drawn width at every viewport, widest first", () => {
     const sizes = imageSizes({ sm: 0.5, md: 0.25, lg: 0.2 }).split(", ");
     expect(sizes).toHaveLength(5);
-    expect(sizes[0]).toBe("(min-width: 1100px) calc(0.2000 * 1049px)");
+    expect(sizes[0]).toBe("(min-width: 1200px) calc(0.2000 * 1149px)");
     expect(sizes.at(-1)).toBe("calc(0.5000 * (100vw - 34px))");
   });
 

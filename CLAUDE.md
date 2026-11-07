@@ -146,7 +146,7 @@ Conventions:
 
 **Key classes:**
 
-- `.Page` — Everything on the page, centered and capped at 1100px (keep it wide enough for the collage's 1024px Large layout plus the masthead padding)
+- `.Page` — Everything on the page, centered and capped at 1200px (keep it wide enough for the collage's 1024px Large layout plus the masthead padding)
 - `.Masthead` — The header collage across the top of every page
 - `.Wrapper` / `.Wrapper__main` — Page layout: a left-anchored reading column below the masthead
 - `.Blog` — Blog feed container
