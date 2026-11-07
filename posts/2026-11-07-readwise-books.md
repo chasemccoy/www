@@ -1,6 +1,5 @@
 ---
 title: Readwise Books
-hidden: true
 ---
 
 
