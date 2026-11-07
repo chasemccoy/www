@@ -1,18 +1,4 @@
-@use "sass:list";
-@use "sass:math";
-@use "sass:string";
-@use "mixins" as *;
-
-@function eased-fade($alphas, $direction: to top) {
-  $stops: ();
-  $last: list.length($alphas) - 1;
-  @for $i from 0 through $last {
-    $a: list.nth($alphas, $i + 1);
-    $pos: math.percentage(math.div($i, $last));
-    $stops: list.append($stops, string.unquote("rgb(0 0 0 / #{$a}) #{$pos}"), comma);
-  }
-  @return linear-gradient($direction, $stops);
-}
+// The river's color stops, and the page's noise texture.
 
 :root {
   --gradient-darken: 0.08;
@@ -45,69 +31,5 @@
 
   @media (prefers-color-scheme: dark) {
     opacity: 0.02;
-  }
-}
-
-$vignette-fade: (
-  1,
-  0.81195,
-  0.6501,
-  0.512,
-  0.39541,
-  0.29825,
-  0.21857,
-  0.15452,
-  0.10433,
-  0.06631,
-  0.03879,
-  0.0201,
-  0.0086,
-  0.00259,
-  0.00033,
-  0
-);
-
-// Coupled numbers: the 40dvh strip with its -4dvh overhang tops out 64dvh
-// down the viewport; the -60dvh offset and keyframe endpoints are tuned
-// around that, and the 160dvh fallback is 100dvh + 60dvh.
-body::after {
-  content: "";
-  position: fixed;
-  bottom: -4dvh;
-  right: 0;
-  left: 0;
-  height: 40dvh;
-  pointer-events: none;
-  mix-blend-mode: multiply;
-
-  @include river-fill;
-  background-position: 0 -60dvh;
-  mask-image: eased-fade($vignette-fade);
-  animation: river-viewport-follow linear both;
-
-  // A rule of its own: the build's minifier folds a sibling animation-timeline
-  // into the animation shorthand, which browsers reject.
-  @supports (animation-timeline: scroll()) {
-    animation-timeline: scroll(root);
-  }
-
-  @media (prefers-color-scheme: dark) {
-    mix-blend-mode: normal;
-    opacity: 0.5;
-  }
-
-  // iOS Safari won't draw fixed content under its status bar or toolbar,
-  // so on touch phones either edge of the strip ends in a hard line.
-  @media (pointer: coarse) and (max-width: 899px) {
-    display: none;
-  }
-}
-
-@keyframes river-viewport-follow {
-  from {
-    background-position: 0 -60dvh;
-  }
-  to {
-    background-position: 0 calc(40dvh - var(--river-doc, 160dvh));
   }
 }

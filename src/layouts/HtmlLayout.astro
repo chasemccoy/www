@@ -144,8 +144,6 @@ const canonicalUrl = `${metadata.url}${pageUrl}`;
         anchoredFor = signature;
         cycle = riverCycle(height, stops);
         document.documentElement.style.setProperty('--river-size', `100% ${cycle}px`);
-        // Read by the vignette in _river.scss.
-        document.documentElement.style.setProperty('--river-doc', `${height}px`);
 
         // Must cover every element whose styles (or pseudo-elements)
         // @include river-text or river-fill; one-off elements opt in with
