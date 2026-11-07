@@ -771,6 +771,6 @@ Readwise has long been my read-it-later and book/article/essay-highlighter of ch
 
 But they're not just making a great ebook reader: there's also an independent bookstore offering an alternative to Kindle and Apple Books, and it's all tied together with a Goodreads-esque social layer. 
 
-Building an independent bookstore in 2026 is courageous, impressive, and absolutely necessary. The nice reader app and everything else is like a cherry on top.
+Building an independent bookstore in 2026 is courageous, impressive, and more necessary than ever. The nice reader app and everything else is a cherry on top, but the real feat here are the deals that had to be secured with major publishers to be able to sell digital books in the first place. Readwise is almost certainly the first independent, digital-native operation to have achieved such a thing, and as a happy and continuing subscriber I am rooting for their success. 
 
-The future of books is looking a little brighter!
+The future of books is looking a little brighter today!
