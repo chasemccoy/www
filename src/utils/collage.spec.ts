@@ -18,14 +18,21 @@ describe("imageWidths", () => {
   it("covers every size and density an image is shown at, smallest first", () => {
     const widths = imageWidths({ sm: 0.5, md: 0.25, lg: 0.2 }, 5000);
     expect(widths[0]).toBeLessThan(widths.at(-1) ?? 0);
-    expect(widths.at(-1)).toBe(Math.ceil(0.5 * COLLAGE_WIDTHS.sm[1] * 3));
+    expect(widths.at(-1)).toBe(Math.ceil(0.5 * COLLAGE_WIDTHS.sm[1] * 2));
   });
 
-  it("leaves at least a 25% step between widths", () => {
+  it("leaves about a 25% step between widths", () => {
     const widths = imageWidths({ sm: 0.5, md: 0.25, lg: 0.2 }, 5000);
     widths
       .slice(1)
-      .forEach((width, i) => expect(width).toBeGreaterThanOrEqual((widths[i] ?? 0) * 1.25));
+      .forEach((width, i) => expect(width).toBeGreaterThanOrEqual((widths[i] ?? 0) * 1.25 - 1));
+  });
+
+  it("gives phones a width every 25% from the narrowest at 1x to the widest at 2x", () => {
+    const widths = imageWidths({ sm: 0.5 }, 5000);
+    expect(widths[0]).toBeLessThanOrEqual(Math.ceil(0.5 * COLLAGE_WIDTHS.sm[0] * 1.25));
+    expect(widths.at(-1)).toBe(Math.ceil(0.5 * COLLAGE_WIDTHS.sm[1] * 2));
+    widths.slice(1).forEach((width, i) => expect(width / (widths[i] ?? 1)).toBeLessThan(1.27));
   });
 
   it("never asks for more than the source has", () => {
@@ -46,9 +53,14 @@ describe("largestWidth", () => {
 describe("imageSizes", () => {
   it("describes the drawn width at every viewport, widest first", () => {
     const sizes = imageSizes({ sm: 0.5, md: 0.25, lg: 0.2 }).split(", ");
-    expect(sizes).toHaveLength(5);
+    expect(sizes).toHaveLength(6);
     expect(sizes[0]).toBe("(min-width: 1200px) calc(0.2000 * 1149px)");
     expect(sizes.at(-1)).toBe("calc(0.5000 * (100vw - 34px))");
+  });
+
+  it("steers 3x phones to 2x files", () => {
+    const sizes = imageSizes({ sm: 0.5 }).split(", ");
+    expect(sizes.at(-2)).toBe("(min-resolution: 3dppx) calc(0.3333 * (100vw - 34px))");
   });
 
   it("asks for almost nothing at sizes where the image is hidden", () => {
