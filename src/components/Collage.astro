@@ -46,7 +46,10 @@ const pictures = doc.items.flatMap((item) => {
   if (!src) throw new Error(`The collage uses ${item.image}, but it isn't in src/collage/images/.`);
   return [{ item, src, scale: imageScale(item, grid, src) }];
 });
-const widest = pictures.reduce((a, b) => ((b.scale.lg ?? 0) > (a.scale.lg ?? 0) ? b : a));
+const widest = pictures.reduce<(typeof pictures)[number] | undefined>(
+  (a, b) => ((b.scale.lg ?? 0) > (a?.scale.lg ?? 0) ? b : a),
+  undefined,
+);
 
 const sources = new Map(
   await Promise.all(
@@ -65,7 +68,7 @@ const sources = new Map(
         width: src.width,
         height: src.height,
         loading: shownEverywhere ? "eager" : "lazy",
-        ...(item === widest.item && { fetchpriority: "high" }),
+        ...(item === widest?.item && { fetchpriority: "high" }),
       };
       return [item.id, source] as const;
     }),

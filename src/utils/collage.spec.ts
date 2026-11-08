@@ -1,16 +1,25 @@
+import { readFileSync } from "node:fs";
 import { describe, it, expect } from "vitest";
-import { BREAKPOINT_MIN } from "../collage/collage.js";
-import {
-  COLLAGE_BREAKPOINTS,
-  COLLAGE_WIDTHS,
-  imageSizes,
-  imageWidths,
-  largestWidth,
-} from "./collage.js";
+import { COLLAGE_WIDTHS, SITE, imageSizes, imageWidths, largestWidth } from "./collage.js";
 
-describe("COLLAGE_BREAKPOINTS", () => {
-  it("matches the renderer's breakpoints", () => {
-    expect(COLLAGE_BREAKPOINTS).toEqual({ md: BREAKPOINT_MIN.md, lg: BREAKPOINT_MIN.lg });
+const styles = (file: string) =>
+  readFileSync(new URL(`../styles/${file}`, import.meta.url), "utf8");
+const num = (n: number) => String(n).replace(".", "\\.");
+
+describe("SITE", () => {
+  it("matches the masthead's styles", () => {
+    const wrapper = styles("_Wrapper.scss");
+    const masthead = wrapper.match(/\.Masthead \{([\s\S]*?)\n\}/)?.[1] ?? "";
+    const { small, medium } = SITE.padding;
+    expect(wrapper).toMatch(new RegExp(`\\.Page \\{[^}]*max-width: ${SITE.pageWidth}px;`));
+    expect(masthead).toMatch(new RegExp(`^  padding: ${num(small)}rem ${num(small)}rem 0;`, "m"));
+    expect(masthead).toMatch(
+      new RegExp(`@include medium \\{\\s*padding: ${num(medium)}rem ${num(medium)}rem 0;`),
+    );
+    expect(styles("_mixins.scss")).toMatch(
+      new RegExp(`@mixin medium \\{\\s*@media \\(min-width: ${SITE.medium}px\\)`),
+    );
+    expect(styles("_theme.scss")).toMatch(new RegExp(`--root-font-size: ${SITE.rem}px;`));
   });
 });
 

@@ -149,10 +149,10 @@ const canonicalUrl = `${metadata.url}${pageUrl}`;
 
         // Must cover every element whose styles (or pseudo-elements)
         // @include river-text or river-fill; one-off elements opt in with
-        // data-river-pin. Measure all, then write all, so the loop forces one
-        // reflow.
+        // data-river-pin. The collage's links take their note's ink instead.
+        // Measure all, then write all, so the loop forces one reflow.
         const pinned = document.querySelectorAll<HTMLElement>(
-          "a, :not(pre) > code, hr.break, ul > li, .prose > p:last-of-type, .Callout, [data-river-pin]",
+          "a:not(.Masthead a), :not(pre) > code, hr.break, ul > li, .prose > p:last-of-type, .Callout, [data-river-pin]",
         );
         [...pinned].map(measure).forEach(pin);
         tintFavicon(true);

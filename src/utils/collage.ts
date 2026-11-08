@@ -1,9 +1,7 @@
 // How wide the header collage is drawn, for sizing its images. Used at build time by
-// Collage.astro and by scripts/pull-collage.js, which runs under plain Node: keep it free of
-// imports.
-//
-// Mirrors .Page and .Masthead in _Wrapper.scss: 1rem of padding a side, 1.5rem from the medium
-// breakpoint, in a page capped at 1200px, at the site's 17px rem. Change those and these together.
+// Collage.astro and by scripts/pull-collage.js, which runs under plain Node: import only plain JS
+// (the renderer), not other TypeScript.
+import { BREAKPOINT_MIN } from "../collage/collage.js";
 
 export type Breakpoint = "sm" | "md" | "lg";
 
@@ -11,23 +9,27 @@ export type Breakpoint = "sm" | "md" | "lg";
 // imageScale). A size where the item is hidden is missing.
 export type ImageScale = Partial<Record<Breakpoint, number>>;
 
-const REM = 17;
-const MEDIUM = 900;
-const INSET_SMALL = 2 * 1 * REM;
-const INSET_MEDIUM = 2 * 1.5 * REM;
+// The masthead's geometry, mirrored from the styles: .Page and .Masthead in _Wrapper.scss, the
+// medium breakpoint in _mixins.scss, and the root font size in _theme.scss. collage.spec.ts checks
+// these against those files.
+export const SITE = {
+  rem: 17, // px
+  medium: 900, // px: the breakpoint where the masthead's padding grows
+  pageWidth: 1200, // px
+  padding: { small: 1, medium: 1.5 }, // rem a side
+};
+
+const INSET_SMALL = 2 * SITE.padding.small * SITE.rem;
+const INSET_MEDIUM = 2 * SITE.padding.medium * SITE.rem;
+const MAX_WIDTH = SITE.pageWidth - INSET_MEDIUM;
 const SMALLEST_VIEWPORT = 320;
 
-// Where the collage's own layouts take over, by its width: BREAKPOINT_MIN in collage.js.
-export const COLLAGE_BREAKPOINTS = { md: 640, lg: 1024 };
-
-const PAGE_WIDTH = 1200;
-const MAX_WIDTH = PAGE_WIDTH - INSET_MEDIUM;
-
-// The collage widths each layout size covers on this site.
+// The collage widths each layout size covers on this site. Its layouts take over at the
+// collage's own width (BREAKPOINT_MIN), not the viewport's.
 export const COLLAGE_WIDTHS: Record<Breakpoint, [number, number]> = {
-  sm: [SMALLEST_VIEWPORT - INSET_SMALL, COLLAGE_BREAKPOINTS.md - 1],
-  md: [COLLAGE_BREAKPOINTS.md, COLLAGE_BREAKPOINTS.lg - 1],
-  lg: [COLLAGE_BREAKPOINTS.lg, MAX_WIDTH],
+  sm: [SMALLEST_VIEWPORT - INSET_SMALL, BREAKPOINT_MIN.md - 1],
+  md: [BREAKPOINT_MIN.md, BREAKPOINT_MIN.lg - 1],
+  lg: [BREAKPOINT_MIN.lg, MAX_WIDTH],
 };
 
 // The densest screen images are made for. Phones run 3x, but at collage scale 3x looks no sharper
@@ -43,7 +45,7 @@ const STEP = 1.25;
 // The viewport width at which the collage reaches a given width.
 function viewportFor(collageWidth: number): number {
   const narrow = collageWidth + INSET_SMALL;
-  return narrow < MEDIUM ? narrow : collageWidth + INSET_MEDIUM;
+  return narrow < SITE.medium ? narrow : collageWidth + INSET_MEDIUM;
 }
 
 /** The pixel widths to make an image at: enough for every size and density it's shown at. */
@@ -93,10 +95,10 @@ export function imageSizes(scale: ImageScale): string {
     ? `(min-resolution: ${PHONE_DENSITY}dppx) calc(${((scale.sm * MAX_DENSITY) / PHONE_DENSITY).toFixed(4)} * ${narrow})`
     : null;
   return [
-    `(min-width: ${PAGE_WIDTH}px) ${drawn("lg", `${MAX_WIDTH}px`)}`,
-    `(min-width: ${viewportFor(COLLAGE_BREAKPOINTS.lg)}px) ${drawn("lg", wide)}`,
-    `(min-width: ${MEDIUM}px) ${drawn("md", wide)}`,
-    `(min-width: ${viewportFor(COLLAGE_BREAKPOINTS.md)}px) ${drawn("md", narrow)}`,
+    `(min-width: ${SITE.pageWidth}px) ${drawn("lg", `${MAX_WIDTH}px`)}`,
+    `(min-width: ${viewportFor(BREAKPOINT_MIN.lg)}px) ${drawn("lg", wide)}`,
+    `(min-width: ${SITE.medium}px) ${drawn("md", wide)}`,
+    `(min-width: ${viewportFor(BREAKPOINT_MIN.md)}px) ${drawn("md", narrow)}`,
     densePhone,
     drawn("sm", narrow),
   ]

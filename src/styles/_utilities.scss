@@ -10,8 +10,8 @@
   font-size: 1.1em;
 }
 
-// Read by screen readers but not shown, until it holds focus.
-.visually-hidden:not(:focus-within) {
+// Read by screen readers but not shown.
+.visually-hidden {
   position: absolute;
   width: 1px;
   height: 1px;

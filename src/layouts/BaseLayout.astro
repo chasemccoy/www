@@ -13,9 +13,8 @@ const { title, description, date } = Astro.props;
 <HtmlLayout title={title} description={description} date={date}>
   <div class="Page">
     <header class="Masthead">
-      <h1 class="visually-hidden">
-        <a href="/">chsmc.org</a>
-      </h1>
+      {/* The collage's wordmark note is the visible title and the link home. */}
+      <h1 class="visually-hidden">chsmc.org</h1>
       <Collage />
     </header>
 
