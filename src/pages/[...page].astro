@@ -1,9 +1,9 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import Feed from '../components/Feed.astro';
-import FeedPagination from '../components/FeedPagination.vue';
-import { getVisiblePosts, FEED_PAGE_SIZE } from '../utils';
-import type { GetStaticPaths } from 'astro';
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Feed from "../components/Feed.astro";
+import FeedPagination from "../components/FeedPagination.vue";
+import { getVisiblePosts, FEED_PAGE_SIZE } from "../utils";
+import type { GetStaticPaths } from "astro";
 
 // A rest param so page 1 can live at `/`.
 export const getStaticPaths = (async ({ paginate }) =>
@@ -11,6 +11,7 @@ export const getStaticPaths = (async ({ paginate }) =>
 
 const { page } = Astro.props;
 ---
+
 <BaseLayout>
   <Feed posts={page.data} />
 

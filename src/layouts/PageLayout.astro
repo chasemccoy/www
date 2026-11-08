@@ -1,6 +1,6 @@
 ---
-import BaseLayout from './BaseLayout.astro';
-import type { LayoutProps } from '../types';
+import BaseLayout from "./BaseLayout.astro";
+import type { LayoutProps } from "../types";
 
 interface Props extends LayoutProps {
   // When used via markdown `layout:` frontmatter, props are nested under `frontmatter`
@@ -10,10 +10,8 @@ interface Props extends LayoutProps {
 const props = { ...Astro.props.frontmatter, ...Astro.props };
 const { title, description } = props;
 ---
-<BaseLayout
-  title={title}
-  description={description}
->
+
+<BaseLayout title={title} description={description}>
   <article class="Article prose">
     {title && <h1>{title}</h1>}
 

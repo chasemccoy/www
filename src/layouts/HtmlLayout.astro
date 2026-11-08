@@ -1,9 +1,9 @@
 ---
-import '../styles/styles.scss';
-import 'lite-youtube-embed/src/lite-yt-embed.css';
-import metadata from '../data/metadata.json';
-import { getPageTitle } from '../utils';
-import { riverInlineStyle } from '../utils/river';
+import "../styles/styles.scss";
+import "lite-youtube-embed/src/lite-yt-embed.css";
+import metadata from "../data/metadata.json";
+import { getPageTitle } from "../utils";
+import { riverInlineStyle } from "../utils/river";
 
 interface Props {
   title?: string;
@@ -18,9 +18,10 @@ const pageTitle = getPageTitle(metadata.title, { title, date, pageUrl });
 const desc = description || metadata.description;
 const canonicalUrl = `${metadata.url}${pageUrl}`;
 ---
-<!DOCTYPE html>
+
+<!doctype html>
 <html lang="en" style={riverInlineStyle(pageUrl)}>
-<!--
+  <!--
   Take no thought of the harvest,
   but only of proper sowing.
 
@@ -46,48 +47,48 @@ const canonicalUrl = `${metadata.url}${pageUrl}`;
     />
     <style>
       @font-face {
-        font-family: 'Untitled Sans';
-        src: url("/fonts/untitled-sans/UntitledSansWeb-Regular.woff2") format('woff2');
+        font-family: "Untitled Sans";
+        src: url("/fonts/untitled-sans/UntitledSansWeb-Regular.woff2") format("woff2");
         font-weight: normal;
         font-style: normal;
         font-display: swap;
       }
 
       @font-face {
-        font-family: 'Untitled Sans';
-        src: url("/fonts/untitled-sans/UntitledSansWeb-RegularItalic.woff2") format('woff2');
+        font-family: "Untitled Sans";
+        src: url("/fonts/untitled-sans/UntitledSansWeb-RegularItalic.woff2") format("woff2");
         font-weight: normal;
         font-style: italic;
         font-display: swap;
       }
 
       @font-face {
-        font-family: 'Untitled Sans';
-        src: url("/fonts/untitled-sans/UntitledSansWeb-Bold.woff2") format('woff2');
+        font-family: "Untitled Sans";
+        src: url("/fonts/untitled-sans/UntitledSansWeb-Bold.woff2") format("woff2");
         font-weight: bold;
         font-style: normal;
         font-display: swap;
       }
 
       @font-face {
-        font-family: 'Untitled Sans';
-        src: url("/fonts/untitled-sans/UntitledSansWeb-BoldItalic.woff2") format('woff2');
+        font-family: "Untitled Sans";
+        src: url("/fonts/untitled-sans/UntitledSansWeb-BoldItalic.woff2") format("woff2");
         font-weight: bold;
         font-style: italic;
         font-display: swap;
       }
 
       @font-face {
-        font-family: 'Sentinel';
-        src: url("/fonts/sentinel/Sentinel-Book.woff2") format('woff2');
+        font-family: "Sentinel";
+        src: url("/fonts/sentinel/Sentinel-Book.woff2") format("woff2");
         font-weight: normal;
         font-style: normal;
         font-display: swap;
       }
 
       @font-face {
-        font-family: 'Sentinel';
-        src: url("/fonts/sentinel/Sentinel-Bold.woff2") format('woff2');
+        font-family: "Sentinel";
+        src: url("/fonts/sentinel/Sentinel-Bold.woff2") format("woff2");
         font-weight: bold;
         font-style: normal;
         font-display: swap;
@@ -95,7 +96,12 @@ const canonicalUrl = `${metadata.url}${pageUrl}`;
     </style>
 
     <link rel="canonical" href={canonicalUrl} />
-    <link rel="alternate" href={metadata.feed.path} type="application/rss+xml" title={metadata.title} />
+    <link
+      rel="alternate"
+      href={metadata.feed.path}
+      type="application/rss+xml"
+      title={metadata.title}
+    />
 
     <link rel="icon" href="/favicon.ico" sizes="32x32" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
@@ -112,9 +118,11 @@ const canonicalUrl = `${metadata.url}${pageUrl}`;
     <meta name="twitter:title" content={pageTitle} />
     <meta property="fediverse:creator" content="@chsmc@mastodon.social" />
 
-    <script>import 'lite-youtube-embed/src/lite-yt-embed.js';</script>
     <script>
-      import { riverColorAt, riverCycle, riverStops } from '../utils/river';
+      import "lite-youtube-embed/src/lite-yt-embed.js";
+    </script>
+    <script>
+      import { riverColorAt, riverCycle, riverStops } from "../utils/river";
 
       // Must match the stops the build rendered: both derive them from the path.
       const stops = riverStops(location.pathname);
@@ -122,7 +130,7 @@ const canonicalUrl = `${metadata.url}${pageUrl}`;
 
       // Mobile browsers fire resize constantly as the URL bar collapses, so
       // only re-anchor when height or width actually changed.
-      let anchoredFor = '';
+      let anchoredFor = "";
 
       function measure(el: HTMLElement) {
         const rect = el.getBoundingClientRect();
@@ -130,10 +138,10 @@ const canonicalUrl = `${metadata.url}${pageUrl}`;
       }
 
       function pin({ el, y, height }: ReturnType<typeof measure>) {
-        el.style.setProperty('--river-pos', `0 ${-Math.round(y)}px`);
+        el.style.setProperty("--river-pos", `0 ${-Math.round(y)}px`);
         if (el instanceof HTMLAnchorElement) {
           const center = y + height / 2;
-          el.style.setProperty('--river-color', riverColorAt(stops, (center % cycle) / cycle));
+          el.style.setProperty("--river-color", riverColorAt(stops, (center % cycle) / cycle));
         }
       }
 
@@ -143,14 +151,14 @@ const canonicalUrl = `${metadata.url}${pageUrl}`;
         if (signature === anchoredFor) return;
         anchoredFor = signature;
         cycle = riverCycle(height, stops);
-        document.documentElement.style.setProperty('--river-size', `100% ${cycle}px`);
+        document.documentElement.style.setProperty("--river-size", `100% ${cycle}px`);
 
         // Must cover every element whose styles (or pseudo-elements)
         // @include river-text or river-fill; one-off elements opt in with
         // data-river-pin. Measure all, then write all, so the loop forces one
         // reflow.
         const pinned = document.querySelectorAll<HTMLElement>(
-          'a, :not(pre) > code, hr.break, ul > li, .prose > p:last-of-type, .Callout, [data-river-pin]'
+          "a, :not(pre) > code, hr.break, ul > li, .prose > p:last-of-type, .Callout, [data-river-pin]",
         );
         [...pinned].map(measure).forEach(pin);
         tintFavicon(true);
@@ -159,11 +167,13 @@ const canonicalUrl = `${metadata.url}${pageUrl}`;
       // A favicon can't read the page's CSS variables, so the color is
       // resolved to hex first. Without JS, favicon.svg shows the first stop.
       const FAVICON_STEPS = 48;
-      const favicon = document.querySelector<HTMLLinkElement>('link[rel="icon"][type="image/svg+xml"]');
-      const probe = document.createElement('span');
+      const favicon = document.querySelector<HTMLLinkElement>(
+        'link[rel="icon"][type="image/svg+xml"]',
+      );
+      const probe = document.createElement("span");
       probe.hidden = true;
       document.body.append(probe);
-      const paint = document.createElement('canvas').getContext('2d', { willReadFrequently: true });
+      const paint = document.createElement("canvas").getContext("2d", { willReadFrequently: true });
       let faviconStep = -1;
 
       function tintFavicon(force = false) {
@@ -176,17 +186,19 @@ const canonicalUrl = `${metadata.url}${pageUrl}`;
         paint.fillStyle = getComputedStyle(probe).color;
         paint.fillRect(0, 0, 1, 1);
         const rgb = paint.getImageData(0, 0, 1, 1).data.subarray(0, 3);
-        const hex = `#${Array.from(rgb, (c) => c.toString(16).padStart(2, '0')).join('')}`;
+        const hex = `#${Array.from(rgb, (c) => c.toString(16).padStart(2, "0")).join("")}`;
         const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" rx="8" fill="${hex}"/></svg>`;
         favicon.href = `data:image/svg+xml,${encodeURIComponent(svg)}`;
       }
 
-      matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => tintFavicon(true));
+      matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () =>
+        tintFavicon(true),
+      );
 
       // The favicon follows the river as the page scrolls.
       let tinting = false;
       window.addEventListener(
-        'scroll',
+        "scroll",
         () => {
           if (tinting) return;
           tinting = true;
@@ -195,19 +207,19 @@ const canonicalUrl = `${metadata.url}${pageUrl}`;
             tintFavicon();
           });
         },
-        { passive: true }
+        { passive: true },
       );
 
       // Again on load, once fonts and images have settled the layout.
       anchorGradientText();
-      window.addEventListener('load', () => {
+      window.addEventListener("load", () => {
         anchorGradientText();
         // The scroll position may have been restored by now.
         tintFavicon();
       });
 
       let anchorTimer: ReturnType<typeof setTimeout>;
-      window.addEventListener('resize', () => {
+      window.addEventListener("resize", () => {
         clearTimeout(anchorTimer);
         anchorTimer = setTimeout(() => requestAnimationFrame(anchorGradientText), 120);
       });
@@ -216,10 +228,15 @@ const canonicalUrl = `${metadata.url}${pageUrl}`;
 
   <body>
     <div id="texture"></div>
-    
+
     <slot />
 
     <script async src="https://platform.twitter.com/widgets.js" is:inline></script>
-    <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "488e6debfbc64509bd4b00dde784e24f"}' is:inline></script>
+    <script
+      defer
+      src="https://static.cloudflareinsights.com/beacon.min.js"
+      data-cf-beacon='{"token": "488e6debfbc64509bd4b00dde784e24f"}'
+      is:inline
+    ></script>
   </body>
 </html>

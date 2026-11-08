@@ -60,6 +60,9 @@ importers:
         specifier: ^3.5.44
         version: 3.5.44(typescript@6.0.3)
     devDependencies:
+      '@astrojs/compiler-rs':
+        specifier: ^0.5.2
+        version: 0.5.2
       '@types/hast':
         specifier: ^3.0.5
         version: 3.0.5

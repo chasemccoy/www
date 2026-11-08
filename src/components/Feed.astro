@@ -1,18 +1,19 @@
 ---
-import BlogFeed from './BlogFeed.vue';
-import BlogPost from './BlogPost.vue';
-import { shouldTruncatePost } from '../utils';
-import { render } from 'astro:content';
-import type { CollectionEntry } from 'astro:content';
+import BlogFeed from "./BlogFeed.vue";
+import BlogPost from "./BlogPost.vue";
+import { shouldTruncatePost } from "../utils";
+import { render } from "astro:content";
+import type { CollectionEntry } from "astro:content";
 
 interface Props {
-  posts: CollectionEntry<'posts'>[];
+  posts: CollectionEntry<"posts">[];
 }
 
 const { posts } = Astro.props;
 ---
+
 <BlogFeed>
-  {posts.map(async post => {
+  {posts.map(async (post) => {
     const { Content } = await render(post);
     return (
       <BlogPost

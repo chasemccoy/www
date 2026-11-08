@@ -1,7 +1,7 @@
 ---
-import HtmlLayout from './HtmlLayout.astro';
-import Collage from '../components/Collage.astro';
-import type { LayoutProps } from '../types';
+import HtmlLayout from "./HtmlLayout.astro";
+import Collage from "../components/Collage.astro";
+import type { LayoutProps } from "../types";
 
 interface Props extends LayoutProps {
   date?: Date | string;
@@ -9,10 +9,13 @@ interface Props extends LayoutProps {
 
 const { title, description, date } = Astro.props;
 ---
+
 <HtmlLayout title={title} description={description} date={date}>
   <div class="Page">
     <header class="Masthead">
-      <h1 class="visually-hidden"><a href="/">chsmc.org</a></h1>
+      <h1 class="visually-hidden">
+        <a href="/">chsmc.org</a>
+      </h1>
       <Collage />
     </header>
 

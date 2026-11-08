@@ -1,25 +1,23 @@
 ---
-import BaseLayout from './BaseLayout.astro';
-import BlogPost from '../components/BlogPost.vue';
-import PostPagination from '../components/PostPagination.vue';
-import { getAdjacentPosts } from '../utils';
-import { getCollection } from 'astro:content';
-import type { CollectionEntry } from 'astro:content';
+import BaseLayout from "./BaseLayout.astro";
+import BlogPost from "../components/BlogPost.vue";
+import PostPagination from "../components/PostPagination.vue";
+import { getAdjacentPosts } from "../utils";
+import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
 
 interface Props {
-  post: CollectionEntry<'posts'>;
+  post: CollectionEntry<"posts">;
 }
 
 const { post } = Astro.props;
 const { title, date, permalink, hidden } = post.data;
 
-const allPosts = await getCollection('posts');
+const allPosts = await getCollection("posts");
 const { previous, next } = getAdjacentPosts(allPosts, post.id);
 ---
-<BaseLayout
-  title={title}
-  date={date}
->
+
+<BaseLayout title={title} date={date}>
   <BlogPost title={title} date={date} permalink={permalink} isDraft={hidden}>
     <slot />
   </BlogPost>

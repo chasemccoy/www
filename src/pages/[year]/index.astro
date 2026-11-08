@@ -1,7 +1,7 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import PostArchive from '../../components/PostArchive.astro';
-import { getPostsByYear } from '../../utils';
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import PostArchive from "../../components/PostArchive.astro";
+import { getPostsByYear } from "../../utils";
 
 export const getStaticPaths = async () => {
   const postsByYear = await getPostsByYear();
@@ -13,6 +13,7 @@ export const getStaticPaths = async () => {
 
 const { year, posts } = Astro.props;
 ---
+
 <BaseLayout title={year}>
   <PostArchive label="Archives" title={year} href={`/${year}/`} posts={posts} />
 </BaseLayout>

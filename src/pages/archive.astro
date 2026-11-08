@@ -1,10 +1,11 @@
 ---
-import PageLayout from '../layouts/PageLayout.astro';
-import Archives from '../components/Archives.vue';
-import { getArchiveIndex } from '../utils';
+import PageLayout from "../layouts/PageLayout.astro";
+import Archives from "../components/Archives.vue";
+import { getArchiveIndex } from "../utils";
 
 const archive = await getArchiveIndex();
 ---
+
 <PageLayout title="Archive">
   <Archives {...archive} />
 </PageLayout>

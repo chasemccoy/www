@@ -1,12 +1,12 @@
 ---
-import BlogFeed from './BlogFeed.vue';
-import Breadcrumbs from './Breadcrumbs.vue';
-import BlogPost from './BlogPost.vue';
-import BlogPostPreview from './BlogPostPreview.vue';
-import { render } from 'astro:content';
-import type { CollectionEntry } from 'astro:content';
+import BlogFeed from "./BlogFeed.vue";
+import Breadcrumbs from "./Breadcrumbs.vue";
+import BlogPost from "./BlogPost.vue";
+import BlogPostPreview from "./BlogPostPreview.vue";
+import { render } from "astro:content";
+import type { CollectionEntry } from "astro:content";
 
-type Post = CollectionEntry<'posts'>;
+type Post = CollectionEntry<"posts">;
 
 interface Props {
   // Breadcrumb back to /archive/; omitted, there's none.
@@ -20,21 +20,33 @@ interface Props {
 const { label, title, href, posts } = Astro.props;
 
 const titledPosts = posts.filter(
-  (post): post is Post & { data: Post['data'] & { title: string } } =>
-    Boolean(post.data.title)
+  (post): post is Post & { data: Post["data"] & { title: string } } => Boolean(post.data.title),
 );
-const untitledPosts = posts.filter(post => !post.data.title);
+const untitledPosts = posts.filter((post) => !post.data.title);
 ---
+
 <BlogFeed class="PostArchive">
   <div class="prose PostArchive__intro">
-    {label && <Breadcrumbs><a href="/archive/" class="unstyled muted">{label}</a></Breadcrumbs>}
+    {label && (
+      <Breadcrumbs>
+        <a href="/archive/" class="unstyled muted">
+          {label}
+        </a>
+      </Breadcrumbs>
+    )}
     <h1>
-      {href ? <a href={href} class="unstyled">{title}</a> : title}
+      {href ? (
+        <a href={href} class="unstyled">
+          {title}
+        </a>
+      ) : (
+        title
+      )}
     </h1>
   </div>
 
   <div class="PostArchive__titledPosts">
-    {titledPosts.map(post => (
+    {titledPosts.map((post) => (
       <BlogPostPreview
         title={post.data.title}
         date={post.data.date}
@@ -44,7 +56,7 @@ const untitledPosts = posts.filter(post => !post.data.title);
   </div>
 
   <div class="PostArchive__notes">
-    {untitledPosts.map(async post => {
+    {untitledPosts.map(async (post) => {
       const { Content } = await render(post);
       return (
         <BlogPost date={post.data.date} permalink={post.data.permalink}>

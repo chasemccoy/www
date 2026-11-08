@@ -1,11 +1,11 @@
 ---
-import PostLayout from '../layouts/PostLayout.astro';
-import { render } from 'astro:content';
-import { getVisiblePosts } from '../utils';
+import PostLayout from "../layouts/PostLayout.astro";
+import { render } from "astro:content";
+import { getVisiblePosts } from "../utils";
 
 export async function getStaticPaths() {
   const posts = await getVisiblePosts();
-  return posts.map(post => ({
+  return posts.map((post) => ({
     params: { slug: post.data.permalink.slice(1, -1) },
     props: { post },
   }));
@@ -14,6 +14,7 @@ export async function getStaticPaths() {
 const { post } = Astro.props;
 const { Content } = await render(post);
 ---
+
 <PostLayout post={post}>
   <Content />
 </PostLayout>

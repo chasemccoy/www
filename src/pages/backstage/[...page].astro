@@ -1,30 +1,35 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import Breadcrumbs from '../../components/Breadcrumbs.vue';
-import BlogPostPreview from '../../components/BlogPostPreview.vue';
-import { getPosts, getSlugFromPostId, titleize, SHOW_DRAFTS } from '../../utils';
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.vue";
+import BlogPostPreview from "../../components/BlogPostPreview.vue";
+import { getPosts, getSlugFromPostId, titleize, SHOW_DRAFTS } from "../../utils";
 
 export function getStaticPaths() {
   // A rest param so production can return no paths and skip the route.
   return SHOW_DRAFTS ? [{ params: { page: undefined } }] : [];
 }
 
-const hiddenPosts = (await getPosts()).filter(p => p.data.hidden);
+const hiddenPosts = (await getPosts()).filter((p) => p.data.hidden);
 ---
+
 <BaseLayout title="Backstage">
   <div class="prose Backstage">
     <Breadcrumbs>
-      <a href="/" class="bold unstyled muted">Home</a>
+      <a href="/" class="bold unstyled muted">
+        Home
+      </a>
     </Breadcrumbs>
 
     <h1>
-      <a href="/backstage" class="unstyled">Backstage</a>
+      <a href="/backstage" class="unstyled">
+        Backstage
+      </a>
     </h1>
 
     <h2>Drafts</h2>
 
     <div class="Backstage__drafts">
-      {hiddenPosts.map(post => (
+      {hiddenPosts.map((post) => (
         <BlogPostPreview
           title={post.data.title || titleize(getSlugFromPostId(post.id))}
           date={post.data.date}
