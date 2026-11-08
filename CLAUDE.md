@@ -52,7 +52,7 @@ Uses **Astro** (`.astro`) for layouts and pages, and **Vue 3 SFCs** (`.vue`) for
 
 **Layouts** (`src/layouts/`):
 
-- `HtmlLayout.astro` — Root HTML shell: head, meta tags, fonts, the noise texture layer, and the gradient-river anchoring script
+- `HtmlLayout.astro` — Root HTML shell: head, meta tags, fonts, and the gradient-river anchoring script
 - `BaseLayout.astro` — Page chrome: a centered `.Page` holding the collage Masthead (with a visually hidden site title), then the Wrapper column around the main content slot
 - `PostLayout.astro` — Blog post pages: takes the post entry, renders it as a `BlogPost` plus `PostPagination`
 - `PageLayout.astro` — Generic pages (the `.Article.prose` wrapper); supports both `.astro` imports and markdown `layout:` frontmatter
@@ -120,7 +120,7 @@ src/styles/
 ├── _reset.scss     # CSS reset
 ├── _mixins.scss    # Mixins only, emits no CSS: breakpoints (tiny/small/medium/large), label, river-fill/text/hover-wash
 ├── _theme.scss     # Design tokens
-├── _river.scss     # The gradient river: palette tokens, the page noise texture
+├── _river.scss     # The gradient river: palette tokens
 ├── _elements.scss  # Global element defaults
 ├── _prose.scss     # The .prose typography system for Markdown content
 ├── _Callout.scss   # Callouts (`<aside class='Callout'>` in posts): a sticky note with river-sampled washi tape
@@ -165,7 +165,7 @@ Conventions:
 
 The site's central visual system: a page-length gradient that link text, underlines, and list bullets all sample, so everything on a page shares one continuous color ramp.
 
-- **CSS side**: `src/styles/_river.scss` — gradient stop tokens and the `#texture` noise layer. The `river-fill` / `river-text` / `river-hover-wash` mixins live in `_mixins.scss`.
+- **CSS side**: `src/styles/_river.scss` — gradient stop tokens. The `river-fill` / `river-text` / `river-hover-wash` mixins live in `_mixins.scss`.
 - **JS side**: `src/utils/river.ts` (the stop tables, the per-page phase from a path hash, pure helpers; runs at build time and in the client) plus the inline anchoring script in `HtmlLayout.astro`. Both sides derive the page's stop table from its path, so the script samples directly in page space. The build writes the page's `--gradient-river` (and `-faint`) inline on `<html>`; the script writes `--river-size` once on the root, then `--river-pos` per pinned element and `--river-color` (the underline tint) per link. On scroll it only re-tints the favicon.
 - **Contract**: the anchoring script's pinned-element selector list must cover every element whose styles `@include river-text` or `river-fill` — grep for the mixin names when changing either side. One-off elements opt in with a `data-river-pin` attribute instead of a new selector.
 

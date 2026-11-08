@@ -1,4 +1,4 @@
-// The river's color stops, and the page's noise texture.
+// The river's color stops.
 
 :root {
   --gradient-darken: 0.08;
@@ -16,20 +16,5 @@
     --gradient-stop-4: #2dd4bf;
     --gradient-stop-5: #818cf8;
     --gradient-stop-6: #c084fc;
-  }
-}
-
-#texture {
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  pointer-events: none;
-  background-image: url("/images/noise.webp");
-  background-size: 200px;
-  opacity: 0.05;
-  mix-blend-mode: hard-light;
-
-  @media (prefers-color-scheme: dark) {
-    opacity: 0.02;
   }
 }
