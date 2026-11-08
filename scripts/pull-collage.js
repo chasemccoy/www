@@ -2,15 +2,9 @@
 //
 //   pnpm collage:pull [folder]    (default: ~/Desktop/collage)
 //
-// The document, the renderer (collage.js), and the frame styles (collage.css) are copied as they
-// are. Images are copied only if the collage uses them, scaled down to the widest they're ever
-// drawn on the site (see src/utils/collage.ts), and heavy PNGs (pasted screenshots, mostly) become
-// high-quality WebP, which keeps their transparency; collage.json is rewritten to match. The
-// export keeps the originals, so pulling again after the collage changes sizes them afresh. Astro
-// makes the sizes the site serves at build time.
-//
-// The new src/collage/ is built beside the old one and swapped in at the end, so a pull that fails
-// leaves the old one as it was.
+// Copies the document, renderer, and frame styles as they are. Images the collage uses are scaled
+// down to the widest they're drawn (see src/utils/collage.ts), and heavy PNGs become WebP. The new
+// src/collage/ is built beside the old one and swapped in, so a failed pull changes nothing.
 import { copyFile, mkdir, readFile, rename, rm, stat, writeFile } from "node:fs/promises";
 import { homedir } from "node:os";
 import path from "node:path";
@@ -18,8 +12,7 @@ import { pathToFileURL } from "node:url";
 import sharp from "sharp";
 import { largestWidth } from "../src/utils/collage.ts";
 
-// The oldest renderer the site works with: VERSION in collage.js, which counts the features a host
-// relies on (image sizing, note links, untitled windows).
+// The oldest renderer VERSION (in collage.js) the site works with.
 const RENDERER_VERSION = 1;
 const HEAVY_PNG = 200_000; // bytes
 
@@ -49,7 +42,7 @@ try {
     if (!uses.length) continue;
     const source = path.join(from, "images", image.file);
     const { width = 0, height = 0, format } = await sharp(source).metadata();
-    // 0 when every use is hidden at every size, which leaves nothing to size it for.
+    // 0 when the image is hidden at every size.
     const needed = Math.max(
       0,
       ...uses.map((item) => largestWidth(renderer.imageScale(item, grid, { width, height }))),

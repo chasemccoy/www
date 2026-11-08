@@ -13,16 +13,12 @@
   }
 }
 
-// Everything on the page, centered. Keep it wide enough for the collage's Large
-// layout, which takes over at 1024px (BREAKPOINT_MIN in collage.js), inside the
-// masthead's padding.
+// Wide enough for the collage's Large layout (1024px) inside the masthead's padding.
 .Page {
   max-width: 1200px;
   margin-inline: auto;
 }
 
-// The header collage. Tighter than the layout padding, which would leave too
-// wide a margin around it.
 .Masthead {
   padding: 1rem 1rem 0;
 
@@ -30,8 +26,7 @@
     padding: 1.5rem 1.5rem 0;
   }
 
-  // Links in the collage's notes take the note's ink, not the river: a soft underline that
-  // darkens on hover, over a light wash. Collage.astro marks them muted, which the river skips.
+  // Collage links, which Collage.astro marks muted, take their note's ink.
   a.muted {
     color: inherit;
     text-decoration-color: rgb(0 0 0 / 0.3);
@@ -45,7 +40,6 @@
   }
 }
 
-// A left-anchored reading column.
 .Wrapper {
   display: grid;
   grid-template-columns: minmax(0, var(--column-width));

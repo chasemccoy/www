@@ -96,11 +96,8 @@
   height: 100%;
 }
 
-/* Effects are filters, not box-shadows, so they follow an image's transparent edges, stamp
-   perforations, and window corners. The sticker outline goes on the frame and the shadow on the
-   item, so the shadow falls from the outlined shape. Keep them on separate elements: each
-   drop-shadow in one filter list roughly doubles the cost of the ones before it, and resizing
-   the page redraws them every frame. */
+/* Effects are filters so they follow transparent edges. The outline and shadow stay on separate
+   elements: chained drop-shadows in one filter list grow exponentially in cost. */
 .CollageItem {
   filter: var(--collage-shadow, );
 }
@@ -115,10 +112,8 @@
     drop-shadow(0 calc(10 * var(--px)) calc(12 * var(--px)) rgb(0 0 0 / 0.16));
 }
 
-/* A die-cut sticker border: each hard white drop-shadow unions a diagonally offset copy of the
-   shape, so four passes grow it outward 6 design px (about 4 on the diagonals). The copies keep
-   the image's own edge, so a feathered cutout would get a feathered border: renderCollage's SVG
-   filter sharpens it last. */
+/* A die-cut sticker border: four diagonal white drop-shadows grow the shape about 6 design px,
+   then renderCollage's SVG filter sharpens the edge. */
 .CollageItem--sticker {
   --sticker-step: calc(3 * var(--px));
   --collage-sticker:
@@ -880,8 +875,7 @@
   font: calc(24 * var(--px)) / calc(28 * var(--px)) var(--collage-font-pen);
 }
 
-/* A ruled index card: typed text, a red header rule, then blue rules. Colors come out paler,
-   like card stock. */
+/* A ruled index card: typed text, a red header rule, then blue rules. */
 .StickyNote--index {
   padding: calc(20 * var(--px)) calc(16 * var(--px)) 0;
   background:

@@ -1,15 +1,7 @@
 ---
-// The header collage. src/collage/ is the collage editor's export, pulled in with
-// `pnpm collage:pull`: the document, its renderer, the frame styles, and the images. This
-// component only resolves each image through astro:assets and hands the renderer the result, so
-// the collage is plain HTML and CSS by the time it ships.
-//
-// Each image is made at the widths its spot in the collage needs (see utils/collage.ts), as AVIF
-// with a WebP fallback. Images shown at every size load right away, the widest first; the rest
-// stay lazy, so a size that hides one never fetches it.
-//
-// The site's links live in the collage's notes: a note line naming one of LINKS becomes that
-// link, and a note listing two or more (and nothing else) renders as the header's <nav>.
+// The header collage, rendered at build time from src/collage/ (the editor's export, pulled in
+// with `pnpm collage:pull`). Images are made at the widths their spots need (see
+// utils/collage.ts); those shown at every size load eagerly.
 import type { ImageMetadata } from "astro";
 import { getImage } from "astro:assets";
 import metadata from "../data/metadata.json";
@@ -19,9 +11,8 @@ import type { CollageImageSource } from "../collage/collage.js";
 import { imageSizes, imageWidths } from "../utils/collage";
 import "../collage/collage.css";
 
-// Keyed by a note line's text, lowercased. The other sites open in a new tab, as they always have.
-// Every collage link is muted, so it takes the note's ink rather than the river (see .Masthead in
-// _Wrapper.scss); the wordmark is also unstyled, underlined only on hover.
+// A note line matching a key (lowercased) becomes that link, and a note of two or more links
+// renders as a <nav>. Links are muted so they skip the river (see .Masthead in _Wrapper.scss).
 const NEW_TAB = { target: "_blank", rel: "noopener" };
 const LINKS: Record<string, Record<string, string>> = {
   "chsmc.org": { href: "/", class: "muted unstyled" },

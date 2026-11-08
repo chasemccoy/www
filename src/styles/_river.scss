@@ -1,5 +1,3 @@
-// The river's color stops.
-
 :root {
   --gradient-darken: 0.08;
   --gradient-stop-1: oklch(from #f472b6 calc(l - var(--gradient-darken)) c h);
