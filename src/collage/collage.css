@@ -472,6 +472,90 @@
   background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M11 2 2 11m9-5-5 5m5-1-1 1' stroke='%23666'/%3E%3Cpath d='M11 3 3 11m8-4-4 4' stroke='%23fff' stroke-opacity='.8'/%3E%3C/svg%3E") right calc(2 * var(--px)) bottom calc(2 * var(--px)) / calc(12 * var(--px)) no-repeat;
 }
 
+/* @section polaroid */
+/* Polaroids */
+.Polaroid {
+  --paper: #f8f6f0;
+  --ink: #2b2b2b;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: calc(16 * var(--px)) calc(16 * var(--px)) 0;
+  border-radius: calc(2 * var(--px));
+  background: var(--paper);
+}
+
+.Polaroid__photo {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  background: #3a3833;
+}
+
+.Polaroid__photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  box-shadow: inset 0 0 calc(3 * var(--px)) rgb(0 0 0 / 0.35);
+  pointer-events: none;
+}
+
+.Polaroid__caption {
+  flex: none;
+  display: grid;
+  place-items: center;
+  height: calc(80 * var(--px));
+  padding-inline: calc(12 * var(--px));
+  overflow: hidden;
+  color: var(--ink);
+  font: calc(30 * var(--px)) / 1.1 var(--collage-font-pen);
+  text-align: center;
+}
+
+.Polaroid--instax {
+  --paper: #fff;
+  --ink: #333;
+  padding-top: calc(22 * var(--px));
+  border-radius: calc(10 * var(--px));
+}
+
+.Polaroid--instax .Polaroid__caption {
+  height: calc(74 * var(--px));
+  font: calc(22 * var(--px)) / 1.1 var(--collage-font-hand);
+}
+
+.Polaroid--black {
+  --paper: #161616;
+  --ink: #f4f4f4;
+}
+
+.Polaroid--black .Polaroid__caption {
+  font: calc(22 * var(--px)) / 1.1 var(--collage-font-marker);
+}
+
+.Polaroid--vintage {
+  --paper: #eee4cc;
+  --ink: #3b3226;
+}
+
+.Polaroid--vintage .Polaroid__caption {
+  font: calc(17 * var(--px)) / 1.2 var(--collage-font-typewriter);
+}
+
+.Polaroid__tape {
+  position: absolute;
+  top: calc(-12 * var(--px));
+  left: 50%;
+  z-index: 1;
+  width: calc(120 * var(--px));
+  height: calc(32 * var(--px));
+  translate: -50% 0;
+  rotate: -4deg;
+  background: rgb(247 241 225 / 0.78);
+  box-shadow: 0 var(--px) calc(2 * var(--px)) rgb(0 0 0 / 0.12);
+}
+
 /* @section stamp */
 /* Stamps: the mask tiles holes along every edge, rounded to fit the size exactly. */
 .Stamp {
