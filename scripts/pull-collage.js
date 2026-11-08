@@ -20,9 +20,10 @@ const from = path.resolve(process.argv[2] ?? path.join(homedir(), "Desktop", "co
 const to = path.resolve(import.meta.dirname, "../src/collage");
 
 const doc = JSON.parse(await readFile(path.join(from, "collage.json"), "utf8"));
-// The renderer features the site relies on: image sizing and note links.
+// The renderer features the site relies on: image sizing, note links, and untitled windows.
 const renderer = await readFile(path.join(from, "collage.js"), "utf8");
-if (!["export function imageScale", "function noteText"].every((feature) => renderer.includes(feature))) {
+const features = ["export function imageScale", "function noteText", "An untitled window"];
+if (!features.every((feature) => renderer.includes(feature))) {
   throw new Error(`${from} is from an older collage editor. Save it from the editor again, then pull.`);
 }
 

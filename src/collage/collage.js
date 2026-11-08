@@ -132,7 +132,11 @@ function macWindow(f, img) {
   const toolbar = f.toolbar
     ? `<div class="MacWindow__toolbar" aria-hidden="true"><span class="MacWindow__button MacWindow__button--back"></span><span class="MacWindow__button MacWindow__button--forward"></span><span>Location:</span><span class="MacWindow__address">${esc(f.address)}</span></div>`
     : '';
-  return `<div class="MacWindow"><div class="MacWindow__titleBar" aria-hidden="true"><span class="MacWindow__box"></span><span class="MacWindow__stripes"></span><span class="MacWindow__title">${esc(f.title)}</span><span class="MacWindow__stripes"></span><span class="MacWindow__box MacWindow__box--collapse"></span></div>${toolbar}<div class="MacWindow__content">${img}</div></div>`;
+  // An untitled window's stripes run unbroken from box to box.
+  const title = f.title?.trim()
+    ? `<span class="MacWindow__stripes"></span><span class="MacWindow__title">${esc(f.title)}</span><span class="MacWindow__stripes"></span>`
+    : '<span class="MacWindow__stripes"></span>';
+  return `<div class="MacWindow"><div class="MacWindow__titleBar" aria-hidden="true"><span class="MacWindow__box"></span>${title}<span class="MacWindow__box MacWindow__box--collapse"></span></div>${toolbar}<div class="MacWindow__content">${img}</div></div>`;
 }
 
 function safariWindow(f, img) {

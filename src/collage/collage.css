@@ -2,8 +2,8 @@
    Each frame's styles start at an @section comment; an export keeps only the ones it uses. */
 
 .Collage {
-  --collage-font-chrome: "Chicago", "Charcoal", "Arimo", system-ui, sans-serif;
-  --collage-font-system: "Lucida Grande", "Fira Sans", system-ui, sans-serif;
+  --collage-font-chrome: "Geneva", system-ui, sans-serif;
+  --collage-font-system: "Lucida Grande", "Lucida Sans Unicode", system-ui, sans-serif;
   --collage-font-pen: "Caveat", "Bradley Hand", cursive;
   --collage-font-hand: "Gochi Hand", "Caveat", cursive;
   --collage-font-marker: "Permanent Marker", "Marker Felt", cursive;
