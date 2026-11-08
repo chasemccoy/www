@@ -156,18 +156,44 @@ function stamp(f, img) {
   return `<div class="Stamp Stamp--${esc(f.style)}"><div class="Stamp__inner"><div class="Stamp__photo">${img}</div><span class="Stamp__value">${esc(f.value)}</span><span class="Stamp__label">${esc(f.label)}</span></div>${f.postmarked ? postmark(f) : ''}</div>`;
 }
 
-function stickyNote(item) {
+// A note's text, with each line the host's link(text, item) recognizes made a link. link() returns
+// an href, or the <a>'s attributes; without it (as in the editor) the text stays plain. nav says
+// whether the note is a list of links: two or more, and nothing else.
+function noteText(text, item, link) {
+  const lines = String(text ?? '').split('\n');
+  let links = 0;
+  const html = lines
+    .map((line) => {
+      const label = line.trim();
+      const target = label && link?.(label, item);
+      if (!target) return esc(line);
+      links++;
+      const attrs = Object.entries(typeof target === 'string' ? { href: target } : target)
+        .filter(([name, value]) => /^[a-z][a-z-]*$/.test(name) && value != null)
+        .map(([name, value]) => ` ${name}="${esc(value)}"`)
+        .join('');
+      const start = line.indexOf(label);
+      return `${esc(line.slice(0, start))}<a${attrs}>${esc(label)}</a>${esc(line.slice(start + label.length))}`;
+    })
+    .join('\n');
+  return { html, nav: links > 1 && links === lines.filter((line) => line.trim()).length };
+}
+
+function stickyNote(item, link) {
   const n = { ...NOTE_DEFAULTS, ...item.note };
+  const text = noteText(n.text, item, link);
   // A TextEdit note is the TextEdit window holding text alone; its window options live on the note.
-  if (n.style === 'textedit') return textEdit({ ...FRAME_DEFAULTS.textedit, ...n, showImage: false }, '');
+  if (n.style === 'textedit') return textEdit({ ...FRAME_DEFAULTS.textedit, ...n, showImage: false }, '', text.html);
   const chrome =
     n.style === 'stickies'
       ? '<div class="StickyNote__titleBar" aria-hidden="true"><span class="StickyNote__box"></span><span class="StickyNote__box StickyNote__box--zoom"></span></div>'
       : '';
-  return `<div class="StickyNote StickyNote--${esc(n.style)} StickyNote--${esc(n.color)}">${chrome}<div class="StickyNote__text">${esc(n.text)}</div></div>`;
+  // A note of nothing but links is a menu: the site's nav, say.
+  const tag = text.nav ? 'nav' : 'div';
+  return `<div class="StickyNote StickyNote--${esc(n.style)} StickyNote--${esc(n.color)}">${chrome}<${tag} class="StickyNote__text">${text.html}</${tag}></div>`;
 }
 
-function textEdit(f, img) {
+function textEdit(f, img, text = esc(f.text)) {
   const control = (cls, inner = '') => `<span class="TextEdit__control ${cls}">${inner}</span>`;
   const lines = (align) => `<span><span class="TextEdit__lines TextEdit__lines--${align}"></span></span>`;
   const formatBar = f.formatBar
@@ -186,7 +212,7 @@ function textEdit(f, img) {
     : '';
   const ruler = f.ruler ? `<div class="TextEdit__ruler" aria-hidden="true">${Array.from({ length: 12 }, (_, i) => `<span>${i + 1}</span>`).join('')}</div>` : '';
   const edited = f.edited ? '<span class="TextEdit__edited"> — Edited</span>' : '';
-  return `<div class="TextEdit TextEdit--${esc(f.appearance)}"><div class="TextEdit__titleBar" aria-hidden="true"><span class="TextEdit__lights"><span class="TextEdit__light"></span><span class="TextEdit__light"></span><span class="TextEdit__light"></span></span><span class="TextEdit__title">${esc(f.title)}${edited}</span></div>${formatBar}${ruler}<div class="TextEdit__page"><p class="TextEdit__text">${esc(f.text)}</p>${f.showImage ? `<div class="TextEdit__content">${img}</div>` : ''}</div></div>`;
+  return `<div class="TextEdit TextEdit--${esc(f.appearance)}"><div class="TextEdit__titleBar" aria-hidden="true"><span class="TextEdit__lights"><span class="TextEdit__light"></span><span class="TextEdit__light"></span><span class="TextEdit__light"></span></span><span class="TextEdit__title">${esc(f.title)}${edited}</span></div>${formatBar}${ruler}<div class="TextEdit__page"><p class="TextEdit__text">${text}</p>${f.showImage ? `<div class="TextEdit__content">${img}</div>` : ''}</div></div>`;
 }
 
 const COMPONENT_ICON = '<svg viewBox="0 0 12 12" aria-hidden="true"><path fill="currentColor" d="M6 .8 8.2 3 6 5.2 3.8 3zM3 3.8 5.2 6 3 8.2.8 6zm6 0L11.2 6 9 8.2 6.8 6zM6 6.8 8.2 9 6 11.2 3.8 9z"/></svg>';
@@ -210,7 +236,7 @@ export function renderFrame(item, img) {
   return `<div class="CollageItem__media">${img}</div>`;
 }
 
-export function renderItem(item, grid, image) {
+export function renderItem(item, grid, image, link) {
   const vars = [];
   for (const bp of BREAKPOINTS) {
     const p = resolvePlacement(item, bp, grid);
@@ -226,7 +252,7 @@ export function renderItem(item, grid, image) {
     if (own?.r != null) vars.push(`--${bp}-r:${own.r}`);
   }
   const cls = ['CollageItem', item.shadow && 'CollageItem--shadow', item.sticker && 'CollageItem--sticker'].filter(Boolean).join(' ');
-  const body = item.kind === 'note' ? stickyNote(item) : renderFrame(item, renderImage(item, grid, image));
+  const body = item.kind === 'note' ? stickyNote(item, link) : renderFrame(item, renderImage(item, grid, image));
   return `<div class="${cls}" data-id="${esc(item.id)}" style="${vars.join(';')}">${body}</div>`;
 }
 
@@ -251,17 +277,18 @@ const STICKER_EDGE =
  */
 
 /**
- * Renders a collage document to HTML. image(item) returns the source for an item's image.
+ * Renders a collage document to HTML. image(item) returns the source for an item's image;
+ * link(text, item) turns a line of a note into a link (see noteText).
  * @param {{ items: object[], grid?: object }} doc
- * @param {{ image?: (item: any) => CollageImageSource | undefined, className?: string }} [options]
+ * @param {{ image?: (item: any) => CollageImageSource | undefined, link?: (text: string, item: any) => string | Record<string, string> | undefined, className?: string }} [options]
  * @returns {string}
  */
-export function renderCollage(doc, { image, className = '' } = {}) {
+export function renderCollage(doc, { image, link, className = '' } = {}) {
   const grid = gridFor(doc);
   const vars = BREAKPOINTS.map((bp) => `--${bp}-cols:${grid[bp].cols};--${bp}-rows:${grid[bp].rows}`).join(';');
   const items = [...doc.items]
     .sort((a, b) => (a.z ?? 0) - (b.z ?? 0))
-    .map((item) => renderItem(item, grid, image))
+    .map((item) => renderItem(item, grid, image, link))
     .join('');
   const defs = doc.items.some((item) => item.sticker) ? STICKER_EDGE : '';
   return `<div class="Collage${className ? ` ${esc(className)}` : ''}" style="${vars}">${defs}<div class="Collage__grid">${items}</div></div>`;

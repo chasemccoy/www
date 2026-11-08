@@ -29,6 +29,20 @@
   @include medium {
     padding: 1.5rem 1.5rem 0;
   }
+
+  // Links in the collage's notes take the note's ink, not the river: a soft underline that
+  // darkens on hover, over a light wash. Collage.astro marks them muted, which the river skips.
+  a.muted {
+    color: inherit;
+    text-decoration-color: rgb(0 0 0 / 0.3);
+    text-underline-offset: 0.18em;
+
+    &:hover {
+      text-decoration-color: currentColor;
+      text-underline-offset: 0.18em;
+      background: rgb(255 255 255 / 0.5);
+    }
+  }
 }
 
 // A left-anchored reading column.
