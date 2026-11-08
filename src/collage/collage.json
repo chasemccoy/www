@@ -112,8 +112,8 @@
     },
     {
       "file": "pasted-1793229342912-0.webp",
-      "width": 346,
-      "height": 480
+      "width": 320,
+      "height": 444
     },
     {
       "file": "pasted-1793234742632-0.png",
@@ -881,7 +881,7 @@
         "type": "none"
       },
       "shadow": true,
-      "fit": "cover",
+      "fit": "contain",
       "focus": [
         50,
         50
@@ -1021,7 +1021,7 @@
       "z": 25,
       "place": {
         "lg": {
-          "x": 33,
+          "x": 32,
           "y": 5,
           "w": 5,
           "h": 6
