@@ -15,6 +15,9 @@ import { largestWidth } from "../src/utils/collage.ts";
 // The oldest renderer VERSION (in collage.js) the site works with.
 const RENDERER_VERSION = 1;
 const HEAVY_PNG = 200_000; // bytes
+// Images are kept this much wider than the widest they're drawn: Astro's AVIFs come out about 8%
+// smaller scaled down from a larger source than encoded at the source's own size.
+const HEADROOM = 1.25;
 
 const from = path.resolve(process.argv[2] ?? path.join(homedir(), "Desktop", "collage"));
 const to = path.resolve(import.meta.dirname, "../src/collage");
@@ -43,10 +46,11 @@ try {
     const source = path.join(from, "images", image.file);
     const { width = 0, height = 0, format } = await sharp(source).metadata();
     // 0 when the image is hidden at every size.
-    const needed = Math.max(
+    const widest = Math.max(
       0,
       ...uses.map((item) => largestWidth(renderer.imageScale(item, grid, { width, height }))),
     );
+    const needed = Math.ceil(widest * HEADROOM);
     const resize = needed > 0 && needed < width;
     const toWebp = format === "png" && (await stat(source)).size > HEAVY_PNG;
     const file = toWebp ? image.file.replace(/\.png$/i, ".webp") : image.file;
